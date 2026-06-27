@@ -67,6 +67,8 @@ You must take **three components**: 01, 02 and **either** 03 **or** 04.
 - [Knowledge organisers (one-page condensed review per topic)](revision-tools/knowledge-organisers/README.md)
 - [Topic mini-papers (bite-size timed mocks with mark schemes)](revision-tools/mini-papers/README.md)
 - [Full synoptic mock papers (140-mark mocks with mark schemes)](revision-tools/mock-papers/README.md)
+- [Printable worksheets (hands-on practice with answer keys)](revision-tools/worksheets/README.md)
+- [Revision games (loop cards, Taboo, bingo, Top Trumps)](revision-tools/revision-games/README.md)
 
 ---
 
