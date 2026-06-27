@@ -26,8 +26,7 @@ Everything here supports the [topic guides](../README.md#-the-specification-cont
 |------|-----------|
 | [Knowledge organisers](knowledge-organisers/README.md) | One-page summary per topic |
 | [Flashcards](flashcards/README.md) | 374 cards, Anki/Quizlet-ready CSV |
-| [Quiz banks](quizzes/README.md) | 112 multiple-choice questions (JSON) |
-| [Interactive Revision Hub](interactive-quiz/README.md) | **Offline clickable app**: flashcards + self-marking quizzes |
+| [Subtopic quizzes](subtopic-quizzes/README.md) | A printable quiz (with answer key) for **every** subtopic — also in [PDF](printable-pdfs/README.md) |
 
 ## ✍️ Practise
 | Tool | What it is |
@@ -53,15 +52,11 @@ Everything here supports the [topic guides](../README.md#-the-specification-cont
 |------|-----------|
 | [Printable PDFs](printable-pdfs/README.md) | 36 ready-to-print PDFs (games, worksheets, organisers, mini-papers, mocks) |
 | [`build-pdfs.py`](build-pdfs.py) | Regenerate the PDFs from the Markdown sources |
-| [`interactive-quiz/build_data.py`](interactive-quiz/build_data.py) | Rebuild the hub's data after editing decks/quizzes |
 
 ---
 
 ### Regenerating generated assets
 ```bash
-# Rebuild the interactive hub's data (after editing flashcards/ or quizzes/)
-python3 revision-tools/interactive-quiz/build_data.py
-
 # Rebuild the printable PDFs (after editing any printable Markdown)
 python3 revision-tools/build-pdfs.py
 ```

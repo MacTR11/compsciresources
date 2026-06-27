@@ -13,7 +13,7 @@ A full, spec-mapped revision system for **OCR A Level Computer Science, specific
 3. **Plan** your weeks with the [study plan](revision-tools/guides/study-plan-and-how-to-use.md).
 4. Then follow the [recommended route to A\*](#-recommended-route-to-a) — learn → condense → recall → practise → exam.
 
-**Just want to revise right now?** Open the [Interactive Revision Hub](revision-tools/interactive-quiz/index.html) (flashcards + quizzes, works offline) or grab a [printable PDF](revision-tools/printable-pdfs/README.md).
+**Just want to revise right now?** Print a [subtopic quiz](revision-tools/subtopic-quizzes/README.md) or any other [printable PDF](revision-tools/printable-pdfs/README.md).
 
 ---
 
@@ -74,8 +74,7 @@ All tools live in [`revision-tools/`](revision-tools/README.md) (full catalogue 
 ### 🧠 Condense & recall
 - [Knowledge organisers](revision-tools/knowledge-organisers/README.md) — one page per topic
 - [Flashcard decks](revision-tools/flashcards/README.md) — Anki/Quizlet CSV (374 cards)
-- [Quiz banks](revision-tools/quizzes/README.md) — multiple-choice (112 questions)
-- [**Interactive Revision Hub**](revision-tools/interactive-quiz/README.md) — offline flashcards + quizzes in one clickable app
+- [**Subtopic quizzes**](revision-tools/subtopic-quizzes/README.md) — a printable PDF quiz (with answer key) for **every** subtopic
 
 ### ✍️ Practise
 - [Worksheets](revision-tools/worksheets/README.md) — hands-on, with answer keys
@@ -99,7 +98,7 @@ All tools live in [`revision-tools/`](revision-tools/README.md) (full catalogue 
 
 1. **Diagnose** — fill in the [RAG tracker](revision-tools/guides/self-assessment-tracker.md) (green = "I could teach it").
 2. **Learn** — read the topic file for each Red/Amber area; rewrite key terms from memory.
-3. **Condense** — make the [organiser](revision-tools/knowledge-organisers/README.md) stick; drill [flashcards](revision-tools/flashcards/README.md) / the [hub](revision-tools/interactive-quiz/README.md).
+3. **Condense** — make the [organiser](revision-tools/knowledge-organisers/README.md) stick; drill [flashcards](revision-tools/flashcards/README.md) and a [subtopic quiz](revision-tools/subtopic-quizzes/README.md).
 4. **Practise** — [worksheets](revision-tools/worksheets/README.md), [games](revision-tools/revision-games/README.md) and (for Paper 2) the [programming workbook](revision-tools/programming-workbook/README.md).
 5. **Exam** — [mini-papers](revision-tools/mini-papers/README.md) → [full mocks](revision-tools/mock-papers/README.md) → official past papers, all timed and marked.
 6. **Top band** — work the [A\* pack](revision-tools/a-star-pack/README.md): justify, compare, evaluate, connect topics.
@@ -118,8 +117,7 @@ revision-tools/                     ← all study tools (see its README)
 ├── guides/                ← strategy & reference (study plan, technique, glossary, pseudocode, diagrams…)
 ├── knowledge-organisers/  ← one-page topic summaries
 ├── flashcards/            ← CSV decks (Anki/Quizlet)
-├── quizzes/               ← multiple-choice JSON banks
-├── interactive-quiz/      ← offline HTML app (flashcards + quizzes)
+├── subtopic-quizzes/      ← a printable quiz for every subtopic (+ answer keys)
 ├── worksheets/            ← printable practice + answer keys
 ├── revision-games/        ← printable games
 ├── mini-papers/           ← short topic mocks + mark schemes
