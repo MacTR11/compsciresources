@@ -63,6 +63,8 @@ You must take **three components**: 01, 02 and **either** 03 **or** 04.
 - [Reference & formula sheet (number, Big O, logic, SQL)](revision-tools/reference-sheet.md)
 - [RAG self-assessment tracker (whole spec on one page)](revision-tools/self-assessment-tracker.md)
 - [Practice questions hub](revision-tools/practice-questions/README.md)
+- [Flashcard decks (Anki/Quizlet-ready CSV) for every topic](revision-tools/flashcards/README.md)
+- [Topic mini-papers (bite-size timed mocks with mark schemes)](revision-tools/mini-papers/README.md)
 
 ---
 

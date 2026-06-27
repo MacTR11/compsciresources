@@ -38,6 +38,10 @@ Active recall through exam-style questions is the single most effective revision
 
 ---
 
+## Step up to timed topic mini-papers
+
+When a topic's questions are going well, sit its **[mini-paper](../mini-papers/README.md)** — a ~30-mark, ~35-minute mock on that single topic, with a full mark scheme. It's the bridge between answering individual questions and sitting a full past paper under time. Pair each topic with its **[flashcard deck](../flashcards/README.md)** to lock in the recall first.
+
 ## Build your exam stamina with full past papers
 
 Topic questions build knowledge; **whole past papers build exam technique** (timing, switching topics, stamina). Once your RAG tracker is mostly green:
