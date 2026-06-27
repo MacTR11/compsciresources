@@ -9,6 +9,12 @@ A clickable, **offline** web app combining the flashcard decks and self-marking 
 
 Best scores are saved in your browser (localStorage), so you can see yourself improve.
 
+### Features
+- **🎲 All topics (mixed)** — interleaves flashcards/quizzes from *every* topic (interleaving is the most effective way to revise). Mixed quizzes are a random 20-question set.
+- **Self-marking quizzes** with instant feedback, explanations, and a live running score.
+- **Keyboard control** — Flashcards: `Space` flip, `←/→` previous/next, `S` shuffle. Quiz: `1–4` to answer, `Space` for next.
+- **Per-topic best scores** saved locally.
+
 ## Files
 - `index.html` — the app (flashcards + quiz UI).
 - `data.js` — bundled flashcards + quiz questions (generated; loaded by the app).

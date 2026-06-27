@@ -78,6 +78,7 @@
   <div id="quizView" class="card hide">
     <div class="progress"><div id="qBar"></div></div>
     <div id="qArea">
+      <div id="qScoreLive" style="text-align:right;color:#718096;font-size:.85rem;margin-bottom:6px;"></div>
       <div class="q-text" id="qText"></div>
       <div id="qOpts"></div>
       <div class="explain hide" id="qExplain"></div>
@@ -92,8 +93,9 @@
   </div>
 </div>
 <footer>
-  Offline study tool &middot; data rebuilt with <code>build_data.py</code>.
-  If topics don't load, run the builder and open this file again.
+  ⌨️ <strong>Keyboard:</strong> Flashcards — <code>Space</code> flip, <code>←/→</code> prev/next, <code>S</code> shuffle &nbsp;·&nbsp; Quiz — <code>1–4</code> answer, <code>Space</code> next.<br>
+  Tip: <strong>🎲 All topics (mixed)</strong> interleaves every topic — the most effective way to revise. Best scores save in your browser.<br>
+  Offline study tool &middot; data rebuilt with <code>build_data.py</code>. If topics don't load, run the builder and reopen this file.
 </footer>
 
 <script src="data.js"></script>
@@ -109,9 +111,15 @@ function prettify(key){
 // Build topic list from union of flashcard + quiz keys
 const keys = Array.from(new Set([...Object.keys(DATA.flashcards), ...Object.keys(DATA.quizzes)])).sort();
 const topicSel = document.getElementById('topic');
+const allOpt=document.createElement('option'); allOpt.value='__ALL__'; allOpt.textContent='🎲 All topics (mixed)'; topicSel.appendChild(allOpt);
 keys.forEach(k=>{ const o=document.createElement('option'); o.value=k; o.textContent=prettify(k); topicSel.appendChild(o); });
 
-let mode='flash', topic=keys[0]||null;
+// Merge helpers for the mixed/interleaving mode
+function shuffle(a){ for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+function allFlash(){ let a=[]; keys.forEach(k=>(DATA.flashcards[k]||[]).forEach(c=>a.push(c))); return a; }
+function allQuiz(){ let a=[]; keys.forEach(k=>{ const q=DATA.quizzes[k]; if(q&&q.questions) q.questions.forEach(x=>a.push(x)); }); return a; }
+
+let mode='flash', topic='__ALL__';
 
 // ---- Tabs ----
 document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
@@ -126,7 +134,8 @@ topicSel.addEventListener('change',()=>{ topic=topicSel.value; if(mode==='flash'
 // ---- Flashcards ----
 let deck=[], fcIdx=0, flipped=false;
 function loadFlash(){
-  deck = (DATA.flashcards[topic]||[]).slice();
+  deck = (topic==='__ALL__' ? allFlash() : (DATA.flashcards[topic]||[])).slice();
+  if(topic==='__ALL__') shuffle(deck);
   fcIdx=0; flipped=false; renderFlash();
 }
 function renderFlash(){
@@ -149,23 +158,26 @@ document.getElementById('fcShuffle').addEventListener('click',()=>{ for(let i=de
 // ---- Quiz ----
 let quiz=[], qIdx=0, qScore=0, answered=false;
 function startQuiz(){
-  const qz=DATA.quizzes[topic];
   document.getElementById('qResult').classList.add('hide');
   document.getElementById('qArea').classList.remove('hide');
-  if(!qz || !qz.questions || !qz.questions.length){
+  let pool;
+  if(topic==='__ALL__'){ pool = allQuiz(); }
+  else { const qz=DATA.quizzes[topic]; pool = (qz&&qz.questions)?qz.questions.slice():[]; }
+  if(!pool.length){
     document.getElementById('qText').textContent="No quiz for this topic yet.";
     document.getElementById('qOpts').innerHTML=""; document.getElementById('qBar').style.width="0";
+    document.getElementById('qScoreLive').textContent="";
     return;
   }
-  quiz = qz.questions.map(q=>q); // copy
-  // shuffle questions
-  for(let i=quiz.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[quiz[i],quiz[j]]=[quiz[j],quiz[i]];}
+  quiz = shuffle(pool.slice());
+  if(topic==='__ALL__') quiz = quiz.slice(0, 20); // 20-question mixed interleaving quiz
   qIdx=0; qScore=0; renderQ();
 }
 function renderQ(){
   answered=false;
   const q=quiz[qIdx];
   document.getElementById('qBar').style.width = (qIdx/quiz.length*100)+"%";
+  document.getElementById('qScoreLive').textContent = qIdx>0 ? `Score so far: ${qScore} / ${qIdx}` : `Question 1 of ${quiz.length}`;
   document.getElementById('qText').textContent = `Q${qIdx+1}. ${q.q}`;
   const opts=document.getElementById('qOpts'); opts.innerHTML="";
   document.getElementById('qExplain').classList.add('hide');
@@ -204,6 +216,24 @@ function finishQuiz(){
   document.getElementById('qBest').textContent="Best score: "+localStorage.getItem(bk)+"%";
 }
 document.getElementById('qRetry').addEventListener('click', startQuiz);
+
+// ---- Keyboard control ----
+document.addEventListener('keydown', e=>{
+  if(mode==='flash'){
+    if(e.code==='Space'||e.code==='Enter'){ e.preventDefault(); flip(); }
+    else if(e.code==='ArrowRight'){ document.getElementById('fcNext').click(); }
+    else if(e.code==='ArrowLeft'){ document.getElementById('fcPrev').click(); }
+    else if(e.key.toLowerCase()==='s'){ document.getElementById('fcShuffle').click(); }
+  } else if(mode==='quiz' && !document.getElementById('qArea').classList.contains('hide')){
+    if(['1','2','3','4'].includes(e.key)){
+      const b=document.querySelectorAll('#qOpts .opt')[Number(e.key)-1];
+      if(b && !b.disabled) b.click();
+    } else if(e.code==='Enter'||e.code==='Space'){
+      const n=document.getElementById('qNext');
+      if(!n.classList.contains('hide')){ e.preventDefault(); n.click(); }
+    }
+  }
+});
 
 // init
 if(topic){ topicSel.value=topic; loadFlash(); }
