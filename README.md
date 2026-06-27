@@ -1,96 +1,139 @@
-# OCR A Level Computer Science (H446) — Recap & Revision Resources
+# OCR A Level Computer Science (H446) — Complete Revision Hub
 
-A complete, exam-focused revision hub for **OCR A Level Computer Science, specification H446** (first assessment 2017). Every resource is mapped to the official specification and built to do two things:
+A full, spec-mapped revision system for **OCR A Level Computer Science, specification H446** (first assessment 2017). Built to do two things: **get every student a secure pass**, and **push able students to A\*** by targeting the application (AO2) and evaluation (AO3) marks where top grades are decided.
 
-1. **Get every student over the line** — clear recap notes, definitions and checklists so the fundamentals are secure.
-2. **Push able students to A\*** — "A\* extension" boxes, application practice, extended-response technique and full mark schemes that target the AO2/AO3 marks where top grades are won and lost.
+> ⚠️ **Accuracy:** all content is mapped to the published H446 specification and has been audited to remove off-spec material. It is a study aid, **not** a substitute for the official OCR specification, past papers and mark schemes — always cross-check those.
 
-> ⚠️ Always cross-check against the current official OCR specification and the most recent past papers. These resources summarise and teach the H446 content but are not a substitute for the awarding body's own documents.
+---
+
+## 🚀 Start here
+
+1. **New to the repo?** Read [how the qualification is assessed](#-how-the-qualification-is-assessed) below.
+2. **Diagnose** your gaps with the [RAG self-assessment tracker](revision-tools/guides/self-assessment-tracker.md).
+3. **Plan** your weeks with the [study plan](revision-tools/guides/study-plan-and-how-to-use.md).
+4. Then follow the [recommended route to A\*](#-recommended-route-to-a) — learn → condense → recall → practise → exam.
+
+**Just want to revise right now?** Open the [Interactive Revision Hub](revision-tools/interactive-quiz/index.html) (flashcards + quizzes, works offline) or grab a [printable PDF](revision-tools/printable-pdfs/README.md).
 
 ---
 
 ## 📐 How the qualification is assessed
 
-You must take **three components**: 01, 02 and **either** 03 **or** 04.
+Take **three components**: 01, 02 and **either** 03 **or** 04.
 
 | Component | Title | Format | Duration | Marks | Weighting |
 |-----------|-------|--------|----------|-------|-----------|
 | **H446/01** | Computer Systems | Written exam | 2h 30m | 140 | **40%** |
 | **H446/02** | Algorithms & Programming | Written exam | 2h 30m | 140 | **40%** |
-| **H446/03 or 04** | Programming Project (NEA) | Non-exam assessment | — | 70 | **20%** |
+| **H446/03 or 04** | Programming Project (NEA) | Coursework | — | 70 | **20%** |
 
-### Assessment Objectives (AOs)
-
-| AO | What it tests | Overall weighting |
-|----|---------------|-------------------|
-| **AO1** | Demonstrate **knowledge and understanding** of principles and concepts | ~35% |
-| **AO2** | **Apply** knowledge and understanding (analyse problems in computational terms) | ~30% |
-| **AO3** | **Design, program and evaluate** systems; make reasoned judgements and present conclusions | ~35% |
-
-**Why this matters for grades:** AO1 (recall) alone caps you around a pass. The A/A\* boundary is decided by **AO2 application** and **AO3 design/evaluation/justification**. Most of the practice questions in these resources are deliberately AO2/AO3-heavy for that reason. See [`revision-tools/command-words-and-assessment-objectives.md`](revision-tools/command-words-and-assessment-objectives.md).
+**Assessment Objectives:** **AO1** knowledge (~35%) · **AO2** apply (~30%) · **AO3** design/program/evaluate (~35%). AO1 alone caps you near a pass; **AO2/AO3 decide A vs A\*** — so most practice here is deliberately application-heavy. See [command words & AOs](revision-tools/guides/command-words-and-assessment-objectives.md).
 
 ---
 
-## 🗂️ Resource map
+## 📚 The specification content
 
-### Component 01 — Computer Systems
-| Section | Resource |
-|---------|----------|
-| 1.1 | [Processors, input, output & storage devices](component-01-computer-systems/1.1-processors-input-output-storage.md) |
+### Component 01 — Computer Systems · [overview & checklist](component-01-computer-systems/README.md)
+| Spec | Topic |
+|------|-------|
+| 1.1 | [Processors, input, output & storage](component-01-computer-systems/1.1-processors-input-output-storage.md) |
 | 1.2 | [Software & software development](component-01-computer-systems/1.2-software-and-software-development.md) |
 | 1.3 | [Exchanging data](component-01-computer-systems/1.3-exchanging-data.md) |
-| 1.4 | [Data types, data structures & Boolean algebra](component-01-computer-systems/1.4-data-types-structures-boolean-algebra.md) |
+| 1.4 | [Data types, structures & Boolean algebra](component-01-computer-systems/1.4-data-types-structures-boolean-algebra.md) |
 | 1.5 | [Legal, moral, cultural & ethical issues](component-01-computer-systems/1.5-legal-moral-cultural-ethical.md) |
-| — | [Component 01 overview & master checklist](component-01-computer-systems/README.md) |
 
-### Component 02 — Algorithms & Programming
-| Section | Resource |
-|---------|----------|
+### Component 02 — Algorithms & Programming · [overview & checklist](component-02-algorithms-and-programming/README.md)
+| Spec | Topic |
+|------|-------|
 | 2.1 | [Elements of computational thinking](component-02-algorithms-and-programming/2.1-elements-of-computational-thinking.md) |
 | 2.2 | [Problem solving & programming](component-02-algorithms-and-programming/2.2-problem-solving-and-programming.md) |
 | 2.3 | [Algorithms](component-02-algorithms-and-programming/2.3-algorithms.md) |
-| — | [Component 02 overview & master checklist](component-02-algorithms-and-programming/README.md) |
 
 ### Component 03/04 — Programming Project (NEA)
-- [NEA guide: how to score full marks on the project](component-03-04-programming-project/README.md)
+- [How to score full marks on the project](component-03-04-programming-project/README.md)
 
-### 🧰 Revision tools (use these all the way through)
-- [How to use these resources + spaced-recap study plan](revision-tools/study-plan-and-how-to-use.md)
-- [Command words & assessment objectives — decode the question](revision-tools/command-words-and-assessment-objectives.md)
-- [Exam technique & extended-response (essay) technique](revision-tools/exam-technique.md)
-- [Master glossary — exam-ready definitions](revision-tools/glossary.md)
-- [Top exam mistakes (and how to avoid them)](revision-tools/common-mistakes.md)
-- [Reference & formula sheet (number, Big O, logic, SQL)](revision-tools/reference-sheet.md)
-- [RAG self-assessment tracker (whole spec on one page)](revision-tools/self-assessment-tracker.md)
-- [Practice questions hub](revision-tools/practice-questions/README.md)
-- [Flashcard decks (Anki/Quizlet-ready CSV) for every topic](revision-tools/flashcards/README.md)
-- [Knowledge organisers (one-page condensed review per topic)](revision-tools/knowledge-organisers/README.md)
-- [Topic mini-papers (bite-size timed mocks with mark schemes)](revision-tools/mini-papers/README.md)
-- [Full synoptic mock papers (140-mark mocks with mark schemes)](revision-tools/mock-papers/README.md)
-- [Printable worksheets (hands-on practice with answer keys)](revision-tools/worksheets/README.md)
-- [Revision games (loop cards, Taboo, bingo, Top Trumps)](revision-tools/revision-games/README.md)
+---
+
+## 🧰 The revision toolkit — by purpose
+
+All tools live in [`revision-tools/`](revision-tools/README.md) (full catalogue there). Grouped by what you'd use them for:
+
+### 🧭 Plan & technique — [`guides/`](revision-tools/guides/)
+- [Study plan & how to use this hub](revision-tools/guides/study-plan-and-how-to-use.md)
+- [Command words & assessment objectives](revision-tools/guides/command-words-and-assessment-objectives.md)
+- [Exam technique (incl. extended-response)](revision-tools/guides/exam-technique.md)
+- [Common mistakes to avoid](revision-tools/guides/common-mistakes.md)
+- [RAG self-assessment tracker](revision-tools/guides/self-assessment-tracker.md)
+
+### 📖 Reference — [`guides/`](revision-tools/guides/)
+- [Glossary (exam-ready definitions)](revision-tools/guides/glossary.md)
+- [Reference sheet (number, Big O, logic, SQL)](revision-tools/guides/reference-sheet.md)
+- [OCR pseudocode (Exam Reference Language) guide](revision-tools/guides/pseudocode-guide.md)
+- [Diagram bank (CPU, networks, logic, trees, ER)](revision-tools/guides/diagram-bank.md)
+
+### 🧠 Condense & recall
+- [Knowledge organisers](revision-tools/knowledge-organisers/README.md) — one page per topic
+- [Flashcard decks](revision-tools/flashcards/README.md) — Anki/Quizlet CSV (374 cards)
+- [Quiz banks](revision-tools/quizzes/README.md) — multiple-choice (112 questions)
+- [**Interactive Revision Hub**](revision-tools/interactive-quiz/README.md) — offline flashcards + quizzes in one clickable app
+
+### ✍️ Practise
+- [Worksheets](revision-tools/worksheets/README.md) — hands-on, with answer keys
+- [Revision games](revision-tools/revision-games/README.md) — loop cards, Taboo, bingo, Top Trumps
+- [Programming workbook](revision-tools/programming-workbook/README.md) — graded coding challenges + solutions
+- [Practice questions hub](revision-tools/practice-questions/README.md) — how to drill exam questions
+
+### 📝 Exam practice
+- [Topic mini-papers](revision-tools/mini-papers/README.md) — bite-size timed mocks (with mark schemes)
+- [Full mock papers](revision-tools/mock-papers/README.md) — four 140-mark synoptic mocks (with mark schemes)
+
+### 🎯 Stretch to A\*
+- [A\* stretch pack](revision-tools/a-star-pack/README.md) — model answers, examiner insights, synoptic questions, topic-connections map
+
+### 🖨️ Printables
+- [Printable PDFs](revision-tools/printable-pdfs/README.md) — 36 ready-to-print PDFs of the games, worksheets, organisers, mini-papers and mock papers
 
 ---
 
 ## 🎯 Recommended route to A\*
 
-1. **Diagnose** — fill in the [RAG self-assessment tracker](revision-tools/self-assessment-tracker.md). Be honest: green = "I could teach it."
-2. **Recap** — for each Red/Amber topic, read the matching topic file and rewrite the key terms from memory.
-3. **Apply** — do the topic's exam-style questions *closed-book*, then mark yourself against the mark scheme.
-4. **Interleave** — mix topics using the [study plan](revision-tools/study-plan-and-how-to-use.md); don't block-revise one topic for days.
-5. **Exam-condition past papers** — time yourself, then mark against official mark schemes and re-RAG.
-6. **Target the top band** — drill extended-response and "justify/evaluate/compare" questions; that is where A\* is made.
+1. **Diagnose** — fill in the [RAG tracker](revision-tools/guides/self-assessment-tracker.md) (green = "I could teach it").
+2. **Learn** — read the topic file for each Red/Amber area; rewrite key terms from memory.
+3. **Condense** — make the [organiser](revision-tools/knowledge-organisers/README.md) stick; drill [flashcards](revision-tools/flashcards/README.md) / the [hub](revision-tools/interactive-quiz/README.md).
+4. **Practise** — [worksheets](revision-tools/worksheets/README.md), [games](revision-tools/revision-games/README.md) and (for Paper 2) the [programming workbook](revision-tools/programming-workbook/README.md).
+5. **Exam** — [mini-papers](revision-tools/mini-papers/README.md) → [full mocks](revision-tools/mock-papers/README.md) → official past papers, all timed and marked.
+6. **Top band** — work the [A\* pack](revision-tools/a-star-pack/README.md): justify, compare, evaluate, connect topics.
+7. **Re-RAG** and repeat on what's still weak.
 
 ---
 
-## ✅ Each topic file contains
-- A **"what you need to be able to do"** spec checklist
-- **Recap notes** written for clarity (secure the pass)
-- **💡 A\* extension** boxes (stretch to the top grades)
-- **Worked examples** and traces
-- **Exam-ready key-term definitions**
-- **Common mistakes & examiner tips**
-- **Exam-style questions with full mark schemes** (collapsible)
-- A **RAG self-assessment** grid
+## 🗺️ Directory map
 
-Good luck — work through it actively, not passively. Recall beats re-reading.
+```
+README.md                          ← you are here (master index)
+component-01-computer-systems/      ← 1.1–1.5 topic guides + overview
+component-02-algorithms-and-programming/  ← 2.1–2.3 topic guides + overview
+component-03-04-programming-project/      ← NEA project guide
+revision-tools/                     ← all study tools (see its README)
+├── guides/                ← strategy & reference (study plan, technique, glossary, pseudocode, diagrams…)
+├── knowledge-organisers/  ← one-page topic summaries
+├── flashcards/            ← CSV decks (Anki/Quizlet)
+├── quizzes/               ← multiple-choice JSON banks
+├── interactive-quiz/      ← offline HTML app (flashcards + quizzes)
+├── worksheets/            ← printable practice + answer keys
+├── revision-games/        ← printable games
+├── mini-papers/           ← short topic mocks + mark schemes
+├── mock-papers/           ← full 140-mark mocks + mark schemes
+├── programming-workbook/  ← coding challenges + solutions
+├── a-star-pack/           ← top-grade technique & synoptic
+├── practice-questions/    ← question-drilling guide
+├── printable-pdfs/        ← 36 print-ready PDFs
+└── build-pdfs.py          ← regenerate the PDFs
+```
+
+---
+
+## ✅ What each topic guide contains
+Spec checklist · clear recap notes · **💡 A\* extension** boxes · worked examples/traces · exam-ready definitions · common mistakes & examiner tips · **exam-style questions with full mark schemes** · a RAG grid.
+
+Work actively — retrieve, don't re-read. Good luck. 🎓

@@ -29,7 +29,7 @@ Worksheets give students **something to do with a pen**: term-matching, fill-the
 ## How to use them
 - **In lessons:** a starter (key-term match) or a plenary (the challenge box).
 - **As homework:** hand out the questions, keep the answer key, or let students self-mark to build honesty.
-- **For intervention:** target a student's 🔴 Red sub-topics from the [RAG tracker](../self-assessment-tracker.md).
+- **For intervention:** target a student's 🔴 Red sub-topics from the [RAG tracker](../guides/self-assessment-tracker.md).
 - **For skills topics (1.4, 2.3):** repeat the drill sheets until the method is automatic — these are the high-mark, high-discrimination skills.
 
 **Teacher tip:** the answer keys are deliberately worked (not just final answers) so a non-specialist cover teacher or a peer-marker can mark them confidently.

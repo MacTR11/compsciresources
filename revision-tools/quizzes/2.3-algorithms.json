@@ -1,0 +1,90 @@
+{
+  "topic": "2.3 Algorithms",
+  "spec": "Component 02 — 2.3",
+  "questions": [
+    {
+      "q": "What is the worst-case time complexity of a binary search?",
+      "options": ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+      "answer": 1,
+      "explain": "Binary search halves the search space each pass, giving O(log n) in the worst case — but it requires the list to be sorted first."
+    },
+    {
+      "q": "What is the worst-case time complexity of quick sort?",
+      "options": ["O(n²)", "O(n log n)", "O(log n)", "O(n)"],
+      "answer": 0,
+      "explain": "Quick sort averages O(n log n) but degrades to O(n²) in the worst case, e.g. a poor pivot on already-sorted data."
+    },
+    {
+      "q": "Which sort guarantees O(n log n) in all cases but needs O(n) extra space?",
+      "options": ["Bubble sort", "Insertion sort", "Merge sort", "Quick sort"],
+      "answer": 2,
+      "explain": "Merge sort is O(n log n) in best, average and worst cases but uses O(n) additional memory for merging — a classic time-vs-space trade-off."
+    },
+    {
+      "q": "What is the average-case time complexity of a linear search?",
+      "options": ["O(n)", "O(log n)", "O(1)", "O(n²)"],
+      "answer": 0,
+      "explain": "Linear search checks each element in turn, so on average it is O(n); only the best case (target first) is O(1)."
+    },
+    {
+      "q": "What is the worst-case time complexity of bubble sort?",
+      "options": ["O(n)", "O(n log n)", "O(n²)", "O(log n)"],
+      "answer": 2,
+      "explain": "Bubble sort uses nested passes of adjacent comparisons, giving O(n²) worst and average case; its best case is O(n) only with a swap flag on sorted data."
+    },
+    {
+      "q": "Which Big O class is described as exponential and is typical of naive recursive Fibonacci?",
+      "options": ["O(n²)", "O(n log n)", "O(log n)", "O(2ⁿ)"],
+      "answer": 3,
+      "explain": "Exponential growth O(2ⁿ) means one extra item roughly doubles the time; naive recursive Fibonacci and brute-force TSP are examples."
+    },
+    {
+      "q": "Simplify the complexity '3n² + 5n + 17' using Big O notation.",
+      "options": ["O(n)", "O(n²)", "O(3n²)", "O(n³)"],
+      "answer": 1,
+      "explain": "Drop constants and lower-order terms and keep the dominant term: 3n² + 5n + 17 simplifies to O(n²)."
+    },
+    {
+      "q": "An in-order traversal of a binary search tree outputs the values in what order?",
+      "options": ["The order they were inserted", "Descending sorted order", "Ascending sorted order", "Level by level"],
+      "answer": 2,
+      "explain": "In-order (Left, Node, Right) traversal of a BST visits values in ascending sorted order."
+    },
+    {
+      "q": "For the tree root 50; 30 with children 20 and 40; 70 with children 60 and 80 — what is the PRE-ORDER output?",
+      "options": ["20, 30, 40, 50, 60, 70, 80", "50, 30, 20, 40, 70, 60, 80", "20, 40, 30, 60, 80, 70, 50", "50, 30, 70, 20, 40, 60, 80"],
+      "answer": 1,
+      "explain": "Pre-order visits Node, Left, Right: 50, then the left subtree (30, 20, 40), then the right subtree (70, 60, 80)."
+    },
+    {
+      "q": "For the same tree, what is the POST-ORDER output?",
+      "options": ["20, 40, 30, 60, 80, 70, 50", "50, 30, 20, 40, 70, 60, 80", "20, 30, 40, 50, 60, 70, 80", "50, 30, 70, 20, 40, 60, 80"],
+      "answer": 0,
+      "explain": "Post-order visits Left, Right, Node: left subtree (20, 40, 30), right subtree (60, 80, 70), then the root 50."
+    },
+    {
+      "q": "A breadth-first traversal of a tree is implemented using which data structure?",
+      "options": ["A stack", "A binary search tree", "A queue", "A linked list of pivots"],
+      "answer": 2,
+      "explain": "BFS visits level by level and uses a queue (FIFO); depth-first traversals use a stack or recursion."
+    },
+    {
+      "q": "What is the time complexity of push and pop operations on a stack?",
+      "options": ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+      "answer": 0,
+      "explain": "A stack only adds or removes at the top, so push and pop are constant time O(1)."
+    },
+    {
+      "q": "Which statement correctly distinguishes A* from Dijkstra's algorithm?",
+      "options": ["A* uses only g(n), the cost so far", "Dijkstra is informed and A* is uninformed", "A* adds a heuristic estimate h(n) of the remaining cost, using f(n) = g(n) + h(n)", "A* always explores more nodes than Dijkstra"],
+      "answer": 2,
+      "explain": "A* is informed: it expands the node with the lowest f(n) = g(n) + h(n), where h(n) estimates remaining cost to the goal; Dijkstra uses g(n) only. If h(n)=0, A* reduces to Dijkstra."
+    },
+    {
+      "q": "An algorithm whose best running time is only exponential, O(2ⁿ) or worse, is described as:",
+      "options": ["Tractable", "Intractable", "Stable", "Logarithmic"],
+      "answer": 1,
+      "explain": "Problems solvable only in exponential time or worse are intractable; those solvable in polynomial time or better are tractable."
+    }
+  ]
+}

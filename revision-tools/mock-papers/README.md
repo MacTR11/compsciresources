@@ -24,7 +24,7 @@ Each paper comes with a **complete worked mark scheme**, so you can mark yoursel
 3. **Show all working** on calculations, logic and traces — method marks are real marks.
 4. **Plan the long answers** (9–12 markers) with a quick margin skeleton before writing.
 5. **Mark honestly** against the scheme; total your marks and convert to a rough %.
-6. **Diagnose:** log every dropped mark with its reason ([error log](../common-mistakes.md)), and **re-RAG** weak sub-topics on your [tracker](../self-assessment-tracker.md).
+6. **Diagnose:** log every dropped mark with its reason ([error log](../guides/common-mistakes.md)), and **re-RAG** weak sub-topics on your [tracker](../guides/self-assessment-tracker.md).
 7. **Loop:** push weak areas back through the [organisers](../knowledge-organisers/README.md), [flashcards](../flashcards/README.md) and [mini-papers](../mini-papers/README.md), then re-attempt.
 
 ---

@@ -53,7 +53,7 @@ Adjust to your exam dates and your RAG ratings (spend longer on Reds). Each "ses
 | 7 | **Reds & Ambers only** (from RAG) | **Reds & Ambers only** | Past paper + mark vs scheme |
 | 8 | Past papers, error-log review, glossary, common-mistakes sheet | as left | Light recap, rest before exam |
 
-> Two written papers ≈ **40% each**; the NEA is **20%** and is usually completed earlier in the year. If your project is still open, protect time for it — it's 70 "easier" marks if you follow the [NEA guide](../component-03-04-programming-project/README.md).
+> Two written papers ≈ **40% each**; the NEA is **20%** and is usually completed earlier in the year. If your project is still open, protect time for it — it's 70 "easier" marks if you follow the [NEA guide](../../component-03-04-programming-project/README.md).
 
 ---
 

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OCR H446 — Interactive Revision Hub</title>
+<style>
+  :root { --blue:#2b6cb0; --dark:#1a365d; --bg:#f0f4f8; --card:#fff; --ok:#2f855a; --bad:#c53030; --amber:#dd6b20; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif; background:var(--bg); color:#1a202c; }
+  header { background:linear-gradient(135deg,var(--dark),var(--blue)); color:#fff; padding:18px 20px; }
+  header h1 { margin:0; font-size:1.25rem; }
+  header p { margin:4px 0 0; opacity:.9; font-size:.85rem; }
+  .wrap { max-width:820px; margin:0 auto; padding:16px; }
+  .controls { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:14px; }
+  select, button { font-size:1rem; padding:9px 12px; border-radius:8px; border:1px solid #cbd5e0; background:#fff; cursor:pointer; }
+  select { flex:1; min-width:180px; }
+  .tabs { display:flex; gap:8px; margin-bottom:14px; }
+  .tab { flex:1; text-align:center; padding:10px; border-radius:8px; background:#e2e8f0; font-weight:600; user-select:none; }
+  .tab.active { background:var(--blue); color:#fff; }
+  .card { background:var(--card); border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,.08); padding:22px; }
+  /* Flashcards */
+  .flashcard { min-height:190px; display:flex; align-items:center; justify-content:center; text-align:center;
+               font-size:1.15rem; line-height:1.5; padding:18px; border:2px dashed #cbd5e0; border-radius:12px; cursor:pointer; }
+  .flashcard .side-label { position:absolute; top:10px; left:14px; font-size:.7rem; letter-spacing:.05em; color:#a0aec0; text-transform:uppercase; }
+  .flashcard.flipped { border-style:solid; border-color:var(--blue); background:#f7fafc; }
+  .fc-meta { text-align:center; color:#718096; margin:12px 0; font-size:.9rem; }
+  .row { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:8px; }
+  /* Quiz */
+  .q-text { font-size:1.1rem; font-weight:600; margin-bottom:14px; }
+  .opt { display:block; width:100%; text-align:left; margin:8px 0; padding:12px 14px; border:1px solid #cbd5e0;
+         border-radius:8px; background:#fff; font-size:1rem; }
+  .opt:hover:not(:disabled) { border-color:var(--blue); background:#f0f7ff; }
+  .opt.correct { background:#f0fff4; border-color:var(--ok); color:var(--ok); font-weight:600; }
+  .opt.wrong { background:#fff5f5; border-color:var(--bad); color:var(--bad); }
+  .explain { margin-top:12px; padding:12px; background:#fffaf0; border-left:4px solid var(--amber); border-radius:6px; font-size:.95rem; }
+  .progress { height:8px; background:#e2e8f0; border-radius:4px; overflow:hidden; margin-bottom:14px; }
+  .progress > div { height:100%; background:var(--blue); width:0; transition:width .3s; }
+  .pill { display:inline-block; padding:2px 10px; border-radius:999px; font-size:.8rem; background:#e2e8f0; }
+  .big-btn { background:var(--blue); color:#fff; border:none; font-weight:600; }
+  .scorebox { text-align:center; padding:18px; }
+  .scorebox .score { font-size:2.4rem; font-weight:800; color:var(--blue); }
+  footer { text-align:center; color:#718096; font-size:.8rem; padding:18px; }
+  a { color:var(--blue); }
+  .hide { display:none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>OCR H446 — Interactive Revision Hub</h1>
+  <p>Flashcards &amp; self-marking quizzes for A Level Computer Science. Works offline.</p>
+</header>
+<div class="wrap">
+  <div class="controls">
+    <select id="topic"></select>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-mode="flash">🃏 Flashcards</div>
+    <div class="tab" data-mode="quiz">✅ Quiz</div>
+  </div>
+
+  <!-- Flashcards -->
+  <div id="flashView" class="card">
+    <div class="flashcard" id="flashcard" style="position:relative;">
+      <span class="side-label" id="sideLabel">Question</span>
+      <span id="flashText">Loading…</span>
+    </div>
+    <div class="fc-meta"><span id="fcCount"></span> &middot; tap the card to flip</div>
+    <div class="row">
+      <button id="fcPrev">◀ Prev</button>
+      <button id="fcFlip" class="big-btn">Flip</button>
+      <button id="fcShuffle">🔀 Shuffle</button>
+      <button id="fcNext">Next ▶</button>
+    </div>
+  </div>
+
+  <!-- Quiz -->
+  <div id="quizView" class="card hide">
+    <div class="progress"><div id="qBar"></div></div>
+    <div id="qArea">
+      <div class="q-text" id="qText"></div>
+      <div id="qOpts"></div>
+      <div class="explain hide" id="qExplain"></div>
+      <div class="row"><button id="qNext" class="big-btn hide">Next ▶</button></div>
+    </div>
+    <div id="qResult" class="scorebox hide">
+      <div class="score" id="qScore"></div>
+      <p id="qMsg"></p>
+      <p class="pill" id="qBest"></p>
+      <div class="row"><button id="qRetry" class="big-btn">Try again</button></div>
+    </div>
+  </div>
+</div>
+<footer>
+  Offline study tool &middot; data rebuilt with <code>build_data.py</code>.
+  If topics don't load, run the builder and open this file again.
+</footer>
+
+<script src="data.js"></script>
+<script>
+const DATA = window.H446_DATA || {flashcards:{}, quizzes:{}};
+function prettify(key){
+  // "1.1-processors-input-output-storage" -> "1.1 Processors Input Output Storage"
+  const m = key.match(/^(\d\.\d)-(.*)$/);
+  const num = m ? m[1] : "";
+  const rest = (m ? m[2] : key).replace(/-/g," ").replace(/\b\w/g,c=>c.toUpperCase());
+  return (num? num+" ":"") + rest;
+}
+// Build topic list from union of flashcard + quiz keys
+const keys = Array.from(new Set([...Object.keys(DATA.flashcards), ...Object.keys(DATA.quizzes)])).sort();
+const topicSel = document.getElementById('topic');
+keys.forEach(k=>{ const o=document.createElement('option'); o.value=k; o.textContent=prettify(k); topicSel.appendChild(o); });
+
+let mode='flash', topic=keys[0]||null;
+
+// ---- Tabs ----
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active'); mode=t.dataset.mode;
+  document.getElementById('flashView').classList.toggle('hide', mode!=='flash');
+  document.getElementById('quizView').classList.toggle('hide', mode!=='quiz');
+  if(mode==='flash') loadFlash(); else startQuiz();
+}));
+topicSel.addEventListener('change',()=>{ topic=topicSel.value; if(mode==='flash') loadFlash(); else startQuiz(); });
+
+// ---- Flashcards ----
+let deck=[], fcIdx=0, flipped=false;
+function loadFlash(){
+  deck = (DATA.flashcards[topic]||[]).slice();
+  fcIdx=0; flipped=false; renderFlash();
+}
+function renderFlash(){
+  const fcText=document.getElementById('flashText'), label=document.getElementById('sideLabel');
+  const card=document.getElementById('flashcard');
+  if(!deck.length){ fcText.textContent="No flashcards for this topic."; document.getElementById('fcCount').textContent=""; return; }
+  const c=deck[fcIdx];
+  fcText.textContent = flipped ? c[1] : c[0];
+  label.textContent = flipped ? "Answer" : "Question";
+  card.classList.toggle('flipped', flipped);
+  document.getElementById('fcCount').textContent = `Card ${fcIdx+1} / ${deck.length}`;
+}
+function flip(){ flipped=!flipped; renderFlash(); }
+document.getElementById('flashcard').addEventListener('click', flip);
+document.getElementById('fcFlip').addEventListener('click',(e)=>{e.stopPropagation();flip();});
+document.getElementById('fcNext').addEventListener('click',()=>{ if(deck.length){fcIdx=(fcIdx+1)%deck.length; flipped=false; renderFlash();}});
+document.getElementById('fcPrev').addEventListener('click',()=>{ if(deck.length){fcIdx=(fcIdx-1+deck.length)%deck.length; flipped=false; renderFlash();}});
+document.getElementById('fcShuffle').addEventListener('click',()=>{ for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]];} fcIdx=0; flipped=false; renderFlash();});
+
+// ---- Quiz ----
+let quiz=[], qIdx=0, qScore=0, answered=false;
+function startQuiz(){
+  const qz=DATA.quizzes[topic];
+  document.getElementById('qResult').classList.add('hide');
+  document.getElementById('qArea').classList.remove('hide');
+  if(!qz || !qz.questions || !qz.questions.length){
+    document.getElementById('qText').textContent="No quiz for this topic yet.";
+    document.getElementById('qOpts').innerHTML=""; document.getElementById('qBar').style.width="0";
+    return;
+  }
+  quiz = qz.questions.map(q=>q); // copy
+  // shuffle questions
+  for(let i=quiz.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[quiz[i],quiz[j]]=[quiz[j],quiz[i]];}
+  qIdx=0; qScore=0; renderQ();
+}
+function renderQ(){
+  answered=false;
+  const q=quiz[qIdx];
+  document.getElementById('qBar').style.width = (qIdx/quiz.length*100)+"%";
+  document.getElementById('qText').textContent = `Q${qIdx+1}. ${q.q}`;
+  const opts=document.getElementById('qOpts'); opts.innerHTML="";
+  document.getElementById('qExplain').classList.add('hide');
+  document.getElementById('qNext').classList.add('hide');
+  q.options.forEach((opt,i)=>{
+    const b=document.createElement('button'); b.className="opt"; b.textContent=opt;
+    b.addEventListener('click',()=>answer(i,b));
+    opts.appendChild(b);
+  });
+}
+function answer(i,btn){
+  if(answered) return; answered=true;
+  const q=quiz[qIdx];
+  const buttons=document.querySelectorAll('#qOpts .opt');
+  buttons.forEach((b,idx)=>{ b.disabled=true; if(idx===q.answer) b.classList.add('correct'); });
+  if(i===q.answer){ qScore++; }
+  else { btn.classList.add('wrong'); }
+  const ex=document.getElementById('qExplain');
+  if(q.explain){ ex.textContent="💡 "+q.explain; ex.classList.remove('hide'); }
+  document.getElementById('qNext').classList.remove('hide');
+}
+document.getElementById('qNext').addEventListener('click',()=>{
+  qIdx++;
+  if(qIdx>=quiz.length) finishQuiz(); else renderQ();
+});
+function finishQuiz(){
+  document.getElementById('qBar').style.width="100%";
+  document.getElementById('qArea').classList.add('hide');
+  const res=document.getElementById('qResult'); res.classList.remove('hide');
+  const pct=Math.round(qScore/quiz.length*100);
+  document.getElementById('qScore').textContent=`${qScore} / ${quiz.length}`;
+  let msg = pct>=80?"Excellent — secure on this topic. 🟢":pct>=50?"Getting there — review the misses. 🟠":"Keep going — revise this topic. 🔴";
+  document.getElementById('qMsg').textContent=`${pct}% — ${msg}`;
+  const bk="h446best_"+topic; const prev=Number(localStorage.getItem(bk)||0);
+  if(pct>prev) localStorage.setItem(bk,pct);
+  document.getElementById('qBest').textContent="Best score: "+localStorage.getItem(bk)+"%";
+}
+document.getElementById('qRetry').addEventListener('click', startQuiz);
+
+// init
+if(topic){ topicSel.value=topic; loadFlash(); }
+else { document.getElementById('flashText').textContent="No data found. Run build_data.py."; }
+</script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 
 Flashcards are the most efficient way to drill the **AO1 recall** (definitions, facts, processes) that underpins everything else — so you can spend exam time on the AO2/AO3 application that decides your grade. Each deck is a plain **CSV** you can import into **Anki**, **Quizlet**, or any flashcard app — or just read down the columns and self-test.
 
-> Use [spaced repetition](../study-plan-and-how-to-use.md): review a deck, mark what you get wrong, and re-test it after 1 day → 1 week → 1 month. Recall beats re-reading.
+> Use [spaced repetition](../guides/study-plan-and-how-to-use.md): review a deck, mark what you get wrong, and re-test it after 1 day → 1 week → 1 month. Recall beats re-reading.
 
 ---
 
@@ -49,7 +49,7 @@ Open the CSV in Excel/Google Sheets: column A = fronts, column B = backs. Cover 
 - **Produce, don't recognise.** Say/write the answer *before* flipping. Recognising the right answer is far weaker than recalling it.
 - **Bury the easy ones, drill the hard ones.** In Anki, "Again/Hard" surfaces weak cards more often — be honest.
 - **Two-way practice for definitions.** Cover the term and recall it from the definition too (great for exam wording).
-- **Tie into your [RAG tracker](../self-assessment-tracker.md).** A deck you can recall cold = evidence to mark that sub-topic 🟢 Green.
+- **Tie into your [RAG tracker](../guides/self-assessment-tracker.md).** A deck you can recall cold = evidence to mark that sub-topic 🟢 Green.
 - **Combine with the [mini-papers](../mini-papers/README.md).** Flashcards lock in the facts; mini-papers prove you can *apply* them under time.
 
 ---

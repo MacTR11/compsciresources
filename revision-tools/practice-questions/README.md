@@ -8,8 +8,8 @@ Active recall through exam-style questions is the single most effective revision
 
 1. **Closed-book, timed.** Give each question ~1 minute per mark. No notes.
 2. **Mark yourself honestly** against the mark scheme. Award a mark only for points the scheme credits.
-3. **Log every dropped mark** with the *reason* (see [common-mistakes](../common-mistakes.md) → personal error log).
-4. **Re-RAG** the sub-topic on your [tracker](../self-assessment-tracker.md).
+3. **Log every dropped mark** with the *reason* (see [common-mistakes](../guides/common-mistakes.md) → personal error log).
+4. **Re-RAG** the sub-topic on your [tracker](../guides/self-assessment-tracker.md).
 5. **Re-attempt** anything below ~70% after a few days.
 
 > 💡 **A\* habit:** prioritise the **AO2/AO3** questions (apply, compare, evaluate, justify, trace, write-the-algorithm). AO1 recall is the easy half of the marks; the top grades are decided on application.

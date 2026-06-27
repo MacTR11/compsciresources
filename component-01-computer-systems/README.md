@@ -22,13 +22,13 @@ This component is the **knowledge-heavy** paper: the internal workings of the CP
 
 ## Where marks are won and lost on this paper
 
-- **Secure the recall (AO1):** definitions and processes (FDE cycle, compilation stages, the four laws). Use the [glossary](../revision-tools/glossary.md) daily.
-- **The discriminator topics (1.4):** two's complement, floating-point normalisation, binary shifts, Boolean simplification & adders. These have **right/wrong answers with method marks** — practise until automatic. The [reference sheet](../revision-tools/reference-sheet.md) has every rule.
+- **Secure the recall (AO1):** definitions and processes (FDE cycle, compilation stages, the four laws). Use the [glossary](../revision-tools/guides/glossary.md) daily.
+- **The discriminator topics (1.4):** two's complement, floating-point normalisation, binary shifts, Boolean simplification & adders. These have **right/wrong answers with method marks** — practise until automatic. The [reference sheet](../revision-tools/guides/reference-sheet.md) has every rule.
 - **The extended response (1.5):** a planned, balanced, multi-stakeholder essay with a justified conclusion reliably reaches the top band. See the worked example in the [1.5 resource](1.5-legal-moral-cultural-ethical.md).
 - **Application (AO2):** processor/storage/methodology questions often give a **scenario** — answer *about that scenario*, not generically.
 
 ## How to revise this component
-1. RAG-rate every 1.x sub-topic on the [tracker](../revision-tools/self-assessment-tracker.md).
+1. RAG-rate every 1.x sub-topic on the [tracker](../revision-tools/guides/self-assessment-tracker.md).
 2. Recap → retrieve → apply for each topic file (questions closed-book).
 3. Drill 1.4 number/logic skills and 1.5 essays specifically.
 4. Sit full past papers and mark against official schemes.

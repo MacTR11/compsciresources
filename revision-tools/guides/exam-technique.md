@@ -61,7 +61,7 @@ Both papers are **2h 30m for 140 marks** ≈ **just over 1 minute per mark**, le
 ### Extended response / ethics essays (1.5, "discuss")
 - Follow the **FOR → AGAINST → FOR → AGAINST → justified conclusion** skeleton.
 - Name **multiple stakeholders** and **multiple angles** (legal, ethical, economic, environmental, social).
-- See the worked levels-of-response example in the [1.5 resource](../component-01-computer-systems/1.5-legal-moral-cultural-ethical.md).
+- See the worked levels-of-response example in the [1.5 resource](../../component-01-computer-systems/1.5-legal-moral-cultural-ethical.md).
 
 ---
 

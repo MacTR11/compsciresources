@@ -21,12 +21,12 @@ This is the **application and problem-solving** paper. It builds on Component 01
 ## Where marks are won and lost on this paper
 
 - **Application over recall:** 2.1 questions ask you to *apply* a thinking skill to a scenario — don't just define the term. Anchor every answer to the context given.
-- **2.3 Algorithms is the big discriminator:** know each standard algorithm well enough to **trace it on a small data set** and **state/justify its Big O**. Dijkstra and tracing sorts come up repeatedly. The [reference sheet](../revision-tools/reference-sheet.md) has the complexity table.
+- **2.3 Algorithms is the big discriminator:** know each standard algorithm well enough to **trace it on a small data set** and **state/justify its Big O**. Dijkstra and tracing sorts come up repeatedly. The [reference sheet](../revision-tools/guides/reference-sheet.md) has the complexity table.
 - **Programming questions (2.2):** practise **writing and tracing** code (OCR pseudocode is fine). Handle **edge cases** and **initialise** variables. Recursion (base case + call stack) and OOP are reliably examined.
 - **Show working:** trace tables and method steps earn marks even if the final answer slips.
 
 ## How to revise this component
-1. RAG-rate every 2.x sub-topic on the [tracker](../revision-tools/self-assessment-tracker.md).
+1. RAG-rate every 2.x sub-topic on the [tracker](../revision-tools/guides/self-assessment-tracker.md).
 2. For 2.3, trace each algorithm by hand until you can do it cold; memorise the Big O table.
 3. For 2.2, write small programs and recursion traces from scratch.
 4. For 2.1, practise *applying* the five thinking skills to varied scenarios.

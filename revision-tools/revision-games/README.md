@@ -43,7 +43,7 @@ Games turn revision into **retrieval practice** that doesn't feel like work — 
 ## How to run a great revision-games session
 1. **Revise first.** Students skim the [knowledge organiser](../knowledge-organisers/README.md) so the game is *recall*, not guessing.
 2. **Print and cut** the cards (loop/Taboo/card-sort sections are laid out one item per block).
-3. **Play, then reflect:** after the game, students RAG-rate the topic on their [tracker](../self-assessment-tracker.md) and note anything they got wrong.
+3. **Play, then reflect:** after the game, students RAG-rate the topic on their [tracker](../guides/self-assessment-tracker.md) and note anything they got wrong.
 4. **Escalate:** follow a game with a [worksheet](../worksheets/README.md) or [mini-paper](../mini-papers/README.md) to convert the recall into written exam marks.
 
 **Verified content:** numeric games (1.4 conversions, 2.3 Big O / Top Trumps) have had their answers checked, and the loop-card chains are written to close into a complete loop — so they're safe to print and play straight away.

@@ -36,8 +36,8 @@ Each mini-paper is a self-contained **~25–30 mark** mock with realistic OCR-st
 2. **Closed-book and timed.** Cover the mark scheme. Give yourself the stated time — pacing is a skill you're practising too.
 3. **Show working** on calculations, traces and logic — method marks are real marks.
 4. **Mark honestly** against the scheme. Award a mark only for points the scheme credits.
-5. **Log every dropped mark** with the reason (see [common-mistakes → error log](../common-mistakes.md)).
-6. **Re-RAG** the sub-topic on your [tracker](../self-assessment-tracker.md). Below ~70%? Re-revise and re-attempt in a few days.
+5. **Log every dropped mark** with the reason (see [common-mistakes → error log](../guides/common-mistakes.md)).
+6. **Re-RAG** the sub-topic on your [tracker](../guides/self-assessment-tracker.md). Below ~70%? Re-revise and re-attempt in a few days.
 
 > 💡 **A\* habit:** for "compare/justify/evaluate/discuss" questions, check the mark scheme didn't just want *more facts* — it wanted a **judgement** or a developed, balanced argument. That gap is exactly where A\* marks live.
 
