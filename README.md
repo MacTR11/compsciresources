@@ -64,7 +64,9 @@ You must take **three components**: 01, 02 and **either** 03 **or** 04.
 - [RAG self-assessment tracker (whole spec on one page)](revision-tools/self-assessment-tracker.md)
 - [Practice questions hub](revision-tools/practice-questions/README.md)
 - [Flashcard decks (Anki/Quizlet-ready CSV) for every topic](revision-tools/flashcards/README.md)
+- [Knowledge organisers (one-page condensed review per topic)](revision-tools/knowledge-organisers/README.md)
 - [Topic mini-papers (bite-size timed mocks with mark schemes)](revision-tools/mini-papers/README.md)
+- [Full synoptic mock papers (140-mark mocks with mark schemes)](revision-tools/mock-papers/README.md)
 
 ---
 
