@@ -12,7 +12,7 @@ A full, spec‑mapped set of revision resources for **OCR A Level Computer Scien
 |--------|--------|--------------|
 | 📝 **[`Word-Documents/`](Word-Documents/)** | `.docx` (edit in Word / Google Docs) | **86 documents** — topic guides, knowledge organisers, worksheets, revision games, the **24 subtopic quizzes**, mini‑papers, mock papers, A\* pack, programming workbook, NEA guide, scheme of work |
 | 📊 **[`Spreadsheets/`](Spreadsheets/)** | `.xlsx` (interactive) | **Flashcards** (8 tabs), an **interactive RAG tracker** (dropdowns + auto‑colour + live counts), the **scheme‑of‑work** plan |
-| 🖨️ **[`Printable-PDFs/`](Printable-PDFs/)** | `.pdf` (print) | Print‑ready quizzes, worksheets, organisers, mini/mock papers, and **✂️ print‑and‑cut game cards** in [`revision-games-cards/`](Printable-PDFs/revision-games-cards/) |
+| 🖨️ **[`Printable-PDFs/`](Printable-PDFs/)** | `.pdf` (print) | Every quiz, worksheet and mini/mock paper as a **worksheet (with ruled answer space) + a separate answer sheet**; plus organisers and **✂️ print‑and‑cut game cards** in [`revision-games-cards/`](Printable-PDFs/revision-games-cards/) |
 | 👩‍🏫 **[`Teacher-Toolkit/`](Teacher-Toolkit/)** | `.pptx` / `.xlsx` / `.docx` | **24 editable lesson PowerPoints**, an **interactive markbook** (KA1–8 + CAP1–5 → auto grade & class averages), and a **lesson-by-lesson plan** mapped to the SOW |
 
 `source/` holds the editable Markdown/CSV/JSON sources and `build/` the scripts that regenerate the files above.

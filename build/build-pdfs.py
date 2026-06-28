@@ -73,11 +73,19 @@ details { display: block; border: 1px solid #cbd5e0; border-radius: 5px; padding
 details > summary { font-weight: bold; }
 details > summary ~ * { display: revert; }
 strong { color: #1a202c; }
+.answer-space { margin: 3px 0 12px; page-break-inside: avoid; }
+.answer-space .rl { border-bottom: 1px solid #aab4c0; height: 8mm; }
+.sheet-note { color: #2b6cb0; font-style: italic; font-size: 10pt; margin: 2px 0 10px; }
 """
 
 
+# Folders whose resources are split into a worksheet + a separate answer sheet.
+QA_FOLDERS = {"subtopic-quizzes", "worksheets", "mini-papers", "mock-papers"}
+ANSWER_HEADING = re.compile(r"^\s*#{2,3}\s+(answer key|answers|mark scheme)", re.I)
+MARK_TAG = re.compile(r"\[(\d+)\]|\((\d+)\s*marks?\)")
+
+
 def md_to_html(md_text, title):
-    # Force any collapsible answer sections open so answers print.
     md_text = re.sub(r"<details(?!\s+open)", "<details open", md_text)
     body = markdown.markdown(
         md_text,
@@ -89,10 +97,36 @@ def md_to_html(md_text, title):
     )
 
 
-def convert(md_path, pdf_path):
-    with open(md_path, encoding="utf-8") as f:
-        text = f.read()
-    html = md_to_html(text, os.path.splitext(os.path.basename(md_path))[0])
+def split_qa(text):
+    """Split markdown at the first Answer key / Mark scheme heading."""
+    lines = text.split("\n")
+    for i, l in enumerate(lines):
+        if ANSWER_HEADING.match(l):
+            return "\n".join(lines[:i]).rstrip(), "\n".join(lines[i:]).strip()
+    return text, None
+
+
+def inject_answer_space(text):
+    """After each question line (one carrying a [n] / (n marks) tag), add ruled
+    writing space sized to the marks. Headings are skipped."""
+    out = []
+    for line in text.split("\n"):
+        out.append(line)
+        if line.lstrip().startswith("#"):
+            continue
+        tags = MARK_TAG.findall(line)
+        if tags:
+            nums = [int(x) for pair in tags for x in pair if x]
+            marks = max(nums) if nums else 2
+            n = min(12, max(2, round(marks * 1.4)))
+            out.append("")
+            out.append('<div class="answer-space">' + ('<div class="rl"></div>' * n) + "</div>")
+            out.append("")
+    return "\n".join(out)
+
+
+def convert_text(md_text, title, pdf_path):
+    html = md_to_html(md_text, title)
     fd, htmlfile = tempfile.mkstemp(suffix=".html")
     with os.fdopen(fd, "w", encoding="utf-8") as f:
         f.write(html)
@@ -107,16 +141,48 @@ def convert(md_path, pdf_path):
         os.unlink(htmlfile)
 
 
+def convert(md_path, pdf_path):
+    with open(md_path, encoding="utf-8") as f:
+        convert_text(f.read(), os.path.splitext(os.path.basename(md_path))[0], pdf_path)
+
+
+def _h1(text):
+    for l in text.split("\n"):
+        if l.startswith("# "):
+            return l[2:].strip()
+    return "Worksheet"
+
+
 def build_folder(srcdir, outdir):
     os.makedirs(outdir, exist_ok=True)
+    folder = os.path.basename(srcdir.rstrip("/"))
+    split = folder in QA_FOLDERS
     mds = sorted(f for f in glob.glob(os.path.join(srcdir, "*.md"))
                  if os.path.basename(f).lower() != "readme.md")
     made = 0
     for md in mds:
-        pdf = os.path.join(outdir, os.path.splitext(os.path.basename(md))[0] + ".pdf")
-        convert(md, pdf)
-        print(f"  {os.path.basename(pdf)}")
-        made += 1
+        base = os.path.splitext(os.path.basename(md))[0]
+        with open(md, encoding="utf-8") as f:
+            text = f.read()
+        if split:
+            questions, answers = split_qa(text)
+            convert_text(inject_answer_space(questions), base,
+                         os.path.join(outdir, base + ".pdf"))
+            print(f"  {base}.pdf (worksheet)")
+            made += 1
+            if answers:
+                title = _h1(text)
+                a_doc = (f"# {title} — ANSWER SHEET\n\n"
+                         f'<p class="sheet-note">Separate answer sheet / mark scheme — keep for marking.</p>\n\n'
+                         + answers)
+                convert_text(a_doc, base + "-ANSWERS",
+                             os.path.join(outdir, base + "-ANSWERS.pdf"))
+                print(f"  {base}-ANSWERS.pdf")
+                made += 1
+        else:
+            convert(md, os.path.join(outdir, base + ".pdf"))
+            print(f"  {base}.pdf")
+            made += 1
     return made
 
 
