@@ -89,6 +89,9 @@ All tools live in [`revision-tools/`](revision-tools/README.md) (full catalogue 
 ### 🎯 Stretch to A\*
 - [A\* stretch pack](revision-tools/a-star-pack/README.md) — model answers, examiner insights, synoptic questions, topic-connections map
 
+### 👩‍🏫 For teachers
+- [Scheme of work — homework & consolidation](revision-tools/scheme-of-work/README.md) — week-by-week homework + spaced-retrieval consolidation tasks mapped to the Year 12 SOW (PDF + CSV)
+
 ### 🖨️ Printables
 - [Printable PDFs](revision-tools/printable-pdfs/README.md) — 36 ready-to-print PDFs of the games, worksheets, organisers, mini-papers and mock papers
 

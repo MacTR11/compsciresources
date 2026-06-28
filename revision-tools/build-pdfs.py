@@ -122,6 +122,7 @@ def build_folder(srcdir, outdir):
 
 # Default set: which Markdown folders to render, and where the PDFs go.
 DEFAULT_JOBS = [
+    ("revision-tools/scheme-of-work",      "revision-tools/printable-pdfs/scheme-of-work"),
     ("revision-tools/subtopic-quizzes",    "revision-tools/printable-pdfs/subtopic-quizzes"),
     ("revision-tools/revision-games",      "revision-tools/printable-pdfs/revision-games"),
     ("revision-tools/worksheets",          "revision-tools/printable-pdfs/worksheets"),

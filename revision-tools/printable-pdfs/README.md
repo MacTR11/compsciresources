@@ -5,6 +5,7 @@ Ready-to-print **PDF** versions of the printable resources — for handing out, 
 ## What's here
 | Folder | Contents |
 |--------|----------|
+| [scheme-of-work/](scheme-of-work/) | Year 12 weekly homework & consolidation plan |
 | [subtopic-quizzes/](subtopic-quizzes/) | A printable quiz (with answer key) for all 24 subtopics |
 | [revision-games/](revision-games/) | The 8 revision-game packs (loop cards, Taboo, bingo, etc.) |
 | [worksheets/](worksheets/) | The 8 printable worksheets (with answer keys) |

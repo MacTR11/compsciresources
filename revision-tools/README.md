@@ -47,6 +47,11 @@ Everything here supports the [topic guides](../README.md#-the-specification-cont
 |------|-----------|
 | [A\* stretch pack](a-star-pack/README.md) | Model answers, examiner insights, synoptic questions, connections map |
 
+## 👩‍🏫 For teachers
+| Tool | What it is |
+|------|-----------|
+| [Scheme of work — homework & consolidation](scheme-of-work/README.md) | Week-by-week homework + spaced-retrieval consolidation tasks (Year 12 SOW), as PDF + CSV to paste into your planner |
+
 ## 🖨️ Print & build
 | Item | What it is |
 |------|-----------|
