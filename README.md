@@ -13,6 +13,7 @@ A full, spec‑mapped set of revision resources for **OCR A Level Computer Scien
 | 📝 **[`Word-Documents/`](Word-Documents/)** | `.docx` (edit in Word / Google Docs) | **86 documents** — topic guides, knowledge organisers, worksheets, revision games, the **24 subtopic quizzes**, mini‑papers, mock papers, A\* pack, programming workbook, NEA guide, scheme of work |
 | 📊 **[`Spreadsheets/`](Spreadsheets/)** | `.xlsx` (interactive) | **Flashcards** (8 tabs), an **interactive RAG tracker** (dropdowns + auto‑colour + live counts), the **scheme‑of‑work** plan |
 | 🖨️ **[`Printable-PDFs/`](Printable-PDFs/)** | `.pdf` (print) | Print‑ready quizzes, worksheets, organisers, mini/mock papers, and **✂️ print‑and‑cut game cards** in [`revision-games-cards/`](Printable-PDFs/revision-games-cards/) |
+| 👩‍🏫 **[`Teacher-Toolkit/`](Teacher-Toolkit/)** | `.pptx` / `.xlsx` / `.docx` | **24 editable lesson PowerPoints**, an **interactive markbook** (KA1–8 + CAP1–5 → auto grade & class averages), and a **lesson-by-lesson plan** mapped to the SOW |
 
 `source/` holds the editable Markdown/CSV/JSON sources and `build/` the scripts that regenerate the files above.
 
@@ -83,8 +84,10 @@ After editing anything in `source/`:
 
 ```bash
 python3 build/build-docx.py          # Word documents
-python3 build/build-spreadsheets.py  # Excel spreadsheets
+python3 build/build-spreadsheets.py  # Excel spreadsheets (flashcards, tracker, SOW)
 python3 build/build-pdfs.py          # printable PDFs
 python3 build/build-card-games.py    # print-and-cut game cards
+python3 build/build-powerpoints.py   # teacher lesson decks (.pptx)
+python3 build/build-markbook.py      # teacher markbook (.xlsx)
 ```
-Requires `python-docx`, `openpyxl`, `markdown` (`pip install …`) and a Chromium/Chrome binary for PDFs.
+Requires `python-docx`, `openpyxl`, `python-pptx`, `markdown` (`pip install …`) and a Chromium/Chrome binary for PDFs.

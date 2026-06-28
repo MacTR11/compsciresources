@@ -1,0 +1,86 @@
+{
+  "subtopic": "1.4.3 Boolean Algebra",
+  "spec": "OCR H446 — Component 01",
+  "objectives": [
+    "Construct truth tables for logic gates and combined expressions, including AND, OR, XOR, NAND and NOR.",
+    "Simplify Boolean expressions using identities, De Morgan's laws and Karnaugh maps.",
+    "Describe the operation of half adders, full adders and D-type flip-flops, distinguishing combinational and sequential logic."
+  ],
+  "retrieval": [
+    { "q": "Which two gates are described as universal?", "a": "NAND and NOR." },
+    { "q": "State De Morgan's law for NOT(A + B).", "a": "NOT(A + B) = NOT A AND NOT B (break the bar and swap OR for AND)." },
+    { "q": "What does a D-type flip-flop do?", "a": "It stores one bit of data on an active clock edge and presents it at Q until the next edge." },
+    { "q": "Interleaving (1.4.1): What is the place value of the MSB in an 8-bit two's complement number?", "a": "-128." },
+    { "q": "Interleaving (1.4.2): Which BST traversal outputs nodes in ascending order?", "a": "In-order (left, root, right)." }
+  ],
+  "keywords": [
+    { "term": "Truth table", "def": "A table listing the output of a logic expression for every possible combination of input values." },
+    { "term": "XOR", "def": "Exclusive-OR gate that outputs 1 only when its inputs differ, written A XOR B." },
+    { "term": "Universal gate", "def": "A gate from which any logic circuit can be built; NAND and NOR are universal." },
+    { "term": "De Morgan's laws", "def": "NOT(A.B) = NOT A + NOT B and NOT(A+B) = NOT A . NOT B; break the bar and swap AND with OR, negating each variable." },
+    { "term": "Absorption law", "def": "A + A.B = A and A.(A+B) = A; a redundant term is absorbed." },
+    { "term": "Half adder", "def": "A circuit adding two bits with no carry-in: Sum = A XOR B, Carry = A . B." },
+    { "term": "Full adder", "def": "A circuit adding three bits (A, B, Cin): Sum = A XOR B XOR Cin, Cout = (A.B) + (Cin.(A XOR B)); chained to form a ripple-carry adder." },
+    { "term": "D-type flip-flop", "def": "An edge-triggered 1-bit memory (sequential logic) that stores input D on a clock edge and synchronises data to the clock." }
+  ],
+  "content": [
+    {
+      "heading": "Logic gates and truth tables",
+      "points": [
+        "AND outputs 1 only when both inputs are 1; OR outputs 1 when at least one input is 1.",
+        "XOR outputs 1 when inputs differ; NAND is NOT(A.B) and NOR is NOT(A+B), the negations of AND and OR.",
+        "NAND and NOR are universal, meaning any circuit can be built from copies of either gate alone."
+      ]
+    },
+    {
+      "heading": "Boolean identities",
+      "points": [
+        "Identity and null: A.1 = A, A+0 = A, A.0 = 0, A+1 = 1.",
+        "Idempotent A.A = A, complement A.NOT A = 0 and A + NOT A = 1, double negation NOT(NOT A) = A.",
+        "Distributive A.(B+C) = A.B + A.C, and absorption A + A.B = A help reduce expressions."
+      ]
+    },
+    {
+      "heading": "De Morgan's laws and K-maps",
+      "points": [
+        "De Morgan's: break the bar, change the operator (AND to OR or OR to AND) and negate each variable, then tidy with double negation.",
+        "K-maps plot outputs in a grid where adjacent cells differ by one variable.",
+        "Group adjacent 1s in powers of two (1, 2, 4, 8...), as large as possible, allowing wrap-around and overlap, to read off a minimal sum-of-products."
+      ]
+    },
+    {
+      "heading": "Adders",
+      "points": [
+        "A half adder adds two bits with no carry-in: Sum = A XOR B, Carry = A . B.",
+        "A full adder adds three bits: Sum = A XOR B XOR Cin, Cout = (A.B) + (Cin.(A XOR B)).",
+        "Full adders are chained so each carry-out feeds the next column's carry-in, forming a ripple-carry adder for multi-bit numbers."
+      ]
+    },
+    {
+      "heading": "Combinational vs sequential logic",
+      "points": [
+        "Combinational logic outputs depend only on the current inputs, e.g. gates and adders.",
+        "Sequential logic outputs depend on inputs plus stored state, e.g. circuits using flip-flops.",
+        "A D-type flip-flop is edge-triggered 1-bit memory used in registers, counters and memory cells to synchronise data to a clock."
+      ]
+    }
+  ],
+  "worked_example": {
+    "title": "Simplifying NOT(NOT A + B) with De Morgan's law",
+    "steps": [
+      "Start with the expression NOT(NOT A + B), which has an outer bar over an OR.",
+      "Apply De Morgan's to the outer bar: break the bar and change OR to AND, negating each term, giving NOT(NOT A) . NOT B.",
+      "Apply double negation to the first term: NOT(NOT A) = A.",
+      "The expression becomes A . NOT B.",
+      "Check with a truth table: NOT(NOT A + B) is 1 only when A=1 and B=0, which is exactly when A . NOT B = 1, confirming the result.",
+      "Final simplified form: A . NOT B."
+    ]
+  },
+  "task": "Complete the truth table for Q = NOT(A.B) + (A.C) over all eight input combinations of A, B and C, and identify the only row where Q = 0.",
+  "challenge": "Give the Boolean expressions for the Sum and Cout of a full adder, then explain how it differs from a half adder and why full adders (not half adders) are needed to add multi-bit binary numbers.",
+  "exit_ticket": [
+    { "q": "Rewrite NOT(A.B) using De Morgan's law.", "a": "NOT A + NOT B." },
+    { "q": "What are the Sum and Carry outputs of a half adder when A=1 and B=1?", "a": "Sum = 0 and Carry = 1 (binary 10), since Sum = A XOR B and Carry = A . B." },
+    { "q": "Simplify A.(A+B) and name the law used.", "a": "It simplifies to A by the Absorption law." }
+  ]
+}

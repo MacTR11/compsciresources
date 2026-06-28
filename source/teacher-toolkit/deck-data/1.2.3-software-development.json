@@ -1,0 +1,50 @@
+{
+  "subtopic": "1.2.3 Software Development",
+  "spec": "OCR H446 — Component 01",
+  "objectives": [
+    "Compare the Waterfall, Agile, Extreme Programming, Spiral and RAD methodologies and their trade-offs.",
+    "Describe the stages of the software development lifecycle from analysis to evaluation.",
+    "Select and justify a suitable methodology for a given scenario using its clues."
+  ],
+  "retrieval": [
+    {"q": "List the four stages of compilation in order.", "a": "Lexical analysis, syntax analysis, code generation, code optimisation (interleaving 1.2.2)."},
+    {"q": "What is the difference between application and utility software?", "a": "Application software performs a real-world user task; utility software maintains or optimises the computer itself (interleaving 1.2.2)."},
+    {"q": "Which methodology is linear and completes one stage before the next?", "a": "Waterfall."},
+    {"q": "What is the defining feature of Agile?", "a": "Iterative increments with continuous client feedback so changing requirements can be absorbed."},
+    {"q": "During which lifecycle stage are requirements gathered and feasibility assessed?", "a": "Analysis."}
+  ],
+  "keywords": [
+    {"term": "Waterfall", "def": "A linear, sequential methodology completing one stage fully before the next; suits fixed, clear requirements."},
+    {"term": "Agile", "def": "An iterative methodology delivering increments with continuous client feedback; suits changing requirements."},
+    {"term": "Extreme programming", "def": "An Agile variant adding pair programming, constant test-driven development and a customer in the team."},
+    {"term": "Spiral", "def": "An iterative methodology with central risk analysis each loop; suits large, expensive, high-risk projects."},
+    {"term": "RAD", "def": "Rapid application development using prototyping refined by user feedback; suits fast delivery or vague requirements."},
+    {"term": "Analysis", "def": "The lifecycle stage that investigates the problem, gathers requirements and assesses feasibility."},
+    {"term": "Boundary data", "def": "Test values at the edges of the acceptable range."},
+    {"term": "Evaluation", "def": "Judging the finished system against the original requirements: effective, usable, robust, maintainable."}
+  ],
+  "content": [
+    {"heading": "Methodologies overview", "points": ["Waterfall is linear and sequential, one stage at a time, best when requirements are fixed and clear.", "Agile delivers iterative increments with continuous client feedback, best when requirements may change.", "Extreme programming adds pair programming, constant test-driven development and a customer in the team for high code quality.", "Spiral centres on risk analysis each loop (large, high-risk projects); RAD centres on rapid prototyping (fast or vague projects)."]},
+    {"heading": "Trade-offs", "points": ["Waterfall is simple and well documented but inflexible, with the client only seeing the product at the end.", "Agile is flexible but produces less documentation and makes cost and time hard to predict.", "XP gives very high quality but is staff-intensive; Spiral manages risk but is expensive and complex.", "RAD is fast but needs skilled developers and committed users and can be less robust."]},
+    {"heading": "Lifecycle stages", "points": ["Analysis: investigate the problem, gather requirements and assess feasibility.", "Design: plan data structures, algorithms, the interface and the inputs/outputs and data formats.", "Development/implementation: write the code in modules.", "Testing then evaluation: test against requirements with normal, boundary and erroneous data (alpha/beta), then evaluate against the original requirements."]},
+    {"heading": "Testing and choosing a methodology", "points": ["Normal/valid data are typical in-range values that should be accepted.", "Boundary data are values at the edges of the acceptable range.", "Erroneous/invalid data are out-of-range values that should be rejected.", "Methodology questions are AO2/AO3: justify against scenario clues such as budget, deadline, clarity of requirements and risk rather than just describing."]}
+  ],
+  "worked_example": {
+    "title": "Choosing a methodology for a high-risk banking system",
+    "steps": [
+      "Read the scenario clues: large budget, high cost of failure, security-critical and long-lived.",
+      "Note that requirements are fairly known but the risk of expensive errors is the dominant concern.",
+      "Rule out Waterfall (no risk handling mid-project) and RAD (speed over robustness).",
+      "Select Spiral because each loop performs explicit risk analysis before continuing.",
+      "Justify: catching costly problems early on a high-cost project reduces the chance of expensive failure later.",
+      "Acknowledge the trade-off: Spiral is itself expensive and complex to manage, which the large budget can absorb."
+    ]
+  },
+  "task": "Create a one-page revision table listing the five methodologies, one scenario each suits, and one strength and one weakness of each.",
+  "challenge": "A startup is building a brand-new mobile app: requirements are unclear and expected to change, the budget is modest and the team is small but skilled. Recommend a methodology and justify it with at least three explicit links to these scenario clues, explaining why Waterfall would be unsuitable.",
+  "exit_ticket": [
+    {"q": "Name the three categories of test data with a one-line description of each.", "a": "Normal/valid (typical in-range, accepted), boundary (at the edges of the range), erroneous/invalid (out of range, rejected)."},
+    {"q": "Give one advantage and one disadvantage of Waterfall.", "a": "Advantage: simple and well documented; disadvantage: inflexible and the client only sees the product at the end."},
+    {"q": "Why is Agile often better than Waterfall when requirements are unclear or likely to change?", "a": "It works in iterative increments with continuous client feedback, so new or changed requirements are built into the next iteration rather than fixed at the start."}
+  ]
+}

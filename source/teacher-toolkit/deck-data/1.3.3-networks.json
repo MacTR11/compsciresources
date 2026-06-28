@@ -1,0 +1,51 @@
+{
+  "subtopic": "1.3.3 Networks",
+  "spec": "OCR H446 — Component 01",
+  "objectives": [
+    "Compare LANs and WANs, client-server and peer-to-peer networks, and star and mesh topologies.",
+    "Explain packet vs circuit switching, the role of DNS, and the four layers of the TCP/IP stack.",
+    "Describe the function of network hardware and security measures including switches, routers, firewalls and proxies."
+  ],
+  "retrieval": [
+    {"q": "Which device connects two different networks and routes using IP addresses?", "a": "A router."},
+    {"q": "What is the role of DNS?", "a": "It translates domain names into IP addresses."},
+    {"q": "Which protocol is used to send email, and which two retrieve it?", "a": "SMTP sends email; POP3 and IMAP retrieve it."},
+    {"q": "Interleaving (1.3.1): When you request a secure web page, how is the data protected in transit and what does HTTPS use?", "a": "It is encrypted; HTTPS uses asymmetric encryption to exchange a symmetric session key, then symmetric encryption for the bulk data."},
+    {"q": "Interleaving (1.4.1): Why are IP addresses written in a form people rarely type directly?", "a": "IPv4 is a 32-bit number and IPv6 128-bit; DNS lets users type memorable domain names that are translated to these numeric addresses."}
+  ],
+  "keywords": [
+    {"term": "LAN", "def": "Local Area Network: covers a small area on a single site where one organisation owns the hardware."},
+    {"term": "WAN", "def": "Wide Area Network: spans a large geographic area using third-party infrastructure; the internet is the largest WAN."},
+    {"term": "Packet switching", "def": "Data is split into packets routed independently across the network and reassembled at the destination."},
+    {"term": "Protocol", "def": "A set of rules that governs how devices communicate."},
+    {"term": "DNS", "def": "Domain Name System: translates domain names into IP addresses, using a hierarchical, cached structure."},
+    {"term": "MAC address", "def": "A unique 48-bit hardware address held by a NIC, used at the link layer."},
+    {"term": "Switch", "def": "Connects devices within a LAN and forwards frames using MAC addresses."},
+    {"term": "Router", "def": "Connects different networks and forwards packets using IP addresses."}
+  ],
+  "content": [
+    {"heading": "Network types and models", "points": ["A LAN covers a small single site with organisation-owned hardware and high speed; a WAN spans cities or countries using third-party infrastructure.", "Client-server: a server provides services to clients, giving central security and backup but a single point of failure; it scales well but costs more.", "Peer-to-peer: all peers are equal (client and server), decentralised with no single point of failure, but harder to manage and secure.", "The internet is the largest WAN."]},
+    {"heading": "Internet structure and topologies", "points": ["The backbone provides high-capacity routes; ISPs provide access; each device has an IP address (IPv4 32-bit, IPv6 128-bit).", "DNS translates domain names to IP addresses and is hierarchical and cached.", "Star topology: devices connect to a central switch/hub; a single cable fault is isolated, but the central node is a single point of failure.", "Mesh topology: multiple paths between nodes makes it resilient and fault-tolerant with no single point of failure, but wired mesh is expensive."]},
+    {"heading": "Packet vs circuit switching", "points": ["Packet switching splits data into packets routed independently and reassembled at the destination; it is efficient and resilient and is used by the internet.", "Circuit switching reserves one dedicated path for the whole communication (e.g. traditional phone).", "Circuit switching guarantees bandwidth but wastes idle capacity.", "Packet switching is more resilient: if a route or node fails, packets are re-routed around it so the communication still gets through."]},
+    {"heading": "TCP/IP stack and protocols", "points": ["Data passes down the layers when sending and up when receiving; each layer adds or removes a header.", "Application (HTTP, HTTPS, FTP, SMTP, POP3, IMAP, DNS) provides services to user apps; Transport (TCP, UDP) splits data into packets and manages ports and end-to-end delivery.", "Network/Internet (IP) adds source/destination IP addresses and routes packets; Link/Data link (Ethernet, Wi-Fi) handles the physical connection and adds the MAC address.", "HTTP serves web pages, HTTPS is encrypted HTTP (TLS/SSL), FTP transfers files; SMTP sends mail, POP3 downloads and removes it, IMAP keeps it on the server and syncs."]},
+    {"heading": "Hardware and security", "points": ["NIC connects a device and holds its MAC address; a switch connects devices within a LAN (MAC); a router connects different networks (IP); a WAP gives wireless access to a wired network.", "A firewall controls traffic by rules/packet filtering.", "A proxy is an intermediary that can hide the user's IP, cache pages and filter or log traffic.", "Encryption protects data while it is in transit."]}
+  ],
+  "worked_example": {
+    "title": "Requesting a secure web page across the internet",
+    "steps": [
+      "The user types a domain name into the browser and requests a secure page.",
+      "DNS translates the domain name into the server's IP address, querying DNS servers with results possibly cached.",
+      "The browser sends a request to that IP address using HTTPS so the data is encrypted in transit.",
+      "At the transport layer the data is split into packets, each given a header with sequence number and ports.",
+      "The network layer adds source/destination IP addresses and packets are routed independently across the network.",
+      "Hardware such as routers (and switches/NICs) forward the packets between networks using IP, and they are reassembled in order at the destination."
+    ]
+  },
+  "task": "Match each description to its TCP/IP layer: (A) adds the MAC address and handles the physical connection; (B) adds source and destination IP addresses and routes packets; (C) splits data into packets and manages ports and end-to-end delivery; (D) provides services for user applications such as HTTP and SMTP.",
+  "challenge": "A company is choosing between a star and a mesh topology for a building where reliability is critical but budget is limited. Recommend a topology, justify it using single point of failure, fault tolerance and cost, and explain one trade-off of your choice.",
+  "exit_ticket": [
+    {"q": "Explain the difference between a switch and a router.", "a": "A switch connects devices within a single LAN and forwards frames using MAC addresses; a router connects different networks (e.g. a LAN to the internet) and forwards packets using IP addresses."},
+    {"q": "Give one reason packet switching is more resilient than circuit switching.", "a": "Packets are routed independently along different routes, so if one route or node fails packets can be re-routed around it and the communication still gets through."},
+    {"q": "Describe what a proxy server does and give one benefit.", "a": "It acts as an intermediary forwarding requests and responses between client and server; a benefit is hiding the user's IP, caching pages to speed up access, or filtering/logging traffic."}
+  ]
+}

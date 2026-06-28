@@ -1,0 +1,51 @@
+{
+  "subtopic": "1.2.1 Operating Systems",
+  "spec": "OCR H446 — Component 01",
+  "objectives": [
+    "Describe how an operating system manages memory (paging, segmentation and virtual memory) and handles interrupts using the stack.",
+    "Compare CPU scheduling algorithms and explain the purpose of different types of operating system.",
+    "Explain the roles of the BIOS, device drivers and virtual machines in a computer system."
+  ],
+  "retrieval": [
+    {"q": "What is the purpose of a CPU register, and which register holds the address of the next instruction?", "a": "A register is a small, fast on-chip store; the Program Counter (PC) holds the address of the next instruction (interleaving 1.1.1)."},
+    {"q": "State the three steps of the fetch-decode-execute cycle in order.", "a": "Fetch the instruction from memory, decode it in the CU, then execute it (interleaving 1.1.1)."},
+    {"q": "Define an operating system.", "a": "Software that manages the hardware and provides a platform on which applications can run, using abstraction to hide complexity."},
+    {"q": "What is the difference between paging and segmentation?", "a": "Paging splits memory into fixed-size blocks; segmentation splits it into variable-size logical blocks."},
+    {"q": "Why does virtual memory not actually add RAM, and what risk does heavy use cause?", "a": "It uses secondary storage as if it were RAM (so it is slower); excessive swapping causes disk thrashing."}
+  ],
+  "keywords": [
+    {"term": "Operating system", "def": "Software that manages hardware and provides a platform for applications, hiding complexity through abstraction."},
+    {"term": "Paging", "def": "Dividing memory into fixed-size blocks (pages mapped to frames) using a page table."},
+    {"term": "Segmentation", "def": "Dividing memory into variable-size logical blocks based on the program's structure."},
+    {"term": "Virtual memory", "def": "Using secondary storage (swap/page file) as if it were RAM to run more or larger programs."},
+    {"term": "Disk thrashing", "def": "Excessive paging between RAM and disk that wastes time and slows the system to a crawl."},
+    {"term": "Interrupt", "def": "A hardware or software signal that a device or process needs the processor's attention."},
+    {"term": "ISR", "def": "Interrupt service routine: OS code that deals with a specific interrupt."},
+    {"term": "Real-time OS", "def": "An operating system that guarantees a response within a set time limit or deadline."}
+  ],
+  "content": [
+    {"heading": "Memory management", "points": ["Paging uses fixed-size blocks (pages and frames) and suffers internal fragmentation; segmentation uses variable-size logical blocks and suffers external fragmentation.", "A page table maps each logical page to a physical frame.", "Virtual memory uses secondary storage as if it were RAM so programs larger than RAM can run, but it is slower than real RAM.", "A page fault means the needed page is on disk and must be swapped back in; too much swapping causes disk thrashing."]},
+    {"heading": "Interrupts and the ISR", "points": ["An interrupt is a signal that a device or process needs CPU attention, avoiding wasteful polling.", "Interrupts carry priorities held in an interrupt register or priority queue.", "Handling order: CPU checks the interrupt register at the end of each FDE cycle, finishes the current instruction, pushes registers (PC, ACC) onto the stack, loads and runs the correct ISR, then pops registers off to resume.", "The stack is LIFO so nested interrupts resume in the correct order."]},
+    {"heading": "CPU scheduling", "points": ["Scheduling creates the illusion of simultaneous processes while maximising CPU use, fairness and response time.", "Round robin gives each process a fixed time slice (quantum) in turn and is pre-emptive, fair and avoids starvation.", "FCFS runs jobs in arrival order (non-pre-emptive) but long jobs delay short ones (convoy effect); SJF and SRT favour short jobs but can starve long ones.", "Multi-level feedback queues move jobs between priority queues based on behaviour, approximating SJF."]},
+    {"heading": "Types of operating system", "points": ["Distributed OS runs across many networked machines as one system; embedded OS is built for one device with limited resources, stored in ROM.", "Multitasking OS runs several programs at once via time-slicing; multi-user OS shares resources between users via a scheduler and permissions.", "A real-time OS (RTOS) guarantees a response within a set deadline, used in aircraft, pacemakers and ABS.", "Match the OS type to the device: a washing machine needs embedded; a mainframe needs multi-user."]},
+    {"heading": "BIOS, drivers and virtual machines", "points": ["The BIOS is firmware on ROM, the first program to run; it performs POST, initialises hardware and loads (bootstraps) the OS into RAM, but is not the OS itself.", "A device driver is software that lets the OS control a specific hardware device, translating OS commands into device instructions; it is hardware- and OS-specific.", "A system virtual machine runs a whole guest OS inside a host for testing, sandboxing or legacy software.", "A process virtual machine runs platform-independent intermediate code (e.g. Java bytecode on the JVM): portable but slower than native and resource-heavy."]}
+  ],
+  "worked_example": {
+    "title": "Tracing how the OS handles an interrupt while running a program",
+    "steps": [
+      "A program is mid-execution when a higher-priority interrupt (e.g. printer ready) is raised.",
+      "At the end of the current FDE cycle the CPU checks the interrupt register and finds the request.",
+      "It finishes the current instruction, then compares the interrupt's priority against the current task.",
+      "Because the interrupt is higher priority, the contents of registers such as the PC and ACC are pushed onto the stack.",
+      "The address of the matching ISR is loaded and the ISR runs to service the printer.",
+      "When the ISR finishes, the saved registers are popped off the stack so the original program resumes exactly where it left off."
+    ]
+  },
+  "task": "Produce a comparison table of the five scheduling algorithms (round robin, FCFS, SJF, SRT, MLFQ) listing how each works, whether it is pre-emptive, and one strength and one weakness of each.",
+  "challenge": "A hospital infusion pump and a cloud server both need an operating system. For each, name the most suitable OS type and justify your choice using two specific features of that OS type, then explain why the other type would be unsuitable.",
+  "exit_ticket": [
+    {"q": "In interrupt handling, why are the PC and ACC pushed onto a stack rather than simply overwritten?", "a": "So the interrupted task's state is saved and can be restored (popped) to resume correctly; the LIFO stack also supports nested interrupts."},
+    {"q": "Give one similarity and one difference between paging and segmentation.", "a": "Both divide memory to manage it; paging uses fixed-size blocks (internal fragmentation) while segmentation uses variable-size logical blocks (external fragmentation)."},
+    {"q": "What does the BIOS do at start-up, and why is it not the operating system?", "a": "It runs first, performs POST and then loads the OS into RAM; it only bootstraps the OS rather than managing applications itself."}
+  ]
+}

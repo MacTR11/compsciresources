@@ -1,0 +1,90 @@
+{
+  "subtopic": "1.5.1 Computing Related Legislation",
+  "spec": "OCR H446 — Component 01",
+  "objectives": [
+    "Identify and describe the four key Acts: the Data Protection Act 1998/2018 (with GDPR), the Computer Misuse Act 1990, the Copyright, Designs & Patents Act 1988 and the Regulation of Investigatory Powers Act 2000.",
+    "Select the correct law (and Computer Misuse Act offence) that applies to a given computing scenario, naming the responsible party.",
+    "Explain why more than one law can apply to a single scenario, distinguishing between the wrongdoing of each party involved."
+  ],
+  "retrieval": [
+    { "q": "Which Act governs unauthorised access to computer systems, including hacking and malware?", "a": "The Computer Misuse Act 1990." },
+    { "q": "Under the Data Protection Act, what is the term for the individual whose personal data is being processed?", "a": "The data subject (the controller decides how/why data is used; the processor acts on the controller's behalf)." },
+    { "q": "When does copyright protection begin for an original piece of software?", "a": "Automatically, as soon as the work is created — no registration is required." },
+    { "q": "Interleaving 1.4: what does lossless compression preserve that lossy compression does not?", "a": "Lossless preserves all the original data exactly, so the file can be perfectly reconstructed; lossy permanently discards data." },
+    { "q": "Interleaving 1.3: name two roles in a client-server network model.", "a": "The client (requests services/resources) and the server (provides/manages them)." }
+  ],
+  "keywords": [
+    { "term": "Personal data", "def": "Data that can identify a living individual, protected by the Data Protection Act / GDPR." },
+    { "term": "Data controller", "def": "The organisation that decides why and how personal data is processed, and is legally responsible for it." },
+    { "term": "Data processor", "def": "A party that processes personal data on behalf of, and under instruction from, the data controller." },
+    { "term": "Unauthorised access", "def": "Accessing a computer system without permission — the core wrong addressed by the Computer Misuse Act 1990." },
+    { "term": "Intellectual property", "def": "Original works (software, music, designs, text) that the law protects as the property of their creator." },
+    { "term": "Licence", "def": "Permission granted by a rights-holder to legally use, copy or distribute a copyrighted work." },
+    { "term": "Patent", "def": "Legal protection for a new invention or idea that must be applied for and granted (unlike automatic copyright)." },
+    { "term": "ICO", "def": "Information Commissioner's Office — the UK regulator that enforces the Data Protection Act and can issue large fines." }
+  ],
+  "content": [
+    {
+      "heading": "Data Protection Act 1998/2018 (+ GDPR)",
+      "points": [
+        "Controls how organisations collect, store and process personal data (data identifying a living individual).",
+        "Sets principles: lawful/fair/transparent processing, purpose limitation, data minimisation, accuracy, storage limitation, security (integrity & confidentiality) and accountability.",
+        "Defines roles of controller, processor and subject; enforced by the ICO with fines up to €20m or 4% of turnover.",
+        "Example breach: selling customer data with no lawful basis, or storing records unencrypted."
+      ]
+    },
+    {
+      "heading": "Computer Misuse Act 1990",
+      "points": [
+        "Addresses unauthorised access to computer systems — it is about authorisation, not damage.",
+        "Offence 1: unauthorised access to computer material (e.g. using a colleague's login).",
+        "Offence 2: unauthorised access with intent to commit a further offence (e.g. hacking a bank to steal money).",
+        "Offence 3: unauthorised modification of computer material (e.g. releasing ransomware, deleting or altering data)."
+      ]
+    },
+    {
+      "heading": "Copyright, Designs & Patents Act 1988",
+      "points": [
+        "Protects intellectual property — original works such as software, music, text and designs.",
+        "Protection is automatic on creation; no registration is needed, and it protects the expression, not the idea.",
+        "The rights-holder controls copying, distribution and adaptation; others need a licence to use the work.",
+        "Example breach: pirating software or music, or using web images commercially without permission."
+      ]
+    },
+    {
+      "heading": "Regulation of Investigatory Powers Act 2000 (RIPA)",
+      "points": [
+        "Governs how public bodies (police, security services) monitor and intercept communications.",
+        "Allows lawful interception for national security or serious crime, and requires ISPs to provide access.",
+        "Can require a person to hand over encryption keys, and defines who may authorise such activity to prevent abuse.",
+        "Example breach: a public authority intercepting communications without proper authorisation or for an improper purpose."
+      ]
+    },
+    {
+      "heading": "Picking the right law (and when two apply)",
+      "points": [
+        "An outsider hacks in = Computer Misuse Act; an organisation mishandles data it holds = Data Protection Act.",
+        "Copying creative works = Copyright, Designs & Patents Act; state interception of comms = RIPA.",
+        "Two laws can apply at once — e.g. a hacker steals data (CMA) from a firm that stored it unencrypted (DPA).",
+        "Patents differ from copyright: they cover inventions and must be applied for and granted."
+      ]
+    }
+  ],
+  "worked_example": {
+    "title": "Applying the right law: a stolen, unencrypted customer database",
+    "steps": [
+      "Read the scenario: a hacker with no authorisation breaks into an online retailer and copies customer card details stored unencrypted, then offers them for sale.",
+      "Identify the hacker's wrong: unauthorised access is Computer Misuse Act Offence 1, and because they intend to sell/profit it becomes Offence 2 (access with intent to commit a further offence).",
+      "Identify the retailer's wrong: as data controller they breached the security (integrity & confidentiality) principle of the DPA 2018/GDPR by storing personal data unencrypted, so they share legal responsibility despite being a victim.",
+      "Exclude irrelevant laws: the CDPA 1988 does not apply because no creative work was copied — gaining credit for correctly excluding it.",
+      "Conclude: two laws apply because there are two distinct wrongs (the hacker's access under CMA and the retailer's negligent handling under DPA), each with a different responsible party."
+    ]
+  },
+  "task": "For each of five short scenarios (an employee using a manager's login; a firm keeping records ten years too long; a student torrenting paid software; police intercepting a suspect's calls with authorisation; a hacker installing ransomware), name the correct law and, where relevant, the exact Computer Misuse Act offence number, and state who is responsible.",
+  "challenge": "Write a scenario in which exactly TWO of the four laws apply, then annotate it by naming each law, the responsible party, and the specific offence or principle breached — and explain why a third candidate law does NOT apply.",
+  "exit_ticket": [
+    { "q": "State the three offences defined by the Computer Misuse Act 1990.", "a": "1) Unauthorised access to computer material; 2) unauthorised access with intent to commit a further offence; 3) unauthorised modification of computer material." },
+    { "q": "Give one difference between copyright and a patent.", "a": "Copyright is automatic on creation and protects the expression of a work; a patent protects an invention/idea and must be applied for and granted." },
+    { "q": "Why can both the CMA and the DPA apply when a hacker steals personal data from a company?", "a": "Two distinct wrongs occur: the hacker's unauthorised access (CMA) and the company's failure to secure the personal data it controlled (DPA)." }
+  ]
+}

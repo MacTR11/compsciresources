@@ -1,0 +1,50 @@
+{
+  "subtopic": "1.2.2 Applications Generation",
+  "spec": "OCR H446 — Component 01",
+  "objectives": [
+    "Distinguish application, utility and open/closed source software and select appropriate examples.",
+    "Compare assemblers, compilers and interpreters and describe the four stages of compilation in order.",
+    "Explain the roles of libraries, linkers and loaders, including static versus dynamic linking."
+  ],
+  "retrieval": [
+    {"q": "What is a virtual machine that runs intermediate code, and give an example?", "a": "A process VM that runs platform-independent intermediate code, e.g. the JVM running Java bytecode (interleaving 1.2.1)."},
+    {"q": "What does a loader do, and which OS component prepares the OS at boot?", "a": "A loader copies the executable into RAM to run; the BIOS bootstraps the OS at start-up (interleaving 1.2.1)."},
+    {"q": "Give one example each of application software and utility software.", "a": "Application: word processor or browser; utility: defragmenter, backup or antivirus."},
+    {"q": "What does a compiler produce that an interpreter does not?", "a": "A standalone executable (machine code) translated all at once before running."},
+    {"q": "In which stage of compilation are syntax errors reported?", "a": "Syntax analysis (parsing), when tokens are checked against the grammar."}
+  ],
+  "keywords": [
+    {"term": "Application software", "def": "Software that lets a user perform a real-world task, e.g. word processor, browser or game."},
+    {"term": "Utility software", "def": "System software that maintains or optimises the computer itself, e.g. defrag, backup, antivirus."},
+    {"term": "Open source", "def": "Software whose source code is available and may be modified, usually free with community support."},
+    {"term": "Assembler", "def": "A translator that converts assembly language into machine code, roughly one-to-one."},
+    {"term": "Compiler", "def": "A translator that converts high-level source into machine code all at once, producing a standalone executable."},
+    {"term": "Interpreter", "def": "A translator that converts and executes high-level source one line at a time at run time."},
+    {"term": "Linker", "def": "Software that combines a compiled program with libraries and modules into one executable, resolving references."},
+    {"term": "Loader", "def": "OS software that copies an executable from storage into RAM and prepares it to run."}
+  ],
+  "content": [
+    {"heading": "Software classifications", "points": ["Application software lets the user do a real-world task (word processor, browser, game).", "Utility software maintains or optimises the computer itself (defrag, backup, antivirus, compression, firewall).", "A common trap: antivirus is a utility, not an application.", "Open source code is available and modifiable (usually free, community support); closed/proprietary code is hidden and usually paid with vendor support."]},
+    {"heading": "Translators compared", "points": ["An assembler translates assembly mnemonics into machine code, roughly one-to-one.", "A compiler translates the whole program at once before running and produces a standalone executable that runs fast without the source.", "An interpreter translates and executes one line at a time, needs the source plus the interpreter present, and stops at the first error.", "Compilers suit distributing finished software; interpreters suit developing, debugging and scripting."]},
+    {"heading": "Stages of compilation (in order)", "points": ["Lexical analysis: source becomes tokens, whitespace and comments are removed, and a symbol table is built.", "Syntax analysis (parsing): tokens are checked against the grammar, a parse tree is built and syntax errors are reported here.", "Code generation: object/machine code is produced from the parse tree and symbol table.", "Code optimisation: the code is refined to run faster or use less memory while giving the same result."]},
+    {"heading": "Libraries, linkers and loaders", "points": ["A library is a collection of pre-written, pre-compiled, tested subroutines that saves time and improves reliability.", "A linker combines the compiled program with libraries and modules into one executable, resolving references.", "Static linking copies library code into the executable (larger, self-contained); dynamic linking keeps it separate (.dll) and links at run time (smaller, shared, updatable).", "A loader copies the finished executable from storage into RAM and prepares it to run."]}
+  ],
+  "worked_example": {
+    "title": "Tracing source code through the four stages of compilation",
+    "steps": [
+      "Start with high-level source such as: total = price * qty",
+      "Lexical analysis splits it into tokens (total, =, price, *, qty), strips whitespace/comments and records identifiers in the symbol table.",
+      "Syntax analysis checks the tokens against the language grammar and builds a parse tree; if the grammar is broken (e.g. a missing operand) a syntax error is reported here.",
+      "Code generation walks the parse tree and symbol table to produce object/machine code (e.g. LOAD price, MULT qty, STORE total).",
+      "Code optimisation refines that machine code to run faster or use less memory (e.g. removing redundant loads) while keeping the same result.",
+      "The output is machine code ready to be linked and loaded."
+    ]
+  },
+  "task": "Complete a comparison table of compiler versus interpreter covering when translation happens, whether an executable is produced, program speed, whether the source is needed to run, and error reporting.",
+  "challenge": "A developer must ship a finished game to customers who must not see or change the source code and should need no extra software to run it. Justify whether a compiler or interpreter is appropriate, then explain how a library and a linker contribute to producing the final executable.",
+  "exit_ticket": [
+    {"q": "List the four stages of compilation in the correct order.", "a": "Lexical analysis, syntax analysis (parsing), code generation, code optimisation."},
+    {"q": "State one difference between static and dynamic linking.", "a": "Static linking copies library code into the executable (larger, self-contained); dynamic linking keeps it separate and links at run time (smaller, shared, updatable)."},
+    {"q": "Why does distributing software as a compiled executable protect the source code?", "a": "Only machine code is shipped, not the source, so customers cannot read or modify it and need no compiler/interpreter to run it."}
+  ]
+}

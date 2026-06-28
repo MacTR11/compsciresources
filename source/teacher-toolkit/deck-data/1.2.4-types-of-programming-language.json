@@ -1,0 +1,50 @@
+{
+  "subtopic": "1.2.4 Types of Programming Language",
+  "spec": "OCR H446 — Component 01",
+  "objectives": [
+    "Explain what a programming paradigm is and describe the procedural and low-level (assembly) approaches.",
+    "Apply the four addressing modes (immediate, direct, indirect, indexed) to determine the value loaded.",
+    "Define the key object-oriented concepts and apply inheritance and polymorphism to a scenario."
+  ],
+  "retrieval": [
+    {"q": "What is the difference between a compiler and an interpreter?", "a": "A compiler translates all at once into a standalone executable; an interpreter translates and executes line by line at run time (interleaving 1.2.2)."},
+    {"q": "Which methodology suits a project with unclear, changing requirements?", "a": "Agile, because it works in iterative increments with continuous client feedback (interleaving 1.2.3)."},
+    {"q": "What is a programming paradigm?", "a": "A style or approach to writing programs, chosen to make a problem easier to write, maintain or reuse."},
+    {"q": "What does the LMC instruction BRZ xx do?", "a": "It branches to address xx only if the Accumulator equals zero."},
+    {"q": "In immediate addressing, what does the operand hold?", "a": "The actual value to be used."}
+  ],
+  "keywords": [
+    {"term": "Programming paradigm", "def": "A style or approach to writing programs, picked to suit a problem."},
+    {"term": "Procedural", "def": "A paradigm using sequence, selection and iteration organised into procedures/subroutines, specifying how."},
+    {"term": "Assembly language", "def": "A low-level language using mnemonics, roughly one mnemonic per machine instruction, processor-specific."},
+    {"term": "Immediate addressing", "def": "The operand is the actual value to be used."},
+    {"term": "Direct addressing", "def": "The operand is the address that holds the value."},
+    {"term": "Indirect addressing", "def": "The operand is the address of a location that holds the address of the value (a pointer)."},
+    {"term": "Inheritance", "def": "A subclass acquiring the attributes and methods of a superclass, which it can extend or override."},
+    {"term": "Polymorphism", "def": "The same method name behaving differently depending on the object, typically via overriding."}
+  ],
+  "content": [
+    {"heading": "Paradigms and procedural code", "points": ["A programming paradigm is a style or approach to writing a program; no one language suits every task.", "Pick the paradigm that makes a problem easier to write, maintain or reuse.", "Procedural code uses sequence, selection and iteration organised into procedures/subroutines and specifies how (Python, C, Pascal).", "It contrasts with object-oriented code, which models the problem as interacting objects."]},
+    {"heading": "Assembly and the LMC", "points": ["Assembly is low-level, using mnemonics such as ADD and STA, roughly one mnemonic per machine instruction and processor-specific.", "It is used where speed, small size or direct hardware control matter, e.g. drivers and embedded systems.", "The Little Man Computer is a simple model CPU and instruction set for learning assembly and the FDE cycle.", "Key LMC instructions: INP, OUT, STA, LDA, ADD, SUB, BRA (jump), BRZ (branch if zero), BRP (branch if >= 0), DAT, HLT."]},
+    {"heading": "Addressing modes", "points": ["Immediate: the operand is the actual value.", "Direct: the operand is the address holding the value.", "Indirect: the operand is the address of a location holding the address of the value (used for pointers).", "Indexed: the effective address is a base address plus the contents of an index register (used for arrays)."]},
+    {"heading": "Object-oriented concepts", "points": ["A class is a template defining attributes and methods; an object is a specific instance created by instantiation.", "An attribute is a variable (data/state) and a method is a subroutine (behaviour) of a class.", "Encapsulation bundles data with its methods and hides the data (private attributes accessed via methods).", "Inheritance lets a subclass acquire a superclass's members (DRY reuse); polymorphism lets the same method name behave differently per object."]}
+  ],
+  "worked_example": {
+    "title": "Addressing-mode calculation for LDA 6",
+    "steps": [
+      "Given: address 6 holds the value 9, address 9 holds the value 4, and the index register holds 2.",
+      "Immediate: the operand IS the value, so the Accumulator is loaded with 6.",
+      "Direct: load the value held at address 6, which is 9.",
+      "Indirect: address 6 holds 9, so follow the pointer to address 9, whose value is 4.",
+      "Indexed: effective address = base 6 + index 2 = address 8, and the value is taken from address 8.",
+      "Key point: state which effective address each mode uses before reading its contents."
+    ]
+  },
+  "task": "Given address 4 holds 7, address 7 holds 1 and the index register holds 3, state the value loaded by LDA 4 for immediate, direct and indirect modes, and give the effective address for indexed mode.",
+  "challenge": "A program models Car, Bus and Motorbike, which share speed and a move() method but display themselves differently. Explain how a Vehicle superclass, inheritance and overriding a display() method (polymorphism) would be used, and give one maintenance benefit of this design.",
+  "exit_ticket": [
+    {"q": "Define class, object and method.", "a": "Class: a template defining attributes and methods; object: a specific instance of a class; method: a subroutine of a class defining its behaviour."},
+    {"q": "For LDA 6 where address 6 holds 9 and address 9 holds 4, what is loaded in direct and in indirect mode?", "a": "Direct loads 9 (the value at address 6); indirect loads 4 (address 6 points to address 9, whose value is 4)."},
+    {"q": "What is encapsulation and one benefit it provides?", "a": "Bundling data with its methods and hiding the data via private attributes; it protects data from invalid changes and eases maintenance."}
+  ]
+}

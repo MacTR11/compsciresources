@@ -1,0 +1,51 @@
+{
+  "subtopic": "2.1.4 Thinking Logically",
+  "spec": "OCR H446 — Component 02",
+  "objectives": [
+    "Identify decision points where the flow of control branches on a condition.",
+    "Write exact Boolean conditions, including the correct comparison operator and logical operators.",
+    "Apply logical thinking to an unseen scenario, stating the outcome of both branches of each decision."
+  ],
+  "retrieval": [
+    {"q": "What is a decision point?", "a": "A place where the flow of control branches depending on whether a condition is true or false."},
+    {"q": "What is flow of control?", "a": "The order in which a program's statements execute, shaped by its decision points."},
+    {"q": "How many branches does a single IF/ELSE decision have?", "a": "Two — one for the condition being true and one for it being false."},
+    {"q": "Write the condition for 'lock the account after 3 failed attempts'.", "a": "IF attempts >= 3."},
+    {"q": "Interleaving (2.1.3): how does a decision point relate to a sub-procedure's order?", "a": "Decision points steer which steps run, while sequencing fixes order by data dependency; both control execution flow."}
+  ],
+  "keywords": [
+    {"term": "Thinking logically", "def": "Identifying decision points where flow of control branches on a condition."},
+    {"term": "Decision point", "def": "A place where flow branches on a condition, e.g. an IF, CASE or loop test."},
+    {"term": "Boolean condition", "def": "An expression that evaluates to true or false, e.g. score >= 1000."},
+    {"term": "Flow of control", "def": "The order in which statements execute, altered by decision points."},
+    {"term": "Branch", "def": "One of the paths taken from a decision point; each decision has a true and a false branch."},
+    {"term": "Comparison operator", "def": "A symbol such as <, <=, >, >=, = used to build a condition."},
+    {"term": "Logical operator", "def": "AND, OR or NOT, used to combine conditions, e.g. ticketValid AND feePaid."},
+    {"term": "Nested condition", "def": "A decision inside another, used when one test must take priority over another."}
+  ],
+  "content": [
+    {"heading": "Decision points and flow of control", "points": ["A decision point branches the flow of control on a condition.", "Flow of control is the order statements execute.", "IF, CASE and loop tests are all decision points."]},
+    {"heading": "Writing exact Boolean conditions", "points": ["'Under 16' is age < 16, not <= 16.", "'Over £50' is total > 50, so exactly £50 fails; use >= 50 to include it.", "Choosing the right operator is where marks are won or lost."]},
+    {"heading": "Both branches matter", "points": ["Every decision has a true branch and a false branch.", "Booking: seatsRequested <= seatsAvailable confirms; the false branch rejects the booking.", "Always state what happens on both outcomes."]},
+    {"heading": "Combining and nesting conditions", "points": ["Use logical operators: barrier opens IF ticketValid AND feePaid.", "Nest conditions when one test must override another.", "Order nested tests so the priority condition is checked first."]},
+    {"heading": "Exam technique", "points": ["Give the exact Boolean, not vague wording like 'if it's fast'.", "State the outcome of both branches.", "Apply conditions to the scenario's actual variables."]}
+  ],
+  "worked_example": {
+    "title": "Choosing a streaming quality with logical thinking",
+    "steps": [
+      "Identify the overriding decision: connection speed takes priority over subscription.",
+      "First condition: IF connectionSpeed < 5 (Mbps) THEN stream SD, regardless of subscription.",
+      "False branch of that test (connection adequate): move to the subscription decision.",
+      "Second condition: IF subscription = \"premium\" THEN stream 4K, ELSE stream HD.",
+      "State both branches of each: SD vs continue; 4K vs HD.",
+      "Note the conditions are nested and ordered so the speed test is checked first."
+    ]
+  },
+  "task": "A car-park barrier should open only if the ticket is valid AND the fee has been paid. Write the exact Boolean condition using a logical operator, and state precisely what happens on both the true and false branches.",
+  "challenge": "A game awards a bonus life at 1000 points and a 'game over' at 0 lives. Design the decision points for both, writing exact Boolean conditions and stating the outcome of every branch, and explain why the order they are tested in matters.",
+  "exit_ticket": [
+    {"q": "A cinema discounts customers under 16. Write the exact condition.", "a": "IF age < 16."},
+    {"q": "A booking confirms when seatsRequested <= seatsAvailable. What happens on the FALSE branch?", "a": "The booking is rejected and the user is told there are too few seats."},
+    {"q": "A student writes IF total > 50 for free delivery. Does a £50 order qualify, and how would you fix it to include £50?", "a": "No — 50 is not greater than 50; use IF total >= 50."}
+  ]
+}

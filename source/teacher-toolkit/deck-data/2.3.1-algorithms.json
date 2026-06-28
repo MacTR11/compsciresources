@@ -1,0 +1,106 @@
+{
+  "subtopic": "2.3.1 Algorithms",
+  "spec": "OCR H446 — Component 02",
+  "objectives": [
+    "Use Big O notation to express and justify the time and space complexity of an algorithm, simplifying expressions to the dominant term.",
+    "Compare standard searching and sorting algorithms by how they work and their best, average and worst-case complexities.",
+    "Describe and trace algorithms on data structures, including tree traversals and the shortest-path algorithms Dijkstra and A*."
+  ],
+  "retrieval": [
+    { "q": "Which traversal of a binary search tree outputs values in ascending order?", "a": "In-order (Left → Node → Right)." },
+    { "q": "Which data structure does a breadth-first traversal use, and which does depth-first use?", "a": "BFS uses a queue (FIFO); DFS uses a stack (or recursion)." },
+    { "q": "What is the time complexity of pushing or popping on a stack, and why?", "a": "O(1) — it only acts on the top element, with no traversal." },
+    { "q": "State one precondition that must hold before a binary search can be used.", "a": "The list must be sorted." },
+    { "q": "Simplify 3n² + 5n + 17 to Big O notation.", "a": "O(n²) — drop constants and lower-order terms, keeping the dominant term." }
+  ],
+  "keywords": [
+    { "term": "Algorithm", "def": "A precise, finite sequence of steps to solve a problem." },
+    { "term": "Big O notation", "def": "How an algorithm's time or space requirement grows with input size n (worst case)." },
+    { "term": "Time complexity", "def": "The number of operations performed as a function of input size n." },
+    { "term": "Space complexity", "def": "The amount of memory required as a function of input size n." },
+    { "term": "Tractable / Intractable", "def": "Solvable in polynomial time or better / only solvable in exponential time or worse." },
+    { "term": "Divide and conquer", "def": "Break a problem into subproblems, solve them, then combine (e.g. merge sort, quick sort, binary search)." },
+    { "term": "Heuristic", "def": "A rule-of-thumb estimate; in A* the estimate h(n) of the remaining cost from a node to the goal." },
+    { "term": "Admissible heuristic", "def": "A heuristic that never overestimates the true remaining cost, guaranteeing A* finds the optimal path." }
+  ],
+  "content": [
+    {
+      "heading": "Big O and complexity classes",
+      "points": [
+        "Big O describes the worst-case growth of time (operations) or space (memory) against input size n.",
+        "Simplify by dropping constants and lower-order terms: 3n² + 5n + 17 → O(n²), the dominant term wins.",
+        "Order of growth: O(1) constant, O(log n) logarithmic, O(n) linear, O(n log n) linearithmic, O(n²) quadratic, O(2ⁿ) exponential.",
+        "Tractable = solvable in polynomial time or better; intractable = only exponential O(2ⁿ) or worse.",
+        "Always justify a Big O, e.g. 'O(n²) because of the nested loop — each of n passes makes up to n comparisons.'"
+      ]
+    },
+    {
+      "heading": "Searching algorithms",
+      "points": [
+        "Linear search: check each element in turn from the start; works on unsorted data; O(n) average and worst, O(1) best.",
+        "Binary search: check the middle of a SORTED list, discard the half that cannot contain the target, repeat; O(log n) worst case.",
+        "Binary search precondition: the list MUST be sorted so a half can be safely discarded each pass — always state this.",
+        "Binary search is O(log n) because halving the search space means doubling n only adds one extra step."
+      ]
+    },
+    {
+      "heading": "Sorting algorithms",
+      "points": [
+        "Bubble sort: repeatedly compare adjacent pairs and swap if out of order; O(n²) average/worst, O(n) best only with a swap flag; stable, O(1) space.",
+        "Insertion sort: build a sorted front section, inserting each element by shifting larger ones right; O(n²) average/worst, O(n) best; stable, O(1) space.",
+        "Merge sort: divide and conquer, split until single items then merge; guaranteed O(n log n) in all cases but needs O(n) extra space.",
+        "Quick sort: pick a pivot, partition smaller-left / larger-right, recurse; O(n log n) average but O(n²) worst case (poor pivot); not stable.",
+        "Classic trade-off: merge sort guarantees O(n log n) time but uses O(n) space; quick sort uses O(log n) space but risks O(n²) time."
+      ]
+    },
+    {
+      "heading": "Data-structure operation complexities",
+      "points": [
+        "Stack (LIFO) and queue (FIFO): push, pop, enQueue, deQueue are all O(1) — they act only on the top/ends.",
+        "Array: access by index is O(1), but inserting or deleting shifts elements → O(n).",
+        "Linked list: traversal and search are O(n); inserting or deleting given the node is O(1) by re-pointing.",
+        "Binary search tree: search/insert is O(log n) average if balanced, O(n) worst if degenerate; full traversal is O(n).",
+        "A circular queue uses MOD to wrap its pointers and reuse freed space."
+      ]
+    },
+    {
+      "heading": "Tree traversals",
+      "points": [
+        "Pre-order (Node → Left → Right): used to copy a tree or output prefix expressions.",
+        "In-order (Left → Node → Right): outputs a BST's values in ascending sorted order.",
+        "Post-order (Left → Right → Node): used to delete a tree or evaluate RPN (postfix); it is the depth-first traversal the spec names.",
+        "Breadth-first (BFS): visit level by level, left to right, using a queue; finds shortest paths in unweighted graphs.",
+        "Mnemonic for the Node position: Pre = first, In = middle, Post = last."
+      ]
+    },
+    {
+      "heading": "Shortest path: Dijkstra and A*",
+      "points": [
+        "Dijkstra uses cost g(n) only, is uninformed, and searches outward in all directions to find shortest paths to ALL nodes.",
+        "Dijkstra: always settle the unvisited node with the smallest tentative distance, relax its neighbours, then never update a settled node.",
+        "A* uses f(n) = g(n) + h(n), where h(n) is a heuristic estimate of remaining cost to the goal — this is the key difference.",
+        "A* directs the search toward one goal, usually exploring fewer nodes and so running faster than Dijkstra.",
+        "A* is optimal only if its heuristic is admissible (never overestimates); if h(n) = 0, A* reduces exactly to Dijkstra."
+      ]
+    }
+  ],
+  "worked_example": {
+    "title": "Tracing Dijkstra's algorithm from node A (undirected weighted graph)",
+    "steps": [
+      "Edges: A–B=4, A–D=1, B–C=2, B–E=5, C–F=3, D–E=2, E–F=1. Set distance A=0 and all others to infinity.",
+      "From A, tentative distances are D=1 and B=4. The smallest unvisited is D=1, so settle D=1 (via A).",
+      "From D, relax E: 1 + 2 = 3. Smallest unvisited is now E=3, so settle E=3 (via D).",
+      "From E, relax F: 3 + 1 = 4, and B via E: 3 + 5 = 8 (worse than 4, keep B=4). Both B=4 and F=4 are smallest; settle B=4 (via A) and F=4 (via E).",
+      "From B, relax C: 4 + 2 = 6. From F, C via F: 4 + 3 = 7 (worse, keep 6). Settle C=6 (via B).",
+      "Final shortest distances from A: A=0, D=1 (via A), E=3 (via D), B=4 (via A), F=4 (via E), C=6 (via B).",
+      "Complexity: a simple-array Dijkstra is O(n²); with a priority queue it is O((V + E) log V). It explores more nodes than A* because it has no heuristic to steer toward a single goal."
+    ]
+  },
+  "task": "Trace a bubble sort on [5, 3, 8, 1, 4], writing the full list after each complete left-to-right pass. Then state and justify the worst-case Big O of bubble sort.",
+  "challenge": "On the same graph, explain how adding an admissible straight-line heuristic h(n) would change the search to A*, and identify which node Dijkstra wastefully settles that A* searching only for goal F might avoid. Justify why A* still returns the optimal path.",
+  "exit_ticket": [
+    { "q": "What is the worst-case time complexity of quick sort, and what causes it?", "a": "O(n²), caused by a poor pivot choice such as already-sorted data producing unbalanced partitions." },
+    { "q": "Why does merge sort guarantee O(n log n) but use O(n) extra space?", "a": "It always divides into log n levels each doing n work to merge (O(n log n)), but merging needs temporary arrays the size of the input (O(n))." },
+    { "q": "State the f(n) formula used by A* and what each term means.", "a": "f(n) = g(n) + h(n): g(n) is the actual cost from the start to n, h(n) is the heuristic estimate of remaining cost to the goal." }
+  ]
+}

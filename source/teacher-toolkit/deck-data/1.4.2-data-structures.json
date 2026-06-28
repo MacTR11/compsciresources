@@ -1,0 +1,87 @@
+{
+  "subtopic": "1.4.2 Data Structures",
+  "spec": "OCR H446 — Component 01",
+  "objectives": [
+    "Describe and distinguish static and dynamic data structures, including arrays, records, lists, tuples and linked lists.",
+    "Trace operations on stacks and queues, and explain their LIFO/FIFO behaviour and real-world uses.",
+    "Explain how graphs, trees, binary search trees and hash tables store and retrieve data, including traversal order and collisions."
+  ],
+  "retrieval": [
+    { "q": "Which data structure operates on a Last In, First Out basis?", "a": "A stack (push and pop at the top)." },
+    { "q": "Which BST traversal visits nodes in ascending order?", "a": "In-order traversal (left, root, right)." },
+    { "q": "What is a collision in a hash table?", "a": "When two different keys hash to the same index." },
+    { "q": "Interleaving (1.4.1): What is the denary value of the unsigned binary 00101101?", "a": "45 (32+8+4+1)." },
+    { "q": "Interleaving (1.4.3): Give the Boolean expression for the Sum output of a half adder.", "a": "Sum = A XOR B." }
+  ],
+  "keywords": [
+    { "term": "Array", "def": "An ordered, fixed-size collection of items of the same type accessed by a numeric index, giving O(1) access; static." },
+    { "term": "Record", "def": "A collection of named fields that may hold different data types, e.g. student.name." },
+    { "term": "Tuple", "def": "An ordered, immutable sequence whose values cannot be changed after creation, e.g. (x, y)." },
+    { "term": "Linked list", "def": "A dynamic structure of nodes, each holding data plus a pointer to the next node; easy to insert/delete but with no random access." },
+    { "term": "Stack", "def": "A LIFO structure with push, pop and peek at the top via a stack pointer; can overflow or underflow." },
+    { "term": "Queue", "def": "A FIFO structure where items are enqueued at the rear and dequeued at the front; circular queues reuse space with rear = (rear + 1) MOD size." },
+    { "term": "Binary search tree", "def": "A binary tree where the left subtree is less than the node and the right subtree is greater, giving O(log n) search when balanced." },
+    { "term": "Hash table", "def": "A structure that maps a key to an index using a hash function for ~O(1) lookup; a collision is two keys mapping to the same index." }
+  ],
+  "content": [
+    {
+      "heading": "Static vs dynamic structures",
+      "points": [
+        "Static structures have a fixed size set at declaration and occupy a contiguous block of memory, e.g. an array.",
+        "Dynamic structures grow and shrink at run time, allocated from the heap as needed, e.g. a linked list.",
+        "Trade-off: static gives fast, simple access but may waste or run out of memory; dynamic is flexible but adds pointer/management overhead."
+      ]
+    },
+    {
+      "heading": "Linear structures: arrays, records, lists, tuples",
+      "points": [
+        "Arrays are indexed from 0 and can be 1D, 2D (grid[r][c]) or 3D (cube[l][r][c]), all holding one type.",
+        "Records group named fields of differing types; lists are mutable, resizable and may hold mixed types.",
+        "Tuples are ordered but immutable, so they suit fixed groupings such as coordinates."
+      ]
+    },
+    {
+      "heading": "Stacks and queues",
+      "points": [
+        "A stack is LIFO: push and pop happen at the top, used for call stacks, undo and backtracking.",
+        "A queue is FIFO: enqueue at the rear, dequeue at the front, used for spooling, buffers and scheduling.",
+        "A circular queue reuses freed space with rear = (rear + 1) MOD size; a priority queue serves the highest priority first."
+      ]
+    },
+    {
+      "heading": "Linked lists, graphs and trees",
+      "points": [
+        "A linked list uses a head pointer and nodes ending in null; it must be traversed in order with no random access.",
+        "Graphs hold vertices and edges (directed/undirected/weighted), stored as an adjacency matrix (dense) or list (sparse).",
+        "Trees are connected and acyclic with a root, parents, children and leaves; a binary tree has at most two children per node."
+      ]
+    },
+    {
+      "heading": "BSTs, traversals and hash tables",
+      "points": [
+        "In a BST, insert by going left if smaller and right if larger; in-order traversal returns the values in ascending order.",
+        "Pre-order (root, L, R) is used for copying/prefix; post-order (L, R, root) is used for deletion/postfix.",
+        "A hash table indexes keys via a hash function (e.g. key MOD size); collisions are resolved by linear probing or chaining, and a higher load factor slows it down."
+      ]
+    }
+  ],
+  "worked_example": {
+    "title": "Tracing a stack and a queue",
+    "steps": [
+      "Stack (top listed first), starting empty: push(5) -> [5]; push(9) -> [9, 5]; push(2) -> [2, 9, 5].",
+      "pop() returns 2 -> [9, 5]; push(7) -> [7, 9, 5]; pop() returns 7 -> [9, 5].",
+      "Stack result: values popped were 2 then 7; final stack top to bottom is 9, 5.",
+      "Queue (front listed first), starting empty: enqueue(A) -> [A]; enqueue(B) -> [A, B]; dequeue() returns A -> [B].",
+      "enqueue(C) -> [B, C]; enqueue(D) -> [B, C, D]; dequeue() returns B -> [C, D].",
+      "Queue result: values dequeued were A then B; final queue front to rear is C, D.",
+      "Key point: the stack reverses order (LIFO) while the queue preserves arrival order (FIFO)."
+    ]
+  },
+  "task": "Insert 50, 30, 70, 20, 40, 60 in that order into an empty binary search tree and draw the result, then write the in-order traversal and confirm it is in ascending order.",
+  "challenge": "Compare an array and a linked list for implementing a list that grows unpredictably: explain the access-time, memory and insertion/deletion trade-offs, and state which you would choose and why.",
+  "exit_ticket": [
+    { "q": "State the ends used for enqueue and dequeue in a queue.", "a": "Enqueue at the rear, dequeue at the front." },
+    { "q": "Give one difference between a static and a dynamic data structure.", "a": "A static structure has a fixed size set at declaration, while a dynamic structure grows and shrinks at run time (allocated from the heap)." },
+    { "q": "Why is a stack the right structure for a browser Back button?", "a": "It is LIFO, so the most recently visited page is popped first, returning pages in the correct reverse order." }
+  ]
+}

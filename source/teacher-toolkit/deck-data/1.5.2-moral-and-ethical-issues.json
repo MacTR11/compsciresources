@@ -1,0 +1,83 @@
+{
+  "subtopic": "1.5.2 Moral and Ethical Issues",
+  "spec": "OCR H446 — Component 01",
+  "objectives": [
+    "Describe the key moral, ethical, cultural and social issues raised by computing, identifying both a benefit and a drawback for each.",
+    "Identify the stakeholders affected by a computing decision and explain how the same fact can benefit one group while harming another.",
+    "Structure a balanced levels-of-response 'discuss' answer that weighs both sides and reaches a justified conclusion."
+  ],
+  "retrieval": [
+    { "q": "Which issue is raised when a factory replaces assembly-line workers with robots?", "a": "Automation and its impact on the workforce." },
+    { "q": "Why can an AI loan-approval system produce biased outcomes?", "a": "It learns patterns from training data; if that data reflects historical or societal bias, the model reproduces or amplifies it, and a 'black box' makes this hard to detect." },
+    { "q": "What is the digital divide?", "a": "The gap between people who have access to technology and the skills to use it, and those who do not." },
+    { "q": "Interleaving 1.5.1: which Act would apply if a government body intercepted communications without proper authorisation?", "a": "The Regulation of Investigatory Powers Act 2000 (RIPA)." },
+    { "q": "Interleaving 1.5.1: a firm stores customers' personal data insecurely — which law have they breached?", "a": "The Data Protection Act 2018 / GDPR (the security / integrity & confidentiality principle)." }
+  ],
+  "keywords": [
+    { "term": "Automation", "def": "Using machines or software to carry out tasks previously done by humans." },
+    { "term": "Algorithmic bias", "def": "Unfair outcomes produced when an AI reproduces or amplifies bias present in its training data." },
+    { "term": "Stakeholder", "def": "Any group or individual affected by a decision — e.g. employees, customers, businesses, society or the environment." },
+    { "term": "Digital divide", "def": "The inequality between those with access to technology and digital skills and those without." },
+    { "term": "Offshoring", "def": "Moving work or services abroad, usually to reduce labour costs." },
+    { "term": "Vendor lock-in", "def": "Dependence on one supplier's product, making it costly or difficult to switch — often linked to monopolies." },
+    { "term": "Surveillance", "def": "Large-scale monitoring or data collection by firms or governments, raising privacy concerns." },
+    { "term": "E-waste", "def": "Discarded electronic equipment, an environmental drawback of computing due to toxins and disposal volume." }
+  ],
+  "content": [
+    {
+      "heading": "Automation, decision making and jobs",
+      "points": [
+        "Automation lets machines do human tasks: boosting productivity and cutting cost, but displacing low-skilled workers and causing deskilling.",
+        "Automated decision making (loans, CV sifting, self-driving cars) is fast, consistent and tireless, but lacks empathy, is hard to appeal and raises liability questions (the trolley problem).",
+        "Offshoring and layoffs cut costs and use global talent, but cause local job losses and raise quality, time-zone and data-security concerns.",
+        "Stakeholders pull in different directions: businesses gain efficiency while employees and local communities bear the cost."
+      ]
+    },
+    {
+      "heading": "AI ethics and bias",
+      "points": [
+        "AI learns from data and can act autonomously, giving powerful pattern-finding, efficiency and aids such as medical diagnosis.",
+        "It can reproduce or amplify bias in its training data, producing unfair outcomes for certain groups.",
+        "Many models are a 'black box', making decisions hard to explain and accountability unclear.",
+        "Mitigations include representative data, transparency and human oversight of important decisions."
+      ]
+    },
+    {
+      "heading": "Environmental impact",
+      "points": [
+        "Computing can reduce travel through remote working, support smart grids and enable paperless offices.",
+        "But it generates e-waste and toxins, and data centres and cryptocurrency mining consume huge amounts of energy.",
+        "Manufacturing relies on rare-earth mining with its own environmental and social costs.",
+        "The same technology is therefore both part of the problem and part of the solution."
+      ]
+    },
+    {
+      "heading": "Censorship, monopolies and the digital divide",
+      "points": [
+        "Censorship can protect children and block illegal or extremist content, but restricts free speech and can be abused by states to silence dissent.",
+        "Monopolies bring standards, polish and support, but stifle competition and create high prices and vendor lock-in (open-source counters this).",
+        "The digital divide excludes the poor, rural, elderly and disabled, widening inequality.",
+        "Privacy and surveillance offer personalised services and crime prevention, but risk profiling, breaches and a chilling effect (links to DPA and RIPA)."
+      ]
+    }
+  ],
+  "worked_example": {
+    "title": "Model approach to a 12-mark levels-of-response 'discuss' question",
+    "steps": [
+      "Plan: identify the issue and list 3-4+ stakeholders (e.g. business/shareholders, employees, customers including the elderly/vulnerable, wider society) before writing.",
+      "FOR: make a benefit point, develop it (point -> consequence -> stakeholder), e.g. automation lowers wage costs and speeds throughput, benefiting the business and giving customers cheaper, faster service.",
+      "AGAINST: give the counter-point and develop it, e.g. checkout staff face job losses and deskilling, causing regional unemployment and harming employees and the local community.",
+      "FOR again: add a second benefit with a new stakeholder, e.g. some new technician roles are created and 24/7 service helps time-poor shoppers.",
+      "AGAINST again: add a second drawback, e.g. loss of human contact disadvantages elderly/vulnerable shoppers, and 'just walk out' tracking raises privacy and surveillance concerns.",
+      "Use accurate terminology throughout (digital divide, surveillance, deskilling) and keep the reasoning balanced and sustained to reach Level 3.",
+      "Conclusion: take a clear, justified position, ideally conditional — e.g. 'automation is justified provided staff are retrained or redeployed and some staffed tills remain for those who need assistance.'"
+    ]
+  },
+  "task": "Pick one issue (automation, AI bias, environmental impact, censorship or surveillance) and build a two-column FOR/AGAINST table with at least three developed points per side, naming the stakeholder affected by each point.",
+  "challenge": "Write a full justified conclusion (4-5 sentences) for the supermarket self-checkout 'discuss' question that takes a clear, conditional position and explicitly weighs the interests of at least three named stakeholders against one another.",
+  "exit_ticket": [
+    { "q": "Give one benefit and one drawback of automated decision making.", "a": "Benefit: fast, consistent and handles huge data without fatigue. Drawback: lacks empathy/judgement, hard to appeal, and liability is unclear." },
+    { "q": "What three things must a Level 3 'discuss' answer contain?", "a": "Both benefits and drawbacks, multiple named stakeholders with developed/sustained reasoning, and a justified conclusion that takes a position." },
+    { "q": "State one benefit and one drawback of mass surveillance.", "a": "Benefit: helps prevent or detect crime and terrorism. Drawback: loss of privacy, profiling or a chilling effect on free expression." }
+  ]
+}

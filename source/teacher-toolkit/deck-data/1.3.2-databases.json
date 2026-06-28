@@ -1,0 +1,51 @@
+{
+  "subtopic": "1.3.2 Databases",
+  "spec": "OCR H446 — Component 01",
+  "objectives": [
+    "Compare flat file and relational databases and identify primary, foreign, composite and secondary keys.",
+    "Apply normalisation to 1NF, 2NF and 3NF and explain the dependency removed at each stage.",
+    "Write SQL queries and explain transactions, ACID properties and record locking."
+  ],
+  "retrieval": [
+    {"q": "What is a foreign key?", "a": "The primary key of another table, used to link the two tables together."},
+    {"q": "How is a many-to-many (M:N) relationship resolved in a relational database?", "a": "By adding a linking/junction table, which has a composite key."},
+    {"q": "What does referential integrity guarantee?", "a": "Every foreign key references a valid existing primary key (or is null), so there are no orphaned records."},
+    {"q": "Interleaving (1.3.1): How could a website protect the passwords stored in its user database?", "a": "By hashing each password and storing only the hash, since hashing is one-way and a stolen database does not reveal the plaintext."},
+    {"q": "Interleaving (1.2.4): Name the data type best suited to a primary key like StudentID and why.", "a": "An integer, because it is compact, sorts/indexes efficiently and uniquely identifies each record."}
+  ],
+  "keywords": [
+    {"term": "Entity", "def": "A thing data is stored about, represented as a table."},
+    {"term": "Primary key", "def": "An attribute, or set of attributes, that uniquely identifies each record in a table."},
+    {"term": "Foreign key", "def": "The primary key of another table, used to create a link between tables."},
+    {"term": "Composite key", "def": "A primary key made up of two or more attributes combined."},
+    {"term": "Normalisation", "def": "Organising data into tables to reduce redundancy and remove anomalies."},
+    {"term": "Referential integrity", "def": "The rule that every foreign key must reference a valid existing primary key, or be null."},
+    {"term": "Transaction", "def": "A single logical operation in which all steps either succeed together or all fail."},
+    {"term": "Record locking", "def": "Locking a record during a transaction so others cannot edit it, preventing the lost update problem."}
+  ],
+  "content": [
+    {"heading": "Flat file vs relational databases", "points": ["A flat file uses a single table with high redundancy and is prone to anomalies and inconsistency.", "A relational database uses multiple linked tables, reducing redundancy and keeping data consistent.", "Relational databases scale well and support complex queries across linked tables.", "Terminology: entity = table, attribute/field = column, record/row/tuple = one instance."]},
+    {"heading": "Keys and relationships", "points": ["Primary key uniquely identifies a record; foreign key is the primary key of another table used to link tables.", "Composite key combines two or more attributes; secondary key is a non-primary attribute used to search/index quickly.", "ER relationships are 1:1, 1:M or M:N; a many-to-many is resolved with a linking/junction table holding a composite key.", "Always name which table a foreign key links to when answering."]},
+    {"heading": "Normalisation to 3NF", "points": ["1NF: no repeating groups, all values atomic, and the table has a primary key.", "2NF: in 1NF and no partial dependencies — every non-key attribute depends on the whole key.", "3NF: in 2NF and no transitive dependencies — no non-key attribute depends on another non-key attribute.", "Mantra: 'the key, the whole key, and nothing but the key'; name the dependency removed at each stage and why."]},
+    {"heading": "SQL keywords", "points": ["SELECT chooses columns; FROM names the table(s); WHERE filters rows (AND/OR, LIKE 'A%').", "JOIN ... ON combines columns from related tables on a matching key.", "ORDER BY sorts results (ASC/DESC); standard order is SELECT ... FROM ... WHERE ... ORDER BY.", "INSERT INTO ... VALUES adds records, UPDATE ... SET changes them, DELETE FROM removes them, CREATE TABLE defines one."]},
+    {"heading": "Transactions, ACID and locking", "points": ["A transaction is one logical operation where all steps succeed or all fail (roll back).", "ACID: Atomicity (all-or-nothing), Consistency (valid state to valid state), Isolation (no interference), Durability (committed changes are permanent).", "Record locking stops concurrent edits and prevents the lost update problem, but risks deadlock.", "'Redundancy' has two meanings: data redundancy is bad (removed by normalisation); hardware/backup redundancy (RAID, failover) is good for reliability."]}
+  ],
+  "worked_example": {
+    "title": "Joining two tables with SQL",
+    "steps": [
+      "Tables: Member(MemberID, Name, Email) and Loan(LoanID, MemberID, BookTitle, DueDate).",
+      "Identify the foreign key: MemberID in Loan links to the primary key MemberID in Member.",
+      "Goal: list each member's Name with the BookTitle of every book they have on loan.",
+      "Choose the columns: SELECT Member.Name, Loan.BookTitle.",
+      "Name the first table and join the second on the matching key: FROM Member JOIN Loan ON Member.MemberID = Loan.MemberID;",
+      "Referential integrity means a Loan cannot store a MemberID that does not exist in Member, so no loan is orphaned."
+    ]
+  },
+  "task": "For Student(StudentID, Surname, Form, TutorName), write an SQL query that returns the StudentID and Surname of every student in form '12A', sorted by Surname in ascending order.",
+  "challenge": "A table Order(OrderID, CustomerID, CustomerName, CustomerEmail, ProductID, ProductName) is only in 1NF. Identify one partial and one transitive dependency, then describe the set of tables you would create to reach 3NF and name the keys involved.",
+  "exit_ticket": [
+    {"q": "What must be removed to take a table from 2NF to 3NF?", "a": "Transitive dependencies, where a non-key attribute depends on another non-key attribute; move that attribute into a separate table so every non-key attribute depends only on the primary key."},
+    {"q": "State one benefit and one risk of record locking.", "a": "Benefit: prevents the lost update problem and keeps data consistent. Risk: can cause deadlock, or block and slow other users."},
+    {"q": "What does the Isolation property of a transaction mean?", "a": "Concurrent transactions execute as if isolated, so uncommitted intermediate states are not visible to other transactions, preventing interference and inconsistent reads."}
+  ]
+}

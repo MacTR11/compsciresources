@@ -1,0 +1,50 @@
+{
+  "subtopic": "2.1.3 Thinking Procedurally",
+  "spec": "OCR H446 — Component 02",
+  "objectives": [
+    "Decompose a problem into named sub-procedures, each performing one task.",
+    "Determine the fixed order of steps by identifying data dependencies between them.",
+    "Apply procedural thinking to sequence an unseen scenario and justify why the order is fixed."
+  ],
+  "retrieval": [
+    {"q": "What is decomposition?", "a": "Breaking one large problem into smaller sub-problems that can each be solved separately."},
+    {"q": "What is a sub-procedure?", "a": "A self-contained, named block of code performing one task that can be called from several places."},
+    {"q": "Why must some steps run in a fixed order?", "a": "Because a later step uses the output of an earlier step — a data dependency."},
+    {"q": "Give two advantages of dividing a program into sub-procedures.", "a": "Easier to write/test/debug in isolation, reusable, shareable among a team, easier to maintain."},
+    {"q": "Interleaving (2.1.1): how does decomposition differ from abstraction?", "a": "Decomposition breaks a problem into sub-problems; abstraction removes irrelevant detail."}
+  ],
+  "keywords": [
+    {"term": "Thinking procedurally", "def": "Breaking a problem into an ordered sequence of steps and sub-procedures."},
+    {"term": "Decomposition", "def": "Breaking one large problem into smaller, more manageable sub-problems."},
+    {"term": "Sub-procedure", "def": "A self-contained, named, callable block of code that performs one task."},
+    {"term": "Sequence", "def": "The order in which steps execute, fixed where dependencies exist."},
+    {"term": "Data dependency", "def": "When a step needs the output of an earlier step, forcing a fixed order."},
+    {"term": "Reuse", "def": "Calling one sub-procedure from many places instead of duplicating its code."},
+    {"term": "Maintainability", "def": "How easily code can be fixed or changed; improved by single-place sub-procedures."}
+  ],
+  "content": [
+    {"heading": "Decomposition", "points": ["Split a big problem into smaller sub-problems, e.g. a shopping site into accounts, catalogue, basket, checkout.", "Each sub-problem can be assigned to a different developer.", "Smaller pieces are easier to understand, test and debug."]},
+    {"heading": "Sub-procedures", "points": ["A self-contained, named block of code performing one task, e.g. calculateVAT.", "Can be called from several places rather than copied.", "Defined once, so a fix or change applies everywhere it is used."]},
+    {"heading": "Ordering and dependencies", "points": ["Some steps must run in a fixed order because one depends on another's output.", "Payroll: deduct tax must follow calculate gross pay, which it consumes.", "Independent steps can be reordered; dependent ones cannot."]},
+    {"heading": "Why it helps teams and maintenance", "points": ["Reuse: call the same routine in many places instead of duplicating code.", "Consistency: one definition avoids inconsistent copies.", "Maintenance: fix once and all callers benefit."]},
+    {"heading": "Exam technique", "points": ["Name the scenario's actual sub-procedures, not generic ones.", "State the fixed order and identify at least one dependency.", "Explain the dependency in terms of one step using another's output."]}
+  ],
+  "worked_example": {
+    "title": "Sequencing a school 'end-of-term reports' program",
+    "steps": [
+      "Decompose into named sub-procedures: readPupilData, calculateGrades, generateComments, assembleReport, printReport.",
+      "Order: readPupilData first, then calculateGrades, then generateComments, then assembleReport, then printReport.",
+      "Dependency 1: calculateGrades needs the marks produced by readPupilData, so reading must come first.",
+      "Dependency 2: assembleReport needs the grades produced by calculateGrades, so it must come after.",
+      "Note flexibility: generateComments and some formatting could be reordered, but the grade-dependent steps cannot.",
+      "Conclusion: the order is fixed wherever a step consumes an earlier step's output."
+    ]
+  },
+  "task": "A developer is building a vending-machine program. Decompose it into at least three named sub-procedures, put them in a sensible order, and explain one pair of steps whose order is fixed because one depends on the other's output.",
+  "challenge": "An ATM 'withdraw cash' task could in theory verify the PIN and read the requested amount at the same time. Identify which steps MUST stay sequential and which could be independent, justifying each with its data dependency (or lack of one).",
+  "exit_ticket": [
+    {"q": "Why must 'check balance is sufficient' come before 'dispense the cash' in an ATM?", "a": "Dispensing depends on the output of the balance check; you cannot safely dispense until funds are confirmed."},
+    {"q": "A quiz game calls one shuffleQuestions sub-procedure each round. Why is that better than copying the code?", "a": "It is defined once and reused, so any fix is made in one place and all rounds behave consistently."},
+    {"q": "State two advantages of sub-procedures over one long block of code.", "a": "Easier to test/debug in isolation and reusable from many places; also easier to share among a team and to maintain."}
+  ]
+}

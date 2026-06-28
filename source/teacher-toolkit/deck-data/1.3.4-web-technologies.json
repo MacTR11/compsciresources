@@ -1,0 +1,50 @@
+{
+  "subtopic": "1.3.4 Web Technologies",
+  "spec": "OCR H446 — Component 01",
+  "objectives": [
+    "Explain the roles of HTML, CSS and JavaScript and how CSS selectors target tags, classes and ids.",
+    "Describe how search engines index pages and how the PageRank algorithm ranks them.",
+    "Compare client-side and server-side processing and justify where each should be used."
+  ],
+  "retrieval": [
+    {"q": "What is the role of HTML, CSS and JavaScript in a web page?", "a": "HTML defines structure and content, CSS defines presentation/style, and JavaScript provides interactivity/behaviour."},
+    {"q": "In PageRank, what does a link from one page to another represent?", "a": "A 'vote' for the linked page's importance; votes from high-ranking pages are worth more."},
+    {"q": "Why must security-critical validation also run server-side?", "a": "Client-side checks can be viewed and bypassed by the user, so they are not secure on their own."},
+    {"q": "Interleaving (1.3.3): When a JavaScript form submits to a web server, which application-layer protocols typically carry the request?", "a": "HTTP, or HTTPS when the connection is encrypted."},
+    {"q": "Interleaving (1.3.1): Why is the client-side source of a web page not a safe place to store a secret key?", "a": "Client-side code can be viewed in the browser, so any embedded key could be read; secrets must stay server-side, and sensitive data should be hashed or encrypted."}
+  ],
+  "keywords": [
+    {"term": "HTML", "def": "HyperText Markup Language: defines the structure and content of a web page."},
+    {"term": "CSS", "def": "Cascading Style Sheets: defines presentation and style such as colour, font and layout."},
+    {"term": "JavaScript", "def": "A language providing client-side interactivity and behaviour such as events, validation and dynamic updates."},
+    {"term": "CSS selector", "def": "Targets elements to style: a bare name selects by tag, '.' selects by class, '#' selects by id."},
+    {"term": "Web crawler", "def": "A spider that follows links and reads pages so the search engine can build its index."},
+    {"term": "Index", "def": "A mapping of keywords to the pages they appear on, allowing fast retrieval and ranking by relevance."},
+    {"term": "PageRank", "def": "An algorithm that ranks pages by importance based on the number and rank of incoming links."},
+    {"term": "Damping factor", "def": "A value (~0.85) modelling the probability a random surfer keeps following links, ensuring PageRank converges."}
+  ],
+  "content": [
+    {"heading": "HTML, CSS and JavaScript", "points": ["HTML defines the structure and content: headings, paragraphs, links and images.", "CSS defines presentation and style: colour, font and layout.", "CSS selectors target elements: a bare name by tag, '.class' by class and '#id' by id.", "JavaScript provides interactivity and behaviour, usually client-side: events, validation and dynamic updates."]},
+    {"heading": "Search engine indexing", "points": ["A web crawler/spider follows links and reads/visits pages across the web.", "The engine builds an index mapping keywords to the pages they appear on for fast retrieval.", "Results are then ranked by relevance to the search query.", "Indexing makes searching fast because pages are pre-processed rather than searched live."]},
+    {"heading": "PageRank algorithm", "points": ["PageRank ranks pages by importance derived from incoming links; each link is a 'vote'.", "Links from high-ranking pages are worth more, and a page divides its rank across its outgoing links.", "The damping factor (~0.85) models a random surfer who keeps following links rather than jumping randomly, preventing unrealistic or looping ranks.", "It is calculated iteratively, recalculating ranks using the latest values until they converge (stop changing significantly)."]},
+    {"heading": "Client-side vs server-side processing", "points": ["Client-side runs in the user's browser: fast and immediate, reduces server load, but is insecure as it can be viewed and bypassed.", "Server-side runs on the web server: secure and hidden, but slower (a round trip) and increases server load.", "Client-side example: JavaScript form validation for instant feedback; server-side example: database queries, login or payment checks.", "Security-critical checks must run server-side even if a client-side check also exists, because the client cannot be trusted."]}
+  ],
+  "worked_example": {
+    "title": "Deciding client-side vs server-side for a checkout form",
+    "steps": [
+      "A checkout form checks the email address format and then verifies payment details.",
+      "The email format check is simple and not security-critical, so do it client-side for instant feedback.",
+      "Client-side validation also reduces server load because no round trip is needed for a simple check.",
+      "Payment verification is security-critical, so it must be server-side because client-side code can be viewed and bypassed.",
+      "The bank's records and logic must stay hidden on the server, so verification cannot be trusted to the browser.",
+      "Conclusion: server-side is more secure but slower and adds load — an acceptable trade-off for sensitive payment data."
+    ]
+  },
+  "task": "For each task, state whether it is best done client-side or server-side and give a one-line reason: (a) highlighting a menu item on hover, (b) checking a username and password against a database, (c) showing an instant 'passwords do not match' message, (d) calculating an order total that affects what the customer is charged.",
+  "challenge": "Explain why a PageRank calculation needs both a damping factor and iteration. Describe what would go wrong with ranking if either were removed, using the ideas of a random surfer and convergence.",
+  "exit_ticket": [
+    {"q": "What does it mean that PageRank is calculated iteratively, and when does it stop?", "a": "Each page's rank is recalculated repeatedly using the latest rank values of the pages linking to it, and it stops when the values stop changing significantly (converge)."},
+    {"q": "Give one advantage and one disadvantage of client-side over server-side processing.", "a": "Advantage: faster/immediate response and reduced server load. Disadvantage: insecure as it can be viewed/bypassed, and it depends on the user's browser/device."},
+    {"q": "What does a '#' CSS selector target, and what do '.' and a bare name target?", "a": "'#' targets an element by its id; '.' targets by class; a bare name targets by tag."}
+  ]
+}

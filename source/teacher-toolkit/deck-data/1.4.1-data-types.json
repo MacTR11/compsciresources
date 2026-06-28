@@ -1,0 +1,87 @@
+{
+  "subtopic": "1.4.1 Data Types",
+  "spec": "OCR H446 — Component 01",
+  "objectives": [
+    "Convert confidently between denary, binary and hexadecimal, and represent signed integers using two's complement.",
+    "Apply binary addition, subtraction and logical/arithmetic shifts, identifying overflow and the arithmetic effect of each shift.",
+    "Explain floating-point representation (mantissa and exponent), normalisation, and how character sets such as ASCII and Unicode encode characters."
+  ],
+  "retrieval": [
+    { "q": "How many bits are represented by one hexadecimal digit?", "a": "4 bits (one nibble); two hex digits make one byte." },
+    { "q": "In an 8-bit two's complement number, what is the place value of the most significant bit?", "a": "-128 (the MSB carries a negative weight)." },
+    { "q": "Name a primitive data type that holds True or False.", "a": "Boolean." },
+    { "q": "Interleaving (1.2): What does a compiler do, and how does it differ from an interpreter?", "a": "A compiler translates the whole source program into object/machine code in one go before execution; an interpreter translates and executes line by line." },
+    { "q": "Interleaving (1.4.3): What is the output of a two-input XOR gate when both inputs are 1?", "a": "0 (XOR outputs 1 only when the inputs differ)." }
+  ],
+  "keywords": [
+    { "term": "Two's complement", "def": "Signed-integer representation in which the most significant bit has a negative place value; negate a number by inverting all bits and adding 1." },
+    { "term": "Hexadecimal", "def": "Base-16 number system (0-9, A-F) used as a compact, lossless shorthand for binary; one hex digit equals four bits." },
+    { "term": "Overflow", "def": "An error where the result of a calculation is too large to fit in the available number of bits." },
+    { "term": "Mantissa", "def": "The significant-figures part of a floating-point number; determines its precision." },
+    { "term": "Exponent", "def": "The power-of-two part of a floating-point number; determines its range." },
+    { "term": "Normalisation", "def": "Adjusting a float so the mantissa begins with the first significant bit (0.1... for positive, 1.0... for negative) to maximise precision." },
+    { "term": "Arithmetic shift", "def": "A right shift that copies the sign bit in from the left, dividing a signed number by powers of two." },
+    { "term": "Character set", "def": "A mapping of characters to unique binary codes, such as ASCII (7-bit, 128 characters) or Unicode (multi-byte, all languages plus emoji)." }
+  ],
+  "content": [
+    {
+      "heading": "Number bases and conversion",
+      "points": [
+        "Denary to binary: subtract the largest place value that fits and repeat, or divide by 2 reading remainders bottom-up.",
+        "Binary to hex: split into nibbles from the right (pad the left with 0s) and convert each nibble.",
+        "Hex is used because it is a compact, error-free shorthand for binary in addresses, colours and machine code; it does not save memory."
+      ]
+    },
+    {
+      "heading": "Signed integers and two's complement",
+      "points": [
+        "8-bit two's complement range is -128 to +127; an MSB of 1 means the number is negative.",
+        "To negate, invert all bits then add 1 (e.g. +5 = 00000101 -> invert 11111010 -> +1 = 11111011 = -5).",
+        "Subtraction A - B is done as A + (-B), adding the two's complement of B and discarding the final carry out of the MSB."
+      ]
+    },
+    {
+      "heading": "Binary shifts and overflow",
+      "points": [
+        "Logical left shift by n multiplies an unsigned number by 2^n; logical right shift divides by 2^n.",
+        "Arithmetic right shift copies the sign bit in from the left, dividing a signed number by 2^n.",
+        "Bits shifted off the end are lost, and a left shift can cause overflow if a 1 is pushed beyond the available bits."
+      ]
+    },
+    {
+      "heading": "Floating-point representation",
+      "points": [
+        "Value = mantissa x 2^exponent; the mantissa sets precision and the exponent sets range, both stored in two's complement.",
+        "Moving the point right decreases the exponent; moving it left increases it, with the value unchanged.",
+        "Fixed total bits force a trade-off: more mantissa bits give more precision but less range; more exponent bits give more range but less precision."
+      ]
+    },
+    {
+      "heading": "Character sets",
+      "points": [
+        "ASCII uses 7 bits for 128 characters ('A'=65, 'a'=97, '0'=48); extended ASCII uses 8 bits for 256.",
+        "Unicode uses more bits (UTF-8 is 1-4 bytes) to represent over a million code points covering all languages and emoji.",
+        "The first 128 Unicode code points match ASCII, so ASCII is a subset and Unicode is backward-compatible."
+      ]
+    }
+  ],
+  "worked_example": {
+    "title": "8-bit two's complement subtraction: 45 - 28",
+    "steps": [
+      "Rewrite as addition: 45 - 28 = 45 + (-28).",
+      "Write +45 in 8-bit binary: 32+8+4+1 = 45 -> 00101101.",
+      "Write +28 in 8-bit binary: 16+8+4 = 28 -> 00011100.",
+      "Find -28 (two's complement): invert 00011100 -> 11100011, then add 1 -> 11100100.",
+      "Add 00101101 + 11100100 = 1 00010001 (a carry is produced out of the MSB).",
+      "Discard the final carry out of the MSB, leaving 00010001.",
+      "Convert back: 00010001 = 16 + 1 = 17, which correctly equals 45 - 28."
+    ]
+  },
+  "task": "Convert 217 to 8-bit unsigned binary, then convert your answer to hexadecimal. Next convert the binary 10110110 to hex, and the hex B7 to denary, showing your method for each.",
+  "challenge": "Normalise the 8-bit signed float with mantissa 0.0110100 and exponent 0011 (4-bit two's complement): give the normalised mantissa and new exponent, then prove the value is unchanged by evaluating both forms in denary.",
+  "exit_ticket": [
+    { "q": "What two steps negate a number in two's complement?", "a": "Invert all the bits, then add 1." },
+    { "q": "In subtraction by two's complement, what happens to the final carry out of the MSB?", "a": "It is discarded (dropped)." },
+    { "q": "With a fixed number of bits, what is the effect of giving more bits to the mantissa?", "a": "Greater precision (more significant figures) but a smaller range, because fewer bits remain for the exponent." }
+  ]
+}

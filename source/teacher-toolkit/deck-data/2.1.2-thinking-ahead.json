@@ -1,0 +1,51 @@
+{
+  "subtopic": "2.1.2 Thinking Ahead",
+  "spec": "OCR H446 — Component 02",
+  "objectives": [
+    "Identify the inputs and outputs of a routine, distinguishing them from internal processes.",
+    "Explain preconditions, caching and reusable components, including the benefits and trade-offs of caching.",
+    "Apply thinking ahead to plan an unseen routine before coding it."
+  ],
+  "retrieval": [
+    {"q": "What is a precondition?", "a": "A condition that must be true before a routine can run correctly, e.g. a list sorted before binary search."},
+    {"q": "Give the main benefit and main trade-off of caching.", "a": "Benefit: faster reuse with less recompute/traffic. Trade-off: extra storage and data can become stale."},
+    {"q": "Name two benefits of a reusable component.", "a": "Faster development and fewer bugs because it is pre-tested; also consistency and easier maintenance."},
+    {"q": "Why is 'validate the data' an input/output trap?", "a": "It is a process that transforms data, not data flowing in or a result flowing out."},
+    {"q": "Interleaving (2.1.1): how does abstraction differ from thinking ahead?", "a": "Abstraction removes irrelevant detail to simplify a model; thinking ahead plans inputs, outputs, preconditions and reuse before coding."}
+  ],
+  "keywords": [
+    {"term": "Input", "def": "Data passed into a routine, e.g. quantity and delivery address for an order."},
+    {"term": "Output", "def": "A result produced by a routine, e.g. dispensed cash and an updated balance."},
+    {"term": "Process", "def": "A step that transforms data inside a routine; not an input or output."},
+    {"term": "Precondition", "def": "A condition that must be true before a routine runs correctly."},
+    {"term": "Caching", "def": "Storing an expensive or frequently used result in fast storage for quick reuse."},
+    {"term": "Stale data", "def": "Cached data that is out of date because the source has changed since it was stored."},
+    {"term": "Cache invalidation", "def": "Refreshing or discarding cached data so stale values are not served."},
+    {"term": "Reusable component", "def": "A self-contained, generalised, pre-tested module that can be dropped into many programs."}
+  ],
+  "content": [
+    {"heading": "Inputs and outputs", "points": ["Inputs are data in; outputs are results out.", "Internal processes (e.g. validating, applying a discount) are neither.", "Listing real inputs/outputs first shapes the rest of the design."]},
+    {"heading": "Preconditions", "points": ["A condition that must hold before a routine runs correctly.", "Example: a list must be sorted before binary search will work.", "If unchecked, the routine may give wrong results or fail."]},
+    {"heading": "Caching", "points": ["Store expensive/frequent results in fast storage for reuse.", "Benefit: faster responses and less recomputation or network traffic.", "Trade-off: extra storage and data can go stale, so it needs invalidation."]},
+    {"heading": "Reusable components", "points": ["Self-contained, generalised modules used across many programs.", "Benefits: faster development, fewer bugs (pre-tested), consistency.", "Also easier maintenance — fix once and every user benefits."]},
+    {"heading": "Exam technique", "points": ["Name actual inputs/outputs, the precondition, what to cache and what to reuse.", "When asked to discuss caching, give both a benefit and a trade-off.", "Apply to the scenario — generic definitions score poorly."]}
+  ],
+  "worked_example": {
+    "title": "Planning a 'display personalised news feed' routine before coding",
+    "steps": [
+      "Inputs: the user ID, their follow/friend list and post timestamps.",
+      "Output: an ordered list of posts rendered to the feed.",
+      "Precondition: the user must be logged in and their profile loaded before a personalised feed can be built.",
+      "Caching: cache recently fetched posts so reopening the app is fast and server requests drop.",
+      "Trade-off of that cache: it can go stale, so it must be refreshed/invalidated periodically.",
+      "Reusable component: reuse an existing date/time-formatting or image-loading module instead of rewriting it, saving time and bugs."
+    ]
+  },
+  "task": "A flight-booking website is being planned. For its 'calculate total price' routine, identify two inputs and one output, state one precondition, and decide one value worth caching — giving one benefit and one trade-off of caching it in this scenario.",
+  "challenge": "A company is building three apps that all need date validation. Justify writing it as one reusable component rather than three copies, then explain one situation where a shared component could be a disadvantage.",
+  "exit_ticket": [
+    {"q": "In an online shop's 'place order' routine, classify: the customer's address, the confirmation email, validating the card number.", "a": "Address = input; confirmation email = output; validating the card number = process (neither)."},
+    {"q": "Why must a login routine run before the account page is shown, and what could go wrong if it didn't?", "a": "Authentication is a precondition; without it an unauthenticated user could see private data or the page could error on missing data."},
+    {"q": "State one benefit and one trade-off of caching currency rates on a booking site.", "a": "Benefit: rates load fast from local storage, reducing traffic. Trade-off: rates can go stale and quote out-of-date prices unless invalidated."}
+  ]
+}
