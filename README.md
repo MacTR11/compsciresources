@@ -6,6 +6,21 @@ A full, spec-mapped revision system for **OCR A Level Computer Science, specific
 
 ---
 
+## 📥 Download & use (editable Word, Excel & PDF)
+
+**Everything is available as a real, downloadable, editable file** — you don't need to read the Markdown.
+
+| Format | Where | Use it for |
+|--------|-------|-----------|
+| 📝 **Word (.docx)** | [`Word-Documents/`](Word-Documents/) | Every guide, organiser, worksheet, quiz, mini/mock paper, A\* pack, workbook & NEA guide — **open & edit in Word or Google Docs** (86 documents) |
+| 📊 **Excel (.xlsx)** | [`Spreadsheets/`](Spreadsheets/) | **Flashcards** (8 tabs), an **interactive RAG tracker** (dropdowns + auto-colour + live counts) and the **scheme-of-work** plan |
+| ✂️ **Print-and-cut cards (PDF)** | [`revision-tools/printable-pdfs/revision-games-cards/`](revision-tools/printable-pdfs/revision-games-cards/) | The revision games as **actual cards to print and cut out** (loop cards, Taboo, bingo, Top Trumps, card sorts) |
+| 🖨️ **Printable PDFs** | [`revision-tools/printable-pdfs/`](revision-tools/printable-pdfs/) | Print-ready quizzes, worksheets, organisers, mini/mock papers |
+
+> The `.md` files under `component-*/` and `revision-tools/` are just the **source** used to generate the files above — you can ignore them. To regenerate after editing a source file: `build-docx.py` (Word), `build-spreadsheets.py` (Excel), `build-pdfs.py` / `build-card-games.py` (PDF), all in `revision-tools/`.
+
+---
+
 ## 🚀 Start here
 
 1. **New to the repo?** Read [how the qualification is assessed](#-how-the-qualification-is-assessed) below.
@@ -13,7 +28,7 @@ A full, spec-mapped revision system for **OCR A Level Computer Science, specific
 3. **Plan** your weeks with the [study plan](revision-tools/guides/study-plan-and-how-to-use.md).
 4. Then follow the [recommended route to A\*](#-recommended-route-to-a) — learn → condense → recall → practise → exam.
 
-**Just want to revise right now?** Print a [subtopic quiz](revision-tools/subtopic-quizzes/README.md) or any other [printable PDF](revision-tools/printable-pdfs/README.md).
+**Just want to revise right now?** Grab a [Word document](Word-Documents/), open the [interactive tracker/flashcards](Spreadsheets/), or print a [card game](revision-tools/printable-pdfs/revision-games-cards/) / [PDF](revision-tools/printable-pdfs/).
 
 ---
 
