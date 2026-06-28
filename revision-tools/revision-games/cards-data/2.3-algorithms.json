@@ -1,0 +1,52 @@
+{
+  "topic": "2.3 Algorithms",
+  "loop_cards": [
+    {"have": "Merge sort", "who_has": "the worst-case time complexity of binary search?"},
+    {"have": "O(log n)", "who_has": "the data structure that is LIFO?"},
+    {"have": "Stack", "who_has": "the traversal that outputs a BST in ascending order?"},
+    {"have": "In-order traversal", "who_has": "the average-case complexity of quick sort?"},
+    {"have": "O(n log n)", "who_has": "the search that requires the list to be sorted?"},
+    {"have": "Binary search", "who_has": "the worst-case complexity of quick sort?"},
+    {"have": "O(n^2)", "who_has": "the data structure that is FIFO?"},
+    {"have": "Queue", "who_has": "the path-finding algorithm that uses a heuristic?"},
+    {"have": "A* search", "who_has": "the complexity of pushing onto a stack?"},
+    {"have": "O(1)", "who_has": "the sort that picks a pivot and partitions the list?"},
+    {"have": "Quick sort", "who_has": "the best-case complexity of insertion sort?"},
+    {"have": "O(n)", "who_has": "the traversal order Left to Right to Node?"},
+    {"have": "Post-order traversal", "who_has": "the sort that repeatedly swaps adjacent elements?"},
+    {"have": "Bubble sort", "who_has": "the algorithm that finds the shortest path to all nodes with no heuristic?"},
+    {"have": "Dijkstra's algorithm", "who_has": "the sort that recursively splits then merges sublists?"}
+  ],
+  "taboo": [
+    {"term": "Binary search", "banned": ["sorted", "half", "middle", "log"]},
+    {"term": "Merge sort", "banned": ["divide", "split", "merge", "recursive"]},
+    {"term": "Big O notation", "banned": ["complexity", "time", "growth", "worst"]},
+    {"term": "Dijkstra's algorithm", "banned": ["shortest", "path", "weighted", "graph"]},
+    {"term": "Bubble sort", "banned": ["swap", "adjacent", "pass", "compare"]},
+    {"term": "Stack", "banned": ["LIFO", "push", "pop", "last"]},
+    {"term": "In-order traversal", "banned": ["left", "node", "right", "ascending"]},
+    {"term": "Heuristic", "banned": ["estimate", "guess", "h(n)", "distance"]}
+  ],
+  "top_trumps": [
+    {"name": "Bubble sort", "best": "O(n)", "average": "O(n^2)", "worst": "O(n^2)", "space": "O(1)", "needs_sorted": "No"},
+    {"name": "Insertion sort", "best": "O(n)", "average": "O(n^2)", "worst": "O(n^2)", "space": "O(1)", "needs_sorted": "No"},
+    {"name": "Merge sort", "best": "O(n log n)", "average": "O(n log n)", "worst": "O(n log n)", "space": "O(n)", "needs_sorted": "No"},
+    {"name": "Quick sort", "best": "O(n log n)", "average": "O(n log n)", "worst": "O(n^2)", "space": "O(log n)", "needs_sorted": "No"},
+    {"name": "Linear search", "best": "O(1)", "average": "O(n)", "worst": "O(n)", "space": "O(1)", "needs_sorted": "No"},
+    {"name": "Binary search", "best": "O(1)", "average": "O(log n)", "worst": "O(log n)", "space": "O(1)", "needs_sorted": "Yes"}
+  ],
+  "quickfire": [
+    {"clue": "The time complexity of binary search (average/worst).", "answer": "O(log n)"},
+    {"clue": "The time complexity of a single loop over n items.", "answer": "O(n)"},
+    {"clue": "The worst-case time complexity of quick sort.", "answer": "O(n^2)"},
+    {"clue": "The guaranteed time complexity of merge sort in all cases.", "answer": "O(n log n)"},
+    {"clue": "The time complexity of pushing onto a stack.", "answer": "O(1)"},
+    {"clue": "The search algorithm that needs the data sorted first.", "answer": "Binary search"},
+    {"clue": "The sort that picks a pivot and partitions the list.", "answer": "Quick sort"},
+    {"clue": "The traversal: Left to Node to Right.", "answer": "In-order"},
+    {"clue": "The path-finding algorithm that adds a heuristic h(n) to g(n).", "answer": "A* search"},
+    {"clue": "The data structure that is FIFO.", "answer": "Queue"},
+    {"clue": "The sort that bubbles the largest value to the end each pass.", "answer": "Bubble sort"},
+    {"clue": "The space complexity of merge sort.", "answer": "O(n)"}
+  ]
+}

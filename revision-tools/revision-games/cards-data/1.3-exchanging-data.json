@@ -1,0 +1,70 @@
+{
+  "topic": "1.3 Exchanging Data",
+  "loop_cards": [
+    {"have": "RLE", "who_has": "The lossless method that stores repeated patterns once and references them"},
+    {"have": "Dictionary compression", "who_has": "Compression where data is permanently removed and cannot be recovered"},
+    {"have": "Lossy compression", "who_has": "The one-way function that produces a fixed-length digest"},
+    {"have": "Hashing", "who_has": "The encryption type that uses the same key to encrypt and decrypt"},
+    {"have": "Symmetric encryption", "who_has": "The encryption type that uses a public and private key pair"},
+    {"have": "Asymmetric encryption", "who_has": "The attribute(s) that uniquely identify each record in a table"},
+    {"have": "Primary key", "who_has": "The primary key of another table used to link tables together"},
+    {"have": "Foreign key", "who_has": "The process of organising data to reduce redundancy and anomalies"},
+    {"have": "Normalisation", "who_has": "The rule requiring no partial dependencies on the whole key"},
+    {"have": "2NF", "who_has": "The properties guaranteeing reliable transactions: Atomicity, Consistency, Isolation, Durability"},
+    {"have": "ACID", "who_has": "The network where data is split into packets routed independently and reassembled"},
+    {"have": "Packet switching", "who_has": "The system that translates domain names into IP addresses"},
+    {"have": "DNS", "who_has": "The device that connects different networks together using IP addresses"},
+    {"have": "Router", "who_has": "The device that connects devices within a single LAN using MAC addresses"},
+    {"have": "Switch", "who_has": "The algorithm that ranks web pages by importance based on incoming links"},
+    {"have": "PageRank", "who_has": "The lossless method that replaces runs of repeated values with a value and a count"}
+  ],
+  "taboo": [
+    {"term": "Hashing", "banned": ["one-way", "password", "digest", "reversible"]},
+    {"term": "RLE", "banned": ["run", "repeated", "count", "lossless"]},
+    {"term": "Foreign key", "banned": ["primary", "link", "table", "reference"]},
+    {"term": "Normalisation", "banned": ["redundancy", "anomaly", "table", "1NF"]},
+    {"term": "Packet switching", "banned": ["split", "route", "reassemble", "internet"]},
+    {"term": "DNS", "banned": ["domain", "IP", "address", "translate"]},
+    {"term": "Symmetric encryption", "banned": ["same", "key", "decrypt", "distribution"]},
+    {"term": "PageRank", "banned": ["link", "importance", "vote", "ranking"]}
+  ],
+  "bingo": {
+    "terms": ["Lossless", "Lossy", "RLE", "Dictionary compression", "Symmetric", "Asymmetric", "Hashing", "Primary key", "Foreign key", "Composite key", "Normalisation", "ACID", "Record locking", "LAN", "WAN", "Packet switching", "DNS", "Router", "Switch", "PageRank"],
+    "callers": [
+      {"clue": "Compression where the original can be recovered exactly.", "answer": "Lossless"},
+      {"clue": "Compression that permanently removes data, used for JPEG and MP3.", "answer": "Lossy"},
+      {"clue": "Replaces runs of repeated values with a value and a count.", "answer": "RLE"},
+      {"clue": "Stores repeated patterns once and references them; the index must be sent too.", "answer": "Dictionary compression"},
+      {"clue": "Encryption using the same key to encrypt and decrypt.", "answer": "Symmetric"},
+      {"clue": "Encryption using a public and private key pair.", "answer": "Asymmetric"},
+      {"clue": "One-way function producing a fixed-length value; used to store passwords.", "answer": "Hashing"},
+      {"clue": "Attribute(s) that uniquely identify each record.", "answer": "Primary key"},
+      {"clue": "The primary key of another table, used to link tables.", "answer": "Foreign key"},
+      {"clue": "A primary key made from two or more attributes combined.", "answer": "Composite key"},
+      {"clue": "Organising data to reduce redundancy and remove anomalies.", "answer": "Normalisation"},
+      {"clue": "The four properties of a reliable transaction.", "answer": "ACID"},
+      {"clue": "Locking a record during a transaction to prevent the lost update problem.", "answer": "Record locking"},
+      {"clue": "A network covering a small area on a single site, hardware owned by one organisation.", "answer": "LAN"},
+      {"clue": "A network covering a large geographic area, using third-party infrastructure.", "answer": "WAN"},
+      {"clue": "Data split into independently routed units, reassembled at the destination.", "answer": "Packet switching"},
+      {"clue": "Translates domain names into IP addresses.", "answer": "DNS"},
+      {"clue": "Connects different networks together using IP addresses.", "answer": "Router"},
+      {"clue": "Connects devices within a LAN using MAC addresses.", "answer": "Switch"},
+      {"clue": "Ranks web pages by importance using incoming links.", "answer": "PageRank"}
+    ]
+  },
+  "quickfire": [
+    {"clue": "The lossless compression best suited to images with long runs of identical pixels.", "answer": "RLE (Run Length Encoding)"},
+    {"clue": "The encryption weakness that asymmetric encryption solves by sharing a key openly.", "answer": "Key distribution problem"},
+    {"clue": "The property of a hash function meaning the same input always gives the same output.", "answer": "Deterministic"},
+    {"clue": "The normal form that removes transitive dependencies.", "answer": "3NF (Third Normal Form)"},
+    {"clue": "The table used to resolve a many-to-many relationship.", "answer": "Linking / junction table"},
+    {"clue": "The ACID property meaning a transaction is all-or-nothing.", "answer": "Atomicity"},
+    {"clue": "The rule that a foreign key must reference a valid existing primary key.", "answer": "Referential integrity"},
+    {"clue": "The SQL keyword that filters which rows are returned.", "answer": "WHERE"},
+    {"clue": "The SQL clause that combines columns from related tables on a matching key.", "answer": "JOIN (... ON)"},
+    {"clue": "The TCP/IP layer that adds source and destination IP addresses.", "answer": "Network / Internet layer"},
+    {"clue": "The protocol used only for sending email.", "answer": "SMTP"},
+    {"clue": "JavaScript form validation runs in this location, which is why it is not secure on its own.", "answer": "Client-side (the browser)"}
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "topic": "2.1 Elements of Computational Thinking",
+  "loop_cards": [
+    {"have": "Abstraction", "who_has": "the skill of breaking a problem into an ordered sequence of smaller sub-problems?"},
+    {"have": "Decomposition", "who_has": "planning before coding: identifying inputs, outputs, preconditions and reusable parts?"},
+    {"have": "Thinking ahead", "who_has": "a condition that must be true before a routine can run correctly?"},
+    {"have": "Precondition", "who_has": "storing expensive or frequently used results in fast storage for reuse?"},
+    {"have": "Caching", "who_has": "cached data that is now out of date because the source has changed?"},
+    {"have": "Stale data", "who_has": "a self-contained, generalised module that can be used in many programs?"},
+    {"have": "Reusable component", "who_has": "the skill of identifying where the flow of control branches on a condition?"},
+    {"have": "Thinking logically", "who_has": "a place in a program where execution branches, e.g. an IF or CASE?"},
+    {"have": "Decision point", "who_has": "the order in which statements execute, shaped by those branches?"},
+    {"have": "Flow of control", "who_has": "the skill of spotting parts that can run at the same time?"},
+    {"have": "Thinking concurrently", "who_has": "a fault where the result depends on the unpredictable timing of shared tasks?"},
+    {"have": "Race condition", "who_has": "when tasks each wait for a resource the other holds, so none proceed?"},
+    {"have": "Deadlock", "who_has": "multiple tasks running literally simultaneously on multiple cores?"},
+    {"have": "Parallel processing", "who_has": "abstraction that removes detail from one specific thing to model that problem?"},
+    {"have": "Representational abstraction", "who_has": "abstraction that groups many things by shared characteristics into a general model?"},
+    {"have": "Generalisation (categorisation)", "who_has": "removing or hiding unnecessary detail so only relevant information remains?"}
+  ],
+  "taboo": [
+    {"term": "ABSTRACTION", "banned": ["detail", "remove", "hide", "simplify"]},
+    {"term": "DECOMPOSITION", "banned": ["break", "smaller", "sub-problem", "parts"]},
+    {"term": "PRECONDITION", "banned": ["before", "true", "must", "runs"]},
+    {"term": "CACHING", "banned": ["store", "fast", "reuse", "results"]},
+    {"term": "CONCURRENCY", "banned": ["same time", "parallel", "together", "simultaneous"]},
+    {"term": "RACE CONDITION", "banned": ["timing", "shared", "order", "unpredictable"]},
+    {"term": "REUSABLE COMPONENT", "banned": ["module", "again", "self-contained", "library"]},
+    {"term": "DECISION POINT", "banned": ["IF", "branch", "condition", "flow"]}
+  ],
+  "apply_cards": [
+    {"scenario": "online chess game", "skill": "thinking logically", "example": "Give one decision point with an exact Boolean and both branches. IF move is legal -> TRUE: update the board and switch player; FALSE: reject the move and ask again."},
+    {"scenario": "weather app", "skill": "caching", "example": "Explain one use of caching plus a trade-off. Cache the latest forecast so repeated opens load instantly and cut API calls; trade-off: it can go stale if the forecast updates, so refresh on a timer."},
+    {"scenario": "ride-booking app (e.g. taxis)", "skill": "thinking concurrently", "example": "Name two tasks that can run at once and one trade-off. Track the car's GPS while the UI updates the map; trade-off: harder to debug and risk of inconsistent state needing synchronisation."},
+    {"scenario": "self-checkout till", "skill": "thinking ahead (inputs/outputs)", "example": "State two inputs and one output. Inputs - scanned barcode, payment; Output - receipt / payment accepted message."},
+    {"scenario": "a road satnav", "skill": "thinking abstractly", "example": "Name one detail kept and one removed, with reason. Keep road connections and distances; remove the colour of the buildings - irrelevant to finding the shortest route."},
+    {"scenario": "school timetable generator", "skill": "thinking procedurally", "example": "Name three ordered sub-procedures. 1) Read teacher/room availability; 2) Assign classes to free slots; 3) Output the finished timetable."},
+    {"scenario": "ATM / cash machine", "skill": "thinking ahead (precondition)", "example": "State a precondition that must hold before dispensing cash. The account balance must be at least the requested amount (and the PIN already verified)."},
+    {"scenario": "photo-editing software", "skill": "reusable components", "example": "Give one reusable component and a benefit. A blur filter module reused by many tools - faster development and fewer bugs as it is already tested."},
+    {"scenario": "multiplayer quiz app", "skill": "thinking concurrently (trade-off)", "example": "Identify a risk of letting players answer simultaneously. A race condition when two answers update the shared scoreboard at once - needs locking/synchronisation; not automatically faster."},
+    {"scenario": "e-commerce checkout", "skill": "thinking logically", "example": "Give one decision point with an exact Boolean and both branches. IF stockLevel >= quantityOrdered -> TRUE: confirm the order and reduce stock; FALSE: show out of stock."}
+  ],
+  "quickfire": [
+    {"clue": "I removed the room's carpet colour from my model because it doesn't affect bookings.", "answer": "Thinking abstractly"},
+    {"clue": "I worked out the inputs, outputs and what must be true first, before writing any code.", "answer": "Thinking ahead"},
+    {"clue": "I split 'make a booking' into check, store and confirm steps in a fixed order.", "answer": "Thinking procedurally"},
+    {"clue": "I wrote IF seatsRequested <= seatsAvailable and planned both branches.", "answer": "Thinking logically"},
+    {"clue": "I spotted that logging and rendering the screen have no data dependency, so they can overlap.", "answer": "Thinking concurrently"},
+    {"clue": "The list must be sorted before this binary search will work.", "answer": "Precondition"},
+    {"clue": "I stored the frequently requested results in fast memory to avoid recomputing them.", "answer": "Caching"},
+    {"clue": "My cached price list is wrong because the database changed but the cache didn't.", "answer": "Stale data"},
+    {"clue": "Two students booked the same slot at the same instant and the result depended on timing.", "answer": "Race condition"},
+    {"clue": "I grouped savings and current accounts into one general Account model.", "answer": "Generalisation / categorisation (abstraction)"},
+    {"clue": "Each task is waiting for a resource the other is holding, so nothing moves.", "answer": "Deadlock"},
+    {"clue": "I made one tested, self-contained module and used it across three programs.", "answer": "Reusable component"}
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "topic": "1.1 Processors, Input, Output & Storage",
+  "loop_cards": [
+    {"have": "Register", "who_has": "the small, fast memory on or near the CPU that holds frequently used data to cut slow RAM fetches"},
+    {"have": "Cache", "who_has": "the technique of overlapping the fetch, decode and execute of consecutive instructions to raise throughput"},
+    {"have": "Pipelining", "who_has": "an independent processing unit able to run its own fetch-decode-execute cycle"},
+    {"have": "Core", "who_has": "the many-core processor that performs the same operation on large data sets in parallel"},
+    {"have": "GPU", "who_has": "carrying out multiple computations simultaneously by splitting a task across cores"},
+    {"have": "Parallel processing", "who_has": "the architecture with one shared memory and bus for both data and instructions"},
+    {"have": "Von Neumann", "who_has": "the architecture with separate memories and buses for data and instructions, allowing simultaneous access"},
+    {"have": "Harvard", "who_has": "the processor type with many complex, variable-length instructions and complexity in hardware (e.g. x86)"},
+    {"have": "CISC", "who_has": "the processor type with few simple fixed-length instructions aiming for one per cycle, used in ARM mobile devices"},
+    {"have": "RISC", "who_has": "the CPU component that performs arithmetic, logic and shift operations"},
+    {"have": "ALU", "who_has": "the CPU component that decodes instructions, generates control signals and synchronises with the clock"},
+    {"have": "Control Unit", "who_has": "the register holding the address of the next instruction, incremented each cycle"},
+    {"have": "Program Counter (PC)", "who_has": "the register that stores the immediate result of an ALU calculation"},
+    {"have": "Accumulator (ACC)", "who_has": "the use of secondary storage as extra RAM when physical RAM is full"},
+    {"have": "Virtual memory", "who_has": "the property of memory that loses its contents when power is removed (e.g. RAM)"},
+    {"have": "Volatile", "who_has": "the small, very fast store inside the CPU that holds data during processing"}
+  ],
+  "taboo": [
+    {"term": "MAR (Memory Address Register)", "banned": ["address", "location", "memory", "read"]},
+    {"term": "Cache", "banned": ["fast", "CPU", "frequently", "RAM"]},
+    {"term": "Pipelining", "banned": ["overlap", "fetch", "execute", "instructions"]},
+    {"term": "Von Neumann", "banned": ["shared", "memory", "bus", "instructions"]},
+    {"term": "GPU", "banned": ["parallel", "cores", "graphics", "pixels"]},
+    {"term": "Virtual memory", "banned": ["RAM", "secondary", "disk", "pages"]},
+    {"term": "Volatile", "banned": ["power", "lost", "RAM", "contents"]},
+    {"term": "Optical storage", "banned": ["laser", "CD", "DVD", "pits"]}
+  ],
+  "bingo": {
+    "terms": ["ALU", "Control Unit", "Program Counter", "MAR", "MDR", "CIR", "Accumulator", "Cache", "Pipelining", "Core", "GPU", "Clock speed", "Von Neumann", "Harvard", "CISC", "RISC", "Magnetic storage", "Flash/SSD", "Optical storage", "Virtual memory"],
+    "callers": [
+      {"clue": "Performs arithmetic, logic and shift operations.", "answer": "ALU"},
+      {"clue": "Decodes instructions and generates control signals.", "answer": "Control Unit"},
+      {"clue": "Holds the address of the next instruction.", "answer": "Program Counter"},
+      {"clue": "Holds the address of the location to read from or write to.", "answer": "MAR"},
+      {"clue": "Holds the data or instruction just fetched from memory.", "answer": "MDR"},
+      {"clue": "Holds the current instruction while it is decoded and executed.", "answer": "CIR"},
+      {"clue": "Stores the immediate result of an ALU calculation.", "answer": "Accumulator"},
+      {"clue": "Small fast memory on/near the CPU holding frequently used data.", "answer": "Cache"},
+      {"clue": "Overlapping fetch, decode and execute to raise throughput.", "answer": "Pipelining"},
+      {"clue": "An independent unit that runs its own FDE cycle.", "answer": "Core"},
+      {"clue": "Many-core processor applying one operation across large data sets.", "answer": "GPU"},
+      {"clue": "Pulses per second that synchronise the CPU, measured in Hz.", "answer": "Clock speed"},
+      {"clue": "One shared memory and bus for data and instructions.", "answer": "Von Neumann"},
+      {"clue": "Separate memories and buses for data and instructions.", "answer": "Harvard"},
+      {"clue": "Many complex, variable-length instructions; complexity in hardware.", "answer": "CISC"},
+      {"clue": "Few simple fixed-length instructions; used in ARM devices.", "answer": "RISC"},
+      {"clue": "Stores data as magnetised patterns on a spinning platter.", "answer": "Magnetic storage"},
+      {"clue": "Non-volatile EEPROM storage with no moving parts.", "answer": "Flash/SSD"},
+      {"clue": "A laser reads pits and lands via reflected light.", "answer": "Optical storage"},
+      {"clue": "Uses secondary storage as extra RAM when RAM is full.", "answer": "Virtual memory"}
+    ]
+  },
+  "quickfire": [
+    {"clue": "The bus that is unidirectional, carrying addresses from CPU to memory.", "answer": "Address bus"},
+    {"clue": "The register pair you must never swap: address vs data.", "answer": "MAR and MDR"},
+    {"clue": "The step in fetch most often forgotten, along with copying MDR to CIR.", "answer": "Incrementing the PC"},
+    {"clue": "Non-volatile memory holding the bootstrap/BIOS firmware.", "answer": "ROM"},
+    {"clue": "Volatile memory holding currently running programs and data.", "answer": "RAM"},
+    {"clue": "The cache level that is fastest and smallest, on the core.", "answer": "L1 cache"},
+    {"clue": "Excessive paging between RAM and disk that grinds a system to a halt.", "answer": "Disk thrashing"},
+    {"clue": "The part of a task that must run sequentially, limiting the speed-up from adding cores.", "answer": "Serial (sequential) fraction"},
+    {"clue": "Storage access type of tape: you must read through in sequence.", "answer": "Serial (sequential) access"},
+    {"clue": "Technique flash memory uses to spread writes and prolong cell life.", "answer": "Wear levelling"},
+    {"clue": "Output device that builds objects layer by layer.", "answer": "3D printer"},
+    {"clue": "The general rule for 'choose a device' questions: link each characteristic to the requirement.", "answer": "Scenario / requirement (and compare)"}
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "topic": "1.2 Software & Software Development",
+  "loop_cards": [
+    {"have": "Operating system", "who_has": "the OS job of allocating RAM to processes, using techniques like paging and segmentation?"},
+    {"have": "Memory management", "who_has": "dividing memory into fixed-size blocks called pages and frames?"},
+    {"have": "Paging", "who_has": "dividing memory into variable-size, logical blocks?"},
+    {"have": "Segmentation", "who_has": "using secondary storage as if it were RAM to run more or larger programs?"},
+    {"have": "Virtual memory", "who_has": "the slowdown caused by excessive swapping of pages between RAM and disk?"},
+    {"have": "Disk thrashing", "who_has": "a signal that a device or process needs the processor's attention?"},
+    {"have": "Interrupt", "who_has": "the data structure (LIFO) onto which registers are pushed so a job can resume after an interrupt?"},
+    {"have": "Stack", "who_has": "the scheduling algorithm giving each process a fixed time slice (quantum) in turn?"},
+    {"have": "Round robin", "who_has": "the firmware that runs first at start-up, performs the POST, and loads the OS?"},
+    {"have": "BIOS", "who_has": "the translator that turns high-level source into machine code all at once, producing an executable?"},
+    {"have": "Compiler", "who_has": "the first stage of compilation, which breaks code into tokens and builds the symbol table?"},
+    {"have": "Lexical analysis", "who_has": "the development methodology built around risk analysis at every iteration?"},
+    {"have": "Spiral", "who_has": "the OOP feature where a subclass acquires the attributes and methods of a superclass?"},
+    {"have": "Inheritance", "who_has": "the addressing mode where the operand is the actual value to be used?"},
+    {"have": "Immediate addressing", "who_has": "the software that manages hardware and provides a platform for applications?"}
+  ],
+  "taboo": [
+    {"term": "INTERPRETER", "banned": ["line", "execute", "run", "slow"]},
+    {"term": "COMPILER", "banned": ["executable", "machine code", "all", "once"]},
+    {"term": "VIRTUAL MEMORY", "banned": ["RAM", "secondary storage", "swap", "disk"]},
+    {"term": "INTERRUPT", "banned": ["signal", "processor", "attention", "ISR"]},
+    {"term": "PAGING", "banned": ["fixed", "blocks", "frames", "memory"]},
+    {"term": "ENCAPSULATION", "banned": ["data", "hiding", "private", "methods"]},
+    {"term": "POLYMORPHISM", "banned": ["method", "different", "object", "override"]},
+    {"term": "AGILE", "banned": ["iterative", "feedback", "change", "increments"]}
+  ],
+  "bingo": {
+    "terms": ["Operating system", "Paging", "Segmentation", "Virtual memory", "Disk thrashing", "Interrupt", "ISR", "Round robin", "Real-time OS", "BIOS", "Device driver", "Compiler", "Interpreter", "Assembler", "Linker", "Loader", "Waterfall", "Agile", "Encapsulation", "Polymorphism"],
+    "callers": [
+      {"clue": "Software that manages hardware and provides a platform for applications.", "answer": "Operating system"},
+      {"clue": "Dividing memory into fixed-size blocks (pages and frames).", "answer": "Paging"},
+      {"clue": "Dividing memory into variable-size, logical blocks.", "answer": "Segmentation"},
+      {"clue": "Using secondary storage as if it were RAM.", "answer": "Virtual memory"},
+      {"clue": "Excessive swapping between RAM and disk that slows the system.", "answer": "Disk thrashing"},
+      {"clue": "A signal that a device or process needs the processor's attention.", "answer": "Interrupt"},
+      {"clue": "The OS code run to deal with one particular interrupt.", "answer": "ISR"},
+      {"clue": "Scheduling that gives each process a fixed time slice in turn.", "answer": "Round robin"},
+      {"clue": "An OS that guarantees a response within a set time limit.", "answer": "Real-time OS"},
+      {"clue": "Firmware that runs first, performs the POST and loads the OS.", "answer": "BIOS"},
+      {"clue": "Software that lets the OS control a specific piece of hardware.", "answer": "Device driver"},
+      {"clue": "Translates high-level source into machine code all at once.", "answer": "Compiler"},
+      {"clue": "Translates and executes high-level source one line at a time.", "answer": "Interpreter"},
+      {"clue": "Translates assembly language into machine code (one-to-one).", "answer": "Assembler"},
+      {"clue": "Combines a compiled program with libraries/modules into one executable.", "answer": "Linker"},
+      {"clue": "OS software that copies an executable into RAM ready to run.", "answer": "Loader"}
+    ]
+  },
+  "quickfire": [
+    {"clue": "The data structure (LIFO) used to save registers during an interrupt.", "answer": "Stack"},
+    {"clue": "A page is needed but it is currently on disk, so the OS must swap it in.", "answer": "Page fault"},
+    {"clue": "Pre-written, pre-compiled, tested subroutines you can reuse in your program.", "answer": "Library"},
+    {"clue": "The second stage of compilation, where tokens are checked against the grammar.", "answer": "Syntax analysis / parsing"},
+    {"clue": "A scheduling property: a running process can be stopped and the CPU reallocated.", "answer": "Pre-emptive"},
+    {"clue": "Platform-independent code (e.g. Java bytecode) run by a virtual machine.", "answer": "Intermediate code"},
+    {"clue": "A template/blueprint that defines a class's attributes and methods.", "answer": "Class"},
+    {"clue": "A specific instance of a class.", "answer": "Object"},
+    {"clue": "The addressing mode where the operand is the address holding the value.", "answer": "Direct addressing"},
+    {"clue": "The addressing mode where the operand points to a location holding the address of the value.", "answer": "Indirect addressing"},
+    {"clue": "The XP practice of two programmers working at one machine.", "answer": "Pair programming"},
+    {"clue": "The methodology built around rapid prototyping refined by user feedback.", "answer": "RAD"}
+  ]
+}

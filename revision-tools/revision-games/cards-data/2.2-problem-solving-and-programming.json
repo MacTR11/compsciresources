@@ -1,0 +1,66 @@
+{
+  "topic": "2.2 Problem Solving & Programming",
+  "loop_cards": [
+    {"have": "Recursion", "who_has": "Who has the condition that stops a recursive subroutine?"},
+    {"have": "Base case", "who_has": "Who has the error caused when the stopping condition is missing or never reached?"},
+    {"have": "Stack overflow", "who_has": "Who has the structure onto which too many frames are pushed?"},
+    {"have": "Call stack", "who_has": "Who has the region of visibility where a variable can be accessed?"},
+    {"have": "Scope", "who_has": "Who has the variable visible only inside the subroutine that declares it?"},
+    {"have": "Local variable", "who_has": "Who has the variable visible throughout the whole program?"},
+    {"have": "Global variable", "who_has": "Who has a subroutine that performs a task and returns a single value?"},
+    {"have": "Function", "who_has": "Who has a subroutine that performs a task but returns no value?"},
+    {"have": "Procedure", "who_has": "Who has passing a copy of an argument so the original is unchanged?"},
+    {"have": "By value", "who_has": "Who has passing the memory address so the original can be changed?"},
+    {"have": "By reference", "who_has": "Who has the OOP principle of bundling data and methods while keeping attributes private?"},
+    {"have": "Encapsulation", "who_has": "Who has the OOP principle of a subclass acquiring a superclass's attributes and methods?"},
+    {"have": "Inheritance", "who_has": "Who has the OOP principle of the same method call behaving differently for different object types?"},
+    {"have": "Polymorphism", "who_has": "Who has building a solution step by step and returning to the last choice on a dead end?"},
+    {"have": "Backtracking", "who_has": "Who has a rule of thumb giving a good-enough but not optimal answer quickly?"},
+    {"have": "Heuristic", "who_has": "Who has a subroutine that calls itself, needing a base case and a recursive case?"}
+  ],
+  "taboo": [
+    {"term": "Recursion", "banned": ["itself", "base case", "calls", "stack"]},
+    {"term": "Encapsulation", "banned": ["private", "data", "methods", "hiding"]},
+    {"term": "Inheritance", "banned": ["subclass", "parent", "acquires", "superclass"]},
+    {"term": "By reference", "banned": ["address", "copy", "original", "memory"]},
+    {"term": "Heuristic", "banned": ["rule of thumb", "optimal", "good-enough", "quick"]},
+    {"term": "Local variable", "banned": ["subroutine", "scope", "global", "inside"]},
+    {"term": "Polymorphism", "banned": ["method", "override", "different", "object"]},
+    {"term": "Backtracking", "banned": ["dead end", "undo", "maze", "try"]}
+  ],
+  "bingo": {
+    "terms": ["Sequence", "Selection", "Count-controlled iteration", "Condition-controlled iteration", "Recursion", "Base case", "Call stack", "Stack overflow", "Scope", "Local variable", "Global variable", "Function", "Procedure", "By value", "By reference", "Class", "Object", "Encapsulation", "Inheritance", "Heuristic"],
+    "callers": [
+      {"clue": "Instructions executed one after another, in order.", "answer": "Sequence"},
+      {"clue": "Choosing between paths based on a condition (if / switch).", "answer": "Selection"},
+      {"clue": "A loop repeating a fixed, known number of times (for...next).", "answer": "Count-controlled iteration"},
+      {"clue": "A loop repeating until a condition changes (while / do...until).", "answer": "Condition-controlled iteration"},
+      {"clue": "A subroutine that calls itself, with a base case and a recursive case.", "answer": "Recursion"},
+      {"clue": "The condition that stops recursion, with no further recursive call.", "answer": "Base case"},
+      {"clue": "The structure of frames holding parameters, locals and return addresses for active calls.", "answer": "Call stack"},
+      {"clue": "The error from too many pushed frames, e.g. a missing base case.", "answer": "Stack overflow"},
+      {"clue": "The region of a program where a variable can be accessed.", "answer": "Scope"},
+      {"clue": "A variable accessible only within the subroutine that declares it.", "answer": "Local variable"},
+      {"clue": "A variable accessible throughout the whole program.", "answer": "Global variable"},
+      {"clue": "A subroutine that performs a task and returns a single value.", "answer": "Function"},
+      {"clue": "A subroutine that performs a task but returns no value.", "answer": "Procedure"},
+      {"clue": "Passing a copy of an argument, so the original is unaffected.", "answer": "By value"},
+      {"clue": "A template or blueprint defining the attributes and methods of its objects.", "answer": "Class"},
+      {"clue": "A specific instance of a class, created at run time.", "answer": "Object"}
+    ]
+  },
+  "quickfire": [
+    {"clue": "A while loop tests its condition here, so the body may run zero times.", "answer": "At the start (pre-conditioned)"},
+    {"clue": "A do...until loop guarantees the body runs at least this many times.", "answer": "Once (post-conditioned)"},
+    {"clue": "Each recursive call pushes one of these onto the call stack.", "answer": "A stack frame"},
+    {"clue": "The variable in a subroutine definition that receives an argument.", "answer": "Parameter"},
+    {"clue": "The actual value supplied at the point of the call.", "answer": "Argument"},
+    {"clue": "A local of the same name does this to a global inside its subroutine.", "answer": "Shadows it"},
+    {"clue": "OCR's keyword for the constructor method that runs on object creation.", "answer": "new"},
+    {"clue": "A subclass replacing an inherited method with the same name and parameters.", "answer": "Overriding"},
+    {"clue": "Same method name but different parameter lists.", "answer": "Overloading"},
+    {"clue": "Searching large data sets for hidden patterns, e.g. basket analysis.", "answer": "Data mining"},
+    {"clue": "Splitting a process into stages so different items are processed at once.", "answer": "Pipelining"},
+    {"clue": "Repeatedly splitting a problem into smaller instances, solving and combining.", "answer": "Divide and conquer"}
+  ]
+}

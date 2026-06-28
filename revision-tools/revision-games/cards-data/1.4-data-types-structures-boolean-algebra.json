@@ -1,0 +1,64 @@
+{
+  "topic": "1.4 Data Types, Data Structures & Boolean Algebra",
+  "loop_cards": [
+    {"have": "0xD6", "who_has": "the denary value of binary 1010?"},
+    {"have": "10", "who_has": "the result of 0 + 0 in binary?"},
+    {"have": "0", "who_has": "the number of bits in a nibble?"},
+    {"have": "4", "who_has": "the denary value of hex F?"},
+    {"have": "15", "who_has": "the denary value of binary 00100000?"},
+    {"have": "32", "who_has": "the hex value of binary 1111?"},
+    {"have": "F", "who_has": "the data structure that is LIFO?"},
+    {"have": "Stack", "who_has": "the data structure that is FIFO?"},
+    {"have": "Queue", "who_has": "the 8-bit two's complement of denary -1?"},
+    {"have": "11111111", "who_has": "the denary value of binary 00001000?"},
+    {"have": "8", "who_has": "the effect of a logical left shift by 1, as a multiplication?"},
+    {"have": "Multiply by 2", "who_has": "the law that states NOT(A AND B) = NOT A OR NOT B?"},
+    {"have": "De Morgan's", "who_has": "the floating-point part that sets the precision?"},
+    {"have": "Mantissa", "who_has": "the value of 0xD6 (214) minus 200, in denary?"},
+    {"have": "14", "who_has": "the hex value of denary 214?"}
+  ],
+  "taboo": [
+    {"term": "Two's complement", "banned": ["negative", "MSB", "invert", "add one"]},
+    {"term": "Normalisation", "banned": ["mantissa", "precision", "point", "leading"]},
+    {"term": "Stack", "banned": ["LIFO", "push", "pop", "top"]},
+    {"term": "De Morgan's", "banned": ["bar", "NOT", "swap", "AND/OR"]},
+    {"term": "Hash table", "banned": ["key", "function", "collision", "index"]},
+    {"term": "Linked list", "banned": ["node", "pointer", "next", "traverse"]},
+    {"term": "Logical shift", "banned": ["bits", "multiply", "divide", "zero"]},
+    {"term": "Binary search tree", "banned": ["left", "right", "subtree", "ordered"]}
+  ],
+  "bingo": {
+    "terms": ["binary 00001010", "binary 00010100", "binary 00011110", "binary 00101000", "binary 01100100", "binary 11111111", "binary 10000000", "binary 01000000", "binary 00010000", "binary 00000001", "hex 0F", "hex 1E", "hex 32", "hex 64", "hex FF", "hex 80", "hex 0A", "hex 2D", "hex C8", "hex 19"],
+    "callers": [
+      {"clue": "Ten", "answer": "binary 00001010"},
+      {"clue": "Twenty", "answer": "binary 00010100"},
+      {"clue": "Thirty", "answer": "binary 00011110"},
+      {"clue": "Forty", "answer": "binary 00101000"},
+      {"clue": "One hundred", "answer": "binary 01100100"},
+      {"clue": "The largest value in one byte (unsigned)", "answer": "binary 11111111"},
+      {"clue": "Two to the power 7", "answer": "binary 10000000"},
+      {"clue": "Two to the power 6", "answer": "binary 01000000"},
+      {"clue": "Two to the power 4", "answer": "binary 00010000"},
+      {"clue": "The smallest positive whole number", "answer": "binary 00000001"},
+      {"clue": "Hex F in denary", "answer": "hex 0F"},
+      {"clue": "Fifty", "answer": "hex 32"},
+      {"clue": "Forty-five", "answer": "hex 2D"},
+      {"clue": "Two hundred", "answer": "hex C8"},
+      {"clue": "Twenty-five", "answer": "hex 19"}
+    ]
+  },
+  "quickfire": [
+    {"clue": "The signed representation where the MSB has a negative place value.", "answer": "Two's complement"},
+    {"clue": "Convert binary 11001010 to denary.", "answer": "202"},
+    {"clue": "Convert denary 45 to hex.", "answer": "2D"},
+    {"clue": "The float part that determines the range of representable values.", "answer": "Exponent"},
+    {"clue": "A right shift that copies the sign bit in from the left.", "answer": "Arithmetic (right) shift"},
+    {"clue": "LIFO data structure with push, pop and peek.", "answer": "Stack"},
+    {"clue": "Convert hex BE to denary.", "answer": "190"},
+    {"clue": "An ordered, immutable sequence such as (x, y).", "answer": "Tuple"},
+    {"clue": "The half-adder output given by A AND B.", "answer": "Carry"},
+    {"clue": "Two keys mapping to the same index in a hash table.", "answer": "Collision"},
+    {"clue": "Convert binary 1111 to hex.", "answer": "F"},
+    {"clue": "An in-order traversal of a BST visits the nodes in this order.", "answer": "Ascending order"}
+  ]
+}
