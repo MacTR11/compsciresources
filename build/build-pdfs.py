@@ -80,7 +80,8 @@ strong { color: #1a202c; }
 
 
 # Folders whose resources are split into a worksheet + a separate answer sheet.
-QA_FOLDERS = {"subtopic-quizzes", "worksheets", "mini-papers", "mock-papers"}
+QA_FOLDERS = {"subtopic-quizzes", "worksheets", "mini-papers", "mock-papers",
+              "homework", "recap-checkpoints"}
 ANSWER_HEADING = re.compile(r"^\s*#{2,3}\s+(answer key|answers|mark scheme)", re.I)
 MARK_TAG = re.compile(r"\[(\d+)\]|\((\d+)\s*marks?\)")
 
@@ -195,6 +196,8 @@ DEFAULT_JOBS = [
     ("source/revision-tools/knowledge-organisers", "Printable-PDFs/knowledge-organisers"),
     ("source/revision-tools/mini-papers",         "Printable-PDFs/mini-papers"),
     ("source/revision-tools/mock-papers",         "Printable-PDFs/mock-papers"),
+    ("source/revision-tools/homework",            "Printable-PDFs/homework"),
+    ("source/revision-tools/recap-checkpoints",   "Printable-PDFs/recap-checkpoints"),
 ]
 
 

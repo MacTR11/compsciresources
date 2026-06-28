@@ -54,9 +54,11 @@ def shade(cell_or_para, fill):
 
 def convert(md_path, docx_path):
     with open(md_path, encoding='utf-8') as f:
-        lines = f.read().split('\n')
+        convert_text(f.read(), docx_path)
+
+
+def convert_text(text, docx_path):
     # force any collapsible answers open, drop the html tags
-    text = '\n'.join(lines)
     text = re.sub(r'</?details[^>]*>', '', text)
     text = text.replace('<summary>', '**').replace('</summary>', '**')
     lines = text.split('\n')
@@ -149,6 +151,20 @@ def convert(md_path, docx_path):
             add_runs(p, m.group(2)); i += 1
             continue
 
+        # answer-writing space sentinel (@@SPACE:n@@)
+        ms = re.match(r'^@@SPACE:(\d+)@@$', line.strip())
+        if ms:
+            for _ in range(int(ms.group(1))):
+                p = doc.add_paragraph()
+                p.paragraph_format.space_before = Pt(13)
+                pr = p._p.get_or_add_pPr()
+                pb = OxmlElement('w:pBdr'); bottom = OxmlElement('w:bottom')
+                bottom.set(qn('w:val'), 'single'); bottom.set(qn('w:sz'), '4')
+                bottom.set(qn('w:space'), '1'); bottom.set(qn('w:color'), 'AAB4C0')
+                pb.append(bottom); pr.append(pb)
+            i += 1
+            continue
+
         # blank
         if not line.strip():
             i += 1
@@ -163,14 +179,61 @@ def convert(md_path, docx_path):
     doc.save(docx_path)
 
 
+QA_FOLDERS = {'subtopic-quizzes', 'worksheets', 'mini-papers', 'mock-papers',
+              'homework', 'recap-checkpoints'}
+ANSWER_HEADING = re.compile(r'^\s*#{2,3}\s+(answer key|answers|mark scheme)', re.I)
+MARK_TAG = re.compile(r'\[(\d+)\]|\((\d+)\s*marks?\)')
+
+
+def split_qa(text):
+    lines = text.split('\n')
+    for idx, l in enumerate(lines):
+        if ANSWER_HEADING.match(l):
+            return '\n'.join(lines[:idx]).rstrip(), '\n'.join(lines[idx:]).strip()
+    return text, None
+
+
+def inject_space(text):
+    out = []
+    for line in text.split('\n'):
+        out.append(line)
+        if line.lstrip().startswith('#'):
+            continue
+        tags = MARK_TAG.findall(line)
+        if tags:
+            nums = [int(x) for pair in tags for x in pair if x]
+            marks = max(nums) if nums else 2
+            out.append(f'@@SPACE:{min(12, max(2, round(marks * 1.4)))}@@')
+    return '\n'.join(out)
+
+
+def _h1(text):
+    for l in text.split('\n'):
+        if l.startswith('# '):
+            return l[2:].strip()
+    return 'Worksheet'
+
+
 def build_folder(srcdir, outdir):
+    folder = os.path.basename(srcdir.rstrip('/'))
+    split = folder in QA_FOLDERS
     mds = sorted(f for f in glob.glob(os.path.join(srcdir, '*.md'))
                  if os.path.basename(f).lower() != 'readme.md')
     made = 0
     for md in mds:
-        out = os.path.join(outdir, os.path.splitext(os.path.basename(md))[0] + '.docx')
-        convert(md, out)
-        made += 1
+        base = os.path.splitext(os.path.basename(md))[0]
+        text = open(md, encoding='utf-8').read()
+        if split:
+            questions, answers = split_qa(text)
+            convert_text(inject_space(questions), os.path.join(outdir, base + '.docx'))
+            made += 1
+            if answers:
+                a_doc = f"# {_h1(text)} — ANSWER SHEET\n\n*Separate answer sheet / mark scheme.*\n\n" + answers
+                convert_text(a_doc, os.path.join(outdir, base + '-ANSWERS.docx'))
+                made += 1
+        else:
+            convert(md, os.path.join(outdir, base + '.docx'))
+            made += 1
     return made, [os.path.basename(m) for m in mds]
 
 
@@ -189,6 +252,8 @@ DEFAULT_JOBS = [
     ('source/revision-tools/programming-workbook',           'Word-Documents/Programming-Workbook'),
     ('source/revision-tools/practice-questions',             'Word-Documents/Practice-Questions'),
     ('source/revision-tools/scheme-of-work',                 'Word-Documents/Scheme-of-Work'),
+    ('source/revision-tools/homework',                       'Word-Documents/Homework'),
+    ('source/revision-tools/recap-checkpoints',              'Word-Documents/Recap-Checkpoints'),
 ]
 
 
