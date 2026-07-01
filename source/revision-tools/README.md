@@ -26,7 +26,7 @@ Everything here supports the [topic guides](../../README.md#-the-specification-c
 |------|-----------|
 | [Knowledge organisers](knowledge-organisers/README.md) | One-page summary per topic |
 | [Flashcards](flashcards/README.md) | 374 cards, Anki/Quizlet-ready CSV |
-| [Subtopic quizzes](subtopic-quizzes/README.md) | A printable quiz (with answer key) for **every** subtopic — also in [PDF](../../Printable-PDFs/README.md) |
+| [Subtopic quizzes](subtopic-quizzes/README.md) | A printable quiz (worksheet + answer sheet) for **every** subtopic (rendered into `Course/`) |
 
 ## ✍️ Practise
 | Tool | What it is |
@@ -55,7 +55,7 @@ Everything here supports the [topic guides](../../README.md#-the-specification-c
 ## 🖨️ Print & build
 | Item | What it is |
 |------|-----------|
-| [Printable PDFs](../../Printable-PDFs/README.md) | 36 ready-to-print PDFs (games, worksheets, organisers, mini-papers, mocks) |
+| Printable PDFs | Rendered into the organised `Course/` tree (worksheets, organisers, mini/mock papers, games) |
 | [`build-pdfs.py`](../../build/build-pdfs.py) | Regenerate the PDFs from the Markdown sources |
 
 ---
