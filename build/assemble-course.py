@@ -106,10 +106,18 @@ def build():
                 cp(os.path.join(PDF, "homework", f"{sstem}.pdf"), os.path.join(sd, "Homework.pdf"))
                 cp(os.path.join(PDF, "homework", f"{sstem}-ANSWERS.pdf"), os.path.join(sd, "Homework - ANSWERS.pdf"))
                 cp(os.path.join(WD, "Homework", f"{sstem}.docx"), os.path.join(sd, "Homework (editable).docx"))
+                cp(os.path.join(PDF, "subtopic-revision", f"{sstem}.pdf"), os.path.join(sd, "Revision Notes.pdf"))
+                cp(os.path.join(WD, "Subtopic-Revision", f"{sstem}.docx"), os.path.join(sd, "Revision Notes.docx"))
+
+    # Start Here (Course root)
+    cp(os.path.join(PDF, "course-guide", "00-Start-Here.pdf"), os.path.join(COURSE, "00 START HERE - How to Use These Resources.pdf"))
+    cp(os.path.join(WD, "Course-Guide", "00-Start-Here.docx"), os.path.join(COURSE, "00 START HERE - How to Use These Resources.docx"))
 
     # Component 3
     c3 = os.path.join(COURSE, "Component 3 - Programming Project")
     cp(os.path.join(WD, "03-04-Programming-Project", "Programming-Project-NEA-Guide.docx"), os.path.join(c3, "NEA Guide.docx"))
+    cp(os.path.join(PDF, "nea-pack", "NEA-Project-Template.pdf"), os.path.join(c3, "NEA Project Template (student).pdf"))
+    cp(os.path.join(WD, "NEA-Pack", "NEA-Project-Template.docx"), os.path.join(c3, "NEA Project Template (student, editable).docx"))
     for f in glob.glob(os.path.join(WD, "Programming-Workbook", "*.docx")):
         nice = os.path.splitext(os.path.basename(f))[0].replace("-", " ").title() + ".docx"
         cp(f, os.path.join(c3, nice))
@@ -127,6 +135,7 @@ def build():
     cp(os.path.join(XL, "Scheme-of-Work-Homework-and-Consolidation.xlsx"), os.path.join(tk, "Scheme of Work - Homework and Consolidation.xlsx"))
     cp(os.path.join(XL, "Self-Assessment-Tracker.xlsx"), os.path.join(tk, "Self-Assessment Tracker (RAG).xlsx"))
     cp(os.path.join(XL, "Flashcards.xlsx"), os.path.join(tk, "Flashcards (all topics).xlsx"))
+    cp(os.path.join(TT, "PLC", "Personal-Learning-Checklist.xlsx"), os.path.join(tk, "Personal Learning Checklist.xlsx"))
     for f in sorted(glob.glob(os.path.join(WD, "A-Star-Pack", "*.docx"))):
         cp(f, os.path.join(tk, "A-Star Pack", os.path.basename(f)))
 

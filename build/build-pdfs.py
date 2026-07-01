@@ -198,6 +198,9 @@ DEFAULT_JOBS = [
     ("source/revision-tools/mock-papers",         "Printable-PDFs/mock-papers"),
     ("source/revision-tools/homework",            "Printable-PDFs/homework"),
     ("source/revision-tools/recap-checkpoints",   "Printable-PDFs/recap-checkpoints"),
+    ("source/revision-tools/subtopic-revision",   "Printable-PDFs/subtopic-revision"),
+    ("source/revision-tools/nea-pack",            "Printable-PDFs/nea-pack"),
+    ("source/revision-tools/course-guide",        "Printable-PDFs/course-guide"),
 ]
 
 

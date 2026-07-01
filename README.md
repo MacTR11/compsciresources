@@ -19,13 +19,15 @@ Course/
           Topic Mini-Paper (+ANSWERS)
       1.1.1 Structure and Function of the Processor/   ← per subtopic:
           Lesson (PowerPoint).pptx
+          Revision Notes.pdf / .docx        ← one-page subtopic summary
           Worksheet.pdf  +  Worksheet - ANSWERS.pdf  +  Worksheet (editable).docx
           Homework.pdf   +  Homework - ANSWERS.pdf   +  Homework (editable).docx
       1.1.2 … / 1.1.3 … /
     1.2 … 1.5 …
   Component 2 - Algorithms and Programming/   (2.1–2.3)
-  Component 3 - Programming Project/          (NEA guide + programming workbooks)
+  Component 3 - Programming Project/          (NEA guide + student NEA template + workbooks)
   Recap Checkpoints/   ← cumulative recap papers (+ANSWERS) for SOW review points
+  00 START HERE …                             ← student guide to using it all
 ```
 **Every worksheet, quiz, homework and paper comes as a worksheet (with ruled answer space) *and* a separate answer sheet.** Editable Word versions sit alongside the print‑ready PDFs.
 
@@ -34,6 +36,7 @@ Course/
 - **Lesson Plan (medium‑term plan).docx** — week‑by‑week SOW → resources map
 - **Scheme of Work – Homework and Consolidation.xlsx** — weekly homework + spaced‑retrieval plan
 - **Self‑Assessment Tracker (RAG).xlsx** — dropdowns + auto‑colour + live counts
+- **Personal Learning Checklist.xlsx** — every "I can…" objective (72) with RAG + progress counts
 - **Flashcards (all topics).xlsx** · **A‑Star Pack/** (model answers, examiner insights, synoptic questions)
 
 ### `Reference/` — course‑wide guides (Word)

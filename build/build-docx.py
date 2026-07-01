@@ -254,6 +254,9 @@ DEFAULT_JOBS = [
     ('source/revision-tools/scheme-of-work',                 'Word-Documents/Scheme-of-Work'),
     ('source/revision-tools/homework',                       'Word-Documents/Homework'),
     ('source/revision-tools/recap-checkpoints',              'Word-Documents/Recap-Checkpoints'),
+    ('source/revision-tools/subtopic-revision',              'Word-Documents/Subtopic-Revision'),
+    ('source/revision-tools/nea-pack',                       'Word-Documents/NEA-Pack'),
+    ('source/revision-tools/course-guide',                   'Word-Documents/Course-Guide'),
 ]
 
 
@@ -276,6 +279,8 @@ def main():
              "Word-Documents/03-04-Programming-Project/Programming-Project-NEA-Guide.docx"),
             ("source/revision-tools/practice-questions/README.md",
              "Word-Documents/Practice-Questions/Practice-Questions-Guide.docx"),
+            ("source/teacher-toolkit/medium-term-plan.md",
+             "Teacher-Toolkit/Planning/medium-term-plan.docx"),
         ]:
             sp, op = os.path.join(REPO, s), os.path.join(REPO, o)
             if os.path.isfile(sp):
