@@ -1,0 +1,4 @@
+Week 19 (01 Feb) - Review week - implementing data structures
+
+HW: implement a linked list, stack and queue in Python (Workbook 2).
+Consolidation: Quiz 1.4.2; Mini-Paper 1.3 timed.

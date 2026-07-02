@@ -1,0 +1,4 @@
+Week 23 (08 Mar) - 1.4.3 Karnaugh maps (SOW Recap 1.2 slot)
+
+HW: finish Homework 1.4.3; K-map and De Morgan drills from Worksheet 1.4.
+Consolidation: Mini-Paper 1.2 + Organiser 1.2 cover-recall.

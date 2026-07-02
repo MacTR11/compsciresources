@@ -1,0 +1,4 @@
+Week 06 (05 Oct) - Review week - 1.2.1 BIOS, drivers, VMs
+
+HW: Homework 2.1.2; act on CAP1/KA2 feedback.
+Consolidation: file-check prep; Quiz 1.2.1; mixed Flashcards 1.1 + 1.2.

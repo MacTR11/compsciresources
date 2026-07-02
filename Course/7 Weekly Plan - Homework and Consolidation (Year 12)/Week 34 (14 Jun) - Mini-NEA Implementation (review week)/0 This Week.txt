@@ -1,0 +1,4 @@
+Week 34 (14 Jun) - Mini-NEA Implementation (review week)
+
+HW: continue section 3; add validation and robustness.
+Consolidation: file-check prep - all code evidence annotated.

@@ -1,0 +1,4 @@
+Week 18 (25 Jan) - 1.4.2 Arrays to stacks and queues (CAP3-KA6)
+
+HW: Homework 1.4.2; prep CAP3/KA6 with the 1.4 Organiser.
+Consolidation: Quiz 2.2.1; Workbook 2 stack and queue classes.

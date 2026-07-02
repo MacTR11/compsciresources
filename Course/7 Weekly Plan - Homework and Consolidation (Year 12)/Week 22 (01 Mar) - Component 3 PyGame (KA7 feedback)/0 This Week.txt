@@ -1,0 +1,4 @@
+Week 22 (01 Mar) - Component 3 PyGame (KA7 feedback)
+
+HW: PyGame tasks; act on KA7 feedback.
+Consolidation: full Quiz 1.4.3; Flashcards 1.4.
