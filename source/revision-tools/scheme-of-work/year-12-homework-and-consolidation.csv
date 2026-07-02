@@ -1,42 +1,42 @@
 Wk,Week beginning,Topic,Homework,Consolidation (round-out + retrieval of prior topics)
-1,31/08/26,Induction & Diagnostic,Complete the diagnostic task (knowledge + research/programming); set up VS Code + Python + Google Classroom.,Read subject booklet; build notes & folder structure (VESPA Systems); skim course overview.
-2,07/09/26,1.1.1 Processor structure & function,"Quiz 1.1.1 (closed-book, self-mark) + register/FDE sections of Worksheet 1.1. Programming: Workbook 1 sequence/selection/iteration.",Make & learn Flashcards 1.1; cover-and-recall KO 1.1; redo missed diagnostic questions.
-3,14/09/26,1.1.2 Types of processor (KA1),Revise for KA1 with KO 1.1 + Flashcards 1.1; then Quiz 1.1.2.,Interleave: re-do Quiz 1.1.1 Section A closed-book. Programming: Workbook 1 strings/lists.
-4,21/09/26,1.1.3 Input/output & storage; 2.1.1 Thinking abstractly,Quiz 1.1.3 + Quiz 2.1.1; act on KA1 feedback (redo 2 weakest).,Retrieval of 1.1.1-1.1.2 via shuffled Flashcards 1.1. Programming: Workbook 1 operators.
-5,28/09/26,1.2.1 Systems software; 2.1.2 Thinking ahead (CAP1/KA2),Quiz 1.2.1 (A-B); start Quiz 2.1.2; prepare for CAP1/KA2.,"Spaced retrieval of 1.1: Mini-paper 1.1 Section A, timed. Programming: Workbook 1 selection."
-6,05/10/26,"Review wk1; 1.2.1 (BIOS, drivers, VMs)",Finish Quiz 1.2.1; act on CAP1/KA2 feedback (error log).,File-check prep (Systems). Mixed Flashcards 1.1+1.2. Programming: Workbook 1 iteration.
-7,12/10/26,1.2.2 Applications generation; 2.1.2 Thinking ahead (KA3; CAP1 due),Quiz 1.2.2 + complete Quiz 2.1.2; stages-of-compilation drill (Worksheet 1.2).,"Cumulative before half term: full Mini-paper 1.1, timed & marked. Programming: Workbook 1 nested."
-HT,19/10/26,HALF TERM,Optional: finish outstanding quiz.,"10 min/day Flashcards 1.1-1.2. Light, spaced."
-8,02/11/26,1.2.3 Software methodologies; 2.1.3 Thinking procedurally,Quiz 1.2.3 + methodology-match (Worksheet 1.2); Quiz 2.1.3.,Spaced retrieval 1.1 + 1.2.1/1.2.2 (mixed). Programming: Workbook 1 string manipulation.
-9,09/11/26,1.2.4 Types of programming language (CAP2/KA4),Quiz 1.2.4 (addressing-mode calc); LMC practice; revise CAP2/KA4 with KO 1.2.,Retrieval: Mini-paper 1.1 + Flashcards 1.2.1-1.2.3. Programming: Workbook 1 arrays.
-10,16/11/26,1.3.1 Compression/encryption; 1.3.2 Databases intro,Quiz 1.3.1 (RLE encode/decode); begin Quiz 1.3.2; act on CAP2 feedback.,"Cumulative 1.1+1.2: Mini-paper 1.2, timed. Programming: Workbook 1 lists & tuples."
-11,23/11/26,"1.3.2 Databases (normalisation, SQL)",Complete Quiz 1.3.2; SQL tasks (Worksheet 1.3); 1NF-3NF practice.,Cover-and-recall KO 1.2. Programming: write SQL in code (Using Databases).
-12,30/11/26,"1.3.3 Networks (TCP/IP, LAN/WAN, hardware)",Quiz 1.3.3 (TCP/IP layer matching); redraw networks diagrams from Diagram bank.,Spaced retrieval 1.1-1.2 (mixed quiz). Programming: Workbook 1 functions + input validation.
-13,07/12/26,2.1.4 Thinking logically; 1.3.4 Web tech (HTML/CSS/JS) (CAP2 due),Quiz 2.1.4; Quiz 1.3.4 Sections A-B.,Retrieval of 1.3.1/1.3.2 (flashcards/quiz A). Programming: Workbook 1 file handling.
-14,14/12/26,"1.3.4 Web tech (server/client, indexing, PageRank); EOY quiz",Finish Quiz 1.3.4; PageRank explanation; prep EOY quiz with KO 1.1-1.3.,Christmas retrieval pack: mixed Flashcards 1.1-1.3 + a Mini-paper. Programming: Workbook 1 OOP.
-Hol,21/12/26,CHRISTMAS,One Mini-paper (1.1/1.2/1.3) every few days.,10 min/day flashcards. Spaced and light.
-15,04/01/27,"1.4.1 Data types (binary, add/subtract, hex)",Quiz 1.4.1 Section A + conversion & two's-complement drills (Worksheet 1.4); keep reference sheet.,New-year cumulative 1.1-1.3 (mixed). Programming: Workbook 1 file processing.
-16,11/01/27,"1.4.1 Data types (floating point, bitwise) (KA5)",Floating-point normalisation drills (Worksheet 1.4 + topic); revise KA5 with reference sheet.,Retrieval of 1.3 (quiz/flashcards); redo slipped binary questions.
-17,18/01/27,1.4.1 (char sets); 2.2.1 Programming techniques (KA5 fb; mock week),Complete Quiz 1.4.1; Quiz 2.2.1 A-B; act on KA5 feedback.,"Cumulative 1.1-1.3 Mini-paper, timed. Programming: PyGame basics (Component 3)."
-18,25/01/27,1.4.2 Data structures (arrays/lists/records/tuples; linked lists; stacks/queues) (CAP3/KA6),Quiz 1.4.2 (stack/queue trace); revise CAP3/KA6 with KO 1.4.,Retrieval 1.4.1 drills + Flashcards 1.2. Programming: Workbook 2 Stack & Queue classes.
-19,01/02/27,Review wk2; 1.4.2 (implement linked lists/stacks/queues - C3),Implement linked list/stack/queue in Python (Workbook 2); file-check prep.,Retrieval of 1.3: Mini-paper 1.3. Programming: PyGame game states.
-20,08/02/27,"1.4.2 (graphs, trees, hash tables) (CAP3 due)",Remainder of Quiz 1.4.2; implement BST + hash table (Workbook 2).,Cumulative 1.1-1.4.1 mixed retrieval. Programming: PyGame custom events.
-HT,15/02/27,HALF TERM,Finish any data-structures implementation.,Flashcards 1.4 + one earlier Mini-paper.
-21,22/02/27,"1.4.3 Boolean algebra (logic gates, truth tables) (KA7)",Quiz 1.4.3 Section A + truth-table completion; revise KA7 with KO 1.4.,Retrieval of 1.4.1/1.4.2 (calc + structure traces).
-22,01/03/27,"Component 3 PyGame (sprites, sounds, highscores) (KA7 fb)",Component 3 PyGame tasks (sprite classes); act on KA7 feedback.,Retrieval: Flashcards 1.4 + a Mini-paper.
-23,08/03/27,"1.4.3 Boolean logic (Karnaugh maps, simplifying); Recap 1.2",Boolean simplification / De Morgan's / Karnaugh drills (Worksheet 1.4 + topic); complete Quiz 1.4.3.,Recap 1.2: Mini-paper 1.2 timed + KO 1.2 cover-recall.
-24,15/03/27,CAP4/KA8; 2.1.5 Thinking concurrently; Recap 1.3; Review wk3,Quiz 2.1.5; revise CAP4/KA8 (cumulative 1.1-1.4 + 2.1).,Recap 1.3: Mini-paper 1.3 + Flashcards 1.3.
-25,22/03/27,CAP4/KA8 fb; Component 3 PyGame; Recap 1.4,Component 3 PyGame workbook; act on CAP4/KA8 feedback.,Recap 1.4: Mini-paper 1.4 + reference-sheet number/logic drills.
-Hol,29/03/27,EASTER,"Mock Paper 1 a section at a time, self-marked, RAG-rated.",Top up weak areas with matching subtopic quizzes.
-26,12/04/27,Component 3 PyGame; Mock revision,Sit Mock Paper 1 timed; self-mark; RAG every topic.,Target weakest RAG topics with subtopic quizzes/KOs; continue PyGame.
-27,19/04/27,L6 MOCK WEEK (CAP5),Final prep: Mock Paper 1b + error-log review (light).,Skim glossary + common-mistakes sheet; rest before exams.
-28,26/04/27,Component 3 PyGame; mock feedback,PyGame workbook; act on mock feedback (re-revise weakest).,Re-attempt 2 weakest mock questions; flashcards on those topics.
-29,03/05/27,Mini-NEA: Analysis (CAP5 due 7th),"Analysis via NEA guide: stakeholder, requirements, measurable success criteria.",NEA checklist - criteria testable; 10 min/day flashcards to maintain theory.
-30,10/05/27,Mini-NEA: Analysis,Complete analysis write-up (stakeholder research + success criteria).,Peer-review a partner's analysis against the NEA marking checklist.
-31,17/05/27,Mini-NEA: Design,"Design: decomposition, algorithms, data structures, UI, test plan (NEA guide).",Check each design decision links to a requirement.
-32,24/05/27,Mini-NEA: Design,Complete design + test plan (typical/boundary/erroneous data).,Review design against NEA design checklist.
-HT,31/05/27,HALF TERM,Finish NEA design so implementation starts cleanly.,Light flashcard retrieval to keep theory warm.
-33,07/06/27,Mini-NEA: Implementation,Iterative development with annotated evidence + testing each iteration (NEA guide; reuse Workbook 1&2).,Keep a development log; test as you build.
-34,14/06/27,Mini-NEA: Implementation; Review wk4,Continue implementation; add validation/error handling (robustness).,File-check prep - ensure code evidence is annotated.
-35,21/06/27,Mini-NEA: Evaluation,Evaluate against each success criterion with evidence; stakeholder feedback (NEA guide).,Map every evaluation point back to an analysis criterion.
-36,28/06/27,Mini-NEA: Evaluation,Complete evaluation + justified improvements.,Final NEA checklist; reflect on VESPA targets for Year 13.
+1,31/08/26,Induction & diagnostic; VS Code/Python setup,Complete the diagnostic task; verify VS Code + Python + Classroom access.,Read subject booklet; set up notes/folders (VESPA Systems); skim 00 START HERE.
+2,07/09/26,"1.1.1 CPU, FDE, performance, Von Neumann/Harvard",Homework 1.1.1 (/20). Programming: Workbook 1 s1-2.,Revision Notes 1.1.1 cover-and-recall; start Flashcards 1.1; redo missed diagnostic Qs.
+3,14/09/26,"1.1.2 Pipelining, CISC/RISC, GPUs, multicore (KA1)",Homework 1.1.2 (/20); revise for KA1 with Knowledge Organiser 1.1.,"Worksheet (quiz) 1.1.1 closed-book, self-mark; Flashcards 1.1."
+4,21/09/26,1.1.3 I/O & storage; RAM/ROM; 2.1.1 Thinking abstractly (KA1 fb),Homework 1.1.3 + Homework 2.1.1; act on KA1 feedback (error log).,Quizzes 1.1.2 & 2.1.1; Revision Notes 1.1.3.
+5,28/09/26,"1.2.1 OS, scheduling, interrupts; 2.1.2 Thinking ahead (CAP1/KA2)",Homework 1.2.1; prep CAP1/KA2 with Organiser 1.1 + Flashcards.,Quiz 1.1.3; Mini-Paper 1.1 Section A timed (first spaced retrieval of 1.1).
+6,05/10/26,"Review wk 1; 1.2.1 BIOS, drivers, VMs (CAP1/KA2 fb)",Homework 2.1.2; act on CAP1/KA2 feedback.,File-check prep; Quiz 1.2.1; mixed Flashcards 1.1+1.2.
+7,12/10/26,1.2.2 Translators & compilers; 2.1.2 caching/reuse (KA3; CAP1 due 12 Oct),Homework 1.2.2 (/20); compilation-stages drill (End-of-Topic Worksheet 1.2 sA).,"Full Mini-Paper 1.1, timed & marked; Quiz 2.1.2."
+HT,19/10/26,HALF TERM,Finish any outstanding sheet.,10 min/day Flashcards 1.1-1.2 - light and spaced.
+8,02/11/26,"1.2.3 Methodologies, test strategies; 2.1.3 Thinking procedurally (KA3 fb)",Homework 1.2.3 + Homework 2.1.3.,Quiz 1.2.2; Revision Notes 1.2.3; act on KA3 feedback.
+9,09/11/26,"1.2.4 Paradigms, assembly, OOP (CAP2/KA4)",Homework 1.2.4 (/20); prep CAP2/KA4 with Organiser 1.2.,Quiz 1.2.3; Flashcards 1.2; Mini-Paper 1.1 re-run of wrong Qs.
+10,16/11/26,1.3.1 Compression & encryption; 1.3.2 Databases intro (CAP2/KA4 fb),Homework 1.3.1; act on CAP2 feedback.,"RECAP CHECKPOINT 1 (1.1-1.2), timed & self-marked; Quiz 1.2.4."
+11,23/11/26,1.3.2 Normalisation & SQL (file checks),Homework 1.3.2 (/20); SQL practice (End-of-Topic Worksheet 1.3 SQL tasks).,Quiz 1.3.1; Revision Notes 1.3.2; file-check prep.
+12,30/11/26,"1.3.3 Networks, TCP/IP, hardware (RAD day 1)",Homework 1.3.3 (/20); redraw TCP/IP + topology diagrams (Diagram Bank).,Quiz 1.3.2; mixed Flashcards 1.1-1.3.
+13,07/12/26,2.1.4 Thinking logically; 1.3.4 HTML/CSS/JS (CAP2 due 7 Dec),Homework 2.1.4 + Homework 1.3.4 Part A.,Quiz 1.3.3; Revision Notes 1.3.4 + 2.1.4.
+14,14/12/26,"1.3.4 Server/client-side, PageRank; EOY quiz (4 days)",Finish Homework 1.3.4; prep EOY quiz with Organisers 1.1-1.3.,Quiz 1.3.4 + Quiz 2.1.4; Mini-Paper 1.2 timed.
+Hol,21/12/26,CHRISTMAS,"RECAP CHECKPOINT 2 (1.1-1.3) over the break, plus one Mini-Paper of choice.","10 min/day flashcards, spaced - nothing heavy."
+15,04/01/27,"1.4.1 Binary, negatives, add/subtract, hex",Homework 1.4.1 Part A + conversion drills (End-of-Topic Worksheet 1.4 sA).,Mark the holiday Recap 2; re-RAG weak topics on the PLC.
+16,11/01/27,"1.4.1 Floating point, bitwise (KA5)",Floating-point drills (Worksheet 1.4 FP activities); prep KA5 with Reference Sheet.,Quiz 1.4.1 Section A; Revision Notes 1.4.1.
+17,18/01/27,1.4.1 Character sets; 2.2.1 Constructs (KA5 fb; U6 mocks),Finish Homework 1.4.1; Homework 2.2.1 Part A; act on KA5 feedback.,Full Quiz 1.4.1; Flashcards 1.4 started.
+18,25/01/27,1.4.2 Arrays to stacks/queues (CAP3/KA6),Homework 1.4.2 (/20); prep CAP3/KA6 with Organiser 1.4.,Quiz 2.2.1; stack/queue traces (Worksheet 1.4 sA); Workbook 2 stack/queue classes.
+19,01/02/27,Review wk 2; 1.4.2 implementing (C3) (CAP3/KA6 fb),Implement linked list / stack / queue in Python (Workbook 2); file-check prep.,Quiz 1.4.2 (structures half); Mini-Paper 1.3 timed.
+20,08/02/27,"1.4.2 Graphs, trees, hash tables (3 days; CAP3 due 8 Feb)",Finish Homework 1.4.2 wrong-answer redos; BST + hash table in Python (Workbook 2).,Full Quiz 1.4.2; Revision Notes 1.4.2.
+HT,15/02/27,HALF TERM,Finish any data-structure implementation.,Flashcards 1.4 + one earlier Mini-Paper.
+21,22/02/27,"1.4.3 Boolean logic, gates, truth tables (KA7)",Homework 1.4.3 Part A; prep KA7.,Quiz 1.4.3 Section A; truth-table drills (Worksheet 1.4 sA).
+22,01/03/27,C3 PyGame sprites/sounds (KA7 fb),PyGame tasks; act on KA7 feedback.,Full Quiz 1.4.3; Flashcards 1.4.
+23,08/03/27,"1.4.3 Karnaugh maps, simplification (Recap 1.2 slot)",Finish Homework 1.4.3; K-map + De Morgan drills (Worksheet 1.4 sA).,Mini-Paper 1.2 (SOW Recap-1.2 slot) + Organiser 1.2 cover-recall.
+24,15/03/27,Review wk 3; CAP4/KA8; 2.1.5 Thinking concurrently (Recap 1.3 slot),Homework 2.1.5; prep CAP4/KA8 (cumulative 1.1-1.4 + 2.1).,"RECAP CHECKPOINT 3 (1.1-1.4), timed; Mini-Paper 1.3 for the SOW Recap-1.3 slot."
+25,22/03/27,CAP4/KA8 fb; C3 PyGame (Recap 1.4 slot; 4 days; CAP4 due 22 Mar),PyGame workbook; act on CAP4/KA8 feedback.,Mini-Paper 1.4 (SOW Recap-1.4 slot) + Reference-Sheet number/logic drills.
+Hol,29/03/27,EASTER,"Mock Paper 1 a section at a time, self-marked against its answer sheet.",Re-RAG the PLC; top up weakest subtopics with their quizzes.
+26,12/04/27,C3 PyGame; Mock revision,Sit remaining Mock Paper 1 sections timed; error log.,Target weakest PLC rows with quizzes/organisers; Exam Technique + Command Words guides.
+27,19/04/27,L6 MOCK WEEK (CAP5),Light: skim Glossary + Common Mistakes; rest.,(mock week)
+28,26/04/27,C3 PyGame; mock feedback (file checks),Re-attempt your two weakest mock questions in full.,Flashcards on weakest topics; update PLC from mock results.
+29,03/05/27,Mini-NEA: Analysis (4 days; CAP5 due 7 May),"NEA Template s1 Analysis: stakeholder, requirements, success criteria.",NEA Guide checklist - every criterion measurable; 10 min/day flashcards.
+30,10/05/27,Mini-NEA: Analysis,Complete Analysis write-up (research evidence in).,Peer-review a partner's analysis vs the NEA checklist.
+31,17/05/27,Mini-NEA: Design,"NEA Template s2: decomposition, algorithms, data structures, UI.",Check each design decision traces to a requirement.
+32,24/05/27,Mini-NEA: Design,Complete s2 + test plan (typical/boundary/erroneous).,Review vs the Design checklist.
+HT,31/05/27,HALF TERM,Finish the design so implementation starts clean.,Light flashcard retrieval.
+33,07/06/27,Mini-NEA: Implementation,NEA Template s3: iterative build with annotated evidence + tests per iteration.,Keep the development log as you go.
+34,14/06/27,Mini-NEA: Implementation (Review wk 4),Continue s3; add validation/robustness.,File-check prep - all code evidence annotated.
+35,21/06/27,Mini-NEA: Evaluation,"NEA Template s4: test vs every success criterion, stakeholder feedback.",Map every evaluation point back to Analysis.
+36,28/06/27,Mini-NEA: Evaluation (RAD day 3),Complete s4 + justified improvements.,Final NEA checklist; set VESPA targets for Year 13.
