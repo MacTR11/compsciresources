@@ -1,4 +1,0 @@
-Week 33 (07 Jun) - Mini-NEA Implementation
-
-HW: NEA Template section 3 - iterative build, annotated evidence, tests per iteration.
-Consolidation: keep the development log as you go.

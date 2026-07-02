@@ -1,4 +1,0 @@
-Week 02 (07 Sep) - 1.1.1 CPU and FDE
-
-HW: Homework 1.1.1 (/20). Programming: Workbook 1 s1-2.
-Consolidation: Revision Notes 1.1.1 cover-and-recall; start Flashcards 1.1.

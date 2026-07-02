@@ -19,11 +19,13 @@
 - [3 Flashcards.csv](1%20Component%201%20-%20Computer%20Systems/1.1%20Processors%2C%20Input%2C%20Output%20and%20Storage/00%20Topic%20Resources/3%20Flashcards.csv)
 - [4 Lesson Activities Pack (editable).docx](1%20Component%201%20-%20Computer%20Systems/1.1%20Processors%2C%20Input%2C%20Output%20and%20Storage/00%20Topic%20Resources/4%20Lesson%20Activities%20Pack%20%28editable%29.docx)
 - [4 Lesson Activities Pack (teacher).pdf](1%20Component%201%20-%20Computer%20Systems/1.1%20Processors%2C%20Input%2C%20Output%20and%20Storage/00%20Topic%20Resources/4%20Lesson%20Activities%20Pack%20%28teacher%29.pdf)
+- [5 Revision Game (editable).docx](1%20Component%201%20-%20Computer%20Systems/1.1%20Processors%2C%20Input%2C%20Output%20and%20Storage/00%20Topic%20Resources/5%20Revision%20Game%20%28editable%29.docx)
 - [5 Revision Game - How to Play.pdf](1%20Component%201%20-%20Computer%20Systems/1.1%20Processors%2C%20Input%2C%20Output%20and%20Storage/00%20Topic%20Resources/5%20Revision%20Game%20-%20How%20to%20Play.pdf)
 - [5 Revision Game - Print and Cut Cards.pdf](1%20Component%201%20-%20Computer%20Systems/1.1%20Processors%2C%20Input%2C%20Output%20and%20Storage/00%20Topic%20Resources/5%20Revision%20Game%20-%20Print%20and%20Cut%20Cards.pdf)
 - [6 End-of-Topic Worksheet (editable).docx](1%20Component%201%20-%20Computer%20Systems/1.1%20Processors%2C%20Input%2C%20Output%20and%20Storage/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet%20%28editable%29.docx)
 - [6 End-of-Topic Worksheet - ANSWERS.pdf](1%20Component%201%20-%20Computer%20Systems/1.1%20Processors%2C%20Input%2C%20Output%20and%20Storage/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet%20-%20ANSWERS.pdf)
 - [6 End-of-Topic Worksheet.pdf](1%20Component%201%20-%20Computer%20Systems/1.1%20Processors%2C%20Input%2C%20Output%20and%20Storage/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet.pdf)
+- [7 Topic Mini-Paper (typeable).docx](1%20Component%201%20-%20Computer%20Systems/1.1%20Processors%2C%20Input%2C%20Output%20and%20Storage/00%20Topic%20Resources/7%20Topic%20Mini-Paper%20%28typeable%29.docx)
 - [7 Topic Mini-Paper - ANSWERS.pdf](1%20Component%201%20-%20Computer%20Systems/1.1%20Processors%2C%20Input%2C%20Output%20and%20Storage/00%20Topic%20Resources/7%20Topic%20Mini-Paper%20-%20ANSWERS.pdf)
 - [7 Topic Mini-Paper.pdf](1%20Component%201%20-%20Computer%20Systems/1.1%20Processors%2C%20Input%2C%20Output%20and%20Storage/00%20Topic%20Resources/7%20Topic%20Mini-Paper.pdf)
 
@@ -74,11 +76,13 @@
 - [3 Flashcards.csv](1%20Component%201%20-%20Computer%20Systems/1.2%20Software%20and%20Software%20Development/00%20Topic%20Resources/3%20Flashcards.csv)
 - [4 Lesson Activities Pack (editable).docx](1%20Component%201%20-%20Computer%20Systems/1.2%20Software%20and%20Software%20Development/00%20Topic%20Resources/4%20Lesson%20Activities%20Pack%20%28editable%29.docx)
 - [4 Lesson Activities Pack (teacher).pdf](1%20Component%201%20-%20Computer%20Systems/1.2%20Software%20and%20Software%20Development/00%20Topic%20Resources/4%20Lesson%20Activities%20Pack%20%28teacher%29.pdf)
+- [5 Revision Game (editable).docx](1%20Component%201%20-%20Computer%20Systems/1.2%20Software%20and%20Software%20Development/00%20Topic%20Resources/5%20Revision%20Game%20%28editable%29.docx)
 - [5 Revision Game - How to Play.pdf](1%20Component%201%20-%20Computer%20Systems/1.2%20Software%20and%20Software%20Development/00%20Topic%20Resources/5%20Revision%20Game%20-%20How%20to%20Play.pdf)
 - [5 Revision Game - Print and Cut Cards.pdf](1%20Component%201%20-%20Computer%20Systems/1.2%20Software%20and%20Software%20Development/00%20Topic%20Resources/5%20Revision%20Game%20-%20Print%20and%20Cut%20Cards.pdf)
 - [6 End-of-Topic Worksheet (editable).docx](1%20Component%201%20-%20Computer%20Systems/1.2%20Software%20and%20Software%20Development/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet%20%28editable%29.docx)
 - [6 End-of-Topic Worksheet - ANSWERS.pdf](1%20Component%201%20-%20Computer%20Systems/1.2%20Software%20and%20Software%20Development/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet%20-%20ANSWERS.pdf)
 - [6 End-of-Topic Worksheet.pdf](1%20Component%201%20-%20Computer%20Systems/1.2%20Software%20and%20Software%20Development/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet.pdf)
+- [7 Topic Mini-Paper (typeable).docx](1%20Component%201%20-%20Computer%20Systems/1.2%20Software%20and%20Software%20Development/00%20Topic%20Resources/7%20Topic%20Mini-Paper%20%28typeable%29.docx)
 - [7 Topic Mini-Paper - ANSWERS.pdf](1%20Component%201%20-%20Computer%20Systems/1.2%20Software%20and%20Software%20Development/00%20Topic%20Resources/7%20Topic%20Mini-Paper%20-%20ANSWERS.pdf)
 - [7 Topic Mini-Paper.pdf](1%20Component%201%20-%20Computer%20Systems/1.2%20Software%20and%20Software%20Development/00%20Topic%20Resources/7%20Topic%20Mini-Paper.pdf)
 
@@ -141,11 +145,13 @@
 - [3 Flashcards.csv](1%20Component%201%20-%20Computer%20Systems/1.3%20Exchanging%20Data/00%20Topic%20Resources/3%20Flashcards.csv)
 - [4 Lesson Activities Pack (editable).docx](1%20Component%201%20-%20Computer%20Systems/1.3%20Exchanging%20Data/00%20Topic%20Resources/4%20Lesson%20Activities%20Pack%20%28editable%29.docx)
 - [4 Lesson Activities Pack (teacher).pdf](1%20Component%201%20-%20Computer%20Systems/1.3%20Exchanging%20Data/00%20Topic%20Resources/4%20Lesson%20Activities%20Pack%20%28teacher%29.pdf)
+- [5 Revision Game (editable).docx](1%20Component%201%20-%20Computer%20Systems/1.3%20Exchanging%20Data/00%20Topic%20Resources/5%20Revision%20Game%20%28editable%29.docx)
 - [5 Revision Game - How to Play.pdf](1%20Component%201%20-%20Computer%20Systems/1.3%20Exchanging%20Data/00%20Topic%20Resources/5%20Revision%20Game%20-%20How%20to%20Play.pdf)
 - [5 Revision Game - Print and Cut Cards.pdf](1%20Component%201%20-%20Computer%20Systems/1.3%20Exchanging%20Data/00%20Topic%20Resources/5%20Revision%20Game%20-%20Print%20and%20Cut%20Cards.pdf)
 - [6 End-of-Topic Worksheet (editable).docx](1%20Component%201%20-%20Computer%20Systems/1.3%20Exchanging%20Data/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet%20%28editable%29.docx)
 - [6 End-of-Topic Worksheet - ANSWERS.pdf](1%20Component%201%20-%20Computer%20Systems/1.3%20Exchanging%20Data/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet%20-%20ANSWERS.pdf)
 - [6 End-of-Topic Worksheet.pdf](1%20Component%201%20-%20Computer%20Systems/1.3%20Exchanging%20Data/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet.pdf)
+- [7 Topic Mini-Paper (typeable).docx](1%20Component%201%20-%20Computer%20Systems/1.3%20Exchanging%20Data/00%20Topic%20Resources/7%20Topic%20Mini-Paper%20%28typeable%29.docx)
 - [7 Topic Mini-Paper - ANSWERS.pdf](1%20Component%201%20-%20Computer%20Systems/1.3%20Exchanging%20Data/00%20Topic%20Resources/7%20Topic%20Mini-Paper%20-%20ANSWERS.pdf)
 - [7 Topic Mini-Paper.pdf](1%20Component%201%20-%20Computer%20Systems/1.3%20Exchanging%20Data/00%20Topic%20Resources/7%20Topic%20Mini-Paper.pdf)
 
@@ -208,11 +214,13 @@
 - [3 Flashcards.csv](1%20Component%201%20-%20Computer%20Systems/1.4%20Data%20Types%2C%20Data%20Structures%20and%20Boolean%20Algebra/00%20Topic%20Resources/3%20Flashcards.csv)
 - [4 Lesson Activities Pack (editable).docx](1%20Component%201%20-%20Computer%20Systems/1.4%20Data%20Types%2C%20Data%20Structures%20and%20Boolean%20Algebra/00%20Topic%20Resources/4%20Lesson%20Activities%20Pack%20%28editable%29.docx)
 - [4 Lesson Activities Pack (teacher).pdf](1%20Component%201%20-%20Computer%20Systems/1.4%20Data%20Types%2C%20Data%20Structures%20and%20Boolean%20Algebra/00%20Topic%20Resources/4%20Lesson%20Activities%20Pack%20%28teacher%29.pdf)
+- [5 Revision Game (editable).docx](1%20Component%201%20-%20Computer%20Systems/1.4%20Data%20Types%2C%20Data%20Structures%20and%20Boolean%20Algebra/00%20Topic%20Resources/5%20Revision%20Game%20%28editable%29.docx)
 - [5 Revision Game - How to Play.pdf](1%20Component%201%20-%20Computer%20Systems/1.4%20Data%20Types%2C%20Data%20Structures%20and%20Boolean%20Algebra/00%20Topic%20Resources/5%20Revision%20Game%20-%20How%20to%20Play.pdf)
 - [5 Revision Game - Print and Cut Cards.pdf](1%20Component%201%20-%20Computer%20Systems/1.4%20Data%20Types%2C%20Data%20Structures%20and%20Boolean%20Algebra/00%20Topic%20Resources/5%20Revision%20Game%20-%20Print%20and%20Cut%20Cards.pdf)
 - [6 End-of-Topic Worksheet (editable).docx](1%20Component%201%20-%20Computer%20Systems/1.4%20Data%20Types%2C%20Data%20Structures%20and%20Boolean%20Algebra/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet%20%28editable%29.docx)
 - [6 End-of-Topic Worksheet - ANSWERS.pdf](1%20Component%201%20-%20Computer%20Systems/1.4%20Data%20Types%2C%20Data%20Structures%20and%20Boolean%20Algebra/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet%20-%20ANSWERS.pdf)
 - [6 End-of-Topic Worksheet.pdf](1%20Component%201%20-%20Computer%20Systems/1.4%20Data%20Types%2C%20Data%20Structures%20and%20Boolean%20Algebra/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet.pdf)
+- [7 Topic Mini-Paper (typeable).docx](1%20Component%201%20-%20Computer%20Systems/1.4%20Data%20Types%2C%20Data%20Structures%20and%20Boolean%20Algebra/00%20Topic%20Resources/7%20Topic%20Mini-Paper%20%28typeable%29.docx)
 - [7 Topic Mini-Paper - ANSWERS.pdf](1%20Component%201%20-%20Computer%20Systems/1.4%20Data%20Types%2C%20Data%20Structures%20and%20Boolean%20Algebra/00%20Topic%20Resources/7%20Topic%20Mini-Paper%20-%20ANSWERS.pdf)
 - [7 Topic Mini-Paper.pdf](1%20Component%201%20-%20Computer%20Systems/1.4%20Data%20Types%2C%20Data%20Structures%20and%20Boolean%20Algebra/00%20Topic%20Resources/7%20Topic%20Mini-Paper.pdf)
 
@@ -263,11 +271,13 @@
 - [3 Flashcards.csv](1%20Component%201%20-%20Computer%20Systems/1.5%20Legal%2C%20Moral%2C%20Cultural%20and%20Ethical%20Issues/00%20Topic%20Resources/3%20Flashcards.csv)
 - [4 Lesson Activities Pack (editable).docx](1%20Component%201%20-%20Computer%20Systems/1.5%20Legal%2C%20Moral%2C%20Cultural%20and%20Ethical%20Issues/00%20Topic%20Resources/4%20Lesson%20Activities%20Pack%20%28editable%29.docx)
 - [4 Lesson Activities Pack (teacher).pdf](1%20Component%201%20-%20Computer%20Systems/1.5%20Legal%2C%20Moral%2C%20Cultural%20and%20Ethical%20Issues/00%20Topic%20Resources/4%20Lesson%20Activities%20Pack%20%28teacher%29.pdf)
+- [5 Revision Game (editable).docx](1%20Component%201%20-%20Computer%20Systems/1.5%20Legal%2C%20Moral%2C%20Cultural%20and%20Ethical%20Issues/00%20Topic%20Resources/5%20Revision%20Game%20%28editable%29.docx)
 - [5 Revision Game - How to Play.pdf](1%20Component%201%20-%20Computer%20Systems/1.5%20Legal%2C%20Moral%2C%20Cultural%20and%20Ethical%20Issues/00%20Topic%20Resources/5%20Revision%20Game%20-%20How%20to%20Play.pdf)
 - [5 Revision Game - Print and Cut Cards.pdf](1%20Component%201%20-%20Computer%20Systems/1.5%20Legal%2C%20Moral%2C%20Cultural%20and%20Ethical%20Issues/00%20Topic%20Resources/5%20Revision%20Game%20-%20Print%20and%20Cut%20Cards.pdf)
 - [6 End-of-Topic Worksheet (editable).docx](1%20Component%201%20-%20Computer%20Systems/1.5%20Legal%2C%20Moral%2C%20Cultural%20and%20Ethical%20Issues/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet%20%28editable%29.docx)
 - [6 End-of-Topic Worksheet - ANSWERS.pdf](1%20Component%201%20-%20Computer%20Systems/1.5%20Legal%2C%20Moral%2C%20Cultural%20and%20Ethical%20Issues/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet%20-%20ANSWERS.pdf)
 - [6 End-of-Topic Worksheet.pdf](1%20Component%201%20-%20Computer%20Systems/1.5%20Legal%2C%20Moral%2C%20Cultural%20and%20Ethical%20Issues/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet.pdf)
+- [7 Topic Mini-Paper (typeable).docx](1%20Component%201%20-%20Computer%20Systems/1.5%20Legal%2C%20Moral%2C%20Cultural%20and%20Ethical%20Issues/00%20Topic%20Resources/7%20Topic%20Mini-Paper%20%28typeable%29.docx)
 - [7 Topic Mini-Paper - ANSWERS.pdf](1%20Component%201%20-%20Computer%20Systems/1.5%20Legal%2C%20Moral%2C%20Cultural%20and%20Ethical%20Issues/00%20Topic%20Resources/7%20Topic%20Mini-Paper%20-%20ANSWERS.pdf)
 - [7 Topic Mini-Paper.pdf](1%20Component%201%20-%20Computer%20Systems/1.5%20Legal%2C%20Moral%2C%20Cultural%20and%20Ethical%20Issues/00%20Topic%20Resources/7%20Topic%20Mini-Paper.pdf)
 
@@ -309,11 +319,13 @@
 - [3 Flashcards.csv](2%20Component%202%20-%20Algorithms%20and%20Programming/2.1%20Elements%20of%20Computational%20Thinking/00%20Topic%20Resources/3%20Flashcards.csv)
 - [4 Lesson Activities Pack (editable).docx](2%20Component%202%20-%20Algorithms%20and%20Programming/2.1%20Elements%20of%20Computational%20Thinking/00%20Topic%20Resources/4%20Lesson%20Activities%20Pack%20%28editable%29.docx)
 - [4 Lesson Activities Pack (teacher).pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.1%20Elements%20of%20Computational%20Thinking/00%20Topic%20Resources/4%20Lesson%20Activities%20Pack%20%28teacher%29.pdf)
+- [5 Revision Game (editable).docx](2%20Component%202%20-%20Algorithms%20and%20Programming/2.1%20Elements%20of%20Computational%20Thinking/00%20Topic%20Resources/5%20Revision%20Game%20%28editable%29.docx)
 - [5 Revision Game - How to Play.pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.1%20Elements%20of%20Computational%20Thinking/00%20Topic%20Resources/5%20Revision%20Game%20-%20How%20to%20Play.pdf)
 - [5 Revision Game - Print and Cut Cards.pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.1%20Elements%20of%20Computational%20Thinking/00%20Topic%20Resources/5%20Revision%20Game%20-%20Print%20and%20Cut%20Cards.pdf)
 - [6 End-of-Topic Worksheet (editable).docx](2%20Component%202%20-%20Algorithms%20and%20Programming/2.1%20Elements%20of%20Computational%20Thinking/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet%20%28editable%29.docx)
 - [6 End-of-Topic Worksheet - ANSWERS.pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.1%20Elements%20of%20Computational%20Thinking/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet%20-%20ANSWERS.pdf)
 - [6 End-of-Topic Worksheet.pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.1%20Elements%20of%20Computational%20Thinking/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet.pdf)
+- [7 Topic Mini-Paper (typeable).docx](2%20Component%202%20-%20Algorithms%20and%20Programming/2.1%20Elements%20of%20Computational%20Thinking/00%20Topic%20Resources/7%20Topic%20Mini-Paper%20%28typeable%29.docx)
 - [7 Topic Mini-Paper - ANSWERS.pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.1%20Elements%20of%20Computational%20Thinking/00%20Topic%20Resources/7%20Topic%20Mini-Paper%20-%20ANSWERS.pdf)
 - [7 Topic Mini-Paper.pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.1%20Elements%20of%20Computational%20Thinking/00%20Topic%20Resources/7%20Topic%20Mini-Paper.pdf)
 
@@ -388,11 +400,13 @@
 - [3 Flashcards.csv](2%20Component%202%20-%20Algorithms%20and%20Programming/2.2%20Problem%20Solving%20and%20Programming/00%20Topic%20Resources/3%20Flashcards.csv)
 - [4 Lesson Activities Pack (editable).docx](2%20Component%202%20-%20Algorithms%20and%20Programming/2.2%20Problem%20Solving%20and%20Programming/00%20Topic%20Resources/4%20Lesson%20Activities%20Pack%20%28editable%29.docx)
 - [4 Lesson Activities Pack (teacher).pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.2%20Problem%20Solving%20and%20Programming/00%20Topic%20Resources/4%20Lesson%20Activities%20Pack%20%28teacher%29.pdf)
+- [5 Revision Game (editable).docx](2%20Component%202%20-%20Algorithms%20and%20Programming/2.2%20Problem%20Solving%20and%20Programming/00%20Topic%20Resources/5%20Revision%20Game%20%28editable%29.docx)
 - [5 Revision Game - How to Play.pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.2%20Problem%20Solving%20and%20Programming/00%20Topic%20Resources/5%20Revision%20Game%20-%20How%20to%20Play.pdf)
 - [5 Revision Game - Print and Cut Cards.pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.2%20Problem%20Solving%20and%20Programming/00%20Topic%20Resources/5%20Revision%20Game%20-%20Print%20and%20Cut%20Cards.pdf)
 - [6 End-of-Topic Worksheet (editable).docx](2%20Component%202%20-%20Algorithms%20and%20Programming/2.2%20Problem%20Solving%20and%20Programming/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet%20%28editable%29.docx)
 - [6 End-of-Topic Worksheet - ANSWERS.pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.2%20Problem%20Solving%20and%20Programming/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet%20-%20ANSWERS.pdf)
 - [6 End-of-Topic Worksheet.pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.2%20Problem%20Solving%20and%20Programming/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet.pdf)
+- [7 Topic Mini-Paper (typeable).docx](2%20Component%202%20-%20Algorithms%20and%20Programming/2.2%20Problem%20Solving%20and%20Programming/00%20Topic%20Resources/7%20Topic%20Mini-Paper%20%28typeable%29.docx)
 - [7 Topic Mini-Paper - ANSWERS.pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.2%20Problem%20Solving%20and%20Programming/00%20Topic%20Resources/7%20Topic%20Mini-Paper%20-%20ANSWERS.pdf)
 - [7 Topic Mini-Paper.pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.2%20Problem%20Solving%20and%20Programming/00%20Topic%20Resources/7%20Topic%20Mini-Paper.pdf)
 
@@ -431,11 +445,13 @@
 - [3 Flashcards.csv](2%20Component%202%20-%20Algorithms%20and%20Programming/2.3%20Algorithms/00%20Topic%20Resources/3%20Flashcards.csv)
 - [4 Lesson Activities Pack (editable).docx](2%20Component%202%20-%20Algorithms%20and%20Programming/2.3%20Algorithms/00%20Topic%20Resources/4%20Lesson%20Activities%20Pack%20%28editable%29.docx)
 - [4 Lesson Activities Pack (teacher).pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.3%20Algorithms/00%20Topic%20Resources/4%20Lesson%20Activities%20Pack%20%28teacher%29.pdf)
+- [5 Revision Game (editable).docx](2%20Component%202%20-%20Algorithms%20and%20Programming/2.3%20Algorithms/00%20Topic%20Resources/5%20Revision%20Game%20%28editable%29.docx)
 - [5 Revision Game - How to Play.pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.3%20Algorithms/00%20Topic%20Resources/5%20Revision%20Game%20-%20How%20to%20Play.pdf)
 - [5 Revision Game - Print and Cut Cards.pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.3%20Algorithms/00%20Topic%20Resources/5%20Revision%20Game%20-%20Print%20and%20Cut%20Cards.pdf)
 - [6 End-of-Topic Worksheet (editable).docx](2%20Component%202%20-%20Algorithms%20and%20Programming/2.3%20Algorithms/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet%20%28editable%29.docx)
 - [6 End-of-Topic Worksheet - ANSWERS.pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.3%20Algorithms/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet%20-%20ANSWERS.pdf)
 - [6 End-of-Topic Worksheet.pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.3%20Algorithms/00%20Topic%20Resources/6%20End-of-Topic%20Worksheet.pdf)
+- [7 Topic Mini-Paper (typeable).docx](2%20Component%202%20-%20Algorithms%20and%20Programming/2.3%20Algorithms/00%20Topic%20Resources/7%20Topic%20Mini-Paper%20%28typeable%29.docx)
 - [7 Topic Mini-Paper - ANSWERS.pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.3%20Algorithms/00%20Topic%20Resources/7%20Topic%20Mini-Paper%20-%20ANSWERS.pdf)
 - [7 Topic Mini-Paper.pdf](2%20Component%202%20-%20Algorithms%20and%20Programming/2.3%20Algorithms/00%20Topic%20Resources/7%20Topic%20Mini-Paper.pdf)
 
@@ -461,16 +477,22 @@
 
 ## 4 Recap Checkpoints
 
+- [Recap 1 - after 1.1-1.2 (typeable).docx](4%20Recap%20Checkpoints/Recap%201%20-%20after%201.1-1.2%20%28typeable%29.docx)
 - [Recap 1 - after 1.1-1.2 - ANSWERS.pdf](4%20Recap%20Checkpoints/Recap%201%20-%20after%201.1-1.2%20-%20ANSWERS.pdf)
 - [Recap 1 - after 1.1-1.2.pdf](4%20Recap%20Checkpoints/Recap%201%20-%20after%201.1-1.2.pdf)
+- [Recap 2 - after 1.1-1.3 (typeable).docx](4%20Recap%20Checkpoints/Recap%202%20-%20after%201.1-1.3%20%28typeable%29.docx)
 - [Recap 2 - after 1.1-1.3 - ANSWERS.pdf](4%20Recap%20Checkpoints/Recap%202%20-%20after%201.1-1.3%20-%20ANSWERS.pdf)
 - [Recap 2 - after 1.1-1.3.pdf](4%20Recap%20Checkpoints/Recap%202%20-%20after%201.1-1.3.pdf)
+- [Recap 3 - after 1.1-1.4 (pre-mock) (typeable).docx](4%20Recap%20Checkpoints/Recap%203%20-%20after%201.1-1.4%20%28pre-mock%29%20%28typeable%29.docx)
 - [Recap 3 - after 1.1-1.4 (pre-mock) - ANSWERS.pdf](4%20Recap%20Checkpoints/Recap%203%20-%20after%201.1-1.4%20%28pre-mock%29%20-%20ANSWERS.pdf)
 - [Recap 3 - after 1.1-1.4 (pre-mock).pdf](4%20Recap%20Checkpoints/Recap%203%20-%20after%201.1-1.4%20%28pre-mock%29.pdf)
+- [Recap 4 - Year 13 (adds 1.5, 2.1) (typeable).docx](4%20Recap%20Checkpoints/Recap%204%20-%20Year%2013%20%28adds%201.5%2C%202.1%29%20%28typeable%29.docx)
 - [Recap 4 - Year 13 (adds 1.5, 2.1) - ANSWERS.pdf](4%20Recap%20Checkpoints/Recap%204%20-%20Year%2013%20%28adds%201.5%2C%202.1%29%20-%20ANSWERS.pdf)
 - [Recap 4 - Year 13 (adds 1.5, 2.1).pdf](4%20Recap%20Checkpoints/Recap%204%20-%20Year%2013%20%28adds%201.5%2C%202.1%29.pdf)
+- [Recap 5 - Year 13 (adds 2.2-2.3) (typeable).docx](4%20Recap%20Checkpoints/Recap%205%20-%20Year%2013%20%28adds%202.2-2.3%29%20%28typeable%29.docx)
 - [Recap 5 - Year 13 (adds 2.2-2.3) - ANSWERS.pdf](4%20Recap%20Checkpoints/Recap%205%20-%20Year%2013%20%28adds%202.2-2.3%29%20-%20ANSWERS.pdf)
 - [Recap 5 - Year 13 (adds 2.2-2.3).pdf](4%20Recap%20Checkpoints/Recap%205%20-%20Year%2013%20%28adds%202.2-2.3%29.pdf)
+- [Recap 6 - Year 13 full synoptic (typeable).docx](4%20Recap%20Checkpoints/Recap%206%20-%20Year%2013%20full%20synoptic%20%28typeable%29.docx)
 - [Recap 6 - Year 13 full synoptic - ANSWERS.pdf](4%20Recap%20Checkpoints/Recap%206%20-%20Year%2013%20full%20synoptic%20-%20ANSWERS.pdf)
 - [Recap 6 - Year 13 full synoptic.pdf](4%20Recap%20Checkpoints/Recap%206%20-%20Year%2013%20full%20synoptic.pdf)
 
@@ -499,290 +521,397 @@
 
 ### Christmas Holidays
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Christmas%20Holidays/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Christmas%20Holidays/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Christmas%20Holidays/0%20This%20Week.pdf)
+- [2 Consolidation - Recap 2 (1.1-1.3) (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Christmas%20Holidays/2%20Consolidation%20-%20Recap%202%20%281.1-1.3%29%20%28typeable%29.docx)
 - [2 Consolidation - Recap 2 (1.1-1.3) - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Christmas%20Holidays/2%20Consolidation%20-%20Recap%202%20%281.1-1.3%29%20-%20ANSWERS.pdf)
 - [2 Consolidation - Recap 2 (1.1-1.3).pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Christmas%20Holidays/2%20Consolidation%20-%20Recap%202%20%281.1-1.3%29.pdf)
 
 ### Easter Holidays
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Easter%20Holidays/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Easter%20Holidays/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Easter%20Holidays/0%20This%20Week.pdf)
+- [1 Mock Paper 1 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Easter%20Holidays/1%20Mock%20Paper%201%20%28typeable%29.docx)
 - [1 Mock Paper 1 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Easter%20Holidays/1%20Mock%20Paper%201%20-%20ANSWERS.pdf)
 - [1 Mock Paper 1.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Easter%20Holidays/1%20Mock%20Paper%201.pdf)
 
 ### Half Term 1 (19 Oct)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Half%20Term%201%20%2819%20Oct%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Half%20Term%201%20%2819%20Oct%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Half%20Term%201%20%2819%20Oct%29/0%20This%20Week.pdf)
 - [2 Consolidation - Flashcards 1.1.csv](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Half%20Term%201%20%2819%20Oct%29/2%20Consolidation%20-%20Flashcards%201.1.csv)
 - [2 Consolidation - Flashcards 1.2.csv](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Half%20Term%201%20%2819%20Oct%29/2%20Consolidation%20-%20Flashcards%201.2.csv)
 
 ### Half Term 2 (15 Feb)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Half%20Term%202%20%2815%20Feb%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Half%20Term%202%20%2815%20Feb%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Half%20Term%202%20%2815%20Feb%29/0%20This%20Week.pdf)
 - [2 Consolidation - Flashcards 1.4.csv](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Half%20Term%202%20%2815%20Feb%29/2%20Consolidation%20-%20Flashcards%201.4.csv)
 
 ### Half Term 3 (31 May)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Half%20Term%203%20%2831%20May%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Half%20Term%203%20%2831%20May%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Half%20Term%203%20%2831%20May%29/0%20This%20Week.pdf)
 
 ### Week 01 (31 Aug) - Induction and diagnostic
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2001%20%2831%20Aug%29%20-%20Induction%20and%20diagnostic/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2001%20%2831%20Aug%29%20-%20Induction%20and%20diagnostic/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2001%20%2831%20Aug%29%20-%20Induction%20and%20diagnostic/0%20This%20Week.pdf)
+- [2 Consolidation - Start Here guide (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2001%20%2831%20Aug%29%20-%20Induction%20and%20diagnostic/2%20Consolidation%20-%20Start%20Here%20guide%20%28typeable%29.docx)
 - [2 Consolidation - Start Here guide.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2001%20%2831%20Aug%29%20-%20Induction%20and%20diagnostic/2%20Consolidation%20-%20Start%20Here%20guide.pdf)
 
 ### Week 02 (07 Sep) - 1.1.1 CPU and FDE
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2002%20%2807%20Sep%29%20-%201.1.1%20CPU%20and%20FDE/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2002%20%2807%20Sep%29%20-%201.1.1%20CPU%20and%20FDE/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2002%20%2807%20Sep%29%20-%201.1.1%20CPU%20and%20FDE/0%20This%20Week.pdf)
+- [1 Homework 1.1.1 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2002%20%2807%20Sep%29%20-%201.1.1%20CPU%20and%20FDE/1%20Homework%201.1.1%20%28typeable%29.docx)
 - [1 Homework 1.1.1 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2002%20%2807%20Sep%29%20-%201.1.1%20CPU%20and%20FDE/1%20Homework%201.1.1%20-%20ANSWERS.pdf)
 - [1 Homework 1.1.1.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2002%20%2807%20Sep%29%20-%201.1.1%20CPU%20and%20FDE/1%20Homework%201.1.1.pdf)
 - [2 Consolidation - Flashcards 1.1.csv](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2002%20%2807%20Sep%29%20-%201.1.1%20CPU%20and%20FDE/2%20Consolidation%20-%20Flashcards%201.1.csv)
+- [2 Consolidation - Revision Notes 1.1.1 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2002%20%2807%20Sep%29%20-%201.1.1%20CPU%20and%20FDE/2%20Consolidation%20-%20Revision%20Notes%201.1.1%20%28typeable%29.docx)
 - [2 Consolidation - Revision Notes 1.1.1.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2002%20%2807%20Sep%29%20-%201.1.1%20CPU%20and%20FDE/2%20Consolidation%20-%20Revision%20Notes%201.1.1.pdf)
 
 ### Week 03 (14 Sep) - 1.1.2 Types of processor (KA1)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2003%20%2814%20Sep%29%20-%201.1.2%20Types%20of%20processor%20%28KA1%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2003%20%2814%20Sep%29%20-%201.1.2%20Types%20of%20processor%20%28KA1%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2003%20%2814%20Sep%29%20-%201.1.2%20Types%20of%20processor%20%28KA1%29/0%20This%20Week.pdf)
+- [1 Homework 1.1.2 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2003%20%2814%20Sep%29%20-%201.1.2%20Types%20of%20processor%20%28KA1%29/1%20Homework%201.1.2%20%28typeable%29.docx)
 - [1 Homework 1.1.2 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2003%20%2814%20Sep%29%20-%201.1.2%20Types%20of%20processor%20%28KA1%29/1%20Homework%201.1.2%20-%20ANSWERS.pdf)
 - [1 Homework 1.1.2.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2003%20%2814%20Sep%29%20-%201.1.2%20Types%20of%20processor%20%28KA1%29/1%20Homework%201.1.2.pdf)
+- [2 Consolidation - Knowledge Organiser 1.1 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2003%20%2814%20Sep%29%20-%201.1.2%20Types%20of%20processor%20%28KA1%29/2%20Consolidation%20-%20Knowledge%20Organiser%201.1%20%28typeable%29.docx)
 - [2 Consolidation - Knowledge Organiser 1.1.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2003%20%2814%20Sep%29%20-%201.1.2%20Types%20of%20processor%20%28KA1%29/2%20Consolidation%20-%20Knowledge%20Organiser%201.1.pdf)
+- [2 Consolidation - Quiz 1.1.1 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2003%20%2814%20Sep%29%20-%201.1.2%20Types%20of%20processor%20%28KA1%29/2%20Consolidation%20-%20Quiz%201.1.1%20%28typeable%29.docx)
 - [2 Consolidation - Quiz 1.1.1 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2003%20%2814%20Sep%29%20-%201.1.2%20Types%20of%20processor%20%28KA1%29/2%20Consolidation%20-%20Quiz%201.1.1%20-%20ANSWERS.pdf)
 - [2 Consolidation - Quiz 1.1.1.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2003%20%2814%20Sep%29%20-%201.1.2%20Types%20of%20processor%20%28KA1%29/2%20Consolidation%20-%20Quiz%201.1.1.pdf)
 
 ### Week 04 (21 Sep) - 1.1.3 IO and storage + 2.1.1 (KA1 feedback)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2004%20%2821%20Sep%29%20-%201.1.3%20IO%20and%20storage%20%2B%202.1.1%20%28KA1%20feedback%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2004%20%2821%20Sep%29%20-%201.1.3%20IO%20and%20storage%20%2B%202.1.1%20%28KA1%20feedback%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2004%20%2821%20Sep%29%20-%201.1.3%20IO%20and%20storage%20%2B%202.1.1%20%28KA1%20feedback%29/0%20This%20Week.pdf)
+- [1 Homework 1.1.3 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2004%20%2821%20Sep%29%20-%201.1.3%20IO%20and%20storage%20%2B%202.1.1%20%28KA1%20feedback%29/1%20Homework%201.1.3%20%28typeable%29.docx)
 - [1 Homework 1.1.3 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2004%20%2821%20Sep%29%20-%201.1.3%20IO%20and%20storage%20%2B%202.1.1%20%28KA1%20feedback%29/1%20Homework%201.1.3%20-%20ANSWERS.pdf)
 - [1 Homework 1.1.3.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2004%20%2821%20Sep%29%20-%201.1.3%20IO%20and%20storage%20%2B%202.1.1%20%28KA1%20feedback%29/1%20Homework%201.1.3.pdf)
+- [1 Homework 2.1.1 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2004%20%2821%20Sep%29%20-%201.1.3%20IO%20and%20storage%20%2B%202.1.1%20%28KA1%20feedback%29/1%20Homework%202.1.1%20%28typeable%29.docx)
 - [1 Homework 2.1.1 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2004%20%2821%20Sep%29%20-%201.1.3%20IO%20and%20storage%20%2B%202.1.1%20%28KA1%20feedback%29/1%20Homework%202.1.1%20-%20ANSWERS.pdf)
 - [1 Homework 2.1.1.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2004%20%2821%20Sep%29%20-%201.1.3%20IO%20and%20storage%20%2B%202.1.1%20%28KA1%20feedback%29/1%20Homework%202.1.1.pdf)
+- [2 Consolidation - Quiz 1.1.2 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2004%20%2821%20Sep%29%20-%201.1.3%20IO%20and%20storage%20%2B%202.1.1%20%28KA1%20feedback%29/2%20Consolidation%20-%20Quiz%201.1.2%20%28typeable%29.docx)
 - [2 Consolidation - Quiz 1.1.2 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2004%20%2821%20Sep%29%20-%201.1.3%20IO%20and%20storage%20%2B%202.1.1%20%28KA1%20feedback%29/2%20Consolidation%20-%20Quiz%201.1.2%20-%20ANSWERS.pdf)
 - [2 Consolidation - Quiz 1.1.2.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2004%20%2821%20Sep%29%20-%201.1.3%20IO%20and%20storage%20%2B%202.1.1%20%28KA1%20feedback%29/2%20Consolidation%20-%20Quiz%201.1.2.pdf)
+- [2 Consolidation - Quiz 2.1.1 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2004%20%2821%20Sep%29%20-%201.1.3%20IO%20and%20storage%20%2B%202.1.1%20%28KA1%20feedback%29/2%20Consolidation%20-%20Quiz%202.1.1%20%28typeable%29.docx)
 - [2 Consolidation - Quiz 2.1.1 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2004%20%2821%20Sep%29%20-%201.1.3%20IO%20and%20storage%20%2B%202.1.1%20%28KA1%20feedback%29/2%20Consolidation%20-%20Quiz%202.1.1%20-%20ANSWERS.pdf)
 - [2 Consolidation - Quiz 2.1.1.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2004%20%2821%20Sep%29%20-%201.1.3%20IO%20and%20storage%20%2B%202.1.1%20%28KA1%20feedback%29/2%20Consolidation%20-%20Quiz%202.1.1.pdf)
+- [2 Consolidation - Revision Notes 1.1.3 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2004%20%2821%20Sep%29%20-%201.1.3%20IO%20and%20storage%20%2B%202.1.1%20%28KA1%20feedback%29/2%20Consolidation%20-%20Revision%20Notes%201.1.3%20%28typeable%29.docx)
 - [2 Consolidation - Revision Notes 1.1.3.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2004%20%2821%20Sep%29%20-%201.1.3%20IO%20and%20storage%20%2B%202.1.1%20%28KA1%20feedback%29/2%20Consolidation%20-%20Revision%20Notes%201.1.3.pdf)
 
 ### Week 05 (28 Sep) - 1.2.1 OS + 2.1.2 (CAP1-KA2)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2005%20%2828%20Sep%29%20-%201.2.1%20OS%20%2B%202.1.2%20%28CAP1-KA2%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2005%20%2828%20Sep%29%20-%201.2.1%20OS%20%2B%202.1.2%20%28CAP1-KA2%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2005%20%2828%20Sep%29%20-%201.2.1%20OS%20%2B%202.1.2%20%28CAP1-KA2%29/0%20This%20Week.pdf)
+- [1 Homework 1.2.1 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2005%20%2828%20Sep%29%20-%201.2.1%20OS%20%2B%202.1.2%20%28CAP1-KA2%29/1%20Homework%201.2.1%20%28typeable%29.docx)
 - [1 Homework 1.2.1 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2005%20%2828%20Sep%29%20-%201.2.1%20OS%20%2B%202.1.2%20%28CAP1-KA2%29/1%20Homework%201.2.1%20-%20ANSWERS.pdf)
 - [1 Homework 1.2.1.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2005%20%2828%20Sep%29%20-%201.2.1%20OS%20%2B%202.1.2%20%28CAP1-KA2%29/1%20Homework%201.2.1.pdf)
+- [2 Consolidation - Mini-Paper 1.1 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2005%20%2828%20Sep%29%20-%201.2.1%20OS%20%2B%202.1.2%20%28CAP1-KA2%29/2%20Consolidation%20-%20Mini-Paper%201.1%20%28typeable%29.docx)
 - [2 Consolidation - Mini-Paper 1.1 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2005%20%2828%20Sep%29%20-%201.2.1%20OS%20%2B%202.1.2%20%28CAP1-KA2%29/2%20Consolidation%20-%20Mini-Paper%201.1%20-%20ANSWERS.pdf)
 - [2 Consolidation - Mini-Paper 1.1.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2005%20%2828%20Sep%29%20-%201.2.1%20OS%20%2B%202.1.2%20%28CAP1-KA2%29/2%20Consolidation%20-%20Mini-Paper%201.1.pdf)
+- [2 Consolidation - Quiz 1.1.3 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2005%20%2828%20Sep%29%20-%201.2.1%20OS%20%2B%202.1.2%20%28CAP1-KA2%29/2%20Consolidation%20-%20Quiz%201.1.3%20%28typeable%29.docx)
 - [2 Consolidation - Quiz 1.1.3 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2005%20%2828%20Sep%29%20-%201.2.1%20OS%20%2B%202.1.2%20%28CAP1-KA2%29/2%20Consolidation%20-%20Quiz%201.1.3%20-%20ANSWERS.pdf)
 - [2 Consolidation - Quiz 1.1.3.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2005%20%2828%20Sep%29%20-%201.2.1%20OS%20%2B%202.1.2%20%28CAP1-KA2%29/2%20Consolidation%20-%20Quiz%201.1.3.pdf)
 
 ### Week 06 (05 Oct) - Review week - 1.2.1 BIOS, drivers, VMs
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2006%20%2805%20Oct%29%20-%20Review%20week%20-%201.2.1%20BIOS%2C%20drivers%2C%20VMs/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2006%20%2805%20Oct%29%20-%20Review%20week%20-%201.2.1%20BIOS%2C%20drivers%2C%20VMs/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2006%20%2805%20Oct%29%20-%20Review%20week%20-%201.2.1%20BIOS%2C%20drivers%2C%20VMs/0%20This%20Week.pdf)
+- [1 Homework 2.1.2 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2006%20%2805%20Oct%29%20-%20Review%20week%20-%201.2.1%20BIOS%2C%20drivers%2C%20VMs/1%20Homework%202.1.2%20%28typeable%29.docx)
 - [1 Homework 2.1.2 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2006%20%2805%20Oct%29%20-%20Review%20week%20-%201.2.1%20BIOS%2C%20drivers%2C%20VMs/1%20Homework%202.1.2%20-%20ANSWERS.pdf)
 - [1 Homework 2.1.2.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2006%20%2805%20Oct%29%20-%20Review%20week%20-%201.2.1%20BIOS%2C%20drivers%2C%20VMs/1%20Homework%202.1.2.pdf)
 - [2 Consolidation - Flashcards 1.2.csv](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2006%20%2805%20Oct%29%20-%20Review%20week%20-%201.2.1%20BIOS%2C%20drivers%2C%20VMs/2%20Consolidation%20-%20Flashcards%201.2.csv)
+- [2 Consolidation - Quiz 1.2.1 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2006%20%2805%20Oct%29%20-%20Review%20week%20-%201.2.1%20BIOS%2C%20drivers%2C%20VMs/2%20Consolidation%20-%20Quiz%201.2.1%20%28typeable%29.docx)
 - [2 Consolidation - Quiz 1.2.1 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2006%20%2805%20Oct%29%20-%20Review%20week%20-%201.2.1%20BIOS%2C%20drivers%2C%20VMs/2%20Consolidation%20-%20Quiz%201.2.1%20-%20ANSWERS.pdf)
 - [2 Consolidation - Quiz 1.2.1.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2006%20%2805%20Oct%29%20-%20Review%20week%20-%201.2.1%20BIOS%2C%20drivers%2C%20VMs/2%20Consolidation%20-%20Quiz%201.2.1.pdf)
 
 ### Week 07 (12 Oct) - 1.2.2 Translators (KA3, CAP1 due)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2007%20%2812%20Oct%29%20-%201.2.2%20Translators%20%28KA3%2C%20CAP1%20due%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2007%20%2812%20Oct%29%20-%201.2.2%20Translators%20%28KA3%2C%20CAP1%20due%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2007%20%2812%20Oct%29%20-%201.2.2%20Translators%20%28KA3%2C%20CAP1%20due%29/0%20This%20Week.pdf)
+- [1 Homework 1.2.2 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2007%20%2812%20Oct%29%20-%201.2.2%20Translators%20%28KA3%2C%20CAP1%20due%29/1%20Homework%201.2.2%20%28typeable%29.docx)
 - [1 Homework 1.2.2 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2007%20%2812%20Oct%29%20-%201.2.2%20Translators%20%28KA3%2C%20CAP1%20due%29/1%20Homework%201.2.2%20-%20ANSWERS.pdf)
 - [1 Homework 1.2.2.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2007%20%2812%20Oct%29%20-%201.2.2%20Translators%20%28KA3%2C%20CAP1%20due%29/1%20Homework%201.2.2.pdf)
+- [2 Consolidation - Mini-Paper 1.1 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2007%20%2812%20Oct%29%20-%201.2.2%20Translators%20%28KA3%2C%20CAP1%20due%29/2%20Consolidation%20-%20Mini-Paper%201.1%20%28typeable%29.docx)
 - [2 Consolidation - Mini-Paper 1.1 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2007%20%2812%20Oct%29%20-%201.2.2%20Translators%20%28KA3%2C%20CAP1%20due%29/2%20Consolidation%20-%20Mini-Paper%201.1%20-%20ANSWERS.pdf)
 - [2 Consolidation - Mini-Paper 1.1.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2007%20%2812%20Oct%29%20-%201.2.2%20Translators%20%28KA3%2C%20CAP1%20due%29/2%20Consolidation%20-%20Mini-Paper%201.1.pdf)
+- [2 Consolidation - Quiz 2.1.2 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2007%20%2812%20Oct%29%20-%201.2.2%20Translators%20%28KA3%2C%20CAP1%20due%29/2%20Consolidation%20-%20Quiz%202.1.2%20%28typeable%29.docx)
 - [2 Consolidation - Quiz 2.1.2 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2007%20%2812%20Oct%29%20-%201.2.2%20Translators%20%28KA3%2C%20CAP1%20due%29/2%20Consolidation%20-%20Quiz%202.1.2%20-%20ANSWERS.pdf)
 - [2 Consolidation - Quiz 2.1.2.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2007%20%2812%20Oct%29%20-%201.2.2%20Translators%20%28KA3%2C%20CAP1%20due%29/2%20Consolidation%20-%20Quiz%202.1.2.pdf)
 
 ### Week 08 (02 Nov) - 1.2.3 Methodologies + 2.1.3 (KA3 feedback)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2008%20%2802%20Nov%29%20-%201.2.3%20Methodologies%20%2B%202.1.3%20%28KA3%20feedback%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2008%20%2802%20Nov%29%20-%201.2.3%20Methodologies%20%2B%202.1.3%20%28KA3%20feedback%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2008%20%2802%20Nov%29%20-%201.2.3%20Methodologies%20%2B%202.1.3%20%28KA3%20feedback%29/0%20This%20Week.pdf)
+- [1 Homework 1.2.3 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2008%20%2802%20Nov%29%20-%201.2.3%20Methodologies%20%2B%202.1.3%20%28KA3%20feedback%29/1%20Homework%201.2.3%20%28typeable%29.docx)
 - [1 Homework 1.2.3 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2008%20%2802%20Nov%29%20-%201.2.3%20Methodologies%20%2B%202.1.3%20%28KA3%20feedback%29/1%20Homework%201.2.3%20-%20ANSWERS.pdf)
 - [1 Homework 1.2.3.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2008%20%2802%20Nov%29%20-%201.2.3%20Methodologies%20%2B%202.1.3%20%28KA3%20feedback%29/1%20Homework%201.2.3.pdf)
+- [1 Homework 2.1.3 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2008%20%2802%20Nov%29%20-%201.2.3%20Methodologies%20%2B%202.1.3%20%28KA3%20feedback%29/1%20Homework%202.1.3%20%28typeable%29.docx)
 - [1 Homework 2.1.3 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2008%20%2802%20Nov%29%20-%201.2.3%20Methodologies%20%2B%202.1.3%20%28KA3%20feedback%29/1%20Homework%202.1.3%20-%20ANSWERS.pdf)
 - [1 Homework 2.1.3.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2008%20%2802%20Nov%29%20-%201.2.3%20Methodologies%20%2B%202.1.3%20%28KA3%20feedback%29/1%20Homework%202.1.3.pdf)
+- [2 Consolidation - Quiz 1.2.2 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2008%20%2802%20Nov%29%20-%201.2.3%20Methodologies%20%2B%202.1.3%20%28KA3%20feedback%29/2%20Consolidation%20-%20Quiz%201.2.2%20%28typeable%29.docx)
 - [2 Consolidation - Quiz 1.2.2 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2008%20%2802%20Nov%29%20-%201.2.3%20Methodologies%20%2B%202.1.3%20%28KA3%20feedback%29/2%20Consolidation%20-%20Quiz%201.2.2%20-%20ANSWERS.pdf)
 - [2 Consolidation - Quiz 1.2.2.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2008%20%2802%20Nov%29%20-%201.2.3%20Methodologies%20%2B%202.1.3%20%28KA3%20feedback%29/2%20Consolidation%20-%20Quiz%201.2.2.pdf)
+- [2 Consolidation - Revision Notes 1.2.3 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2008%20%2802%20Nov%29%20-%201.2.3%20Methodologies%20%2B%202.1.3%20%28KA3%20feedback%29/2%20Consolidation%20-%20Revision%20Notes%201.2.3%20%28typeable%29.docx)
 - [2 Consolidation - Revision Notes 1.2.3.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2008%20%2802%20Nov%29%20-%201.2.3%20Methodologies%20%2B%202.1.3%20%28KA3%20feedback%29/2%20Consolidation%20-%20Revision%20Notes%201.2.3.pdf)
 
 ### Week 09 (09 Nov) - 1.2.4 Paradigms, assembly, OOP (CAP2-KA4)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2009%20%2809%20Nov%29%20-%201.2.4%20Paradigms%2C%20assembly%2C%20OOP%20%28CAP2-KA4%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2009%20%2809%20Nov%29%20-%201.2.4%20Paradigms%2C%20assembly%2C%20OOP%20%28CAP2-KA4%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2009%20%2809%20Nov%29%20-%201.2.4%20Paradigms%2C%20assembly%2C%20OOP%20%28CAP2-KA4%29/0%20This%20Week.pdf)
+- [1 Homework 1.2.4 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2009%20%2809%20Nov%29%20-%201.2.4%20Paradigms%2C%20assembly%2C%20OOP%20%28CAP2-KA4%29/1%20Homework%201.2.4%20%28typeable%29.docx)
 - [1 Homework 1.2.4 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2009%20%2809%20Nov%29%20-%201.2.4%20Paradigms%2C%20assembly%2C%20OOP%20%28CAP2-KA4%29/1%20Homework%201.2.4%20-%20ANSWERS.pdf)
 - [1 Homework 1.2.4.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2009%20%2809%20Nov%29%20-%201.2.4%20Paradigms%2C%20assembly%2C%20OOP%20%28CAP2-KA4%29/1%20Homework%201.2.4.pdf)
 - [2 Consolidation - Flashcards 1.2.csv](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2009%20%2809%20Nov%29%20-%201.2.4%20Paradigms%2C%20assembly%2C%20OOP%20%28CAP2-KA4%29/2%20Consolidation%20-%20Flashcards%201.2.csv)
+- [2 Consolidation - Knowledge Organiser 1.2 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2009%20%2809%20Nov%29%20-%201.2.4%20Paradigms%2C%20assembly%2C%20OOP%20%28CAP2-KA4%29/2%20Consolidation%20-%20Knowledge%20Organiser%201.2%20%28typeable%29.docx)
 - [2 Consolidation - Knowledge Organiser 1.2.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2009%20%2809%20Nov%29%20-%201.2.4%20Paradigms%2C%20assembly%2C%20OOP%20%28CAP2-KA4%29/2%20Consolidation%20-%20Knowledge%20Organiser%201.2.pdf)
+- [2 Consolidation - Quiz 1.2.3 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2009%20%2809%20Nov%29%20-%201.2.4%20Paradigms%2C%20assembly%2C%20OOP%20%28CAP2-KA4%29/2%20Consolidation%20-%20Quiz%201.2.3%20%28typeable%29.docx)
 - [2 Consolidation - Quiz 1.2.3 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2009%20%2809%20Nov%29%20-%201.2.4%20Paradigms%2C%20assembly%2C%20OOP%20%28CAP2-KA4%29/2%20Consolidation%20-%20Quiz%201.2.3%20-%20ANSWERS.pdf)
 - [2 Consolidation - Quiz 1.2.3.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2009%20%2809%20Nov%29%20-%201.2.4%20Paradigms%2C%20assembly%2C%20OOP%20%28CAP2-KA4%29/2%20Consolidation%20-%20Quiz%201.2.3.pdf)
 
 ### Week 10 (16 Nov) - 1.3.1 Compression and encryption (CAP2-KA4 fb)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2010%20%2816%20Nov%29%20-%201.3.1%20Compression%20and%20encryption%20%28CAP2-KA4%20fb%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2010%20%2816%20Nov%29%20-%201.3.1%20Compression%20and%20encryption%20%28CAP2-KA4%20fb%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2010%20%2816%20Nov%29%20-%201.3.1%20Compression%20and%20encryption%20%28CAP2-KA4%20fb%29/0%20This%20Week.pdf)
+- [1 Homework 1.3.1 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2010%20%2816%20Nov%29%20-%201.3.1%20Compression%20and%20encryption%20%28CAP2-KA4%20fb%29/1%20Homework%201.3.1%20%28typeable%29.docx)
 - [1 Homework 1.3.1 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2010%20%2816%20Nov%29%20-%201.3.1%20Compression%20and%20encryption%20%28CAP2-KA4%20fb%29/1%20Homework%201.3.1%20-%20ANSWERS.pdf)
 - [1 Homework 1.3.1.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2010%20%2816%20Nov%29%20-%201.3.1%20Compression%20and%20encryption%20%28CAP2-KA4%20fb%29/1%20Homework%201.3.1.pdf)
+- [2 Consolidation - Quiz 1.2.4 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2010%20%2816%20Nov%29%20-%201.3.1%20Compression%20and%20encryption%20%28CAP2-KA4%20fb%29/2%20Consolidation%20-%20Quiz%201.2.4%20%28typeable%29.docx)
 - [2 Consolidation - Quiz 1.2.4 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2010%20%2816%20Nov%29%20-%201.3.1%20Compression%20and%20encryption%20%28CAP2-KA4%20fb%29/2%20Consolidation%20-%20Quiz%201.2.4%20-%20ANSWERS.pdf)
 - [2 Consolidation - Quiz 1.2.4.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2010%20%2816%20Nov%29%20-%201.3.1%20Compression%20and%20encryption%20%28CAP2-KA4%20fb%29/2%20Consolidation%20-%20Quiz%201.2.4.pdf)
+- [2 Consolidation - Recap 1 (1.1-1.2) (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2010%20%2816%20Nov%29%20-%201.3.1%20Compression%20and%20encryption%20%28CAP2-KA4%20fb%29/2%20Consolidation%20-%20Recap%201%20%281.1-1.2%29%20%28typeable%29.docx)
 - [2 Consolidation - Recap 1 (1.1-1.2) - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2010%20%2816%20Nov%29%20-%201.3.1%20Compression%20and%20encryption%20%28CAP2-KA4%20fb%29/2%20Consolidation%20-%20Recap%201%20%281.1-1.2%29%20-%20ANSWERS.pdf)
 - [2 Consolidation - Recap 1 (1.1-1.2).pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2010%20%2816%20Nov%29%20-%201.3.1%20Compression%20and%20encryption%20%28CAP2-KA4%20fb%29/2%20Consolidation%20-%20Recap%201%20%281.1-1.2%29.pdf)
 
 ### Week 11 (23 Nov) - 1.3.2 Normalisation and SQL
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2011%20%2823%20Nov%29%20-%201.3.2%20Normalisation%20and%20SQL/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2011%20%2823%20Nov%29%20-%201.3.2%20Normalisation%20and%20SQL/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2011%20%2823%20Nov%29%20-%201.3.2%20Normalisation%20and%20SQL/0%20This%20Week.pdf)
+- [1 Homework 1.3.2 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2011%20%2823%20Nov%29%20-%201.3.2%20Normalisation%20and%20SQL/1%20Homework%201.3.2%20%28typeable%29.docx)
 - [1 Homework 1.3.2 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2011%20%2823%20Nov%29%20-%201.3.2%20Normalisation%20and%20SQL/1%20Homework%201.3.2%20-%20ANSWERS.pdf)
 - [1 Homework 1.3.2.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2011%20%2823%20Nov%29%20-%201.3.2%20Normalisation%20and%20SQL/1%20Homework%201.3.2.pdf)
+- [2 Consolidation - Quiz 1.3.1 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2011%20%2823%20Nov%29%20-%201.3.2%20Normalisation%20and%20SQL/2%20Consolidation%20-%20Quiz%201.3.1%20%28typeable%29.docx)
 - [2 Consolidation - Quiz 1.3.1 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2011%20%2823%20Nov%29%20-%201.3.2%20Normalisation%20and%20SQL/2%20Consolidation%20-%20Quiz%201.3.1%20-%20ANSWERS.pdf)
 - [2 Consolidation - Quiz 1.3.1.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2011%20%2823%20Nov%29%20-%201.3.2%20Normalisation%20and%20SQL/2%20Consolidation%20-%20Quiz%201.3.1.pdf)
+- [2 Consolidation - Revision Notes 1.3.2 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2011%20%2823%20Nov%29%20-%201.3.2%20Normalisation%20and%20SQL/2%20Consolidation%20-%20Revision%20Notes%201.3.2%20%28typeable%29.docx)
 - [2 Consolidation - Revision Notes 1.3.2.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2011%20%2823%20Nov%29%20-%201.3.2%20Normalisation%20and%20SQL/2%20Consolidation%20-%20Revision%20Notes%201.3.2.pdf)
 
 ### Week 12 (30 Nov) - 1.3.3 Networks and TCP-IP
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2012%20%2830%20Nov%29%20-%201.3.3%20Networks%20and%20TCP-IP/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2012%20%2830%20Nov%29%20-%201.3.3%20Networks%20and%20TCP-IP/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2012%20%2830%20Nov%29%20-%201.3.3%20Networks%20and%20TCP-IP/0%20This%20Week.pdf)
+- [1 Homework 1.3.3 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2012%20%2830%20Nov%29%20-%201.3.3%20Networks%20and%20TCP-IP/1%20Homework%201.3.3%20%28typeable%29.docx)
 - [1 Homework 1.3.3 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2012%20%2830%20Nov%29%20-%201.3.3%20Networks%20and%20TCP-IP/1%20Homework%201.3.3%20-%20ANSWERS.pdf)
 - [1 Homework 1.3.3.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2012%20%2830%20Nov%29%20-%201.3.3%20Networks%20and%20TCP-IP/1%20Homework%201.3.3.pdf)
 - [2 Consolidation - Flashcards 1.3.csv](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2012%20%2830%20Nov%29%20-%201.3.3%20Networks%20and%20TCP-IP/2%20Consolidation%20-%20Flashcards%201.3.csv)
+- [2 Consolidation - Quiz 1.3.2 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2012%20%2830%20Nov%29%20-%201.3.3%20Networks%20and%20TCP-IP/2%20Consolidation%20-%20Quiz%201.3.2%20%28typeable%29.docx)
 - [2 Consolidation - Quiz 1.3.2 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2012%20%2830%20Nov%29%20-%201.3.3%20Networks%20and%20TCP-IP/2%20Consolidation%20-%20Quiz%201.3.2%20-%20ANSWERS.pdf)
 - [2 Consolidation - Quiz 1.3.2.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2012%20%2830%20Nov%29%20-%201.3.3%20Networks%20and%20TCP-IP/2%20Consolidation%20-%20Quiz%201.3.2.pdf)
 
 ### Week 13 (07 Dec) - 2.1.4 + 1.3.4 Web technologies (CAP2 due)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2013%20%2807%20Dec%29%20-%202.1.4%20%2B%201.3.4%20Web%20technologies%20%28CAP2%20due%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2013%20%2807%20Dec%29%20-%202.1.4%20%2B%201.3.4%20Web%20technologies%20%28CAP2%20due%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2013%20%2807%20Dec%29%20-%202.1.4%20%2B%201.3.4%20Web%20technologies%20%28CAP2%20due%29/0%20This%20Week.pdf)
+- [1 Homework 1.3.4 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2013%20%2807%20Dec%29%20-%202.1.4%20%2B%201.3.4%20Web%20technologies%20%28CAP2%20due%29/1%20Homework%201.3.4%20%28typeable%29.docx)
 - [1 Homework 1.3.4 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2013%20%2807%20Dec%29%20-%202.1.4%20%2B%201.3.4%20Web%20technologies%20%28CAP2%20due%29/1%20Homework%201.3.4%20-%20ANSWERS.pdf)
 - [1 Homework 1.3.4.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2013%20%2807%20Dec%29%20-%202.1.4%20%2B%201.3.4%20Web%20technologies%20%28CAP2%20due%29/1%20Homework%201.3.4.pdf)
+- [1 Homework 2.1.4 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2013%20%2807%20Dec%29%20-%202.1.4%20%2B%201.3.4%20Web%20technologies%20%28CAP2%20due%29/1%20Homework%202.1.4%20%28typeable%29.docx)
 - [1 Homework 2.1.4 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2013%20%2807%20Dec%29%20-%202.1.4%20%2B%201.3.4%20Web%20technologies%20%28CAP2%20due%29/1%20Homework%202.1.4%20-%20ANSWERS.pdf)
 - [1 Homework 2.1.4.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2013%20%2807%20Dec%29%20-%202.1.4%20%2B%201.3.4%20Web%20technologies%20%28CAP2%20due%29/1%20Homework%202.1.4.pdf)
+- [2 Consolidation - Quiz 1.3.3 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2013%20%2807%20Dec%29%20-%202.1.4%20%2B%201.3.4%20Web%20technologies%20%28CAP2%20due%29/2%20Consolidation%20-%20Quiz%201.3.3%20%28typeable%29.docx)
 - [2 Consolidation - Quiz 1.3.3 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2013%20%2807%20Dec%29%20-%202.1.4%20%2B%201.3.4%20Web%20technologies%20%28CAP2%20due%29/2%20Consolidation%20-%20Quiz%201.3.3%20-%20ANSWERS.pdf)
 - [2 Consolidation - Quiz 1.3.3.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2013%20%2807%20Dec%29%20-%202.1.4%20%2B%201.3.4%20Web%20technologies%20%28CAP2%20due%29/2%20Consolidation%20-%20Quiz%201.3.3.pdf)
+- [2 Consolidation - Revision Notes 1.3.4 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2013%20%2807%20Dec%29%20-%202.1.4%20%2B%201.3.4%20Web%20technologies%20%28CAP2%20due%29/2%20Consolidation%20-%20Revision%20Notes%201.3.4%20%28typeable%29.docx)
 - [2 Consolidation - Revision Notes 1.3.4.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2013%20%2807%20Dec%29%20-%202.1.4%20%2B%201.3.4%20Web%20technologies%20%28CAP2%20due%29/2%20Consolidation%20-%20Revision%20Notes%201.3.4.pdf)
+- [2 Consolidation - Revision Notes 2.1.4 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2013%20%2807%20Dec%29%20-%202.1.4%20%2B%201.3.4%20Web%20technologies%20%28CAP2%20due%29/2%20Consolidation%20-%20Revision%20Notes%202.1.4%20%28typeable%29.docx)
 - [2 Consolidation - Revision Notes 2.1.4.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2013%20%2807%20Dec%29%20-%202.1.4%20%2B%201.3.4%20Web%20technologies%20%28CAP2%20due%29/2%20Consolidation%20-%20Revision%20Notes%202.1.4.pdf)
 
 ### Week 14 (14 Dec) - 1.3.4 Server-client, PageRank - EOY quiz
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2014%20%2814%20Dec%29%20-%201.3.4%20Server-client%2C%20PageRank%20-%20EOY%20quiz/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2014%20%2814%20Dec%29%20-%201.3.4%20Server-client%2C%20PageRank%20-%20EOY%20quiz/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2014%20%2814%20Dec%29%20-%201.3.4%20Server-client%2C%20PageRank%20-%20EOY%20quiz/0%20This%20Week.pdf)
+- [2 Consolidation - Knowledge Organiser 1.3 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2014%20%2814%20Dec%29%20-%201.3.4%20Server-client%2C%20PageRank%20-%20EOY%20quiz/2%20Consolidation%20-%20Knowledge%20Organiser%201.3%20%28typeable%29.docx)
 - [2 Consolidation - Knowledge Organiser 1.3.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2014%20%2814%20Dec%29%20-%201.3.4%20Server-client%2C%20PageRank%20-%20EOY%20quiz/2%20Consolidation%20-%20Knowledge%20Organiser%201.3.pdf)
+- [2 Consolidation - Mini-Paper 1.2 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2014%20%2814%20Dec%29%20-%201.3.4%20Server-client%2C%20PageRank%20-%20EOY%20quiz/2%20Consolidation%20-%20Mini-Paper%201.2%20%28typeable%29.docx)
 - [2 Consolidation - Mini-Paper 1.2 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2014%20%2814%20Dec%29%20-%201.3.4%20Server-client%2C%20PageRank%20-%20EOY%20quiz/2%20Consolidation%20-%20Mini-Paper%201.2%20-%20ANSWERS.pdf)
 - [2 Consolidation - Mini-Paper 1.2.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2014%20%2814%20Dec%29%20-%201.3.4%20Server-client%2C%20PageRank%20-%20EOY%20quiz/2%20Consolidation%20-%20Mini-Paper%201.2.pdf)
+- [2 Consolidation - Quiz 1.3.4 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2014%20%2814%20Dec%29%20-%201.3.4%20Server-client%2C%20PageRank%20-%20EOY%20quiz/2%20Consolidation%20-%20Quiz%201.3.4%20%28typeable%29.docx)
 - [2 Consolidation - Quiz 1.3.4 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2014%20%2814%20Dec%29%20-%201.3.4%20Server-client%2C%20PageRank%20-%20EOY%20quiz/2%20Consolidation%20-%20Quiz%201.3.4%20-%20ANSWERS.pdf)
 - [2 Consolidation - Quiz 1.3.4.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2014%20%2814%20Dec%29%20-%201.3.4%20Server-client%2C%20PageRank%20-%20EOY%20quiz/2%20Consolidation%20-%20Quiz%201.3.4.pdf)
+- [2 Consolidation - Quiz 2.1.4 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2014%20%2814%20Dec%29%20-%201.3.4%20Server-client%2C%20PageRank%20-%20EOY%20quiz/2%20Consolidation%20-%20Quiz%202.1.4%20%28typeable%29.docx)
 - [2 Consolidation - Quiz 2.1.4 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2014%20%2814%20Dec%29%20-%201.3.4%20Server-client%2C%20PageRank%20-%20EOY%20quiz/2%20Consolidation%20-%20Quiz%202.1.4%20-%20ANSWERS.pdf)
 - [2 Consolidation - Quiz 2.1.4.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2014%20%2814%20Dec%29%20-%201.3.4%20Server-client%2C%20PageRank%20-%20EOY%20quiz/2%20Consolidation%20-%20Quiz%202.1.4.pdf)
 
 ### Week 15 (04 Jan) - 1.4.1 Binary, negatives, hex
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2015%20%2804%20Jan%29%20-%201.4.1%20Binary%2C%20negatives%2C%20hex/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2015%20%2804%20Jan%29%20-%201.4.1%20Binary%2C%20negatives%2C%20hex/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2015%20%2804%20Jan%29%20-%201.4.1%20Binary%2C%20negatives%2C%20hex/0%20This%20Week.pdf)
+- [1 End-of-Topic Worksheet 1.4 (drills) (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2015%20%2804%20Jan%29%20-%201.4.1%20Binary%2C%20negatives%2C%20hex/1%20End-of-Topic%20Worksheet%201.4%20%28drills%29%20%28typeable%29.docx)
 - [1 End-of-Topic Worksheet 1.4 (drills).pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2015%20%2804%20Jan%29%20-%201.4.1%20Binary%2C%20negatives%2C%20hex/1%20End-of-Topic%20Worksheet%201.4%20%28drills%29.pdf)
 - [1 End-of-Topic Worksheet 1.4 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2015%20%2804%20Jan%29%20-%201.4.1%20Binary%2C%20negatives%2C%20hex/1%20End-of-Topic%20Worksheet%201.4%20-%20ANSWERS.pdf)
+- [1 Homework 1.4.1 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2015%20%2804%20Jan%29%20-%201.4.1%20Binary%2C%20negatives%2C%20hex/1%20Homework%201.4.1%20%28typeable%29.docx)
 - [1 Homework 1.4.1 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2015%20%2804%20Jan%29%20-%201.4.1%20Binary%2C%20negatives%2C%20hex/1%20Homework%201.4.1%20-%20ANSWERS.pdf)
 - [1 Homework 1.4.1.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2015%20%2804%20Jan%29%20-%201.4.1%20Binary%2C%20negatives%2C%20hex/1%20Homework%201.4.1.pdf)
 
 ### Week 16 (11 Jan) - 1.4.1 Floating point (KA5)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2016%20%2811%20Jan%29%20-%201.4.1%20Floating%20point%20%28KA5%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2016%20%2811%20Jan%29%20-%201.4.1%20Floating%20point%20%28KA5%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2016%20%2811%20Jan%29%20-%201.4.1%20Floating%20point%20%28KA5%29/0%20This%20Week.pdf)
+- [2 Consolidation - Quiz 1.4.1 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2016%20%2811%20Jan%29%20-%201.4.1%20Floating%20point%20%28KA5%29/2%20Consolidation%20-%20Quiz%201.4.1%20%28typeable%29.docx)
 - [2 Consolidation - Quiz 1.4.1 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2016%20%2811%20Jan%29%20-%201.4.1%20Floating%20point%20%28KA5%29/2%20Consolidation%20-%20Quiz%201.4.1%20-%20ANSWERS.pdf)
 - [2 Consolidation - Quiz 1.4.1.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2016%20%2811%20Jan%29%20-%201.4.1%20Floating%20point%20%28KA5%29/2%20Consolidation%20-%20Quiz%201.4.1.pdf)
+- [2 Consolidation - Revision Notes 1.4.1 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2016%20%2811%20Jan%29%20-%201.4.1%20Floating%20point%20%28KA5%29/2%20Consolidation%20-%20Revision%20Notes%201.4.1%20%28typeable%29.docx)
 - [2 Consolidation - Revision Notes 1.4.1.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2016%20%2811%20Jan%29%20-%201.4.1%20Floating%20point%20%28KA5%29/2%20Consolidation%20-%20Revision%20Notes%201.4.1.pdf)
 
 ### Week 17 (18 Jan) - 1.4.1 Character sets + 2.2.1 (KA5 feedback)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2017%20%2818%20Jan%29%20-%201.4.1%20Character%20sets%20%2B%202.2.1%20%28KA5%20feedback%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2017%20%2818%20Jan%29%20-%201.4.1%20Character%20sets%20%2B%202.2.1%20%28KA5%20feedback%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2017%20%2818%20Jan%29%20-%201.4.1%20Character%20sets%20%2B%202.2.1%20%28KA5%20feedback%29/0%20This%20Week.pdf)
+- [1 Homework 2.2.1 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2017%20%2818%20Jan%29%20-%201.4.1%20Character%20sets%20%2B%202.2.1%20%28KA5%20feedback%29/1%20Homework%202.2.1%20%28typeable%29.docx)
 - [1 Homework 2.2.1 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2017%20%2818%20Jan%29%20-%201.4.1%20Character%20sets%20%2B%202.2.1%20%28KA5%20feedback%29/1%20Homework%202.2.1%20-%20ANSWERS.pdf)
 - [1 Homework 2.2.1.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2017%20%2818%20Jan%29%20-%201.4.1%20Character%20sets%20%2B%202.2.1%20%28KA5%20feedback%29/1%20Homework%202.2.1.pdf)
 - [2 Consolidation - Flashcards 1.4.csv](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2017%20%2818%20Jan%29%20-%201.4.1%20Character%20sets%20%2B%202.2.1%20%28KA5%20feedback%29/2%20Consolidation%20-%20Flashcards%201.4.csv)
 
 ### Week 18 (25 Jan) - 1.4.2 Arrays to stacks and queues (CAP3-KA6)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2018%20%2825%20Jan%29%20-%201.4.2%20Arrays%20to%20stacks%20and%20queues%20%28CAP3-KA6%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2018%20%2825%20Jan%29%20-%201.4.2%20Arrays%20to%20stacks%20and%20queues%20%28CAP3-KA6%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2018%20%2825%20Jan%29%20-%201.4.2%20Arrays%20to%20stacks%20and%20queues%20%28CAP3-KA6%29/0%20This%20Week.pdf)
+- [1 Homework 1.4.2 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2018%20%2825%20Jan%29%20-%201.4.2%20Arrays%20to%20stacks%20and%20queues%20%28CAP3-KA6%29/1%20Homework%201.4.2%20%28typeable%29.docx)
 - [1 Homework 1.4.2 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2018%20%2825%20Jan%29%20-%201.4.2%20Arrays%20to%20stacks%20and%20queues%20%28CAP3-KA6%29/1%20Homework%201.4.2%20-%20ANSWERS.pdf)
 - [1 Homework 1.4.2.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2018%20%2825%20Jan%29%20-%201.4.2%20Arrays%20to%20stacks%20and%20queues%20%28CAP3-KA6%29/1%20Homework%201.4.2.pdf)
+- [2 Consolidation - Knowledge Organiser 1.4 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2018%20%2825%20Jan%29%20-%201.4.2%20Arrays%20to%20stacks%20and%20queues%20%28CAP3-KA6%29/2%20Consolidation%20-%20Knowledge%20Organiser%201.4%20%28typeable%29.docx)
 - [2 Consolidation - Knowledge Organiser 1.4.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2018%20%2825%20Jan%29%20-%201.4.2%20Arrays%20to%20stacks%20and%20queues%20%28CAP3-KA6%29/2%20Consolidation%20-%20Knowledge%20Organiser%201.4.pdf)
+- [2 Consolidation - Quiz 2.2.1 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2018%20%2825%20Jan%29%20-%201.4.2%20Arrays%20to%20stacks%20and%20queues%20%28CAP3-KA6%29/2%20Consolidation%20-%20Quiz%202.2.1%20%28typeable%29.docx)
 - [2 Consolidation - Quiz 2.2.1 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2018%20%2825%20Jan%29%20-%201.4.2%20Arrays%20to%20stacks%20and%20queues%20%28CAP3-KA6%29/2%20Consolidation%20-%20Quiz%202.2.1%20-%20ANSWERS.pdf)
 - [2 Consolidation - Quiz 2.2.1.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2018%20%2825%20Jan%29%20-%201.4.2%20Arrays%20to%20stacks%20and%20queues%20%28CAP3-KA6%29/2%20Consolidation%20-%20Quiz%202.2.1.pdf)
 
 ### Week 19 (01 Feb) - Review week - implementing data structures
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2019%20%2801%20Feb%29%20-%20Review%20week%20-%20implementing%20data%20structures/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2019%20%2801%20Feb%29%20-%20Review%20week%20-%20implementing%20data%20structures/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2019%20%2801%20Feb%29%20-%20Review%20week%20-%20implementing%20data%20structures/0%20This%20Week.pdf)
+- [2 Consolidation - Mini-Paper 1.3 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2019%20%2801%20Feb%29%20-%20Review%20week%20-%20implementing%20data%20structures/2%20Consolidation%20-%20Mini-Paper%201.3%20%28typeable%29.docx)
 - [2 Consolidation - Mini-Paper 1.3 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2019%20%2801%20Feb%29%20-%20Review%20week%20-%20implementing%20data%20structures/2%20Consolidation%20-%20Mini-Paper%201.3%20-%20ANSWERS.pdf)
 - [2 Consolidation - Mini-Paper 1.3.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2019%20%2801%20Feb%29%20-%20Review%20week%20-%20implementing%20data%20structures/2%20Consolidation%20-%20Mini-Paper%201.3.pdf)
+- [2 Consolidation - Quiz 1.4.2 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2019%20%2801%20Feb%29%20-%20Review%20week%20-%20implementing%20data%20structures/2%20Consolidation%20-%20Quiz%201.4.2%20%28typeable%29.docx)
 - [2 Consolidation - Quiz 1.4.2 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2019%20%2801%20Feb%29%20-%20Review%20week%20-%20implementing%20data%20structures/2%20Consolidation%20-%20Quiz%201.4.2%20-%20ANSWERS.pdf)
 - [2 Consolidation - Quiz 1.4.2.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2019%20%2801%20Feb%29%20-%20Review%20week%20-%20implementing%20data%20structures/2%20Consolidation%20-%20Quiz%201.4.2.pdf)
 
 ### Week 20 (08 Feb) - 1.4.2 Graphs, trees, hash tables (CAP3 due)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2020%20%2808%20Feb%29%20-%201.4.2%20Graphs%2C%20trees%2C%20hash%20tables%20%28CAP3%20due%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2020%20%2808%20Feb%29%20-%201.4.2%20Graphs%2C%20trees%2C%20hash%20tables%20%28CAP3%20due%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2020%20%2808%20Feb%29%20-%201.4.2%20Graphs%2C%20trees%2C%20hash%20tables%20%28CAP3%20due%29/0%20This%20Week.pdf)
+- [2 Consolidation - Revision Notes 1.4.2 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2020%20%2808%20Feb%29%20-%201.4.2%20Graphs%2C%20trees%2C%20hash%20tables%20%28CAP3%20due%29/2%20Consolidation%20-%20Revision%20Notes%201.4.2%20%28typeable%29.docx)
 - [2 Consolidation - Revision Notes 1.4.2.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2020%20%2808%20Feb%29%20-%201.4.2%20Graphs%2C%20trees%2C%20hash%20tables%20%28CAP3%20due%29/2%20Consolidation%20-%20Revision%20Notes%201.4.2.pdf)
 
 ### Week 21 (22 Feb) - 1.4.3 Boolean logic (KA7)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2021%20%2822%20Feb%29%20-%201.4.3%20Boolean%20logic%20%28KA7%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2021%20%2822%20Feb%29%20-%201.4.3%20Boolean%20logic%20%28KA7%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2021%20%2822%20Feb%29%20-%201.4.3%20Boolean%20logic%20%28KA7%29/0%20This%20Week.pdf)
+- [1 Homework 1.4.3 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2021%20%2822%20Feb%29%20-%201.4.3%20Boolean%20logic%20%28KA7%29/1%20Homework%201.4.3%20%28typeable%29.docx)
 - [1 Homework 1.4.3 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2021%20%2822%20Feb%29%20-%201.4.3%20Boolean%20logic%20%28KA7%29/1%20Homework%201.4.3%20-%20ANSWERS.pdf)
 - [1 Homework 1.4.3.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2021%20%2822%20Feb%29%20-%201.4.3%20Boolean%20logic%20%28KA7%29/1%20Homework%201.4.3.pdf)
+- [2 Consolidation - Quiz 1.4.3 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2021%20%2822%20Feb%29%20-%201.4.3%20Boolean%20logic%20%28KA7%29/2%20Consolidation%20-%20Quiz%201.4.3%20%28typeable%29.docx)
 - [2 Consolidation - Quiz 1.4.3 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2021%20%2822%20Feb%29%20-%201.4.3%20Boolean%20logic%20%28KA7%29/2%20Consolidation%20-%20Quiz%201.4.3%20-%20ANSWERS.pdf)
 - [2 Consolidation - Quiz 1.4.3.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2021%20%2822%20Feb%29%20-%201.4.3%20Boolean%20logic%20%28KA7%29/2%20Consolidation%20-%20Quiz%201.4.3.pdf)
 
 ### Week 22 (01 Mar) - Component 3 PyGame (KA7 feedback)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2022%20%2801%20Mar%29%20-%20Component%203%20PyGame%20%28KA7%20feedback%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2022%20%2801%20Mar%29%20-%20Component%203%20PyGame%20%28KA7%20feedback%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2022%20%2801%20Mar%29%20-%20Component%203%20PyGame%20%28KA7%20feedback%29/0%20This%20Week.pdf)
 - [2 Consolidation - Flashcards 1.4.csv](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2022%20%2801%20Mar%29%20-%20Component%203%20PyGame%20%28KA7%20feedback%29/2%20Consolidation%20-%20Flashcards%201.4.csv)
 
 ### Week 23 (08 Mar) - 1.4.3 Karnaugh maps (SOW Recap 1.2 slot)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2023%20%2808%20Mar%29%20-%201.4.3%20Karnaugh%20maps%20%28SOW%20Recap%201.2%20slot%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2023%20%2808%20Mar%29%20-%201.4.3%20Karnaugh%20maps%20%28SOW%20Recap%201.2%20slot%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2023%20%2808%20Mar%29%20-%201.4.3%20Karnaugh%20maps%20%28SOW%20Recap%201.2%20slot%29/0%20This%20Week.pdf)
+- [2 Consolidation - Knowledge Organiser 1.2 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2023%20%2808%20Mar%29%20-%201.4.3%20Karnaugh%20maps%20%28SOW%20Recap%201.2%20slot%29/2%20Consolidation%20-%20Knowledge%20Organiser%201.2%20%28typeable%29.docx)
 - [2 Consolidation - Knowledge Organiser 1.2.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2023%20%2808%20Mar%29%20-%201.4.3%20Karnaugh%20maps%20%28SOW%20Recap%201.2%20slot%29/2%20Consolidation%20-%20Knowledge%20Organiser%201.2.pdf)
+- [2 Consolidation - Mini-Paper 1.2 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2023%20%2808%20Mar%29%20-%201.4.3%20Karnaugh%20maps%20%28SOW%20Recap%201.2%20slot%29/2%20Consolidation%20-%20Mini-Paper%201.2%20%28typeable%29.docx)
 - [2 Consolidation - Mini-Paper 1.2 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2023%20%2808%20Mar%29%20-%201.4.3%20Karnaugh%20maps%20%28SOW%20Recap%201.2%20slot%29/2%20Consolidation%20-%20Mini-Paper%201.2%20-%20ANSWERS.pdf)
 - [2 Consolidation - Mini-Paper 1.2.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2023%20%2808%20Mar%29%20-%201.4.3%20Karnaugh%20maps%20%28SOW%20Recap%201.2%20slot%29/2%20Consolidation%20-%20Mini-Paper%201.2.pdf)
 
 ### Week 24 (15 Mar) - Review week - CAP4-KA8 + 2.1.5 (SOW Recap 1.3 slot)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2024%20%2815%20Mar%29%20-%20Review%20week%20-%20CAP4-KA8%20%2B%202.1.5%20%28SOW%20Recap%201.3%20slot%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2024%20%2815%20Mar%29%20-%20Review%20week%20-%20CAP4-KA8%20%2B%202.1.5%20%28SOW%20Recap%201.3%20slot%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2024%20%2815%20Mar%29%20-%20Review%20week%20-%20CAP4-KA8%20%2B%202.1.5%20%28SOW%20Recap%201.3%20slot%29/0%20This%20Week.pdf)
+- [1 Homework 2.1.5 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2024%20%2815%20Mar%29%20-%20Review%20week%20-%20CAP4-KA8%20%2B%202.1.5%20%28SOW%20Recap%201.3%20slot%29/1%20Homework%202.1.5%20%28typeable%29.docx)
 - [1 Homework 2.1.5 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2024%20%2815%20Mar%29%20-%20Review%20week%20-%20CAP4-KA8%20%2B%202.1.5%20%28SOW%20Recap%201.3%20slot%29/1%20Homework%202.1.5%20-%20ANSWERS.pdf)
 - [1 Homework 2.1.5.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2024%20%2815%20Mar%29%20-%20Review%20week%20-%20CAP4-KA8%20%2B%202.1.5%20%28SOW%20Recap%201.3%20slot%29/1%20Homework%202.1.5.pdf)
+- [2 Consolidation - Mini-Paper 1.3 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2024%20%2815%20Mar%29%20-%20Review%20week%20-%20CAP4-KA8%20%2B%202.1.5%20%28SOW%20Recap%201.3%20slot%29/2%20Consolidation%20-%20Mini-Paper%201.3%20%28typeable%29.docx)
 - [2 Consolidation - Mini-Paper 1.3 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2024%20%2815%20Mar%29%20-%20Review%20week%20-%20CAP4-KA8%20%2B%202.1.5%20%28SOW%20Recap%201.3%20slot%29/2%20Consolidation%20-%20Mini-Paper%201.3%20-%20ANSWERS.pdf)
 - [2 Consolidation - Mini-Paper 1.3.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2024%20%2815%20Mar%29%20-%20Review%20week%20-%20CAP4-KA8%20%2B%202.1.5%20%28SOW%20Recap%201.3%20slot%29/2%20Consolidation%20-%20Mini-Paper%201.3.pdf)
+- [2 Consolidation - Recap 3 (1.1-1.4) (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2024%20%2815%20Mar%29%20-%20Review%20week%20-%20CAP4-KA8%20%2B%202.1.5%20%28SOW%20Recap%201.3%20slot%29/2%20Consolidation%20-%20Recap%203%20%281.1-1.4%29%20%28typeable%29.docx)
 - [2 Consolidation - Recap 3 (1.1-1.4) - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2024%20%2815%20Mar%29%20-%20Review%20week%20-%20CAP4-KA8%20%2B%202.1.5%20%28SOW%20Recap%201.3%20slot%29/2%20Consolidation%20-%20Recap%203%20%281.1-1.4%29%20-%20ANSWERS.pdf)
 - [2 Consolidation - Recap 3 (1.1-1.4).pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2024%20%2815%20Mar%29%20-%20Review%20week%20-%20CAP4-KA8%20%2B%202.1.5%20%28SOW%20Recap%201.3%20slot%29/2%20Consolidation%20-%20Recap%203%20%281.1-1.4%29.pdf)
 
 ### Week 25 (22 Mar) - PyGame (SOW Recap 1.4 slot, CAP4 due)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2025%20%2822%20Mar%29%20-%20PyGame%20%28SOW%20Recap%201.4%20slot%2C%20CAP4%20due%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2025%20%2822%20Mar%29%20-%20PyGame%20%28SOW%20Recap%201.4%20slot%2C%20CAP4%20due%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2025%20%2822%20Mar%29%20-%20PyGame%20%28SOW%20Recap%201.4%20slot%2C%20CAP4%20due%29/0%20This%20Week.pdf)
+- [2 Consolidation - Mini-Paper 1.4 (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2025%20%2822%20Mar%29%20-%20PyGame%20%28SOW%20Recap%201.4%20slot%2C%20CAP4%20due%29/2%20Consolidation%20-%20Mini-Paper%201.4%20%28typeable%29.docx)
 - [2 Consolidation - Mini-Paper 1.4 - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2025%20%2822%20Mar%29%20-%20PyGame%20%28SOW%20Recap%201.4%20slot%2C%20CAP4%20due%29/2%20Consolidation%20-%20Mini-Paper%201.4%20-%20ANSWERS.pdf)
 - [2 Consolidation - Mini-Paper 1.4.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2025%20%2822%20Mar%29%20-%20PyGame%20%28SOW%20Recap%201.4%20slot%2C%20CAP4%20due%29/2%20Consolidation%20-%20Mini-Paper%201.4.pdf)
 
 ### Week 26 (12 Apr) - Mock revision
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2026%20%2812%20Apr%29%20-%20Mock%20revision/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2026%20%2812%20Apr%29%20-%20Mock%20revision/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2026%20%2812%20Apr%29%20-%20Mock%20revision/0%20This%20Week.pdf)
+- [1 Mock Paper 1B (extra practice) (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2026%20%2812%20Apr%29%20-%20Mock%20revision/1%20Mock%20Paper%201B%20%28extra%20practice%29%20%28typeable%29.docx)
 - [1 Mock Paper 1B (extra practice).pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2026%20%2812%20Apr%29%20-%20Mock%20revision/1%20Mock%20Paper%201B%20%28extra%20practice%29.pdf)
 - [1 Mock Paper 1B - ANSWERS.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2026%20%2812%20Apr%29%20-%20Mock%20revision/1%20Mock%20Paper%201B%20-%20ANSWERS.pdf)
 
 ### Week 27 (19 Apr) - MOCK WEEK (CAP5)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2027%20%2819%20Apr%29%20-%20MOCK%20WEEK%20%28CAP5%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2027%20%2819%20Apr%29%20-%20MOCK%20WEEK%20%28CAP5%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2027%20%2819%20Apr%29%20-%20MOCK%20WEEK%20%28CAP5%29/0%20This%20Week.pdf)
 
 ### Week 28 (26 Apr) - Mock feedback
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2028%20%2826%20Apr%29%20-%20Mock%20feedback/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2028%20%2826%20Apr%29%20-%20Mock%20feedback/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2028%20%2826%20Apr%29%20-%20Mock%20feedback/0%20This%20Week.pdf)
 
 ### Week 29 (03 May) - Mini-NEA Analysis (CAP5 due 7 May)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2029%20%2803%20May%29%20-%20Mini-NEA%20Analysis%20%28CAP5%20due%207%20May%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2029%20%2803%20May%29%20-%20Mini-NEA%20Analysis%20%28CAP5%20due%207%20May%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2029%20%2803%20May%29%20-%20Mini-NEA%20Analysis%20%28CAP5%20due%207%20May%29/0%20This%20Week.pdf)
+- [1 NEA Project Template (typeable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2029%20%2803%20May%29%20-%20Mini-NEA%20Analysis%20%28CAP5%20due%207%20May%29/1%20NEA%20Project%20Template%20%28typeable%29.docx)
 - [1 NEA Project Template.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2029%20%2803%20May%29%20-%20Mini-NEA%20Analysis%20%28CAP5%20due%207%20May%29/1%20NEA%20Project%20Template.pdf)
 
 ### Week 30 (10 May) - Mini-NEA Analysis
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2030%20%2810%20May%29%20-%20Mini-NEA%20Analysis/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2030%20%2810%20May%29%20-%20Mini-NEA%20Analysis/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2030%20%2810%20May%29%20-%20Mini-NEA%20Analysis/0%20This%20Week.pdf)
 
 ### Week 31 (17 May) - Mini-NEA Design
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2031%20%2817%20May%29%20-%20Mini-NEA%20Design/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2031%20%2817%20May%29%20-%20Mini-NEA%20Design/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2031%20%2817%20May%29%20-%20Mini-NEA%20Design/0%20This%20Week.pdf)
 
 ### Week 32 (24 May) - Mini-NEA Design
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2032%20%2824%20May%29%20-%20Mini-NEA%20Design/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2032%20%2824%20May%29%20-%20Mini-NEA%20Design/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2032%20%2824%20May%29%20-%20Mini-NEA%20Design/0%20This%20Week.pdf)
 
 ### Week 33 (07 Jun) - Mini-NEA Implementation
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2033%20%2807%20Jun%29%20-%20Mini-NEA%20Implementation/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2033%20%2807%20Jun%29%20-%20Mini-NEA%20Implementation/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2033%20%2807%20Jun%29%20-%20Mini-NEA%20Implementation/0%20This%20Week.pdf)
 
 ### Week 34 (14 Jun) - Mini-NEA Implementation (review week)
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2034%20%2814%20Jun%29%20-%20Mini-NEA%20Implementation%20%28review%20week%29/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2034%20%2814%20Jun%29%20-%20Mini-NEA%20Implementation%20%28review%20week%29/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2034%20%2814%20Jun%29%20-%20Mini-NEA%20Implementation%20%28review%20week%29/0%20This%20Week.pdf)
 
 ### Week 35 (21 Jun) - Mini-NEA Evaluation
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2035%20%2821%20Jun%29%20-%20Mini-NEA%20Evaluation/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2035%20%2821%20Jun%29%20-%20Mini-NEA%20Evaluation/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2035%20%2821%20Jun%29%20-%20Mini-NEA%20Evaluation/0%20This%20Week.pdf)
 
 ### Week 36 (28 Jun) - Mini-NEA Evaluation
 
-- [0 This Week.txt](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2036%20%2828%20Jun%29%20-%20Mini-NEA%20Evaluation/0%20This%20Week.txt)
+- [0 This Week (editable).docx](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2036%20%2828%20Jun%29%20-%20Mini-NEA%20Evaluation/0%20This%20Week%20%28editable%29.docx)
+- [0 This Week.pdf](7%20Weekly%20Plan%20-%20Homework%20and%20Consolidation%20%28Year%2012%29/Week%2036%20%2828%20Jun%29%20-%20Mini-NEA%20Evaluation/0%20This%20Week.pdf)

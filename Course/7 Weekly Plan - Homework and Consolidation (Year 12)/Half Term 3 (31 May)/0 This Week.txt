@@ -1,3 +1,0 @@
-Half Term 3 (31 May)
-
-Finish the design so implementation starts clean. Light flashcard retrieval.

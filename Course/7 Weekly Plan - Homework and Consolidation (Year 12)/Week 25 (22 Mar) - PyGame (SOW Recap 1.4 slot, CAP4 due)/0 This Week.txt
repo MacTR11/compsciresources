@@ -1,4 +1,0 @@
-Week 25 (22 Mar) - PyGame (SOW Recap 1.4 slot, CAP4 due)
-
-HW: PyGame workbook; act on CAP4/KA8 feedback.
-Consolidation: Mini-Paper 1.4 + Reference-Sheet drills.

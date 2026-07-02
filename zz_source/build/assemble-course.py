@@ -12,8 +12,16 @@ Teacher-Toolkit/, Spreadsheets/) into the two folders people actually use:
 Run the build-* scripts first, then this. The flat output folders are
 regeneration staging (git-ignored); Course/ + Teacher Toolkit/ are kept.
 """
-import os, shutil, glob
+import os, shutil, glob, importlib.util
 from urllib.parse import quote
+
+
+def _load(name):
+    here = os.path.dirname(os.path.abspath(__file__))
+    spec = importlib.util.spec_from_file_location(name, os.path.join(here, name + '.py'))
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 WD = os.path.join(REPO, "Word-Documents")
@@ -108,6 +116,8 @@ def build():
             cp(os.path.join(WD, "Worksheets", f"{tstem}.docx"), os.path.join(tr, "6 End-of-Topic Worksheet (editable).docx"))
             cp(os.path.join(PDF, "mini-papers", f"{tstem}.pdf"), os.path.join(tr, "7 Topic Mini-Paper.pdf"))
             cp(os.path.join(PDF, "mini-papers", f"{tstem}-ANSWERS.pdf"), os.path.join(tr, "7 Topic Mini-Paper - ANSWERS.pdf"))
+            cp(os.path.join(WD, "Mini-Papers", f"{tstem}.docx"), os.path.join(tr, "7 Topic Mini-Paper (typeable).docx"))
+            cp(os.path.join(WD, "Revision-Games", f"{tstem}.docx"), os.path.join(tr, "5 Revision Game (editable).docx"))
             for sname, sstem in subs:
                 sd = os.path.join(tdir, sname)
                 cp(os.path.join(TT, "Lesson-PowerPoints", f"{sstem}.pptx"), os.path.join(sd, "1 Lesson.pptx"))
@@ -142,6 +152,9 @@ def build():
         stem = base[:-8] if ans else base
         nice = RECAP_NAMES.get(stem, stem) + (" - ANSWERS" if ans else "")
         cp(f, os.path.join(rc, nice + ".pdf"))
+        if not ans:
+            cp(os.path.join(WD, "Recap-Checkpoints", f"{stem}.docx"),
+               os.path.join(rc, nice + " (typeable).docx"))
 
     # ---- Reference guides (inside Course so students find them) ----
     ref = os.path.join(COURSE, "5 Reference Guides")
@@ -368,15 +381,67 @@ def _wk_sources():
     ]
 
 
+# staging PDF dir -> staging Word dir, for pairing every PDF with its typeable docx
+EDIT_MAP = {
+    "homework": "Homework", "subtopic-quizzes": "Subtopic-Quizzes",
+    "mini-papers": "Mini-Papers", "mock-papers": "Mock-Papers",
+    "recap-checkpoints": "Recap-Checkpoints", "worksheets": "Worksheets",
+    "nea-pack": "NEA-Pack", "course-guide": "Course-Guide",
+    "knowledge-organisers": "Knowledge-Organisers", "subtopic-revision": "Subtopic-Revision",
+}
+
+
+def _editable_for(src_pdf):
+    """Given a staging PDF path, return the matching typeable .docx path or None."""
+    d, base = os.path.split(src_pdf)
+    folder = os.path.basename(d)
+    wd_dir = EDIT_MAP.get(folder)
+    if not wd_dir or not base.endswith(".pdf") or base.endswith("-ANSWERS.pdf"):
+        return None
+    cand = os.path.join(WD, wd_dir, base[:-4] + ".docx")
+    return cand if os.path.exists(cand) else None
+
+
+def _week_sheet(note):
+    """Format a week's note into a small task-sheet markdown document."""
+    hw, cons, other = [], [], []
+    for ln in note.split("\n"):
+        ln = ln.strip()
+        if not ln:
+            continue
+        if ln.startswith("HW:"):
+            hw.append(ln[3:].strip())
+        elif ln.startswith("Consolidation:"):
+            cons.append(ln[14:].strip())
+        else:
+            other.append(ln)
+    md = ""
+    if hw:
+        md += "## Homework\n\n" + "\n".join(f"- {x}" for x in hw) + "\n\n"
+    if cons:
+        md += "## Consolidation\n\n" + "\n".join(f"- {x}" for x in cons) + "\n\n"
+    if other:
+        md += "\n".join(f"- {x}" for x in other) + "\n\n"
+    md += "*Every worksheet has a separate ANSWERS file; typeable Word versions sit alongside each PDF.*\n"
+    return md
+
+
 def build_weekly():
+    bdocx = _load("build-docx")
+    bpdf = _load("build-pdfs")
     wk_root = os.path.join(COURSE, "7 Weekly Plan - Homework and Consolidation (Year 12)")
     for folder, note, files in _wk_sources():
         d = os.path.join(wk_root, folder)
         os.makedirs(d, exist_ok=True)
-        with open(os.path.join(d, "0 This Week.txt"), "w", encoding="utf-8") as f:
-            f.write(folder + "\n\n" + note.replace("\\n", "\n") + "\n")
+        # the week's task sheet, as a printable PDF and a typeable Word doc
+        md = f"# {folder}\n\n" + _week_sheet(note)
+        bpdf.convert_text(md, folder, os.path.join(d, "0 This Week.pdf"))
+        bdocx.convert_text(md, os.path.join(d, "0 This Week (editable).docx"))
         for src, dst in files:
             cp(src, os.path.join(d, dst))
+            e = _editable_for(src)
+            if e and dst.endswith(".pdf"):
+                cp(e, os.path.join(d, dst[:-4] + " (typeable).docx"))
 
 
 if __name__ == "__main__":

@@ -1,4 +1,0 @@
-Week 15 (04 Jan) - 1.4.1 Binary, negatives, hex
-
-HW: Homework 1.4.1 Part A + conversion drills (End-of-Topic Worksheet 1.4).
-Consolidation: mark the holiday Recap 2; re-RAG the PLC.

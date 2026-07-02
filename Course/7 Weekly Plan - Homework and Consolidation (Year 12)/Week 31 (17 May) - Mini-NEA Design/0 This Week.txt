@@ -1,4 +1,0 @@
-Week 31 (17 May) - Mini-NEA Design
-
-HW: NEA Template section 2 - decomposition, algorithms, data structures, UI.
-Consolidation: check each design decision traces to a requirement.

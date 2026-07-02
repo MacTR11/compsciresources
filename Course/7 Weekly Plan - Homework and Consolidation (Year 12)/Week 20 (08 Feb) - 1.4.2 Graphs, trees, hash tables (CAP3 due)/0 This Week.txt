@@ -1,4 +1,0 @@
-Week 20 (08 Feb) - 1.4.2 Graphs, trees, hash tables (CAP3 due)
-
-HW: finish Homework 1.4.2 redos; BST + hash table in Python.
-Consolidation: Revision Notes 1.4.2.

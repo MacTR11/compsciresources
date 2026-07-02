@@ -1,4 +1,0 @@
-Week 01 (31 Aug) - Induction and diagnostic
-
-HW: complete the diagnostic task; set up VS Code, Python, Classroom.
-Consolidation: read the START HERE guide; set up notes and folders.

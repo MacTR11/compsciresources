@@ -1,4 +1,0 @@
-Week 32 (24 May) - Mini-NEA Design
-
-HW: complete section 2 + the test plan (typical, boundary, erroneous).
-Consolidation: review against the Design checklist.
