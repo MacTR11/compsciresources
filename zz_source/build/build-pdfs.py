@@ -73,8 +73,8 @@ details { display: block; border: 1px solid #cbd5e0; border-radius: 5px; padding
 details > summary { font-weight: bold; }
 details > summary ~ * { display: revert; }
 strong { color: #1a202c; }
-.answer-space { margin: 3px 0 12px; page-break-inside: avoid; }
-.answer-space .rl { border-bottom: 1px solid #aab4c0; height: 8mm; }
+.answer-space { margin: 4px 0 14px; }
+.answer-space .rl { border-bottom: 1.2px dotted #666; height: 9mm; }
 .sheet-note { color: #2b6cb0; font-style: italic; font-size: 10pt; margin: 2px 0 10px; }
 """
 

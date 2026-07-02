@@ -174,17 +174,24 @@ def convert_text(text, docx_path):
             add_runs(p, m.group(2)); i += 1
             continue
 
-        # answer-writing space sentinel (@@SPACE:n@@)
+        # answer-writing space sentinel (@@SPACE:n@@) -> typeable answer box:
+        # a single-cell bordered table with a minimum height that grows as
+        # the student types (exam-paper style answer box).
         ms = re.match(r'^@@SPACE:(\d+)@@$', line.strip())
         if ms:
-            for _ in range(int(ms.group(1))):
-                p = doc.add_paragraph()
-                p.paragraph_format.space_before = Pt(13)
-                pr = p._p.get_or_add_pPr()
-                pb = OxmlElement('w:pBdr'); bottom = OxmlElement('w:bottom')
-                bottom.set(qn('w:val'), 'single'); bottom.set(qn('w:sz'), '4')
-                bottom.set(qn('w:space'), '1'); bottom.set(qn('w:color'), 'AAB4C0')
-                pb.append(bottom); pr.append(pb)
+            n_lines = int(ms.group(1))
+            tbl = doc.add_table(rows=1, cols=1)
+            tbl.style = 'Table Grid'
+            row = tbl.rows[0]
+            tr_pr = row._tr.get_or_add_trPr()
+            h = OxmlElement('w:trHeight')
+            h.set(qn('w:val'), str(n_lines * 340))        # ~0.24in per answer line
+            h.set(qn('w:hRule'), 'atLeast')               # grows with typed content
+            tr_pr.append(h)
+            cell = row.cells[0]
+            cp0 = cell.paragraphs[0]
+            cp0.paragraph_format.space_before = Pt(2)
+            doc.add_paragraph()                            # spacer after the box
             i += 1
             continue
 
