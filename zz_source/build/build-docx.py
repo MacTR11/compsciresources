@@ -25,24 +25,47 @@ except ImportError:
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-INLINE = re.compile(r'(\*\*.+?\*\*|__.+?__|\*.+?\*|`.+?`)')
+# NOTE: no `__bold__` variant — answer blanks like "Name: ______" must stay literal.
+INLINE = re.compile(r'(\*\*.+?\*\*|\*[^*\s][^*]*?\*|`[^`]+?`)')
+ESC_STAR = '\x00'   # placeholder for the \* escape so it never pairs as emphasis
 
 
-def add_runs(paragraph, text):
-    """Add text to a paragraph, parsing **bold**, *italic* and `code`."""
-    text = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', text)   # links -> just the label
-    text = text.replace('&amp;', '&').replace('&lt;', '<').replace('&gt;', '>')
+def _emit(paragraph, text, bold=False, italic=False, code=False):
+    r = paragraph.add_run(text.replace(ESC_STAR, '*'))
+    r.bold = bold; r.italic = italic
+    if code:
+        r.font.name = 'Consolas'; r.font.size = Pt(9.5)
+
+
+def _parse_inline(paragraph, text, bold=False, italic=False):
     for part in INLINE.split(text):
         if not part:
             continue
-        if (part.startswith('**') and part.endswith('**')) or (part.startswith('__') and part.endswith('__')):
-            r = paragraph.add_run(part[2:-2]); r.bold = True
-        elif part.startswith('`') and part.endswith('`'):
-            r = paragraph.add_run(part[1:-1]); r.font.name = 'Consolas'; r.font.size = Pt(9.5)
+        if part.startswith('**') and part.endswith('**') and len(part) > 4:
+            inner = part[2:-2]
+            # allow `code` nested inside bold
+            for sub in re.split(r'(`[^`]+?`)', inner):
+                if not sub:
+                    continue
+                if sub.startswith('`') and sub.endswith('`') and len(sub) > 2:
+                    _emit(paragraph, sub[1:-1], bold=True, italic=italic, code=True)
+                else:
+                    _emit(paragraph, sub, bold=True, italic=italic)
+        elif part.startswith('`') and part.endswith('`') and len(part) > 2:
+            _emit(paragraph, part[1:-1], bold=bold, italic=italic, code=True)
         elif part.startswith('*') and part.endswith('*') and len(part) > 2:
-            r = paragraph.add_run(part[1:-1]); r.italic = True
+            _emit(paragraph, part[1:-1], bold=bold, italic=True)
         else:
-            paragraph.add_run(part)
+            _emit(paragraph, part, bold=bold, italic=italic)
+
+
+def add_runs(paragraph, text):
+    """Add text to a paragraph, parsing **bold**, *italic* and `code`
+    (with `code` allowed inside bold, and \\* kept as a literal star)."""
+    text = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', text)   # links -> just the label
+    text = text.replace('&amp;', '&').replace('&lt;', '<').replace('&gt;', '>')
+    text = text.replace('\\*', ESC_STAR)
+    _parse_inline(paragraph, text)
 
 
 def shade(cell_or_para, fill):
@@ -195,9 +218,14 @@ def split_qa(text):
 
 def inject_space(text):
     out = []
+    in_fence = False
     for line in text.split('\n'):
         out.append(line)
-        if line.lstrip().startswith('#'):
+        if line.lstrip().startswith('```'):
+            in_fence = not in_fence
+            continue
+        # never inject inside code blocks, headings or table rows
+        if in_fence or line.lstrip().startswith('#') or line.lstrip().startswith('|'):
             continue
         tags = MARK_TAG.findall(line)
         if tags:

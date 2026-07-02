@@ -86,8 +86,43 @@ ANSWER_HEADING = re.compile(r"^\s*#{2,3}\s+(answer key|answers|mark scheme)", re
 MARK_TAG = re.compile(r"\[(\d+)\]|\((\d+)\s*marks?\)")
 
 
+def normalise_md(md_text):
+    """Work around python-markdown limitations that leak raw syntax:
+    - fenced code blocks indented inside lists aren't recognised -> dedent
+      every fence (and its contents) to column 0, with a blank line before;
+    - a table block must be preceded by a blank line -> insert one."""
+    lines = md_text.split("\n")
+    out = []
+    fence_indent = None            # indent string of the fence we're inside
+    for i, line in enumerate(lines):
+        stripped = line.lstrip()
+        indent = line[:len(line) - len(stripped)]
+        if fence_indent is None and stripped.startswith("```") and indent:
+            fence_indent = indent
+            if out and out[-1].strip():
+                out.append("")
+            out.append(stripped)
+            continue
+        if fence_indent is not None:
+            # inside an indented fence: strip that indent from content
+            content = line[len(fence_indent):] if line.startswith(fence_indent) else stripped
+            out.append(content)
+            if stripped.startswith("```"):
+                fence_indent = None
+            continue
+        # blank line before a table block (header row followed by |---| separator)
+        if (stripped.startswith("|") and out and out[-1].strip()
+                and not out[-1].lstrip().startswith("|")
+                and i + 1 < len(lines) and re.match(r"^\s*\|?[\s:|-]+\|?\s*$", lines[i + 1])
+                and "-" in lines[i + 1]):
+            out.append("")
+        out.append(line)
+    return "\n".join(out)
+
+
 def md_to_html(md_text, title):
     md_text = re.sub(r"<details(?!\s+open)", "<details open", md_text)
+    md_text = normalise_md(md_text)
     body = markdown.markdown(
         md_text,
         extensions=["tables", "fenced_code", "sane_lists", "attr_list"],
@@ -109,11 +144,16 @@ def split_qa(text):
 
 def inject_answer_space(text):
     """After each question line (one carrying a [n] / (n marks) tag), add ruled
-    writing space sized to the marks. Headings are skipped."""
+    writing space sized to the marks. Never injects inside code fences,
+    headings or table rows (that would corrupt the block)."""
     out = []
+    in_fence = False
     for line in text.split("\n"):
         out.append(line)
-        if line.lstrip().startswith("#"):
+        if line.lstrip().startswith("```"):
+            in_fence = not in_fence
+            continue
+        if in_fence or line.lstrip().startswith("#") or line.lstrip().startswith("|"):
             continue
         tags = MARK_TAG.findall(line)
         if tags:
