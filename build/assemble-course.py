@@ -96,6 +96,8 @@ def build():
             cp(os.path.join(WD, "Worksheets", f"{tstem}.docx"), os.path.join(tr, "End-of-Topic Worksheet (editable).docx"))
             cp(os.path.join(PDF, "mini-papers", f"{tstem}.pdf"), os.path.join(tr, "Topic Mini-Paper.pdf"))
             cp(os.path.join(PDF, "mini-papers", f"{tstem}-ANSWERS.pdf"), os.path.join(tr, "Topic Mini-Paper - ANSWERS.pdf"))
+            cp(os.path.join(PDF, "lesson-activities", f"{tstem}.pdf"), os.path.join(tr, "Lesson Activities Pack (teacher).pdf"))
+            cp(os.path.join(WD, "Lesson-Activities", f"{tstem}.docx"), os.path.join(tr, "Lesson Activities Pack (teacher, editable).docx"))
             # subtopics
             for sname, sstem in subs:
                 sd = os.path.join(tdir, sname)

@@ -257,6 +257,7 @@ DEFAULT_JOBS = [
     ('source/revision-tools/subtopic-revision',              'Word-Documents/Subtopic-Revision'),
     ('source/revision-tools/nea-pack',                       'Word-Documents/NEA-Pack'),
     ('source/revision-tools/course-guide',                   'Word-Documents/Course-Guide'),
+    ('source/revision-tools/lesson-activities',               'Word-Documents/Lesson-Activities'),
 ]
 
 

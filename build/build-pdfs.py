@@ -201,6 +201,7 @@ DEFAULT_JOBS = [
     ("source/revision-tools/subtopic-revision",   "Printable-PDFs/subtopic-revision"),
     ("source/revision-tools/nea-pack",            "Printable-PDFs/nea-pack"),
     ("source/revision-tools/course-guide",        "Printable-PDFs/course-guide"),
+    ("source/revision-tools/lesson-activities",   "Printable-PDFs/lesson-activities"),
 ]
 
 
