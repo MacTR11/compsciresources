@@ -154,6 +154,10 @@ def build():
     }
     for src_name, dst_name in refmap.items():
         cp(os.path.join(WD, "Guides", src_name), os.path.join(ref, dst_name))
+    cp(os.path.join(WD, "Course-Guide", "past-papers-guide.docx"),
+       os.path.join(ref, "Past Papers Guide (index and how to use).docx"))
+    cp(os.path.join(PDF, "course-guide", "past-papers-guide.pdf"),
+       os.path.join(ref, "Past Papers Guide (index and how to use).pdf"))
 
     print("Assembled Course/, Teacher Toolkit/, Reference/.")
     course_files = sum(len(fs) for _, _, fs in os.walk(COURSE))
