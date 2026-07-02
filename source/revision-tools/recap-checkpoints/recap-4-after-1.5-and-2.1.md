@@ -42,8 +42,9 @@ Explain how **decomposition** and **abstraction** would help the developers mana
 ## Mark scheme
 
 **Q1 [3] (AO1).**
-- Fetch (1); Decode (1); Execute (1) — must be in this order.
-- Fetch phase: register **used** = **PC (Program Counter)** or **MAR**; register **updated** = **MAR/MDR/CIR**, or the **PC is incremented** (accept any valid pairing as the named registers within the 3 marks — award the phase marks; named registers are credited within the description).
+- The three phases in the correct order — fetch, decode, execute (1).
+- Fetch phase register **used**: PC (Program Counter) or MAR (1).
+- Fetch phase register **updated**: MAR/MDR/CIR, or the PC is incremented (1).
 
 *Examiner tip: PC holds the address of the next instruction; it is copied to the MAR, then incremented. The fetched instruction lands in the MDR and is copied to the CIR.*
 

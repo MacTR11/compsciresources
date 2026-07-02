@@ -1,6 +1,6 @@
 # Recap Checkpoint 1 — after 1.1 (Processors, Input/Output & Storage) + 1.2 (Software)
 
-Name: ______________________   Date: __________   Mark: ______ / 30
+Name: ______________________   Date: __________   Mark: ______ / 34
 
 *OCR H446 cumulative recap — mixes every topic taught so far. Show all working.*
 
@@ -45,7 +45,7 @@ Name: ______________________   Date: __________   Mark: ______ / 30
 
 ## Mark scheme
 
-*Total = 30 marks. Award marks for valid alternatives in line with OCR positive-marking.*
+*Total = 34 marks. Award marks for valid alternatives in line with OCR positive-marking.*
 
 **Q1 — [2] (AO1)** — *1.1.1*
 - PC holds the **address of the next instruction** to be fetched (1).

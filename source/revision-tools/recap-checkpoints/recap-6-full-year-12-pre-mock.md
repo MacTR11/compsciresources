@@ -1,6 +1,6 @@
-# Recap Checkpoint 6 — Full Year 12 Cumulative (Pre-Mock): 1.1–1.5 + 2.1–2.3
+# Recap Checkpoint 6 — Full Year 12 Cumulative (Pre-Mock): 1.1, 1.3–1.5 + 2.1–2.3
 
-Name: ______________________   Date: __________   Mark: ______ / 40
+Name: ______________________   Date: __________   Mark: ______ / 46
 
 *OCR H446 cumulative recap — mixes every topic taught so far. Show all working.*
 
@@ -19,7 +19,7 @@ Name: ______________________   Date: __________   Mark: ______ / 40
 (c) Perform the addition and give the final **denary** result. **[2]**
 
 **Q4 [3] (AO2).** *(1.4 — Boolean algebra / floating point)*
-(a) State the result of the floating-point benefit of **normalisation** (why numbers are normalised). **[1]**
+(a) State why floating-point numbers are **normalised**. **[1]**
 (b) Simplify **A + A·B** and name the law used. **[2]**
 
 **Q5 [4] (AO1).** *(1.3 — Networks)* 
@@ -47,7 +47,7 @@ Edges (undirected, weighted):
 A-B = 2,  A-C = 5,  B-C = 1,  B-D = 7,  C-D = 3,  C-E = 8,  D-E = 2
 ```
 
-**Q11 [4 + (rest)] (AO3).** *(Synoptic extended response)* A hospital is replacing a paper appointment system with networked software that stores patient data, lets staff search records, and sends automated reminders.
+**Q11 [6] (AO3).** *(Synoptic extended response)* A hospital is replacing a paper appointment system with networked software that stores patient data, lets staff search records, and sends automated reminders.
 In an extended response, discuss the design considering: **(i)** how **abstraction and decomposition** help manage the build, **(ii)** an appropriate **data structure or search algorithm** for fast record lookup (justify with time complexity), and **(iii)** **one legal** consideration for storing patient data. **[6]**
 
 ---
@@ -175,4 +175,4 @@ In an extended response, discuss the design considering: **(i)** how **abstracti
 
 ---
 
-**Total: 40 marks.**
+**Total: 46 marks.**

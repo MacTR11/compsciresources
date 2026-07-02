@@ -1,4 +1,4 @@
-# Recap Checkpoint 5 — Cumulative: Component 1 (1.1–1.5) + Component 2 (2.1–2.3, incl. Algorithms)
+# Recap Checkpoint 5 — Cumulative: Component 1 (1.1, 1.3, 1.4) + Component 2 (2.1–2.3, incl. Algorithms)
 
 Name: ______________________   Date: __________   Mark: ______ / 35
 
@@ -107,11 +107,10 @@ Explain why the library should be **kept sorted** and a **binary search** used r
 ---
 
 **Q6 [4] (AO2).** Merge sort on `[8, 3, 5, 1]`:
-- Split: `[8, 3, 5, 1]` → `[8, 3]` and `[5, 1]` (1).
-- Split further: `[8]`,`[3]`,`[5]`,`[1]` (1).
+- Splits: `[8, 3, 5, 1]` → `[8, 3]` / `[5, 1]` → `[8]`,`[3]`,`[5]`,`[1]` (1).
 - Merge: `[8],[3]` → `[3, 8]`;  `[5],[1]` → `[1, 5]` (1).
-- Merge: `[3, 8]` + `[1, 5]` → **`[1, 3, 5, 8]`** ✓ (1, also credits final answer).
-- Worst-case time complexity: **O(n log n)**.
+- Merge: `[3, 8]` + `[1, 5]` → **`[1, 3, 5, 8]`** ✓ (1).
+- Worst-case time complexity: **O(n log n)** (1).
 
 *Examiner tip: merge sort always splits to single elements then merges in sorted order — O(n log n) in all cases.*
 

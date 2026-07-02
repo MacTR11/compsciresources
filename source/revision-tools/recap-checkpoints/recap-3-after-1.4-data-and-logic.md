@@ -1,6 +1,6 @@
 # Recap Checkpoint 3 — after 1.4 (Data Types, Data Structures & Boolean Algebra) — cumulative 1.1–1.4
 
-Name: ______________________   Date: __________   Mark: ______ / 35
+Name: ______________________   Date: __________   Mark: ______ / 42
 
 *OCR H446 cumulative recap — mixes every topic taught so far. Show all working.*
 
@@ -58,7 +58,7 @@ Show your working. **[3 total]** — *1.4.1*
 
 ## Mark scheme
 
-*Total = 35 marks. Award marks for valid alternatives in line with OCR positive-marking. All calculations checked below.*
+*Total = 42 marks. Award marks for valid alternatives in line with OCR positive-marking. All calculations checked below.*
 
 **Q1 — [2] (AO1)** — *1.1.2*
 - **CISC** has a **large/complex instruction set** with variable-length, multi-cycle instructions (complexity in hardware) (1).
@@ -116,8 +116,8 @@ Final answer: **A·B**.
 | 1 | 0 | 1 |
 | 1 | 1 | 0 |
 
-(Working: `A+B` is 0,1,1,1; `¬(A·B)` is 1,1,1,0; AND them → 0,1,1,0.) *(1 mark per correct pair of rows = up to 2; allow follow-through.)*
-F is 1 only when the inputs **differ**, so it is equivalent to an **XOR** gate (2 marks: 1 for the column completed correctly, 1 for identifying XOR).
+(Working: `A+B` is 0,1,1,1; `¬(A·B)` is 1,1,1,0; AND them → 0,1,1,0.) *(Up to 3 marks for the F column: 1 per correct pair of rows, plus 1 if the whole column is correct; allow follow-through.)*
+F is 1 only when the inputs **differ**, so it is equivalent to an **XOR** gate (1 mark for identifying XOR).
 
 **Q10 — [4] (AO3)** — *1.4.2*
 (a) First `pop` returns **5**; second `pop` returns **9** (1 + 1).

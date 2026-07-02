@@ -1,6 +1,6 @@
 # Recap Checkpoint 2 — after 1.3 (Exchanging Data) — cumulative 1.1 + 1.2 + 1.3
 
-Name: ______________________   Date: __________   Mark: ______ / 30
+Name: ______________________   Date: __________   Mark: ______ / 36
 
 *OCR H446 cumulative recap — mixes every topic taught so far. Show all working.*
 
@@ -55,7 +55,7 @@ Write an SQL statement to display the `Surname` and `Cost` of all bookings where
 
 ## Mark scheme
 
-*Total = 30 marks. Award marks for valid alternatives in line with OCR positive-marking.*
+*Total = 36 marks. Award marks for valid alternatives in line with OCR positive-marking.*
 
 **Q1 — [2] (AO1)** — *1.1.1*
 - MAR holds the **address** of the memory location to be read from / written to (1).
