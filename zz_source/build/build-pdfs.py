@@ -195,8 +195,25 @@ def inject_answer_space(text):
                     out.append(lines[i]); i += 1
             else:
                 break
-        if i < n and SPACE_SENTINEL.match(lines[i].strip()):
-            continue            # author-controlled space, rendered later
+        # a @@SPACE sentinel anywhere before the next question stem / heading
+        # means the author controls this question's answer space
+        j, manual = i, False
+        while j < n:
+            s2 = lines[j].strip()
+            if s2.startswith("```"):
+                j += 1
+                while j < n and not lines[j].lstrip().startswith("```"):
+                    j += 1
+                j += 1
+                continue
+            if SPACE_SENTINEL.match(s2):
+                manual = True
+                break
+            if s2.startswith("#") or (not s2.startswith("|") and MARK_TAG.search(s2)):
+                break
+            j += 1
+        if manual:
+            continue
         nums = [int(x) for pair in tags for x in pair if x]
         marks = max(nums) if nums else 2
         k = min(12, max(2, round(marks * 1.4)))
