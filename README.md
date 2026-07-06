@@ -21,8 +21,9 @@ Course/
 ├─ 4 Recap Checkpoints/                          (cumulative synoptic papers + answers)
 ├─ 5 Reference Guides/                           (glossary, exam technique, pseudocode, past-papers guide…)
 ├─ 6 A-Star Stretch Pack/                        (model answers, examiner insights, synoptic questions)
-└─ 7 Weekly Plan - Homework and Consolidation/   (a folder per SOW week: task sheet + that week's files,
-                                                  every PDF with a typeable Word version alongside)
+└─ 7 Weekly Plan - Homework and Consolidation/   (a folder per SOW week with up to four Word files:
+                                                  1 Homework · 2 Consolidation · 3 Answer Sheet ·
+                                                  4 Flashcards — a bank that grows week by week)
 ```
 
 **Can't find something? Open [`Course/INDEX.md`](Course/INDEX.md) — every file, one click.**

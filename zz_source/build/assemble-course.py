@@ -402,8 +402,8 @@ def _editable_for(src_pdf):
     return cand if os.path.exists(cand) else None
 
 
-def _week_sheet(note):
-    """Format a week's note into a small task-sheet markdown document."""
+def _week_notes(note):
+    """Split a week's note into homework / consolidation instruction lines."""
     hw, cons, other = [], [], []
     for ln in note.split("\n"):
         ln = ln.strip()
@@ -415,33 +415,100 @@ def _week_sheet(note):
             cons.append(ln[14:].strip())
         else:
             other.append(ln)
-    md = ""
-    if hw:
-        md += "## Homework\n\n" + "\n".join(f"- {x}" for x in hw) + "\n\n"
-    if cons:
-        md += "## Consolidation\n\n" + "\n".join(f"- {x}" for x in cons) + "\n\n"
-    if other:
-        md += "\n".join(f"- {x}" for x in other) + "\n\n"
-    md += "*Every worksheet has a separate ANSWERS file; typeable Word versions sit alongside each PDF.*\n"
-    return md
+    return hw, cons, other
+
+
+def _load_cards():
+    """Read the subtopic-tagged flashcard bank -> [(code, question, answer)]."""
+    import csv
+    path = os.path.join(SRC, "flashcards", "by-subtopic.csv")
+    if not os.path.exists(path):
+        return []
+    with open(path, encoding="utf-8") as f:
+        rows = list(csv.reader(f))
+    clean = lambda s: " ".join(s.split()).replace("|", "/")
+    return [(r[0].strip(), clean(r[1]), clean(r[2]))
+            for r in rows[1:] if len(r) >= 3]
+
+
+def _flashcard_doc(week, taught, cards):
+    """Cumulative flashcard bank for everything taught up to this week."""
+    if not taught:
+        return None
+    md = [f"# Flashcard Bank — {week}", "",
+          f"*Everything taught so far ({len(taught)} subtopic{'s' if len(taught) != 1 else ''}). "
+          "Cover the answer column, quiz little and often, tick cards you get right three times in a row.*", ""]
+    total = 0
+    for code in taught:
+        rows = [c for c in cards if c[0] == code]
+        if not rows:
+            continue
+        total += len(rows)
+        md += [f"## {code}", "", "| Question | Answer |", "|---|---|"]
+        md += [f"| {q} | {a} |" for _, q, a in rows]
+        md.append("")
+    return "\n".join(md) if total else None
+
+
+# Weekly folders contain exactly: 1 Homework.docx, 2 Consolidation.docx,
+# 3 Answer Sheet.docx, 4 Flashcards (cumulative).docx — Word only, no PDFs.
+_WK_QA_DIRS = {"homework", "subtopic-quizzes", "recap-checkpoints",
+               "mini-papers", "mock-papers", "worksheets"}
 
 
 def build_weekly():
     bdocx = _load("build-docx")
-    bpdf = _load("build-pdfs")
     wk_root = os.path.join(COURSE, "7 Weekly Plan - Homework and Consolidation (Year 12)")
+    if os.path.isdir(wk_root):
+        shutil.rmtree(wk_root)
+    cards = _load_cards()
+    taught = []                      # cumulative subtopic codes, teaching order
     for folder, note, files in _wk_sources():
         d = os.path.join(wk_root, folder)
         os.makedirs(d, exist_ok=True)
-        # the week's task sheet, as a printable PDF and a typeable Word doc
-        md = f"# {folder}\n\n" + _week_sheet(note)
-        bpdf.convert_text(md, folder, os.path.join(d, "0 This Week.pdf"))
-        bdocx.convert_text(md, os.path.join(d, "0 This Week (editable).docx"))
+        hw_note, cons_note, other_note = _week_notes(note)
+        hw_qs, cons_qs, answers = [], [], []
         for src, dst in files:
-            cp(src, os.path.join(d, dst))
-            e = _editable_for(src)
-            if e and dst.endswith(".pdf"):
-                cp(e, os.path.join(d, dst[:-4] + " (typeable).docx"))
+            fdir = os.path.basename(os.path.dirname(src))
+            if (fdir not in _WK_QA_DIRS or not dst.endswith(".pdf")
+                    or dst.endswith("- ANSWERS.pdf") or dst.endswith("-ANSWERS.pdf")):
+                continue
+            mdp = os.path.join(SRC, fdir, os.path.basename(src)[:-4] + ".md")
+            if not os.path.exists(mdp):
+                missing.append(os.path.relpath(mdp, REPO))
+                continue
+            text = open(mdp, encoding="utf-8").read()
+            q, a = bdocx.split_qa(text)
+            (hw_qs if dst.startswith("1 ") else cons_qs).append(q)
+            if a:
+                answers.append(f"# {bdocx._h1(text)} — ANSWERS\n\n{a}")
+            if fdir == "homework":
+                code = ".".join(os.path.basename(src).split("-")[0].split(".")[:3])
+                if code not in taught:
+                    taught.append(code)
+        bullets = lambda xs: "\n".join(f"- {x}" for x in xs)
+        if hw_qs or hw_note:
+            doc = f"# {folder} — Homework\n\n"
+            if hw_note or other_note:
+                doc += bullets(hw_note or other_note) + "\n"
+            if hw_qs:
+                doc += "\n---\n\n" + "\n\n---\n\n".join(hw_qs) + "\n"
+            bdocx.convert_text(bdocx.inject_space(doc),
+                               os.path.join(d, "1 Homework.docx"))
+        if cons_qs or cons_note or other_note:
+            doc = f"# {folder} — Consolidation\n\n"
+            if cons_note or other_note:
+                doc += bullets(cons_note or other_note) + "\n"
+            if cons_qs:
+                doc += "\n---\n\n" + "\n\n---\n\n".join(cons_qs) + "\n"
+            bdocx.convert_text(bdocx.inject_space(doc),
+                               os.path.join(d, "2 Consolidation.docx"))
+        if answers:
+            bdocx.convert_text("\n\n---\n\n".join(answers),
+                               os.path.join(d, "3 Answer Sheet.docx"))
+        fc = _flashcard_doc(folder, taught, cards)
+        if fc:
+            bdocx.convert_text(fc, os.path.join(d, "4 Flashcards (cumulative).docx"))
 
 
 if __name__ == "__main__":

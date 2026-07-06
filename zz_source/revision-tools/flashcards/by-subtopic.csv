@@ -1,0 +1,375 @@
+subtopic,question,answer
+1.1.1,What are the two main internal components of the CPU?,"The Arithmetic Logic Unit (ALU) and the Control Unit (CU), plus a set of registers."
+1.1.1,What does the Arithmetic Logic Unit (ALU) do?,"Carries out all arithmetic operations (add, subtract, etc.), logical operations (AND, OR, NOT, comparisons) and shifts; the result is normally placed in the Accumulator."
+1.1.1,What does the Control Unit (CU) do?,"Decodes each instruction, generates control signals to direct other components, manages data flow along the buses, and synchronises operations using the system clock."
+1.1.1,Define a register.,"A small, extremely fast block of memory inside the CPU used to temporarily hold data during processing."
+1.1.1,What is the role of the Program Counter (PC)?,Holds the address of the next instruction to be fetched; it is incremented during each cycle.
+1.1.1,What is the role of the Memory Address Register (MAR)?,Holds the address of the memory location currently being read from or written to.
+1.1.1,What is the role of the Memory Data Register (MDR)?,"Holds the data or instruction just fetched from, or about to be written to, memory."
+1.1.1,What is the role of the Current Instruction Register (CIR)?,Holds the current instruction while it is being decoded and executed.
+1.1.1,What is the role of the Accumulator (ACC)?,Stores the immediate results of calculations carried out by the ALU.
+1.1.1,What does the address bus carry and in which direction?,Carries the memory address of the location to read/write; unidirectional (CPU to memory).
+1.1.1,What does the data bus carry and in which direction?,Carries the actual data/instructions transferred between CPU and memory; bidirectional.
+1.1.1,What does the control bus carry and in which direction?,"Carries control signals (e.g. read/write, clock, interrupt request); bidirectional."
+1.1.1,List the steps of the FETCH phase of the FDE cycle.,1) Address in PC copied to MAR; 2) instruction fetched along data bus into MDR (read signal on control bus); 3) PC incremented; 4) contents of MDR copied into CIR.
+1.1.1,What happens in the DECODE phase of the FDE cycle?,"The Control Unit decodes the instruction in the CIR, splitting it into the opcode (the operation) and the operand (the data/address it acts on)."
+1.1.1,What happens in the EXECUTE phase of the FDE cycle?,"The decoded instruction is carried out, e.g. the ALU performs a calculation (result to ACC), data is loaded/stored, or the PC is changed (a jump); the cycle then repeats."
+1.1.1,How is a jump/branch instruction carried out in machine code?,"A new address is written directly into the PC during the execute phase, so the next fetch comes from a different location (this implements loops and selection)."
+1.1.1,What is clock speed and how is it measured?,"The rate at which the clock generates pulses to synchronise CPU operations, measured in hertz (Hz); e.g. 3.5 GHz = 3.5 billion cycles per second."
+1.1.1,"How does a higher clock speed affect performance, and what limits it?",More FDE cycles per second means faster processing; limited by rising heat dissipation and power consumption.
+1.1.1,What is a core?,An independent processing unit within a CPU capable of running its own fetch-decode-execute cycle.
+1.1.1,Why does adding more cores not always increase performance?,"Only helps if the software is written to use multiple cores and the task can be split; data dependencies, sequential work and coordination overheads limit gains."
+1.1.1,What is cache and why does it improve performance?,"A small amount of very fast memory on or near the CPU that stores frequently/recently used instructions and data, so the CPU avoids slower fetches from main memory (RAM)."
+1.1.1,"Compare L1, L2 and L3 cache.","L1 is smallest and fastest, on the core; L2 is larger but slower; L3 is largest and slowest of the three (still faster than RAM) and is often shared between cores."
+1.1.1,What is pipelining?,"Splitting instruction processing into stages so that while one instruction is executed, the next is decoded and a third is fetched simultaneously, increasing throughput."
+1.1.1,What is a branch hazard in pipelining?,"When a taken jump/branch invalidates instructions already fetched ahead of it, so they must be flushed/discarded; mitigated by branch prediction."
+1.1.1,Describe Von Neumann architecture.,"A single shared memory and bus holds both program instructions and data, accessed over a shared bus."
+1.1.1,Describe Harvard architecture.,"Instructions and data are stored in physically separate memories with separate buses, allowing them to be accessed at the same time."
+1.1.1,What is the Von Neumann bottleneck?,"Because data and instructions share one memory and bus, an instruction cannot be fetched while data is read/written at the same time, limiting throughput."
+1.1.1,Give a typical use of Von Neumann and of Harvard architecture.,"Von Neumann: general-purpose computers (PCs, laptops). Harvard: embedded systems, microcontrollers and DSPs."
+1.1.2,Describe CISC processors.,"Complex Instruction Set Computer: a large set of complex, variable-length instructions; complexity is in hardware; instructions may take several cycles; e.g. desktop x86."
+1.1.2,Describe RISC processors.,"Reduced Instruction Set Computer: a small set of simple, fixed-length instructions aiming for one per cycle; complexity in software/compiler; easier to pipeline; e.g. ARM."
+1.1.2,Why does RISC suit mobile/battery devices?,"Simple, uniform, single-cycle instructions make pipelining and parallelism easier and reduce power consumption, ideal for smartphones and tablets."
+1.1.2,What is a GPU?,A processor with thousands of small cores specialised for performing the same operation on large blocks of data in parallel (highly parallel floating-point work).
+1.1.2,Give two non-graphics uses of a GPU.,"Machine learning / training neural networks, scientific/numerical simulations, image/video processing, or cryptocurrency mining/brute-force hashing."
+1.1.2,What kind of work are GPUs poor at compared with CPUs?,"Heavily sequential, branch-heavy logic with data dependencies; that work suits the few powerful high-clock cores of a CPU."
+1.1.2,Define parallel processing.,"Carrying out multiple computations simultaneously, splitting a task across several processors/cores to complete it faster."
+1.1.2,Why do some tasks not parallelise well?,"Data dependencies (a step needs a previous result), splitting/coordination/recombination overheads, and some algorithms being fundamentally sequential."
+1.1.3,How does magnetic storage (HDD/tape) store data?,Data is stored as magnetised patterns (polarity) on a spinning platter or tape; a read/write head detects or changes the magnetisation.
+1.1.3,Give one pro and one con of magnetic storage.,Pro: very large capacity at low cost per GB. Con: slower than flash and fragile due to moving parts.
+1.1.3,How does flash/solid-state storage store data?,"A type of EEPROM that stores data by trapping electrons in transistors (memory cells), with no moving parts (e.g. SSD, USB stick, SD card)."
+1.1.3,Give one pro and one con of flash storage.,"Pro: very fast, silent, low power, durable and shock-resistant. Con: more expensive per GB and has a finite number of write cycles."
+1.1.3,How does optical storage work?,"A laser reads/writes data by detecting pits and lands on a reflective surface, sensing changes in reflected light (e.g. CD, DVD, Blu-ray)."
+1.1.3,Compare RAM and ROM.,"RAM is volatile, read and write, holds programs/data currently in use. ROM is non-volatile, normally read only, holds permanent boot/firmware (bootstrap) instructions."
+1.1.3,What is virtual memory?,"When RAM is full, the OS uses a portion of secondary storage (a swap/paging file) as if it were extra RAM, moving pages in and out as needed."
+1.1.3,Scenario: a travelling laptop needs internal storage. Which storage type and why?,"Flash/SSD: no moving parts so shock-resistant and durable, fast, silent, low power for better battery life, and lightweight/portable."
+1.1.3,Scenario: cheap long-term archiving of huge data volumes. Which storage type and why?,Magnetic (HDD or tape): very large capacity at low cost per GB; tape is cheap and reliable for archive despite slow serial access.
+1.2.1,What is an operating system?,"Software that manages the hardware and provides a platform on which application software can run, hiding hardware complexity through abstraction."
+1.2.1,List four core functions of an operating system.,"Memory management; processor (CPU) scheduling; interrupt handling; managing I/O / peripherals (also: user interface, security/file management)."
+1.2.1,What is the difference between paging and segmentation?,"Paging divides memory into fixed-size blocks (frames/pages, mapped by a page table); segmentation divides memory into variable-size blocks (segments) reflecting the program's logical structure."
+1.2.1,What is virtual memory?,"Using a section of secondary storage (swap/page file) as if it were extra RAM, so programs larger than physical RAM can run and more programs can be open at once."
+1.2.1,What is disk thrashing?,"Excessive swapping of pages between RAM and disk when too little RAM is available, so the OS spends most of its time paging instead of doing useful work, slowing the machine."
+1.2.1,What is an interrupt?,"A signal generated by hardware or software telling the processor that a device or process needs attention, avoiding the need for polling."
+1.2.1,What is an interrupt service routine (ISR)?,The dedicated piece of code (interrupt handler) the OS runs to deal with a particular type of interrupt.
+1.2.1,Describe how the processor handles an interrupt.,"At the end of the FDE cycle it checks for interrupts; if one of sufficient priority is present it finishes the current instruction, pushes registers onto the stack, loads and runs the ISR, then pops the registers to resume the original task."
+1.2.1,Why are registers saved onto a stack during interrupt handling?,"So the interrupted task can resume exactly where it left off, and because the LIFO stack allows nested interrupts to resume in the correct order."
+1.2.1,"What is scheduling, and what is the difference between pre-emptive and non-pre-emptive?",Scheduling is the OS deciding which process gets CPU time and for how long. Pre-emptive: a running process can be stopped and the CPU reallocated. Non-pre-emptive: a process runs until it finishes or blocks.
+1.2.1,How does round robin scheduling work?,"Each process gets a fixed time slice (quantum) in turn; if not finished it goes to the back of the queue. Fair, no starvation, but ignores priority/length."
+1.2.1,How do FCFS and SJF scheduling work?,"FCFS: processes run in arrival order until complete (non-pre-emptive; long jobs cause a convoy effect). SJF: the waiting process with the shortest total runtime runs next, minimising average wait but long jobs may starve."
+1.2.1,How do SRT and MLFQ scheduling work?,SRT: the process with the shortest remaining time runs next and a shorter arrival pre-empts. MLFQ: several priority queues where jobs move between them by behaviour (e.g. a CPU-hungry job is demoted).
+1.2.1,What are embedded and real-time operating systems?,"Embedded: built for a specific device with limited resources, held in ROM (e.g. washing machine). Real-time (RTOS): guarantees a response within a set time limit so processing meets deadlines (e.g. aircraft control)."
+1.2.1,What are distributed and multi-user operating systems?,"Distributed: runs across multiple networked computers, sharing the workload as one system. Multi-user: lets several users share the machine's resources at once, managing CPU time and permissions (e.g. servers)."
+1.2.1,What is the purpose of the BIOS?,"Firmware that runs first at start-up; it performs the POST (power-on self-test), initialises hardware, then loads the operating system into RAM."
+1.2.1,What is a device driver?,"Software that allows the OS to communicate with and control a specific hardware device, translating generic OS commands into device-specific instructions."
+1.2.1,"What is intermediate code, and why is it used?","Code halfway between source and machine code that is independent of any processor (e.g. bytecode); run by a virtual machine, giving portability (write once, run anywhere)."
+1.2.2,What is the difference between application and utility software?,"Application software lets the user perform a specific real-world task (e.g. word processor); utility software maintains, configures or optimises the computer itself (e.g. antivirus, defragmenter)."
+1.2.2,What is the difference between open source and closed source software?,"Open source: source code is available to view and modify, usually free, community support. Closed source: source code is hidden, usually paid, official vendor support, modification forbidden."
+1.2.2,What is the role of an assembler?,"Translates assembly language into machine code, generally with a one-to-one relationship between mnemonic and machine-code instruction."
+1.2.2,What is the difference between a compiler and an interpreter?,"A compiler translates high-level source into machine code all at once, producing a standalone executable; an interpreter translates and executes one line at a time at run time with no executable. Compiled programs run faster; interpreters report errors line by line (better for debugging)."
+1.2.2,What are the four stages of compilation?,"Lexical analysis, syntax analysis (parsing), code generation, and (code) optimisation."
+1.2.2,What happens in lexical and syntax analysis?,"Lexical: source code is broken into tokens, whitespace/comments removed, and a symbol table created. Syntax (parsing): tokens are checked against the language's grammar, a parse tree is built, and syntax errors are reported."
+1.2.2,What happens in code generation and optimisation?,Code generation produces the object (machine) code from the parse tree and symbol table; optimisation refines it to run faster and/or use less memory while giving the same result.
+1.2.2,What is a linker?,"Software that combines the compiled program with library and other separately compiled modules into a single executable, resolving references between them."
+1.2.2,What is a loader?,Part of the OS that copies the executable from secondary storage into RAM and prepares it to run before execution begins.
+1.2.2,What is a library (in programming)?,"A pre-written, pre-compiled and tested collection of subroutines/modules that programmers can reuse to save time and increase reliability."
+1.2.3,Describe the waterfall methodology and when it is used.,"A linear, sequential model where each stage is completed before the next begins; best when requirements are well understood and fixed."
+1.2.3,Describe the agile methodology and when it is used.,An umbrella of iterative approaches delivering working software in small frequent increments with continuous client feedback; best when requirements are likely to change.
+1.2.3,Describe the spiral methodology and when it is used.,"An iterative model centred on risk analysis, tackling risky elements early through prototyping; best for large, expensive, high-risk projects."
+1.2.3,Describe extreme programming (XP).,"An agile method emphasising code quality: pair programming, frequent small releases, test-driven development, and the customer as part of the team."
+1.2.3,Describe rapid application development (RAD).,"Builds prototypes quickly and refines them through repeated user feedback; favours fast partial models, best when a system is needed quickly or requirements are vague."
+1.2.3,List the five stages of the software development lifecycle.,"Analysis, design, development (implementation), testing, evaluation."
+1.2.4,What is a procedural language?,"A language that executes ordered instructions using sequence, selection and iteration, organising code into reusable procedures/subroutines (e.g. Python, C)."
+1.2.4,What is the Little Man Computer (LMC)?,"A simple teaching model of a CPU with a small instruction set, used to learn assembly language and the fetch-decode-execute cycle."
+1.2.4,What do immediate and direct addressing mean?,Immediate: the operand is the actual value (e.g. ADD #5). Direct: the operand is the address that holds the value (e.g. ADD 20 adds the contents of address 20).
+1.2.4,What do indirect and indexed addressing mean?,"Indirect: the operand gives an address that holds the address of the value (address of an address), used for pointers. Indexed: address = base address + contents of an index register, ideal for arrays."
+1.2.4,"Define class, object, instantiation, attribute and method in OOP.",Class: a template defining a type's attributes and methods. Object: an instance of a class. Instantiation: creating an object from a class. Attribute: a variable holding an object's data. Method: a subroutine giving an object behaviour.
+1.2.4,What is encapsulation?,Bundling attributes and methods together and hiding the data (private attributes accessed only through methods); makes code more robust and maintainable.
+1.2.4,What is inheritance?,"A child (sub) class acquiring the attributes and methods of a parent (super) class, and being able to add or override its own; promotes code reuse."
+1.2.4,What is polymorphism?,"The ability of methods to behave differently depending on the object, e.g. overriding an inherited method so Dog and Cat respond to makeSound() differently."
+1.2.1,Application: Which OS type suits a washing machine and why?,"An embedded OS, because it is a dedicated device with limited resources needing a small, efficient OS stored in ROM to control one specific task reliably."
+1.2.1,Application: Why is virtual memory slower than real RAM?,"Because it uses secondary storage (disk), which has much slower access times than RAM, and the OS must spend time swapping pages in and out."
+1.2.2,Application: In which compilation stage is a missing bracket detected?,"Syntax analysis (parsing), where tokens are checked against the language's grammar/rules."
+1.3.1,What is compression?,Reducing the size of a file so it uses less storage space and can be transmitted faster (using less bandwidth).
+1.3.1,What is lossless compression?,Reducing file size with no permanent loss of data; the original file can be reconstructed exactly when decompressed.
+1.3.1,What is lossy compression?,Reducing file size by permanently removing some data (often data the eye/ear is less sensitive to); the original cannot be reconstructed exactly.
+1.3.1,Give a typical use of lossless compression.,"Text files, executable programs, spreadsheets, ZIP, PNG — anywhere detail cannot be lost."
+1.3.1,Give a typical use of lossy compression.,"Images (JPEG), audio (MP3) and video, where small quality loss is acceptable for much smaller files."
+1.3.1,What is run length encoding (RLE)?,A lossless technique that replaces runs (sequences of repeated identical values) with a single value and a count of how many times it repeats.
+1.3.1,When is RLE most/least effective?,Most effective with long runs of repeated data (e.g. simple images); it can increase file size when data has few or no repeats.
+1.3.1,Encode WWWBBWWWW using RLE.,"3W2B4W (value followed by run length, lossless)."
+1.3.1,What is dictionary-based compression?,A lossless technique that stores recurring patterns/words once in a dictionary and replaces them in the file with a short reference (e.g. an index number).
+1.3.1,Why must a dictionary be sent with dictionary-compressed data?,Because the references in the file have no meaning without the dictionary; it is needed to reconstruct the original data.
+1.3.1,What is encryption?,"Scrambling data into unreadable ciphertext using an algorithm and a key, so only someone with the correct key can decrypt it back to plaintext."
+1.3.1,What is symmetric encryption?,Encryption that uses the same single key to both encrypt and decrypt the data.
+1.3.1,What is the key distribution problem?,In symmetric encryption the shared key must be exchanged securely; if it is intercepted during exchange the encryption is broken.
+1.3.1,What is asymmetric encryption?,Encryption using a pair of mathematically related keys: a public key (shared openly) and a private key (kept secret).
+1.3.1,How do public and private keys relate in asymmetric encryption?,Data encrypted with the public key can only be decrypted with the matching private key.
+1.3.1,Give one advantage of asymmetric over symmetric encryption.,It solves the key distribution problem because the public key can be shared openly without compromising security.
+1.3.1,Give one disadvantage of asymmetric encryption.,It is slower and more computationally expensive than symmetric encryption.
+1.3.1,What is hashing?,Applying a hash function to an input to produce a fixed-length output (a hash/digest); it is one-way and deterministic.
+1.3.1,What does it mean that hashing is 'one-way'?,You cannot feasibly reverse a hash back to the original input.
+1.3.1,What is a hash collision?,When two different inputs produce the same hash value/output.
+1.3.1,Give two uses of hashing.,"Storing passwords securely (store the hash, not the password) and hash tables for fast (close to O(1)) lookup."
+1.3.1,Why store password hashes rather than passwords?,"If the database is stolen, attackers do not get the actual passwords; an entered password is hashed and compared to the stored hash."
+1.3.1,Difference between hashing and encryption?,Encryption is reversible with a key; hashing is one-way and not designed to be reversed.
+1.3.2,What is a flat file database?,A database held in a single table/file; it suffers from data redundancy and update/inconsistency anomalies.
+1.3.2,What is a relational database?,"A database where data is split across multiple linked tables (using keys), reducing redundancy and improving consistency and scalability."
+1.3.2,"Define entity, attribute and record.",Entity = a category of thing data is stored about (a table); attribute/field = a property/column; record/row/tuple = all data about one instance.
+1.3.2,What is a primary key?,An attribute (or set of attributes) that uniquely identifies each record in a table.
+1.3.2,What is a foreign key?,"An attribute in one table that is the primary key in another table, used to link the two tables."
+1.3.2,What is a composite key?,"A primary key made up of two or more attributes combined, because no single attribute is unique on its own."
+1.3.2,What is a secondary key?,An attribute used to allow records to be searched/indexed quickly even though it is not the primary key.
+1.3.2,How is a many-to-many relationship resolved in a relational database?,"By introducing a linking (junction) table, typically with a composite key, creating two one-to-many relationships."
+1.3.2,What is normalisation?,The process of organising data in a database to reduce redundancy and remove anomalies while keeping data consistent.
+1.3.2,State the rule for 1NF.,No repeating groups; each field contains a single (atomic) value; there is a primary key.
+1.3.2,State the rule for 2NF.,In 1NF and every non-key attribute depends on the whole primary key (remove partial dependencies — relevant with a composite key).
+1.3.2,State the rule for 3NF.,In 2NF and no non-key (transitive) dependencies — no non-key attribute depends on another non-key attribute.
+1.3.2,Summarise 3NF in one phrase.,"Every non-key attribute depends on 'the key, the whole key, and nothing but the key'."
+1.3.2,What is referential integrity?,"Ensuring a foreign key value always refers to a valid existing primary key in the related table (or is null), preventing orphaned records."
+1.3.2,What is a transaction?,A single logical operation made up of one or more steps that must all succeed or all fail together.
+1.3.2,What do the letters ACID stand for?,"Atomicity, Consistency, Isolation, Durability — properties of a reliable transaction."
+1.3.2,Explain Atomicity and Durability (ACID).,"Atomicity: the transaction is all-or-nothing; if any part fails it is rolled back. Durability: once committed it is permanently saved, even after a failure."
+1.3.2,Explain Consistency and Isolation (ACID).,"Consistency: a transaction takes the database from one valid state to another without breaking rules. Isolation: concurrent transactions do not interfere, as if run one after another."
+1.3.2,What is record locking?,"Locking a record while one transaction updates it so others cannot edit it at the same time, preventing the lost update problem (risk: deadlock)."
+1.3.2,Name SQL keywords to retrieve and order data.,"SELECT (columns), FROM (table), WHERE (filter rows), ORDER BY ... ASC/DESC (sort)."
+1.3.2,What does JOIN ... ON do in SQL?,Combines columns from related tables where a matching key value links them.
+1.3.2,"Write SQL to add a record to Student (StudentID 5, Surname 'Lee').","INSERT INTO Student (StudentID, Surname) VALUES (5, 'Lee');"
+1.3.3,What is the difference between a LAN and a WAN?,"A LAN covers a small area (one site, organisation-owned cabling); a WAN covers a large area using third-party infrastructure (the internet is the largest WAN)."
+1.3.3,Star vs mesh topology?,"Star: all devices connect to a central node (fails if node fails). Mesh: devices interconnected with multiple paths, very resilient but expensive when wired."
+1.3.3,Client-server vs peer-to-peer?,"Client-server: servers provide resources to clients (central control, single point of failure). P2P: devices have equal status and share directly (cheaper, harder to manage)."
+1.3.3,What is packet switching?,Data is split into packets that are routed independently (possibly different routes) and reassembled in order at the destination; efficient and resilient.
+1.3.3,What is circuit switching?,A dedicated physical path is reserved between sender and receiver for the whole communication; guarantees bandwidth but wastes capacity when idle.
+1.3.3,What is DNS?,The Domain Name System: servers that translate human-readable domain names into the IP addresses computers use to locate each other.
+1.3.3,Name the four layers of the TCP/IP stack.,"Application, Transport, Network/Internet, Link/Data link."
+1.3.3,What does the Transport layer do?,"Splits data into packets, manages end-to-end delivery, error checking and reassembly, and adds port numbers (TCP/UDP)."
+1.3.3,What does the Network/Internet layer do?,Adds source and destination IP addresses and routes packets across networks (IP).
+1.3.3,What is the difference between a switch and a router?,A switch connects devices within a LAN using MAC addresses; a router connects different networks and routes packets using IP addresses.
+1.3.3,What is a MAC address?,"A unique 48-bit physical hardware address assigned to a NIC, used at the link layer to identify devices on a local network."
+1.3.3,Purpose of HTTP and HTTPS?,HTTP transfers web pages between server and browser; HTTPS is HTTP encrypted with TLS/SSL for secure web communication.
+1.3.3,"Purpose of SMTP, POP3 and IMAP?","SMTP sends email; POP3 retrieves email (usually downloads and removes it from the server); IMAP retrieves email keeping it on the server, synced across devices."
+1.3.3,What is a firewall?,Hardware/software that monitors and controls traffic entering/leaving a network against rules (packet filtering) to block unauthorised access.
+1.3.3,What is a proxy server?,"An intermediary between clients and the internet that can hide users' IP addresses, cache pages and filter/log requests."
+1.3.4,"What do HTML, CSS and JavaScript each do?",HTML defines structure/content; CSS defines presentation/style; JavaScript adds interactivity/behaviour (usually client-side).
+1.3.4,What is the PageRank algorithm?,"An algorithm that ranks web pages by importance, mainly based on the number and importance of links pointing to them."
+1.3.4,How does PageRank treat links from important vs many-linking pages?,A link from a high-PageRank page is worth more; a page linking to many pages spreads its vote thinly (rank divided by number of outgoing links).
+1.3.4,What is client-side processing? Give a drawback.,"Code runs in the user's browser (e.g. JavaScript); fast feedback but can be viewed, disabled or bypassed, so it is not secure on its own."
+1.3.4,What is server-side processing? Give a drawback.,"Code runs on the web server (e.g. PHP, database queries); secure and hidden but increases server load and adds network round-trip delay."
+1.3.4,Application: why must payment validation be done server-side too?,"Client-side validation can be bypassed or disabled by the user, so security-critical checks must also be validated/processed server-side."
+1.3.1,"Application: which compression for a legal document, and why?","Lossless — no data may be permanently lost, since corrupting a byte could change the document's meaning."
+1.4.1,Name the five primitive data types in OCR H446,"Integer, real/float, character (char), string, Boolean"
+1.4.1,How many bits in a nibble and a byte?,A nibble is 4 bits; a byte is 8 bits
+1.4.1,What range does an 8-bit UNSIGNED integer have?,0 to 255 (2^8 - 1)
+1.4.1,What range does an 8-bit TWO'S COMPLEMENT integer have?,-128 to +127
+1.4.1,Why is hexadecimal used as a shorthand for binary?,"One hex digit maps exactly to 4 bits (a nibble), so it is a compact, lossless, error-resistant way to read/write binary; used in memory/MAC addresses and colour codes"
+1.4.1,How do you negate a number in two's complement (find -x)?,Invert all the bits (one's complement) then add 1
+1.4.1,"In two's complement, what does the MSB represent?",A NEGATIVE place value (e.g. -128 in 8 bits); if MSB = 1 the number is negative
+1.4.1,How do you perform binary subtraction A - B?,Compute A + (-B) by adding the two's complement of B; discard any final carry out of the MSB
+1.4.1,What is overflow?,"An error where the result of an operation is too large to fit in the available bits (in signed arithmetic, two same-sign numbers giving a wrong-sign result)"
+1.4.1,What two parts make up a floating point number?,Mantissa (significand) x 2^exponent
+1.4.1,What does the MANTISSA determine?,Precision / number of significant figures
+1.4.1,What does the EXPONENT determine?,Range / magnitude (where the binary point goes)
+1.4.1,How is a POSITIVE number normalised in floating point?,Mantissa starts 0.1... (a 0 sign bit followed by a 1)
+1.4.1,How is a NEGATIVE number normalised in floating point?,Mantissa starts 1.0... (a 1 sign bit followed by a 0)
+1.4.1,Why do we normalise floating point numbers?,"To remove wasted leading zeros/ones so the mantissa holds the maximum significant figures, giving maximum precision for the available bits"
+1.4.1,State the range vs precision trade-off,With fixed total bits: more mantissa = more precision but less range; more exponent = more range but less precision. You cannot increase both
+1.4.1,"When you move the binary point RIGHT during normalisation, what happens to the exponent?","It decreases by 1 for each place moved right (the mantissa is multiplied by 2, so the exponent must drop to keep the value the same)"
+1.4.1,What is the effect of a LOGICAL SHIFT LEFT by n?,Multiplies by 2^n; zeros fill in from the right; bits shifted off the top are lost (can overflow)
+1.4.1,What is the effect of a LOGICAL SHIFT RIGHT by n?,Divides by 2^n (integer division); zeros fill in from the left; bits shifted off the end are lost
+1.4.1,What is an ARITHMETIC SHIFT RIGHT?,"Like a logical right shift but the SIGN BIT is preserved (copied in from the left), so it correctly divides a signed (two's complement) number by 2^n"
+1.4.1,What does the bitwise AND operation do and what is it used for?,Output 1 only if both bits are 1; used for MASKING to keep selected bits
+1.4.1,What does the bitwise XOR operation do?,"Output 1 if the bits differ; used to TOGGLE bits, simple encryption and checksums"
+1.4.1,Describe ASCII,"Originally 7-bit (128 characters); extended ASCII uses 8 bits for 256. Codes are ordered: 'A'=65, 'a'=97, '0'=48"
+1.4.1,Describe Unicode and its relation to ASCII,"Uses more bits (e.g. UTF-8, 1-4 bytes) to represent every language plus emoji/symbols; the first 128 codes match ASCII, so it is backward-compatible"
+1.4.2,Compare static and dynamic data structures,"Static = fixed size at declaration, contiguous memory (e.g. array). Dynamic = grows/shrinks at run time, allocated from the heap (e.g. linked list)"
+1.4.2,Define an array,"An ordered, fixed-size collection of elements of the SAME data type, accessed by index, stored contiguously giving O(1) random access"
+1.4.2,How does a list differ from a tuple?,A list is mutable and can change size; a tuple is immutable (cannot be changed once created)
+1.4.2,Define a linked list,"A dynamic structure of nodes, each holding data and a pointer to the next node; a head pointer marks the start and the last node's pointer is null"
+1.4.2,Give one advantage and one disadvantage of a linked list,"Advantage: easy insertion/deletion by repointing pointers, grows dynamically. Disadvantage: no random access (must traverse from head); pointer storage overhead"
+1.4.2,What does LIFO mean and which structure uses it?,"Last In, First Out - a STACK; push/pop at the top"
+1.4.2,What does FIFO mean and which structure uses it?,"First In, First Out - a QUEUE; enqueue at the rear, dequeue at the front"
+1.4.2,How does a circular queue reuse space?,"The rear (and front) wrap around using modulo arithmetic: rear = (rear + 1) MOD size, reusing slots freed by dequeuing"
+1.4.2,What is a priority queue?,"A queue where each item has a priority and the highest-priority item is dequeued first, regardless of arrival order"
+1.4.2,What is the ordering property of a binary search tree (BST)?,"For every node, all values in the left subtree are smaller and all in the right subtree are larger than the node"
+1.4.2,Name the three BST traversals and what in-order gives,"Pre-order (root, left, right), In-order (left, root, right), Post-order (left, right, root); in-order visits a BST in ascending order"
+1.4.2,What is a hash table and how does it achieve fast lookup?,"Stores key-value pairs in an array; a hash function converts a key to an array index (e.g. key MOD tableSize), giving near O(1) lookup/insert"
+1.4.2,What is a collision and how is it resolved?,Two keys hashing to the same index; resolved by open addressing/linear probing (next free slot) or chaining (a linked list at each slot)
+1.4.2,Compare an adjacency matrix and an adjacency list,"Matrix: 2D array, O(1) edge lookup, best for DENSE graphs but wastes space on sparse. List: each node stores its neighbours, memory-efficient, best for SPARSE graphs but slower edge checks"
+1.4.3,State De Morgan's laws,"NOT(A.B) = NOT A + NOT B, and NOT(A+B) = NOT A . NOT B ('break the bar, change the sign')"
+1.4.3,State the Boolean complement (inverse) laws,"A . NOT A = 0, and A + NOT A = 1"
+1.4.3,What are the outputs of a HALF ADDER?,Sum = A XOR B; Carry = A AND B. It cannot accept a carry-in
+1.4.3,What are the outputs of a FULL ADDER?,Sum = A XOR B XOR Cin; Cout = (A.B) + (Cin.(A XOR B)). It adds three bits and can be chained into a ripple-carry adder
+1.4.3,What is a D-type flip-flop?,An edge-triggered 1-bit memory (sequential logic) element that stores the D input on the active clock edge and presents it at Q until the next clock edge; used in registers and counters
+1.4.1,Convert 1101 0110 to hex,D6
+1.4.1,Convert denary 172 to 8-bit binary,1010 1100
+1.4.1,Convert binary 1010 1100 to hex,AC
+1.4.1,What is 0000 0110 (6) after a logical shift left by 1?,0000 1100 (= 12)
+1.5.1,What does the Data Protection Act 1998/2018 regulate?,"How organisations collect, store and process personal data about living individuals. It governs the data controller and data processor, and gives rights to the data subject. The 2018 Act brought UK law in line with the EU GDPR."
+1.5.1,List the GDPR / DPA 2018 data-protection principles.,"Personal data must be: lawful, fair and transparent; collected for a specified purpose (purpose limitation); adequate but minimal (data minimisation); accurate and up to date; kept no longer than necessary (storage limitation); secure (integrity and confidentiality); and the controller must demonstrate compliance (accountability)."
+1.5.1,Name three rights of a data subject under GDPR / DPA 2018.,Right to be informed; right of access (Subject Access Request); right to rectification; right to erasure (right to be forgotten); right to object to processing. (Any three.)
+1.5.1,Who enforces the Data Protection Act and what penalties can they impose?,"The Information Commissioner's Office (ICO). Under GDPR it can fine up to €20 million or 4% of global annual turnover, whichever is greater."
+1.5.1,Give an example of a Data Protection Act breach.,A company selling customer email addresses to advertisers without consent; a hospital losing a laptop with unencrypted patient records; a retailer keeping card details indefinitely with no need.
+1.5.1,DPA exam nuance: is processing without explicit consent always a breach?,"No. Consent is only one of six lawful bases (others: contract, legal obligation, legitimate interests, vital interests, public task). If another lawful basis applies, processing without consent is not automatically a breach."
+1.5.1,What does the Computer Misuse Act 1990 protect against?,Unauthorised access to computer systems — hacking and malware. It was passed after the R v Gold and Schifreen case showed existing law could not deal with hacking.
+1.5.1,State the three offences under the Computer Misuse Act 1990.,1) Unauthorised access to computer material. 2) Unauthorised access with intent to commit or facilitate a further offence. 3) Unauthorised modification of computer material.
+1.5.1,Give an example of each Computer Misuse Act offence.,"Offence 1: logging into a colleague's account / guessing a password. Offence 2: hacking a bank's system intending to steal money. Offence 3: spreading a virus or ransomware, or deleting a company's files."
+1.5.1,Computer Misuse Act key principle: is it about damage or authorisation?,Authorisation. Simply accessing material you are not authorised to access is an offence (Offence 1) even if you change nothing. Intent and modification escalate the seriousness.
+1.5.1,When does a scenario breach BOTH the CMA and the DPA?,When a hacker steals data (CMA Offence 2 — access with intent) from a company that stored it insecurely (DPA breach of integrity and confidentiality). Outsider hacking = CMA; the organisation mishandling data it holds = DPA.
+1.5.1,"What does the Copyright, Designs and Patents Act 1988 protect?","Intellectual property — original works such as literary works, music, films, software (a literary work) and designs. It gives the creator control over copying, distributing, renting, performing and adapting their work."
+1.5.1,Key feature of copyright under the CDPA 1988 (registration)?,Protection is automatic — you do not register a work; copyright exists as soon as the work is created. Copying or distributing without a licence or permission is an offence.
+1.5.1,"Give an example of a Copyright, Designs and Patents Act breach.",Downloading films or music via torrents; installing one licensed copy of software on many machines; copying source code from a rival product; using a web image in a commercial product without permission.
+1.5.1,Difference between copyright and a patent.,"Copyright is automatic, needs no registration, and protects original works (including the expression of an idea in source code). A patent must be applied for and granted, and protects a novel invention or technical process."
+1.5.1,CDPA nuance: does copyright protect the idea or the expression?,"The expression, not the idea. Two programs can solve the same problem without infringing — copying the idea or algorithm is not infringement, but copying the actual code is. Note fair-dealing exceptions for research, review and education."
+1.5.1,"How does the CDPA relate to open-source licences (GPL, MIT, Creative Commons)?","Open-source licences rely on copyright law: the author keeps copyright but grants specific permissions to use, modify and redistribute under conditions. The licence works because copyright lets the author set terms."
+1.5.1,What does the Regulation of Investigatory Powers Act 2000 (RIPA) regulate?,"The powers of public bodies (police, intelligence agencies) to carry out surveillance and intercept communications — and it places limits and authorisation requirements on those powers to prevent abuse."
+1.5.1,List key provisions of RIPA 2000.,Allows lawful interception of communications for national security/crime detection; requires ISPs to provide access to communications when lawfully required; allows demands for encryption keys in some cases; sets out who may authorise surveillance and for what purpose.
+1.5.1,Give an example of a RIPA breach or abuse.,"A public authority intercepting communications without the proper authorisation, or for an improper purpose (e.g. a council monitoring residents over a trivial matter)."
+1.5.1,Why is RIPA the hook for the privacy-vs-security debate?,"Interception powers help prevent terrorism and serious crime (benefit to society) but risk mass surveillance and erosion of privacy and civil liberties. RIPA has been partly superseded by the Investigatory Powers Act 2016, but for H446 you discuss RIPA."
+1.5.2,Automation in the workforce — one benefit and one drawback.,"Benefit: higher productivity, consistency and lower cost; can create new roles (developers, robotics engineers, technicians). Drawback: job displacement of routine/lower-skilled workers (cashiers, factory staff) who may lack skills for the new jobs."
+1.5.2,What is deskilling?,"Where jobs that remain need less skill because technology performs the complex part, reducing wages and job satisfaction — though it can also lead to upskilling as workers move to higher-value tasks."
+1.5.2,Automated decision making — one benefit and one drawback.,"Benefit: fast, consistent, processes huge data sets, removes human tiredness/inconsistency. Drawback: lacks human judgement and empathy, hard to appeal ('computer says no'), and responsibility is unclear when it goes wrong (e.g. liability in a self-driving car crash)."
+1.5.2,AI ethics — what is algorithmic / AI bias?,Systematic unfairness in AI output caused by biased training data. AI trained on biased historical data reproduces and amplifies that bias — e.g. a hiring AI that discriminates because past hiring was biased.
+1.5.2,AI ethics — name two concerns besides bias.,"Accountability (who is responsible when AI causes harm — developer, company or user?); transparency (many AI systems are 'black boxes' whose decisions cannot be fully explained, making them hard to challenge); plus autonomous weapons and deepfakes."
+1.5.2,Environmental effects of computing — one negative and one positive.,"Negative: e-waste with toxic materials, huge energy use by data centres and crypto-mining, and polluting rare-earth mining. Positive: remote/video working cuts travel, smart grids and sensors optimise energy use, and paperless processes."
+1.5.2,What is e-waste and why is it a problem?,"Discarded electronic equipment from short upgrade cycles. It contains toxic materials (lead, mercury) and is often shipped to developing countries and dismantled unsafely, harming people and the environment."
+1.5.2,Censorship and the internet — one argument for and one against.,"For: protects children, blocks illegal/extremist content, reduces harmful misinformation. Against: restricts freedom of speech and information, can be abused by governments to suppress dissent, and it is unclear who decides what is 'harmful'."
+1.5.2,"Monopolies — concerns, and what counterbalances them.","Concerns: a single dominant company stifles competition and innovation, raises prices and causes vendor lock-in. Counterweight: open-source software (Linux, Firefox) is freely available to view, modify and redistribute, promoting choice — though it may lack guaranteed support."
+1.5.2,Offshoring — one benefit and one drawback.,"Benefit (business/consumers): lower labour costs, cheaper products, 24-hour 'follow the sun' working, access to global talent. Drawback (home economy): local job losses, communication/time-zone issues, and concerns over data security and working conditions abroad."
+1.5.2,Layoffs — one benefit and one drawback.,"Benefit (employers): reduced costs, leaner and more competitive operation. Drawback (employees/society): unemployment, loss of income, regional and social impact, and loss of skilled staff and morale."
+1.5.2,"What is the digital divide, and how can it be reduced?","The gap between those with access to technology/the internet and the skills to use it, and those without (caused by income, geography, age, education, disability). Reduced by public Wi-Fi/libraries, subsidised devices, digital-skills education and rural broadband investment."
+1.5.2,Privacy and surveillance — one benefit and one drawback.,"Benefit: personalised services, crime prevention, public-health monitoring. Drawback: loss of privacy, profiling, data breaches, a 'chilling effect' on behaviour, and potential for state or corporate misuse. Links to the DPA and RIPA."
+1.5.1,Which law applies: an outsider hacks a company database; the company had stored it unencrypted?,"Both. The hacker breaches the Computer Misuse Act (unauthorised access, Offence 2 if with intent). The company breaches the Data Protection Act principle of integrity and confidentiality by not securing the data. Stating both wins marks."
+1.5.2,Essay technique: what pattern earns Level 3 in a levels-of-response answer?,"Point → consequence → stakeholder → counter-point, repeated, then a conclusion that takes a clear position and justifies it. Balance (both benefits and drawbacks) and accurate terminology are essential; a one-sided list cannot reach Level 3."
+1.5.2,Stakeholder checklist for an ethical scenario.,Consider: individuals/consumers/employees; businesses/employers; government/society; the environment; developing countries/future generations. Show how the same fact is a benefit to one party and a drawback to another.
+1.5.2,"What do the assessment objectives AO1, AO2 and AO3 require in 1.5 essays?","AO1 = recall (state what the law is). AO2 = apply the knowledge to the given scenario. AO3 = evaluate/judge and reach a justified conclusion. Extended-response questions are mostly AO2/AO3 — apply and evaluate, do not just describe."
+1.5.2,Common 1.5 exam mistakes to avoid.,One-sided answers; no justified conclusion; listing instead of developing points; confusing the four laws; saying 'it's illegal' without naming the Act/offence; treating GDPR and the DPA 2018 as identical; forgetting stakeholders.
+2.1.1,What is abstraction?,"The process of removing or hiding unnecessary detail so that only the information relevant to the problem remains, letting us manage complexity."
+2.1.1,Why is abstraction needed when solving a problem?,"Real problems contain too much detail to model directly; removing irrelevant detail makes a problem simpler, manageable, understandable and reusable, and lets people work at different levels."
+2.1.1,How does an abstraction differ from reality?,"An abstraction is a simplified, idealised model that deliberately omits detail, so it never behaves exactly like reality; a model capturing every detail would be as complex as the original and useless."
+2.1.1,What is representational abstraction?,"Removing unnecessary detail from a specific thing to leave a simpler representation of that particular problem, e.g. modelling a road network as a graph of nodes and weighted edges."
+2.1.1,What is generalisation (categorisation) abstraction?,"Grouping things together by their shared characteristics to form a more general, reusable model, e.g. a general Account category shared by savings and current accounts."
+2.1.1,Distinguish representational abstraction from generalisation abstraction.,Representational = simplify one specific thing by removing detail; generalisation = group many things by shared features to make a general model.
+2.1.1,What is the key difference between abstraction and decomposition?,Abstraction removes or hides unnecessary detail to simplify; decomposition breaks a large problem into smaller sub-problems. They are different skills and must not be blurred.
+2.1.1,"In the London Underground map, what is kept and what is removed?","Kept: station order, which line each station is on, interchange points. Removed: real geography, true distances, tunnel curves, surface streets - irrelevant to choosing trains."
+2.1.2,What does 'thinking ahead' mean?,"Planning a solution before coding by anticipating what it will need: inputs, outputs, preconditions, opportunities for caching and reusable components."
+2.1.2,What is an input in a system?,Data that must be supplied to a system for it to produce a result. Note: a process such as 'validate data' is not an input.
+2.1.2,What is an output?,"A result that a system must produce, e.g. a confirmation message, a receipt, an updated display."
+2.1.2,What is a precondition?,"A condition that must already be true before a process can run correctly, e.g. a binary search requires that the list is already sorted."
+2.1.2,Why state preconditions for a routine?,"So you can assume them inside the routine rather than re-checking, simplifying the code and clarifying the routine's requirements."
+2.1.2,What is caching?,Storing the results of expensive or frequently-used operations in fast storage so they can be reused without recomputing or re-fetching.
+2.1.2,What are the benefits of caching?,"Faster response, less repeated computation, and less network or disk traffic because data/results are reused instead of regenerated."
+2.1.2,What are the trade-offs of caching?,"It uses extra storage, and cached data can become stale (out of date) if the underlying source changes, requiring a cache-invalidation/refresh strategy."
+2.1.2,What is stale data?,Cached data that is out of date because the underlying source has changed since it was cached.
+2.1.2,What is a reusable program component?,"A self-contained, generalised module (procedure, function, class or library) that can be used in this and future programs."
+2.1.2,What are the benefits of reusable components?,"Less development time, fewer bugs (code is already tested), consistency across the system, improved reliability and easier maintenance."
+2.1.3,What does 'thinking procedurally' mean?,"Breaking a problem into an ordered sequence of steps and sub-procedures - identifying problem components, solution components, and the correct order."
+2.1.3,What is decomposition?,"Breaking a large problem into smaller, more manageable sub-problems, each solved by a sub-procedure, making it easier to understand, divide between a team, and reuse."
+2.1.3,What is a sub-procedure (subroutine)?,A named block of code that solves one sub-problem and is called by the main program.
+2.1.3,Why does the order of steps matter in a solution?,"Some steps depend on the output of earlier steps and cannot be reordered - e.g. you must take payment before issuing a ticket, or boil water before pouring it."
+2.1.4,What does 'thinking logically' mean?,"Identifying the points in a problem where the path of execution depends on a condition, and stating the conditions and their outcomes."
+2.1.4,What is a decision point?,"A place where the flow of execution can branch in different directions depending on whether a condition is true or false (an IF, CASE/SWITCH, or loop test)."
+2.1.4,What is flow of control?,"The order in which a program's statements are executed, shaped by its decision points (selection and iteration)."
+2.1.4,Why must conditions at a decision point be stated exactly?,A small error such as using > instead of >= changes the behaviour; exam answers need the actual Boolean test and the outcome of both branches.
+2.1.5,What does 'thinking concurrently' mean?,Spotting which parts of a problem can be carried out at the same time (in parallel or interleaved) rather than one after another.
+2.1.5,Which tasks can run concurrently?,Independent tasks that do not depend on each other's output and do not compete for the same single resource; tasks with a data dependency must stay sequential.
+2.1.5,What are the benefits of concurrent processing?,"Faster overall completion / better throughput, better use of multi-core hardware, and a more responsive system (the UI stays usable while a long task runs)."
+2.1.5,What are the trade-offs of concurrent processing?,"Harder to design, program and debug; can cause race conditions and deadlock; results may need synchronising; and overhead can mean it is not always faster (single core only time-slices)."
+2.1.5,What is a race condition?,A fault where the result depends on the unpredictable timing of concurrent tasks accessing shared data.
+2.1.5,What is deadlock?,"A standstill where concurrent tasks each wait for a resource the other holds, so none can proceed."
+2.1.5,What is the difference between true parallelism and concurrency via time-slicing?,True parallelism = multiple cores running tasks literally simultaneously; time-slicing = a single core rapidly switching between tasks to give the illusion of simultaneity.
+2.1.2,"APPLY: A cinema booking site - give one input, one output, one precondition.",Input: number of seats / film choice / payment details. Output: seating map / booking confirmation. Precondition: the chosen showing must exist and have enough free seats before payment runs.
+2.1.1,"APPLY: For a chess game, give a representational and a generalisation abstraction.","Representational: board as an 8x8 2-D array, ignoring piece textures. Generalisation: a general Piece category (colour, position, getLegalMoves) specialised into Pawn, Knight, etc."
+2.1.2,APPLY: A hotel booking system - name a precondition before taking payment.,The room must be free for every night of the requested date range before the payment routine runs.
+2.1.4,APPLY: An ATM withdrawal - state one decision point with its condition.,"IF amount <= balance AND amount <= dailyLimit then dispense, ELSE refuse; or IF cashAvailable >= amount then dispense, ELSE show 'machine empty'."
+2.1.5,APPLY: A weather website - which tasks are concurrent and which must wait?,"Concurrent (independent): fetch radar image, forecast data, news ticker, advert banner. Sequential: generating the temperature graph must wait for the forecast data (data dependency)."
+2.2.1,Name the three basic programming constructs.,"Sequence, selection (branching) and iteration (looping)."
+2.2.1,What is sequence?,"Instructions carried out one after another, in the order written; order matters."
+2.2.1,Difference between count-controlled and condition-controlled iteration?,"Count-controlled repeats a fixed, known number of times (for); condition-controlled repeats until a condition changes (while / do...until)."
+2.2.1,Difference between a while loop and a do...until loop?,while tests the condition at the start (may run zero times); do...until tests at the end (always runs at least once).
+2.2.1,Which loop is best for input validation and why?,"do...until, because you must ask for input at least once before you can test it."
+2.2.1,What is recursion?,A subroutine (function or procedure) that calls itself to solve a problem.
+2.2.1,What two parts must every correct recursive subroutine have?,A base case (stops the recursion) and a general/recursive case (calls itself with a value closer to the base case).
+2.2.1,What happens if a recursive routine has no reachable base case?,"It calls itself indefinitely, filling the call stack until memory runs out — a stack overflow."
+2.2.1,How is the call stack used in recursion?,"Each call pushes a stack frame (parameters, local variables, return address); frames are popped in reverse (LIFO) order as calls return."
+2.2.1,Give two differences between recursion and iteration.,Recursion uses more memory (a frame per call) and is generally slower; iteration uses one set of variables and is generally faster.
+2.2.1,What is variable scope?,The region of a program in which a variable can be accessed (is visible).
+2.2.1,What is a local variable?,"A variable declared inside a subroutine, accessible only within it and existing only while it runs."
+2.2.1,What is a global variable?,"A variable declared in the main program, accessible (and changeable) anywhere in the program."
+2.2.1,Give two reasons to prefer local variables.,"Fewer side effects / accidental changes, memory freed when the subroutine ends, more modular and easier to debug (any two)."
+2.2.1,What is modularity and give one benefit.,"Breaking a large program into smaller self-contained subroutines, each doing one task; benefit: easier to write/test/debug, reuse, or team parallel work."
+2.2.1,Difference between a function and a procedure?,A function returns a (single) value; a procedure performs a task but returns no value.
+2.2.1,Difference between a parameter and an argument?,A parameter is the variable in the subroutine's definition; an argument is the actual value supplied when it is called.
+2.2.1,What does passing by value mean?,A copy of the argument's value is passed; changes inside the subroutine do not affect the original variable.
+2.2.1,What does passing by reference mean?,The memory address of the original variable is passed; changes inside the subroutine do affect the original.
+2.2.1,Give one advantage each of by value and by reference.,"By value: safer, avoids unintended side effects. By reference: efficient for large data (no copy) and can return changes through the parameter."
+2.2.1,What is an IDE?,"Integrated Development Environment — one application giving the tools to write, test and debug code."
+2.2.1,Name three IDE debugging features.,"Breakpoints (pause at a line), stepping (run one line at a time), variable watch/watch window (inspect values at run time)."
+2.2.1,Name two IDE editing features that speed up writing code.,"Syntax highlighting, code completion/auto-complete (intellisense), auto-indentation/pretty-printing, error highlighting (any two)."
+2.2.1,What is a class and what is an object?,A class is a template/blueprint defining attributes and methods; an object is a specific instance of a class created at run time.
+2.2.1,Difference between an attribute and a method?,An attribute is a data item (variable) belonging to an object; a method is a subroutine (behaviour) belonging to a class.
+2.2.1,What is a constructor?,"A special method that runs when an object is created, used to initialise its attributes (often 'new' in OCR ERL)."
+2.2.1,What is encapsulation?,"Bundling attributes and methods inside a class and keeping attributes private, accessed only through public methods (data hiding)."
+2.2.1,What are getters and setters?,Public methods that read (getter/accessor) and write (setter/mutator) private attributes in a controlled way; a setter can validate first.
+2.2.1,What is inheritance?,"A subclass (child) acquiring the attributes and methods of a superclass (parent), modelling an 'is-a' relationship and promoting reuse."
+2.2.1,What is polymorphism?,The same method call behaving differently depending on the object's class; most commonly achieved by overriding a method in a subclass.
+2.2.1,Difference between overriding and overloading?,Overriding: a subclass replaces an inherited method with the same name and parameters. Overloading: several methods share a name but have different parameter lists.
+2.2.2,List three features that make a problem solvable by computational methods.,"Can be decomposed into sub-problems, has clear inputs/processes/outputs, is repetitive/rule-based, useful abstractions can be made, data can be structured (any three)."
+2.2.2,What is decomposition?,"Breaking a complex problem into smaller, more manageable sub-problems that can each be solved and tested individually."
+2.2.2,What is divide and conquer?,"Repeatedly dividing a problem into parts, solving each part, then combining the results (e.g. binary search, merge sort)."
+2.2.2,Difference between decomposition and divide and conquer?,Decomposition breaks a problem into different sub-tasks; divide and conquer breaks it into smaller instances of the same problem and combines their solutions.
+2.2.2,What is abstraction?,Removing or hiding unnecessary detail so you focus only on the information needed to solve the problem.
+2.2.2,Name the two types of abstraction.,"Representational abstraction (remove unneeded detail, e.g. Tube map) and abstraction by generalisation (group by shared characteristics)."
+2.2.2,What is backtracking and where is it used?,"Building a solution step by step and reversing on dead ends to try alternatives; used in mazes, N-Queens, Sudoku and pathfinding."
+2.2.2,What is data mining and where is it used?,Searching large data sets to discover hidden patterns/trends; used in supermarket loyalty-card analysis and fraud detection.
+2.2.2,What is a heuristic and where is it used?,A rule-of-thumb giving a good-enough (not guaranteed optimal) answer quickly; used in satnav routing (A*) and the Travelling Salesman Problem.
+2.2.2,What is performance modelling and where is it used?,Using a mathematical/computational model to predict how a system will perform instead of testing the real thing; used for server load or aircraft systems.
+2.2.2,What is pipelining and where is it used?,Splitting a process into stages so different items are processed at the same time; used in the CPU fetch-decode-execute cycle.
+2.2.2,What is visualisation and where is it used?,"Representing data graphically (charts, maps, heat maps) to reveal patterns for humans; used for sales trends or website click heat maps."
+2.2.2,Apply: a satnav must route across a huge road network where the exact route is too slow to compute. Which method and why?,A heuristic — it finds a good-enough route quickly because computing the optimal route is intractable for a large network.
+2.2.1,"Apply: trace factorial(3) where factorial(n)=n*factorial(n-1), base case n==0 returns 1.","factorial(0)=1, factorial(1)=1, factorial(2)=2, factorial(3)=6."
+2.2.1,Apply: why does deep recursion risk a stack overflow?,Each active call adds a frame to the call stack; too many simultaneous frames exhaust the available memory.
+2.3.1,What does Big O notation describe?,"How an algorithm's time or space requirement grows as the input size n increases, expressed for the worst case, ignoring constants and lower-order terms."
+2.3.1,Why do we drop constants and lower-order terms in Big O? (e.g. 3n²+5n+17),"Because we care about the rate of growth for large n; the dominant term (n²) decides scalability, so 3n²+5n+17 simplifies to O(n²)."
+2.3.1,O(1) — name and behaviour?,"Constant time: execution time does not change with n. Example: accessing array[i], stack push/pop."
+2.3.1,O(log n) — name and behaviour?,Logarithmic time: grows very slowly; doubling n adds only one step. Example: binary search.
+2.3.1,O(n) — name and behaviour?,"Linear time: doubling n doubles the time. Example: linear search, a single loop over a list."
+2.3.1,O(n²) — name and behaviour?,"Polynomial (quadratic) time: doubling n quadruples the time. Example: bubble/insertion sort, nested loops."
+2.3.1,O(2ⁿ) — name and behaviour?,"Exponential time: adding one item doubles the time; intractable for large n. Example: naive recursive Fibonacci, brute-force travelling salesman."
+2.3.1,"Order these from fastest to slowest growth: O(n²), O(1), O(2ⁿ), O(n), O(log n)",O(1) < O(log n) < O(n) < O(n²) < O(2ⁿ).
+2.3.1,What are tractable and intractable problems?,"Tractable: solvable in polynomial time or better. Intractable: no known polynomial-time solution (only exponential or worse), so not solvable in reasonable time for large n."
+2.3.1,How does linear search work (one line)?,Check each element in turn from the start until the target is found or the end is reached.
+2.3.1,"Linear search — best, average, worst case, and does it need sorted data?",Best O(1) (first element); average and worst O(n) (last or absent). It does NOT need sorted data.
+2.3.1,How does binary search work (one line)?,"Repeatedly examine the middle element of a sorted list and discard the half that cannot contain the target, halving the search space each pass."
+2.3.1,Binary search — precondition?,The list must be sorted.
+2.3.1,"Binary search — best, average, worst case?",Best O(1) (target is the first middle); average and worst O(log n) (search space halves each step).
+2.3.1,Big O of binary search?,O(log n).
+2.3.1,When does linear search beat binary search?,When data is unsorted and searched only once: a single O(n) linear search is cheaper than sorting first (O(n log n)) then binary searching. Binary search pays off when the same sorted data is searched many times.
+2.3.1,How does bubble sort work (one line)?,"Repeatedly step through the list comparing adjacent pairs and swapping any in the wrong order, so the largest element bubbles to the end each pass."
+2.3.1,"Bubble sort — best, average, worst, space?","Best O(n) (already sorted, with swap flag); average and worst O(n²); space O(1)."
+2.3.1,Why is bubble sort's best case O(n) only with a swap flag?,The flag detects a pass with no swaps and stops early; without it bubble sort is O(n²) even on a sorted list.
+2.3.1,How does insertion sort work (one line)?,"Build a sorted section at the front by taking the next element and inserting it into its correct position, shifting larger elements right."
+2.3.1,"Insertion sort — best, average, worst, space, and when to use?",Best O(n) (nearly sorted); average and worst O(n²); space O(1). Good for small or nearly-sorted lists as it is in-place.
+2.3.1,How does merge sort work (one line)?,"Divide and conquer: recursively split the list in half until single elements, then merge the sublists back together in sorted order."
+2.3.1,"Merge sort — best, average, worst, space?",O(n log n) in all cases (best/average/worst); space O(n) for the temporary merge arrays.
+2.3.1,Why does merge sort guarantee O(n log n)?,"It always splits the list exactly in half, so the depth of splitting is log n and each level does O(n) merging work, regardless of input order."
+2.3.1,How does quick sort work (one line)?,"Divide and conquer: choose a pivot, partition items smaller to its left and larger to its right, then recursively quicksort each partition."
+2.3.1,"Quick sort — best, average, worst, space?",Best and average O(n log n); worst O(n²); space O(log n) (recursion stack).
+2.3.1,When does quick sort hit its O(n²) worst case?,"When the pivot repeatedly splits the list unevenly, e.g. always picking the smallest/largest element on already-sorted data."
+2.3.1,Merge sort vs quick sort — key trade-off?,"Merge sort guarantees O(n log n) but needs O(n) extra space; quick sort sorts in place (O(log n) space) and is usually fastest, but degrades to O(n²) in the worst case."
+2.3.1,Which standard sort is not generally stable?,"Quick sort. Bubble, insertion and merge sort are stable."
+2.3.1,Stack — what does LIFO mean and Big O of operations?,"Last In, First Out: items added/removed at the top. push, pop, peek, isEmpty are all O(1)."
+2.3.1,"Queue — FIFO meaning, Big O, and what does a circular queue use MOD for?","First In, First Out: added at the rear (enQueue), removed from the front (deQueue); both O(1). A circular queue uses MOD to wrap the pointers around the array and reuse freed space."
+2.3.1,Linked list — structure and Big O of traversal vs insert?,"Each node holds data and a pointer to the next; a start pointer marks the head, null marks the end. Traversal/search is O(n); insert/delete given the node is O(1) (just re-point)."
+2.3.1,Pre-order traversal — order and use?,"Node, Left, Right. Used to copy a tree / produce prefix (Polish) expressions."
+2.3.1,In-order traversal — order and use?,"Left, Node, Right. Outputs a binary search tree in ascending sorted order."
+2.3.1,Post-order traversal — order and use?,"Left, Right, Node. Used to delete a tree and to evaluate Reverse Polish (postfix) expressions. This is the depth-first traversal named in the spec."
+2.3.1,"Pre/in/post-order of tree (50:(30:(20,40),70:(60,80)))?","Pre: 50,30,20,40,70,60,80. In: 20,30,40,50,60,70,80. Post: 20,40,30,60,80,70,50."
+2.3.1,What is breadth-first traversal (BFS) and which structure does it use?,"Visit nodes level by level, left to right, using a queue. For the tree 50:(30:(20,40),70:(60,80)) → 50,30,70,20,40,60,80."
+2.3.1,Which data structure does depth-first use vs breadth-first?,Depth-first uses a stack (or recursion's call stack); breadth-first uses a queue.
+2.3.1,Binary search tree — search/insert Big O?,O(log n) average on a balanced tree; O(n) worst case on a degenerate/unbalanced tree. Traversal visits every node: O(n).
+2.3.1,What does Dijkstra's algorithm find?,The shortest path from a start node to all other nodes in a weighted graph with non-negative edge weights.
+2.3.1,Dijkstra — one-line method?,"Keep tentative distances; repeatedly visit the unvisited node with the smallest tentative distance, relax its neighbours, then mark it visited (final)."
+2.3.1,Dijkstra — complexity?,O(n²) with a simple distance array; O((V+E) log V) with a priority queue (binary heap).
+2.3.1,What is A* and how does it differ from Dijkstra?,"A* is an informed extension of Dijkstra for a single start and single goal: it adds a heuristic estimate of the remaining cost, so it searches towards the goal and usually explores fewer nodes."
+2.3.1,A* — what is the cost function f(n)?,"f(n) = g(n) + h(n), where g(n) is the actual cost from the start and h(n) is the heuristic estimate of the remaining cost to the goal. A* expands the node with the lowest f(n)."
+2.3.1,What is an admissible heuristic and why does it matter?,One that never overestimates the true remaining cost. A* is guaranteed to find the optimal path only if the heuristic is admissible.
+2.3.1,What happens to A* if h(n) = 0 for all nodes?,It behaves identically to Dijkstra's algorithm (searching outward in all directions).
