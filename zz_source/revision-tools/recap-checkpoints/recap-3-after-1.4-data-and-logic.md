@@ -1,6 +1,6 @@
-# Recap Checkpoint 3 — after 1.4 (Data Types, Data Structures & Boolean Algebra) — cumulative 1.1–1.4
+# Recap Checkpoint 3 — after 1.4 (Data Types, Data Structures & Boolean Algebra) — cumulative 1.1–1.4 + 2.1
 
-Name: ______________________   Date: __________   Mark: ______ / 42
+Name: ______________________   Date: __________   Mark: ______ / 50
 
 *OCR H446 cumulative recap — mixes every topic taught so far. Show all working.*
 
@@ -30,9 +30,9 @@ Show your working. **[3 total]** — *1.4.1*
 (b) Explain **why** numbers are normalised. **[1]** *(AO1)*
 **[3 total]** — *1.4.1*
 
-**Q8.** Simplify the Boolean expression **A·(Ā + B)** using Boolean identities. Show each step and name the identities used. **[3]** *(AO2)* — *1.4.3*
+**Q8.** Simplify the Boolean expression **A∧(¬A ∨ B)** using Boolean identities. Show each step and name the identities used. **[3]** *(AO2)* — *1.4.3*
 
-**Q9.** Complete the truth table for **F = (A + B)·¬(A·B)** and state which single logic gate it is equivalent to. **[4]** *(AO2)* — *1.4.3*
+**Q9.** Complete the truth table for **F = (A ∨ B)∧¬(A∧B)** and state which single logic gate it is equivalent to. **[4]** *(AO2)* — *1.4.3*
 
 | A | B | F |
 |---|---|---|
@@ -54,11 +54,23 @@ Show your working. **[3 total]** — *1.4.1*
 
 **Q12.** An embedded controller for a heart-rate monitor must store readings, process them in real time, and use as little power as possible. The design team must justify, **synoptically**, three decisions: the **processor architecture (RISC vs CISC)**, an appropriate **data structure** to buffer the most recent readings, and whether to use a **lossy or lossless** compression scheme before transmitting stored readings to a doctor. Evaluate suitable choices for **all three**, justifying each against the device's requirements. **[6]** *(AO3)* — *synoptic 1.1 + 1.4 + 1.3*
 
+### Section D — Computational thinking (2.1)
+
+**Q13.** An airport is developing software to track passengers' bags from check-in to the aircraft hold. The system must print tag labels, route bags along conveyor belts, scan bags at checkpoints and report any missing bags.
+(a) Explain how **decomposition** would help the team develop this system, identifying **two** sub-problems from the scenario. **[2]** *(AO2)*
+(b) The software models each bag as just `tagID, flightNumber, currentLocation`. Explain how this model is an example of **abstraction**, identifying **one** detail of a real bag that it ignores. **[2]** *(AO2)*
+**[4 total]** — *2.1.1 / 2.1.3*
+
+**Q14.** At a ferry terminal, a vehicle is allowed to board only when the boarding lane is open **and** at least one deck space is left. The program uses the Boolean variable `laneOpen` and the integer variable `deckSpaces`.
+(a) *Thinking logically:* write the **Boolean condition** the program should test before raising the barrier, using the two variables. **[2]** *(AO2)*
+(b) The terminal opens **three check-in booths that process vehicles concurrently**. State **one benefit** of this concurrent approach and **one problem** that could arise because the booths share the `deckSpaces` variable. **[2]** *(AO2)*
+**[4 total]** — *2.1.4 / 2.1.5*
+
 ---
 
 ## Mark scheme
 
-*Total = 42 marks. Award marks for valid alternatives in line with OCR positive-marking. All calculations checked below.*
+*Total = 50 marks. Award marks for valid alternatives in line with OCR positive-marking. All calculations checked below.*
 
 **Q1 — [2] (AO1)** — *1.1.2*
 - **CISC** has a **large/complex instruction set** with variable-length, multi-cycle instructions (complexity in hardware) (1).
@@ -102,10 +114,10 @@ Result `1111 0011` has MSB = 1 → negative; magnitude = invert + 1 = `0000 1100
 *Examiner tip: moving the point right DECREASES the exponent; the value is unchanged.*
 
 **Q8 — [3] (AO2)** — *1.4.3*
-- Distribute (distributive law): A·(Ā + B) = (A·Ā) + (A·B) (1).
-- A·Ā = **0** (complement / annihilation law) (1).
-- 0 + (A·B) = **A·B** (identity law) (1).
-Final answer: **A·B**.
+- Distribute (distributive law): A∧(¬A ∨ B) = (A∧¬A) ∨ (A∧B) (1).
+- A∧¬A = **0** (complement / annihilation law) (1).
+- 0 ∨ (A∧B) = **A∧B** (identity law) (1).
+Final answer: **A∧B**.
 
 **Q9 — [4] (AO2)** — *1.4.3*
 
@@ -116,7 +128,7 @@ Final answer: **A·B**.
 | 1 | 0 | 1 |
 | 1 | 1 | 0 |
 
-(Working: `A+B` is 0,1,1,1; `¬(A·B)` is 1,1,1,0; AND them → 0,1,1,0.) *(Up to 3 marks for the F column: 1 per correct pair of rows, plus 1 if the whole column is correct; allow follow-through.)*
+(Working: `A∨B` is 0,1,1,1; `¬(A∧B)` is 1,1,1,0; AND them → 0,1,1,0.) *(Up to 3 marks for the F column: 1 per correct pair of rows, plus 1 if the whole column is correct; allow follow-through.)*
 F is 1 only when the inputs **differ**, so it is equivalent to an **XOR** gate (1 mark for identifying XOR).
 
 **Q10 — [4] (AO3)** — *1.4.2*
@@ -142,3 +154,11 @@ Mark holistically; up to 6 from a reasoned evaluation covering **all three** dec
 - **Data structure:** recommend a **(circular) queue** (1) to buffer the **most recent readings in time order (FIFO)** with fixed memory and O(1) enqueue/dequeue; *(accept a justified stack/array only with sound reasoning)* (1 for justification).
 - **Compression:** recommend **lossless** (1) because **medical readings must not lose accuracy/data**, so lossy (which discards data) is unsuitable despite smaller files (1 for justification linking to clinical accuracy).
 *Indicative full-mark answer weaves RISC (power/real-time) + circular queue (recent readings, FIFO, fixed memory) + lossless (data integrity), each justified against the heart-rate monitor's requirements.*
+
+**Q13 — [4] (AO2)** — *2.1.1 / 2.1.3*
+(a) Decomposition **breaks the large problem into smaller sub-problems** that can be designed, coded and tested separately (and shared between developers) (1); **two** sub-problems identified from the scenario, e.g. printing tag labels / routing bags along the conveyors / scanning at checkpoints / reporting missing bags (1).
+(b) Abstraction keeps only the details **essential to the problem** and **discards/hides the rest** — tag ID, flight and current location are all the tracking system needs (1); one ignored detail, e.g. the bag's **colour / brand / material / contents / shape** (1). *(Accept any sensible physical detail irrelevant to tracking.)*
+
+**Q14 — [4] (AO2)** — *2.1.4 / 2.1.5*
+(a) Condition combines **both** requirements with AND (1): **`laneOpen == true AND deckSpaces > 0`** (accept `laneOpen AND deckSpaces >= 1`) — correct comparisons on both variables (1).
+(b) Benefit (1): three vehicles are processed **at the same time**, so throughput rises / queues are shorter. Problem (1): the booths **share `deckSpaces`** — two booths could read/update it simultaneously (a race condition / lost update), letting more vehicles board than there are spaces, so access to the variable must be coordinated.

@@ -108,7 +108,7 @@ Accurate but mid-band: it **lists features of each** without ever putting them h
 
 ---
 
-## Question 4 — Application: networking / TCP-IP stack (1.3.1) · 5 marks · AO1/AO2
+## Question 4 — Application: networking / TCP-IP stack (1.3.3) · 5 marks · AO1/AO2
 
 > A user enters a URL into a web browser and a web page is returned from a server on the internet.
 >
@@ -140,7 +140,7 @@ Close, but it's the difference between 3/5 and 5/5: no **port numbers**, no ment
 
 ---
 
-## Question 5 — Recursion / code tracing (2.2.2) · 6 marks · AO1/AO2/AO3
+## Question 5 — Recursion / code tracing (2.2.1) · 6 marks · AO1/AO2/AO3
 
 > Consider the following recursive subroutine written in OCR pseudocode:
 >

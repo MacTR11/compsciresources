@@ -200,7 +200,7 @@ Calculate the denary value this represents. Show your working, and state whether
 
 **13(a)** Complete the truth table for the expression `Q = (NOT A) OR (NOT B)` and state the name of the single logic gate to which this expression is equivalent. **[4]** *(AO3)*
 
-**13(b)** Using the laws of Boolean algebra, simplify the expression `Q = A.(A + B) + A.C + C` to its simplest form. Show each step and name the law used. **[4]** *(AO3)*
+**13(b)** Using the laws of Boolean algebra, simplify the expression `Q = A∧(A ∨ B) ∨ A∧C ∨ C` to its simplest form. Show each step and name the law used. **[4]** *(AO3)*
 
 **13(c)** A counter circuit uses a **D-type flip-flop**. State the purpose of a flip-flop in a sequential circuit, and explain why flip-flops are described as the building blocks of computer **memory/registers**. **[3]** *(AO2)*
 
@@ -527,14 +527,14 @@ Inserting 50, 30, 70, 20, 40, 60:
 
 **13(b) [4] (AO3)** — award 1 per correct step/law, max 4:
 ```
-Q = A.(A + B) + A.C + C
-  = A.A + A.B + A.C + C        (distribution)
-  = A + A.B + A.C + C          (idempotence: A.A = A)
-  = A + A.C + C                (absorption: A + A.B = A)
-  = A + C                      (absorption: C + A.C = C)
+Q = A∧(A ∨ B) ∨ A∧C ∨ C
+  = A∧A ∨ A∧B ∨ A∧C ∨ C        (distribution)
+  = A ∨ A∧B ∨ A∧C ∨ C          (idempotence: A∧A = A)
+  = A ∨ A∧C ∨ C                (absorption: A ∨ A∧B = A)
+  = A ∨ C                      (absorption: C ∨ A∧C = C)
 ```
-- **Simplest form: `Q = A + C`** (final answer mark).
-- (Accept correct alternative ordering; key laws: distribution, idempotence A.A = A, absorption.)
+- **Simplest form: `Q = A ∨ C`** (final answer mark).
+- (Accept correct alternative ordering; key laws: distribution, idempotence A∧A = A, absorption.)
 
 **13(c) [3] (AO2)** — up to 3:
 - A flip-flop is a **bistable circuit that stores one bit** (it has two stable states, 0 or 1) (1).

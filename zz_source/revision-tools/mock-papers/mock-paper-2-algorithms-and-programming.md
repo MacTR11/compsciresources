@@ -290,7 +290,7 @@ Discuss how you would **design** the data storage and **searching** strategy for
 
 The quality of your written communication will be assessed. **[12] (AO3)**
 
-*Running total: **140***
+*Running total: 140*
 
 ---
 

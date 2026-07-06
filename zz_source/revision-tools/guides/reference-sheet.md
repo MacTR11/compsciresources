@@ -77,15 +77,15 @@ The high-frequency facts you should be able to recall instantly. Print it, stick
 | 1 | 0 | 0 | 1 | 1 | 0 | 1 |
 | 1 | 1 | 1 | 1 | 0 | 0 | 0 |
 
-### Identities (· = AND, + = OR, ¬ = NOT)
-- **AND:** A·0 = 0 · A·1 = A · A·A = A · A·¬A = 0
-- **OR:** A+0 = A · A+1 = 1 · A+A = A · A+¬A = 1
+### Identities (∧ = AND, ∨ = OR, ¬ = NOT, ⊻ = XOR)
+- **AND:** A∧0 = 0 ; A∧1 = A ; A∧A = A ; A∧¬A = 0
+- **OR:** A∨0 = A ; A∨1 = 1 ; A∨A = A ; A∨¬A = 1
 - **Double negation:** ¬(¬A) = A
-- **Commutation:** A·B = B·A ; A+B = B+A
-- **Association:** (A·B)·C = A·(B·C)
-- **Distribution:** A·(B+C) = A·B + A·C
-- **De Morgan's:** ¬(A·B) = ¬A + ¬B ; ¬(A+B) = ¬A · ¬B
-- **Absorption:** A + (A·B) = A ; A·(A+B) = A
+- **Commutation:** A∧B = B∧A ; A∨B = B∨A
+- **Association:** (A∧B)∧C = A∧(B∧C)
+- **Distribution:** A∧(B∨C) = A∧B ∨ A∧C
+- **De Morgan's:** ¬(A∧B) = ¬A ∨ ¬B ; ¬(A∨B) = ¬A ∧ ¬B
+- **Absorption:** A ∨ (A∧B) = A ; A∧(A∨B) = A
 
 ### Adders
 - **Half adder:** Sum = A XOR B; Carry = A AND B.

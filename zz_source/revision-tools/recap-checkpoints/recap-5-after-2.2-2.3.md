@@ -1,4 +1,4 @@
-# Recap Checkpoint 5 — Cumulative: Component 1 (1.1, 1.3, 1.4) + Component 2 (2.1–2.3, incl. Algorithms)
+# Recap Checkpoint 5 — Cumulative: Component 1 (1.1, 1.3, 1.4) + Component 2 (2.2 Programming + 2.3 Algorithms)
 
 Name: ______________________   Date: __________   Mark: ______ / 35
 
@@ -13,7 +13,7 @@ Name: ______________________   Date: __________   Mark: ______ / 35
 (b) A bitmap image is 64 × 48 pixels with a colour depth of **4 bits per pixel**. Calculate its size in **kibibytes (KiB)**, ignoring metadata. **[2]**
 
 **Q3 [4] (AO2).** *(1.4 — Boolean algebra)* 
-(a) Simplify the Boolean expression **A·B + A·B̄** and name the law(s) used. **[2]**
+(a) Simplify the Boolean expression **A∧B ∨ A∧¬B** and name the law(s) used. **[2]**
 (b) Complete the output column of the truth table for **Q = (A OR B) AND NOT B**. **[2]**
 
 | A | B | Q |
@@ -32,7 +32,7 @@ Name: ______________________   Date: __________   Mark: ______ / 35
 (b) Define **encapsulation** and explain **one** benefit it provides. **[2]**
 (c) State what is meant by **inheritance**. **[1]**
 
-**Q6 [4] (AO2).** *(2.3 — Searching/sorting trace)* A list contains `[8, 3, 5, 1]`. Carry out a **merge sort**, showing the lists produced at **each** split and merge stage. State the **worst-case** time complexity of merge sort.
+**Q6 [4] (AO2).** *(2.3 — Searching/sorting trace)* A list contains `[7, 4, 9, 2]`. Carry out a **merge sort**, showing the lists produced at **each** split and merge stage. State the **worst-case** time complexity of merge sort.
 
 **Q7 [4] (AO1/AO2).** *(2.3 — Big O)* 
 (a) State the worst-case time complexity (Big O) of: linear search, binary search, and bubble sort. **[3]**
@@ -73,7 +73,7 @@ Explain why the library should be **kept sorted** and a **binary search** used r
 ---
 
 **Q3 [4] (AO2).**
-- (a) A·B + A·B̄ = A·(B + B̄) = A·1 = **A** (1 for answer **A**); laws: **Distributive** then **complement/inverse (B + B̄ = 1)** and **identity** (1 for naming a relevant law).
+- (a) A∧B ∨ A∧¬B = A∧(B ∨ ¬B) = A∧1 = **A** (1 for answer **A**); laws: **Distributive** then **complement/inverse (B ∨ ¬B = 1)** and **identity** (1 for naming a relevant law).
 - (b) Truth table for Q = (A OR B) AND NOT B:
 
 | A | B | Q |
@@ -106,10 +106,10 @@ Explain why the library should be **kept sorted** and a **binary search** used r
 
 ---
 
-**Q6 [4] (AO2).** Merge sort on `[8, 3, 5, 1]`:
-- Splits: `[8, 3, 5, 1]` → `[8, 3]` / `[5, 1]` → `[8]`,`[3]`,`[5]`,`[1]` (1).
-- Merge: `[8],[3]` → `[3, 8]`;  `[5],[1]` → `[1, 5]` (1).
-- Merge: `[3, 8]` + `[1, 5]` → **`[1, 3, 5, 8]`** ✓ (1).
+**Q6 [4] (AO2).** Merge sort on `[7, 4, 9, 2]`:
+- Splits: `[7, 4, 9, 2]` → `[7, 4]` / `[9, 2]` → `[7]`,`[4]`,`[9]`,`[2]` (1).
+- Merge: `[7],[4]` → `[4, 7]`;  `[9],[2]` → `[2, 9]` (1).
+- Merge: `[4, 7]` + `[2, 9]` → **`[2, 4, 7, 9]`** ✓ (1).
 - Worst-case time complexity: **O(n log n)** (1).
 
 *Examiner tip: merge sort always splits to single elements then merges in sorted order — O(n log n) in all cases.*

@@ -259,6 +259,9 @@ def inject_space(text):
         out.append(line); i += 1
         if stripped.startswith('#') or stripped.startswith('|'):
             continue
+        # full-line italic notes ('*...(36 marks)...*') are not question stems
+        if stripped.startswith('*') and not stripped.startswith('**') and stripped.endswith('*'):
+            continue
         tags = MARK_TAG.findall(line)
         if not tags:
             continue
@@ -321,7 +324,8 @@ def build_folder(srcdir, outdir):
         text = open(md, encoding='utf-8').read()
         if split:
             questions, answers = split_qa(text)
-            convert_text(inject_space(questions), os.path.join(outdir, base + '.docx'))
+            convert_text(inject_space(questions) if answers else questions,
+                         os.path.join(outdir, base + '.docx'))
             made += 1
             if answers:
                 a_doc = f"# {_h1(text)} — ANSWER SHEET\n\n*Separate answer sheet / mark scheme.*\n\n" + answers

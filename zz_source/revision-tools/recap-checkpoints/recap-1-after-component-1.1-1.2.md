@@ -11,7 +11,7 @@ Name: ______________________   Date: __________   Mark: ______ / 34
 **Q2.** A processor uses **pipelining**.
 (a) Explain what is meant by pipelining. **[2]** *(AO1)*
 (b) State **one** situation in which the pipeline may have to be flushed. **[1]** *(AO1)*
-**[3 total]** — *1.1.2*
+**[3 total]** — *1.1.1*
 
 **Q3.** A games studio is choosing hardware to render graphics that apply the **same calculation across millions of pixels in parallel**. Explain why a **GPU** is better suited to this than a general-purpose CPU. **[3]** *(AO2)* — *1.1.2*
 
@@ -51,7 +51,7 @@ Name: ______________________   Date: __________   Mark: ______ / 34
 - PC holds the **address of the next instruction** to be fetched (1).
 - CIR holds the **current instruction** being decoded/executed (1).
 
-**Q2 — [3] (AO1)** — *1.1.2*
+**Q2 — [3] (AO1)** — *1.1.1*
 (a) Pipelining **fetches, decodes and executes different instructions at the same time** (1) so that while one instruction is executing, the next is decoded and a third is fetched — increasing throughput/instructions completed per unit time (1).
 (b) Any one (1): a **branch/jump** (conditional jump) means the pre-fetched instructions are wrong / a branch misprediction / an interrupt occurs.
 *Examiner tip: pipelining improves throughput, not the time for a single instruction.*

@@ -196,6 +196,9 @@ def inject_answer_space(text):
         out.append(line); i += 1
         if stripped.startswith("#") or stripped.startswith("|"):
             continue
+        # full-line italic notes ('*...(36 marks)...*') are not question stems
+        if stripped.startswith('*') and not stripped.startswith('**') and stripped.endswith('*'):
+            continue
         tags = MARK_TAG.findall(line)
         if not tags:
             continue
@@ -284,8 +287,8 @@ def build_folder(srcdir, outdir):
             text = f.read()
         if split:
             questions, answers = split_qa(text)
-            convert_text(inject_answer_space(questions), base,
-                         os.path.join(outdir, base + ".pdf"))
+            convert_text(inject_answer_space(questions) if answers else questions,
+                         base, os.path.join(outdir, base + ".pdf"))
             print(f"  {base}.pdf (worksheet)")
             made += 1
             if answers:

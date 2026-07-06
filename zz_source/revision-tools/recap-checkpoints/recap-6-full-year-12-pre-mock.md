@@ -1,4 +1,4 @@
-# Recap Checkpoint 6 — Full Year 12 Cumulative (Pre-Mock): 1.1, 1.3–1.5 + 2.1–2.3
+# Recap Checkpoint 6 — Full Year 12 Cumulative (Pre-Mock): 1.1–1.4 + 2.1 + 2.2.1
 
 Name: ______________________   Date: __________   Mark: ______ / 46
 
@@ -20,35 +20,47 @@ Name: ______________________   Date: __________   Mark: ______ / 46
 
 **Q4 [3] (AO2).** *(1.4 — Boolean algebra / floating point)*
 (a) State why floating-point numbers are **normalised**. **[1]**
-(b) Simplify **A + A·B** and name the law used. **[2]**
+(b) Simplify **A ∨ A∧B** and name the law used. **[2]**
 
 **Q5 [4] (AO1).** *(1.3 — Networks)* 
 (a) Explain the difference between **circuit switching** and **packet switching**. **[2]**
 (b) State **two** items of data added to a packet's **header**. **[2]**
 
-**Q6 [3] (AO1/AO3).** *(1.5 — Legal/ethical)* Self-driving cars must sometimes "decide" how to act in an unavoidable collision.
-Discuss **one ethical** issue this raises and identify **who** might be held **legally responsible** in a crash. **[3]**
+**Q6 [3] (AO1).** *(1.2 — Operating systems)*
+(a) State what is meant by **scheduling** and name **one** scheduling algorithm. **[2]**
+(b) State the purpose of a **device driver**. **[1]**
 
-**Q7 [4] (AO2).** *(2.1 / 2.2 — Computational thinking + programming)*
+**Q7 [4] (AO2).** *(2.1 / 2.2.1 — Computational thinking + programming)*
 (a) State the difference between a **procedure** and a **function**. **[1]**
 (b) Explain the difference between **passing a parameter by value** and **by reference**. **[2]**
 (c) State **one** advantage of using **local** variables over **global** variables. **[1]**
 
-**Q8 [5] (AO2).** *(2.3 — Algorithm trace)* A list contains `[7, 2, 9, 4, 1]`. Carry out a **bubble sort**, showing the list after **each complete pass**. State how many passes are needed before the list is sorted, and give the **worst-case** time complexity of bubble sort.
+**Q8 [5] (AO2).** *(1.4 — Data structures trace)* A **stack** is initially empty. The following operations are carried out in order: `push(7)`, `push(2)`, `push(9)`, `pop()`, `push(4)`, `pop()`, `pop()`.
+(a) State the value returned by **each** of the three `pop()` calls, in order. **[2]**
+(b) State the contents of the stack after all seven operations. **[1]**
+(c) The same seven operations are repeated using a **queue** (`enqueue` in place of `push`, `dequeue` in place of `pop`). State the values returned by the three `dequeue()` calls, and name the access order each structure demonstrates. **[2]**
 
-**Q9 [4] (AO1/AO2).** *(2.3 — Big O reasoning)*
-(a) State the worst-case Big O of: insertion sort, merge sort, and a binary search. **[3]**
-(b) Explain why merge sort is preferable to insertion sort for very large datasets, referencing growth rates. **[1]**
+**Q9 [4] (AO1/AO2).** *(2.1 — Computational thinking)*
+(a) State what is meant by **abstraction** and give **one** example of its use in software. **[2]**
+(b) **Caching** is often described as an example of *thinking ahead*. State what caching is and give **one** benefit it provides. **[2]**
 
-**Q10 [6] (AO3).** *(2.3 — Graphs, applied)* Using **Dijkstra's algorithm**, find the shortest **distance** and shortest **path** from **A** to **E** in the weighted, undirected graph below. Show a table of tentative distances and the order in which nodes are visited.
+**Q10 [6] (AO1/AO2).** *(1.4 — Boolean logic: adders)*
+(a) Complete the **Sum** and **Carry** columns of the truth table for a **half adder**. **[2]**
 
-```
-Edges (undirected, weighted):
-A-B = 3,  A-C = 7,  B-C = 2,  B-D = 8,  C-D = 4,  C-E = 9,  D-E = 2
-```
+| A | B | Sum | Carry |
+|---|---|-----|-------|
+| 0 | 0 |     |       |
+| 0 | 1 |     |       |
+| 1 | 0 |     |       |
+| 1 | 1 |     |       |
+
+@@SPACE:0@@
+
+(b) Name the **logic gate** that produces the Sum output and the logic gate that produces the Carry output. **[2]**
+(c) State **one** way a **full adder** differs from a half adder, and explain why this difference allows full adders to be chained together to add multi-bit binary numbers. **[2]**
 
 **Q11 [6] (AO3).** *(Synoptic extended response)* A hospital is replacing a paper appointment system with networked software that stores patient data, lets staff search records, and sends automated reminders.
-In an extended response, discuss the design considering: **(i)** how **abstraction and decomposition** help manage the build, **(ii)** an appropriate **data structure or search algorithm** for fast record lookup (justify with time complexity), and **(iii)** **one legal** consideration for storing patient data. **[6]**
+In an extended response, discuss the design considering: **(i)** how **abstraction and decomposition** help manage the build, **(ii)** an appropriate **data structure** for fast record lookup (justify your choice), and **(iii)** **one security** consideration for transmitting and storing patient data. **[6]**
 
 ---
 
@@ -84,9 +96,9 @@ In an extended response, discuss the design considering: **(i)** how **abstracti
 
 **Q4 [3] (AO2).**
 - (a) Normalisation gives the **greatest possible precision/accuracy** for a given number of mantissa bits (and a unique representation) (1).
-- (b) A + A·B = A·(1 + B) = A·1 = **A** (1 for answer A); law: **Absorption** (accept Distributive + identity) (1).
+- (b) A ∨ A∧B = A∧(1 ∨ B) = A∧1 = **A** (1 for answer A); law: **Absorption** (accept Distributive + identity) (1).
 
-*Examiner tip: absorption law A + A·B = A — the B term is redundant.*
+*Examiner tip: absorption law A ∨ A∧B = A — the B term is redundant.*
 
 ---
 
@@ -98,12 +110,11 @@ In an extended response, discuss the design considering: **(i)** how **abstracti
 
 ---
 
-**Q6 [3] (AO1/AO3).**
-- Ethical issue (1–2): e.g. how the car should **prioritise lives** (passengers vs pedestrians), fairness of programmed decisions, transparency/accountability of the algorithm.
-- Legal responsibility (1): could be the **manufacturer/software developer**, the **owner/driver**, or shared — credit a reasoned choice (e.g. manufacturer if the autonomous system was in control).
-- Up to 3 total with reasoning.
+**Q6 [3] (AO1).**
+- (a) Scheduling: the OS **decides which process is given CPU time** / manages the order in which processes run, to make best use of the processor and keep all jobs progressing (1). Algorithm — any one (1): **round robin**, **first come first served**, **shortest job first**, **shortest remaining time**, **multilevel feedback queues**.
+- (b) A device driver is software that **allows the OS to communicate with and control a specific piece of hardware** (translates generic OS commands into device-specific instructions) (1).
 
-*Examiner tip: examiners want a reasoned position on responsibility, not just "it's complicated".*
+*Examiner tip: scheduling answers must mention the processor/CPU time — "organises programs" alone is too vague.*
 
 ---
 
@@ -116,62 +127,47 @@ In an extended response, discuss the design considering: **(i)** how **abstracti
 
 ---
 
-**Q8 [5] (AO2).** Bubble sort on `[7, 2, 9, 4, 1]`:
+**Q8 [5] (AO2).** Stack trace: push(7) → `7`; push(2) → `7, 2`; push(9) → `7, 2, 9`; pop() returns **9**; push(4) → `7, 2, 4`; pop() returns **4**; pop() returns **2**.
+- (a) Pops return **9, 4, 2** in that order (all three correct = 2; two correct = 1).
+- (b) Final stack contents: **7** only (1).
+- (c) Queue trace: enqueue 7, 2, 9 → `7, 2, 9`; dequeue returns **7**; enqueue 4 → `2, 9, 4`; dequeue returns **2**; dequeue returns **9** — returns **7, 2, 9** (1). Stack is **LIFO** (last in, first out); queue is **FIFO** (first in, first out) (1).
 
-| Pass | Result after pass |
-|------|-------------------|
-| 1 | `[2, 7, 4, 1, 9]` |
-| 2 | `[2, 4, 1, 7, 9]` |
-| 3 | `[2, 1, 4, 7, 9]` |
-| 4 | `[1, 2, 4, 7, 9]` ✓ |
-
-- Correct list after pass 1 → `[2, 7, 4, 1, 9]` (1).
-- Correct list after pass 2 → `[2, 4, 1, 7, 9]` (1).
-- Correct lists after passes 3 and 4 → sorted `[1, 2, 4, 7, 9]` (1).
-- **4 passes** needed before the list is sorted (1).
-- Worst-case time complexity **O(n²)** (1).
-
-*Examiner tip: one pass = comparing/swapping adjacent pairs left to right once. The largest value "bubbles" to the end each pass.*
+*Examiner tip: a pop always takes the most recently pushed item still present; a dequeue takes the oldest.*
 
 ---
 
 **Q9 [4] (AO1/AO2).**
-- (a) Insertion sort **O(n²)** (1); merge sort **O(n log n)** (1); binary search **O(log n)** (1).
-- (b) For large n, **n log n grows much more slowly than n²**, so merge sort scales far better / does far fewer operations (1).
+- (a) Abstraction: **removing/hiding unnecessary detail** to focus on what matters for the problem (1). Example (1): the London Underground map; a file/folder icon hiding how data is stored; a variable or class representing a real-world entity; a subroutine hiding its implementation behind its name/interface.
+- (b) Caching: data that has been used (or is expected to be needed) is **stored in faster-to-access memory/storage after first use** so it does not have to be recomputed/refetched (1). Benefit (1): faster subsequent access / reduced load on the slower source (e.g. web pages, database query results, CPU cache).
 
-*Examiner tip: O(n log n) beats O(n²) as n grows — the gap widens rapidly for large datasets.*
+*Examiner tip: caching is "thinking ahead" because you anticipate that the data will be needed again.*
 
 ---
 
-**Q10 [6] (AO3).** Dijkstra's algorithm, A → E. Tentative distances from A ("—" = settled):
+**Q10 [6] (AO1/AO2).**
+- (a) Completed half-adder truth table (Sum column fully correct = 1; Carry column fully correct = 1):
 
-| Step | Current | A | B | C | D | E | Visited |
-|------|---------|---|---|---|---|---|---------|
-| Init | – | 0 | ∞ | ∞ | ∞ | ∞ | {} |
-| 1 | **A** (0) | — | min(∞, 0+3)=**3** | min(∞, 0+7)=7 | ∞ | ∞ | {A} |
-| 2 | **B** (3) | — | — | min(7, 3+2)=**5** | min(∞, 3+8)=11 | ∞ | {A,B} |
-| 3 | **C** (5) | — | — | — | min(11, 5+4)=**9** | min(∞, 5+9)=14 | {A,B,C} |
-| 4 | **D** (9) | — | — | — | — | min(14, 9+2)=**11** | {A,B,C,D} |
-| 5 | **E** (11) | — | — | — | — | — | {A,B,C,D,E} |
+| A | B | Sum | Carry |
+|---|---|-----|-------|
+| 0 | 0 | 0 | 0 |
+| 0 | 1 | 1 | 0 |
+| 1 | 0 | 1 | 0 |
+| 1 | 1 | 0 | 1 |
 
-- Correct initialisation: A = 0, others ∞ (1).
-- B relaxed to 3, then C relaxed to 5 via B (1).
-- Visits nodes in correct distance order **A, B, C, D, E** (1).
-- Correct relaxation of D to 9 via C, and E updated to 11 via D (1).
-- Shortest distance **A → E = 11** (1).
-- Shortest path **A → B → C → D → E** (3 + 2 + 4 + 2 = 11), by tracing predecessors E ← D ← C ← B ← A (1).
+- (b) Sum is produced by an **XOR** gate (1); Carry is produced by an **AND** gate (1).
+- (c) A full adder has a **third input — the carry in** (from the previous, less significant column) (1); because each full adder accepts a carry in and produces a carry out, the carry can **ripple from one bit position to the next**, so a chain of full adders can add multi-bit binary numbers column by column (1).
 
-*Examiner tip: always settle the smallest unvisited tentative distance next. Note A→C direct (7) is beaten by A→B→C (5) — relax carefully. State both distance (11) and path.*
+*Examiner tip: half adder = XOR (sum) + AND (carry); the full adder's carry-in is exactly what makes chaining possible.*
 
 ---
 
 **Q11 [6] (AO3).** Levelled extended response (up to 6). Indicative content across the three strands:
 - **(i) Abstraction & decomposition**: decompose into modules — record storage, search, reminders, networking/security — built and tested separately; abstraction hides detail (e.g. model an appointment as date/time/patient ID, ignore irrelevant detail) so complexity is manageable (up to 2).
-- **(ii) Data structure / search**: justify a **sorted structure + binary search O(log n)** or a **hash table O(1) average** for fast lookup, contrasted with linear search O(n) which is too slow for many records; reference time complexity explicitly (up to 2).
-- **(iii) Legal**: patient data is **sensitive personal data** under data protection law (GDPR / Data Protection Act) — needs a lawful basis, **secure storage/encryption**, access control, and retention limits (up to 1–2).
+- **(ii) Data structure**: justify a **hash table** (a hashed key such as the patient ID gives near-direct access to a record without examining every entry) or a **sorted array/indexed structure** (allows the search to repeatedly discard half the records rather than checking each one), contrasted with an unsorted list where every record may need checking — far too slow for many records (up to 2).
+- **(iii) Security**: patient data is sensitive, so it should be **encrypted** in storage and in transit (e.g. so intercepted packets are unreadable), with **access control/authentication** limiting which staff can view records (up to 2).
 - Mark holistically: a strong answer addresses all three strands with applied, justified reasoning; weaker answers describe one strand only.
 
-*Examiner tip: this is a synoptic question — explicitly tie computational-thinking choices to a complexity justification AND name the relevant legislation for full credit.*
+*Examiner tip: this is a synoptic question — tie the computational-thinking choices to the scenario AND justify the data-structure choice by how it avoids checking every record.*
 
 ---
 

@@ -193,7 +193,7 @@ Calculate the denary value this represents. Show your working, and state whether
 
 **13(a)** Complete the truth table for the expression `Q = (A AND NOT B) OR (NOT A AND B)`, and state the name of the single logic gate that this expression is equivalent to. **[4]** *(AO3)*
 
-**13(b)** Using the laws of Boolean algebra, simplify the expression `Q = A.B + A.(B + C) + B.(B + C)` to its simplest form. Show each step and name the law used. **[4]** *(AO3)*
+**13(b)** Using the laws of Boolean algebra, simplify the expression `Q = A∧B ∨ A∧(B ∨ C) ∨ B∧(B ∨ C)` to its simplest form. Show each step and name the law used. **[4]** *(AO3)*
 
 **13(c)** A safety system sounds an alarm (`Z = 1`) when **either** a door sensor `D` is open **and** the system is armed `A`, **or** when a panic button `P` is pressed (regardless of the other inputs). Write the Boolean expression for `Z` and draw the logic circuit using AND, OR and any other required gates. **[4]** *(AO3)*
 
@@ -508,14 +508,14 @@ AND Booking.Days >= 5;
 
 **13(b) [4] (AO3)** — award 1 per correct step/law, max 4:
 ```
-Q = A.B + A.(B + C) + B.(B + C)
-  = A.B + A.B + A.C + B.B + B.C        (distribution)
-  = A.B + A.C + B + B.C                 (A.B + A.B = A.B ; B.B = B)
-  = A.B + A.C + B                       (B + B.C = B, absorption)
-  = A.C + B                             (B + A.B = B, absorption)
+Q = A∧B ∨ A∧(B ∨ C) ∨ B∧(B ∨ C)
+  = A∧B ∨ A∧B ∨ A∧C ∨ B∧B ∨ B∧C        (distribution)
+  = A∧B ∨ A∧C ∨ B ∨ B∧C                 (A∧B ∨ A∧B = A∧B ; B∧B = B)
+  = A∧B ∨ A∧C ∨ B                       (B ∨ B∧C = B, absorption)
+  = A∧C ∨ B                             (B ∨ A∧B = B, absorption)
 ```
-- **Simplest form: `Q = B + A.C`** (final answer mark).
-- (Accept correct alternative ordering of laws; key laws: distribution, idempotence B.B=B, absorption.)
+- **Simplest form: `Q = B ∨ A∧C`** (final answer mark).
+- (Accept correct alternative ordering of laws; key laws: distribution, idempotence B∧B=B, absorption.)
 
 **13(c) [4] (AO3)** —
 - Expression: **`Z = (D AND A) OR P`** (2 marks: AND of D,A = 1; OR with P = 1).
