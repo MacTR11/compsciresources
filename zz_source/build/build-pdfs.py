@@ -121,8 +121,23 @@ def normalise_md(md_text):
     return "\n".join(out)
 
 
+def escape_blanks(md_text):
+    """Answer blanks are runs of underscores; python-markdown would parse
+    pairs of them as bold spans and swallow the blank. Escape runs of 3+
+    underscores (outside code fences) as literal-underscore entities."""
+    out, in_fence = [], False
+    for line in md_text.split("\n"):
+        if line.lstrip().startswith("```"):
+            in_fence = not in_fence
+        elif not in_fence:
+            line = re.sub(r"_{3,}", lambda m: "&#95;" * len(m.group(0)), line)
+        out.append(line)
+    return "\n".join(out)
+
+
 def md_to_html(md_text, title):
     md_text = re.sub(r"<details(?!\s+open)", "<details open", md_text)
+    md_text = escape_blanks(md_text)
     md_text = re.sub(
         r"^\s*@@SPACE:(\d+)@@\s*$",
         lambda m: _space_div(int(m.group(1))) if int(m.group(1)) else "",
