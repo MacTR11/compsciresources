@@ -58,6 +58,7 @@ li { margin: 2px 0; page-break-inside: avoid; }
 table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 10pt;
         page-break-inside: avoid; }
 th, td { border: 1px solid #999; padding: 4px 6px; text-align: left; vertical-align: top; }
+td:empty { height: 8mm; }
 th { background: #ebf4ff; }
 tr:nth-child(even) td { background: #f7fafc; }
 code { font-family: "DejaVu Sans Mono", Consolas, monospace; font-size: 9.5pt;
@@ -122,6 +123,10 @@ def normalise_md(md_text):
 
 def md_to_html(md_text, title):
     md_text = re.sub(r"<details(?!\s+open)", "<details open", md_text)
+    md_text = re.sub(
+        r"^\s*@@SPACE:(\d+)@@\s*$",
+        lambda m: _space_div(int(m.group(1))) if int(m.group(1)) else "",
+        md_text, flags=re.M)
     md_text = normalise_md(md_text)
     body = markdown.markdown(
         md_text,
@@ -142,27 +147,62 @@ def split_qa(text):
     return text, None
 
 
+SPACE_SENTINEL = re.compile(r"^@@SPACE:(\d+)@@$")
+
+
+def _space_div(n):
+    return '<div class="answer-space">' + ('<div class="rl"></div>' * n) + "</div>"
+
+
 def inject_answer_space(text):
-    """After each question line (one carrying a [n] / (n marks) tag), add ruled
-    writing space sized to the marks. Never injects inside code fences,
-    headings or table rows (that would corrupt the block)."""
-    out = []
-    in_fence = False
-    for line in text.split("\n"):
-        out.append(line)
-        if line.lstrip().startswith("```"):
-            in_fence = not in_fence
+    """After each question (a line carrying a [n] / (n marks) tag), add ruled
+    writing space sized to the marks. The space is placed after any code fence
+    or table that immediately follows the stem (the material the question
+    refers to), never inside it. A manual @@SPACE:n@@ sentinel directly after
+    the question block overrides the automatic space (n=0 means the answer is
+    written in the table / code gaps themselves, so no lines are added)."""
+    lines = text.split("\n")
+    out, i, n = [], 0, len(lines)
+    while i < n:
+        line = lines[i]
+        stripped = line.lstrip()
+        if stripped.startswith("```"):
+            out.append(line); i += 1
+            while i < n:
+                out.append(lines[i]); i += 1
+                if lines[i - 1].lstrip().startswith("```"):
+                    break
             continue
-        if in_fence or line.lstrip().startswith("#") or line.lstrip().startswith("|"):
+        out.append(line); i += 1
+        if stripped.startswith("#") or stripped.startswith("|"):
             continue
         tags = MARK_TAG.findall(line)
-        if tags:
-            nums = [int(x) for pair in tags for x in pair if x]
-            marks = max(nums) if nums else 2
-            n = min(12, max(2, round(marks * 1.4)))
-            out.append("")
-            out.append('<div class="answer-space">' + ('<div class="rl"></div>' * n) + "</div>")
-            out.append("")
+        if not tags:
+            continue
+        # consume material attached to the stem: blank lines, fences, tables
+        while i < n:
+            s = lines[i].strip()
+            if s == "":
+                out.append(lines[i]); i += 1
+            elif s.startswith("```"):
+                out.append(lines[i]); i += 1
+                while i < n:
+                    out.append(lines[i]); i += 1
+                    if lines[i - 1].lstrip().startswith("```"):
+                        break
+            elif s.startswith("|"):
+                while i < n and lines[i].lstrip().startswith("|"):
+                    out.append(lines[i]); i += 1
+            else:
+                break
+        if i < n and SPACE_SENTINEL.match(lines[i].strip()):
+            continue            # author-controlled space, rendered later
+        nums = [int(x) for pair in tags for x in pair if x]
+        marks = max(nums) if nums else 2
+        k = min(12, max(2, round(marks * 1.4)))
+        out.append("")
+        out.append(_space_div(k))
+        out.append("")
     return "\n".join(out)
 
 

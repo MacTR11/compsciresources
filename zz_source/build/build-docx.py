@@ -180,6 +180,9 @@ def convert_text(text, docx_path):
         ms = re.match(r'^@@SPACE:(\d+)@@$', line.strip())
         if ms:
             n_lines = int(ms.group(1))
+            if n_lines == 0:               # answer lives in the table/code above
+                i += 1
+                continue
             tbl = doc.add_table(rows=1, cols=1)
             tbl.style = 'Table Grid'
             row = tbl.rows[0]
@@ -223,22 +226,54 @@ def split_qa(text):
     return text, None
 
 
+SPACE_SENTINEL = re.compile(r'^@@SPACE:(\d+)@@$')
+
+
 def inject_space(text):
-    out = []
-    in_fence = False
-    for line in text.split('\n'):
-        out.append(line)
-        if line.lstrip().startswith('```'):
-            in_fence = not in_fence
+    """Add a typeable answer box after each question line carrying a mark tag.
+    The box goes after any code fence or table attached to the stem, never
+    inside it. An explicit @@SPACE:n@@ sentinel directly after the question
+    block suppresses the automatic box (n=0 = answer written in the table /
+    code gaps themselves)."""
+    lines = text.split('\n')
+    out, i, n = [], 0, len(lines)
+    while i < n:
+        line = lines[i]
+        stripped = line.lstrip()
+        if stripped.startswith('```'):
+            out.append(line); i += 1
+            while i < n:
+                out.append(lines[i]); i += 1
+                if lines[i - 1].lstrip().startswith('```'):
+                    break
             continue
-        # never inject inside code blocks, headings or table rows
-        if in_fence or line.lstrip().startswith('#') or line.lstrip().startswith('|'):
+        out.append(line); i += 1
+        if stripped.startswith('#') or stripped.startswith('|'):
             continue
         tags = MARK_TAG.findall(line)
-        if tags:
-            nums = [int(x) for pair in tags for x in pair if x]
-            marks = max(nums) if nums else 2
-            out.append(f'@@SPACE:{min(12, max(2, round(marks * 1.4)))}@@')
+        if not tags:
+            continue
+        # consume material attached to the stem: blank lines, fences, tables
+        while i < n:
+            s = lines[i].strip()
+            if s == '':
+                out.append(lines[i]); i += 1
+            elif s.startswith('```'):
+                out.append(lines[i]); i += 1
+                while i < n:
+                    out.append(lines[i]); i += 1
+                    if lines[i - 1].lstrip().startswith('```'):
+                        break
+            elif s.startswith('|'):
+                while i < n and lines[i].lstrip().startswith('|'):
+                    out.append(lines[i]); i += 1
+            else:
+                break
+        if i < n and SPACE_SENTINEL.match(lines[i].strip()):
+            continue            # author-controlled space, handled by emitter
+        nums = [int(x) for pair in tags for x in pair if x]
+        marks = max(nums) if nums else 2
+        out.append(f'@@SPACE:{min(12, max(2, round(marks * 1.4)))}@@')
     return '\n'.join(out)
 
 
