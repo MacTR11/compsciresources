@@ -82,7 +82,7 @@ strong { color: #1a202c; }
 
 # Folders whose resources are split into a worksheet + a separate answer sheet.
 QA_FOLDERS = {"subtopic-quizzes", "worksheets", "mini-papers", "mock-papers",
-              "homework", "recap-checkpoints"}
+              "homework", "recap-checkpoints", "assessments"}
 ANSWER_HEADING = re.compile(r"^\s*#{2,3}\s+(answer key|answers|mark scheme)", re.I)
 MARK_TAG = re.compile(r"\[(\d+)\]|\((\d+)\s*marks?\)")
 
@@ -153,13 +153,18 @@ def md_to_html(md_text, title):
     )
 
 
+AO_TAG = re.compile(r"\s*\*\(AO[0-9x/, ]*\)\*")
+
+
 def split_qa(text):
-    """Split markdown at the first Answer key / Mark scheme heading."""
+    """Split markdown at the first Answer key / Mark scheme heading.
+    AO tags are stripped from the student-facing question section (real OCR
+    papers do not print them); they stay in the mark scheme."""
     lines = text.split("\n")
     for i, l in enumerate(lines):
         if ANSWER_HEADING.match(l):
-            return "\n".join(lines[:i]).rstrip(), "\n".join(lines[i:]).strip()
-    return text, None
+            return AO_TAG.sub("", "\n".join(lines[:i])).rstrip(), "\n".join(lines[i:]).strip()
+    return AO_TAG.sub("", text), None
 
 
 SPACE_SENTINEL = re.compile(r"^@@SPACE:(\d+)@@$")
@@ -301,19 +306,10 @@ def build_folder(srcdir, outdir):
 
 # Default set: which Markdown folders to render, and where the PDFs go.
 DEFAULT_JOBS = [
-    ("zz_source/revision-tools/scheme-of-work",      "Printable-PDFs/scheme-of-work"),
-    ("zz_source/revision-tools/subtopic-quizzes",    "Printable-PDFs/subtopic-quizzes"),
-    ("zz_source/revision-tools/revision-games",      "Printable-PDFs/revision-games"),
-    ("zz_source/revision-tools/worksheets",          "Printable-PDFs/worksheets"),
-    ("zz_source/revision-tools/knowledge-organisers", "Printable-PDFs/knowledge-organisers"),
-    ("zz_source/revision-tools/mini-papers",         "Printable-PDFs/mini-papers"),
-    ("zz_source/revision-tools/mock-papers",         "Printable-PDFs/mock-papers"),
-    ("zz_source/revision-tools/homework",            "Printable-PDFs/homework"),
-    ("zz_source/revision-tools/recap-checkpoints",   "Printable-PDFs/recap-checkpoints"),
-    ("zz_source/revision-tools/subtopic-revision",   "Printable-PDFs/subtopic-revision"),
-    ("zz_source/revision-tools/nea-pack",            "Printable-PDFs/nea-pack"),
-    ("zz_source/revision-tools/course-guide",        "Printable-PDFs/course-guide"),
-    ("zz_source/revision-tools/lesson-activities",   "Printable-PDFs/lesson-activities"),
+    ("zz_source/revision-tools/assessments",       "zz_source/_staging/pdf/assessments"),
+    ("zz_source/revision-tools/recap-checkpoints", "zz_source/_staging/pdf/recap-checkpoints"),
+    ("zz_source/revision-tools/mock-papers",       "zz_source/_staging/pdf/mock-papers"),
+    ("zz_source/revision-tools/mini-papers",       "zz_source/_staging/pdf/mini-papers"),
 ]
 
 

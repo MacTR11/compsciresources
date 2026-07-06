@@ -5,7 +5,7 @@ objective for all 24 subtopics (from the lesson deck-data), with RAG
 dropdowns, auto-colour and progress counts — for student self-assessment
 and teacher tracking.
 
-Output: Teacher-Toolkit/PLC/Personal-Learning-Checklist.xlsx
+Output: zz_source/_staging/tt/PLC/Personal-Learning-Checklist.xlsx
 """
 import os, glob, json, re
 import openpyxl
@@ -15,7 +15,7 @@ from openpyxl.formatting.rule import CellIsRule
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DATA = os.path.join(REPO, "zz_source", "teacher-toolkit", "deck-data")
-OUT = os.path.join(REPO, "Teacher-Toolkit", "PLC")
+OUT = os.path.join(REPO, "zz_source/_staging/tt", "PLC")
 
 HEAD = PatternFill("solid", fgColor="1A365D"); HEADF = Font(bold=True, color="FFFFFF")
 SECT = PatternFill("solid", fgColor="2B6CB0"); SECTF = Font(bold=True, color="FFFFFF")

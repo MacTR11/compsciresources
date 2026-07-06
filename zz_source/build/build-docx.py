@@ -152,12 +152,18 @@ def convert_text(text, docx_path):
             i += 1
             continue
 
-        # blockquote
+        # blockquote (a '> ## Heading' inside one becomes a bold lead line)
         if line.lstrip().startswith('>'):
             content = re.sub(r'^\s*>\s?', '', line)
+            hm = re.match(r'^(#{1,6})\s+(.*)$', content)
             p = doc.add_paragraph(); p.paragraph_format.left_indent = Inches(0.3)
             shade(p, 'FFF8E7')
-            add_runs(p, content)
+            if hm:
+                add_runs(p, hm.group(2))
+                for r in p.runs:
+                    r.bold = True; r.font.size = Pt(12)
+            else:
+                add_runs(p, content)
             i += 1
             continue
 
@@ -213,17 +219,20 @@ def convert_text(text, docx_path):
 
 
 QA_FOLDERS = {'subtopic-quizzes', 'worksheets', 'mini-papers', 'mock-papers',
-              'homework', 'recap-checkpoints'}
+              'homework', 'recap-checkpoints', 'assessments'}
 ANSWER_HEADING = re.compile(r'^\s*#{2,3}\s+(answer key|answers|mark scheme)', re.I)
 MARK_TAG = re.compile(r'\[(\d+)\]|\((\d+)\s*marks?\)')
+
+
+AO_TAG = re.compile(r'\s*\*\(AO[0-9x/, ]*\)\*')
 
 
 def split_qa(text):
     lines = text.split('\n')
     for idx, l in enumerate(lines):
         if ANSWER_HEADING.match(l):
-            return '\n'.join(lines[:idx]).rstrip(), '\n'.join(lines[idx:]).strip()
-    return text, None
+            return AO_TAG.sub('', '\n'.join(lines[:idx])).rstrip(), '\n'.join(lines[idx:]).strip()
+    return AO_TAG.sub('', text), None
 
 
 SPACE_SENTINEL = re.compile(r'^@@SPACE:(\d+)@@$')
@@ -325,26 +334,25 @@ def build_folder(srcdir, outdir):
 
 
 DEFAULT_JOBS = [
-    ('zz_source/component-01-computer-systems',                 'Word-Documents/01-Computer-Systems'),
-    ('zz_source/component-02-algorithms-and-programming',       'Word-Documents/02-Algorithms-and-Programming'),
-    ('zz_source/component-03-04-programming-project',           'Word-Documents/03-04-Programming-Project'),
-    ('zz_source/revision-tools/guides',                         'Word-Documents/Guides'),
-    ('zz_source/revision-tools/knowledge-organisers',           'Word-Documents/Knowledge-Organisers'),
-    ('zz_source/revision-tools/worksheets',                     'Word-Documents/Worksheets'),
-    ('zz_source/revision-tools/revision-games',                 'Word-Documents/Revision-Games'),
-    ('zz_source/revision-tools/subtopic-quizzes',               'Word-Documents/Subtopic-Quizzes'),
-    ('zz_source/revision-tools/mini-papers',                    'Word-Documents/Mini-Papers'),
-    ('zz_source/revision-tools/mock-papers',                    'Word-Documents/Mock-Papers'),
-    ('zz_source/revision-tools/a-star-pack',                    'Word-Documents/A-Star-Pack'),
-    ('zz_source/revision-tools/programming-workbook',           'Word-Documents/Programming-Workbook'),
-    ('zz_source/revision-tools/practice-questions',             'Word-Documents/Practice-Questions'),
-    ('zz_source/revision-tools/scheme-of-work',                 'Word-Documents/Scheme-of-Work'),
-    ('zz_source/revision-tools/homework',                       'Word-Documents/Homework'),
-    ('zz_source/revision-tools/recap-checkpoints',              'Word-Documents/Recap-Checkpoints'),
-    ('zz_source/revision-tools/subtopic-revision',              'Word-Documents/Subtopic-Revision'),
-    ('zz_source/revision-tools/nea-pack',                       'Word-Documents/NEA-Pack'),
-    ('zz_source/revision-tools/course-guide',                   'Word-Documents/Course-Guide'),
-    ('zz_source/revision-tools/lesson-activities',               'Word-Documents/Lesson-Activities'),
+    ('zz_source/component-01-computer-systems',                 'zz_source/_staging/word/01-Computer-Systems'),
+    ('zz_source/component-02-algorithms-and-programming',       'zz_source/_staging/word/02-Algorithms-and-Programming'),
+    ('zz_source/component-03-04-programming-project',           'zz_source/_staging/word/03-04-Programming-Project'),
+    ('zz_source/revision-tools/guides',                         'zz_source/_staging/word/Guides'),
+    ('zz_source/revision-tools/knowledge-organisers',           'zz_source/_staging/word/Knowledge-Organisers'),
+    ('zz_source/revision-tools/worksheets',                     'zz_source/_staging/word/Worksheets'),
+    ('zz_source/revision-tools/revision-games',                 'zz_source/_staging/word/Revision-Games'),
+    ('zz_source/revision-tools/subtopic-quizzes',               'zz_source/_staging/word/Subtopic-Quizzes'),
+    ('zz_source/revision-tools/mini-papers',                    'zz_source/_staging/word/Mini-Papers'),
+    ('zz_source/revision-tools/mock-papers',                    'zz_source/_staging/word/Mock-Papers'),
+    ('zz_source/revision-tools/a-star-pack',                    'zz_source/_staging/word/A-Star-Pack'),
+    ('zz_source/revision-tools/programming-workbook',           'zz_source/_staging/word/Programming-Workbook'),
+    ('zz_source/revision-tools/homework',                       'zz_source/_staging/word/Homework'),
+    ('zz_source/revision-tools/recap-checkpoints',              'zz_source/_staging/word/Recap-Checkpoints'),
+    ('zz_source/revision-tools/subtopic-revision',              'zz_source/_staging/word/Subtopic-Revision'),
+    ('zz_source/revision-tools/nea-pack',                       'zz_source/_staging/word/NEA-Pack'),
+    ('zz_source/revision-tools/course-guide',                   'zz_source/_staging/word/Course-Guide'),
+    ('zz_source/revision-tools/lesson-activities',               'zz_source/_staging/word/Lesson-Activities'),
+    ('zz_source/revision-tools/assessments',                     'zz_source/_staging/word/Assessments'),
 ]
 
 
@@ -364,11 +372,11 @@ def main():
     if len(sys.argv) != 3:
         for s, o in [
             ("zz_source/component-03-04-programming-project/README.md",
-             "Word-Documents/03-04-Programming-Project/Programming-Project-NEA-Guide.docx"),
-            ("zz_source/revision-tools/practice-questions/README.md",
-             "Word-Documents/Practice-Questions/Practice-Questions-Guide.docx"),
-            ("zz_source/teacher-toolkit/medium-term-plan.md",
-             "Teacher-Toolkit/Planning/medium-term-plan.docx"),
+             "zz_source/_staging/word/03-04-Programming-Project/Programming-Project-NEA-Guide.docx"),
+            ("zz_source/component-03-04-programming-project/pygame-workbook.md",
+             "zz_source/_staging/word/03-04-Programming-Project/pygame-workbook.docx"),
+            ("zz_source/component-03-04-programming-project/mini-nea-pack.md",
+             "zz_source/_staging/word/03-04-Programming-Project/mini-nea-pack.docx"),
         ]:
             sp, op = os.path.join(REPO, s), os.path.join(REPO, o)
             if os.path.isfile(sp):

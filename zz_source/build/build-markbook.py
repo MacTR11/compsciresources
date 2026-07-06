@@ -4,7 +4,7 @@ Build an interactive teacher MARKBOOK (.xlsx) for H446, tracking the
 Key Assessments (KA1-8) and CAP1-5 from the scheme of work with automatic
 percentage, grade lookup (editable boundaries) and a class overview.
 
-Output: Teacher-Toolkit/Markbook/H446-Markbook.xlsx
+Output: zz_source/_staging/tt/Markbook/H446-Markbook.xlsx
 """
 import os
 import openpyxl
@@ -13,7 +13,7 @@ from openpyxl.formatting.rule import CellIsRule, ColorScaleRule
 from openpyxl.utils import get_column_letter
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-OUT = os.path.join(REPO, "Teacher-Toolkit", "Markbook")
+OUT = os.path.join(REPO, "zz_source/_staging/tt", "Markbook")
 
 HEAD = PatternFill("solid", fgColor="1A365D")
 HEADF = Font(bold=True, color="FFFFFF")
@@ -130,7 +130,7 @@ def main():
     grade_sheet(wb)
     os.makedirs(OUT, exist_ok=True)
     wb.save(os.path.join(OUT, "H446-Markbook.xlsx"))
-    print("wrote Teacher-Toolkit/Markbook/H446-Markbook.xlsx")
+    print("wrote zz_source/_staging/tt/Markbook/H446-Markbook.xlsx")
 
 
 if __name__ == "__main__":

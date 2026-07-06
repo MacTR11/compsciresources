@@ -1,9 +1,4 @@
-# Build staging (regenerable from source/ via build/ scripts) — the organised
-# Course/, Teacher Toolkit/ and Reference/ folders are the kept outputs.
-Word-Documents/
-Printable-PDFs/
-Spreadsheets/
-Teacher-Toolkit/
+zz_source/_staging/
+.assemble-tmp/
 __pycache__/
-*.pyc
 .claude/

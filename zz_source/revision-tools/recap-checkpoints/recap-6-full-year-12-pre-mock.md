@@ -44,7 +44,7 @@ Discuss **one ethical** issue this raises and identify **who** might be held **l
 
 ```
 Edges (undirected, weighted):
-A-B = 2,  A-C = 5,  B-C = 1,  B-D = 7,  C-D = 3,  C-E = 8,  D-E = 2
+A-B = 3,  A-C = 7,  B-C = 2,  B-D = 8,  C-D = 4,  C-E = 9,  D-E = 2
 ```
 
 **Q11 [6] (AO3).** *(Synoptic extended response)* A hospital is replacing a paper appointment system with networked software that stores patient data, lets staff search records, and sends automated reminders.
@@ -148,20 +148,20 @@ In an extended response, discuss the design considering: **(i)** how **abstracti
 | Step | Current | A | B | C | D | E | Visited |
 |------|---------|---|---|---|---|---|---------|
 | Init | – | 0 | ∞ | ∞ | ∞ | ∞ | {} |
-| 1 | **A** (0) | — | **2** | 5 | ∞ | ∞ | {A} |
-| 2 | **B** (2) | — | — | min(5, 2+1)=**3** | min(∞, 2+7)=9 | ∞ | {A,B} |
-| 3 | **C** (3) | — | — | — | min(9, 3+3)=**6** | min(∞, 3+8)=11 | {A,B,C} |
-| 4 | **D** (6) | — | — | — | — | min(11, 6+2)=**8** | {A,B,C,D} |
-| 5 | **E** (8) | — | — | — | — | — | {A,B,C,D,E} |
+| 1 | **A** (0) | — | min(∞, 0+3)=**3** | min(∞, 0+7)=7 | ∞ | ∞ | {A} |
+| 2 | **B** (3) | — | — | min(7, 3+2)=**5** | min(∞, 3+8)=11 | ∞ | {A,B} |
+| 3 | **C** (5) | — | — | — | min(11, 5+4)=**9** | min(∞, 5+9)=14 | {A,B,C} |
+| 4 | **D** (9) | — | — | — | — | min(14, 9+2)=**11** | {A,B,C,D} |
+| 5 | **E** (11) | — | — | — | — | — | {A,B,C,D,E} |
 
 - Correct initialisation: A = 0, others ∞ (1).
-- B relaxed to 2, then C relaxed to 3 via B (1).
+- B relaxed to 3, then C relaxed to 5 via B (1).
 - Visits nodes in correct distance order **A, B, C, D, E** (1).
-- Correct relaxation of D to 6 via C, and E updated to 8 via D (1).
-- Shortest distance **A → E = 8** (1).
-- Shortest path **A → B → C → D → E** (2 + 1 + 3 + 2 = 8), by tracing predecessors E ← D ← C ← B ← A (1).
+- Correct relaxation of D to 9 via C, and E updated to 11 via D (1).
+- Shortest distance **A → E = 11** (1).
+- Shortest path **A → B → C → D → E** (3 + 2 + 4 + 2 = 11), by tracing predecessors E ← D ← C ← B ← A (1).
 
-*Examiner tip: always settle the smallest unvisited tentative distance next. Note A→C direct (5) is beaten by A→B→C (3) — relax carefully. State both distance (8) and path.*
+*Examiner tip: always settle the smallest unvisited tentative distance next. Note A→C direct (7) is beaten by A→B→C (5) — relax carefully. State both distance (11) and path.*
 
 ---
 

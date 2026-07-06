@@ -53,10 +53,7 @@ visual topics. Use these to learn the *shape* of an answer, not just the words.
                ACC = Accumulator (results of ALU calculations)
 ```
 
-**What to remember:** ALU does arithmetic/logic; CU decodes instructions and
-sends control signals. Three buses: address (one-way, carries locations), data
-(two-way, carries instructions/data), control (timing & command signals). Bus
-width affects performance.
+**What to remember:** ALU does arithmetic/logic; CU decodes instructions and sends control signals. Three buses: address (one-way, carries locations), data (two-way, carries instructions/data), control (timing & command signals). Bus width affects performance.
 
 ### 1b. Fetch–Decode–Execute cycle (flowchart with register transfers)
 
@@ -74,9 +71,7 @@ flowchart TD
     J -- Yes --> Z([Stop])
 ```
 
-**What to remember:** Order is fixed — MAR←PC, fetch to MDR, MDR→CIR, **then
-increment PC**, decode, execute. The PC is incremented during *fetch*, before
-execute. Use the arrow `←` for "is loaded with" in register transfer notation.
+**What to remember:** Order is fixed — MAR←PC, fetch to MDR, MDR→CIR, **then increment PC**, decode, execute. The PC is incremented during *fetch*, before execute. Use the arrow `←` for "is loaded with" in register transfer notation.
 
 ---
 
@@ -101,9 +96,7 @@ flowchart LR
 | Cost/complexity    | Simpler, cheaper                | More complex/costly                  |
 | Typical use        | General-purpose PCs             | Embedded systems, DSPs, microcontrollers |
 
-**What to remember:** Von Neumann = ONE shared memory & bus (the "bottleneck").
-Harvard = SEPARATE memories and buses for instructions and data, allowing
-simultaneous access. Modern CPUs often use a hybrid (Harvard caches, Von Neumann main memory).
+**What to remember:** Von Neumann = ONE shared memory & bus (the "bottleneck"). Harvard = SEPARATE memories and buses for instructions and data, allowing simultaneous access. Modern CPUs often use a hybrid (Harvard caches, Von Neumann main memory).
 
 ---
 
@@ -130,9 +123,7 @@ simultaneous access. Modern CPUs often use a hybrid (Harvard caches, Von Neumann
         Slowest, largest, cheapest per byte
 ```
 
-**What to remember:** As you go DOWN: capacity ↑, cost-per-byte ↓, speed ↓.
-Cache (L1→L2→L3) sits between registers and RAM to reduce the speed gap.
-Virtual memory uses secondary storage as an extension of RAM when RAM is full.
+**What to remember:** As you go DOWN: capacity ↑, cost-per-byte ↓, speed ↓. Cache (L1→L2→L3) sits between registers and RAM to reduce the speed gap. Virtual memory uses secondary storage as an extension of RAM when RAM is full.
 
 ---
 
@@ -172,9 +163,7 @@ Virtual memory uses secondary storage as an extension of RAM when RAM is full.
 └───────────────────────────────────────────────────────────────┘
 ```
 
-**What to remember:** Four layers top-to-bottom: **Application, Transport,
-Internet, Link**. Data is encapsulated going down (headers added) and
-de-encapsulated going up. Know one or two example protocols per layer.
+**What to remember:** Four layers top-to-bottom: **Application, Transport, Internet, Link**. Data is encapsulated going down (headers added) and de-encapsulated going up. Know one or two example protocols per layer.
 
 ---
 
@@ -193,9 +182,7 @@ sequenceDiagram
     Note over C: Browser renders page
 ```
 
-**What to remember:** Client *requests*, server *responds*. A DNS lookup
-resolves the domain name to an IP first. Communication uses request/response
-messages (e.g. HTTP GET/POST). The server holds the resource; the client initiates.
+**What to remember:** Client *requests*, server *responds*. A DNS lookup resolves the domain name to an IP first. Communication uses request/response messages (e.g. HTTP GET/POST). The server holds the resource; the client initiates.
 
 ---
 
@@ -229,10 +216,7 @@ Crow's-foot reminder (read left-to-right):
   ORDER     ∞ >────────< ∞ PRODUCT      "many-to-many (resolved by a link table)"
 ```
 
-**What to remember:** PK = Primary Key (unique identifier), FK = Foreign Key
-(links to a PK in another table). The "crow's foot" (∞ / many) goes on the
-"many" side. A many-to-many relationship is normally broken down with a linking
-(junction) table, e.g. ORDER_LINE.
+**What to remember:** PK = Primary Key (unique identifier), FK = Foreign Key (links to a PK in another table). The "crow's foot" (∞ / many) goes on the "many" side. A many-to-many relationship is normally broken down with a linking (junction) table, e.g. ORDER_LINE.
 
 ---
 
@@ -308,10 +292,7 @@ Crow's-foot reminder (read left-to-right):
           (B unused on lower branch)
 ```
 
-**What to remember:** Half adder = 1 XOR (sum) + 1 AND (carry), **no carry-in**.
-Full adder = two half adders + an OR gate, **handles a carry-in**. Chain full
-adders to add multi-bit numbers (ripple adder). Always be ready to write the
-Boolean expression and a truth table.
+**What to remember:** Half adder = 1 XOR (sum) + 1 AND (carry), **no carry-in**. Full adder = two half adders + an OR gate, **handles a carry-in**. Chain full adders to add multi-bit numbers (ripple adder). Always be ready to write the Boolean expression and a truth table.
 
 ---
 
@@ -381,10 +362,7 @@ Boolean expression and a truth table.
           E-F = 6
 ```
 
-**What to remember:** Stack = LIFO (push/pop one end); Queue = FIFO (enqueue rear,
-dequeue front). Linked list nodes hold *data* + a *pointer* to the next node; the
-last points to null. In a BST: left < node < right. For Dijkstra, label each edge
-with its weight (cost).
+**What to remember:** Stack = LIFO (push/pop one end); Queue = FIFO (enqueue rear, dequeue front). Linked list nodes hold *data* + a *pointer* to the next node; the last points to null. In a BST: left < node < right. For Dijkstra, label each edge with its weight (cost).
 
 ---
 
@@ -415,10 +393,7 @@ with its weight (cost).
 | **Post-order** (LRN)   | Left → Right → Node         | A C E D B H I G F            |
 | **BFS** (breadth-first)| Level by level, top to bottom | F B G A D I C E H          |
 
-**What to remember:** The position of **N** (Node) names the traversal: pre =
-*before* children, in = *between*, post = *after*. In-order on a BST gives sorted
-output. BFS uses a **queue** and visits level by level; the depth-first traversals
-use recursion (a stack).
+**What to remember:** The position of **N** (Node) names the traversal: pre = *before* children, in = *between*, post = *after*. In-order on a BST gives sorted output. BFS uses a **queue** and visits level by level; the depth-first traversals use recursion (a stack).
 
 ---
 
@@ -461,10 +436,7 @@ classDiagram
   └──────────────────────┘
 ```
 
-**What to remember:** The hollow triangle arrow points **from subclass to
-superclass**. `-` = private, `+` = public. The subclass **inherits** all parent
-attributes/methods, can **add** new ones and **override** (polymorphism). Top
-compartment = name, middle = attributes, bottom = methods.
+**What to remember:** The hollow triangle arrow points **from subclass to superclass**. `-` = private, `+` = public. The subclass **inherits** all parent attributes/methods, can **add** new ones and **override** (polymorphism). Top compartment = name, middle = attributes, bottom = methods.
 
 ---
 
@@ -492,10 +464,7 @@ flowchart LR
     R --> P
 ```
 
-**What to remember:** Waterfall = one pass, each stage finished before the next;
-good when requirements are fixed, poor at handling change. Agile = short repeated
-iterations with continuous client feedback; flexible, adapts to changing
-requirements, delivers working software early.
+**What to remember:** Waterfall = one pass, each stage finished before the next; good when requirements are fixed, poor at handling change. Agile = short repeated iterations with continuous client feedback; flexible, adapts to changing requirements, delivers working software early.
 
 ---
 
@@ -511,11 +480,7 @@ flowchart LR
     OPT --> OBJ[Executable / object code]
 ```
 
-**What to remember:** Order is **Lexical → Syntax → Code generation →
-Optimisation**. Lexical analysis makes *tokens* and the *symbol table*; syntax
-analysis builds a *parse/abstract syntax tree* and finds syntax errors; code
-generation outputs machine/object code; optimisation improves efficiency
-(speed/size) without changing behaviour.
+**What to remember:** Order is **Lexical → Syntax → Code generation → Optimisation**. Lexical analysis makes *tokens* and the *symbol table*; syntax analysis builds a *parse/abstract syntax tree* and finds syntax errors; code generation outputs machine/object code; optimisation improves efficiency (speed/size) without changing behaviour.
 
 ---
 

@@ -12,7 +12,7 @@ import sys, os, glob, json, random, subprocess, tempfile, html
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DATA = os.path.join(REPO, "zz_source", "revision-tools", "revision-games", "cards-data")
-OUT = os.path.join(REPO, "Printable-PDFs", "revision-games-cards")
+OUT = os.path.join(REPO, "zz_source/_staging/pdf", "revision-games-cards")
 
 
 def find_chrome():

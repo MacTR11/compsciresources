@@ -1,0 +1,903 @@
+[
+ {
+  "id": "wk01",
+  "folder": "Week 01 (31 Aug) Induction and diagnostic",
+  "week": 1,
+  "taught": [],
+  "assessment": [],
+  "class_quiz": [],
+  "homework": [],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "Complete the Week 1 Diagnostic (45 min - your teacher has it). Set up VS Code, Python and Classroom.",
+  "consolidation_note": "Read the START HERE guide. Set up your notes folder and the Personal Learning Checklist.",
+  "other_note": "",
+  "workbook": null,
+  "special": [
+   "diagnostic"
+  ]
+ },
+ {
+  "id": "wk02",
+  "folder": "Week 02 (07 Sep) 1.1.1 CPU and FDE",
+  "week": 2,
+  "taught": [
+   "1.1.1"
+  ],
+  "assessment": [],
+  "class_quiz": [],
+  "homework": [
+   "1.1.1-structure-and-function-of-the-processor"
+  ],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "Homework 1.1.1 (/20). Programming: Workbook 1 s1-2.",
+  "consolidation_note": "Revision Notes 1.1.1 cover-and-recall; start Flashcards 1.1.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk03",
+  "folder": "Week 03 (14 Sep) 1.1.2 Types of processor",
+  "week": 3,
+  "taught": [
+   "1.1.2"
+  ],
+  "assessment": [
+   "KA1"
+  ],
+  "class_quiz": [
+   "1.1.1-structure-and-function-of-the-processor"
+  ],
+  "homework": [
+   "1.1.2-types-of-processor"
+  ],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "Homework 1.1.2; revise for KA1 with the 1.1 Knowledge Organiser.",
+  "consolidation_note": "Quiz 1.1.1 closed-book; Flashcards 1.1.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk04",
+  "folder": "Week 04 (21 Sep) 1.1.3 Storage + 2.1.1 Abstraction",
+  "week": 4,
+  "taught": [
+   "1.1.3",
+   "2.1.1"
+  ],
+  "assessment": [
+   "KA1"
+  ],
+  "class_quiz": [
+   "1.1.2-types-of-processor"
+  ],
+  "homework": [
+   "1.1.3-input-output-and-storage-devices",
+   "2.1.1-thinking-abstractly"
+  ],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "Homework 1.1.3 + Homework 2.1.1; act on KA1 feedback.",
+  "consolidation_note": "Quizzes 1.1.2 and 2.1.1; Revision Notes 1.1.3.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk05",
+  "folder": "Week 05 (28 Sep) 1.2.1 Operating systems + 2.1.2",
+  "week": 5,
+  "taught": [
+   "1.2.1"
+  ],
+  "assessment": [
+   "CAP1",
+   "KA2"
+  ],
+  "class_quiz": [
+   "1.1.3-input-output-and-storage-devices",
+   "2.1.1-thinking-abstractly"
+  ],
+  "homework": [
+   "1.2.1-operating-systems"
+  ],
+  "recap": [],
+  "minipaper": [
+   "1.1-processors-input-output-storage"
+  ],
+  "worksheet": [],
+  "homework_note": "Homework 1.2.1; prep CAP1/KA2.",
+  "consolidation_note": "Quiz 1.1.3; Mini-Paper 1.1 Section A timed.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk06",
+  "folder": "Week 06 (05 Oct) 1.2.1 BIOS, drivers, VMs (review)",
+  "week": 6,
+  "taught": [
+   "2.1.2"
+  ],
+  "assessment": [
+   "CAP1",
+   "KA2"
+  ],
+  "class_quiz": [
+   "1.2.1-operating-systems"
+  ],
+  "homework": [
+   "2.1.2-thinking-ahead"
+  ],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "Homework 2.1.2; act on CAP1/KA2 feedback.",
+  "consolidation_note": "file-check prep; Quiz 1.2.1; mixed Flashcards 1.1 + 1.2.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk07",
+  "folder": "Week 07 (12 Oct) 1.2.2 Translators and compilation",
+  "week": 7,
+  "taught": [
+   "1.2.2"
+  ],
+  "assessment": [
+   "CAP1",
+   "KA3"
+  ],
+  "class_quiz": [
+   "2.1.2-thinking-ahead"
+  ],
+  "homework": [
+   "1.2.2-applications-generation"
+  ],
+  "recap": [],
+  "minipaper": [
+   "1.1-processors-input-output-storage"
+  ],
+  "worksheet": [],
+  "homework_note": "Homework 1.2.2; compilation-stages drill from End-of-Topic Worksheet 1.2.",
+  "consolidation_note": "full Mini-Paper 1.1 timed; Quiz 2.1.2.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "half-term-1-19-oct",
+  "folder": "Half Term 1 (19 Oct)",
+  "week": null,
+  "taught": [],
+  "assessment": [],
+  "class_quiz": [],
+  "homework": [],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "",
+  "consolidation_note": "",
+  "other_note": "Finish any outstanding sheet. 10 min per day of Flashcards 1.1-1.2.",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk08",
+  "folder": "Week 08 (02 Nov) 1.2.3 Methodologies + 2.1.3",
+  "week": 8,
+  "taught": [
+   "1.2.3",
+   "2.1.3"
+  ],
+  "assessment": [
+   "KA3"
+  ],
+  "class_quiz": [
+   "1.2.2-applications-generation"
+  ],
+  "homework": [
+   "1.2.3-software-development",
+   "2.1.3-thinking-procedurally"
+  ],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "Homework 1.2.3 + Homework 2.1.3.",
+  "consolidation_note": "Quiz 1.2.2; Revision Notes 1.2.3.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk09",
+  "folder": "Week 09 (09 Nov) 1.2.4 Paradigms, assembly, OOP",
+  "week": 9,
+  "taught": [
+   "1.2.4"
+  ],
+  "assessment": [
+   "CAP2",
+   "KA4"
+  ],
+  "class_quiz": [
+   "1.2.3-software-development",
+   "2.1.3-thinking-procedurally"
+  ],
+  "homework": [
+   "1.2.4-types-of-programming-language"
+  ],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "Homework 1.2.4; prep CAP2/KA4 with the 1.2 Organiser.",
+  "consolidation_note": "Quiz 1.2.3; Flashcards 1.2.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk10",
+  "folder": "Week 10 (16 Nov) 1.3.1 Compression and encryption",
+  "week": 10,
+  "taught": [
+   "1.3.1"
+  ],
+  "assessment": [
+   "CAP2",
+   "KA4"
+  ],
+  "class_quiz": [
+   "1.2.4-types-of-programming-language"
+  ],
+  "homework": [
+   "1.3.1-compression-encryption-and-hashing"
+  ],
+  "recap": [
+   "recap-1-after-component-1.1-1.2"
+  ],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "Homework 1.3.1; act on CAP2 feedback.",
+  "consolidation_note": "RECAP CHECKPOINT 1 (1.1-1.2) timed; Quiz 1.2.4.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk11",
+  "folder": "Week 11 (23 Nov) 1.3.2 Databases and SQL",
+  "week": 11,
+  "taught": [
+   "1.3.2"
+  ],
+  "assessment": [],
+  "class_quiz": [
+   "1.3.1-compression-encryption-and-hashing"
+  ],
+  "homework": [
+   "1.3.2-databases"
+  ],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "Homework 1.3.2; SQL practice from End-of-Topic Worksheet 1.3.",
+  "consolidation_note": "Quiz 1.3.1; Revision Notes 1.3.2.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk12",
+  "folder": "Week 12 (30 Nov) 1.3.3 Networks and TCP-IP",
+  "week": 12,
+  "taught": [
+   "1.3.3"
+  ],
+  "assessment": [],
+  "class_quiz": [
+   "1.3.2-databases"
+  ],
+  "homework": [
+   "1.3.3-networks"
+  ],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "Homework 1.3.3; redraw the network diagrams (Diagram Bank in Reference Guides).",
+  "consolidation_note": "Quiz 1.3.2; mixed Flashcards 1.1-1.3.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk13",
+  "folder": "Week 13 (07 Dec) 2.1.4 Logic + 1.3.4 Web tech",
+  "week": 13,
+  "taught": [
+   "2.1.4",
+   "1.3.4"
+  ],
+  "assessment": [
+   "CAP2"
+  ],
+  "class_quiz": [
+   "1.3.3-networks"
+  ],
+  "homework": [
+   "2.1.4-thinking-logically",
+   "1.3.4-web-technologies"
+  ],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "Homework 2.1.4 + Homework 1.3.4 Part A.",
+  "consolidation_note": "Quiz 1.3.3; Revision Notes 1.3.4 and 2.1.4.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk14",
+  "folder": "Week 14 (14 Dec) 1.3.4 PageRank - EOY quiz",
+  "week": 14,
+  "taught": [],
+  "assessment": [
+   "EOY quiz"
+  ],
+  "class_quiz": [
+   "2.1.4-thinking-logically",
+   "1.3.4-web-technologies"
+  ],
+  "homework": [],
+  "recap": [],
+  "minipaper": [
+   "1.2-software-and-software-development"
+  ],
+  "worksheet": [],
+  "homework_note": "finish Homework 1.3.4; prep the end-of-year quiz with Organisers 1.1-1.3.",
+  "consolidation_note": "Quizzes 1.3.4 and 2.1.4; Mini-Paper 1.2 timed.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "christmas-holidays",
+  "folder": "Christmas Holidays",
+  "week": null,
+  "taught": [],
+  "assessment": [],
+  "class_quiz": [],
+  "homework": [],
+  "recap": [
+   "recap-2-after-1.3-exchanging-data"
+  ],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "",
+  "consolidation_note": "",
+  "other_note": "RECAP CHECKPOINT 2 (1.1-1.3) over the break; 10 min per day flashcards.",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk15",
+  "folder": "Week 15 (04 Jan) 1.4.1 Binary, negatives, hex",
+  "week": 15,
+  "taught": [
+   "1.4.1"
+  ],
+  "assessment": [],
+  "class_quiz": [],
+  "homework": [
+   "1.4.1-data-types"
+  ],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [
+   "1.4-data-types-structures-boolean-algebra"
+  ],
+  "homework_note": "Homework 1.4.1 Part A + conversion drills (End-of-Topic Worksheet 1.4).",
+  "consolidation_note": "mark the holiday Recap 2; re-RAG the PLC.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk16",
+  "folder": "Week 16 (11 Jan) 1.4.1 Floating point",
+  "week": 16,
+  "taught": [],
+  "assessment": [
+   "KA5"
+  ],
+  "class_quiz": [
+   "1.4.1-data-types"
+  ],
+  "homework": [],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "floating-point drills from Worksheet 1.4; prep KA5 with the Reference Sheet.",
+  "consolidation_note": "Quiz 1.4.1 Section A; Revision Notes 1.4.1.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk17",
+  "folder": "Week 17 (18 Jan) 1.4.1 Character sets + 2.2.1",
+  "week": 17,
+  "taught": [
+   "2.2.1"
+  ],
+  "assessment": [
+   "KA5"
+  ],
+  "class_quiz": [],
+  "homework": [
+   "2.2.1-programming-techniques"
+  ],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "finish Homework 1.4.1; Homework 2.2.1 Part A; act on KA5 feedback.",
+  "consolidation_note": "full Quiz 1.4.1; start Flashcards 1.4.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk18",
+  "folder": "Week 18 (25 Jan) 1.4.2 Arrays, stacks, queues",
+  "week": 18,
+  "taught": [
+   "1.4.2"
+  ],
+  "assessment": [
+   "CAP3",
+   "KA6"
+  ],
+  "class_quiz": [
+   "2.2.1-programming-techniques"
+  ],
+  "homework": [
+   "1.4.2-data-structures"
+  ],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "Homework 1.4.2; prep CAP3/KA6 with the 1.4 Organiser.",
+  "consolidation_note": "Quiz 2.2.1; Workbook 2 stack and queue classes.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk19",
+  "folder": "Week 19 (01 Feb) Data structures in code (review)",
+  "week": 19,
+  "taught": [],
+  "assessment": [],
+  "class_quiz": [
+   "1.4.2-data-structures"
+  ],
+  "homework": [],
+  "recap": [],
+  "minipaper": [
+   "1.3-exchanging-data"
+  ],
+  "worksheet": [],
+  "homework_note": "implement a linked list, stack and queue in Python (Workbook 2).",
+  "consolidation_note": "Quiz 1.4.2; Mini-Paper 1.3 timed.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk20",
+  "folder": "Week 20 (08 Feb) 1.4.2 Graphs, trees, hash tables",
+  "week": 20,
+  "taught": [],
+  "assessment": [
+   "CAP3"
+  ],
+  "class_quiz": [],
+  "homework": [],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "finish Homework 1.4.2 redos; BST + hash table in Python.",
+  "consolidation_note": "Revision Notes 1.4.2.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "half-term-2-15-feb",
+  "folder": "Half Term 2 (15 Feb)",
+  "week": null,
+  "taught": [],
+  "assessment": [],
+  "class_quiz": [],
+  "homework": [],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "",
+  "consolidation_note": "",
+  "other_note": "Finish any data-structure implementation. Flashcards 1.4 + one earlier Mini-Paper.",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk21",
+  "folder": "Week 21 (22 Feb) 1.4.3 Boolean logic",
+  "week": 21,
+  "taught": [
+   "1.4.3"
+  ],
+  "assessment": [
+   "KA7"
+  ],
+  "class_quiz": [],
+  "homework": [
+   "1.4.3-boolean-algebra"
+  ],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "Homework 1.4.3 Part A; prep KA7.",
+  "consolidation_note": "Quiz 1.4.3 Section A; truth-table drills from Worksheet 1.4.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk22",
+  "folder": "Week 22 (01 Mar) PyGame 1 - window, loop, sprites",
+  "week": 22,
+  "taught": [],
+  "assessment": [
+   "KA7"
+  ],
+  "class_quiz": [
+   "1.4.3-boolean-algebra"
+  ],
+  "homework": [],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "PyGame Workbook Session 1 (challenges 1-8): window, game loop, events, moving a sprite.",
+  "consolidation_note": "Full Quiz 1.4.3 is this week's class quiz; act on KA7 feedback. Flashcards 1.4.",
+  "other_note": "",
+  "workbook": "pygame-1",
+  "special": []
+ },
+ {
+  "id": "wk23",
+  "folder": "Week 23 (08 Mar) 1.4.3 Karnaugh maps",
+  "week": 23,
+  "taught": [],
+  "assessment": [],
+  "class_quiz": [],
+  "homework": [],
+  "recap": [],
+  "minipaper": [
+   "1.2-software-and-software-development"
+  ],
+  "worksheet": [],
+  "homework_note": "finish Homework 1.4.3; K-map and De Morgan drills from Worksheet 1.4.",
+  "consolidation_note": "Mini-Paper 1.2 + Organiser 1.2 cover-recall.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk24",
+  "folder": "Week 24 (15 Mar) 2.1.5 Concurrency (review, KA8)",
+  "week": 24,
+  "taught": [
+   "2.1.5"
+  ],
+  "assessment": [
+   "CAP4",
+   "KA8"
+  ],
+  "class_quiz": [],
+  "homework": [
+   "2.1.5-thinking-concurrently"
+  ],
+  "recap": [
+   "recap-3-after-1.4-data-and-logic"
+  ],
+  "minipaper": [
+   "1.3-exchanging-data"
+  ],
+  "worksheet": [],
+  "homework_note": "Homework 2.1.5; prep CAP4/KA8 (cumulative 1.1-1.4 + 2.1).",
+  "consolidation_note": "RECAP CHECKPOINT 3 (1.1-1.4) timed; Mini-Paper 1.3.",
+  "other_note": "",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk25",
+  "folder": "Week 25 (22 Mar) PyGame 2 - classes and collision",
+  "week": 25,
+  "taught": [],
+  "assessment": [
+   "CAP4",
+   "KA8"
+  ],
+  "class_quiz": [
+   "2.1.5-thinking-concurrently"
+  ],
+  "homework": [],
+  "recap": [],
+  "minipaper": [
+   "1.4-data-types-structures-boolean-algebra"
+  ],
+  "worksheet": [],
+  "homework_note": "PyGame Workbook Session 2 (challenges 9-16): sprite classes, images, collision, score.",
+  "consolidation_note": "Mini-Paper 1.4 timed (Topic Library). Act on CAP4/KA8 feedback.",
+  "other_note": "",
+  "workbook": "pygame-2",
+  "special": []
+ },
+ {
+  "id": "easter-holidays",
+  "folder": "Easter Holidays",
+  "week": null,
+  "taught": [],
+  "assessment": [],
+  "class_quiz": [],
+  "homework": [],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "Re-sit your two weakest mini-papers timed (they are in the Topic Library) and mark them against the answer sheets. 10 minutes of flashcards per day.",
+  "consolidation_note": "Re-RAG your Personal Learning Checklist and bring the two weakest rows to the first lesson back.",
+  "other_note": "Mock Paper 1 a section at a time, self-marked. Re-RAG the PLC.",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk26",
+  "folder": "Week 26 (12 Apr) PyGame 3 + pre-mock recap",
+  "week": 26,
+  "taught": [],
+  "assessment": [],
+  "class_quiz": [],
+  "homework": [],
+  "recap": [
+   "recap-y12-pre-mock"
+  ],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "Sit the Year 12 Pre-Mock Recap (75 min, timed, closed book). Mark it with the answer sheet and log errors.",
+  "consolidation_note": "PyGame Workbook Session 3 (challenges 17-24). Revise weakest PLC rows; Exam Technique guide in Reference and Stretch.",
+  "other_note": "",
+  "workbook": "pygame-3",
+  "special": []
+ },
+ {
+  "id": "wk27",
+  "folder": "Week 27 (19 Apr) MOCK WEEK",
+  "week": 27,
+  "taught": [],
+  "assessment": [
+   "MOCK (CAP5)",
+   "Mock Paper 1C - teacher only"
+  ],
+  "class_quiz": [],
+  "homework": [],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "Mock week - no new homework. Skim the Glossary and Common Mistakes guides; sleep well before the paper.",
+  "consolidation_note": "",
+  "other_note": "Light week: skim the Glossary and Common Mistakes guides; rest before the mock.",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk28",
+  "folder": "Week 28 (26 Apr) PyGame 4 + mock feedback",
+  "week": 28,
+  "taught": [],
+  "assessment": [],
+  "class_quiz": [
+   "2.1.3-thinking-procedurally"
+  ],
+  "homework": [],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "PyGame Workbook Session 4 (challenges 25-30): high scores and polish. Re-attempt your two weakest mock questions in full.",
+  "consolidation_note": "Update the PLC from your mock results. Flashcards on your three weakest topics.",
+  "other_note": "",
+  "workbook": "pygame-4",
+  "special": []
+ },
+ {
+  "id": "wk29",
+  "folder": "Week 29 (03 May) Mini-NEA Analysis 1",
+  "week": 29,
+  "taught": [],
+  "assessment": [
+   "CAP5"
+  ],
+  "class_quiz": [
+   "2.1.5-thinking-concurrently"
+  ],
+  "homework": [],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "NEA Template section 1 - stakeholder, requirements, measurable success criteria.",
+  "consolidation_note": "NEA Guide checklist; 10 min per day flashcards. Weekly retrieval: sit the timed quiz/mini-paper section in this folder (15-25 min).",
+  "other_note": "",
+  "workbook": "mini-nea",
+  "special": []
+ },
+ {
+  "id": "wk30",
+  "folder": "Week 30 (10 May) Mini-NEA Analysis 2",
+  "week": 30,
+  "taught": [],
+  "assessment": [],
+  "class_quiz": [],
+  "homework": [],
+  "recap": [],
+  "minipaper": [
+   "2.1-elements-of-computational-thinking"
+  ],
+  "worksheet": [],
+  "homework_note": "complete the Analysis write-up.",
+  "consolidation_note": "peer-review a partner's analysis against the NEA checklist. Weekly retrieval: sit the timed quiz/mini-paper section in this folder (15-25 min).",
+  "other_note": "",
+  "workbook": "mini-nea",
+  "special": []
+ },
+ {
+  "id": "wk31",
+  "folder": "Week 31 (17 May) Mini-NEA Design 1",
+  "week": 31,
+  "taught": [],
+  "assessment": [],
+  "class_quiz": [
+   "2.2.1-programming-techniques"
+  ],
+  "homework": [],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "NEA Template section 2 - decomposition, algorithms, data structures, UI.",
+  "consolidation_note": "check each design decision traces to a requirement. Weekly retrieval: sit the timed quiz/mini-paper section in this folder (15-25 min).",
+  "other_note": "",
+  "workbook": "mini-nea",
+  "special": []
+ },
+ {
+  "id": "wk32",
+  "folder": "Week 32 (24 May) Mini-NEA Design 2",
+  "week": 32,
+  "taught": [],
+  "assessment": [],
+  "class_quiz": [],
+  "homework": [],
+  "recap": [],
+  "minipaper": [
+   "1.2-software-and-software-development"
+  ],
+  "worksheet": [],
+  "homework_note": "complete section 2 + the test plan (typical, boundary, erroneous).",
+  "consolidation_note": "review against the Design checklist. Weekly retrieval: sit the timed quiz/mini-paper section in this folder (15-25 min).",
+  "other_note": "",
+  "workbook": "mini-nea",
+  "special": []
+ },
+ {
+  "id": "half-term-3-31-may",
+  "folder": "Half Term 3 (31 May)",
+  "week": null,
+  "taught": [],
+  "assessment": [],
+  "class_quiz": [],
+  "homework": [],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "",
+  "consolidation_note": "",
+  "other_note": "Finish the design so implementation starts clean. Light flashcard retrieval.",
+  "workbook": null,
+  "special": []
+ },
+ {
+  "id": "wk33",
+  "folder": "Week 33 (07 Jun) Mini-NEA Implementation 1",
+  "week": 33,
+  "taught": [],
+  "assessment": [],
+  "class_quiz": [
+   "1.4.2-data-structures"
+  ],
+  "homework": [],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "NEA Template section 3 - iterative build, annotated evidence, tests per iteration.",
+  "consolidation_note": "keep the development log as you go. Weekly retrieval: sit the timed quiz/mini-paper section in this folder (15-25 min).",
+  "other_note": "",
+  "workbook": "mini-nea",
+  "special": []
+ },
+ {
+  "id": "wk34",
+  "folder": "Week 34 (14 Jun) Mini-NEA Implementation 2",
+  "week": 34,
+  "taught": [],
+  "assessment": [],
+  "class_quiz": [],
+  "homework": [],
+  "recap": [],
+  "minipaper": [
+   "1.3-exchanging-data"
+  ],
+  "worksheet": [],
+  "homework_note": "continue section 3; add validation and robustness.",
+  "consolidation_note": "file-check prep - all code evidence annotated. Weekly retrieval: sit the timed quiz/mini-paper section in this folder (15-25 min).",
+  "other_note": "",
+  "workbook": "mini-nea",
+  "special": []
+ },
+ {
+  "id": "wk35",
+  "folder": "Week 35 (21 Jun) Mini-NEA Evaluation 1",
+  "week": 35,
+  "taught": [],
+  "assessment": [],
+  "class_quiz": [
+   "1.4.3-boolean-algebra"
+  ],
+  "homework": [],
+  "recap": [],
+  "minipaper": [],
+  "worksheet": [],
+  "homework_note": "NEA Template section 4 - test against every success criterion; stakeholder feedback.",
+  "consolidation_note": "map every evaluation point back to the Analysis. Weekly retrieval: sit the timed quiz/mini-paper section in this folder (15-25 min).",
+  "other_note": "",
+  "workbook": "mini-nea",
+  "special": []
+ },
+ {
+  "id": "wk36",
+  "folder": "Week 36 (28 Jun) Mini-NEA Evaluation 2",
+  "week": 36,
+  "taught": [],
+  "assessment": [],
+  "class_quiz": [],
+  "homework": [],
+  "recap": [],
+  "minipaper": [
+   "1.4-data-types-structures-boolean-algebra"
+  ],
+  "worksheet": [],
+  "homework_note": "complete section 4 + justified improvements.",
+  "consolidation_note": "final NEA checklist; set VESPA targets for Year 13. Weekly retrieval: sit the timed quiz/mini-paper section in this folder (15-25 min).",
+  "other_note": "",
+  "workbook": "mini-nea",
+  "special": []
+ }
+]

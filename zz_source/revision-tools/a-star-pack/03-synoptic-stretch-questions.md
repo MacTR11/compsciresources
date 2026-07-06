@@ -114,13 +114,14 @@ Consider this pseudocode that checks whether an array contains any duplicate val
 
 ```
 function hasDuplicate(arr)
-  for i = 0 to length(arr) - 1
-    for j = 0 to length(arr) - 1
-      if i != j AND arr[i] == arr[j] then
-        return true
-  next j
-  next i
-  return false
+    for i = 0 to arr.length - 1
+        for j = 0 to arr.length - 1
+            if i != j AND arr[i] == arr[j] then
+                return true
+            endif
+        next j
+    next i
+    return false
 endfunction
 ```
 

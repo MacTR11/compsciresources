@@ -22,7 +22,7 @@ except ImportError:
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DATA = os.path.join(REPO, "zz_source", "teacher-toolkit", "deck-data")
-OUT = os.path.join(REPO, "Teacher-Toolkit", "Lesson-PowerPoints")
+OUT = os.path.join(REPO, "zz_source/_staging/tt", "Lesson-PowerPoints")
 
 NAVY = RGBColor(0x1A, 0x36, 0x5D)
 BLUE = RGBColor(0x2B, 0x6C, 0xB0)

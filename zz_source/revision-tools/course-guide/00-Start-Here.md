@@ -1,33 +1,57 @@
 # Start Here — How to Use These Resources (OCR H446)
 
-Welcome. Everything is organised the way the course is taught: **Component → Topic → Subtopic**. Here's how to find and use it.
+Welcome. The pack is organised around **your teaching week**, with a topic-by-topic
+revision library behind it. Two folders do most of the work:
 
-## Finding things
-- Open your **Component** (1 Computer Systems, 2 Algorithms & Programming, 3 Programming Project).
-- Open the **Topic** (e.g. *1.1 Processors, Input, Output and Storage*).
-- Inside each topic:
-  - **`00 Topic Resources/`** — whole-topic materials: **Knowledge Organiser**, **Revision Notes**, **Flashcards**, **Revision Game** (+ print-and-cut cards), **End-of-Topic Worksheet**, **Topic Mini-Paper**.
-  - One folder per **Subtopic** (e.g. *1.1.1 …*) containing:
-    - **Lesson (PowerPoint)** — the taught lesson
-    - **Revision Notes** — one-page summary of that subtopic
-    - **Worksheet** (+ **ANSWERS**) — practice with space to write
-    - **Homework** (+ **ANSWERS**)
-- **`Recap Checkpoints/`** — cumulative papers that mix everything covered so far.
+## 1 Year 12 Weekly — your week, in one folder
 
-> Every worksheet, quiz, homework and paper comes in two files: the **worksheet** (questions + answer space) and a **separate answer sheet**. An **editable Word (.docx)** version sits next to each print-ready PDF.
+One folder per week of the year, named with the date and topic
+(e.g. *Week 12 (30 Nov) 1.3.3 Networks*). Inside, in the order you use them:
+
+1. **Lesson** (PowerPoint) — what your teacher taught this week.
+2. **Class Quiz** — a retrieval quiz on *last* week's subtopic, sat closed book in class.
+3. **Homework** — this week's homework (typeable Word file; your teacher has the answers).
+4. **Consolidation** — your follow-up tasks for the week; any scheduled recap checkpoint
+   or timed mini-paper is right there in the folder.
+5. **Flashcards (cumulative)** — every flashcard for everything taught so far. Cover the
+   answer column and quiz yourself little and often.
+
+## 2 Topic Library — revision by spec topic
+
+One folder per topic (*1.1* to *2.3*), matching the OCR specification numbering:
+
+- **Knowledge Organiser** — the whole topic on one page.
+- **Topic Notes (complete)** and **Revision Notes** per subtopic.
+- **End-of-Topic Worksheet** (+ answers) — practise when the topic finishes.
+- **Mini-Paper (timed)** (+ answers) — sit it like a real exam section.
+- **Flashcards**, a **Revision Game** with print-and-cut cards, and lesson activities.
 
 ## How to revise (the method that works)
-1. **Learn** it — read the subtopic **Revision Notes** / Knowledge Organiser; watch the lesson.
-2. **Recall** it — cover the notes and write down what you remember; drill the **Flashcards**.
-3. **Practise** it — do the **Worksheet** and **Homework** *closed-book*, then mark against the answer sheet.
-4. **Prove** it — sit the **Topic Mini-Paper**, then the **Recap Checkpoints** as they come up.
-5. **Track** it — RAG-rate yourself on the **Personal Learning Checklist** (in *Teacher Toolkit*). Revise your Reds first, and **interleave** — keep re-testing older topics.
+
+1. **Learn** it — read the Revision Notes / Knowledge Organiser.
+2. **Recall** it — cover the notes and write what you remember; drill the flashcards.
+3. **Practise** it — worksheets and homework *closed book*, then mark honestly.
+4. **Prove** it — sit the timed Mini-Paper, then the recap checkpoints as they come up.
+5. **Track** it — RAG-rate yourself on the **Personal Learning Checklist** (your teacher
+   has it). Revise your Reds first, and keep re-testing older topics.
 
 ## Where the exam marks are
-- **AO1** (recall) is the easy half. **AO2** (apply to a scenario) and **AO3** (evaluate/justify/design) decide **A vs A\***.
-- So when you practise, focus on *applying* and *justifying*, not just defining. Always **show your working** on calculations, logic and algorithm traces.
+
+- **AO1** (recall) is the easy half. **AO2** (apply to a scenario) and **AO3**
+  (evaluate / justify / design) decide **A vs A\***.
+- Practise *applying* and *justifying*, not just defining. Always **show your working**
+  on calculations, logic and algorithm traces.
+- Code answers use **OCR Exam Reference Language** — the *OCR Pseudocode Guide* in
+  **5 Reference and Stretch** shows exactly what the examiner expects.
 
 ## Reference (course-wide)
-The **Reference/** folder has the Glossary, Reference Sheet (number/Big O/logic/SQL), Command Words & AOs, Exam Technique, Common Mistakes, Diagram Bank and the Pseudocode Guide — use them throughout.
+
+**5 Reference and Stretch** holds the Glossary, Reference Sheet (number / Big O / logic
+/ SQL), Command Words & AOs, Exam Technique, Common Mistakes, Diagram Bank, the Past
+Papers Guide (where to download every real OCR paper) and the **A\* Stretch Pack** for
+pushing to the top grade.
 
 Good luck — work actively, space it out, and keep re-testing. 🎓
+
+*Paper 1: Computer Systems, 2h30, 140 marks. Paper 2: Algorithms & Programming, 2h30,
+140 marks. NEA project: 70 marks. Papers are 40% each; the project is 20%.*

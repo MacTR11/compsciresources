@@ -1,42 +1,52 @@
-# OCR A Level Computer Science (H446) — Complete Course Resources
+# OCR A Level Computer Science (H446) — Year 12 Course Pack
 
-Everything you need to teach and revise **OCR H446**, in ready-to-use Word / PowerPoint / Excel / PDF files. **There are only two folders that matter:**
+A complete, week-first resource bank for teaching OCR H446, built around the Year 12
+scheme of work. Word-editable everything; print PDFs only where you hand out a formal
+paper. **Open the folder for the week you are teaching — everything you need is in it.**
 
-## 📘 [`Course/`](Course/) — all teaching & revision material
-Organised exactly as the course is taught, numbered in order. Open a component → topic → subtopic and everything for that lesson is together:
+| Folder | What's inside |
+|---|---|
+| **0 Planning** | The master SOW (Excel + editable Word), Markbook (KA/CAP tracking), Personal Learning Checklist, all-topics flashcards workbook |
+| **1 Year 12 Weekly** | THE spine — one folder per SOW week: lesson deck(s), class retrieval quiz + answers, homework + answers, consolidation tasks, cumulative flashcard bank |
+| **2 Topic Library** | Revision by spec topic: knowledge organiser, full notes, per-subtopic revision notes, end-of-topic worksheet, timed mini-paper, flashcards, revision game, lesson activities |
+| **3 Assessments - TEACHER ONLY** | Week-1 diagnostic, the KA/CAP assessment map, recap checkpoints, mock papers (incl. the unseen Week-27 mock). Keep out of student shares. |
+| **4 NEA and Programming** | NEA guide + project template, Programming Workbooks 1–2, PyGame Workbook (weeks 22–28), Mini-NEA Pack (weeks 29–36) |
+| **5 Reference and Stretch** | Glossary, exam technique, pseudocode guide, diagram bank, past-papers guide, A* stretch pack |
+
+`START HERE.docx` is the one-page guide for students. `INDEX.md` lists every file.
+
+## How the week works
+
+1. **Teach** from `1 Lesson <subtopic>.pptx`.
+2. **Retrieve** with `2 Class Quiz` — always on *last* week's subtopic, sat closed book.
+3. **Set** `3 Homework` (typeable Word; separate answers file for you).
+4. **Consolidate** with `4 Consolidation` — instructions plus any scheduled recap
+   checkpoint / mini-paper for that week, included in the folder.
+5. `5 Flashcards (cumulative)` holds every card for everything taught so far.
+
+Assessment points (Diagnostic, KA1–8, CAP1–5, EOY quiz, Week-27 mock) are defined in
+`3 Assessments - TEACHER ONLY/0 Assessment Map`, pre-aligned with the Markbook.
+
+## Rebuilding
+
+Everything is generated from the Markdown/JSON sources in `zz_source/`. To change any
+resource, edit its source and run:
 
 ```
-Course/
-├─ 00 START HERE (guide for students)          ├─ INDEX.md (clickable map of every file)
-├─ 1 Component 1 - Computer Systems/
-│   └─ 1.1 Processors, Input, Output and Storage/
-│       ├─ 00 Topic Resources/        1 Knowledge Organiser · 2 Revision Notes · 3 Flashcards
-│       │                             4 Lesson Activities Pack · 5 Revision Game (+cut-out cards)
-│       │                             6 End-of-Topic Worksheet · 7 Topic Mini-Paper  (all with ANSWERS)
-│       └─ 1.1.1 Structure and Function of the Processor/
-│           1 Lesson.pptx → 2 Revision Notes → 3 Worksheet → 4 Homework
-│           (each worksheet/homework: student PDF + separate ANSWERS + editable Word)
-├─ 2 Component 2 - Algorithms and Programming/   (same layout, 2.1–2.3)
-├─ 3 Component 3 - Programming Project/          (NEA guide, student template, programming workbooks)
-├─ 4 Recap Checkpoints/                          (cumulative synoptic papers + answers)
-├─ 5 Reference Guides/                           (glossary, exam technique, pseudocode, past-papers guide…)
-├─ 6 A-Star Stretch Pack/                        (model answers, examiner insights, synoptic questions)
-└─ 7 Weekly Plan - Homework and Consolidation/   (a folder per SOW week with up to four Word files:
-                                                  1 Homework · 2 Consolidation · 3 Answer Sheet ·
-                                                  4 Flashcards — a bank that grows week by week)
+python3 zz_source/build/build.py
 ```
 
-**Can't find something? Open [`Course/INDEX.md`](Course/INDEX.md) — every file, one click.**
+One command: builds PDFs, Word, PowerPoints, game cards and spreadsheets to a hidden
+staging area, assembles the six folders above atomically (the old tree is only replaced
+if every file built), then runs a mechanical validation gate over every output.
+The week-by-week plan lives in **one** place: `zz_source/sow/year12.json`.
 
-## 🧑‍🏫 [`Teacher Toolkit/`](Teacher%20Toolkit/) — planning & assessment
-Markbook (KA/CAP tracking with auto grades) · Personal Learning Checklist · week-by-week Lesson Plan · week-by-week Homework & Consolidation Plan (Excel + printable) · RAG tracker · all-topic flashcards workbook.
+## The qualification at a glance
 
----
+**Paper 1** Computer Systems (2h30, 140 marks, 40%) · **Paper 2** Algorithms &
+Programming (2h30, 140 marks, 40%) · **NEA** Programming Project (70 marks, 20%).
+AO2/AO3 decide A vs A\* — the practice material is deliberately weighted that way.
 
-### Everything else
-`zz_source/` holds the raw sources and build scripts used to regenerate the files above — **you can ignore it completely**. (To rebuild after editing a source: run the `zz_source/build/build-*.py` scripts, then `assemble-course.py`.)
-
-### The qualification at a glance
-**Paper 1** Computer Systems (2h30, 140 marks, 40%) · **Paper 2** Algorithms & Programming (2h30, 140 marks, 40%) · **NEA** Programming Project (70 marks, 20%). AO2 (apply) and AO3 (evaluate/design) decide A vs A\* — the practice materials here are deliberately weighted that way.
-
-> ⚠️ Original material mapped to the published H446 specification and audited for accuracy. Not a substitute for OCR's official specification, past papers and mark schemes — the **Past Papers Guide** in `5 Reference Guides/` indexes every published series and where to download them.
+> ⚠️ Original material mapped to the published H446 specification. Not a substitute for
+> OCR's official specification, past papers and mark schemes — the **Past Papers Guide**
+> in `5 Reference and Stretch/` indexes every published series.
