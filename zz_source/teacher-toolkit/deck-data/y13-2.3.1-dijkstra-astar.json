@@ -1,0 +1,121 @@
+{
+  "subtopic": "2.3.1 Algorithms (part 4 — Dijkstra and A*)",
+  "spec": "OCR H446 — Component 02",
+  "week": "Year 13",
+  "objectives": [
+    "I can describe the shortest-path problem and explain how Dijkstra's algorithm solves it using tentative distances and a priority queue.",
+    "I can trace Dijkstra's algorithm on a weighted graph, maintaining a distance and predecessor table and settling nodes in the correct order.",
+    "I can explain A* search, including f(n) = g(n) + h(n) and what makes a heuristic admissible.",
+    "I can compare Dijkstra and A* and justify when each is the more suitable choice."
+  ],
+  "retrieval": [
+    {"q": "From part 3: state the rule for a depth-first (post-order) traversal and where the root appears.", "a": "Left subtree, right subtree, then the node; the root of the whole tree appears last."},
+    {"q": "From part 3: which data structure drives a breadth-first traversal, and why that one?", "a": "A queue; children join the rear, so FIFO removal visits a whole level before the next."},
+    {"q": "From 1.4.2: what extra information does a weighted graph carry compared with an unweighted one?", "a": "Each edge has a cost (weight), such as distance, time or price."},
+    {"q": "From 1.4.2: give one advantage of an adjacency list over an adjacency matrix.", "a": "For a sparse graph it stores only the edges that exist, saving memory (a matrix stores all n squared entries)."},
+    {"q": "From 1.4.2: give one advantage of an adjacency matrix over an adjacency list.", "a": "Checking whether an edge exists between two given nodes is O(1) — a direct lookup."}
+  ],
+  "keywords": [
+    {"term": "Shortest-path problem", "def": "Finding the route between two graph nodes with the lowest total edge weight."},
+    {"term": "Dijkstra's algorithm", "def": "Finds shortest paths from a start node by repeatedly settling the unvisited node with the smallest tentative distance."},
+    {"term": "Tentative distance", "def": "The best total cost found so far from the start to a node; may improve until the node is settled."},
+    {"term": "Settled (visited) node", "def": "A node whose distance is final; Dijkstra's invariant says it is never updated again."},
+    {"term": "Relaxation", "def": "Checking whether going through the just-settled node gives a neighbour a shorter distance, and updating if so."},
+    {"term": "Priority queue", "def": "A queue that always serves the item with the best priority — here, the unsettled node with the smallest distance."},
+    {"term": "Heuristic h(n)", "def": "An estimate of the remaining cost from node n to the goal, such as straight-line distance."},
+    {"term": "Admissible heuristic", "def": "A heuristic that never overestimates the true remaining cost; it guarantees A* returns an optimal path."},
+    {"term": "f(n) = g(n) + h(n)", "def": "A*'s node score: actual cost from the start so far (g) plus estimated cost to the goal (h)."}
+  ],
+  "content": [
+    {"heading": "Framing the shortest-path problem", "points": ["Given a weighted graph, find the route of lowest total weight between two nodes.", "Weights model distance, time, cost or latency: sat-navs, network routing, game AI.", "Breadth-first search only minimises the NUMBER of edges — it ignores weights entirely.", "A two-edge route of weight 5 beats a one-edge route of weight 9; we need an algorithm that sees that.", "Both H446 algorithms, Dijkstra and A*, solve this; they differ in what they know about the goal."]},
+    {"heading": "Dijkstra: the big idea", "points": ["Give every node a tentative distance: 0 for the start, infinity for everyone else.", "Repeatedly settle the unsettled node with the SMALLEST tentative distance.", "Relax the settled node's neighbours: if settled distance plus edge weight beats their current value, update it and record the predecessor.", "A priority queue serves up the smallest-distance node efficiently — that is its whole job here.", "Stop when the target is settled (or continue until all nodes are, giving shortest paths everywhere)."]},
+    {"heading": "The invariant that makes it correct", "points": ["Once a node is settled, its distance is final and must NEVER be increased or changed.", "Why safe: any other route to it would pass through a node with a larger tentative distance, so it cannot be shorter.", "That argument only works if edge weights are non-negative — Dijkstra's precondition.", "A negative edge could create a cheaper route to an already-settled node, breaking the guarantee.", "In a trace, updating a settled node is the error examiners plant most often."], "note": "Two rules to recite: settle the smallest unsettled; never touch a settled distance."},
+    {"heading": "The algorithm as a recipe", "points": ["Keep three columns per node: tentative distance, predecessor, settled or not.", "Each round: pick the minimum, mark it settled, relax each unsettled neighbour.", "Update a neighbour only on strict improvement, and record the new predecessor when you do.", "The predecessor chain read backwards from the target gives the shortest path itself.", "Show the full table after every settling step — that is where trace marks live."], "code": ["dist[start] = 0, all other dist[] = infinity", "while unsettled nodes remain", "    u = unsettled node with smallest dist[u]", "    mark u settled", "    for each unsettled neighbour v of u", "        if dist[u] + weight(u, v) < dist[v] then", "            dist[v] = dist[u] + weight(u, v)", "            pred[v] = u", "        endif", "    next v", "endwhile"]},
+    {"heading": "Our worked graph (start A, goal E)", "points": ["Five nodes A to E; six undirected weighted edges.", "Edges: A-B 2, A-C 6, B-D 9, C-D 3, D-E 4, C-E 12.", "Candidate routes to E: A-C-D-E costs 13, A-B-D-E costs 15, A-C-E costs 18.", "B is a tempting cheap first hop (cost 2) that leads nowhere useful — watch what each algorithm does with it."], "code": ["          A", "        2/ \\6", "        B   C", "        |  / \\", "       9| /3  \\12", "        |/     \\", "        D--4----E", "", "edges: A-B 2, A-C 6, B-D 9, C-D 3, D-E 4, C-E 12"]},
+    {"heading": "Reading off the path with predecessors", "points": ["The distance table gives the cost; the predecessor column gives the route.", "Start at the target and follow predecessors backwards: E from D, D from C, C from A.", "Reverse it to state the path forwards: A, C, D, E with total cost 13.", "Always verify: the edge weights along the stated path must sum to the final distance (6 + 3 + 4 = 13).", "A stated path that does not match the table is a lost mark even if the cost is right."]},
+    {"heading": "Dijkstra's character and cost", "points": ["Uninformed: it knows costs so far (g values) but nothing about where the goal is.", "So it expands outward in every direction, settling ALL cheap nodes — even dead ends like B.", "By completion it has shortest paths from A to every settled node, not just the target — sometimes exactly what you want.", "Simple array implementation O(n squared); with a priority queue O((V + E) log V).", "The wasted exploration on single-goal searches is precisely the problem A* fixes."]},
+    {"heading": "A*: adding a sense of direction", "points": ["A* scores each frontier node with f(n) = g(n) + h(n) and always expands the smallest f.", "g(n) is the real cost from the start — exactly Dijkstra's quantity.", "h(n) estimates the remaining cost to the goal, e.g. straight-line distance on a map.", "A node that is cheap to reach but far from the goal gets a large f and sinks down the queue.", "Result: the search is pulled toward the goal and usually expands fewer nodes than Dijkstra."]},
+    {"heading": "Admissibility: when can you trust A*?", "points": ["A heuristic is admissible if it NEVER overestimates the true remaining cost to the goal.", "Straight-line distance is admissible on maps: no road is shorter than the straight line.", "With an admissible h, A* is guaranteed to return the optimal path.", "An overestimate can make the true best route look expensive, so A* may commit elsewhere and return a worse path.", "h(n) = 0 everywhere is admissible but useless: f = g and A* becomes exactly Dijkstra."], "note": "Closer to the true cost without exceeding it = fewer nodes expanded. Equal to it is allowed."},
+    {"heading": "Choosing between Dijkstra and A*", "points": ["One known goal and a decent heuristic available: A* — same answer, less work.", "Shortest paths to MANY or all destinations: Dijkstra — one run serves every target.", "No meaningful heuristic exists (abstract graphs, no geometry): Dijkstra, since h cannot be built.", "Both require non-negative edge weights; both are optimal (A* only if h is admissible).", "Exam phrasing: A* directs its search using an estimate of remaining cost; Dijkstra searches blindly outward."]}
+  ],
+  "worked_examples": [
+    {"title": "Dijkstra from A on our graph (A-B 2, A-C 6, B-D 9, C-D 3, D-E 4, C-E 12)", "steps": [
+      "Initialise: dist A=0, B=infinity, C=infinity, D=infinity, E=infinity; nothing settled.",
+      "Round 1 — smallest unsettled is A(0): settle A. Relax: B = 0+2 = 2 (pred A); C = 0+6 = 6 (pred A). Table: A=0*, B=2/A, C=6/A, D=inf, E=inf.",
+      "Round 2 — candidates B=2, C=6, D=inf, E=inf; min is B(2): settle B. Relax D: 2+9 = 11 (pred B). Table: A=0*, B=2*/A, C=6/A, D=11/B, E=inf.",
+      "Round 3 — candidates C=6, D=11, E=inf; min is C(6): settle C. Relax D: 6+3 = 9 beats 11 — improve D=9, pred changes B to C. Relax E: 6+12 = 18 (pred C). Table: A=0*, B=2*/A, C=6*/A, D=9/C, E=18/C.",
+      "Round 4 — candidates D=9, E=18; min is D(9): settle D. Relax E: 9+4 = 13 beats 18 — improve E=13, pred changes C to D. Table: A=0*, B=2*/A, C=6*/A, D=9*/C, E=13/D.",
+      "Round 5 — only E=13 remains: settle E. Goal settled — stop. Final: A=0, B=2/A, C=6/A, D=9/C, E=13/D.",
+      "Path by predecessors from E: E from D, D from C, C from A — so A to C to D to E, cost 6+3+4 = 13. Note Dijkstra settled all 5 nodes, including dead-end B, before finishing."
+    ]},
+    {"title": "A* from A to E on the SAME graph, heuristic h: A=11, B=12, C=6, D=3, E=0", "steps": [
+      "The heuristic is a straight-line-distance style estimate of remaining cost to E. Open list starts with A: g=0, f = 0+11 = 11.",
+      "Expand A (f=11). Neighbours: B gets g=2, f = 2+12 = 14; C gets g=6, f = 6+6 = 12. Open: C(12), B(14).",
+      "Expand C (f=12) — smallest f, even though B was cheaper to reach: the heuristic warns that B points away from the goal. Neighbours: D gets g = 6+3 = 9, f = 9+3 = 12; E gets g = 6+12 = 18, f = 18+0 = 18. Open: D(12), B(14), E(18).",
+      "Expand D (f=12). Relax E through D: g = 9+4 = 13 beats 18, so E updates to g=13, f = 13+0 = 13 (pred D). B through D would be g = 9+9 = 18 — no improvement. Open: E(13), B(14).",
+      "Expand E (f=13) — it is the goal, so stop. Path via predecessors: A to C to D to E, cost 13 — identical to Dijkstra's answer.",
+      "The win: A* expanded 4 nodes (A, C, D, E); Dijkstra settled 5. B, with f=14, was never expanded — the heuristic paid for itself.",
+      "Every f verified: f(A) = 0+11 = 11; f(B) = 2+12 = 14; f(C) = 6+6 = 12; f(D) = 9+3 = 12; f(E) = 18 then improved to 13."
+    ]},
+    {"title": "Verifying the heuristic is admissible (and what would break it)", "steps": [
+      "Compute the TRUE remaining costs to E by inspection: from D it is 4 (edge D-E); from C, 3+4 = 7 via D (beats the direct 12); from B, 9+4 = 13 via D; from A, 6+3+4 = 13 via C and D; from E, 0.",
+      "Check h against each: h(A)=11 <= 13; h(B)=12 <= 13; h(C)=6 <= 7; h(D)=3 <= 4; h(E)=0 <= 0. No overestimates — admissible, so A*'s answer is guaranteed optimal.",
+      "Now sabotage it: suppose h(C) = 9 (true remaining is 7). Then f(C) = 6+9 = 15, so A* would expand B (f=14) before C — the overestimate on the optimal route pushes the search the wrong way, and the optimality guarantee is lost.",
+      "Opposite extreme: set h = 0 everywhere. Still admissible, but f = g, and the expansion order becomes A(0), B(2), C(6), D(9), E(13) — exactly Dijkstra's settle order, all 5 nodes.",
+      "Conclusion for exams: admissible = never overestimates = optimal answer; and the closer h sits below the true cost, the fewer nodes A* expands."
+    ]}
+  ],
+  "activities": [
+    {"title": "Rope graph Dijkstra", "minutes": 20, "instructions": [
+      "Six floor stations A to F joined by rope edges with pegged costs: A-B 4, A-C 2, B-C 1, B-D 5, C-D 8, C-E 10, D-E 2, D-F 6, E-F 3. A is the depot, F the delivery; each station's student shows their tentative distance (start infinity, A shows 0) and a via node; red sashes mark settled.",
+      "Loop, chanted by the class: settle the smallest unsettled! The settled station tugs each rope; neighbours update their board only on improvement, recording via whom.",
+      "Expected settle order: A=0, C=2, B=3, D=8, E=10, F=13. Exploit the key moment: when C settles, B improves from 4 to 3 — the detour beats the direct rope.",
+      "When someone tries to update a settled node, the sash forbids it — that is the invariant made physical.",
+      "Walk the ribbon back along the via boards: A to C to B to D to E to F, total 2+1+5+2+3 = 13. Have sceptics check rival routes: A-B-D-F = 15, A-C-D-F = 16, A-B-D-E-F = 14 — all beaten."
+    ], "stretch": "Change rope B-D to cost 1 and predict the new answer before re-running (A-C-B-D-E-F = 2+1+1+2+3 = 9). Then note Dijkstra found shortest paths to every settled station, not just F — at the cost of exploring everywhere."},
+    {"title": "Sat-nav duel: Dijkstra versus A*", "minutes": 20, "instructions": [
+      "Same rope graph plus a new station Z with edges A-Z 1 and Z-E 25 — a tempting cheap side street to nowhere. Issue heuristic cards (straight-line estimates to F): h(A)=9, h(B)=8, h(C)=9, h(D)=4, h(E)=3, h(F)=0, h(Z)=20.",
+      "Team Dijkstra expands smallest g; Team A* expands smallest f = g + h. Both hunt A to F; each keeps a public tally of nodes expanded. Fewest expansions with the correct answer wins.",
+      "Team Dijkstra expands A(0), Z(1), C(2), B(3), D(8), E(10), F(13) — 7 nodes, wasting a visit on cheap dead-end Z.",
+      "Team A* expands A(f=9), C(f=11), B(f=11), D(f=12), E(f=13), F(f=13) — 6 nodes; Z sits at f = 1+20 = 21 and is never expanded.",
+      "Debrief: identical optimal path (A-C-B-D-E-F, cost 13) because h never overestimates; A* won because the heuristic steered it away from Z. If h were 0 everywhere, A* would replay Dijkstra exactly."
+    ], "stretch": "Sabotage round: set h(D) = 12 (true remaining is 5) and discuss what could now go wrong — an inadmissible heuristic can make A* commit elsewhere and lose its optimality guarantee."},
+    {"title": "Mark this trace: the fictional student's Dijkstra", "minutes": 15, "instructions": [
+      "Hand out a fictional student's completed trace for the rope graph (A to F) in which step 2 settles B at tentative 4 while C sits at tentative 2, and every later number follows correctly from that mistake, ending with path A-B-D-E-F cost 14.",
+      "Pairs mark like examiners: find the FIRST step that breaks a rule of Dijkstra, name the rule, and explain how the error snowballs.",
+      "Expected verdict: step 2 broke settle-the-smallest (C at 2 should settle before B at 4); so the improvement of B to 3 via C is never applied, D finalises at 9 not 8, E at 11 not 10, F at 14 not 13.",
+      "Pairs then produce the corrected table — settle A(0), C(2), B(3), D(8), E(10), F(13) — and the correct path A-C-B-D-E-F, cost 13.",
+      "Debrief the meta-lesson: the student's arithmetic after the error is flawless; one broken rule early corrupts everything, so the settle rule must be mechanical."
+    ], "stretch": "Write the one-sentence examiner's comment that would have saved this student, then build a different single-error trace (a missed relaxation, or updating a settled node) and swap with another pair to mark."}
+  ],
+  "practice": [
+    {"q": "In the A* algorithm, state what g(n), h(n) and f(n) each represent. [3]", "a": "g(n) is the actual cost of the path from the start node to n so far (1); h(n) is a heuristic estimate of the remaining cost from n to the goal (1); f(n) = g(n) + h(n) is the estimated total cost of a route through n, used to choose which node to expand next (1)."},
+    {"q": "Explain why Dijkstra's algorithm requires all edge weights to be non-negative. [2]", "a": "Once a node is settled its distance is treated as final and never updated (1); a negative edge processed later could create a shorter route to an already-settled node, so the final answer could be wrong (1)."},
+    {"q": "Describe the role of a priority queue in an efficient implementation of Dijkstra's algorithm. [2]", "a": "It holds the unsettled nodes ordered by tentative distance (1) so the node with the smallest distance can be removed for settling without scanning every node each round (1)."},
+    {"q": "Define an admissible heuristic and state its significance for A*. [2]", "a": "A heuristic that never overestimates the true remaining cost to the goal (1); it guarantees that A* finds an optimal (lowest-cost) path (1)."},
+    {"q": "A graph has edges P-Q 3, P-R 7, Q-R 2, Q-S 8, R-S 4. Use Dijkstra's algorithm to find the shortest path from P to S, showing the order nodes are settled. [4]", "a": "Settle P(0): Q=3, R=7 (1). Settle Q(3): R improves to 3+2 = 5, S = 3+8 = 11 (1). Settle R(5): S improves to 5+4 = 9 (1). Settle S(9): shortest path P-Q-R-S with cost 9 (1)."},
+    {"q": "Explain why A* usually expands fewer nodes than Dijkstra's algorithm when searching for a single goal. [3]", "a": "Dijkstra is uninformed and expands outward purely by cost so far, settling cheap nodes in every direction (1); A* adds a heuristic estimate of remaining cost, so nodes pointing away from the goal receive large f values (1) and sink down the queue, meaning the search is directed toward the goal and off-route nodes may never be expanded (1)."},
+    {"q": "Give one situation where Dijkstra's algorithm is a more appropriate choice than A*. [1]", "a": "When shortest paths to many or all destinations are needed from one run, or when no meaningful heuristic can be constructed for the problem (1)."},
+    {"q": "Describe the behaviour of A* if h(n) = 0 for every node. [2]", "a": "f(n) = g(n), so nodes are expanded purely by cost so far (1); A* behaves exactly like Dijkstra's algorithm — still optimal, but with no goal-directed guidance (1)."}
+  ],
+  "misconceptions": [
+    "Students often settle nodes in the order they were discovered; Dijkstra must always settle the unsettled node with the smallest tentative distance, wherever it is.",
+    "Students often update an already-settled node when a new route appears; settled distances are final — that is the invariant the algorithm depends on.",
+    "Students often think A* is always faster than Dijkstra; with a weak heuristic it expands just as much, and with h = 0 it IS Dijkstra.",
+    "Students often think a heuristic must be accurate; it only has to never overestimate — h values below the truth are legal, just less helpful.",
+    "Students often forget the predecessor column, producing a correct cost but no path; the path is read backwards through the predecessors."
+  ],
+  "exam_link": [
+    "Command words: complete the trace table for Dijkstra or A* (4-6 marks), state the shortest path and cost (2 marks), explain the difference between the algorithms (3-4 marks), discuss suitability for a scenario (6-9 marks).",
+    "Trace questions award the table state after each settling step — show every tentative distance, improvement and predecessor change.",
+    "The planted errors to avoid: settling the wrong node, updating a settled node, and quoting a path that contradicts your predecessor column.",
+    "Example stem: 'A sat-nav must find the fastest route between one junction and one destination. Explain why A* is likely to be more efficient than Dijkstra for this task, stating the purpose of the heuristic.' [4]"
+  ],
+  "task": "Run Dijkstra on this graph, showing the full distance and predecessor table after settling each node: J-K 5, J-L 2, K-L 2, K-M 6, L-M 7, M-N 2, K-N 10; start J, goal N. (Answer: settle J(0) giving K=5, L=2; settle L(2) improving K to 4 via L and setting M=9 via L; settle K(4) setting N=14 via K; settle M(9) improving N to 11 via M; settle N(11). Shortest path J-L-M-N, cost 2+7+2 = 11.)",
+  "challenge": "For the task graph, invent your own admissible heuristic h for goal N: first work out the true remaining cost from every node (J=11, L=9, K=8, M=2, N=0), then choose integer h values at or below them so that A* expands fewer nodes than Dijkstra did (aim for K to be left unexpanded — its f must end above 11, so h(K) must be greater than 7 yet at most 8). Trace your A* run, verify every f value, and state why your heuristic guarantees the optimal path.",
+  "exit_ticket": [
+    {"q": "State the two rules a Dijkstra trace must never break.", "a": "Always settle the unsettled node with the smallest tentative distance, and never change the distance of a settled node."},
+    {"q": "Write A*'s node-scoring formula and name each part.", "a": "f(n) = g(n) + h(n): actual cost from the start so far plus a heuristic estimate of the remaining cost to the goal."},
+    {"q": "Why must a heuristic be admissible, and what happens if h(n) = 0 everywhere?", "a": "If it never overestimates, A* is guaranteed an optimal path; with h = 0 it behaves exactly like Dijkstra."}
+  ]
+}

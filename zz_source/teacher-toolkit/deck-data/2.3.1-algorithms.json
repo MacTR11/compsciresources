@@ -1,106 +1,119 @@
 {
-  "subtopic": "2.3.1 Algorithms",
+  "subtopic": "2.3.1 Algorithms (part 1 — analysis, Big O and searching)",
   "spec": "OCR H446 — Component 02",
+  "week": "Year 13",
   "objectives": [
-    "Use Big O notation to express and justify the time and space complexity of an algorithm, simplifying expressions to the dominant term.",
-    "Compare standard searching and sorting algorithms by how they work and their best, average and worst-case complexities.",
-    "Describe and trace algorithms on data structures, including tree traversals and the shortest-path algorithms Dijkstra and A*."
+    "I can analyse an algorithm and justify its suitability for a given task.",
+    "I can express the time and space complexity of an algorithm in Big O notation, simplifying to the dominant term.",
+    "I can distinguish best, average and worst case and state each for linear and binary search.",
+    "I can write and trace linear and binary search in OCR Exam Reference Language and justify O(n) versus O(log n)."
   ],
   "retrieval": [
-    { "q": "Which traversal of a binary search tree outputs values in ascending order?", "a": "In-order (Left → Node → Right)." },
-    { "q": "Which data structure does a breadth-first traversal use, and which does depth-first use?", "a": "BFS uses a queue (FIFO); DFS uses a stack (or recursion)." },
-    { "q": "What is the time complexity of pushing or popping on a stack, and why?", "a": "O(1) — it only acts on the top element, with no traversal." },
-    { "q": "State one precondition that must hold before a binary search can be used.", "a": "The list must be sorted." },
-    { "q": "Simplify 3n² + 5n + 17 to Big O notation.", "a": "O(n²) — drop constants and lower-order terms, keeping the dominant term." }
+    {"q": "From 2.2.1: state the two features every valid recursive subroutine must have.", "a": "A base case that stops the recursion, and a recursive call whose arguments move toward that base case."},
+    {"q": "From 2.2.1: what happens at run time if a recursive function never reaches its base case?", "a": "Every call pushes another frame onto the call stack until memory is exhausted — a stack overflow."},
+    {"q": "From 1.4.2: why does reading arr[7] from an array take the same time as reading arr[0]?", "a": "Array elements are contiguous, so the address is calculated directly as start plus 7 times the element size — no traversal is needed."},
+    {"q": "From 1.4.2: in a binary search tree, where are values smaller than a node stored, and why is that ordering useful?", "a": "In that node's left subtree; the ordering means a search can discard a whole subtree at every node."},
+    {"q": "From 2.2.2: describe the divide and conquer strategy in one sentence.", "a": "Repeatedly halve the problem into smaller subproblems, solve those, then combine the results."}
   ],
   "keywords": [
-    { "term": "Algorithm", "def": "A precise, finite sequence of steps to solve a problem." },
-    { "term": "Big O notation", "def": "How an algorithm's time or space requirement grows with input size n (worst case)." },
-    { "term": "Time complexity", "def": "The number of operations performed as a function of input size n." },
-    { "term": "Space complexity", "def": "The amount of memory required as a function of input size n." },
-    { "term": "Tractable / Intractable", "def": "Solvable in polynomial time or better / only solvable in exponential time or worse." },
-    { "term": "Divide and conquer", "def": "Break a problem into subproblems, solve them, then combine (e.g. merge sort, quick sort, binary search)." },
-    { "term": "Heuristic", "def": "A rule-of-thumb estimate; in A* the estimate h(n) of the remaining cost from a node to the goal." },
-    { "term": "Admissible heuristic", "def": "A heuristic that never overestimates the true remaining cost, guaranteeing A* finds the optimal path." }
+    {"term": "Algorithm", "def": "A precise, finite sequence of steps that solves a problem for any valid input."},
+    {"term": "Time complexity", "def": "How the number of operations an algorithm performs grows as the input size n grows."},
+    {"term": "Space complexity", "def": "How the memory an algorithm requires grows as the input size n grows."},
+    {"term": "Big O notation", "def": "Notation expressing the worst-case growth of time or space against n, keeping only the dominant term."},
+    {"term": "Logarithmic growth", "def": "O(log n): work grows by one step each time n doubles, because each step halves the problem."},
+    {"term": "Exponential growth", "def": "O(2 to the power n): work doubles every time n increases by one; intractable for realistic n."},
+    {"term": "Best, average and worst case", "def": "The complexity for the most favourable input, a typical input, and the least favourable input."},
+    {"term": "Linear search", "def": "Checking each element in turn from the start until the target is found or the list ends; O(n)."},
+    {"term": "Binary search", "def": "Repeatedly examining the middle of a sorted list and discarding the half that cannot contain the target; O(log n)."}
   ],
   "content": [
-    {
-      "heading": "Big O and complexity classes",
-      "points": [
-        "Big O describes the worst-case growth of time (operations) or space (memory) against input size n.",
-        "Simplify by dropping constants and lower-order terms: 3n² + 5n + 17 → O(n²), the dominant term wins.",
-        "Order of growth: O(1) constant, O(log n) logarithmic, O(n) linear, O(n log n) linearithmic, O(n²) quadratic, O(2ⁿ) exponential.",
-        "Tractable = solvable in polynomial time or better; intractable = only exponential O(2ⁿ) or worse.",
-        "Always justify a Big O, e.g. 'O(n²) because of the nested loop — each of n passes makes up to n comparisons.'"
-      ]
-    },
-    {
-      "heading": "Searching algorithms",
-      "points": [
-        "Linear search: check each element in turn from the start; works on unsorted data; O(n) average and worst, O(1) best.",
-        "Binary search: check the middle of a SORTED list, discard the half that cannot contain the target, repeat; O(log n) worst case.",
-        "Binary search precondition: the list MUST be sorted so a half can be safely discarded each pass — always state this.",
-        "Binary search is O(log n) because halving the search space means doubling n only adds one extra step."
-      ]
-    },
-    {
-      "heading": "Sorting algorithms",
-      "points": [
-        "Bubble sort: repeatedly compare adjacent pairs and swap if out of order; O(n²) average/worst, O(n) best only with a swap flag; stable, O(1) space.",
-        "Insertion sort: build a sorted front section, inserting each element by shifting larger ones right; O(n²) average/worst, O(n) best; stable, O(1) space.",
-        "Merge sort: divide and conquer, split until single items then merge; guaranteed O(n log n) in all cases but needs O(n) extra space.",
-        "Quick sort: pick a pivot, partition smaller-left / larger-right, recurse; O(n log n) average but O(n²) worst case (poor pivot); not stable.",
-        "Classic trade-off: merge sort guarantees O(n log n) time but uses O(n) space; quick sort uses O(log n) space but risks O(n²) time."
-      ]
-    },
-    {
-      "heading": "Data-structure operation complexities",
-      "points": [
-        "Stack (LIFO) and queue (FIFO): push, pop, enQueue, deQueue are all O(1) — they act only on the top/ends.",
-        "Array: access by index is O(1), but inserting or deleting shifts elements → O(n).",
-        "Linked list: traversal and search are O(n); inserting or deleting given the node is O(1) by re-pointing.",
-        "Binary search tree: search/insert is O(log n) average if balanced, O(n) worst if degenerate; full traversal is O(n).",
-        "A circular queue uses MOD to wrap its pointers and reuse freed space."
-      ]
-    },
-    {
-      "heading": "Tree traversals",
-      "points": [
-        "Pre-order (Node → Left → Right): used to copy a tree or output prefix expressions.",
-        "In-order (Left → Node → Right): outputs a BST's values in ascending sorted order.",
-        "Post-order (Left → Right → Node): used to delete a tree or evaluate RPN (postfix); it is the depth-first traversal the spec names.",
-        "Breadth-first (BFS): visit level by level, left to right, using a queue; finds shortest paths in unweighted graphs.",
-        "Mnemonic for the Node position: Pre = first, In = middle, Post = last."
-      ]
-    },
-    {
-      "heading": "Shortest path: Dijkstra and A*",
-      "points": [
-        "Dijkstra uses cost g(n) only, is uninformed, and searches outward in all directions to find shortest paths to ALL nodes.",
-        "Dijkstra: always settle the unvisited node with the smallest tentative distance, relax its neighbours, then never update a settled node.",
-        "A* uses f(n) = g(n) + h(n), where h(n) is a heuristic estimate of remaining cost to the goal — this is the key difference.",
-        "A* directs the search toward one goal, usually exploring fewer nodes and so running faster than Dijkstra.",
-        "A* is optimal only if its heuristic is admissible (never overestimates); if h(n) = 0, A* reduces exactly to Dijkstra."
-      ]
-    }
+    {"heading": "Analysing and designing algorithms", "points": ["An algorithm is a precise, finite sequence of steps that solves a problem.", "Analysis asks: is it correct for every valid input, and how efficient is it?", "Design decides inputs, outputs, the steps between them, and the data structures used.", "Two correct algorithms can differ enormously in speed and memory: efficiency is the discriminator.", "The same problem, like searching, has several standard algorithms; choosing between them is an exam skill."]},
+    {"heading": "Suitability: choosing the right algorithm for a task", "points": ["How big is the input now, and how big could it grow?", "Is the data already sorted or structured, and can that be exploited?", "Is memory limited, favouring in-place algorithms?", "How often will it run — once, or millions of times per day?", "Do we need guaranteed worst-case performance, or is a good average enough?"], "note": "Exam answers must match the algorithm to the scenario, not just recite complexities."},
+    {"heading": "Measuring efficiency: time and space", "points": ["We count operations, not seconds: hardware changes, growth rates do not.", "Time complexity: how the operation count grows as input size n grows.", "Space complexity: how the memory needed grows as n grows.", "Doubling n is the key test: what happens to the work?", "Often a trade-off: faster algorithms may buy speed with extra memory."]},
+    {"heading": "Big O: the simplification rules", "points": ["Big O gives the worst-case growth rate of time or space against n.", "Drop constants: 4n + 7 is O(n), and 500 on its own is O(1).", "Keep only the dominant term: 3n squared + 5n + 17 is O(n squared).", "n(n - 1)/2 expands to a dominant n squared term, so it is also O(n squared).", "Always justify: O(n squared) because the nested loop does up to n comparisons on each of n passes."], "note": "OCR names five classes: constant, linear, polynomial, exponential and logarithmic."},
+    {"heading": "The complexity classes and their intuition", "points": ["O(1) constant: same work however big n is, like reading arr[5].", "O(log n) logarithmic: each step halves the problem, so doubling n adds only one step.", "O(n) linear: double the data, double the work, like one full scan.", "O(n squared) polynomial: double the data, four times the work — the signature of nested loops.", "O(2 to the power n) exponential: each extra item doubles the work; intractable brute force."]},
+    {"heading": "Growth rates compared", "points": ["Read each row: the classes barely differ at tiny n, then separate catastrophically.", "At n = 100, an O(log n) algorithm does about 7 steps; an exponential one could not finish before the sun dies.", "Tractable problems have polynomial-time (or better) algorithms; exponential-only problems are intractable.", "This table is why algorithm choice matters more than faster hardware."], "code": ["n        O(1)   O(log n)   O(n)     O(n log n)     O(n squared)   O(2 to the n)", "8        1      3          8        24             64             256", "100      1      7          100      about 700      10,000         about 10 to the 30", "1,000    1      10         1,000    about 10,000   1,000,000      beyond astronomical"]},
+    {"heading": "Best, average and worst case", "points": ["Best case: the most favourable input, e.g. linear search finding the target at index 0 — O(1).", "Average case: expected behaviour on typical input, e.g. linear search checking about half the list — still O(n).", "Worst case: the least favourable input, e.g. target last or absent — all n checked, O(n).", "Unqualified Big O in this course means the worst case.", "Worst case matters most when a guarantee is needed, e.g. real-time systems."]},
+    {"heading": "Linear search", "points": ["Start at index 0 and compare each element with the target in turn.", "Return the index when found; return -1 if the end is reached.", "Needs no preconditions: works on completely unsorted data.", "Best O(1), average O(n), worst O(n); space O(1)."], "code": ["function linearSearch(arr, target)", "    for i = 0 to arr.length - 1", "        if arr[i] == target then", "            return i", "        endif", "    next i", "    return -1", "endfunction"]},
+    {"heading": "Binary search", "points": ["Precondition: the list MUST be sorted — always state this.", "Compare the middle element; if too small, discard the left half; if too big, discard the right half.", "Repeat on the surviving half until found, or until low passes high (not present).", "The condition is low <= high so a final one-element range is still checked.", "Best O(1), average and worst O(log n); iterative version is O(1) space."], "code": ["function binarySearch(arr, target)", "    low = 0", "    high = arr.length - 1", "    while low <= high", "        mid = (low + high) DIV 2", "        if arr[mid] == target then", "            return mid", "        elseif arr[mid] < target then", "            low = mid + 1", "        else", "            high = mid - 1", "        endif", "    endwhile", "    return -1", "endfunction"]},
+    {"heading": "O(n) versus O(log n): why halving wins", "points": ["Binary search halves the range every comparison, so doubling n adds only one comparison.", "A million sorted items: linear search up to 1,000,000 checks; binary search at most about 20, since 2 to the 20 exceeds a million.", "The advantage grows with n — that is what a better complexity class means.", "Linear search still wins when data is unsorted, tiny, or searched only once, because sorting first costs O(n log n).", "Full justification for marks: name the halving, the sorted precondition, and the doubling-adds-one-step consequence."], "note": "Never claim binary search is simply better: it buys speed with the sorted-data precondition."}
   ],
-  "worked_example": {
-    "title": "Tracing Dijkstra's algorithm from node A (undirected weighted graph)",
-    "steps": [
-      "Edges: A–B=4, A–D=1, B–C=2, B–E=5, C–F=3, D–E=2, E–F=1. Set distance A=0 and all others to infinity.",
-      "From A, tentative distances are D=1 and B=4. The smallest unvisited is D=1, so settle D=1 (via A).",
-      "From D, relax E: 1 + 2 = 3. Smallest unvisited is now E=3, so settle E=3 (via D).",
-      "From E, relax F: 3 + 1 = 4, and B via E: 3 + 5 = 8 (worse than 4, keep B=4). Both B=4 and F=4 are smallest; settle B=4 (via A) and F=4 (via E).",
-      "From B, relax C: 4 + 2 = 6. From F, C via F: 4 + 3 = 7 (worse, keep 6). Settle C=6 (via B).",
-      "Final shortest distances from A: A=0, D=1 (via A), E=3 (via D), B=4 (via A), F=4 (via E), C=6 (via B).",
-      "Complexity: a simple-array Dijkstra is O(n²); with a priority queue it is O((V + E) log V). It explores more nodes than A* because it has no heuristic to steer toward a single goal."
-    ]
-  },
-  "task": "Trace a bubble sort on [5, 3, 8, 1, 4], writing the full list after each complete left-to-right pass. Then state and justify the worst-case Big O of bubble sort.",
-  "challenge": "On the same graph, explain how adding an admissible straight-line heuristic h(n) would change the search to A*, and identify which node Dijkstra wastefully settles that A* searching only for goal F might avoid. Justify why A* still returns the optimal path.",
+  "worked_examples": [
+    {"title": "Simplifying six expressions to Big O", "steps": [
+      "4n + 7: drop the constant 7 and the coefficient 4 — O(n).",
+      "3n squared + 5n + 17: the n squared term dominates for large n — O(n squared).",
+      "n(n - 1)/2: expands to half of n squared minus n, and n squared dominates — O(n squared); this is exactly bubble sort's worst-case comparison count.",
+      "500: no dependence on n at all — O(1).",
+      "2n log n + 3n: n log n outgrows n, coefficients dropped — O(n log n).",
+      "2 to the power n, plus n cubed: the exponential term eventually dwarfs any polynomial — O(2 to the power n).",
+      "Rule used every time: keep the dominant term, drop constants and lower-order terms."
+    ]},
+    {"title": "Tracing linear search on arr = [14, 3, 27, 9, 41, 8]", "steps": [
+      "Target 9: i=0 compares 14 (no), i=1 compares 3 (no), i=2 compares 27 (no), i=3 compares 9 (yes) — return 3 after 4 comparisons.",
+      "Target 8 (worst case, found): i=0 to i=5 compare 14, 3, 27, 9, 41, 8 — return 5 after 6 comparisons, the full n.",
+      "Target 50 (worst case, absent): all 6 elements compared, loop ends, return -1.",
+      "Best case would be target 14: one comparison, O(1).",
+      "Conclusion: comparisons grow in direct proportion to n, so linear search is O(n) in the average and worst case."
+    ]},
+    {"title": "Tracing binary search on arr = [2, 6, 11, 15, 23, 31, 40, 52, 67] (indices 0 to 8)", "steps": [
+      "Target 31. Iteration 1: low=0, high=8, mid=(0+8) DIV 2=4; arr[4]=23 < 31, so low=5.",
+      "Iteration 2: low=5, high=8, mid=(5+8) DIV 2=6; arr[6]=40 > 31, so high=5.",
+      "Iteration 3: low=5, high=5, mid=5; arr[5]=31 — return 5. Found in 3 comparisons; linear search would have needed 6.",
+      "Target 20 (absent). Iteration 1: low=0, high=8, mid=4; arr[4]=23 > 20, so high=3.",
+      "Iteration 2: low=0, high=3, mid=1; arr[1]=6 < 20, so low=2. Iteration 3: low=2, high=3, mid=2; arr[2]=11 < 20, so low=3.",
+      "Iteration 4: low=3, high=3, mid=3; arr[3]=15 < 20, so low=4. Now low(4) > high(3): the range is empty, return -1.",
+      "Each iteration halved the surviving range: 9, then 4, then 2, then 1 elements — the halving is the O(log n) justification."
+    ]}
+  ],
+  "activities": [
+    {"title": "Guess My Number in 7 (binary search unplugged)", "minutes": 12, "instructions": [
+      "Announce a hidden number from 1 to 100, answering only higher, lower or correct, and bet the class can always win in 7 guesses or fewer.",
+      "Round 1: free guessing (expect scatter-gun); tally the guesses taken.",
+      "Round 2: impose the algorithm — always guess mid = (low + high) DIV 2, tracking low, high and mid in three board columns. Hidden number 73: guesses run 50 (higher), 75 (lower), 62 (higher), 68 (higher), 71 (higher), 73 — found in 6 guesses.",
+      "Round 3, adversarial: secretly move the number into whichever half keeps the game alive (worst case, target 100): 50, 75, 88, 94, 97, 99, 100 — exactly 7 guesses, and the class still wins.",
+      "Reveal the maths: 100 halves as 100, 50, 25, 12, 6, 3, 1; 2 to the 6 is 64 which is under 100, but 2 to the 7 is 128, so 7 guesses always suffice."
+    ], "stretch": "How many guesses for 1 to a billion? (30, since 2 to the 30 is about 1.07 billion.) Why does the trick fail on an unsorted pile of cards? (Discarding half is only safe when order tells you which half cannot hold the target.)"},
+    {"title": "Big O graph-sketch race", "minutes": 12, "instructions": [
+      "Heat 1 (4 min): pairs sketch all six growth curves on one set of axes, ordered and labelled: O(1), O(log n), O(n), O(n log n), O(n squared), O(2 to the n). Spot-check with values at n = 8: they should read 1, 3, 8, 24, 64, 256.",
+      "Heat 2 (3 min): hold up expression cards one at a time for pairs to classify: 4n + 7 is O(n); 3n squared + 5n + 17 is O(n squared); n(n - 1)/2 is O(n squared); 500 is O(1); 2n log n + 3n is O(n log n); 2 to the n plus n cubed is O(2 to the n).",
+      "Heat 3 (3 min): algorithm snap — call out linear search, binary search, bubble sort worst, merge sort, quick sort average, quick sort worst; pairs point at the matching curve (O(n), O(log n), O(n squared), O(n log n), O(n log n), O(n squared)).",
+      "Debrief the one rule that decided every heat: keep the dominant term, drop constants and lower-order terms."
+    ], "stretch": "Where is the tractable/intractable border on the sketch? (Polynomial or better is tractable; exponential is intractable.) Does Big O care that we only ever run an algorithm on n = 10? (No — it describes growth, not one run.)"},
+    {"title": "Parson's problem: rebuild binary search", "minutes": 12, "instructions": [
+      "Give each pair an envelope of 12 shuffled code strips of the binary search function (declaration, low = 0, high = arr.length - 1, the while low <= high loop, mid = (low + high) DIV 2, the three-way if, return -1, endfunction). Indentation is part of the answer.",
+      "Pairs assemble a working function that returns the index of target in sorted arr, or -1 if absent.",
+      "Gate to finish: pairs must trace their assembled code on arr = [3, 7, 11, 18, 25, 42, 59] with target 42, writing every low, high and mid: low=0, high=6, mid=3 gives arr[3]=18 which is less than 42 so low=4; then mid=(4+6) DIV 2=5 gives arr[5]=42 — return 5 in two iterations.",
+      "Debrief the traps: why while low <= high and not just less than? (A one-element range must still be checked.) Why mid + 1 and mid - 1, not mid? (Otherwise the range never shrinks — infinite loop.)"
+    ], "stretch": "Convert it to a recursive version with low and high as parameters and base case low > high. Which uses more memory? (Recursive: O(log n) stack frames versus O(1) iterative.)"}
+  ],
+  "practice": [
+    {"q": "Define what is meant by the time complexity of an algorithm. [2]", "a": "A measure of how the number of operations performed grows as the input size n grows (1), normally expressed for the worst case using Big O notation (1)."},
+    {"q": "Simplify 6n squared + 20n + 3 to Big O notation and justify your answer. [2]", "a": "O(n squared) (1); constants and lower-order terms are dropped because for large n the n squared term dominates the growth (1)."},
+    {"q": "A program must search a list of 10,000 unsorted customer IDs once. State which standard search algorithm is more suitable and justify your choice. [3]", "a": "Linear search (1); binary search requires sorted data, and sorting first (O(n log n)) costs more than a single O(n) scan (1); linear search works directly on unsorted data (1)."},
+    {"q": "Explain why binary search has time complexity O(log n). [2]", "a": "Each comparison halves the remaining search space (1), so doubling the list length adds only one extra comparison — at most about log base 2 of n steps are needed (1)."},
+    {"q": "A sorted list doubles in size from 1,024 to 2,048 items. Explain the effect on the worst-case number of comparisons for linear search and for binary search. [3]", "a": "Linear search's worst case doubles from 1,024 to 2,048 comparisons because every element may be checked (1); binary search needs only one extra comparison (1) because each comparison halves the range, so one additional halving deals with the doubled list (1)."},
+    {"q": "State the best-case and worst-case time complexity of linear search and describe the input that causes each. [4]", "a": "Best case O(1) (1) when the target is the first element (1); worst case O(n) (1) when the target is the last element or not present, so all n elements are checked (1)."},
+    {"q": "Give one reason a programmer might reasonably choose an O(n squared) algorithm over an available O(n log n) alternative. [1]", "a": "Any one of: the data set is tiny so the difference is negligible; the simpler algorithm is easier to write, test and maintain; it needs no extra memory (1)."},
+    {"q": "Explain the difference between time complexity and space complexity, and state the space complexity of an iterative binary search. [3]", "a": "Time complexity describes how the number of operations grows with n (1); space complexity describes how the memory required grows with n (1); iterative binary search is O(1) space because it only ever stores low, high and mid regardless of n (1)."}
+  ],
+  "misconceptions": [
+    "Students often think Big O measures time in seconds; it measures how the operation count grows with n, independent of hardware.",
+    "Students often think O(1) means one operation or means fast; it means the work does not grow with n — it could be a slow fixed amount.",
+    "Students often think binary search is always better than linear search; it needs sorted data, and sorting first can cost more than one linear scan.",
+    "Students often think large coefficients change the class, writing O(3n squared); coefficients are dropped — growth rate is all Big O keeps.",
+    "Students often fear log n as hard maths; it is simply the number of times n can be halved before reaching 1."
+  ],
+  "exam_link": [
+    "Command words here: state a Big O (1 mark), explain or justify a complexity (2-3 marks), compare algorithms for a scenario (4-6 marks), and complete or write a trace table (3-4 marks).",
+    "Trace questions demand every value of low, high and mid; a correct final answer with missing intermediate values loses marks.",
+    "The classic 1-mark giveaway lost every year: forgetting to state that binary search requires sorted data.",
+    "Example stem: 'A phone book app stores 50,000 contacts in alphabetical order. Explain why binary search is more suitable than linear search for this app.' [4]"
+  ],
+  "task": "Write the ERL binary search function from memory, then trace it on arr = [2, 6, 11, 15, 23, 31, 40, 52, 67] for target 52, recording low, high and mid at every iteration. (Answer: low=0, high=8, mid=4, arr[4]=23 too small so low=5; low=5, high=8, mid=6, arr[6]=40 too small so low=7; low=7, high=8, mid=7, arr[7]=52 — return 7 after 3 comparisons.) Finish with a two-sentence justification of why the algorithm is O(log n).",
+  "challenge": "A server must search one billion sorted records. Show that binary search needs at most about 30 comparisons (2 to the 30 is about 1.07 billion) while linear search may need a billion. Then argue the harder question: the records arrive unsorted at 9am and are searched k times during the day — roughly how large must k be before paying the O(n log n) sort makes binary search the right choice, and what would you do if k = 1?",
   "exit_ticket": [
-    { "q": "What is the worst-case time complexity of quick sort, and what causes it?", "a": "O(n²), caused by a poor pivot choice such as already-sorted data producing unbalanced partitions." },
-    { "q": "Why does merge sort guarantee O(n log n) but use O(n) extra space?", "a": "It always divides into log n levels each doing n work to merge (O(n log n)), but merging needs temporary arrays the size of the input (O(n))." },
-    { "q": "State the f(n) formula used by A* and what each term means.", "a": "f(n) = g(n) + h(n): g(n) is the actual cost from the start to n, h(n) is the heuristic estimate of remaining cost to the goal." }
+    {"q": "Simplify 5n squared + 90n + 2000 to Big O notation.", "a": "O(n squared) — drop constants and lower-order terms, keeping the dominant term."},
+    {"q": "State the one precondition of binary search and what happens to the worst-case comparisons when the list doubles in length.", "a": "The list must be sorted; doubling the list adds just one comparison, because each comparison halves the range."},
+    {"q": "Give the best and worst case of linear search with the input that causes each.", "a": "Best O(1) when the target is first; worst O(n) when the target is last or absent, so every element is checked."}
   ]
 }

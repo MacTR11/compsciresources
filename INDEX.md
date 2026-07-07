@@ -543,7 +543,10 @@
 
 #### Year 13 - 2.3.1 Algorithms
 
-- [1 Lesson.pptx](2%20Topic%20Library/Component%202%20-%20Algorithms%20and%20Programming/2.3%20Algorithms/Year%2013%20-%202.3.1%20Algorithms/1%20Lesson.pptx)
+- [1 Lesson 1 - Analysis, Big O and searching.pptx](2%20Topic%20Library/Component%202%20-%20Algorithms%20and%20Programming/2.3%20Algorithms/Year%2013%20-%202.3.1%20Algorithms/1%20Lesson%201%20-%20Analysis%2C%20Big%20O%20and%20searching.pptx)
+- [1 Lesson 2 - Sorting algorithms.pptx](2%20Topic%20Library/Component%202%20-%20Algorithms%20and%20Programming/2.3%20Algorithms/Year%2013%20-%202.3.1%20Algorithms/1%20Lesson%202%20-%20Sorting%20algorithms.pptx)
+- [1 Lesson 3 - Tree traversal algorithms.pptx](2%20Topic%20Library/Component%202%20-%20Algorithms%20and%20Programming/2.3%20Algorithms/Year%2013%20-%202.3.1%20Algorithms/1%20Lesson%203%20-%20Tree%20traversal%20algorithms.pptx)
+- [1 Lesson 4 - Dijkstra and A star.pptx](2%20Topic%20Library/Component%202%20-%20Algorithms%20and%20Programming/2.3%20Algorithms/Year%2013%20-%202.3.1%20Algorithms/1%20Lesson%204%20-%20Dijkstra%20and%20A%20star.pptx)
 - [2 Quiz - Answers.docx](2%20Topic%20Library/Component%202%20-%20Algorithms%20and%20Programming/2.3%20Algorithms/Year%2013%20-%202.3.1%20Algorithms/2%20Quiz%20-%20Answers.docx)
 - [2 Quiz.docx](2%20Topic%20Library/Component%202%20-%20Algorithms%20and%20Programming/2.3%20Algorithms/Year%2013%20-%202.3.1%20Algorithms/2%20Quiz.docx)
 - [3 Homework - Answers.docx](2%20Topic%20Library/Component%202%20-%20Algorithms%20and%20Programming/2.3%20Algorithms/Year%2013%20-%202.3.1%20Algorithms/3%20Homework%20-%20Answers.docx)

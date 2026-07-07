@@ -1,0 +1,122 @@
+{
+  "subtopic": "2.3.1 Algorithms (part 3 — tree traversals)",
+  "spec": "OCR H446 — Component 02",
+  "week": "Year 13",
+  "objectives": [
+    "I can perform a depth-first (post-order) traversal of a binary tree, showing the order state by state.",
+    "I can perform a breadth-first traversal using a queue, tracing the queue contents at every step.",
+    "I can write recursive post-order code in OCR Exam Reference Language and explain the role of the call stack.",
+    "I can state appropriate uses for depth-first (post-order) and breadth-first traversals."
+  ],
+  "retrieval": [
+    {"q": "From part 2: which sorting algorithm guarantees O(n log n) in every case, and at what cost?", "a": "Merge sort; it needs O(n) extra memory for the merge lists."},
+    {"q": "From part 2: state quick sort's worst-case complexity and one input that causes it.", "a": "O(n squared); already-sorted data with the first element chosen as pivot."},
+    {"q": "From 1.4.2: describe the path taken when 45 is inserted into a BST with root 50, left child 30 and right child 70.", "a": "45 is less than 50 so go left to 30; 45 is greater than 30 so it becomes 30's right child."},
+    {"q": "From 1.4.2: what do LIFO and FIFO mean, and which structure is which?", "a": "Last in first out is a stack; first in first out is a queue."},
+    {"q": "From 1.4.2: why are push, pop, enqueue and dequeue all O(1)?", "a": "They act only on the top of the stack or the ends of the queue — nothing is traversed or shifted."}
+  ],
+  "keywords": [
+    {"term": "Binary tree", "def": "A tree where each node has at most two children, called the left and right child."},
+    {"term": "Binary search tree (BST)", "def": "A binary tree where every node's left subtree holds smaller values and its right subtree holds larger values."},
+    {"term": "Traversal", "def": "Visiting every node of a tree exactly once in a defined order."},
+    {"term": "Depth-first (post-order) traversal", "def": "Go as deep as possible first: visit the left subtree, then the right subtree, then the node itself."},
+    {"term": "Breadth-first traversal", "def": "Visit nodes level by level, left to right, using a queue to hold discovered nodes."},
+    {"term": "Call stack", "def": "The stack of active subroutine calls; recursion uses it to remember where to return after each call."},
+    {"term": "Leaf", "def": "A node with no children; in traversal code it triggers the base case for both child calls."},
+    {"term": "In-order traversal", "def": "Left subtree, node, right subtree; on a BST this outputs the values in ascending order."},
+    {"term": "Tree height", "def": "The number of levels from root to deepest leaf; recursive traversal's maximum stack depth."}
+  ],
+  "content": [
+    {"heading": "Trees and BSTs: the ten-second recap", "points": ["A tree is a connected graph with no cycles; the root is at the top, leaves at the bottom.", "Binary tree: at most two children per node; each child is the root of its own subtree.", "BST rule: smaller values in the left subtree, larger in the right, applied at every node.", "The BST rule is what makes searching O(log n) when the tree is balanced.", "Traversal is different from searching: a traversal must visit every node once."]},
+    {"heading": "Two traversal families", "points": ["Depth-first: follow one branch as deep as possible before backtracking — implemented with a stack, usually the call stack via recursion.", "Breadth-first: visit everything on one level before the next — implemented with a queue.", "OCR H446 names two traversals: depth-first (post-order) and breadth-first.", "Both visit all n nodes exactly once, so both are O(n) time.", "The pairing to memorise: depth-first goes with stack, breadth-first goes with queue."], "note": "For OCR, THE depth-first traversal is post-order. In-order appears only as the BST property that outputs ascending values."},
+    {"heading": "Depth-first (post-order): the rule", "points": ["Order at every node: traverse the LEFT subtree, traverse the RIGHT subtree, then visit the NODE.", "Post means the node comes last — after both its subtrees.", "Consequence: children are always visited before their parent, and the root comes very last.", "Paper method: walk anticlockwise around the outside of the tree and output each node on the LAST time you pass it.", "A leaf's left and right calls both hit the base case immediately, so a leaf is output on first touch."]},
+    {"heading": "Recursive post-order in ERL", "points": ["Each node holds a value and pointers left and right; absent children are null.", "The base case is the null check: recursion stops below every leaf.", "The two recursive calls come first; the print comes after both return — that single line position defines post-order.", "Moving print(node.value) to other positions gives the other traversal orders."], "code": ["procedure postOrder(node)", "    if node != null then", "        postOrder(node.left)", "        postOrder(node.right)", "        print(node.value)", "    endif", "endprocedure", "", "postOrder(root)   // start the traversal"]},
+    {"heading": "The call stack does the bookkeeping", "points": ["Every call pushes a frame recording which node it is at and which line to resume from.", "Going deeper pushes frames; returning pops them — depth-first IS stack behaviour.", "Maximum stack depth equals the height of the tree: O(log n) frames if balanced, O(n) if degenerate.", "This is why an iterative depth-first traversal needs an explicit stack to replace the call stack.", "Time is O(n) — each node is the subject of exactly one call that prints it."]},
+    {"heading": "Our worked tree: a 7-node BST", "points": ["Built by inserting 42, 26, 60, 13, 35, 51, 74 into an empty BST, in that order.", "Level 1: 42. Level 2: 26 and 60. Level 3: 13, 35, 51, 74.", "Check the BST rule anywhere: everything in 42's left subtree (26, 13, 35) is below 42; everything right (60, 51, 74) is above.", "This tree is perfectly balanced: height 3, so recursive traversal never stacks more than 3 node frames."], "code": ["            42", "          /    \\", "       26        60", "      /  \\      /  \\", "    13    35  51    74"]},
+    {"heading": "Breadth-first with a queue", "points": ["Enqueue the root; then repeat: dequeue a node, visit it, enqueue its children left then right.", "Stop when the queue is empty — every node has been visited exactly once.", "The queue's FIFO order is what forces level-by-level visiting: children join the back, behind the rest of the current level.", "Space cost is the widest level of the tree; time is O(n)."], "code": ["procedure breadthFirst(root)", "    queue = new Queue()", "    queue.enqueue(root)", "    while NOT queue.isEmpty()", "        node = queue.dequeue()", "        print(node.value)", "        if node.left != null then", "            queue.enqueue(node.left)", "        endif", "        if node.right != null then", "            queue.enqueue(node.right)", "        endif", "    endwhile", "endprocedure"]},
+    {"heading": "In-order: a BST property, not the OCR depth-first", "points": ["In-order visits left subtree, node, right subtree — the node in the middle.", "On a BST this outputs values in ascending order: for our tree, 13, 26, 35, 42, 51, 60, 74.", "That sorted output is exam-relevant as a property of binary search trees.", "But if a question asks for the depth-first traversal, answer with post-order: left, right, node."], "note": "Writing the in-order sequence for a question asking for depth-first is the classic dropped mark in this topic."},
+    {"heading": "What each traversal is for", "points": ["Post-order: deleting or freeing a tree safely — children must go before their parent.", "Post-order: evaluating an expression tree, since operands must be produced before their operator (this is postfix or RPN).", "Breadth-first: finding the shortest path (fewest edges) in an unweighted structure, and processing by level.", "Breadth-first: a fair exploration when the answer is likely near the root.", "In-order on a BST: reading all values out in ascending order without sorting."]},
+    {"heading": "Complexity summary", "points": ["Both traversals visit each node once: O(n) time — no traversal can beat this, every node must be seen.", "Depth-first space: O(height) stack frames — O(log n) balanced, O(n) degenerate.", "Breadth-first space: O(width) queue entries — up to about n/2 for the bottom level of a full tree.", "Deep narrow tree: BFS is cheap on memory; wide shallow tree: DFS is cheaper.", "These space arguments are exactly the ones examiners reward in compare questions."]}
+  ],
+  "worked_examples": [
+    {"title": "Building the 7-node BST by insertion (42, 26, 60, 13, 35, 51, 74)", "steps": [
+      "Insert 42 into the empty tree: 42 becomes the root.",
+      "Insert 26: 26 < 42, go left — empty, so 26 is 42's left child. Insert 60: 60 > 42, go right — empty, so 60 is 42's right child.",
+      "Insert 13: 13 < 42 go left to 26; 13 < 26 go left — empty, so 13 is 26's left child.",
+      "Insert 35: 35 < 42 go left to 26; 35 > 26 go right — empty, so 35 is 26's right child.",
+      "Insert 51: 51 > 42 go right to 60; 51 < 60 go left — empty, so 51 is 60's left child. Insert 74: 74 > 42, 74 > 60 — 74 is 60's right child.",
+      "Sanity check with the BST ordering property: the in-order reading (left, node, right) gives 13, 26, 35, 42, 51, 60, 74 — ascending, so the tree is correct."
+    ]},
+    {"title": "Depth-first (post-order) traversal of the tree, state by state", "steps": [
+      "Call postOrder(42): before 42 can be visited, recurse left. Stack of active calls: 42.",
+      "postOrder(26) recurses left to postOrder(13). Stack: 42, 26, 13 — the deepest it ever gets (height 3).",
+      "13's left and right calls hit null (base case), so OUTPUT 13. Pop back to 26, which now recurses right to 35; 35's children are null, so OUTPUT 35.",
+      "Both of 26's subtrees are done, so OUTPUT 26. Pop back to 42; its left subtree is complete with output so far: 13, 35, 26.",
+      "42 recurses right: postOrder(60) goes left to 51 (children null, OUTPUT 51), then right to 74 (children null, OUTPUT 74), then OUTPUT 60.",
+      "Both subtrees of the root are done, so OUTPUT 42 last. Final post-order: 13, 35, 26, 51, 74, 60, 42.",
+      "Verify the invariant: every parent appears after both its children — 26 after 13 and 35; 60 after 51 and 74; 42 at the very end."
+    ]},
+    {"title": "Breadth-first traversal of the tree, tracing the queue", "steps": [
+      "Enqueue the root. Queue: [42].",
+      "Dequeue 42, visit it, enqueue children 26 and 60. Visited: 42. Queue: [26, 60].",
+      "Dequeue 26, visit, enqueue 13 and 35. Visited: 42, 26. Queue: [60, 13, 35].",
+      "Dequeue 60, visit, enqueue 51 and 74. Visited: 42, 26, 60. Queue: [13, 35, 51, 74] — the whole bottom level, in left-to-right order.",
+      "Dequeue 13, then 35, then 51, then 74 — all leaves, nothing to enqueue. Queue shrinks [35, 51, 74], [51, 74], [74], [].",
+      "Queue empty — stop. Breadth-first order: 42, 26, 60, 13, 35, 51, 74 — exactly level by level, left to right.",
+      "Contrast with post-order (13, 35, 26, 51, 74, 60, 42): the root is FIRST in breadth-first and LAST in post-order."
+    ]}
+  ],
+  "activities": [
+    {"title": "Walk the tree", "minutes": 15, "instructions": [
+      "Tape a BST on the floor (paper-plate nodes, tape edges): root 50; left 30 with children 20 and 40; right 70 with children 60 and 80. One walker; class records on mini-whiteboards.",
+      "Teach the walking rule: walk anticlockwise around the outside of the whole tree, left hand toward it; every node gets touched on the way down, between its subtrees, and on the way back up.",
+      "Post-order lap (the OCR depth-first): the walker shouts each value on its LAST touch — the class should record 20, 40, 30, 60, 80, 70, 50.",
+      "Optional in-order lap (shout on the MIDDLE touch): 20, 30, 40, 50, 60, 70, 80 — force out the observation that a BST read this way comes out ascending.",
+      "Breadth-first finale with no walking: a queue of students at the side — enqueue 50; repeatedly dequeue-and-shout then enqueue children left to right: 50, 30, 70, 20, 40, 60, 80. Land the pairing: the walker's route was a stack; BFS needed a queue."
+    ], "stretch": "Insert 65 (path: 50 right, 70 left, 60 right — it becomes 60's right child) and re-run post-order: 20, 40, 30, 65, 60, 80, 70, 50."},
+    {"title": "What prints next? Stacks and queues", "minutes": 10, "instructions": [
+      "Reveal a 16-line script one line at a time: push 3, push 8, push 5 onto a stack; pop and print twice; push 1; pop and print; then enqueue red, blue, green; dequeue and print; enqueue gold; dequeue and print twice.",
+      "Boards up before every print: what prints next? Expected: 5, then 8, then 1 (the just-pushed 1, not 3 — the classic error), then red, blue (not gold — gold joined the rear), green.",
+      "After the stack section ask for the full stack contents bottom to top ([3]); at the end, the queue ([gold]).",
+      "Sting question: which of these operations was not O(1)? (None — nothing shuffles along.)",
+      "Close by boarding the pairing this lesson depends on: stack = LIFO = depth-first; queue = FIFO = breadth-first."
+    ], "stretch": "Re-run the queue section as a circular queue of capacity 4, showing the rear pointer wrapping with MOD 4 when gold is enqueued."},
+    {"title": "Driver and navigator: recursive traversal", "minutes": 20, "instructions": [
+      "Pairs at one computer with a starter Node record (value, left, right) and the floor tree from Walk the Tree pre-built. Driver types; navigator dictates and hunts bugs; swap roles every 5 minutes.",
+      "Sprint 1: write recursive postOrder(node) and run it — expected output is boarded first: 20 40 30 60 80 70 50.",
+      "Sprint 2 (roles swapped): produce inOrder by moving ONE line — the navigator must say which line and why before the driver touches it (print moves between the two recursive calls; output 20 30 40 50 60 70 80, ascending because it is a BST).",
+      "Sprint 3 (swap again): add a counter recording maximum recursion depth and check it against the tree height (3 levels of node calls for this balanced tree).",
+      "Debrief: where is the base case? (The null check — every call pushes a frame, so maximum depth equals tree height.)"
+    ], "stretch": "What tree shape makes recursion depth O(n)? (A degenerate chain — insert 1, 2, 3, ... in order.) How would you traverse breadth-first instead, and why can recursion alone not do it? (You need a queue; the call stack gives LIFO, not FIFO.)"}
+  ],
+  "practice": [
+    {"q": "State the order in which a depth-first (post-order) traversal processes each node of a binary tree. [1]", "a": "Traverse the left subtree, then the right subtree, then visit the node itself (1)."},
+    {"q": "A binary tree has root 20; 20's left child is 10 with children 5 and 15; 20's right child is 30 with a left child 25. Write the depth-first (post-order) traversal. [3]", "a": "Left subtree of 20: 5, 15, 10 (1). Right subtree: 25 then 30 (1). Root last, giving 5, 15, 10, 25, 30, 20 (1)."},
+    {"q": "For the same tree, write the breadth-first traversal. [2]", "a": "Level by level, left to right: 20, 10, 30 (1), then 5, 15, 25 — giving 20, 10, 30, 5, 15, 25 (1)."},
+    {"q": "Explain why a breadth-first traversal requires a queue. [2]", "a": "Each visited node's children are enqueued at the rear, behind the remaining nodes of the current level (1); FIFO removal therefore guarantees the whole level is visited before the next level begins (1)."},
+    {"q": "A recursive post-order traversal is run on a balanced BST of 1,000,000 nodes. State the structure the recursion relies on and explain why its maximum depth is only about 20. [3]", "a": "The call stack (1); each recursive call pushes a frame and depth equals the height of the tree (1); a balanced BST of a million nodes has height about log base 2 of 1,000,000, which is about 20 (1)."},
+    {"q": "State one practical use of a post-order traversal and one of a breadth-first traversal. [2]", "a": "Post-order: safely deleting a whole tree, or evaluating an expression tree, because children are processed before their parent (1). Breadth-first: finding the shortest path by number of edges, or processing nodes level by level (1)."},
+    {"q": "The in-order traversal of a binary tree outputs 4, 9, 12, 17, 20. What does this output tell you about the tree, and why? [2]", "a": "It is a binary search tree (or at least obeys BST ordering) (1) because in-order visits left subtree, node, then right subtree, which yields ascending order exactly when smaller values are left and larger values are right (1)."},
+    {"q": "Values are inserted into an empty BST in the order 3, 5, 8, 12. Describe the resulting shape and its consequence for the recursive traversal's stack depth. [2]", "a": "A degenerate tree — each value becomes the right child of the previous, forming a chain (1); the recursion depth becomes n (here 4 frames), i.e. O(n) instead of O(log n) (1)."}
+  ],
+  "misconceptions": [
+    "Students often answer a depth-first question with the in-order sequence; for OCR, THE depth-first traversal is post-order (left, right, node) — in-order is only the BST ascending-output property.",
+    "Students often think breadth-first can be written with plain recursion; recursion gives stack (LIFO) behaviour, and level order needs a queue (FIFO).",
+    "Students often place the root first in post-order; the root of the whole tree is always LAST, because both subtrees complete first.",
+    "Students often claim traversal of a BST is O(log n); that is search — a traversal must visit all n nodes, so it is O(n).",
+    "Students often forget the null base case when writing the recursion, so their trace never terminates below the leaves."
+  ],
+  "exam_link": [
+    "Command words: write or state a traversal order (2-3 marks), explain the role of the stack or queue (2-3 marks), write or complete recursive traversal code (3-4 marks).",
+    "Traversal-order questions usually draw the tree; examiners award one mark per correctly ordered section, so show the subtree groupings.",
+    "Code questions hinge on three things: the null base case, the two recursive calls, and the position of the print line.",
+    "Example stem: 'The diagram shows a binary search tree. (i) Write the order the nodes are visited using a depth-first (post-order) traversal. (ii) Explain how a queue is used to perform a breadth-first traversal of the same tree.' [2 + 3]"
+  ],
+  "task": "Draw the BST produced by inserting 55, 32, 78, 19, 40, 66, 90 in that order, then write its depth-first (post-order) traversal and its breadth-first traversal, showing the queue contents after each dequeue. (Answers: post-order 19, 40, 32, 66, 90, 78, 55; breadth-first 55, 32, 78, 19, 40, 66, 90, with the queue peaking at [19, 40, 66, 90] after 78 is dequeued.)",
+  "challenge": "The expression (3 + 4) * 5 is stored as an expression tree with * at the root, + as its left child (children 3 and 4) and 5 as its right child. Write the post-order traversal (3, 4, +, 5, *), explain why this is exactly the RPN form of the expression, and describe how a stack evaluates that output to 35. Then explain why pre-order or breadth-first output could not be evaluated this way.",
+  "exit_ticket": [
+    {"q": "Write the post-order traversal rule and state where the root of the whole tree appears in the output.", "a": "Left subtree, right subtree, then the node; the root appears last."},
+    {"q": "Which data structure does each traversal rely on — depth-first and breadth-first?", "a": "Depth-first uses a stack (the call stack when recursive); breadth-first uses a queue."},
+    {"q": "In-order traversal of a BST outputs what, and is it the traversal OCR calls depth-first?", "a": "The values in ascending order; no — OCR's named depth-first traversal is post-order."}
+  ]
+}

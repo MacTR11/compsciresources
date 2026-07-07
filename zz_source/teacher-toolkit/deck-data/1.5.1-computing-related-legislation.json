@@ -1,90 +1,180 @@
 {
   "subtopic": "1.5.1 Computing Related Legislation",
   "spec": "OCR H446 — Component 01",
+  "week": "Year 13",
   "objectives": [
-    "Identify and describe the four key Acts: the Data Protection Act 1998/2018 (with GDPR), the Computer Misuse Act 1990, the Copyright, Designs & Patents Act 1988 and the Regulation of Investigatory Powers Act 2000.",
-    "Select the correct law (and Computer Misuse Act offence) that applies to a given computing scenario, naming the responsible party.",
-    "Explain why more than one law can apply to a single scenario, distinguishing between the wrongdoing of each party involved."
+    "I can state what each of the four Acts covers: DPA 2018, CMA 1990, CDPA 1988 and RIPA 2000.",
+    "I can name the DPA principles and data subject rights, and distinguish controller, processor and subject.",
+    "I can classify a scenario against the three CMA offences and its later amendments.",
+    "I can apply the 'which Act, which section, why' method to unseen scenarios, including where two laws apply."
   ],
   "retrieval": [
-    { "q": "Which Act governs unauthorised access to computer systems, including hacking and malware?", "a": "The Computer Misuse Act 1990." },
-    { "q": "Under the Data Protection Act, what is the term for the individual whose personal data is being processed?", "a": "The data subject (the controller decides how/why data is used; the processor acts on the controller's behalf)." },
-    { "q": "When does copyright protection begin for an original piece of software?", "a": "Automatically, as soon as the work is created — no registration is required." },
-    { "q": "Interleaving 1.4: what does lossless compression preserve that lossy compression does not?", "a": "Lossless preserves all the original data exactly, so the file can be perfectly reconstructed; lossy permanently discards data." },
-    { "q": "Interleaving 1.3: name two roles in a client-server network model.", "a": "The client (requests services/resources) and the server (provides/manages them)." }
+    {"q": "From 1.3.1: state the key difference between symmetric and asymmetric encryption.", "a": "Symmetric uses one shared key to encrypt and decrypt; asymmetric uses a public/private key pair, so no key exchange problem."},
+    {"q": "From 1.3.1: why are passwords stored as hashes rather than encrypted?", "a": "Hashing is one-way and cannot be reversed; the entered password is hashed and compared, so the real password is never stored."},
+    {"q": "From 1.3.2: what is a primary key?", "a": "An attribute (or combination) that uniquely identifies each record in a table."},
+    {"q": "From 1.3.2: what does referential integrity guarantee in a relational database?", "a": "Every foreign key value must match an existing primary key, so no record references data that does not exist."},
+    {"q": "From 1.3.2: give two reasons personal data is safer in a normalised relational database than in several spreadsheets.", "a": "Data is stored once, so no inconsistent duplicate copies; access rights and updates can be controlled centrally."}
   ],
   "keywords": [
-    { "term": "Personal data", "def": "Data that can identify a living individual, protected by the Data Protection Act / GDPR." },
-    { "term": "Data controller", "def": "The organisation that decides why and how personal data is processed, and is legally responsible for it." },
-    { "term": "Data processor", "def": "A party that processes personal data on behalf of, and under instruction from, the data controller." },
-    { "term": "Unauthorised access", "def": "Accessing a computer system without permission — the core wrong addressed by the Computer Misuse Act 1990." },
-    { "term": "Intellectual property", "def": "Original works (software, music, designs, text) that the law protects as the property of their creator." },
-    { "term": "Licence", "def": "Permission granted by a rights-holder to legally use, copy or distribute a copyrighted work." },
-    { "term": "Patent", "def": "Legal protection for a new invention or idea that must be applied for and granted (unlike automatic copyright)." },
-    { "term": "ICO", "def": "Information Commissioner's Office — the UK regulator that enforces the Data Protection Act and can issue large fines." }
+    {"term": "Personal data", "def": "Data relating to an identified or identifiable living individual, such as a name linked to an address."},
+    {"term": "Data controller", "def": "The organisation or person who decides why and how personal data is processed."},
+    {"term": "Data processor", "def": "A party that processes personal data on the controller's instructions, such as a cloud payroll firm."},
+    {"term": "Data subject", "def": "The living individual the personal data is about, holding rights over that data."},
+    {"term": "ICO", "def": "Information Commissioner's Office: the UK regulator that enforces data protection law and issues fines."},
+    {"term": "Unauthorised access", "def": "Causing a computer to perform a function to gain access you know you have no permission for."},
+    {"term": "Intellectual property", "def": "Creations of the mind, such as code, music and designs, owned by their creator."},
+    {"term": "Software licence", "def": "The legal agreement stating how software may be used, copied or distributed."},
+    {"term": "Lawful interception", "def": "Monitoring of communications by public bodies carried out with proper legal authorisation under RIPA."}
   ],
   "content": [
-    {
-      "heading": "Data Protection Act 1998/2018 (+ GDPR)",
-      "points": [
-        "Controls how organisations collect, store and process personal data (data identifying a living individual).",
-        "Sets principles: lawful/fair/transparent processing, purpose limitation, data minimisation, accuracy, storage limitation, security (integrity & confidentiality) and accountability.",
-        "Defines roles of controller, processor and subject; enforced by the ICO with fines up to €20m or 4% of turnover.",
-        "Example breach: selling customer data with no lawful basis, or storing records unencrypted."
-      ]
-    },
-    {
-      "heading": "Computer Misuse Act 1990",
-      "points": [
-        "Addresses unauthorised access to computer systems — it is about authorisation, not damage.",
-        "Offence 1: unauthorised access to computer material (e.g. using a colleague's login).",
-        "Offence 2: unauthorised access with intent to commit a further offence (e.g. hacking a bank to steal money).",
-        "Offence 3: unauthorised modification of computer material (e.g. releasing ransomware, deleting or altering data)."
-      ]
-    },
-    {
-      "heading": "Copyright, Designs & Patents Act 1988",
-      "points": [
-        "Protects intellectual property — original works such as software, music, text and designs.",
-        "Protection is automatic on creation; no registration is needed, and it protects the expression, not the idea.",
-        "The rights-holder controls copying, distribution and adaptation; others need a licence to use the work.",
-        "Example breach: pirating software or music, or using web images commercially without permission."
-      ]
-    },
-    {
-      "heading": "Regulation of Investigatory Powers Act 2000 (RIPA)",
-      "points": [
-        "Governs how public bodies (police, security services) monitor and intercept communications.",
-        "Allows lawful interception for national security or serious crime, and requires ISPs to provide access.",
-        "Can require a person to hand over encryption keys, and defines who may authorise such activity to prevent abuse.",
-        "Example breach: a public authority intercepting communications without proper authorisation or for an improper purpose."
-      ]
-    },
-    {
-      "heading": "Picking the right law (and when two apply)",
-      "points": [
-        "An outsider hacks in = Computer Misuse Act; an organisation mishandles data it holds = Data Protection Act.",
-        "Copying creative works = Copyright, Designs & Patents Act; state interception of comms = RIPA.",
-        "Two laws can apply at once — e.g. a hacker steals data (CMA) from a firm that stored it unencrypted (DPA).",
-        "Patents differ from copyright: they cover inventions and must be applied for and granted."
-      ]
-    }
+    {"heading": "Why computing needs legislation", "points": [
+      "Computers created new wrongs that older laws did not clearly cover.",
+      "Four Acts on the specification, each targeting a different wrong.",
+      "Misusing personal data: Data Protection Act 2018. Unauthorised access: Computer Misuse Act 1990.",
+      "Copying creative work: Copyright, Designs and Patents Act 1988. State surveillance powers: RIPA 2000.",
+      "Exams reward naming the specific Act and provision, never just saying something is illegal."
+    ], "note": "Learn one trigger word per Act: personal data, authorisation, expression, interception."},
+    {"heading": "Data Protection Act 2018: scope and principles", "points": [
+      "Governs how organisations collect, store and process personal data about living individuals.",
+      "The UK law implementing GDPR; GDPR is the EU regulation, the DPA is the UK Act.",
+      "Principles: processed lawfully, fairly and transparently; collected for specified purposes only (purpose limitation).",
+      "Data minimisation, accuracy, storage limitation: adequate, correct and kept no longer than necessary.",
+      "Integrity and confidentiality: kept secure; accountability: the controller must demonstrate compliance."
+    ]},
+    {"heading": "DPA roles, rights and enforcement", "points": [
+      "Controller decides why and how data is processed; processor acts only on the controller's instructions.",
+      "The data subject is the individual the data describes.",
+      "Subject rights include: access to their data, rectification of errors, erasure, and objecting to processing.",
+      "Subjects can object to purely automated decisions with significant effects (links to 1.5.2).",
+      "The ICO enforces the Act and can issue substantial fines for breaches."
+    ], "note": "The controller carries the legal responsibility, even when a processor does the work."},
+    {"heading": "Computer Misuse Act 1990: three offence levels", "points": [
+      "Section 1: unauthorised access to computer material, such as guessing a password to look around.",
+      "Section 2: unauthorised access with intent to commit a further offence, such as fraud or blackmail.",
+      "Section 3: unauthorised modification or impairment, such as deleting files or planting malware.",
+      "The Act hinges on authorisation and intent, not on whether damage was caused.",
+      "Merely attempting access is enough for section 1; success is not required."
+    ], "note": "A password that still works is not authorisation: permission, not access, is the test."},
+    {"heading": "CMA amendments: keeping a 1990 Act current", "points": [
+      "Police and Justice Act 2006 widened section 3 to impairing operation, explicitly catching denial of service attacks.",
+      "It also added section 3A: making, supplying or obtaining tools for computer misuse offences.",
+      "Serious Crime Act 2015 added section 3ZA: unauthorised acts causing serious damage, such as attacking infrastructure.",
+      "Penalties rise with each level, from months for section 1 up to life for 3ZA.",
+      "Criticism: written before botnets and ransomware, so amendments were needed to keep pace."
+    ]},
+    {"heading": "Copyright, Designs and Patents Act 1988", "points": [
+      "Protects intellectual property: original creative works including software, music, film and designs.",
+      "Protection is automatic on creation; nothing needs registering.",
+      "Copyright protects the expression of an idea, such as source code, never the idea itself.",
+      "Using, copying or distributing someone's work requires a licence from the rights holder.",
+      "Links to licensing in 1.2: open source licences permit copying under conditions; proprietary licences restrict it."
+    ], "note": "A patent is different: it protects an invention or idea and must be applied for and granted."},
+    {"heading": "Regulation of Investigatory Powers Act 2000", "points": [
+      "Governs how public bodies such as police and security services may lawfully monitor communications.",
+      "Permits interception of communications and collection of communications data with proper authorisation.",
+      "Can compel ISPs to provide access to customers' communications and install surveillance capability.",
+      "Can demand that protected (encrypted) data be disclosed or decryption keys handed over (links to 1.3.1).",
+      "Defines who may authorise each power, to prevent abuse; criticised as a privacy trade-off."
+    ]},
+    {"heading": "The method: which Act, which section, why", "points": [
+      "Step 1: identify each actor and the wrong they committed or allowed.",
+      "Step 2: match trigger words: personal data means DPA; authorisation means CMA; copying expression means CDPA; state monitoring means RIPA.",
+      "Step 3: name the precise provision: CMA section number, DPA principle, or the RIPA power.",
+      "Step 4: tie a fact from the scenario to each ingredient of that provision.",
+      "Vague answers like 'this breaks the hacking law' earn nothing at A Level."
+    ], "note": "Formula for written answers: Act plus section, then the scenario fact that satisfies it."},
+    {"heading": "When more than one Act applies", "points": [
+      "One incident can engage several laws against different parties.",
+      "Classic case: a hacker steals customer data from a firm that stored it unencrypted.",
+      "The hacker commits CMA sections 1 and 2; the firm breaches the DPA security principle.",
+      "Always assign each Act to the party responsible for that wrong.",
+      "Watch for the victim organisation also being a wrongdoer: leaver accounts left active, unpatched systems, excessive retention."
+    ]},
+    {"heading": "Scoring the 8 or 9 mark levels-of-response question", "points": [
+      "Marked in levels, not points: AO1 knowledge, AO2 application to the scenario, AO3 evaluation.",
+      "Top level needs accurate law, every claim tied to scenario facts, and a weighed conclusion.",
+      "Plan for two minutes: list actors, Acts and sections, arguments each way.",
+      "Structure: apply each relevant Act in turn, consider counter-arguments, then conclude with justification.",
+      "Naming wrong sections or ignoring the scenario caps you at the lower levels."
+    ]}
   ],
-  "worked_example": {
-    "title": "Applying the right law: a stolen, unencrypted customer database",
-    "steps": [
-      "Read the scenario: a hacker with no authorisation breaks into an online retailer and copies customer card details stored unencrypted, then offers them for sale.",
-      "Identify the hacker's wrong: unauthorised access is Computer Misuse Act Offence 1, and because they intend to sell/profit it becomes Offence 2 (access with intent to commit a further offence).",
-      "Identify the retailer's wrong: as data controller they breached the security (integrity & confidentiality) principle of the DPA 2018/GDPR by storing personal data unencrypted, so they share legal responsibility despite being a victim.",
-      "Exclude irrelevant laws: the CDPA 1988 does not apply because no creative work was copied — gaining credit for correctly excluding it.",
-      "Conclude: two laws apply because there are two distinct wrongs (the hacker's access under CMA and the retailer's negligent handling under DPA), each with a different responsible party."
-    ]
-  },
-  "task": "For each of five short scenarios (an employee using a manager's login; a firm keeping records ten years too long; a student torrenting paid software; police intercepting a suspect's calls with authorisation; a hacker installing ransomware), name the correct law and, where relevant, the exact Computer Misuse Act offence number, and state who is responsible.",
-  "challenge": "Write a scenario in which exactly TWO of the four laws apply, then annotate it by naming each law, the responsible party, and the specific offence or principle breached — and explain why a third candidate law does NOT apply.",
+  "worked_examples": [
+    {"title": "Classifying a multi-part scenario: the hospital breach (which Act, which section, why)", "steps": [
+      "Scenario: an attacker phishes a nurse's login, downloads 40,000 patient records intending to sell them, then installs ransomware. The hospital had skipped security updates and still held records of patients discharged 30 years ago.",
+      "List the actors first: the attacker, and the hospital as data controller.",
+      "Fact: logging in with a phished password. Trigger: no authorisation. CMA section 1: unauthorised access.",
+      "Fact: downloading records intending to sell. CMA section 2: the access was with intent to commit a further offence (the sale).",
+      "Fact: installing ransomware that encrypts files. CMA section 3: unauthorised modification impairing the computer; on hospital infrastructure, section 3ZA (serious damage) is arguable.",
+      "Fact: the hospital skipped updates. DPA 2018 integrity and confidentiality principle: personal data was not kept secure.",
+      "Fact: 30-year-old records still held. DPA storage limitation principle: data kept longer than necessary.",
+      "Conclusion sentence: the attacker faces CMA sections 1, 2 and 3; the hospital, as controller, breaches two DPA principles and answers to the ICO."
+    ]},
+    {"title": "Planning a 9-mark levels question: 'Discuss whether RIPA powers to demand decryption keys are justified.'", "steps": [
+      "Circle the command word: discuss means both sides plus a justified conclusion, or you are capped at the middle level.",
+      "Brainstorm stakeholders: security services, suspects, law-abiding citizens, ISPs and technology firms, wider society.",
+      "FOR column: strong encryption otherwise defeats lawful investigation; targeted, authorised access can prevent terrorism and serious crime; authorisation rules limit abuse.",
+      "AGAINST column: weakens the privacy of innocent users; a disclosed key may expose everyone's data, not just the suspect's; refusing to hand over a key is itself an offence, troubling if a password is genuinely forgotten.",
+      "Develop each point as point, consequence, stakeholder, counter: key disclosure helps convict criminals (society benefits) BUT a leaked key exposes millions of users (individuals harmed).",
+      "Apply the law accurately: name RIPA 2000, that it applies to public bodies, and that authorisation levels exist precisely because the power is intrusive.",
+      "Conclude with a condition: justified only where targeted at named suspects, properly authorised and time-limited; blanket demands are disproportionate.",
+      "Check against the levels: accurate AO1 (RIPA facts), AO2 (tied to the scenario), AO3 (weighed conclusion) reaches the top level."
+    ]},
+    {"title": "Rapid classification drill: four one-line scenarios", "steps": [
+      "A student guesses a teacher's email password just to look: CMA section 1; access was unauthorised even though nothing was changed.",
+      "A start-up ships a product containing code copied from a licensed library it never paid for: CDPA 1988; expression copied without a licence.",
+      "A recruiter keeps unsuccessful applicants' CVs for ten years 'just in case': DPA 2018; storage limitation and purpose limitation principles.",
+      "Police, with proper authorisation, intercept a suspect's messages via the ISP: RIPA 2000; lawful interception by a public body, so no offence is committed."
+    ]}
+  ],
+  "activities": [
+    {"title": "The Crown v. Kowalski (courtroom role-play)", "minutes": 25, "instructions": [
+      "Groups of five: two prosecution, two defence, one judge. Scenario: a former IT technician uses a colleague's still-active login a week after leaving, browses the student database, exports parents' contact details intending to sell them, and deletes the behaviour log mentioning her disciplinary hearing.",
+      "Prosecution argue the most serious CMA offences that fit; defence argue the least, or none: 'the login still worked, so was it really unauthorised?'",
+      "Eight minutes preparation: both sides must cite offence numbers and match each ingredient to a scenario fact.",
+      "Run the trial: two minutes per side, one minute rebuttal each; the judge asks one question of each side and delivers a verdict naming each offence proved and its deciding fact.",
+      "Expected verdict: login use is section 1 (authorisation ended with employment); the export with intent to sell is section 2; deleting the log is section 3."
+    ], "stretch": "The judge must also rule whether the school breached the DPA by leaving a leaver's account active (integrity and confidentiality principle), showing two laws in one incident."},
+    {"title": "Four Corners: which law applies?", "minutes": 15, "instructions": [
+      "Label the corners DPA 2018, CMA 1990, CDPA 1988, RIPA 2000. When a scenario is read, students silently walk to the Act most clearly engaged.",
+      "Scenarios: a fitness app sells heart-rate data to insurers without consent; a student guesses a password to have a look; a firm ships code copied from an unpaid library; police intercept a suspect's messages with authorisation; a hacker leaks a retailer's customer database; a company keeps job applicants' CVs for ten years.",
+      "After each move, one student per corner justifies in one sentence using the Act's trigger word.",
+      "For the hacker-leak scenario, expect a split between the CMA and DPA corners; let them debate before revealing both apply, to different parties."
+    ], "stretch": "Add a fifth floor spot labelled 'two laws'; anyone standing there must name both Acts and the fact engaging each."},
+    {"title": "Always, Sometimes, Never: is it legal?", "minutes": 15, "instructions": [
+      "Pairs sort statement cards under Always, Sometimes or Never, writing a one-line justification for every Sometimes.",
+      "Statements: copying software without paying breaks the CDPA; accessing an account that is not yours breaks the CMA; a company may keep personal data forever; intercepting someone's messages is illegal; copyright must be registered before it protects code; an idea for an app is protected by copyright; two laws can apply to one incident.",
+      "Answers: Sometimes (a licence, including open source, can permit copying); Sometimes (access may be authorised, e.g. admin duties); Never (storage limitation); Sometimes (lawful under RIPA with authorisation); Never (protection is automatic); Never (copyright protects expression; patents cover inventions); Always possible.",
+      "Pairs join into fours and resolve disagreements by pointing at the specific provision."
+    ], "stretch": "Pairs write one new Sometimes card whose truth genuinely depends on authorisation or licensing, and swap with another pair."}
+  ],
+  "practice": [
+    {"q": "State what is meant by personal data under the Data Protection Act 2018. [1]", "a": "Data relating to an identified or identifiable living individual (1)."},
+    {"q": "Describe the difference between a data controller and a data processor. [2]", "a": "The controller decides why and how personal data is processed (1); the processor processes the data only on the controller's instructions, e.g. an outsourced payroll company (1)."},
+    {"q": "A former employee logs into her old employer's system using an account that was never deactivated and reads confidential emails. Identify the Act and offence committed, justifying your answer. [3]", "a": "Computer Misuse Act 1990 (1), section 1, unauthorised access (1); her authorisation ended with her employment, and a still-working account does not grant permission; as she only read material there is no evidence of intent for a further offence or of modification (1)."},
+    {"q": "Explain why releasing ransomware is an offence under the Computer Misuse Act 1990 and state the relevant section. [3]", "a": "Ransomware encrypts the victim's files, which is an unauthorised modification of computer material (1) that impairs the operation of the computer and access to data (1); this is a section 3 offence, with section 3ZA possible where serious damage results (1)."},
+    {"q": "A software house discovers a rival has copied thousands of lines of its source code into a competing product. Identify the relevant Act and explain what protection it gives. [3]", "a": "Copyright, Designs and Patents Act 1988 (1); source code is protected automatically on creation as the expression of an original work (1); copying or distributing it without a licence from the rights holder is infringement, so the rival can be sued (1)."},
+    {"q": "Describe two powers that the Regulation of Investigatory Powers Act 2000 gives to public bodies. [2]", "a": "Any two of: interception of communications with proper authorisation (1); requiring ISPs to provide access to customer communications or fit surveillance capability (1); demanding disclosure of encrypted data or decryption keys (1)."},
+    {"q": "A fitness app shares users' location history with advertisers without telling them. Explain which Act is engaged and identify two principles that have been breached. [4]", "a": "Data Protection Act 2018 (1), because location history linked to accounts is personal data and the app operator is the controller (1). Breaches: data was not processed lawfully, fairly and transparently, since users were not told (1); and purpose limitation, since data collected for fitness tracking was used for advertising (1)."},
+    {"q": "Explain one criticism of the Computer Misuse Act 1990 and one criticism of RIPA 2000. [4]", "a": "CMA: written in 1990, it did not anticipate modern attacks such as denial of service or ransomware (1), so amendments in 2006 and 2015 were needed to keep it effective (1). RIPA: its surveillance and key-disclosure powers intrude on the privacy of innocent users (1), and critics argue authorisation is not always independent, risking disproportionate use (1)."}
+  ],
+  "misconceptions": [
+    "Students often think the CMA is about causing damage; it hinges on authorisation and intent, and section 1 needs no damage at all, only unauthorised access.",
+    "Students often think a working password means access was authorised; permission is the test, so using a colleague's or a leaver's login is still unauthorised.",
+    "Students often think copyright must be registered; CDPA protection is automatic on creation, and it is patents that must be applied for and granted.",
+    "Students often think the DPA protects any data; it covers only personal data about living individuals, not company data or the deceased.",
+    "Students often treat GDPR and the DPA 2018 as interchangeable; GDPR is the EU regulation and the DPA 2018 is the UK Act implementing it."
+  ],
+  "exam_link": [
+    "Command words: state and identify for definitions and naming Acts (1-2 marks); describe and explain for provisions applied to scenarios (2-4 marks); discuss and evaluate for 8-9 mark levels-of-response questions.",
+    "Mark schemes credit the specific Act plus section or principle plus a scenario fact; 'it is illegal' or 'the hacking law' earns nothing.",
+    "Multi-party scenarios are common: expect one incident engaging the CMA against an attacker and the DPA against a careless controller.",
+    "Example stem: 'An online retailer suffers a data breach after ignoring security warnings; the attacker sells the stolen customer records. Discuss the legal consequences for both parties.' [9]"
+  ],
+  "task": "For six mini-scenarios (a phished bank login used to transfer money; a DDoS attack on a rival's website; a school selling alumni contact details to a tutoring firm; a YouTuber uploading a full film soundtrack; a properly authorised council investigator tracking a fly-tipping suspect's communications data; a firm keeping card details from closed accounts for eight years), complete a three-column table: Act and section or principle; the scenario fact that engages it; one sentence of justification. Expected: CMA sections 1 and 2; CMA section 3 (DoS via the 2006 amendment); DPA lawfulness and purpose limitation; CDPA infringement; RIPA lawful use so no offence; DPA storage limitation.",
+  "challenge": "A whistleblower who administered a company system exceeded his permitted access to copy documents proving the firm illegally sold patient data to a journalist; the security services then sought RIPA authorisation to identify the journalist's source. Write an analysis identifying every Act engaged, by whom, and whether each use of the law seems proportionate; finish with a justified one-paragraph conclusion on whether the law protects the right party here.",
   "exit_ticket": [
-    { "q": "State the three offences defined by the Computer Misuse Act 1990.", "a": "1) Unauthorised access to computer material; 2) unauthorised access with intent to commit a further offence; 3) unauthorised modification of computer material." },
-    { "q": "Give one difference between copyright and a patent.", "a": "Copyright is automatic on creation and protects the expression of a work; a patent protects an invention/idea and must be applied for and granted." },
-    { "q": "Why can both the CMA and the DPA apply when a hacker steals personal data from a company?", "a": "Two distinct wrongs occur: the hacker's unauthorised access (CMA) and the company's failure to secure the personal data it controlled (DPA)." }
+    {"q": "Name the three original Computer Misuse Act offences in ascending order of seriousness.", "a": "Section 1 unauthorised access; section 2 unauthorised access with intent to commit a further offence; section 3 unauthorised modification or impairment."},
+    {"q": "A firm collects delivery addresses, then starts using them for marketing. Which Act and which principle?", "a": "Data Protection Act 2018; purpose limitation (data used beyond the purpose it was collected for), and arguably fairness and transparency."},
+    {"q": "What must an answer include to earn the application marks on a legislation scenario question?", "a": "The specific Act and section or principle, plus the scenario fact that satisfies it, assigned to the responsible party."}
   ]
 }

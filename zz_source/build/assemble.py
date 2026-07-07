@@ -238,13 +238,20 @@ def build_library(bdocx):
             cp(os.path.join(STAGE_WORD, "Lesson-Activities", f"{tstem}.docx"),
                os.path.join(td, "8 Lesson Activities (teacher).docx"))
             # material for subtopics not taught until Year 13
+            y13_lessons = {
+                "2.3.1": [("2.3.1-algorithms", "1 Lesson 1 - Analysis, Big O and searching"),
+                          ("y13-2.3.1-sorting", "1 Lesson 2 - Sorting algorithms"),
+                          ("y13-2.3.1-traversals", "1 Lesson 3 - Tree traversal algorithms"),
+                          ("y13-2.3.1-dijkstra-astar", "1 Lesson 4 - Dijkstra and A star")],
+            }
             for stitle, sstem in subs:
                 code = stitle.split()[0]
                 if code not in YEAR13_SUBTOPICS:
                     continue
                 y13 = os.path.join(td, f"Year 13 - {code} {stitle.split(' ', 1)[1]}")
-                cp(os.path.join(STAGE_TT, "Lesson-PowerPoints", f"{sstem}.pptx"),
-                   os.path.join(y13, "1 Lesson.pptx"))
+                for stem, label in y13_lessons.get(code, [(sstem, "1 Lesson")]):
+                    cp(os.path.join(STAGE_TT, "Lesson-PowerPoints", f"{stem}.pptx"),
+                       os.path.join(y13, f"{label}.pptx"))
                 _qa_docx(bdocx, os.path.join(SRC, "subtopic-quizzes", f"{sstem}.md"),
                          os.path.join(y13, "2 Quiz"))
                 _qa_docx(bdocx, os.path.join(SRC, "homework", f"{sstem}.md"),

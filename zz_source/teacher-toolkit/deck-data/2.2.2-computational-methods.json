@@ -1,12 +1,185 @@
 {
   "subtopic": "2.2.2 Computational Methods",
   "spec": "OCR H446 — Component 02",
-  "objectives": ["State the features that make a problem solvable computationally and recognise non-computable and intractable problems", "Describe problem recognition, decomposition, divide and conquer, and abstraction (representational and by generalisation)", "Apply named computational methods (backtracking, data mining, heuristics, performance modelling, pipelining, visualisation) to suitable problems, justifying why each fits"],
-  "retrieval": [{"q": "Give two characteristics that make a problem solvable computationally.", "a": "Any two: can be decomposed; has clear inputs/processes/outputs; is repetitive/rule-based; allows useful abstractions; data can be structured; has a finite sequence of steps."}, {"q": "What is the difference between decomposition and abstraction?", "a": "Decomposition breaks a problem into smaller sub-problems; abstraction removes or hides unnecessary detail to focus on what matters."}, {"q": "Why does divide and conquer pair naturally with recursion?", "a": "It splits a problem into smaller instances of the same problem, so the same subroutine can call itself until a base case is reached."}, {"q": "What two parts must every correctly written recursive subroutine contain (interleaves 2.2.1)?", "a": "A base case that stops the recursion and a general/recursive case that calls itself moving toward the base case."}, {"q": "State the average-case time complexity of binary search and why it is a divide-and-conquer algorithm (interleaves 2.3.1).", "a": "O(log n); it repeatedly halves the search space, discarding the half that cannot contain the target."}],
-  "keywords": [{"term": "Problem recognition", "def": "Identifying and understanding what the problem actually is — its inputs, outputs, constraints and success criteria — before solving it."}, {"term": "Decomposition", "def": "Breaking a complex problem into smaller, manageable sub-problems that can be tackled separately."}, {"term": "Divide and conquer", "def": "Repeatedly splitting a problem into smaller instances of the same problem, solving the parts and combining the results."}, {"term": "Abstraction", "def": "Removing or hiding unnecessary detail; representational (drop irrelevant detail) or by generalisation (group by shared traits)."}, {"term": "Backtracking", "def": "Building a solution step by step and, on a dead end, returning to the last decision to try another option (often recursive)."}, {"term": "Heuristic", "def": "A rule of thumb giving a good-enough but not guaranteed optimal answer quickly when an exact method is too slow."}, {"term": "Data mining", "def": "Searching large data sets for hidden patterns, correlations and trends, e.g. loyalty-card basket analysis or fraud detection."}, {"term": "Pipelining", "def": "Splitting a process into stages so different stages work on different items simultaneously, raising throughput."}],
-  "content": [{"heading": "Computable problems", "points": ["A problem is solvable computationally if it can be decomposed, has clear inputs/processes/outputs, is repetitive/rule-based, allows useful abstractions, can be modelled as data, and has a finite sequence of steps", "Some problems are non-computable (no algorithm can solve them, e.g. the Halting Problem)", "Some are computable but intractable: solvable in principle but taking impractically long as the input grows"]}, {"heading": "Decomposition and divide and conquer", "points": ["Problem recognition comes first: understand the inputs, outputs, constraints and success criteria before designing a solution", "Decomposition breaks a complex problem into smaller, separate sub-tasks that are easier to write and test", "Divide and conquer repeatedly splits into smaller instances of the same problem, solves them and combines results (binary search, merge sort, quicksort) — it pairs with recursion"]}, {"heading": "Abstraction", "points": ["Abstraction removes or hides detail that is not relevant to the problem", "Representational abstraction drops irrelevant detail while keeping structure, e.g. the London Tube map keeps line connections but not true distances", "Abstraction by generalisation groups things by shared characteristics so they can be treated the same, e.g. classifying many shapes as polygons"]}, {"heading": "Heuristics and backtracking", "points": ["A heuristic gives a quick good-enough answer that is not guaranteed optimal, used when an exact method is too slow or impossible (satnav A*, Travelling Salesman)", "Backtracking builds a solution step by step and, on a dead end, returns to the last decision to try another option (mazes, N-Queens, Sudoku)", "Both suit problems whose exact solution is intractable; the exam mark for a heuristic is stressing good enough, not guaranteed optimal"]}, {"heading": "Modelling, mining and visualisation", "points": ["Data mining searches large data sets for hidden patterns and correlations, e.g. basket analysis or fraud detection", "Performance modelling uses a model to predict how a system behaves before or instead of building it (server load, aircraft systems, algorithm scaling)", "Pipelining overlaps stages so different items are processed at once (CPU fetch–decode–execute); visualisation represents data graphically (charts, heat maps) to reveal patterns and aid decisions"]}],
-  "worked_example": {"title": "Choosing and justifying a method for the N-Queens problem", "steps": ["Recognise the problem: place 8 queens on a chessboard so that no two attack each other", "Identify the best method: backtracking (recursive backtracking), because a valid arrangement is built up one decision at a time", "Place queens one column (or row) at a time, choosing a safe square each time, and after each placement check no two queens attack", "On a dead end (no safe square in the next column) backtrack: undo the last placement and try the next available square for the previous queen", "Repeat until all 8 queens are placed (a solution) or every option is exhausted; justify why it is slow for large boards: the search space grows enormously and lots of backtracking is needed (combinatorial explosion)"]},
-  "task": "Match each method to its best use and justify two choices in a sentence each: backtracking, data mining, heuristics, performance modelling, visualisation, against — Sudoku dead-end recovery, loyalty-card basket analysis, A* near-optimal routing, predicting server load before build, infection-rate heat map.",
-  "challenge": "A delivery firm models routes over a road network. Explain how divide and conquer could be applied and why it pairs with recursion, then explain why a heuristic rather than an exact method would be used to solve the underlying Travelling Salesman Problem, referring to intractability.",
-  "exit_ticket": [{"q": "Why is a heuristic used for the Travelling Salesman Problem instead of an exact method?", "a": "An exact method must check a factorially growing number of routes (intractable), so a heuristic gives a good-enough route quickly, accepting it may not be optimal."}, {"q": "Give the key difference between representational abstraction and abstraction by generalisation, with one example of each.", "a": "Representational drops irrelevant detail but keeps structure (Tube map); generalisation groups by shared traits (classifying shapes as polygons)."}, {"q": "What happens at a dead end in a backtracking algorithm?", "a": "It returns to the last decision point, undoes the most recent choice and tries the next available option."}]
+  "week": "Year 13",
+  "objectives": [
+    "I can state the features that make a problem solvable computationally, and recognise non-computable and intractable problems.",
+    "I can distinguish decomposition from divide and conquer, and representational abstraction from abstraction by generalisation.",
+    "I can trace a backtracking solution to a maze or constraint problem, showing each dead end and retreat.",
+    "I can match backtracking, data mining, heuristics, performance modelling, pipelining and visualisation to suitable problems and justify why each fits."
+  ],
+  "retrieval": [
+    {"q": "From 2.1.1: define abstraction and give one everyday example.", "a": "Removing or hiding unnecessary detail so only problem-relevant information remains, e.g. the London Underground map."},
+    {"q": "From 2.1.2: what is caching, and state one drawback of it.", "a": "Storing data or instructions likely to be needed again in fast storage; drawbacks include stale data and the complexity of managing it."},
+    {"q": "From 2.1.3: in thinking procedurally, why must the order of steps be considered as well as the steps themselves?", "a": "Some steps depend on the results of earlier ones, so a wrong order produces wrong results even with correct steps."},
+    {"q": "From 2.1.5: give one benefit and one drawback of concurrent processing.", "a": "Benefit: tasks progress simultaneously so total time falls; drawback: overhead of coordination and risk of conflicts such as deadlock."},
+    {"q": "From 2.2.1: what two parts must every correct recursive subroutine contain, and what happens without the first?", "a": "A base case that stops the recursion and a recursive call that moves towards it; without a base case, calls fill the call stack until stack overflow."}
+  ],
+  "keywords": [
+    {"term": "Computable problem", "def": "A problem with a clear, finite, rule-based sequence of steps that a computer can carry out."},
+    {"term": "Intractable problem", "def": "A computable problem whose exact solution takes impractically long, such as exponential time, as input grows."},
+    {"term": "Problem recognition", "def": "Identifying the real problem, its inputs, outputs, constraints and success criteria, before solving it."},
+    {"term": "Decomposition", "def": "Breaking a complex problem into smaller, manageable sub-problems, usually different sub-tasks."},
+    {"term": "Divide and conquer", "def": "Repeatedly splitting a problem into smaller instances of the same problem, solving them and combining results."},
+    {"term": "Backtracking", "def": "Building a solution step by step and, at a dead end, returning to the last decision to try another option."},
+    {"term": "Heuristic", "def": "A rule of thumb giving a good-enough, but not guaranteed optimal, answer quickly."},
+    {"term": "Performance modelling", "def": "Using a model to predict or test how a system behaves before, or instead of, building it."},
+    {"term": "Pipelining", "def": "Splitting a process into stages so different stages work on different items at the same time."}
+  ],
+  "content": [
+    {"heading": "What makes a problem computable", "points": [
+      "Clear inputs, processes and outputs, with a finite sequence of well-defined steps.",
+      "Rule-based and repeatable: the same inputs always allow the same method.",
+      "Can be decomposed, usefully abstracted, and its data structured or modelled.",
+      "Non-computable problems exist: no algorithm can ever solve the Halting Problem.",
+      "Intractable problems are computable in principle but take impractically long as input grows."
+    ], "note": "Intractable is not non-computable: an algorithm exists, it is just uselessly slow at scale."},
+    {"heading": "Problem recognition and decomposition", "points": [
+      "Problem recognition comes first: state inputs, outputs, constraints and success criteria before designing anything.",
+      "Solving the wrong problem perfectly is still failure; recognition prevents it.",
+      "Decomposition breaks the problem into smaller sub-problems that are easier to write, test and share out.",
+      "Sub-problems are usually different sub-tasks: input handling, physics, rendering in a game.",
+      "Decomposed modules can be developed concurrently by different programmers (links to 2.1.5)."
+    ]},
+    {"heading": "Divide and conquer", "points": [
+      "Repeatedly split the problem into smaller instances of the same problem, solve, then combine.",
+      "Binary search: each comparison halves the portion that could contain the target.",
+      "1024 items need at most about 10 halvings, because 2 to the power 10 is 1024.",
+      "Merge sort and quicksort divide, sort the parts, and combine.",
+      "Pairs naturally with recursion: each part is the same type of problem, so the subroutine calls itself."
+    ], "note": "Discriminator: decomposition gives different sub-tasks; divide and conquer gives smaller same-type instances."},
+    {"heading": "Abstraction as a computational method", "points": [
+      "Remove or hide detail that is not relevant to the problem being solved.",
+      "Representational abstraction drops irrelevant detail: the Tube map keeps connections, discards true distance and geography.",
+      "Abstraction by generalisation groups things by shared characteristics so one solution treats them all the same.",
+      "Layers of abstraction let you solve at one level ignoring the levels below (like the TCP/IP stack).",
+      "A good abstraction makes an unmanageable problem computable by shrinking its state."
+    ]},
+    {"heading": "Backtracking", "points": [
+      "Build a partial solution one decision at a time, following a fixed rule.",
+      "At a dead end, return to the most recent decision with untried options and take the next one.",
+      "Systematic and exhaustive: it finds a solution if one exists, unlike guessing.",
+      "Classic uses: maze solving, Sudoku, the N-Queens problem.",
+      "Often implemented recursively: the call stack remembers the decision points to retreat to (links to 2.2.1)."
+    ]},
+    {"heading": "Data mining", "points": [
+      "Searching very large data sets for hidden patterns, correlations and trends.",
+      "Examples: loyalty-card basket analysis, fraud detection from unusual spending patterns.",
+      "Useful when data is too large and unstructured for a human or a simple query.",
+      "Found correlations are not causes; conclusions still need testing.",
+      "Mining personal data engages the DPA and the profiling concerns from 1.5 (links to Component 01)."
+    ]},
+    {"heading": "Heuristics", "points": [
+      "A rule of thumb that gives a good-enough answer quickly, not a guaranteed optimal one.",
+      "Used when the exact method is intractable: the Travelling Salesman Problem's routes grow factorially.",
+      "A satnav estimates with straight-line distance rather than checking every possible route.",
+      "Other uses: antivirus judging suspicious behaviour, spam filters scoring messages.",
+      "The trade is deliberate: sacrifice guaranteed optimality for feasible speed."
+    ], "note": "The exam phrase that earns the mark: good enough, not guaranteed optimal."},
+    {"heading": "Performance modelling", "points": [
+      "Use a mathematical or simulated model to predict system behaviour before building or risking the real thing.",
+      "Examples: simulating Black Friday load on a web server, testing aircraft systems, predicting algorithm scaling.",
+      "Cheaper and safer than trial and error on the live system.",
+      "Lets designers compare options and find bottlenecks before committing.",
+      "Only as good as the model: unrealistic assumptions give confident wrong answers."
+    ]},
+    {"heading": "Pipelining", "points": [
+      "Split a process into stages so different stages work on different items simultaneously.",
+      "The classic example is the processor overlapping fetch, decode and execute of successive instructions.",
+      "For n items through k equal stages, time falls from n times k to n plus k minus 1 ticks.",
+      "Throughput rises, but each individual item still takes the same time (latency unchanged).",
+      "The slowest stage sets the pace, and a dependency between items can stall the pipeline."
+    ]},
+    {"heading": "Visualisation to solve problems", "points": [
+      "Represent data or problems graphically: charts, heat maps, graphs and trees.",
+      "Humans spot patterns, clusters, trends and outliers far faster in pictures than tables.",
+      "John Snow's map of cholera cases revealed the cluster around one water pump.",
+      "Trees and graphs make problem structure visible before any code is written.",
+      "Often paired with data mining: mining finds the pattern, visualisation makes it comprehensible."
+    ]}
+  ],
+  "worked_examples": [
+    {"title": "Backtracking through a 4 by 4 maze (rule: try West, South, East, North; never revisit)", "steps": [
+      "Maze rows 1-4, columns A-D. Blocked cells: (1,D), (2,A), (2,B), (2,D), (3,A), (4,A), (4,C). Start S at (1,A), goal G at (4,D).",
+      "At (1,A): West is off the grid, South (2,A) is blocked, East (1,B) is open, so move East.",
+      "At (1,B): West visited, South (2,B) blocked, so East to (1,C). At (1,C): South (2,C) open, so move South, then South again to (3,C).",
+      "At (3,C): West (3,B) is open and West is tried first, so move to (3,B), then South to (4,B).",
+      "At (4,B): West (4,A) blocked, South is off the grid, East (4,C) blocked, North visited. Dead end: backtrack to (3,B).",
+      "At (3,B): every remaining direction is blocked or visited, so backtrack again to (3,C).",
+      "At (3,C): the next untried direction is East, so move to (3,D), then South to (4,D). Goal reached.",
+      "Final path: (1,A), (1,B), (1,C), (2,C), (3,C), (3,D), (4,D): six moves, with exactly one backtracking episode out of (4,B).",
+      "The point: the fixed rule plus retreat-and-retry makes this an algorithm that must find a path if one exists; the wasted detour is the price of not knowing the maze in advance."
+    ]},
+    {"title": "Binary search as divide and conquer: finding 23 in a 15-item sorted list", "steps": [
+      "List (indices 0-14): 2, 5, 8, 12, 16, 23, 38, 41, 56, 72, 77, 81, 88, 91, 97.",
+      "Comparison 1: midpoint of 0-14 is index 7, value 41. Target 23 is smaller, so discard the upper half; search 0-6.",
+      "Comparison 2: midpoint of 0-6 is index 3, value 12. Target 23 is larger, so discard the lower half; search 4-6.",
+      "Comparison 3: midpoint of 4-6 is index 5, value 23. Found.",
+      "The problem shrank 15 to 7 to 3 to 1: each comparison solves a smaller instance of the same problem, the definition of divide and conquer.",
+      "Three comparisons instead of up to 15 with linear search; for 1024 items it is about 10 versus 1024, because 2 to the power 10 is 1024.",
+      "This same halving structure is why binary search is naturally written recursively (links to 2.2.1)."
+    ]},
+    {"title": "Pipelining the greetings-card production line: quantifying the gain", "steps": [
+      "Making one card takes three equal stages: fold, stamp, envelope. There are 6 cards; each stage takes 1 tick.",
+      "Sequential (one worker does everything): 6 cards times 3 stages = 18 ticks.",
+      "Pipelined (three workers, one stage each, passing cards on every tick): card 1 finishes at tick 3, then one card finishes every tick after that.",
+      "Total pipelined time = n + k - 1 = 6 + 3 - 1 = 8 ticks.",
+      "Speed-up = 18 divided by 8 = 2.25 times.",
+      "Check the trap: each individual card still takes 3 ticks from start to finish. Pipelining improved throughput, not per-item latency.",
+      "As n grows, speed-up approaches k (here 3): with 100 cards, 300 ticks becomes 102.",
+      "Map to the CPU: fold, stamp, envelope correspond to fetch, decode, execute, and a stalled stage (or a branch flushing fetched instructions) is what limits real pipelines."
+    ]}
+  ],
+  "activities": [
+    {"title": "Which method would you hire? (card sort)", "minutes": 12, "instructions": [
+      "Pairs get 10 method cards (problem recognition, decomposition, divide and conquer, abstraction, backtracking, data mining, heuristics, performance modelling, pipelining, visualisation) and 10 scenario cards, and match them one to one.",
+      "Scenarios include: Sudoku solved by trying a digit and undoing it at dead ends; loyalty-card basket analysis; a satnav picking a good-enough route from distance estimates; simulating Black Friday server traffic before launch; a CPU fetching one instruction while decoding and executing others; plotting infections on a heat map; splitting a game into input, physics and rendering modules; halving a sorted phone book to find a name; the Tube map ignoring real distances; listing inputs, outputs and constraints before coding.",
+      "Two deliberate near-misses to argue: game modules versus phone book (different sub-tasks means decomposition; same-problem halving means divide and conquer) and Sudoku versus satnav (backtracking is systematic and exact; a heuristic trades optimality for speed).",
+      "Cold-call checks: pairs must justify why the method suits the scenario, not just name it; the why is where exam marks live.",
+      "Answers: backtracking, data mining, heuristics, performance modelling, pipelining, visualisation, decomposition, divide and conquer, abstraction, problem recognition."
+    ], "stretch": "Pairs write one new scenario per method that is not a paraphrase; the heuristics scenario must include the phrase good enough, not guaranteed optimal."},
+    {"title": "The greetings-card pipeline (unplugged demo)", "minutes": 15, "instructions": [
+      "Set up a three-station production line: fold, stamp, envelope, with 12 sheets of A5.",
+      "Run A: one student makes 6 cards alone, all three stages per card; the class counts ticks aloud (18).",
+      "Run B: three students, one stage each, passing cards every tick; count again (8 ticks: first card at tick 3, then one per tick).",
+      "Board the comparison and the formula n + k - 1; compute the 2.25 times speed-up.",
+      "Ask the two key questions: did any single card get made faster? So what exactly improved? (Throughput, not latency.) Then map stations to fetch, decode, execute."
+    ], "stretch": "What is the maximum speed-up of a k-stage pipeline as n grows? (Approaches k.) What if stamping takes 2 ticks? (The slowest stage sets the pace.)"},
+    {"title": "Always, Sometimes, Never: computational methods", "minutes": 10, "instructions": [
+      "Three corner posters: Always, Sometimes, Never. Reveal statements one at a time; students commit to a corner and one per corner defends the choice.",
+      "Statements: a heuristic gives the optimal answer; abstraction removes every detail; divide and conquer splits a problem into smaller instances of the same problem; decomposition produces smaller versions of the original problem; pipelining makes an individual item finish faster; performance modelling requires building the real system first; backtracking is implemented using recursion.",
+      "Answers: Sometimes (may land on the optimum but never guaranteed); Never (only unnecessary detail); Always (its definition); Sometimes (only when the split is same-type); Never (throughput up, latency unchanged); Never (the point is predicting without building); Sometimes (naturally recursive but rewritable with an explicit stack).",
+      "Pairs then rewrite each Never statement so it becomes Always."
+    ], "stretch": "Students author one new genuinely arguable statement about 2.2.2 and trial it on a partner; the best become next lesson's starter."}
+  ],
+  "practice": [
+    {"q": "State two features of a problem that make it solvable by computational methods. [2]", "a": "Any two: it can be decomposed into sub-problems (1); it has clear inputs, processes and outputs (1); it is rule-based with a finite sequence of steps (1); its data can be structured or modelled (1)."},
+    {"q": "Explain the difference between decomposition and divide and conquer. [3]", "a": "Decomposition breaks a problem into smaller sub-problems that are usually different sub-tasks (1); divide and conquer repeatedly splits a problem into smaller instances of the same problem (1), solves them and combines the results, as in binary search or merge sort (1)."},
+    {"q": "A sorted list contains 1000 names. Explain why binary search can find any name in no more than 10 comparisons. [3]", "a": "Each comparison halves the portion of the list that could contain the name (1); after 10 halvings at most one item remains, since 2 to the power 10 = 1024, which exceeds 1000 (1); so at most about 10 comparisons are ever needed, compared with up to 1000 for linear search (1)."},
+    {"q": "Describe how backtracking could be used to solve a Sudoku puzzle. [4]", "a": "Place a valid digit in the first empty cell (1); move to the next empty cell and repeat, checking each placement against row, column and box constraints (1); when no valid digit exists for a cell, return to the previous cell and try its next possible digit (1); continue until the grid is complete or all options are exhausted, guaranteeing a solution is found if one exists (1)."},
+    {"q": "Explain why a heuristic approach is used for problems such as the Travelling Salesman Problem. [3]", "a": "The number of possible routes grows factorially, so an exact search is intractable for large inputs (1); a heuristic uses a rule of thumb to produce an answer quickly (1); the answer is good enough but not guaranteed optimal, which is an acceptable trade for feasible running time (1)."},
+    {"q": "Describe what is meant by performance modelling and give one situation where it is preferable to testing the real system. [3]", "a": "Using a mathematical or simulated model to predict how a system will behave (1) before or instead of building it (1). Example: simulating peak-day load on a web server, or testing aircraft control systems, where real failure would be costly or dangerous (1)."},
+    {"q": "A processor pipelines the fetch, decode and execute stages. Explain how this increases performance and state one limitation. [4]", "a": "The three stages work on different instructions simultaneously (1), so an instruction can complete every cycle rather than every three, increasing throughput (1). Limitation: each individual instruction takes just as long (latency unchanged) (1); and a branch or dependency can stall or flush the pipeline, losing the benefit (1)."},
+    {"q": "Explain one way a supermarket could use data mining and visualisation together. [3]", "a": "Mine millions of loyalty-card transactions to find hidden purchasing correlations, such as products often bought together (1); present the results visually, for example a heat map or chart of associations (1), so managers quickly spot the pattern and act on it, such as re-siting products or targeting offers (1)."}
+  ],
+  "misconceptions": [
+    "Students often use decomposition and divide and conquer interchangeably; decomposition yields different sub-tasks while divide and conquer yields smaller instances of the same problem, solved and combined.",
+    "Students often claim a heuristic finds the best answer; it finds a good-enough answer quickly and is never guaranteed optimal.",
+    "Students often think pipelining makes each instruction faster; per-item latency is unchanged and only throughput improves.",
+    "Students often think abstraction means removing detail until the problem is simple; it removes only unnecessary detail, keeping everything the problem needs.",
+    "Students often conflate intractable with non-computable; intractable problems have algorithms that are too slow, non-computable problems have no algorithm at all."
+  ],
+  "exam_link": [
+    "Command words: state and define for method definitions (1-2 marks); describe and explain for applying a method to a scenario (2-4 marks); occasional discuss questions weigh methods against each other.",
+    "The reliable mark pattern is name the method, apply it to the scenario, justify why it fits; a bare definition rarely scores full marks.",
+    "Heuristics questions almost always want the phrase good enough, not guaranteed optimal, linked to intractability; divide and conquer questions want split, solve, combine and the recursion link.",
+    "Example stem: 'A logistics company must plan daily routes for 200 delivery vans. Explain why the company uses a heuristic algorithm rather than one that finds the optimal routes.' [3]"
+  ],
+  "task": "Methods consultancy report: for each of six briefs, name the single best computational method and justify the choice in two sentences, including why rival methods fit less well. Briefs: an exam timetabler that must retreat when two clashes block a slot (backtracking); a bank scanning millions of transactions for unusual patterns (data mining); a chess engine that cannot examine every future position (heuristics); a stadium designer predicting crowd flow before construction (performance modelling); a video encoder processing frames through decode, transform and compress stages simultaneously (pipelining); an epidemiologist plotting cases on a map to find the source (visualisation).",
+  "challenge": "Modify the worked-example maze by also blocking cell (3,D). Trace the West-South-East-North algorithm again and show how it proves no path exists (every branch is exhausted and the search retreats all the way to the start with no untried options). Then explain in three sentences why this exhaustive guarantee is exactly what a heuristic sacrifices, and name one problem where each behaviour is the right choice.",
+  "exit_ticket": [
+    {"q": "What is the difference between a non-computable problem and an intractable one?", "a": "Non-computable: no algorithm can solve it (e.g. the Halting Problem); intractable: an algorithm exists but takes impractically long, such as exponential time, as input grows."},
+    {"q": "A satnav gives you a route in one second that is 2 percent longer than the true optimum. Name the method and state the trade it makes.", "a": "A heuristic; it trades guaranteed optimality for speed, giving a good-enough answer quickly."},
+    {"q": "In one sentence each: what does pipelining improve, and what does it not improve?", "a": "It improves throughput because stages overlap on different items; it does not improve latency, since each individual item still takes the same total time."}
+  ]
 }

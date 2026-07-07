@@ -1,0 +1,120 @@
+{
+  "subtopic": "2.3.1 Algorithms (part 2 — sorting)",
+  "spec": "OCR H446 — Component 02",
+  "week": "Year 13",
+  "objectives": [
+    "I can describe and write bubble sort (with an early-exit flag) and insertion sort in OCR Exam Reference Language.",
+    "I can describe merge sort's divide and merge phases and quick sort's pivot and partition, and trace all four sorts on concrete lists.",
+    "I can state and justify the best and worst-case Big O of each sorting algorithm.",
+    "I can choose and justify the most suitable sort for a given scenario."
+  ],
+  "retrieval": [
+    {"q": "From part 1: simplify 5n squared + 3n + 20 to Big O notation.", "a": "O(n squared) — keep the dominant term, drop constants and lower-order terms."},
+    {"q": "From part 1: state the precondition of binary search and its worst-case time complexity.", "a": "The list must be sorted; worst case O(log n)."},
+    {"q": "From part 1: why does doubling the length of a sorted list add only one comparison to binary search's worst case?", "a": "Each comparison halves the remaining range, so one extra halving handles the doubled list."},
+    {"q": "From part 1: a list has 9 items at indices 0 to 8. What is the first mid calculated by binary search?", "a": "mid = (0 + 8) DIV 2 = 4."},
+    {"q": "From part 1: state the best case of linear search and the input that causes it.", "a": "O(1), when the target is the first element checked."}
+  ],
+  "keywords": [
+    {"term": "Bubble sort", "def": "Repeatedly compares adjacent pairs and swaps them if out of order; the largest value bubbles to the end each pass."},
+    {"term": "Early-exit flag", "def": "A boolean recording whether a bubble sort pass made any swap; a clean pass proves the list is sorted, so stop."},
+    {"term": "Insertion sort", "def": "Grows a sorted section at the front, inserting each next element by shifting larger sorted elements right."},
+    {"term": "Merge sort", "def": "Divide and conquer sort: halve the list until single elements remain, then repeatedly merge sorted sublists."},
+    {"term": "Merge", "def": "Combining two sorted lists by repeatedly taking the smaller front element; linear in the total length."},
+    {"term": "Quick sort", "def": "Divide and conquer sort: choose a pivot, partition into smaller-than and larger-than sides, recurse on each side."},
+    {"term": "Pivot", "def": "The element quick sort compares everything against; after partitioning it sits in its final sorted position."},
+    {"term": "Stable sort", "def": "A sort that keeps items with equal keys in their original relative order (bubble, insertion, merge are stable)."},
+    {"term": "In-place sort", "def": "A sort needing only O(1) extra memory, rearranging within the original array (bubble, insertion)."}
+  ],
+  "content": [
+    {"heading": "The sorting problem", "points": ["Sorting arranges a list into order; it is what makes binary search possible.", "We measure sorts by comparisons and swaps or copies as n grows.", "The four H446 sorts split into two families: simple O(n squared) passes, and divide and conquer O(n log n).", "Also compare stability (equal items keep their order) and space (in-place or not).", "No single best sort exists — every choice is a trade-off, which is why exams ask you to justify."]},
+    {"heading": "Bubble sort: mechanism and code", "points": ["Compare adjacent pairs left to right, swapping when the left is bigger.", "After pass one, the largest value has bubbled to the end — its final position.", "Each pass can therefore ignore one more element at the end (n = n - 1).", "The swapped flag gives the early exit: a pass with zero swaps proves the list is sorted."], "code": ["procedure bubbleSort(arr)", "    n = arr.length", "    swapped = true", "    while swapped", "        swapped = false", "        for i = 0 to n - 2", "            if arr[i] > arr[i + 1] then", "                temp = arr[i]", "                arr[i] = arr[i + 1]", "                arr[i + 1] = temp", "                swapped = true", "            endif", "        next i", "        n = n - 1", "    endwhile", "endprocedure"]},
+    {"heading": "Bubble sort: verified trace of [6, 2, 9, 1, 5] and complexity", "points": ["Pass 1 (4 comparisons, 3 swaps): swap 6,2 then 9,1 then 9,5 — [2, 6, 1, 5, 9]; 9 is fixed.", "Pass 2 (3 comparisons, 2 swaps): [2, 1, 5, 6, 9]. Pass 3 (2 comparisons, 1 swap): [1, 2, 5, 6, 9].", "Pass 4 (1 comparison): zero swaps, so the flag stops it. Totals: 10 comparisons, 6 swaps.", "Worst case O(n squared): up to n - 1 passes of up to n - 1 comparisons each — nested loops, (n - 1) + (n - 2) + ... + 1 = n(n - 1)/2.", "Best case O(n): sorted data gives one clean pass and the flag stops it — without the flag, every case is O(n squared)."], "note": "After pass k the k largest values are in final position; trace questions award every intermediate list state."},
+    {"heading": "Insertion sort: mechanism and code", "points": ["Treat arr[0] as a sorted section of one; take each next element as current.", "Shift sorted elements bigger than current one place right, then drop current into the gap.", "The while loop exits immediately when no shifting is needed — the source of the O(n) best case.", "After the loop, j sits one place left of the insertion point, hence arr[j + 1] = current."], "code": ["procedure insertionSort(arr)", "    for i = 1 to arr.length - 1", "        current = arr[i]", "        j = i - 1", "        while j >= 0 AND arr[j] > current", "            arr[j + 1] = arr[j]", "            j = j - 1", "        endwhile", "        arr[j + 1] = current", "    next i", "endprocedure"]},
+    {"heading": "Insertion sort: verified trace of [8, 4, 6, 2, 7] and complexity", "points": ["i=1, current 4: shift 8 right, insert at 0 — [4, 8, 6, 2, 7].", "i=2, current 6: shift 8, insert at 1 — [4, 6, 8, 2, 7].", "i=3, current 2: shift 8, 6, 4, insert at 0 — [2, 4, 6, 8, 7].", "i=4, current 7: shift 8, insert at 3 — [2, 4, 6, 7, 8]. Total 6 shifts.", "Worst case O(n squared) on reverse-sorted data (every element shifts past all before it); best case O(n) on sorted data (no shifts). Stable, in-place."], "note": "Insertion sort is the H446 pick for small or nearly-sorted lists."},
+    {"heading": "Merge sort: the divide phase", "points": ["Divide and conquer: halve the list recursively until every sublist is one element.", "A one-element list is trivially sorted — that is the base case.", "Halving a list of n takes about log base 2 of n levels: 8 elements need 3 levels.", "Odd lengths split unevenly (6 into 3 and 3, then 3 into 1 and 2) — the algorithm is unchanged."], "code": ["function mergeSort(arr)", "    if arr.length <= 1 then", "        return arr", "    endif", "    mid = arr.length DIV 2", "    left = mergeSort(elements 0 to mid - 1)", "    right = mergeSort(elements mid to arr.length - 1)", "    return merge(left, right)", "endfunction"]},
+    {"heading": "Merge sort: the merge phase and complexity", "points": ["Merging two sorted lists: repeatedly compare the two front elements and take the smaller.", "When one list empties, append the remainder of the other.", "The invariant: because both lists are sorted, the smallest unplaced value is always at one of the two fronts.", "Every level of the recursion merges all n elements, and there are log n levels: O(n log n) in ALL cases.", "Cost: the merge builds new lists — O(n) extra space, merge sort's one drawback. Stable."], "note": "Merge sort's complexity does not depend on the input order — the guarantee is its selling point."},
+    {"heading": "Quick sort: pivot and partition", "points": ["Choose a pivot (we use the first element); partition the rest into smaller-than-pivot and larger-than-pivot sides.", "After one partition the pivot is in its final sorted position — the only value guaranteed placed.", "Recurse on the left side and the right side; sides of length 0 or 1 are the base case.", "One partition of k elements makes k - 1 comparisons (everything against the pivot)."], "code": ["procedure quickSort(arr, low, high)", "    if low < high then", "        pivotIndex = partition(arr, low, high)", "        quickSort(arr, low, pivotIndex - 1)", "        quickSort(arr, pivotIndex + 1, high)", "    endif", "endprocedure"]},
+    {"heading": "Quick sort: complexity and the pivot problem", "points": ["Average and best case O(n log n): good pivots halve the list, giving log n levels of about n comparisons.", "Worst case O(n squared): a poor pivot (e.g. first element of already-sorted data) puts everything on one side.", "That degenerate case gives n levels of partitions sized n-1, n-2, ..., 1 — the bubble-sort sum again.", "Fixes: random pivot or median-of-three make the worst case very unlikely.", "In practice very fast and in-place (O(log n) stack space), but not stable and not guaranteed."]},
+    {"heading": "Choosing a sort", "points": ["Tiny list, simplest possible code: bubble sort.", "Small or nearly-sorted data, or data arriving item by item: insertion sort (O(n) best case).", "Guaranteed performance or stability required, memory available: merge sort.", "Large in-memory data, average speed matters most: quick sort.", "Exam answers must name the property that fits the scenario, not just the algorithm."], "code": ["Sort        Best        Average     Worst       Space     Stable", "Bubble      O(n)*       O(n sq)     O(n sq)     O(1)      yes    *flag needed", "Insertion   O(n)        O(n sq)     O(n sq)     O(1)      yes", "Merge       O(n log n)  O(n log n)  O(n log n)  O(n)      yes", "Quick       O(n log n)  O(n log n)  O(n sq)     O(log n)  no"]}
+  ],
+  "worked_examples": [
+    {"title": "Full merge sort of [9, 3, 7, 1, 8, 2]", "steps": [
+      "Divide: [9, 3, 7, 1, 8, 2] splits into [9, 3, 7] and [1, 8, 2].",
+      "Divide again: [9, 3, 7] splits into [9] and [3, 7]; [3, 7] splits into [3] and [7]. Likewise [1, 8, 2] splits into [1] and [8, 2]; [8, 2] splits into [8] and [2]. All sublists are now single elements — base case.",
+      "Merge level 1: [3] and [7] merge to [3, 7]; [8] and [2] merge to [2, 8].",
+      "Merge level 2: [9] with [3, 7] — compare 9 and 3, take 3; compare 9 and 7, take 7; append 9 — gives [3, 7, 9]. [1] with [2, 8] — compare 1 and 2, take 1; left list empty, append 2, 8 — gives [1, 2, 8].",
+      "Final merge of [3, 7, 9] and [1, 2, 8]: 3 v 1 take 1; 3 v 2 take 2; 3 v 8 take 3; 7 v 8 take 7; 9 v 8 take 8; append 9 — [1, 2, 3, 7, 8, 9] in 5 comparisons.",
+      "Complexity check on the trace: 3 levels of merging (log base 2 of 6 rounded up), each handling all 6 elements — O(n log n), and it would be the same for any starting order."
+    ]},
+    {"title": "Full quick sort of [4, 9, 1, 6, 3, 8] (first-element pivot)", "steps": [
+      "Partition around pivot 4: 9 goes right, 1 left, 6 right, 3 left, 8 right (5 comparisons). LEFT = [1, 3], pivot 4 placed at final index 2, RIGHT = [9, 6, 8].",
+      "Recurse LEFT [1, 3]: pivot 1; 3 goes right (1 comparison). LEFT empty, RIGHT = [3]. Both sides length <= 1 — done: [1, 3].",
+      "Recurse RIGHT [9, 6, 8]: pivot 9; 6 and 8 both go left (2 comparisons). LEFT = [6, 8], RIGHT empty.",
+      "Recurse [6, 8]: pivot 6; 8 goes right (1 comparison) — done: [6, 8]. So the right side resolves to [6, 8, 9].",
+      "Assemble: [1, 3] + [4] + [6, 8, 9] = [1, 3, 4, 6, 8, 9]. Total 9 comparisons.",
+      "Note the pivot pathology: sorting already-sorted [1, 3, 4, 6, 8, 9] with first-element pivots would put everything on one side every time — partitions of 5, 4, 3, 2, 1 elements, which is O(n squared)."
+    ]},
+    {"title": "The early-exit flag earning its keep on nearly-sorted [1, 2, 4, 3, 5]", "steps": [
+      "Pass 1: compare 1,2 (no swap); 2,4 (no); 4,3 (swap — list becomes [1, 2, 3, 4, 5]); 4,5 (no). swapped = true, so another pass is required.",
+      "Pass 2: compare 1,2; 2,3; 3,4 — no swaps at all. swapped stays false.",
+      "The while loop ends: 2 passes, 7 comparisons, 1 swap.",
+      "Without the flag, bubble sort would blindly run all 4 passes (10 comparisons) on a list that was sorted after one swap.",
+      "On fully sorted data the flag version does exactly one pass of n - 1 comparisons and stops: that is the O(n) best case.",
+      "One-line exam justification: the flag detects a pass with zero swaps, which proves the list is sorted, so no further passes run."
+    ]}
+  ],
+  "activities": [
+    {"title": "Human bubble sort", "minutes": 15, "instructions": [
+      "Five students hold cards 5, 1, 4, 2, 8 (left to right = index 0 to 4); a judge walks along adjacent pairs and orders a physical swap when the left card is bigger; the class calls SWAP or NO SWAP first.",
+      "Pass 1 (4 comparisons, 3 swaps): 5,1 swap; 5,4 swap; 5,2 swap; 5,8 no — line reads 1 4 2 5 8 and the 8 sits down in the sorted zone.",
+      "Pass 2 (3 comparisons, 1 swap): gives 1 2 4 5 8, and 5 sits down. Pass 3 (2 comparisons, 0 swaps): the swap-flag card stays clean, so STOP.",
+      "Tally the totals: 3 passes, 9 comparisons, 4 swaps.",
+      "Ask: why O(n squared)? (Up to n - 1 passes of up to n - 1 comparisons — nested loops.) When is it O(n)? (Sorted input, one clean pass — only because we kept the flag.)"
+    ], "stretch": "Re-run on 1 2 4 5 8 to show the flag giving a single O(n) pass, then predict the swap count for the reverse list 8 5 4 2 1 before running it."},
+    {"title": "Bug hunt: insertion sort", "minutes": 12, "instructions": [
+      "Give pairs a printed insertion sort containing exactly three bugs: the while condition reads arr[j] < current, the loop never decrements j, and the final write is arr[j] = current.",
+      "No fix accepted without evidence: pairs must name the line, say what goes wrong at run time, and give the corrected line.",
+      "Expected findings: arr[j] < current sorts descending (fix: arr[j] > current); the missing j = j - 1 hangs forever whenever a shift happens; arr[j] = current writes one slot too far left (fix: arr[j + 1] = current).",
+      "Once fixed, pairs hand-trace [5, 3, 8, 1]: i=1 gives [3, 5, 8, 1]; i=2 gives [3, 5, 8, 1] (no shifts); i=3 gives [1, 3, 5, 8].",
+      "Debrief: why does insertion sort suit nearly-sorted data? (The while loop exits immediately when no shifting is needed — best case O(n).)"
+    ], "stretch": "Which input makes the fixed code shift the most? (Reverse-sorted.) If records are sorted by one field then another, why does insertion sort's stability matter? (Equal keys keep their order, so the earlier sort survives.)"},
+    {"title": "Pivot! The human quick sort partition", "minutes": 15, "instructions": [
+      "Seven students line up holding 7 2 9 4 8 5 1; crown the first (7) as pivot in a taped PIVOT zone; the others walk one at a time to LEFT (smaller) or RIGHT (larger), keeping arrival order.",
+      "First partition result: LEFT = 2, 4, 5, 1; PIVOT = 7; RIGHT = 9, 8 — six comparisons, and only the pivot is guaranteed in its final position (position 5 of 7).",
+      "Recurse: crown 2 in the LEFT zone (LEFT = 1, RIGHT = 4, 5; then pivot 4 sends 5 right), and 9 in the RIGHT zone (8 goes left). Read the final line: 1 2 4 5 7 8 9.",
+      "Debrief: about n comparisons per level and roughly log n levels when partitions halve — O(n log n) on average.",
+      "Then re-run on the sorted line 1 2 4 5 7 8 9 with first-person pivots: every partition dumps everyone on one side — partitions of 6, 5, 4, 3, 2, 1 (21 comparisons), n levels, O(n squared)."
+    ], "stretch": "Re-run the sorted case choosing the middle person as pivot — near-perfect halving returns. Is human quick sort stable? (No — walking to zones can reorder equal values; quick sort is not stable.)"}
+  ],
+  "practice": [
+    {"q": "Show the list [4, 8, 2, 6, 1] after one complete pass of bubble sort, and state which value is now guaranteed in its final position. [3]", "a": "Compare 4,8 (no swap); 8,2 (swap); 8,6 (swap); 8,1 (swap) (1). After the pass the list is [4, 2, 6, 1, 8] (1). The 8 — the largest value — is guaranteed in its final position (1)."},
+    {"q": "Explain why bubble sort's best case is O(n) only when an early-exit flag is used. [3]", "a": "On already-sorted data the first pass makes zero swaps (1); the flag records this, proving the list is sorted, so the algorithm stops after one pass of n - 1 comparisons (1); without the flag every pass still runs, so even sorted data costs O(n squared) (1)."},
+    {"q": "Insertion sort is applied to [9, 5, 7, 3]. Show the list after each of the first two iterations of the outer loop. [2]", "a": "i=1 (current 5): 9 shifts right, giving [5, 9, 7, 3] (1). i=2 (current 7): 9 shifts right, giving [5, 7, 9, 3] (1)."},
+    {"q": "Explain why merge sort has time complexity O(n log n) in the best, average and worst case. [3]", "a": "The list is repeatedly halved, giving about log base 2 of n levels of recursion (1); at every level the merges process all n elements (1); this happens regardless of the initial order of the data, so all cases are n times log n (1)."},
+    {"q": "State the main disadvantage of merge sort compared with quick sort. [1]", "a": "It needs O(n) additional memory for the merged lists, whereas quick sort works in place (1)."},
+    {"q": "Identify an input and pivot choice that cause quick sort to run in O(n squared) time, and explain why. [3]", "a": "Already-sorted (or reverse-sorted) data with the first element as pivot (1); every partition places all remaining elements on one side of the pivot (1); this gives n levels of partitions doing n-1, n-2, ... comparisons, a total proportional to n squared (1)."},
+    {"q": "A hospital re-sorts an almost-sorted list of 300 patient records every hour on a low-memory device. State the most suitable sorting algorithm and justify your choice. [3]", "a": "Insertion sort (1); on nearly-sorted data it approaches its O(n) best case because little or no shifting is needed (1); it is in-place, using O(1) extra memory, unlike merge sort's O(n) (1)."},
+    {"q": "Give two reasons quick sort is often preferred in practice despite its O(n squared) worst case. [2]", "a": "Its average case is O(n log n) with small constant factors, so it is very fast on typical data (1); it sorts in place needing only O(log n) stack space, unlike merge sort's O(n) extra memory (1)."}
+  ],
+  "misconceptions": [
+    "Students often think bubble sort's best case is O(n) automatically; it is O(n) only with the early-exit flag — without it, every pass runs regardless.",
+    "Students often say quick sort is O(n log n); its average case is, but the worst case is O(n squared) with a poor pivot, and exams target exactly that distinction.",
+    "Students often think merge sort's guarantee is free; it costs O(n) extra memory for the merge lists — the classic time-versus-space trade-off.",
+    "Students often trace insertion sort as if it swaps adjacent pairs like bubble sort; it shifts a block of larger elements right and inserts, which is why nearly-sorted input is so cheap.",
+    "Students often believe a faster Big O always wins; on a five-element list insertion sort beats merge sort — constants and input size matter in scenario questions."
+  ],
+  "exam_link": [
+    "Command words: show or complete a trace pass by pass (3-4 marks), explain a complexity with justification (2-3 marks), compare and justify a choice of sort for a scenario (4-6 marks, and a favourite 9-mark extended response).",
+    "Trace questions award the intermediate list states — a correct final list with no working scores little.",
+    "The three discriminators examiners test: the flag behind bubble's O(n) best case, quick sort's O(n squared) worst case and its cause, merge sort's O(n) space cost.",
+    "Example stem: 'An online store must sort 10 million orders where consistent response time is essential. Discuss the suitability of quick sort and merge sort for this task.' [9]"
+  ],
+  "task": "Trace insertion sort on [7, 2, 5, 10, 3], writing the full array after each value of i and counting shifts. (Answer: i=1 gives [2, 7, 5, 10, 3] with 1 shift; i=2 gives [2, 5, 7, 10, 3] with 1 shift; i=3 gives [2, 5, 7, 10, 3] with 0 shifts; i=4 gives [2, 3, 5, 7, 10] with 3 shifts — 5 shifts in total.) Then state which input pattern would maximise the shifts and give the resulting Big O with a one-sentence justification.",
+  "challenge": "A logging system appends about 50 new readings each minute to a list of one million already-sorted readings, and the full list must be sorted again every minute on a memory-constrained device. Rule each of the four sorts in or out with justification, then defend the strongest choice in a paragraph. (Key ideas: the list is always nearly sorted, so insertion sort approaches O(n); merge sort's O(n) extra space breaks the memory constraint; quick sort's first-element pivot hits its O(n squared) pathology on sorted data unless the pivot strategy is changed.)",
+  "exit_ticket": [
+    {"q": "After one pass of bubble sort, what is guaranteed, and what does a pass with zero swaps prove?", "a": "The largest remaining value is in its final position; a zero-swap pass proves the whole list is sorted, so the flag stops the algorithm."},
+    {"q": "State the worst-case complexity of quick sort and the situation that causes it.", "a": "O(n squared), caused by a poor pivot such as the first element of already-sorted data, making every partition one-sided."},
+    {"q": "Which sort guarantees O(n log n) in all cases, and what does that guarantee cost?", "a": "Merge sort; it costs O(n) extra memory for the merge lists."}
+  ]
+}
