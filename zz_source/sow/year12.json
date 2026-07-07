@@ -426,7 +426,13 @@
   "consolidation_note": "mark the holiday Recap 2; re-RAG the PLC.",
   "other_note": "",
   "workbook": null,
-  "special": []
+  "special": [],
+  "lessons": [
+   {
+    "stem": "1.4.1-data-types",
+    "label": "1.4.1 part 1"
+   }
+  ]
  },
  {
   "id": "wk16",
@@ -447,7 +453,13 @@
   "consolidation_note": "Quiz 1.4.1 Section A; Revision Notes 1.4.1.",
   "other_note": "",
   "workbook": null,
-  "special": []
+  "special": [],
+  "lessons": [
+   {
+    "stem": "wk16-1.4.1-floating-point",
+    "label": "1.4.1 part 2"
+   }
+  ]
  },
  {
   "id": "wk17",
@@ -470,7 +482,17 @@
   "consolidation_note": "full Quiz 1.4.1; start Flashcards 1.4.",
   "other_note": "",
   "workbook": null,
-  "special": []
+  "special": [],
+  "lessons": [
+   {
+    "stem": "wk17-1.4.1-charsets-bitwise",
+    "label": "1.4.1 part 3"
+   },
+   {
+    "stem": "2.2.1-programming-techniques",
+    "label": "2.2.1"
+   }
+  ]
  },
  {
   "id": "wk18",
@@ -496,7 +518,13 @@
   "consolidation_note": "Quiz 2.2.1; Workbook 2 stack and queue classes.",
   "other_note": "",
   "workbook": null,
-  "special": []
+  "special": [],
+  "lessons": [
+   {
+    "stem": "1.4.2-data-structures",
+    "label": "1.4.2 part 1"
+   }
+  ]
  },
  {
   "id": "wk19",
@@ -517,7 +545,13 @@
   "consolidation_note": "Quiz 1.4.2; Mini-Paper 1.3 timed.",
   "other_note": "",
   "workbook": null,
-  "special": []
+  "special": [],
+  "lessons": [
+   {
+    "stem": "wk19-1.4.2-implementation-workshop",
+    "label": "1.4.2 workshop"
+   }
+  ]
  },
  {
   "id": "wk20",
@@ -536,7 +570,13 @@
   "consolidation_note": "Revision Notes 1.4.2.",
   "other_note": "",
   "workbook": null,
-  "special": []
+  "special": [],
+  "lessons": [
+   {
+    "stem": "wk20-1.4.2-trees-graphs-hashtables",
+    "label": "1.4.2 part 2"
+   }
+  ]
  },
  {
   "id": "half-term-2-15-feb",
@@ -576,7 +616,13 @@
   "consolidation_note": "Quiz 1.4.3 Section A; truth-table drills from Worksheet 1.4.",
   "other_note": "",
   "workbook": null,
-  "special": []
+  "special": [],
+  "lessons": [
+   {
+    "stem": "1.4.3-boolean-algebra",
+    "label": "1.4.3 part 1"
+   }
+  ]
  },
  {
   "id": "wk22",
@@ -616,7 +662,13 @@
   "consolidation_note": "Mini-Paper 1.2 + Organiser 1.2 cover-recall.",
   "other_note": "",
   "workbook": null,
-  "special": []
+  "special": [],
+  "lessons": [
+   {
+    "stem": "wk23-1.4.3-kmaps-adders-flipflops",
+    "label": "1.4.3 part 2"
+   }
+  ]
  },
  {
   "id": "wk24",
