@@ -193,7 +193,7 @@
 
 ### Week 15 (04 Jan) 1.4.1 Binary, negatives, hex
 
-- [1 Lesson 1.4.1.pptx](1%20Year%2012%20Weekly/Week%2015%20%2804%20Jan%29%201.4.1%20Binary%2C%20negatives%2C%20hex/1%20Lesson%201.4.1.pptx)
+- [1 Lesson 1.4.1 part 1.pptx](1%20Year%2012%20Weekly/Week%2015%20%2804%20Jan%29%201.4.1%20Binary%2C%20negatives%2C%20hex/1%20Lesson%201.4.1%20part%201.pptx)
 - [3 Homework - Answers.docx](1%20Year%2012%20Weekly/Week%2015%20%2804%20Jan%29%201.4.1%20Binary%2C%20negatives%2C%20hex/3%20Homework%20-%20Answers.docx)
 - [3 Homework.docx](1%20Year%2012%20Weekly/Week%2015%20%2804%20Jan%29%201.4.1%20Binary%2C%20negatives%2C%20hex/3%20Homework.docx)
 - [4 Consolidation.docx](1%20Year%2012%20Weekly/Week%2015%20%2804%20Jan%29%201.4.1%20Binary%2C%20negatives%2C%20hex/4%20Consolidation.docx)
@@ -203,6 +203,7 @@
 
 ### Week 16 (11 Jan) 1.4.1 Floating point
 
+- [1 Lesson 1.4.1 part 2.pptx](1%20Year%2012%20Weekly/Week%2016%20%2811%20Jan%29%201.4.1%20Floating%20point/1%20Lesson%201.4.1%20part%202.pptx)
 - [2 Class Quiz 1.4.1 - Answers.docx](1%20Year%2012%20Weekly/Week%2016%20%2811%20Jan%29%201.4.1%20Floating%20point/2%20Class%20Quiz%201.4.1%20-%20Answers.docx)
 - [2 Class Quiz 1.4.1.docx](1%20Year%2012%20Weekly/Week%2016%20%2811%20Jan%29%201.4.1%20Floating%20point/2%20Class%20Quiz%201.4.1.docx)
 - [3 Homework.docx](1%20Year%2012%20Weekly/Week%2016%20%2811%20Jan%29%201.4.1%20Floating%20point/3%20Homework.docx)
@@ -211,6 +212,7 @@
 
 ### Week 17 (18 Jan) 1.4.1 Character sets + 2.2.1
 
+- [1 Lesson 1.4.1 part 3.pptx](1%20Year%2012%20Weekly/Week%2017%20%2818%20Jan%29%201.4.1%20Character%20sets%20%2B%202.2.1/1%20Lesson%201.4.1%20part%203.pptx)
 - [1 Lesson 2.2.1.pptx](1%20Year%2012%20Weekly/Week%2017%20%2818%20Jan%29%201.4.1%20Character%20sets%20%2B%202.2.1/1%20Lesson%202.2.1.pptx)
 - [3 Homework - Answers.docx](1%20Year%2012%20Weekly/Week%2017%20%2818%20Jan%29%201.4.1%20Character%20sets%20%2B%202.2.1/3%20Homework%20-%20Answers.docx)
 - [3 Homework.docx](1%20Year%2012%20Weekly/Week%2017%20%2818%20Jan%29%201.4.1%20Character%20sets%20%2B%202.2.1/3%20Homework.docx)
@@ -219,7 +221,7 @@
 
 ### Week 18 (25 Jan) 1.4.2 Arrays, stacks, queues
 
-- [1 Lesson 1.4.2.pptx](1%20Year%2012%20Weekly/Week%2018%20%2825%20Jan%29%201.4.2%20Arrays%2C%20stacks%2C%20queues/1%20Lesson%201.4.2.pptx)
+- [1 Lesson 1.4.2 part 1.pptx](1%20Year%2012%20Weekly/Week%2018%20%2825%20Jan%29%201.4.2%20Arrays%2C%20stacks%2C%20queues/1%20Lesson%201.4.2%20part%201.pptx)
 - [2 Class Quiz 2.2.1 - Answers.docx](1%20Year%2012%20Weekly/Week%2018%20%2825%20Jan%29%201.4.2%20Arrays%2C%20stacks%2C%20queues/2%20Class%20Quiz%202.2.1%20-%20Answers.docx)
 - [2 Class Quiz 2.2.1.docx](1%20Year%2012%20Weekly/Week%2018%20%2825%20Jan%29%201.4.2%20Arrays%2C%20stacks%2C%20queues/2%20Class%20Quiz%202.2.1.docx)
 - [3 Homework - Answers.docx](1%20Year%2012%20Weekly/Week%2018%20%2825%20Jan%29%201.4.2%20Arrays%2C%20stacks%2C%20queues/3%20Homework%20-%20Answers.docx)
@@ -229,6 +231,7 @@
 
 ### Week 19 (01 Feb) Data structures in code (review)
 
+- [1 Lesson 1.4.2 workshop.pptx](1%20Year%2012%20Weekly/Week%2019%20%2801%20Feb%29%20Data%20structures%20in%20code%20%28review%29/1%20Lesson%201.4.2%20workshop.pptx)
 - [2 Class Quiz 1.4.2 - Answers.docx](1%20Year%2012%20Weekly/Week%2019%20%2801%20Feb%29%20Data%20structures%20in%20code%20%28review%29/2%20Class%20Quiz%201.4.2%20-%20Answers.docx)
 - [2 Class Quiz 1.4.2.docx](1%20Year%2012%20Weekly/Week%2019%20%2801%20Feb%29%20Data%20structures%20in%20code%20%28review%29/2%20Class%20Quiz%201.4.2.docx)
 - [3 Homework.docx](1%20Year%2012%20Weekly/Week%2019%20%2801%20Feb%29%20Data%20structures%20in%20code%20%28review%29/3%20Homework.docx)
@@ -239,13 +242,14 @@
 
 ### Week 20 (08 Feb) 1.4.2 Graphs, trees, hash tables
 
+- [1 Lesson 1.4.2 part 2.pptx](1%20Year%2012%20Weekly/Week%2020%20%2808%20Feb%29%201.4.2%20Graphs%2C%20trees%2C%20hash%20tables/1%20Lesson%201.4.2%20part%202.pptx)
 - [3 Homework.docx](1%20Year%2012%20Weekly/Week%2020%20%2808%20Feb%29%201.4.2%20Graphs%2C%20trees%2C%20hash%20tables/3%20Homework.docx)
 - [4 Consolidation.docx](1%20Year%2012%20Weekly/Week%2020%20%2808%20Feb%29%201.4.2%20Graphs%2C%20trees%2C%20hash%20tables/4%20Consolidation.docx)
 - [5 Flashcards (cumulative).docx](1%20Year%2012%20Weekly/Week%2020%20%2808%20Feb%29%201.4.2%20Graphs%2C%20trees%2C%20hash%20tables/5%20Flashcards%20%28cumulative%29.docx)
 
 ### Week 21 (22 Feb) 1.4.3 Boolean logic
 
-- [1 Lesson 1.4.3.pptx](1%20Year%2012%20Weekly/Week%2021%20%2822%20Feb%29%201.4.3%20Boolean%20logic/1%20Lesson%201.4.3.pptx)
+- [1 Lesson 1.4.3 part 1.pptx](1%20Year%2012%20Weekly/Week%2021%20%2822%20Feb%29%201.4.3%20Boolean%20logic/1%20Lesson%201.4.3%20part%201.pptx)
 - [3 Homework - Answers.docx](1%20Year%2012%20Weekly/Week%2021%20%2822%20Feb%29%201.4.3%20Boolean%20logic/3%20Homework%20-%20Answers.docx)
 - [3 Homework.docx](1%20Year%2012%20Weekly/Week%2021%20%2822%20Feb%29%201.4.3%20Boolean%20logic/3%20Homework.docx)
 - [4 Consolidation.docx](1%20Year%2012%20Weekly/Week%2021%20%2822%20Feb%29%201.4.3%20Boolean%20logic/4%20Consolidation.docx)
@@ -261,6 +265,7 @@
 
 ### Week 23 (08 Mar) 1.4.3 Karnaugh maps
 
+- [1 Lesson 1.4.3 part 2.pptx](1%20Year%2012%20Weekly/Week%2023%20%2808%20Mar%29%201.4.3%20Karnaugh%20maps/1%20Lesson%201.4.3%20part%202.pptx)
 - [3 Homework.docx](1%20Year%2012%20Weekly/Week%2023%20%2808%20Mar%29%201.4.3%20Karnaugh%20maps/3%20Homework.docx)
 - [4 Consolidation.docx](1%20Year%2012%20Weekly/Week%2023%20%2808%20Mar%29%201.4.3%20Karnaugh%20maps/4%20Consolidation.docx)
 - [4b Mini-Paper 1.2 - Answers.docx](1%20Year%2012%20Weekly/Week%2023%20%2808%20Mar%29%201.4.3%20Karnaugh%20maps/4b%20Mini-Paper%201.2%20-%20Answers.docx)
