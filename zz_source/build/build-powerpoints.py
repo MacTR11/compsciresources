@@ -65,7 +65,8 @@ def title_slide(prs, deck):
     _set(tf.paragraphs[0], deck["subtopic"], 40, RGBColor(0xFF, 0xFF, 0xFF), bold=True)
     p = tf.add_paragraph(); _set(p, deck.get("spec", "OCR H446"), 20, RGBColor(0xBE, 0xD3, 0xEC))
     foot = _box(s, Inches(0.8), Inches(6.6), Inches(11.7), Inches(0.6))
-    _set(foot.paragraphs[0], "Lesson deck — editable skeleton: adapt freely.", 14, RGBColor(0x9A, 0xB4, 0xD6), italic=True)
+    _set(foot.paragraphs[0], deck.get("week", "") or "Editable lesson deck — adapt freely.",
+         14, RGBColor(0x9A, 0xB4, 0xD6), italic=True)
 
 
 def header(slide, text, color=BLUE):
@@ -120,31 +121,76 @@ def build_deck(deck, path):
                 r2 = p.add_run(); r2.text = " — " + k["def"]; r2.font.size = Pt(18); r2.font.color.rgb = DARK; r2.font.name = "Calibri"
         content_slide(prs, "Key terminology", kw)
 
-    # Content chunks
+    # Content chunks (optional per-chunk "code" lines and amber "note")
     for chunk in deck.get("content", []):
         def fill(tf, chunk=chunk):
             for pt in chunk.get("points", []):
-                _bullet(tf, pt, 22, DARK)
+                _bullet(tf, pt, 20, DARK)
+            for ln in chunk.get("code", []):
+                p = _bullet(tf, ln if ln else " ", 16, NAVY, level=1)
+                for r in p.runs:
+                    r.font.name = "Consolas"
+            if chunk.get("note"):
+                _bullet(tf, chunk["note"], 18, AMBER, bold=True)
         content_slide(prs, chunk.get("heading", "Content"), fill)
 
-    # Worked example
-    we = deck.get("worked_example")
-    if we and we.get("steps"):
+    # Worked examples (list, or the legacy single worked_example)
+    wes = deck.get("worked_examples") or ([deck["worked_example"]]
+                                          if deck.get("worked_example") else [])
+    for wi, we in enumerate(wes, 1):
+        if not we.get("steps"):
+            continue
         def fill(tf, we=we):
             _bullet(tf, we.get("title", "Worked example"), 22, BLUE, bold=True)
             for i, st in enumerate(we["steps"], 1):
-                _bullet(tf, f"{i}. {st}", 20, DARK, level=1)
-        content_slide(prs, "Worked example", fill)
+                _bullet(tf, f"{i}. {st}", 19, DARK, level=1)
+        label = "Worked example" if len(wes) == 1 else f"Worked example {wi}"
+        content_slide(prs, label, fill)
+
+    # Timed in-lesson activities
+    for ai, act in enumerate(deck.get("activities", []), 1):
+        def fill(tf, act=act):
+            head = act.get("title", "Activity")
+            mins = f"  ({act['minutes']} min)" if act.get("minutes") else ""
+            _bullet(tf, head + mins, 22, BLUE, bold=True)
+            for inst in act.get("instructions", []):
+                _bullet(tf, inst, 20, DARK, level=1)
+            if act.get("stretch"):
+                _bullet(tf, "Stretch: " + act["stretch"], 18, AMBER)
+        content_slide(prs, f"Activity {ai}", fill)
+
+    # Practice questions (chunked), then an answers slide per chunk
+    practice = deck.get("practice", [])
+    for start in range(0, len(practice), 4):
+        chunk = practice[start:start + 4]
+        n = f" ({start + 1}-{start + len(chunk)})" if len(practice) > 4 else ""
+        qa_slide(prs, "Practice" + n, chunk, show_answers=False, qsize=20)
+        qa_slide(prs, "Practice — answers" + n, chunk, show_answers=True, qsize=20)
+
+    # Misconceptions to head off
+    if deck.get("misconceptions"):
+        def fill(tf):
+            for m in deck["misconceptions"]:
+                _bullet(tf, "✗ " + m, 20, DARK)
+        content_slide(prs, "Common misconceptions", fill)
+
+    # How the exam asks it
+    if deck.get("exam_link"):
+        def fill(tf):
+            for m in deck["exam_link"]:
+                _bullet(tf, m, 20, DARK)
+        content_slide(prs, "How the exam asks this", fill)
 
     # Task + Challenge
-    def task(tf):
-        _bullet(tf, "Task", 24, BLUE, bold=True)
-        _bullet(tf, deck.get("task", ""), 22, DARK, level=1)
-        if deck.get("challenge"):
-            c = tf.add_paragraph(); rc = c.add_run(); rc.text = "Challenge / stretch"
-            rc.font.size = Pt(24); rc.font.bold = True; rc.font.color.rgb = AMBER; rc.font.name = "Calibri"
-            _bullet(tf, deck["challenge"], 22, DARK, level=1)
-    content_slide(prs, "Your turn", task)
+    if deck.get("task"):
+        def task(tf):
+            _bullet(tf, "Task", 24, BLUE, bold=True)
+            _bullet(tf, deck.get("task", ""), 22, DARK, level=1)
+            if deck.get("challenge"):
+                c = tf.add_paragraph(); rc = c.add_run(); rc.text = "Challenge / stretch"
+                rc.font.size = Pt(24); rc.font.bold = True; rc.font.color.rgb = AMBER; rc.font.name = "Calibri"
+                _bullet(tf, deck["challenge"], 22, DARK, level=1)
+        content_slide(prs, "Your turn", task)
 
     # Exit ticket
     if deck.get("exit_ticket"):

@@ -146,9 +146,12 @@ def build_weekly(bdocx):
     for w in weeks:
         d = os.path.join(root, w["folder"])
         os.makedirs(d, exist_ok=True)
+        lessons = (w.get("lessons")
+                   or [{"stem": SUB_STEM[c], "label": c} for c in w["taught"]])
+        for les in lessons:
+            cp(os.path.join(STAGE_TT, "Lesson-PowerPoints", f"{les['stem']}.pptx"),
+               os.path.join(d, f"1 Lesson {les['label']}.pptx"))
         for code in w["taught"]:
-            cp(os.path.join(STAGE_TT, "Lesson-PowerPoints", f"{SUB_STEM[code]}.pptx"),
-               os.path.join(d, f"1 Lesson {code}.pptx"))
             if code not in taught:
                 taught.append(code)
         for stem in w["class_quiz"]:
