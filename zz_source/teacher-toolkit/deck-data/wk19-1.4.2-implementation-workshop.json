@@ -1,0 +1,182 @@
+{
+  "subtopic": "1.4.2 Data Structures (implementation workshop)",
+  "spec": "OCR H446 — Component 01",
+  "week": "Week 19 (01 Feb)",
+  "objectives": [
+    "I can represent a linked list as nodes and pointers and traverse it from the head.",
+    "I can insert into and delete from the middle of a linked list, rewiring pointers in the safe order.",
+    "I can implement a stack over an array with a top pointer and overflow and underflow checks.",
+    "I can implement a circular queue whose front and rear pointers wrap around using MOD."
+  ],
+  "retrieval": [
+    {"q": "From week 18: an empty stack receives push(3), push(8), pop(), push(5), pop(). State the two values returned and the final contents.", "a": "Returned 8 then 5; the final stack holds just 3."},
+    {"q": "From week 18: name the end used by enqueue and the end used by dequeue.", "a": "Enqueue adds at the rear; dequeue removes from the front."},
+    {"q": "From week 18: a stack of capacity 4 already holds 4 items when push is called. Name this error, and the opposite error.", "a": "Overflow; the opposite, popping an empty stack, is underflow."},
+    {"q": "From week 18: why can a linear array-based queue report full while cells are actually free?", "a": "Dequeued cells at the front are never reused, so the rear reaches the end of the array despite dead space at the start."},
+    {"q": "From week 18: state two properties of a tuple.", "a": "It is ordered and it is immutable: values cannot be changed, added or removed after creation."}
+  ],
+  "keywords": [
+    {"term": "Node", "def": "One element of a linked list: the data plus a pointer to the next node."},
+    {"term": "Pointer", "def": "A variable holding the location (memory address or array index) of another item."},
+    {"term": "Head pointer", "def": "The pointer that holds the location of the first node in a linked list."},
+    {"term": "Null", "def": "A special pointer value meaning nothing follows; it marks the end of the list (we use -1)."},
+    {"term": "Traversal", "def": "Visiting every node in turn by following pointers from the head until null."},
+    {"term": "Garbage", "def": "A node no pointer reaches any more; its memory can be reclaimed."},
+    {"term": "Top", "def": "The stack pointer: the array index of the current top item, -1 when empty."},
+    {"term": "Wrap-around", "def": "Using MOD so the index after the last array cell is 0, making the array circular."},
+    {"term": "Abstract data type", "def": "A structure defined by its operations (push, pop, enqueue) rather than by how it is implemented."}
+  ],
+  "content": [
+    {"heading": "From concept to code: abstract data types", "points": [
+      "A stack is defined by what it does (push, pop, peek), not how it is built: an abstract data type.",
+      "Today we build the machinery ourselves: arrays and pointers underneath, clean operations on top.",
+      "Exam questions test both levels: trace the behaviour, and complete or write the implementation.",
+      "Rule of the day: a pointer is just a variable holding a location; every bug is a pointer bug."
+    ]},
+    {"heading": "Anatomy of a linked list", "points": [
+      "Each node holds two things: the data and a pointer to the next node.",
+      "A head pointer stores where the first node is; the last node's pointer is null.",
+      "Picture it in words: head points to node 12, whose pointer leads to 15, whose pointer leads to 22, whose pointer is null.",
+      "Nodes can sit anywhere in memory: the order comes entirely from the pointers, not from position.",
+      "It is dynamic: it grows node by node from the heap, unlike a fixed array."
+    ]},
+    {"heading": "Storing a linked list in two arrays (exam style)", "points": [
+      "OCR papers often show a linked list as parallel arrays: data holds values, next holds indexes.",
+      "head = 0 means the list starts at index 0; a next value of -1 is the null terminator.",
+      "Reading the example code: data[0] = 12 and next[0] = 1, so 15 at index 1 comes second.",
+      "Spare cells (indexes 3 and 4 here) form free space for future insertions.",
+      "The physical row order of the arrays is irrelevant: only head and next define the list."
+    ], "code": ["array data[5]", "array next[5]", "head = 0", "// index:  0    1    2    3    4", "// data:   12   15   22   -    -", "// next:   1    2    -1   -    -"]},
+    {"heading": "Traversing a linked list", "points": [
+      "Start at the head and follow pointers until you meet null.",
+      "current is a moving pointer: each loop it hops to next[current].",
+      "There is no random access: reaching the nth node always costs n pointer hops.",
+      "Traversal visits nodes in pointer order, whatever order they sit in memory."
+    ], "code": ["current = head", "while current != -1", "   print(data[current])", "   current = next[current]", "endwhile"]},
+    {"heading": "Insertion mid-list: the safe pointer order", "points": [
+      "Step 0: put the new value in a free cell and traverse to find its predecessor.",
+      "Step 1 (always first): point the NEW node at the predecessor's current next node.",
+      "Step 2: point the predecessor at the new node. Two writes, no data moved.",
+      "Wrong order check: writing the predecessor's pointer first destroys the only route to the rest of the list."
+    ], "note": "Mantra: connect the new node OUT before you connect anything IN to it."},
+    {"heading": "Deletion mid-list", "points": [
+      "Traverse to find the node before the one being deleted.",
+      "One write: set the predecessor's pointer to the deleted node's next value, bypassing it.",
+      "The deleted node still sits in memory, but nothing points to it: it is unreachable garbage.",
+      "Deleting the first node is special: just move the head pointer to head's next.",
+      "In the array form, the freed cell can rejoin the free list for reuse."
+    ]},
+    {"heading": "Implementing a stack over an array", "points": [
+      "One array plus one pointer: top starts at -1 (empty).",
+      "push: check for overflow, increment top, store the value.",
+      "pop: check for underflow (top == -1), copy stack[top], decrement top, return the copy.",
+      "peek returns stack[top] without touching the pointer."
+    ], "code": ["array stack[8]", "top = -1", "function pop()", "   if top == -1 then", "      return \"Error: underflow\"", "   else", "      value = stack[top]", "      top = top - 1", "      return value", "   endif", "endfunction"]},
+    {"heading": "Implementing a circular queue over an array", "points": [
+      "Three variables: front (next to leave), rear (last added), count (how many are live).",
+      "enqueue: if not full, rear = (rear + 1) MOD maxSize, store, count + 1.",
+      "dequeue: if not empty, copy items[front], front = (front + 1) MOD maxSize, count - 1, return the copy.",
+      "MOD is the whole trick: index 3 + 1 in a size-4 array wraps to 0, reusing freed cells."
+    ], "code": ["array items[4]", "front = 0", "rear = -1", "count = 0", "function dequeue()", "   if count == 0 then", "      return \"Error: queue empty\"", "   else", "      value = items[front]", "      front = (front + 1) MOD 4", "      count = count - 1", "      return value", "   endif", "endfunction"]},
+    {"heading": "Empty and full: the edge cases that catch you out", "points": [
+      "Stack: empty when top == -1; full when top == maxSize - 1.",
+      "Circular queue with a count: empty when count == 0; full when count == maxSize.",
+      "Without a count, front == rear is ambiguous: a full and an empty queue can look identical.",
+      "One fix: sacrifice a cell and call the queue full when (rear + 1) MOD size == front.",
+      "Your tests must hit these edges deliberately: they are where exam marks and real bugs live."
+    ]},
+    {"heading": "From ERL to Python", "points": [
+      "A fixed ERL array becomes a pre-sized Python list: stack = [None] * 8.",
+      "procedure and function both become def; endprocedure and endwhile become indentation.",
+      "MOD becomes the % operator; != and == are the same in both.",
+      "Use -1 for null next-pointers and None for empty cells, and keep those two ideas separate.",
+      "Print errors as strings today so your trace output matches the board."
+    ]}
+  ],
+  "worked_examples": [
+    {"title": "Inserting 17 into the list 12 -> 15 -> 22, between 15 and 22", "steps": [
+      "Start: head leads to 12, then 15, then 22, then null. In array form: data 12, 15, 22 with next 1, 2, -1 and head = 0.",
+      "Put 17 in the free cell at index 3: data[3] = 17. Its next pointer is not set yet.",
+      "Traverse to find the predecessor: 15 (index 1) is the last value below 17.",
+      "Step 1, always first: set 17's pointer to 15's current next. next[3] = next[1], so next[3] = 2 (the node 22).",
+      "Safe state check: both 15 and 17 now point at 22; nothing is unreachable.",
+      "Step 2: set 15's pointer to the new node. next[1] = 3.",
+      "Final chain: head -> 12 -> 15 -> 17 -> 22 -> null. Arrays: next reads 1, 3, -1, 2. Two pointer writes, zero data moved.",
+      "Wrong-order disaster: doing next[1] = 3 first makes next[3] = next[1] copy 3 into itself, so 17 points at 17 and traversal loops forever printing 17."
+    ]},
+    {"title": "Deleting 15 from the list 12 -> 15 -> 17 -> 22", "steps": [
+      "Start: head -> 12 -> 15 -> 17 -> 22 -> null. Indexes: 12 at 0, 15 at 1, 17 at 3, 22 at 2; next reads 1, 3, -1, 2; head = 0.",
+      "Traverse from the head, remembering the previous node: stop when current holds 15. previous = 0, current = 1.",
+      "Read the escape route before cutting: 15's next is 3 (the node 17).",
+      "One write: next[0] = 3. The node 12 now bypasses 15 and points straight at 17.",
+      "Verify by traversal: head = 0 gives 12, next 3 gives 17, next 2 gives 22, next -1 stops. Output 12, 17, 22.",
+      "Node 15 still sits at index 1, but no pointer reaches it: it is garbage and index 1 can rejoin the free list.",
+      "Special case: deleting 12 instead would need no rewiring at all, just head = next[0] = 1."
+    ]},
+    {"title": "A circular queue of size 4 wrapping around: jobs J1 to J5", "steps": [
+      "Empty queue: front = 0, rear = -1, count = 0.",
+      "enqueue J1, J2, J3: rear steps to 0, then 1, then 2; count = 3; array reads J1, J2, J3, empty.",
+      "dequeue() twice: returns J1 then J2; front = (0 + 1) MOD 4 = 1, then (1 + 1) MOD 4 = 2; count = 1. Only J3 is live.",
+      "enqueue J4: rear = (2 + 1) MOD 4 = 3; count = 2. Live: J3 at index 2, J4 at index 3.",
+      "enqueue J5: rear = (3 + 1) MOD 4 = 0, so J5 overwrites the dead J1 cell at index 0; count = 3.",
+      "dequeue(): returns J3 from index 2; front = (2 + 1) MOD 4 = 3; count = 2.",
+      "Final state: front = 3, rear = 0, count = 2; queue front to rear is J4 (index 3) then J5 (index 0), wrapping the array seamlessly.",
+      "Every pointer only ever moved forward MOD 4; not one item was shifted."
+    ]}
+  ],
+  "activities": [
+    {"title": "Code-along: linked list from two arrays", "minutes": 20, "instructions": [
+      "Warm-up (3 min, from the Repointing Game): five students scatter with value cards 3, 7, 9, 12, 15, arms as pointers, teacher holding HEAD. Insert student 8 with exactly two arm changes; the class states which arm moves first and why.",
+      "At machines: create data = [12, 15, 22, None, None], next_ptr = [1, 2, -1, None, None], head = 0 in Python, mirroring the ERL arrays on the slide.",
+      "Task 1: implement traverse() from the slide's ERL (current = head; while current != -1: print, hop). Expected output: 12, 15, 22.",
+      "Task 2: implement insert_after(pred_index, value) using a free cell: write the new node's pointer first, the predecessor's second. Test: insert 17 after 15; traversal must print 12, 15, 17, 22.",
+      "Task 3: implement delete_value(15): find the predecessor, bypass with one pointer write. Traversal must print 12, 17, 22.",
+      "Trap experiment: swap the two pointer writes in insert_after and rerun the first insert. Observe the infinite loop printing 17 (the node points at itself); explain it in pointer terms."
+    ], "stretch": "Add a prev array to make the list doubly linked, and write traverse_backwards() from a tail pointer. What did each node cost you?"},
+    {"title": "Build-a-stack challenge", "minutes": 15, "instructions": [
+      "The slide shows the ERL push from last week and the pop skeleton: students implement both, plus peek, in Python over stack = [None] * 8 with top = -1.",
+      "Acceptance tests, run in order: pop() on the empty stack must return the underflow error, not crash.",
+      "push 4, 8, 1 then pop() twice: must return 1 then 8, leaving top = 0.",
+      "Push until the stack holds 8 items, then push once more: must report overflow and leave top = 7 unchanged.",
+      "Pairs swap machines and run each other's tests; any pointer left wrong after an error case is a fail, exactly as in an exam trace."
+    ], "stretch": "Use your stack to reverse the string COMPUTER by pushing every character then popping until empty (expected output RETUPMOC)."},
+    {"title": "Circular queue clinic", "minutes": 20, "instructions": [
+      "Implement enqueue and dequeue in Python over items = [None] * 4 with front = 0, rear = -1, count = 0, translating the slide's ERL; remember MOD becomes %.",
+      "After every operation your code must print front, rear, count and the raw array, so wrap-around is visible.",
+      "Run the worked-example script: enqueue J1, J2, J3; dequeue twice; enqueue J4; enqueue J5; dequeue.",
+      "Check against the board: J5 must land in index 0, and the final state must be front = 3, rear = 0, count = 2 with J4 then J5 live.",
+      "Then hit the edges: dequeue from empty (error, state unchanged) and enqueue onto full (error, state unchanged).",
+      "Finish with the ambiguity question: delete count from your code and try to tell full from empty using only front and rear. Why is it impossible?"
+    ], "stretch": "Reimplement without count by keeping one cell permanently empty: full when (rear + 1) % size == front. Prove both versions agree on the J1-J5 script."}
+  ],
+  "practice": [
+    {"q": "A linked list stores 8 -> 13 -> 21. Describe the pointer changes needed to insert 17 between 13 and 21, in the correct order. [3]", "a": "Place 17 in a free node (1); first set 17's next pointer to the node holding 21 (1); then set 13's next pointer to the new node 17; doing these writes in the reverse order loses the link to 21 (1)."},
+    {"q": "Explain why inserting a value into a linked list is more efficient than inserting into a sorted array, once the position has been found. [2]", "a": "The linked list needs only two pointer changes and no data moves (1); the array must shift every element after the insertion point along by one (1)."},
+    {"q": "Explain what happens in memory when a node is deleted from a linked list. [2]", "a": "The previous node's pointer is changed to bypass it, pointing at the deleted node's successor (1); the node itself remains in memory but is unreachable garbage whose space can be reclaimed (1)."},
+    {"q": "Write pseudocode for the pop() function of an array-based stack, including the underflow check. [4]", "a": "Check if top == -1 and return an error if so (1); otherwise copy stack[top] into a variable (1); decrement top by 1 (1); return the copied value (1)."},
+    {"q": "A circular queue uses an array of size 8. front = 6 and rear = 2, and the queue is not empty. State the occupied indexes and calculate how many items it holds. [2]", "a": "Occupied indexes 6, 7, 0, 1, 2 (1); items = (2 - 6 + 8) MOD 8 + 1 = 5 (1)."},
+    {"q": "State the tests for empty and for full in a circular queue implemented with a count variable. [2]", "a": "Empty when count == 0 (1); full when count == maxSize (1)."},
+    {"q": "Explain why an array gives O(1) access to its nth element but a linked list cannot. [2]", "a": "Array elements are contiguous, so the address is calculated directly from the index (1); linked list nodes are scattered and only reachable by following n pointers from the head (1)."},
+    {"q": "The line rear = (rear + 1) MOD maxSize appears in an enqueue procedure. Explain what this line achieves. [2]", "a": "It advances rear one cell (1); MOD wraps it back to index 0 after the last cell, so cells freed by dequeue are reused (1)."}
+  ],
+  "misconceptions": [
+    "Students often think the order of the two pointer writes in an insertion does not matter; writing the predecessor first orphans the tail or makes the new node point at itself.",
+    "Students often think deleting a node erases its data; the bypass write just makes it unreachable garbage, and traversal proves it has gone.",
+    "Students often assume linked list nodes sit next to each other in memory; only the pointers define the order, which is why the parallel arrays can look scrambled.",
+    "Students often think pop physically removes the value from the array; only top moves, and the old value is simply overwritten by a later push.",
+    "Students often believe MOD shuffles queue items around the array; the items never move, only front and rear wrap around them."
+  ],
+  "exam_link": [
+    "Trace and complete-the-table questions on linked lists shown as data and next arrays with a head pointer are worth 3-5 marks; every pointer value counts.",
+    "Describe-the-steps questions on insertion and deletion (3-4 marks) credit the safe pointer order and the null terminator explicitly.",
+    "Writing or completing pseudocode for push, pop, enqueue and dequeue appears in both components; the full and empty checks carry their own marks.",
+    "Example stem: 'A linked list is stored using the arrays data and next with a head pointer. Show the contents of both arrays after the value 17 is inserted into the correct position.' [4]"
+  ],
+  "task": "Using your three Python implementations from today, run this script and record every state: build the linked list 5 -> 11 -> 20; insert 8 between 5 and 11; delete 20; traverse (expected output 5, 8, 11). Push each traversed value onto your stack and pop all three (expected 11, 8, 5). Finally enqueue those three values into your size-4 circular queue, dequeue once, enqueue 99, and write down front, rear and count (expected front = 1, rear = 3, count = 3).",
+  "challenge": "Extend your linked list to a doubly linked list by adding a prev array. Rewrite insert and delete so both directions stay consistent, stating the order of the four pointer writes for an insertion that is safe, and explain what backwards traversal now costs in memory per node and why an exam answer should mention that trade-off.",
+  "exit_ticket": [
+    {"q": "When inserting node N after node P, which pointer must be written first and why?", "a": "N's next pointer is set to P's current next first; otherwise P's old successor, and the whole rest of the list, has no pointer leading to it and is lost."},
+    {"q": "A circular queue of size 6 has rear = 5. Where does the next enqueue store its item?", "a": "rear = (5 + 1) MOD 6 = 0, so at index 0."},
+    {"q": "After a deletion, node X still sits in memory. Why is it no longer part of the list?", "a": "No pointer reaches it from the head any more, so traversal can never visit it: it is unreachable garbage."}
+  ]
+}

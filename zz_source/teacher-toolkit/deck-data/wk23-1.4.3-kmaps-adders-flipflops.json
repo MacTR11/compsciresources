@@ -1,0 +1,123 @@
+{
+  "subtopic": "1.4.3 Boolean Algebra (part 2 — K-maps, adders, flip-flops)",
+  "spec": "OCR H446 — Component 01",
+  "week": "Week 23 (08 Mar)",
+  "objectives": [
+    "I can plot Boolean functions on 2-, 3- and 4-variable Karnaugh maps using Gray-code ordering.",
+    "I can group 1s legally (powers of two, as large as possible, overlapping and wrapping allowed) and read off the minimised expression.",
+    "I can state the logic of a half adder and a full adder and explain how full adders chain to add multi-bit numbers.",
+    "I can describe how a D-type flip-flop stores one bit on a clock edge and how flip-flops form a register."
+  ],
+  "retrieval": [
+    {"q": "From 1.4.3 part 1: use De Morgan's law to rewrite ¬(A ∨ B).", "a": "¬A ∧ ¬B: break the bar, swap ∨ for ∧, negate each term."},
+    {"q": "From 1.4.3 part 1: simplify A ∨ (A ∧ B) and name the law.", "a": "A, by the absorption law."},
+    {"q": "From 1.4.3 part 1: what does A ⊻ B output when A = 1 and B = 1?", "a": "0: XOR outputs 1 only when the inputs differ."},
+    {"q": "From 1.4.3 part 1: how many rows does a truth table for a 3-input expression need, and in what order?", "a": "2 to the power 3 = 8 rows, counted in binary from 000 to 111."},
+    {"q": "From 1.4.3 part 1: simplify ¬(¬A ∨ B), naming both laws.", "a": "De Morgan's gives ¬(¬A) ∧ ¬B; double negation gives A ∧ ¬B."}
+  ],
+  "keywords": [
+    {"term": "Karnaugh map (K-map)", "def": "A grid of truth-table outputs arranged so adjacent cells differ in exactly one variable, used to minimise expressions."},
+    {"term": "Gray code", "def": "An ordering of binary values (00, 01, 11, 10) where consecutive values differ in exactly one bit."},
+    {"term": "Group", "def": "A rectangle of 1s on a K-map containing 1, 2, 4 or 8 cells, as large as possible, which may overlap or wrap."},
+    {"term": "Sum of products", "def": "An expression ORing together AND terms, e.g. (¬B ∧ ¬D) ∨ (B ∧ D); the form a K-map reads off."},
+    {"term": "Half adder", "def": "A circuit adding two bits: Sum = A ⊻ B, Carry = A ∧ B; it has no carry-in."},
+    {"term": "Full adder", "def": "A circuit adding three bits (A, B, Cin), built from two half adders and an OR gate, giving Sum and Cout."},
+    {"term": "Ripple-carry adder", "def": "Full adders chained so each carry-out feeds the next column's carry-in, adding multi-bit numbers."},
+    {"term": "D-type flip-flop", "def": "An edge-triggered circuit that stores the value of its D input at the clock edge and holds it at output Q."},
+    {"term": "Sequential logic", "def": "Circuits whose output depends on stored state as well as current inputs, unlike combinational gates and adders."}
+  ],
+  "content": [
+    {"heading": "Why minimise a circuit?", "points": ["Every operator in an expression is a physical gate: fewer operators means fewer gates.", "Fewer gates means cheaper, faster and lower-power circuits.", "Boolean laws minimise algebraically; a Karnaugh map does the same job visually.", "K-maps make the simplification hard to get wrong: the groups do the algebra for you."]},
+    {"heading": "K-map layout and Gray code", "points": ["A K-map is the truth table redrawn as a grid, one cell per input row.", "Row and column headings use Gray-code order: 00, 01, 11, 10, not binary order.", "Gray code means neighbouring cells differ in exactly one variable.", "That adjacency is the whole trick: neighbouring 1s can merge, eliminating the variable that differs."], "note": "Writing columns 00, 01, 10, 11 in binary order breaks adjacency and wrecks every grouping."},
+    {"heading": "Two-variable K-maps", "points": ["A 2x2 grid: rows A = 0, 1; columns B = 0, 1; four cells for four truth-table rows.", "Copy each output into its cell, then circle groups of 1s.", "Example: 1s in both cells where B = 1, across both rows, group as a vertical pair.", "Inside the group A changes but B stays 1, so the expression is just B."]},
+    {"heading": "Three-variable K-maps", "points": ["A 2x4 grid: rows A = 0, 1; columns BC in Gray order 00, 01, 11, 10.", "Top row holds rows 000, 001, 011, 010 of the truth table; note 011 before 010.", "Bottom row holds 100, 101, 111, 110.", "The left and right columns (BC = 00 and BC = 10) are adjacent: the map wraps around."]},
+    {"heading": "The grouping rules", "points": ["Circle 1s only, in rectangles of 1, 2, 4 or 8 cells: powers of two only, never 3 or 6.", "Make every group as large as legally possible, even if groups overlap.", "Groups may wrap across the map's edges; on a 4-variable map the four corners form one group.", "Every 1 must be inside at least one group; each group becomes one AND term."]},
+    {"heading": "Reading off the minimised expression", "points": ["Interrogate each group: which variables have the same value in every cell inside it?", "Variables that stay constant survive: value 1 keeps the variable, value 0 keeps its negation.", "Variables that change inside the group are eliminated.", "OR the groups' terms together for the final sum-of-products expression.", "Each doubling of group size eliminates one variable: bigger groups mean simpler terms."]},
+    {"heading": "Four-variable K-maps", "points": ["A 4x4 grid: rows AB and columns CD, both in Gray order 00, 01, 11, 10.", "Sixteen cells cover the sixteen rows of a 4-input truth table.", "Wrapping works both ways: top row is adjacent to bottom row, left column to right column.", "The four corner cells are mutually adjacent and can form a single group of 4."], "note": "Groups of 8 eliminate three variables, leaving a single-letter term."},
+    {"heading": "The half adder", "points": ["Adds two single bits A and B, producing a Sum bit and a Carry bit.", "Sum = A ⊻ B and Carry = A ∧ B: one XOR gate and one AND gate.", "Truth table: 0+0 gives Sum 0 Carry 0; 0+1 and 1+0 give Sum 1 Carry 0; 1+1 gives Sum 0 Carry 1.", "1 + 1 = binary 10: the Carry is the twos column, which is why Carry = A ∧ B."], "note": "The half adder has no carry-in, so it can only be the rightmost column of an addition."},
+    {"heading": "The full adder", "points": ["Adds three bits: A, B and a carry-in Cin from the previous column.", "Built from two half adders plus an OR gate combining their two carry outputs.", "Sum = A ⊻ B ⊻ Cin and Cout = (A ∧ B) ∨ (Cin ∧ (A ⊻ B)).", "Chaining full adders, each Cout feeding the next Cin, makes a ripple-carry adder for whole binary numbers."]},
+    {"heading": "The D-type flip-flop", "points": ["A 1-bit memory: output Q takes the value of input D only at the active clock edge.", "Between clock edges Q holds its stored value, however much D changes.", "The clock is a regular pulse; edge-triggering synchronises when data is captured.", "This is sequential logic: output depends on stored state, unlike combinational gates and adders.", "Uses: one flip-flop per bit in registers, counters and memory; eight side by side store a byte."]}
+  ],
+  "worked_examples": [
+    {"title": "Three-variable K-map: F(A,B,C) is 1 on rows 000, 001, 100, 101", "steps": [
+      "Draw the 2x4 map: rows A = 0, 1; columns BC in Gray order 00, 01, 11, 10.",
+      "Plot the 1s: row A=0 gets 1s under columns 00 and 01; row A=1 gets 1s under columns 00 and 01.",
+      "The four 1s form one 2x2 square on the left: a single legal group of 4.",
+      "Interrogate the group: A is 0 and 1 inside (eliminated); C is 0 and 1 inside (eliminated); B is 0 in every cell.",
+      "B constant at 0 survives as its negation, so F = ¬B.",
+      "Verify: the four rows 000, 001, 100, 101 are exactly the rows with B = 0, so F = ¬B is correct."
+    ]},
+    {"title": "Four-variable K-map with wrap-around: F(A,B,C,D) is 1 on rows 0000, 0010, 0101, 0111, 1000, 1010, 1101, 1111", "steps": [
+      "Draw the 4x4 map: rows AB and columns CD, both in Gray order 00, 01, 11, 10.",
+      "Plot cell by cell: row AB=00 gets 1s in columns CD=00 (row 0000) and CD=10 (row 0010).",
+      "Row AB=01 gets 1s in columns CD=01 (0101) and CD=11 (0111); row AB=11 gets 1s in CD=01 (1101) and CD=11 (1111).",
+      "Row AB=10 gets 1s in columns CD=00 (1000) and CD=10 (1010). Eight 1s plotted, eight cells left as 0.",
+      "Group 1: the four corners (0000, 0010, 1000, 1010) are adjacent by wrapping both ways: one group of 4.",
+      "Interrogate the corners: A varies, C varies; B = 0 and D = 0 in all four cells, giving ¬B ∧ ¬D.",
+      "Group 2: the centre 2x2 square (0101, 0111, 1101, 1111): A varies, C varies; B = 1 and D = 1 throughout, giving B ∧ D.",
+      "F = (¬B ∧ ¬D) ∨ (B ∧ D). Check: the eight 1-cells are exactly the rows where B and D are equal, and every 0-cell has B and D different, so the expression matches all sixteen cells."
+    ]},
+    {"title": "Building a full adder from two half adders and tracing 1 + 1 + 1", "steps": [
+      "Half adder 1 takes A and B: S1 = A ⊻ B and C1 = A ∧ B.",
+      "Half adder 2 takes S1 and Cin: Sum = S1 ⊻ Cin = A ⊻ B ⊻ Cin, and C2 = S1 ∧ Cin.",
+      "An OR gate combines the carries: Cout = C1 ∨ C2 = (A ∧ B) ∨ (Cin ∧ (A ⊻ B)).",
+      "Trace A = 1, B = 1, Cin = 1: half adder 1 gives S1 = 1 ⊻ 1 = 0 and C1 = 1 ∧ 1 = 1.",
+      "Half adder 2 gives Sum = 0 ⊻ 1 = 1 and C2 = 0 ∧ 1 = 0.",
+      "Cout = 1 ∨ 0 = 1, so the outputs are Sum = 1, Cout = 1: binary 11, which is 3, correct for 1 + 1 + 1.",
+      "Full truth table check (A B Cin, Sum, Cout): 000 gives 0,0; 001, 010 and 100 give 1,0; 011, 101 and 110 give 0,1; 111 gives 1,1."
+    ]}
+  ],
+  "activities": [
+    {"title": "K-Map Twister (floor-sized Karnaugh map)", "minutes": 15, "instructions": [
+      "Tape a 2x4 K-map on the floor: rows A = 0, 1; columns BC in Gray order 00, 01, 11, 10; make the class explain why 11 comes before 10 (adjacent cells must differ by one bit).",
+      "Read out a truth table for F(A,B,C) that is 1 on rows 000, 001, 100, 101; one student stands in each 1-cell.",
+      "The class lassos the standing students with string: loops only in powers of two, as large as possible, rectangles only, wrapping allowed.",
+      "The loopers interrogate the enclosed cells: which variable is the same for everyone inside? Answer: B = 0 everywhere, so F = ¬B; A and C change, so they are eliminated.",
+      "Repeat with F = 1 on rows 000, 010, 100, 110: columns 00 and 10 are adjacent only by wrapping, one wrapped group of 4 where C = 0 throughout, so F = ¬C."
+    ], "stretch": "Add row 111 to the first function as a lone student: the class must find the best legal grouping (pair 111 with 101 to get A ∧ C, giving F = ¬B ∨ (A ∧ C))."},
+    {"title": "The Human Half Adder, then Full Adder (circuit walk)", "minutes": 15, "instructions": [
+      "Inputs A and B stand at one wall; one XOR student and one AND student are both fed by A and B; label XOR's output Sum and AND's output Carry.",
+      "Walk all four input combinations, recording the truth table on the board: 00 gives Sum 0 Carry 0; 01 and 10 give Sum 1 Carry 0; 11 gives Sum 0 Carry 1.",
+      "Ask: what operation have we built out of people? (Binary addition of two bits: 1 + 1 = 10.)",
+      "Bolt on a third input Cin, a second half adder taking Sum and Cin, and an OR student combining the two carries: a full adder.",
+      "Verify the hardest row together: A = 1, B = 1, Cin = 1 gives Sum = 1 and Cout = 1 (binary 11 = 3)."
+    ], "stretch": "Line up three full-adder teams as a ripple-carry adder and add 011 + 011, watching the carry ripple left (answer 110 = 6)."},
+    {"title": "The Human D-Type Flip-Flop", "minutes": 10, "instructions": [
+      "One student is the D input: they may change their 0/1 card whenever they like and are encouraged to fidget. A second student is the flip-flop holding the Q card: they may only look at D and copy it at the exact moment the teacher claps (the rising clock edge). Between claps they freeze.",
+      "Run the script with the class predicting Q before each event: start Q = 0; D shows 1, clap; D changes to 0 with no clap; wait, then clap; D flickers 1, 0, 1 rapidly with no clap; clap.",
+      "Expected trace: clap 1 makes Q = 1; Q stays 1 while D drops (the class should protest if the flip-flop flinches); clap 2 makes Q = 0; Q stays 0 through the flicker; clap 3 makes Q = 1.",
+      "Ask: what is this student doing, in one word? (Remembering: it is 1-bit memory.)",
+      "Add three more flip-flop students sharing the same clap: a 4-bit register storing a nibble on one synchronised edge."
+    ], "stretch": "Chain two flip-flops (Q of the first feeds D of the second) and clap twice: the bit marches one stage per clock pulse, a shift register."}
+  ],
+  "practice": [
+    {"q": "State the Boolean expressions for the Sum and Carry outputs of a half adder. [2]", "a": "Sum = A ⊻ B (1); Carry = A ∧ B (1)."},
+    {"q": "Explain why full adders, not half adders, are needed to add two 8-bit binary numbers. [2]", "a": "Every column after the least significant may receive a carry from the column to its right, so it must add three bits (1); a half adder has no carry-in, but full adders chain carry-out to carry-in as a ripple-carry adder (1)."},
+    {"q": "A 2-variable Karnaugh map has 1s in both cells where B = 1, for A = 0 and A = 1. Write the minimised expression. [1]", "a": "F = B: inside the group of 2, A changes (eliminated) and B stays at 1."},
+    {"q": "F(A,B,C) is 1 on rows 000, 010, 100 and 110. Explain how a Karnaugh map groups these cells and state the minimised expression. [3]", "a": "The 1s fill columns BC = 00 and BC = 10 in both rows; these columns are adjacent by wrap-around (1), so all four cells form one group of 4 (1). A and B vary inside but C = 0 throughout, so F = ¬C (1)."},
+    {"q": "Complete the full adder outputs for the row A = 1, B = 0, Cin = 1. [2]", "a": "Sum = A ⊻ B ⊻ Cin = 1 ⊻ 0 ⊻ 1 = 0 (1); Cout = (A ∧ B) ∨ (Cin ∧ (A ⊻ B)) = 0 ∨ (1 ∧ 1) = 1 (1). This is 1 + 0 + 1 = binary 10."},
+    {"q": "Describe what happens to the Q output of a D-type flip-flop when D changes between clock edges. [2]", "a": "Nothing: Q holds the value stored at the last active clock edge (1); Q only updates to the current value of D at the next active edge (1)."},
+    {"q": "Explain how D-type flip-flops can be used to build a 4-bit register. [2]", "a": "One flip-flop stores each bit, so four are placed side by side (1); they share the same clock signal, so all four bits are captured on the same edge, storing the value in a synchronised way (1)."},
+    {"q": "State two rules for grouping 1s on a Karnaugh map and explain why larger groups are preferred. [3]", "a": "Groups must be rectangles containing a power of two cells: 1, 2, 4 or 8 (1); groups may overlap and may wrap around the map's edges (1). Each doubling of group size eliminates one variable, so larger groups give simpler terms and fewer gates (1)."}
+  ],
+  "misconceptions": [
+    "Students often label K-map columns in binary order 00, 01, 10, 11; the order must be Gray code 00, 01, 11, 10 so adjacent cells differ in one variable.",
+    "Students often circle groups of 3 or 6; groups must be powers of two (1, 2, 4, 8) and rectangular.",
+    "Students often forget that K-maps wrap: the left and right edges are adjacent, the top and bottom edges are adjacent, and the four corners can form one group.",
+    "Students often give a half adder a carry-in; it adds only two bits, which is exactly why the full adder exists.",
+    "Students often think a flip-flop's output follows D continuously; Q changes only at the active clock edge, which is what makes it memory rather than a wire."
+  ],
+  "exam_link": [
+    "Command words seen here: complete for K-maps and adder truth tables (2-4 marks), write or state for minimised expressions (1-2 marks), describe and explain for adders and flip-flops (2-4 marks).",
+    "K-map questions usually give the completed map and ask for legal groupings plus the minimised expression; illegal group sizes score zero for that group.",
+    "Sum = A ⊻ B and Carry = A ∧ B must be quoted exactly; describing the full adder as two half adders plus an OR gate is a standard 3-mark build.",
+    "Example stem: 'The Karnaugh map for a logic circuit is shown. Draw the groups and write the simplified Boolean expression for the circuit.' [4]"
+  ],
+  "task": "Draw the 2x4 Karnaugh map for F(A,B,C) which is 1 on rows 000, 001, 100, 101 and 111. Group the 1s legally and write the minimised expression. (Answer: the left 2x2 square gives ¬B; row 111 pairs with 101, where A = 1 and C = 1 throughout, giving A ∧ C; so F = ¬B ∨ (A ∧ C). Check row 111: ¬B = 0 but A ∧ C = 1, so F = 1 as required.)",
+  "challenge": "Three full adders are chained as a ripple-carry adder. Trace the addition 011 + 011 column by column, giving Sum and Cout for each adder, and state the final answer. (Column 0: 1+1+0 gives Sum 0, carry 1. Column 1: 1+1+1 gives Sum 1, carry 1. Column 2: 0+0+1 gives Sum 1, carry 0. Result 110 = 6, which is 3 + 3. Explain why the carry is called a ripple.)",
+  "exit_ticket": [
+    {"q": "Why are K-map columns ordered 00, 01, 11, 10 rather than in binary order?", "a": "Gray-code order makes adjacent cells differ in exactly one variable, so neighbouring 1s can group and eliminate that variable."},
+    {"q": "What are the half adder's outputs when A = 1 and B = 1?", "a": "Sum = 0 and Carry = 1 (binary 10), since Sum = A ⊻ B and Carry = A ∧ B."},
+    {"q": "When does a D-type flip-flop change its Q output, and to what value?", "a": "Only at the active clock edge, when Q takes the current value of the D input; between edges it holds its stored bit."}
+  ]
+}

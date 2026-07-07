@@ -1,86 +1,121 @@
 {
-  "subtopic": "1.4.3 Boolean Algebra",
+  "subtopic": "1.4.3 Boolean Algebra (part 1)",
   "spec": "OCR H446 — Component 01",
+  "week": "Week 21 (22 Feb)",
   "objectives": [
-    "Construct truth tables for logic gates and combined expressions, including AND, OR, XOR, NAND and NOR.",
-    "Simplify Boolean expressions using identities, De Morgan's laws and Karnaugh maps.",
-    "Describe the operation of half adders, full adders and D-type flip-flops, distinguishing combinational and sequential logic."
+    "I can state the truth tables for AND, OR, NOT and XOR and recognise their circuit symbols.",
+    "I can combine gates into circuits and construct truth tables for 2- and 3-input expressions using working columns.",
+    "I can state and apply the Boolean identities: commutation, association, distribution, absorption and double negation.",
+    "I can apply De Morgan's laws and simplify Boolean expressions, naming the law used at each step."
   ],
   "retrieval": [
-    { "q": "Which two gates are described as universal?", "a": "NAND and NOR." },
-    { "q": "State De Morgan's law for NOT(A + B).", "a": "NOT(A + B) = NOT A AND NOT B (break the bar and swap OR for AND)." },
-    { "q": "What does a D-type flip-flop do?", "a": "It stores one bit of data on an active clock edge and presents it at Q until the next edge." },
-    { "q": "Interleaving (1.4.1): What is the place value of the MSB in an 8-bit two's complement number?", "a": "-128." },
-    { "q": "Interleaving (1.4.2): Which BST traversal outputs nodes in ascending order?", "a": "In-order (left, root, right)." }
+    {"q": "From 1.4.2: which traversal of a binary search tree outputs the values in ascending order?", "a": "In-order traversal (left subtree, root, right subtree)."},
+    {"q": "From 1.4.2: a hash table uses index = key MOD 7. Keys 15 and 22 are inserted. What happens?", "a": "Both hash to 1 (15 MOD 7 = 1, 22 MOD 7 = 1): a collision, resolved by e.g. linear probing or chaining."},
+    {"q": "From 1.4.2: in a BST, where would 65 be inserted given root 50 with right child 70 and 70's left child 60?", "a": "Walk 50 (go right), 70 (go left), 60 (go right): 65 becomes the right child of 60."},
+    {"q": "From 1.4.1: convert denary 45 to 8-bit unsigned binary.", "a": "00101101 (32 + 8 + 4 + 1 = 45)."},
+    {"q": "From 1.4.1: give the 8-bit two's complement representation of -6.", "a": "+6 is 00000110; invert to 11111001, add 1: 11111010 (check: -128 + 64 + 32 + 16 + 8 + 2 = -6)."}
   ],
   "keywords": [
-    { "term": "Truth table", "def": "A table listing the output of a logic expression for every possible combination of input values." },
-    { "term": "XOR", "def": "Exclusive-OR gate that outputs 1 only when its inputs differ, written A XOR B." },
-    { "term": "Universal gate", "def": "A gate from which any logic circuit can be built; NAND and NOR are universal." },
-    { "term": "De Morgan's laws", "def": "NOT(A.B) = NOT A + NOT B and NOT(A+B) = NOT A . NOT B; break the bar and swap AND with OR, negating each variable." },
-    { "term": "Absorption law", "def": "A + A.B = A and A.(A+B) = A; a redundant term is absorbed." },
-    { "term": "Half adder", "def": "A circuit adding two bits with no carry-in: Sum = A XOR B, Carry = A . B." },
-    { "term": "Full adder", "def": "A circuit adding three bits (A, B, Cin): Sum = A XOR B XOR Cin, Cout = (A.B) + (Cin.(A XOR B)); chained to form a ripple-carry adder." },
-    { "term": "D-type flip-flop", "def": "An edge-triggered 1-bit memory (sequential logic) that stores input D on a clock edge and synchronises data to the clock." }
+    {"term": "Logic gate", "def": "An electronic component that takes one or more binary inputs and produces one binary output."},
+    {"term": "Truth table", "def": "A table listing the output of a gate or expression for every possible combination of inputs."},
+    {"term": "XOR (exclusive OR)", "def": "Gate written A ⊻ B that outputs 1 only when its two inputs differ."},
+    {"term": "Boolean expression", "def": "A combination of Boolean variables and operators (∧, ∨, ¬, ⊻) that evaluates to 0 or 1."},
+    {"term": "Commutative law", "def": "Order of inputs does not matter: A ∧ B = B ∧ A and A ∨ B = B ∨ A."},
+    {"term": "Associative law", "def": "Grouping does not matter for one operator: (A ∧ B) ∧ C = A ∧ (B ∧ C), likewise for ∨."},
+    {"term": "Distributive law", "def": "A ∧ (B ∨ C) = (A ∧ B) ∨ (A ∧ C), and A ∨ (B ∧ C) = (A ∨ B) ∧ (A ∨ C)."},
+    {"term": "Absorption law", "def": "A ∨ (A ∧ B) = A and A ∧ (A ∨ B) = A; the redundant term is absorbed."},
+    {"term": "De Morgan's laws", "def": "¬(A ∧ B) = ¬A ∨ ¬B and ¬(A ∨ B) = ¬A ∧ ¬B: break the bar, swap the operator, negate each term."}
   ],
   "content": [
-    {
-      "heading": "Logic gates and truth tables",
-      "points": [
-        "AND outputs 1 only when both inputs are 1; OR outputs 1 when at least one input is 1.",
-        "XOR outputs 1 when inputs differ; NAND is NOT(A.B) and NOR is NOT(A+B), the negations of AND and OR.",
-        "NAND and NOR are universal, meaning any circuit can be built from copies of either gate alone."
-      ]
-    },
-    {
-      "heading": "Boolean identities",
-      "points": [
-        "Identity and null: A.1 = A, A+0 = A, A.0 = 0, A+1 = 1.",
-        "Idempotent A.A = A, complement A.NOT A = 0 and A + NOT A = 1, double negation NOT(NOT A) = A.",
-        "Distributive A.(B+C) = A.B + A.C, and absorption A + A.B = A help reduce expressions."
-      ]
-    },
-    {
-      "heading": "De Morgan's laws and K-maps",
-      "points": [
-        "De Morgan's: break the bar, change the operator (AND to OR or OR to AND) and negate each variable, then tidy with double negation.",
-        "K-maps plot outputs in a grid where adjacent cells differ by one variable.",
-        "Group adjacent 1s in powers of two (1, 2, 4, 8...), as large as possible, allowing wrap-around and overlap, to read off a minimal sum-of-products."
-      ]
-    },
-    {
-      "heading": "Adders",
-      "points": [
-        "A half adder adds two bits with no carry-in: Sum = A XOR B, Carry = A . B.",
-        "A full adder adds three bits: Sum = A XOR B XOR Cin, Cout = (A.B) + (Cin.(A XOR B)).",
-        "Full adders are chained so each carry-out feeds the next column's carry-in, forming a ripple-carry adder for multi-bit numbers."
-      ]
-    },
-    {
-      "heading": "Combinational vs sequential logic",
-      "points": [
-        "Combinational logic outputs depend only on the current inputs, e.g. gates and adders.",
-        "Sequential logic outputs depend on inputs plus stored state, e.g. circuits using flip-flops.",
-        "A D-type flip-flop is edge-triggered 1-bit memory used in registers, counters and memory cells to synchronise data to a clock."
-      ]
-    }
+    {"heading": "Boolean algebra and OCR notation", "points": ["Boolean values are 1 (true) and 0 (false); expressions built from them describe circuit outputs.", "OCR exam notation: ∧ means AND, ∨ means OR, ¬ means NOT, ⊻ means XOR.", "So ¬A ∧ (B ∨ C) reads: NOT A, AND, open bracket B OR C close bracket.", "Every expression can be drawn as a circuit of gates and summarised in a truth table."], "note": "Electronics texts write A·B for A ∧ B and A+B for A ∨ B — identical operations, different symbols."},
+    {"heading": "The NOT and AND gates", "points": ["NOT takes a single input and inverts it: ¬0 = 1 and ¬1 = 0.", "NOT symbol: a triangle pointing right with a small negation circle on its output.", "A ∧ B outputs 1 only when both inputs are 1: rows 00, 01, 10 give 0; only 11 gives 1.", "AND symbol: a D-shape, flat edge on the input side, curved edge to the output.", "Think of AND as multiplication: 1 × 1 = 1, anything with a 0 gives 0."]},
+    {"heading": "The OR and XOR gates", "points": ["A ∨ B outputs 1 when at least one input is 1: rows 01, 10, 11 give 1; only 00 gives 0.", "OR symbol: a curved shield shape with a concave input edge and pointed output.", "A ⊻ B (exclusive OR) outputs 1 only when the inputs differ: rows 01 and 10 give 1.", "XOR symbol: the OR shape with an extra curved line across the inputs.", "OR and XOR differ in exactly one row: when both inputs are 1, OR gives 1 but XOR gives 0."]},
+    {"heading": "Combining gates into circuits", "points": ["An expression is a wiring diagram in disguise: each operator is a gate.", "(A ∧ B) ∨ ¬C needs three gates: an AND fed by A and B, a NOT fed by C, an OR fed by both outputs.", "Brackets show which gate output feeds which gate input; evaluate innermost brackets first.", "¬ applies before ∧ and ∨, so ¬A ∧ B means (¬A) ∧ B, not ¬(A ∧ B)."], "note": "Exam questions run both ways: expression to circuit diagram, and circuit diagram to expression."},
+    {"heading": "Truth tables for two-input expressions", "points": ["Two inputs give 2 to the power 2 = 4 rows; list them in binary counting order 00, 01, 10, 11.", "Add a working column for each sub-expression before the final output column.", "Example ¬A ∧ B: working column ¬A reads 1, 1, 0, 0 down the rows.", "Final column: only row A = 0, B = 1 outputs 1; the other three rows output 0."]},
+    {"heading": "Truth tables for three-input expressions", "points": ["Three inputs give 2 to the power 3 = 8 rows; count in binary from 000 to 111.", "Fill the columns pattern-wise: A runs 0000 1111, B runs 0011 0011, C runs 0101 0101.", "One working column per gate; the final column is the circuit output Q.", "Spot-check one row by hand: for Q = (A ∧ B) ∨ ¬C at row 110, A ∧ B = 1, ¬C = 1, so Q = 1."], "note": "Missing rows or wrong row order is the most common way to drop truth-table marks."},
+    {"heading": "Identities: commutation, association, distribution", "points": ["Commutation: A ∧ B = B ∧ A and A ∨ B = B ∨ A; input order never matters.", "Association: (A ∧ B) ∧ C = A ∧ (B ∧ C), and the same for ∨; regrouping is free.", "Distribution: A ∧ (B ∨ C) = (A ∧ B) ∨ (A ∧ C), like expanding brackets in maths.", "Unlike ordinary algebra, OR also distributes over AND: A ∨ (B ∧ C) = (A ∨ B) ∧ (A ∨ C)."]},
+    {"heading": "Identities: absorption, double negation and the basics", "points": ["Absorption: A ∨ (A ∧ B) = A and A ∧ (A ∨ B) = A; the longer term is swallowed.", "Double negation: ¬¬A = A; always use it to tidy after De Morgan's.", "Identity and null: A ∧ 1 = A, A ∨ 0 = A, A ∧ 0 = 0, A ∨ 1 = 1.", "Complement: A ∨ ¬A = 1 and A ∧ ¬A = 0; idempotence: A ∧ A = A, A ∨ A = A."]},
+    {"heading": "De Morgan's laws", "points": ["¬(A ∧ B) = ¬A ∨ ¬B, and ¬(A ∨ B) = ¬A ∧ ¬B.", "Method: break the bar, swap the operator (∧ to ∨ or ∨ to ∧), negate each term.", "You must do both: swapping the operator without negating each variable is the classic error.", "Check any claimed law with one truth-table row: at A = 1, B = 0, ¬(A ∧ B) = 1 but ¬A ∧ ¬B = 0."], "note": "¬(A ∧ B) = ¬A ∧ ¬B is wrong: the operator must change when the bar breaks."},
+    {"heading": "Simplifying expressions: the method", "points": ["Name the law at every step; the working earns marks, not just the answer.", "Order of attack: De Morgan's to push negations inward, double negation to tidy, then distribute and absorb.", "Look for complements appearing: B ∨ ¬B = 1 and B ∧ ¬B = 0 collapse whole terms.", "Verify the result by testing one or two truth-table rows against the original."], "note": "Fewer operators means fewer gates: simplification cuts circuit cost, an exam-favourite justification."}
   ],
-  "worked_example": {
-    "title": "Simplifying NOT(NOT A + B) with De Morgan's law",
-    "steps": [
-      "Start with the expression NOT(NOT A + B), which has an outer bar over an OR.",
-      "Apply De Morgan's to the outer bar: break the bar and change OR to AND, negating each term, giving NOT(NOT A) . NOT B.",
-      "Apply double negation to the first term: NOT(NOT A) = A.",
-      "The expression becomes A . NOT B.",
-      "Check with a truth table: NOT(NOT A + B) is 1 only when A=1 and B=0, which is exactly when A . NOT B = 1, confirming the result.",
-      "Final simplified form: A . NOT B."
-    ]
-  },
-  "task": "Complete the truth table for Q = NOT(A.B) + (A.C) over all eight input combinations of A, B and C, and identify the only row where Q = 0.",
-  "challenge": "Give the Boolean expressions for the Sum and Cout of a full adder, then explain how it differs from a half adder and why full adders (not half adders) are needed to add multi-bit binary numbers.",
+  "worked_examples": [
+    {"title": "Truth table for Q = (A ∧ B) ∨ ¬C, all eight rows", "steps": [
+      "Three inputs, so 8 rows counting 000 to 111; working columns for A ∧ B and ¬C.",
+      "A ∧ B column: 0, 0, 0, 0, 0, 0, 1, 1 (only rows 110 and 111 have A = B = 1).",
+      "¬C column: 1, 0, 1, 0, 1, 0, 1, 0 (inverts the alternating C column).",
+      "Q is the OR of the two working columns, row by row.",
+      "Rows 000, 010, 100: A ∧ B = 0 but ¬C = 1, so Q = 1; rows 110 and 111: A ∧ B = 1, so Q = 1.",
+      "Rows 001, 011, 101: A ∧ B = 0 and ¬C = 0, so Q = 0.",
+      "Final Q column down the rows: 1, 0, 1, 0, 1, 0, 1, 1. Q is 0 exactly when C = 1 and A ∧ B = 0."
+    ]},
+    {"title": "Simplifying ¬(¬A ∨ B) with De Morgan's law", "steps": [
+      "Start with ¬(¬A ∨ B): an outer negation over an OR.",
+      "De Morgan's law: break the bar, change ∨ to ∧, negate each term: ¬(¬A) ∧ ¬B.",
+      "Double negation: ¬(¬A) = A, giving A ∧ ¬B.",
+      "Check with a truth table: ¬A ∨ B is 0 only at A = 1, B = 0, so its negation is 1 only there.",
+      "A ∧ ¬B is also 1 only at A = 1, B = 0: the two expressions match on all four rows.",
+      "Final answer: A ∧ ¬B, using De Morgan's law then double negation."
+    ]},
+    {"title": "Simplifying (A ∧ B) ∨ (A ∧ ¬B) ∨ (¬A ∧ B), naming every law", "steps": [
+      "Factor A from the first two terms using distribution: A ∧ (B ∨ ¬B), leaving ∨ (¬A ∧ B).",
+      "Complement law: B ∨ ¬B = 1, so the first part becomes A ∧ 1.",
+      "Identity law: A ∧ 1 = A. The expression is now A ∨ (¬A ∧ B).",
+      "Distribution of ∨ over ∧: A ∨ (¬A ∧ B) = (A ∨ ¬A) ∧ (A ∨ B).",
+      "Complement law: A ∨ ¬A = 1, then identity law: 1 ∧ (A ∨ B) = A ∨ B.",
+      "Verify against the original: row 00 gives 0 ∨ 0 ∨ 0 = 0; rows 01, 10, 11 give 1 (terms ¬A ∧ B, A ∧ ¬B, A ∧ B fire respectively).",
+      "That is exactly A ∨ B: 0 only at row 00. Final answer: A ∨ B."
+    ]}
+  ],
+  "activities": [
+    {"title": "The Circuit Walk (human logic gates)", "minutes": 15, "instructions": [
+      "Build Q = (A ∧ B) ∨ ¬C with students: inputs A, B, C at one wall; an AND student fed by A and B; a NOT student fed by C; an OR student fed by both gate outputs.",
+      "Each gate student states their rule aloud, e.g. I output 1 only if BOTH my inputs are 1.",
+      "Inputs hold up 0/1 cards and signals propagate by walking cards to each gate; the class predicts Q on mini-whiteboards before the signal reaches OR.",
+      "Run rows (1,0,0), (1,1,1), (0,1,1), (0,0,0): Q = 1, 1, 0, 1. Swap students between roles each row.",
+      "Round 2: build ¬(A ∧ B) and ¬A ∨ ¬B side by side with two teams and race all four input rows; both circuits give 1, 1, 1, 0, a living proof of De Morgan's law."
+    ], "stretch": "Ask each team to predict, before running it, one input row where the two circuits would differ if De Morgan's swapped the operator but forgot to negate each input; then test it."},
+    {"title": "Always-Sometimes-Never: Boolean claims", "minutes": 12, "instructions": [
+      "Pairs classify each claim as Always, Sometimes or Never true, proving it: a named law for Always/Never, concrete A/B values (one working, one failing) for Sometimes.",
+      "Claims: (a) A ∨ ¬A = 1; (b) A ∧ B = A; (c) ¬(A ∧ B) = ¬A ∧ ¬B; (d) A ∨ (A ∧ B) = A; (e) A ⊻ A = 1; (f) A ∨ 1 = 1.",
+      "Reveal one at a time; a pair presents their proof while the class hunts for counterexamples.",
+      "Answers: (a) Always, complement law; (b) Sometimes, true at A=0 or B=1, false at A=1 B=0; (c) Sometimes, the classic De Morgan's error, true at A=B=0, false at A=0 B=1; (d) Always, absorption; (e) Never, XOR of identical inputs is always 0; (f) Always, null law."
+    ], "stretch": "Pairs repair every Sometimes or Never claim into a genuine identity, e.g. (c) becomes ¬(A ∧ B) = ¬A ∨ ¬B and (e) becomes A ⊻ A = 0."},
+    {"title": "Simplification Surgery (grade the mock answers)", "minutes": 12, "instructions": [
+      "Announce: five simplifications from last year's mock, some right, some wrong; pairs grade each and rewrite any wrong right-hand side.",
+      "The five: (1) ¬(A ∨ B) = ¬A ∨ ¬B; (2) A ∨ (¬A ∧ B) = A ∨ B; (3) A ∧ (A ∨ B) = A ∧ B; (4) ¬(¬A ∧ B) = A ∨ ¬B; (5) A ⊻ B = (A ∧ B) ∨ (¬A ∧ ¬B).",
+      "Whiteboards up; tally verdicts, then settle contested lines with a single truth-table row or a named law.",
+      "Answers: (1) wrong, De Morgan's gives ¬A ∧ ¬B; (2) correct; (3) wrong, absorption gives A (test A=1, B=0); (4) correct by De Morgan's plus double negation; (5) wrong, that is XNOR; XOR = (A ∧ ¬B) ∨ (¬A ∧ B), test A=B=1.",
+      "Debrief the two big traps: De Morgan's changes the operator AND negates each variable; and plausible answers deserve a truth-table spot check."
+    ], "stretch": "Pairs simplify ¬(¬A ∨ ¬B) ∨ (A ∧ ¬B) fully and prove it equals A, naming De Morgan's, distribution, complement and identity."}
+  ],
+  "practice": [
+    {"q": "Complete the truth table for A ⊻ B. [2]", "a": "Rows in order 00, 01, 10, 11 give outputs 0, 1, 1, 0 (1 mark for rows 01 and 10 correct, 1 mark for rows 00 and 11 correct). XOR is 1 only when the inputs differ."},
+    {"q": "Simplify ¬(¬A) ∨ (B ∧ ¬B), naming the law used at each step. [3]", "a": "¬(¬A) = A by double negation (1); B ∧ ¬B = 0 by the complement law (1); A ∨ 0 = A by the identity law, so the answer is A (1)."},
+    {"q": "Use De Morgan's law to rewrite ¬(A ∨ ¬B) without a bracket. [2]", "a": "Break the bar, swap ∨ for ∧ and negate each term: ¬A ∧ ¬(¬B) (1); double negation gives ¬A ∧ B (1)."},
+    {"q": "State the input combinations for which Q = ¬A ∧ (B ∨ C) is 1. [2]", "a": "Q = 1 requires A = 0 and at least one of B, C to be 1 (1): the rows A=0 B=0 C=1, A=0 B=1 C=0 and A=0 B=1 C=1 (1). All other five rows give 0."},
+    {"q": "Simplify A ∨ (A ∧ B) and name the law used. [2]", "a": "A (1), by the absorption law (1)."},
+    {"q": "State the commutative law and the associative law for the ∧ operator. [2]", "a": "Commutative: A ∧ B = B ∧ A, the order of operands does not matter (1). Associative: (A ∧ B) ∧ C = A ∧ (B ∧ C), the grouping does not matter (1)."},
+    {"q": "Show that A ∧ (B ∨ ¬A) simplifies to A ∧ B, naming each law. [3]", "a": "Distribution: A ∧ (B ∨ ¬A) = (A ∧ B) ∨ (A ∧ ¬A) (1); complement law: A ∧ ¬A = 0 (1); identity law: (A ∧ B) ∨ 0 = A ∧ B (1)."},
+    {"q": "A student claims ¬(A ∧ B) = ¬A ∧ ¬B. Use the row A = 1, B = 0 to show the claim is false, and state the correct law. [3]", "a": "At A=1, B=0: ¬(A ∧ B) = ¬0 = 1 (1) but ¬A ∧ ¬B = 0 ∧ 1 = 0, so the two differ (1). The correct law is ¬(A ∧ B) = ¬A ∨ ¬B: the operator must swap when the bar breaks (1)."}
+  ],
+  "misconceptions": [
+    "Students often think De Morgan's law just swaps the operator; you must also negate each variable, otherwise the row A=1, B=0 breaks the claim.",
+    "Students often treat OR and XOR as the same; they differ in exactly one row: both inputs 1 gives OR = 1 but XOR = 0.",
+    "Students often think only AND distributes over OR, as in ordinary algebra; in Boolean algebra OR also distributes over AND: A ∨ (B ∧ C) = (A ∨ B) ∧ (A ∨ C).",
+    "Students often write ¬A ∧ B when they mean ¬(A ∧ B); without a bracket, ¬ binds only to the variable next to it.",
+    "Students often build truth tables with missing or misordered rows; n inputs need exactly 2 to the power n rows, counted in binary from all zeros."
+  ],
+  "exam_link": [
+    "Command words seen here: complete for truth tables (2-4 marks), simplify for expressions (2-4 marks, with laws named), show that for proving equivalences (3 marks).",
+    "OCR uses ∧, ∨, ¬ and ⊻ on the paper; you may write A·B and A+B, but you must read the exam's notation fluently.",
+    "Simplification mark schemes award the working: name the law at each step, because a correct answer with no laws can lose marks.",
+    "Example stem: 'Complete the truth table for the circuit Q = (A ∨ B) ∧ ¬C, then simplify ¬(¬A ∧ ¬B) using De Morgan's law.' [6]"
+  ],
+  "task": "Complete the full 8-row truth table for Q = ¬(A ∧ B) ∨ (A ∧ C), showing working columns for A ∧ B, ¬(A ∧ B) and A ∧ C, and identify the only row where Q = 0. (Answer: Q column down rows 000 to 111 is 1, 1, 1, 1, 1, 1, 0, 1; the only 0 is at A=1, B=1, C=0, because there ¬(A ∧ B) = 0 and A ∧ C = 0.)",
+  "challenge": "Simplify ¬(¬A ∨ ¬B) ∨ (A ∧ ¬B) as far as possible, naming the law at every step, and verify your answer with two truth-table rows. (De Morgan's plus double negation: ¬(¬A ∨ ¬B) = A ∧ B; distribution: (A ∧ B) ∨ (A ∧ ¬B) = A ∧ (B ∨ ¬B); complement: B ∨ ¬B = 1; identity: A ∧ 1 = A. Check A=1 B=0: original = 0 ∨ 1 = 1 = A; check A=0 B=1: original = 0 ∨ 0 = 0 = A.)",
   "exit_ticket": [
-    { "q": "Rewrite NOT(A.B) using De Morgan's law.", "a": "NOT A + NOT B." },
-    { "q": "What are the Sum and Carry outputs of a half adder when A=1 and B=1?", "a": "Sum = 0 and Carry = 1 (binary 10), since Sum = A XOR B and Carry = A . B." },
-    { "q": "Simplify A.(A+B) and name the law used.", "a": "It simplifies to A by the Absorption law." }
+    {"q": "Rewrite ¬(A ∧ B) using De Morgan's law.", "a": "¬A ∨ ¬B: break the bar, change ∧ to ∨, negate each variable."},
+    {"q": "What does A ⊻ B output when A = 1 and B = 1, and why?", "a": "0, because XOR outputs 1 only when its inputs differ."},
+    {"q": "Simplify A ∧ (A ∨ B) and name the law used.", "a": "A, by the absorption law."}
   ]
 }

@@ -1,87 +1,124 @@
 {
-  "subtopic": "1.4.1 Data Types",
+  "subtopic": "1.4.1 Data Types (part 1)",
   "spec": "OCR H446 — Component 01",
+  "week": "Week 15 (04 Jan)",
   "objectives": [
-    "Convert confidently between denary, binary and hexadecimal, and represent signed integers using two's complement.",
-    "Apply binary addition, subtraction and logical/arithmetic shifts, identifying overflow and the arithmetic effect of each shift.",
-    "Explain floating-point representation (mantissa and exponent), normalisation, and how character sets such as ASCII and Unicode encode characters."
+    "I can choose and justify the correct primitive data type (integer, real, char, string, Boolean) for given data.",
+    "I can convert between denary, binary and hexadecimal in all six directions, showing my working.",
+    "I can add binary numbers, carry correctly, and recognise when overflow has occurred.",
+    "I can represent negative integers in sign and magnitude and two's complement, and subtract by adding a two's complement."
   ],
   "retrieval": [
-    { "q": "How many bits are represented by one hexadecimal digit?", "a": "4 bits (one nibble); two hex digits make one byte." },
-    { "q": "In an 8-bit two's complement number, what is the place value of the most significant bit?", "a": "-128 (the MSB carries a negative weight)." },
-    { "q": "Name a primitive data type that holds True or False.", "a": "Boolean." },
-    { "q": "Interleaving (1.2): What does a compiler do, and how does it differ from an interpreter?", "a": "A compiler translates the whole source program into object/machine code in one go before execution; an interpreter translates and executes line by line." },
-    { "q": "Interleaving (1.4.3): What is the output of a two-input XOR gate when both inputs are 1?", "a": "0 (XOR outputs 1 only when the inputs differ)." }
+    {"q": "Warm-up sweep, 1.3.4: a form is validated by JavaScript in the browser. Why must the server repeat the validation?", "a": "Client-side code can be viewed, disabled or bypassed (requests can be crafted directly), so only a server-side check is trustworthy; it cannot be bypassed."},
+    {"q": "1.3.4: under PageRank, what two things about a page's inbound links decide its rank?", "a": "The number of pages linking to it AND the rank of those linking pages; a link from one high-ranked page beats many links from low-ranked pages."},
+    {"q": "1.3.3: name the four layers of the TCP/IP stack in order, top to bottom.", "a": "Application, Transport, Internet (Network), Link."},
+    {"q": "1.3.3: what does DNS do when you type a URL into a browser?", "a": "It translates the human-readable domain name into an IP address so the request can be routed to the correct server."},
+    {"q": "2.1.4: name the three basic programming constructs, and state which one implements a decision point.", "a": "Sequence, selection and iteration; a decision point is implemented by selection (e.g. an if statement)."}
   ],
   "keywords": [
-    { "term": "Two's complement", "def": "Signed-integer representation in which the most significant bit has a negative place value; negate a number by inverting all bits and adding 1." },
-    { "term": "Hexadecimal", "def": "Base-16 number system (0-9, A-F) used as a compact, lossless shorthand for binary; one hex digit equals four bits." },
-    { "term": "Overflow", "def": "An error where the result of a calculation is too large to fit in the available number of bits." },
-    { "term": "Mantissa", "def": "The significant-figures part of a floating-point number; determines its precision." },
-    { "term": "Exponent", "def": "The power-of-two part of a floating-point number; determines its range." },
-    { "term": "Normalisation", "def": "Adjusting a float so the mantissa begins with the first significant bit (0.1... for positive, 1.0... for negative) to maximise precision." },
-    { "term": "Arithmetic shift", "def": "A right shift that copies the sign bit in from the left, dividing a signed number by powers of two." },
-    { "term": "Character set", "def": "A mapping of characters to unique binary codes, such as ASCII (7-bit, 128 characters) or Unicode (multi-byte, all languages plus emoji)." }
+    {"term": "Primitive data type", "def": "A basic type provided by the language: integer, real, char, string or Boolean."},
+    {"term": "Denary", "def": "The base-10 number system using digits 0-9; each place value is a power of ten."},
+    {"term": "Binary", "def": "The base-2 number system using digits 0 and 1; each place value is a power of two."},
+    {"term": "Hexadecimal", "def": "The base-16 system using 0-9 and A-F; a compact, lossless shorthand for binary."},
+    {"term": "Nibble", "def": "Four bits; exactly one hexadecimal digit, so two hex digits make one byte."},
+    {"term": "Most significant bit (MSB)", "def": "The leftmost bit, with the largest place value; in two's complement its value is negative."},
+    {"term": "Sign and magnitude", "def": "Signed representation where the MSB is only a sign flag (0 positive, 1 negative) and the rest is the size."},
+    {"term": "Two's complement", "def": "Signed representation where the MSB has a negative place value; negate by inverting all bits then adding 1."},
+    {"term": "Overflow", "def": "An error where the result of a calculation is too large to fit in the available bits."}
   ],
   "content": [
-    {
-      "heading": "Number bases and conversion",
-      "points": [
-        "Denary to binary: subtract the largest place value that fits and repeat, or divide by 2 reading remainders bottom-up.",
-        "Binary to hex: split into nibbles from the right (pad the left with 0s) and convert each nibble.",
-        "Hex is used because it is a compact, error-free shorthand for binary in addresses, colours and machine code; it does not save memory."
-      ]
-    },
-    {
-      "heading": "Signed integers and two's complement",
-      "points": [
-        "8-bit two's complement range is -128 to +127; an MSB of 1 means the number is negative.",
-        "To negate, invert all bits then add 1 (e.g. +5 = 00000101 -> invert 11111010 -> +1 = 11111011 = -5).",
-        "Subtraction A - B is done as A + (-B), adding the two's complement of B and discarding the final carry out of the MSB."
-      ]
-    },
-    {
-      "heading": "Binary shifts and overflow",
-      "points": [
-        "Logical left shift by n multiplies an unsigned number by 2^n; logical right shift divides by 2^n.",
-        "Arithmetic right shift copies the sign bit in from the left, dividing a signed number by 2^n.",
-        "Bits shifted off the end are lost, and a left shift can cause overflow if a 1 is pushed beyond the available bits."
-      ]
-    },
-    {
-      "heading": "Floating-point representation",
-      "points": [
-        "Value = mantissa x 2^exponent; the mantissa sets precision and the exponent sets range, both stored in two's complement.",
-        "Moving the point right decreases the exponent; moving it left increases it, with the value unchanged.",
-        "Fixed total bits force a trade-off: more mantissa bits give more precision but less range; more exponent bits give more range but less precision."
-      ]
-    },
-    {
-      "heading": "Character sets",
-      "points": [
-        "ASCII uses 7 bits for 128 characters ('A'=65, 'a'=97, '0'=48); extended ASCII uses 8 bits for 256.",
-        "Unicode uses more bits (UTF-8 is 1-4 bytes) to represent over a million code points covering all languages and emoji.",
-        "The first 128 Unicode code points match ASCII, so ASCII is a subset and Unicode is backward-compatible."
-      ]
-    }
+    {"heading": "Primitive data types", "points": ["Integer: whole numbers, positive or negative, e.g. a number of students.", "Real (float): numbers with a fractional part, e.g. a price of 3.99.", "Char: a single character; string: a sequence of characters, e.g. a name.", "Boolean: one of exactly two values, True or False.", "Choosing the right type saves memory and controls which operations are allowed."], "note": "A phone number is stored as a string: leading zeros matter and it is never used in arithmetic."},
+    {"heading": "Binary place values and unsigned range", "points": ["Place values double from the right: 128, 64, 32, 16, 8, 4, 2, 1.", "8 bits give 2 to the power 8 = 256 patterns, so unsigned range is 0 to 255.", "n bits always give 2 to the power n patterns: the pattern count, not the largest value.", "A bit is one binary digit; 4 bits are a nibble; 8 bits are a byte."]},
+    {"heading": "Denary to binary", "points": ["Greedy method: subtract the largest place value that fits, mark a 1, repeat with the remainder.", "Example: 105 = 64 + 32 + 8 + 1, so 105 = 01101001.", "Alternative: repeatedly divide by 2 and read the remainders bottom-up.", "Always pad to the stated number of bits, e.g. 8 bits in this course."]},
+    {"heading": "Binary to denary and binary to hex", "points": ["Binary to denary: add the place values under each 1.", "Example: 11010110 = 128 + 64 + 16 + 4 + 2 = 214.", "Binary to hex: split into nibbles FROM THE RIGHT, convert each nibble separately.", "Example: 11010110 splits as 1101 0110 = D6, because 1101 = 13 = D and 0110 = 6."], "note": "Splitting nibbles from the left instead of the right is the classic dropped mark."},
+    {"heading": "Hex to binary and hex to denary", "points": ["Hex to binary: replace each hex digit with its 4-bit nibble.", "Example: 3E becomes 0011 1110 = 00111110.", "Hex to denary: multiply the left digit by 16 and add the right digit.", "Example: 2F = 2 x 16 + 15 = 47; remember A=10, B=11, C=12, D=13, E=14, F=15."]},
+    {"heading": "Denary to hex, and why hex is used", "points": ["Direct route: divide by 16; 156 = 9 remainder 12, so 156 = 9C.", "Via binary: 156 = 10011100, nibbles 1001 1100 = 9C - same answer.", "Hex is a compact shorthand humans read with fewer transcription errors: memory addresses, colour codes, MAC addresses.", "Hex does NOT save memory: the computer still stores pure binary."]},
+    {"heading": "Binary addition", "points": ["Rules: 0+0=0, 0+1=1, 1+1=0 carry 1, 1+1+1=1 carry 1.", "Work right to left exactly like column addition, writing every carry.", "Example: 0101 + 0011 = 1000 (5 + 3 = 8).", "A carry out beyond the available bits means the answer no longer fits: overflow."]},
+    {"heading": "Sign and magnitude", "points": ["MSB is purely a sign flag: 0 means positive, 1 means negative.", "The remaining 7 bits store the size, so -35 = 10100011 (35 = 0100011).", "8-bit range is -127 to +127, and zero has two forms: 00000000 and 10000000.", "Normal binary addition gives wrong answers on sign and magnitude values, so hardware avoids it."]},
+    {"heading": "Two's complement: forming and reading", "points": ["The MSB place value becomes NEGATIVE: -128, 64, 32, 16, 8, 4, 2, 1.", "To negate: invert ALL the bits, then add 1; so +5 = 00000101 becomes 11111011 = -5.", "Read a negative directly: 11111011 = -128 + 64 + 32 + 16 + 8 + 2 + 1 = -5.", "8-bit range is -128 to +127; one single zero; key patterns: 11111111 = -1, 10000000 = -128."], "note": "Forgetting the add-1 step after inverting is the most common error in the whole topic."},
+    {"heading": "Subtraction and overflow", "points": ["Compute A - B as A + (-B): add the two's complement of B.", "Discard any final carry out of the MSB - that discard is normal, not an error.", "Overflow is different: two same-sign numbers producing a wrong-sign result.", "Example: 93 + 46 = 10001011, which reads as negative - overflow, since +139 exceeds +127."]}
   ],
-  "worked_example": {
-    "title": "8-bit two's complement subtraction: 45 - 28",
-    "steps": [
-      "Rewrite as addition: 45 - 28 = 45 + (-28).",
-      "Write +45 in 8-bit binary: 32+8+4+1 = 45 -> 00101101.",
-      "Write +28 in 8-bit binary: 16+8+4 = 28 -> 00011100.",
-      "Find -28 (two's complement): invert 00011100 -> 11100011, then add 1 -> 11100100.",
-      "Add 00101101 + 11100100 = 1 00010001 (a carry is produced out of the MSB).",
-      "Discard the final carry out of the MSB, leaving 00010001.",
-      "Convert back: 00010001 = 16 + 1 = 17, which correctly equals 45 - 28."
-    ]
-  },
-  "task": "Convert 217 to 8-bit unsigned binary, then convert your answer to hexadecimal. Next convert the binary 10110110 to hex, and the hex B7 to denary, showing your method for each.",
-  "challenge": "Normalise the 8-bit signed float with mantissa 0.0110100 and exponent 0011 (4-bit two's complement): give the normalised mantissa and new exponent, then prove the value is unchanged by evaluating both forms in denary.",
+  "worked_examples": [
+    {"title": "One number, all six directions: 181", "steps": [
+      "Denary to binary: 181 = 128 + 32 + 16 + 4 + 1, giving 10110101.",
+      "Check binary to denary by adding back: 128 + 32 + 16 + 4 + 1 = 181. Correct.",
+      "Binary to hex: split from the right into nibbles 1011 0101; 1011 = 11 = B, 0101 = 5, so B5.",
+      "Hex to binary reverses it: B = 1011 and 5 = 0101, giving 10110101 again.",
+      "Hex to denary: B5 = 11 x 16 + 5 = 176 + 5 = 181. Correct.",
+      "Denary to hex directly: 181 divided by 16 = 11 remainder 5, and 11 = B, so B5.",
+      "All six conversions agree: 181 = 10110101 = B5."
+    ]},
+    {"title": "Binary addition with carries: 01011101 + 00101110", "steps": [
+      "Check the operands: 01011101 = 64+16+8+4+1 = 93 and 00101110 = 32+8+4+2 = 46.",
+      "Bit 0: 1+0 = 1. Bit 1: 0+1 = 1. Bit 2: 1+1 = 0 carry 1.",
+      "Bit 3: 1+1+carry 1 = 1 carry 1. Bit 4: 1+0+carry 1 = 0 carry 1.",
+      "Bit 5: 0+1+carry 1 = 0 carry 1. Bit 6: 1+0+carry 1 = 0 carry 1. Bit 7: 0+0+carry 1 = 1.",
+      "Result: 10001011. Check: 128 + 8 + 2 + 1 = 139 = 93 + 46. Correct as an unsigned sum.",
+      "Now interpret the same 8 bits as two's complement: two positive numbers gave an MSB of 1, a negative-looking result.",
+      "That is overflow: +139 is outside the signed range -128 to +127, so the signed answer is wrong even though the unsigned answer is fine."
+    ]},
+    {"title": "Two's complement subtraction: 53 - 29", "steps": [
+      "Rewrite as addition: 53 - 29 = 53 + (-29).",
+      "+53 = 32 + 16 + 4 + 1 = 00110101; +29 = 16 + 8 + 4 + 1 = 00011101.",
+      "Negate 29: invert 00011101 to get 11100010, then add 1 to get 11100011.",
+      "Check -29 reads correctly: -128 + 64 + 32 + 2 + 1 = -29. Correct.",
+      "Add: 00110101 + 11100011 = 1 00011000, with a carry out of the MSB.",
+      "Discard the final carry, leaving 00011000.",
+      "Convert back: 16 + 8 = 24, and 53 - 29 = 24. Correct."
+    ]}
+  ],
+  "activities": [
+    {"title": "The Human Binary Counter", "minutes": 15, "instructions": [
+      "Line up 8 students holding place-value cards, 128 on the class's left down to 1 on the right; standing = 1, sitting = 0; all start seated (zero).",
+      "Counting mode: the 1s student flips on every count; everyone else flips only when the student on their right goes from standing to sitting (a carry). Count 0 to 10 and watch the ripple: 1, 10, 11, 100, 101...",
+      "Conversion mode: call a denary number and let the line self-organise greedily (does 128 fit? then 64?...). Do 45 (00101101) then 200 (11001000); the class verifies by summing the standing cards.",
+      "Overflow finale: set the line to 11111111 (255) and add 1; the carry ripples left through every student and falls off the end - the register wraps to 00000000.",
+      "Debrief: 8 bits give 256 patterns, range 0-255 unsigned; a carry out of the MSB is overflow."
+    ], "stretch": "Convert the standing pattern to hex live by splitting the line into two nibbles: 11001000 becomes C8, one hex digit per nibble."},
+    {"title": "Two's Complement Rapid Drill", "minutes": 12, "instructions": [
+      "Write the signed place-value line -128 | 64 | 32 | 16 | 8 | 4 | 2 | 1 on the board with the mantra: invert ALL the bits, then add 1.",
+      "Fire questions at about 45 seconds each on mini-whiteboards, revealed on 3-2-1-show; one student narrates their method after each reveal.",
+      "Sequence: show +19 (00010011); show -19 (11101101); read 11111111 (-1); read 10000000 (-128); read 11110110 (-10); show -100 (10011100); show -6 (11111010); read 11100000 (-32).",
+      "Finisher pair: what does 01111111 + 1 give and what went wrong? (10000000, which reads as -128: overflow, since +127 is the maximum.) State the full 8-bit range (-128 to +127).",
+      "Track accuracy on the board and re-drill any question below 80 percent success; hunt specifically for the forgotten add-1."
+    ], "stretch": "One subtraction to finish: 23 - 19 as 23 + (-19): 00010111 + 11101101 = (1)00000100; discard the carry, giving 00000100 = 4."},
+    {"title": "Odd One Out: number bases", "minutes": 10, "instructions": [
+      "Show each set; pairs think alone (20 seconds), agree (30 seconds), write the odd one out and the reason, then hold up boards.",
+      "Set A: 0x2A, 42, 00101010, 24 - odd one is 24; the others all equal 42 (trap: digit-swapping 42/24).",
+      "Set B: integer, real, char, array - odd one is array, a data structure; the rest are primitive data types.",
+      "Set C: F in hex, 15, 1111 in binary, 16 - odd one is 16; hex F is 15, because hex digits stop at 15.",
+      "Set D: 0x19, 25, 00011001, 19 - odd one is 19; 0x19 = 16 + 9 = 25 (trap: reading hex as if it were denary).",
+      "After each reveal, one pair explains the trap the set was built around."
+    ], "stretch": "Pairs build one new odd-one-out set where the odd item can only be found by converting all four items to binary, then swap and solve."}
+  ],
+  "practice": [
+    {"q": "A program stores a student's name, their exam mark out of 100, their grade letter and whether they passed. State the most appropriate primitive data type for each. [4]", "a": "Name: string (1). Mark: integer (1). Grade letter: char (1). Passed: Boolean (1)."},
+    {"q": "Convert the binary number 11011010 to denary and to hexadecimal. Show your working. [2]", "a": "Denary: 128 + 64 + 16 + 8 + 2 = 218 (1). Hex: nibbles 1101 1010 = DA (1)."},
+    {"q": "Convert the denary number 141 to 8-bit binary and to hexadecimal. [2]", "a": "141 = 128 + 8 + 4 + 1 = 10001101 (1); nibbles 1000 1101 = 8D (1)."},
+    {"q": "Add the binary numbers 00111011 and 01010110. The numbers are 8-bit two's complement values. Explain why the result demonstrates overflow. [3]", "a": "00111011 + 01010110 = 10010001, carrying correctly (1). The operands are +59 and +86, both positive, but the result's MSB is 1 so it reads as negative (1). The true answer +145 is outside the two's complement range -128 to +127, so overflow has occurred (1)."},
+    {"q": "Show how -75 is represented in 8-bit two's complement. Show your working. [2]", "a": "+75 = 01001011 (64+8+2+1); invert to 10110100 (1); add 1 to give 10110101 (1). Check: -128+32+16+4+1 = -75."},
+    {"q": "The 8-bit two's complement value 11101100 is stored. State its denary value, showing your method. [2]", "a": "Direct read: -128 + 64 + 32 + 8 + 4 = -20 (1 for method, 1 for -20). Alternative: invert and add 1 gives 00010100 = 20, so the value is -20."},
+    {"q": "Show -35 in 8-bit sign and magnitude AND in 8-bit two's complement, and give one reason computers use two's complement. [3]", "a": "Sign and magnitude: 10100011, sign bit 1 with magnitude 0100011 = 35 (1). Two's complement: 00100011 inverted is 11011100, plus 1 is 11011101 (1). Reason: only one representation of zero, and ordinary binary addition works directly on it (1)."},
+    {"q": "Calculate 27 - 90 using 8-bit two's complement. Show your working and give the denary result. [4]", "a": "27 = 00011011 and 90 = 01011010 (1). -90: invert 01011010 to 10100101, add 1 to give 10100110 (1). Add: 00011011 + 10100110 = 11000001 with no carry out (1). Result reads -128 + 64 + 1 = -63, and 27 - 90 = -63 (1)."}
+  ],
+  "misconceptions": [
+    "Students often think hexadecimal saves memory; it is only a human-friendly shorthand - the computer stores pure binary either way.",
+    "Students often invert the bits and forget to add 1 when negating; invert ALL bits, THEN add 1, and check by reading the answer back with the -128 place value.",
+    "Students often treat the two's complement MSB as just a sign flag; it is a real place value of -128, which is why 10000000 is -128, not -0.",
+    "Students often think the discarded carry in two's complement subtraction is an error; the discard is a normal part of the method - overflow is the separate wrong-sign problem.",
+    "Students often quote the signed range as -127 to +127; two's complement is asymmetric, -128 to +127, because there is only one zero."
+  ],
+  "exam_link": [
+    "Command words: convert and show your working dominate here (1-2 marks each); method marks survive small slips only if working is written down.",
+    "Two's complement subtraction is a 3-4 mark staple: form the complement, add, discard the carry, state the denary answer.",
+    "Explain overflow is a classic 2-marker: result too large for the bits available, shown by a carry out or a wrong-sign result.",
+    "Example stem: 'Convert the denary number 154 to 8-bit binary and then to hexadecimal. Show your working.' [3] (154 = 10011010 = 9A.)"
+  ],
+  "task": "Convert 202 to 8-bit binary and then to hexadecimal, showing both steps (202 = 128+64+8+2 = 11001010 = CA). Then calculate 100 - 61 in 8-bit two's complement: show +61 (00111101), its negation (11000011), the column addition with carries (01100100 + 11000011 = 1 00100111), the discarded carry, and the final denary answer (00100111 = 39).",
+  "challenge": "The 8-bit two's complement range is -128 to +127 - not symmetric. Explain why using the single representation of zero. Then try to negate 10000000 (-128) using invert-and-add-1: show that you get 10000000 back again, and explain why (+128 cannot be represented in 8 bits, so the negation overflows).",
   "exit_ticket": [
-    { "q": "What two steps negate a number in two's complement?", "a": "Invert all the bits, then add 1." },
-    { "q": "In subtraction by two's complement, what happens to the final carry out of the MSB?", "a": "It is discarded (dropped)." },
-    { "q": "With a fixed number of bits, what is the effect of giving more bits to the mantissa?", "a": "Greater precision (more significant figures) but a smaller range, because fewer bits remain for the exponent." }
+    {"q": "State the two steps that negate a number in two's complement.", "a": "Invert every bit, then add 1."},
+    {"q": "What is the range of an 8-bit two's complement integer, and why is it not symmetric?", "a": "-128 to +127; there is only one zero pattern, so the negative side gains the extra value -128."},
+    {"q": "The pattern 10000000 means different things in sign and magnitude and in two's complement. What is each value?", "a": "Sign and magnitude: negative zero (-0). Two's complement: -128, because the MSB place value is -128."}
   ]
 }

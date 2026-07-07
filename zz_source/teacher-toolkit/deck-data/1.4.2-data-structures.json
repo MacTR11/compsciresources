@@ -1,87 +1,178 @@
 {
-  "subtopic": "1.4.2 Data Structures",
+  "subtopic": "1.4.2 Data Structures (part 1)",
   "spec": "OCR H446 — Component 01",
+  "week": "Week 18 (25 Jan)",
   "objectives": [
-    "Describe and distinguish static and dynamic data structures, including arrays, records, lists, tuples and linked lists.",
-    "Trace operations on stacks and queues, and explain their LIFO/FIFO behaviour and real-world uses.",
-    "Explain how graphs, trees, binary search trees and hash tables store and retrieve data, including traversal order and collisions."
+    "I can describe arrays (1D, 2D and 3D), records, lists and tuples, and choose the right one for given data.",
+    "I can use index arithmetic to locate an element in a 1D or 2D array.",
+    "I can trace push, pop and peek on a stack using a stack pointer, and identify overflow and underflow.",
+    "I can trace enqueue and dequeue on linear and circular queues and explain why circular queues reuse space."
   ],
   "retrieval": [
-    { "q": "Which data structure operates on a Last In, First Out basis?", "a": "A stack (push and pop at the top)." },
-    { "q": "Which BST traversal visits nodes in ascending order?", "a": "In-order traversal (left, root, right)." },
-    { "q": "What is a collision in a hash table?", "a": "When two different keys hash to the same index." },
-    { "q": "Interleaving (1.4.1): What is the denary value of the unsigned binary 00101101?", "a": "45 (32+8+4+1)." },
-    { "q": "Interleaving (1.4.3): Give the Boolean expression for the Sum output of a half adder.", "a": "Sum = A XOR B." }
+    {"q": "From 2.2.1: state the two things every recursive subroutine must have.", "a": "A base case (stopping condition) and a recursive call whose arguments move towards that base case."},
+    {"q": "From 2.2.1: a parameter is passed by value (byVal). What happens to the original variable when the subroutine changes it?", "a": "Nothing: a copy is passed, so changes stay local. Passing by reference (byRef) passes the address, so changes do affect the original."},
+    {"q": "From 2.2.1: where are return addresses and local variables stored during recursive calls, and what happens if recursion never reaches its base case?", "a": "On the call stack; each unfinished call keeps its frame stacked, so endless recursion causes stack overflow."},
+    {"q": "From 1.4.1: show -19 in 8-bit two's complement.", "a": "+19 = 00010011; invert every bit to 11101100; add 1 to give 11101101."},
+    {"q": "From 1.4.1: what denary value does the two's complement byte 11110110 represent?", "a": "-10 (-128 + 64 + 32 + 16 + 4 + 2)."}
   ],
   "keywords": [
-    { "term": "Array", "def": "An ordered, fixed-size collection of items of the same type accessed by a numeric index, giving O(1) access; static." },
-    { "term": "Record", "def": "A collection of named fields that may hold different data types, e.g. student.name." },
-    { "term": "Tuple", "def": "An ordered, immutable sequence whose values cannot be changed after creation, e.g. (x, y)." },
-    { "term": "Linked list", "def": "A dynamic structure of nodes, each holding data plus a pointer to the next node; easy to insert/delete but with no random access." },
-    { "term": "Stack", "def": "A LIFO structure with push, pop and peek at the top via a stack pointer; can overflow or underflow." },
-    { "term": "Queue", "def": "A FIFO structure where items are enqueued at the rear and dequeued at the front; circular queues reuse space with rear = (rear + 1) MOD size." },
-    { "term": "Binary search tree", "def": "A binary tree where the left subtree is less than the node and the right subtree is greater, giving O(log n) search when balanced." },
-    { "term": "Hash table", "def": "A structure that maps a key to an index using a hash function for ~O(1) lookup; a collision is two keys mapping to the same index." }
+    {"term": "Array", "def": "An ordered, fixed-size collection of items of the same type, accessed by numeric index; a static structure."},
+    {"term": "Record", "def": "A collection of named fields that may hold different data types, such as student.name and student.dob."},
+    {"term": "List", "def": "An ordered collection that is mutable and resizable, and may hold items of mixed types."},
+    {"term": "Tuple", "def": "An ordered sequence of values that is immutable: it cannot be changed once created."},
+    {"term": "Stack", "def": "A last in, first out (LIFO) structure; items are pushed onto and popped off the top."},
+    {"term": "Stack pointer", "def": "A variable (top) holding the index of the current top item of a stack; -1 when empty."},
+    {"term": "Queue", "def": "A first in, first out (FIFO) structure; items are enqueued at the rear and dequeued from the front."},
+    {"term": "Circular queue", "def": "An array-based queue whose front and rear pointers wrap around using MOD so freed cells are reused."},
+    {"term": "Underflow", "def": "Trying to remove an item from an empty stack or queue; overflow is adding to a full one."}
   ],
   "content": [
-    {
-      "heading": "Static vs dynamic structures",
-      "points": [
-        "Static structures have a fixed size set at declaration and occupy a contiguous block of memory, e.g. an array.",
-        "Dynamic structures grow and shrink at run time, allocated from the heap as needed, e.g. a linked list.",
-        "Trade-off: static gives fast, simple access but may waste or run out of memory; dynamic is flexible but adds pointer/management overhead."
-      ]
-    },
-    {
-      "heading": "Linear structures: arrays, records, lists, tuples",
-      "points": [
-        "Arrays are indexed from 0 and can be 1D, 2D (grid[r][c]) or 3D (cube[l][r][c]), all holding one type.",
-        "Records group named fields of differing types; lists are mutable, resizable and may hold mixed types.",
-        "Tuples are ordered but immutable, so they suit fixed groupings such as coordinates."
-      ]
-    },
-    {
-      "heading": "Stacks and queues",
-      "points": [
-        "A stack is LIFO: push and pop happen at the top, used for call stacks, undo and backtracking.",
-        "A queue is FIFO: enqueue at the rear, dequeue at the front, used for spooling, buffers and scheduling.",
-        "A circular queue reuses freed space with rear = (rear + 1) MOD size; a priority queue serves the highest priority first."
-      ]
-    },
-    {
-      "heading": "Linked lists, graphs and trees",
-      "points": [
-        "A linked list uses a head pointer and nodes ending in null; it must be traversed in order with no random access.",
-        "Graphs hold vertices and edges (directed/undirected/weighted), stored as an adjacency matrix (dense) or list (sparse).",
-        "Trees are connected and acyclic with a root, parents, children and leaves; a binary tree has at most two children per node."
-      ]
-    },
-    {
-      "heading": "BSTs, traversals and hash tables",
-      "points": [
-        "In a BST, insert by going left if smaller and right if larger; in-order traversal returns the values in ascending order.",
-        "Pre-order (root, L, R) is used for copying/prefix; post-order (L, R, root) is used for deletion/postfix.",
-        "A hash table indexes keys via a hash function (e.g. key MOD size); collisions are resolved by linear probing or chaining, and a higher load factor slows it down."
-      ]
-    }
+    {"heading": "Why we need data structures", "points": [
+      "A data structure stores many related values under one name, organised for a purpose.",
+      "Static structures, like arrays, have a size fixed at declaration and sit in contiguous memory.",
+      "Dynamic structures, like lists and linked lists, grow and shrink at run time using the heap.",
+      "The choice controls how fast we can access, insert, remove and search, and how much memory is used."
+    ], "note": "This week: arrays, records, lists, tuples, stacks and queues. Linked lists follow in week 19; trees, graphs and hash tables in week 20."},
+    {"heading": "One-dimensional arrays", "points": [
+      "Every element has the same data type; the size is fixed when the array is declared.",
+      "Elements are numbered from index 0, so scores[4] is the fifth element.",
+      "Contiguous storage means the computer jumps straight to any index: O(1) access.",
+      "Address of an element = base address + index x size of one element.",
+      "scores[6] on a 6-element array is out of bounds: valid indexes run 0 to 5."
+    ], "code": ["array scores[6]", "scores[0] = 71", "print(scores[4])"]},
+    {"heading": "2D and 3D arrays and index arithmetic", "points": [
+      "A 2D array is a grid: the first index is the row, the second the column, e.g. board[2,1].",
+      "A 3D array adds a layer index, cube[layer, row, column], like a pile of spreadsheets.",
+      "Rows are stored one after another (row-major), so position in memory = row x number of columns + column.",
+      "In a 3 x 4 array, board[2,1] sits at position 2 x 4 + 1 = 9: the tenth element stored.",
+      "Every dimension still holds a single data type and every dimension is fixed in size."
+    ], "code": ["array board[3,4]", "board[2,1] = 7", "// position = 2 * 4 + 1 = 9 (tenth element in memory)"]},
+    {"heading": "Records, lists and tuples", "points": [
+      "A record groups named fields of different types: student.name, student.dob, student.grade.",
+      "One record describes one entity; an array of records behaves like a database table.",
+      "A list is ordered, mutable and resizable, and may mix data types.",
+      "A tuple is ordered but immutable: values cannot be changed, added or removed after creation.",
+      "Use tuples for fixed groupings such as a coordinate (x, y); trying to edit one raises an error."
+    ]},
+    {"heading": "Stacks: LIFO and the stack pointer", "points": [
+      "A stack is last in, first out: the only reachable item is the top.",
+      "push(x) adds to the top; pop() removes and returns the top; peek() reads it without removing.",
+      "The stack pointer (top) holds the index of the top item; an empty stack has top = -1.",
+      "Popping an empty stack causes underflow; pushing to a full array-based stack causes overflow.",
+      "Picture a pile of plates: each new plate lands on top and must leave first."
+    ]},
+    {"heading": "A stack in Exam Reference Language", "points": [
+      "push checks for overflow first, then increments top, then stores the value at stack[top].",
+      "pop must first check top == -1 to trap underflow before reading anything.",
+      "pop copies stack[top], decrements top, then returns the copy.",
+      "Popped values are not erased, just unreachable: the pointer alone defines the stack.",
+      "peek() simply returns stack[top] and never moves the pointer."
+    ], "code": ["array stack[8]", "top = -1", "procedure push(value)", "   if top == 7 then", "      print(\"Error: overflow\")", "   else", "      top = top + 1", "      stack[top] = value", "   endif", "endprocedure", "function pop()", "   value = stack[top]", "   top = top - 1", "   return value", "endfunction"]},
+    {"heading": "Where stacks are used", "points": [
+      "Undo: every edit is pushed; pressing undo pops the most recent action first.",
+      "The call stack: return addresses and local variables are pushed on each subroutine call.",
+      "Recursion works because each call's state is stacked; recursing too deep gives stack overflow.",
+      "Browser back buttons and maze backtracking also reverse the most recent step first."
+    ], "note": "Link to 1.2.1: servicing an interrupt pushes register contents onto a stack, so nested interrupts resume in the correct reverse order."},
+    {"heading": "Linear queues", "points": [
+      "A queue is first in, first out: items are served in arrival order.",
+      "front points at the next item to leave; rear points at the last item added.",
+      "enqueue stores at rear + 1; dequeue returns the front item then moves front on by 1.",
+      "In an array, dequeued cells at the start become dead space: the queue crawls rightwards.",
+      "A linear queue can therefore report full while cells at the front are actually free."
+    ]},
+    {"heading": "Circular queues", "points": [
+      "Treat the array as a circle: after the last index, wrap back round to index 0.",
+      "enqueue uses rear = (rear + 1) MOD maxSize; dequeue advances front the same way.",
+      "A count variable distinguishes full (count == maxSize) from empty (count == 0).",
+      "Picture a clock face: both pointers move clockwise, reusing every freed cell."
+    ], "code": ["procedure enqueue(value)", "   if count == maxSize then", "      print(\"Error: queue full\")", "   else", "      rear = (rear + 1) MOD maxSize", "      items[rear] = value", "      count = count + 1", "   endif", "endprocedure"]},
+    {"heading": "Queue uses and priority queues", "points": [
+      "Print spooling: jobs are printed in the order they were submitted.",
+      "Keyboard buffers: keystrokes must emerge in exactly the order typed.",
+      "CPU scheduling: round robin (1.2.1) holds its ready processes in a queue.",
+      "A priority queue serves the highest priority first; equal priorities stay in FIFO order."
+    ]}
   ],
-  "worked_example": {
-    "title": "Tracing a stack and a queue",
-    "steps": [
-      "Stack (top listed first), starting empty: push(5) -> [5]; push(9) -> [9, 5]; push(2) -> [2, 9, 5].",
-      "pop() returns 2 -> [9, 5]; push(7) -> [7, 9, 5]; pop() returns 7 -> [9, 5].",
-      "Stack result: values popped were 2 then 7; final stack top to bottom is 9, 5.",
-      "Queue (front listed first), starting empty: enqueue(A) -> [A]; enqueue(B) -> [A, B]; dequeue() returns A -> [B].",
-      "enqueue(C) -> [B, C]; enqueue(D) -> [B, C, D]; dequeue() returns B -> [C, D].",
-      "Queue result: values dequeued were A then B; final queue front to rear is C, D.",
-      "Key point: the stack reverses order (LIFO) while the queue preserves arrival order (FIFO)."
-    ]
-  },
-  "task": "Insert 50, 30, 70, 20, 40, 60 in that order into an empty binary search tree and draw the result, then write the in-order traversal and confirm it is in ascending order.",
-  "challenge": "Compare an array and a linked list for implementing a list that grows unpredictably: explain the access-time, memory and insertion/deletion trade-offs, and state which you would choose and why.",
+  "worked_examples": [
+    {"title": "Tracing a stack and its pointer: push(5), push(9), push(2), pop(), push(7), pop()", "steps": [
+      "Start empty: top = -1, array empty.",
+      "push(5): top becomes 0, stack[0] = 5. Stack bottom to top: 5.",
+      "push(9): top = 1, stack[1] = 9. Stack: 5, 9.",
+      "push(2): top = 2, stack[2] = 2. Stack: 5, 9, 2.",
+      "pop(): returns stack[2] = 2, top drops to 1. Stack: 5, 9. The 2 is unreachable, not erased.",
+      "push(7): top = 2 again, stack[2] = 7, overwriting the old 2. Stack: 5, 9, 7.",
+      "pop(): returns 7, top = 1. Values returned: 2 then 7; final stack bottom to top: 5, 9."
+    ]},
+    {"title": "A linear queue hits false overflow: array of 4, enqueue A, B, C, dequeue twice, enqueue D, E", "steps": [
+      "Start: front = 0, rear = -1, array of 4 empty cells.",
+      "enqueue(A): rear = 0. enqueue(B): rear = 1. enqueue(C): rear = 2. Array: A, B, C, empty.",
+      "dequeue(): returns A, front = 1. dequeue(): returns B, front = 2. Only C is live.",
+      "enqueue(D): rear = 3. Array: A, B, C, D, but cells 0 and 1 hold dead data.",
+      "enqueue(E): rear would need to be 4, off the end, so the linear queue declares itself full.",
+      "Yet only C and D are live: two cells are wasted. This is exactly the problem circular queues solve."
+    ]},
+    {"title": "The same array as a circular queue of size 4, continuing from front = 2, rear = 3", "steps": [
+      "State carried over: front = 2, rear = 3, count = 2; live items C (index 2) and D (index 3).",
+      "enqueue(E): rear = (3 + 1) MOD 4 = 0, so E is stored in index 0, reusing A's dead cell. count = 3.",
+      "The array now reads E, dead, C, D; read front to rear the queue is C, D, E.",
+      "dequeue(): returns C from index 2; front = (2 + 1) MOD 4 = 3; count = 2.",
+      "enqueue(F): rear = (0 + 1) MOD 4 = 1; F is stored in index 1; count = 3.",
+      "Full test: count == 4 is false, so there is still room. Queue front to rear: D (index 3), E (index 0), F (index 1).",
+      "Notice nothing was ever shifted: only the two pointers moved, wrapping with MOD."
+    ]}
+  ],
+  "activities": [
+    {"title": "Human Stack vs Human Queue", "minutes": 15, "instructions": [
+      "Stack round: push students A, B, C one at a time against the wall; each new arrival stands in front, so only the newest is reachable. The class calls out the stack pointer after every push.",
+      "pop() twice: who leaves, and in what order? (C then B: LIFO.) Then peek(): a student reads the top name with nobody moving. Pop the last student, then attempt one more pop: name the error (underflow). Refill until the taped area is full and push once more: overflow.",
+      "Queue round: A, B, C enqueue at the rear of a taped corridor. dequeue() releases A (FIFO); enqueue D, dequeue again releases B, leaving C at the front with D behind.",
+      "Point at the wasted space at the front after several dequeues and ask how to reuse it without everyone shuffling forward: wrap the rear around, rear = (rear + 1) MOD size.",
+      "Debrief: push, pop and peek happen at the top; enqueue at the rear, dequeue from the front; match each round to its uses (undo and the call stack versus print spooling and keyboard buffers)."
+    ], "stretch": "Give two waiting students priority-1 badges and re-run the queue as a priority queue: where must they be served relative to the FIFO order?"},
+    {"title": "Which Structure Am I? Corners (part 1 edition)", "minutes": 10, "instructions": [
+      "Corner signs: STACK, QUEUE, ARRAY, RECORD or TUPLE. Read a scenario; students walk to the fitting corner; one delegate per corner justifies before the reveal.",
+      "Scenarios: (a) the undo feature in a text editor; (b) print jobs waiting for a shared printer; (c) a chessboard's 8 x 8 grid of pieces; (d) keypresses buffered while the CPU is busy; (e) the browser back button; (f) an (x, y) map coordinate that must never change; (g) one student's name, date of birth and grade; (h) rainfall totals for the 12 months of a year.",
+      "Answers: (a) stack, LIFO undo; (b) queue, FIFO spooling; (c) 2D array indexed [row][column]; (d) queue, typed order preserved; (e) stack, most recent page first; (f) tuple, ordered and immutable; (g) record, named fields of different types; (h) 1D array, fixed size, one type, indexed by month.",
+      "After each reveal, ask a losing corner why their structure is worse here, not just why the winner is good."
+    ], "stretch": "Ask where a company org chart and a road map would go: neither fits a corner, trailing next fortnight's trees and graphs."},
+    {"title": "Pointer Trace Race", "minutes": 12, "instructions": [
+      "Pairs race on mini-whiteboards: for each operation they must record the pointer values and the structure's contents, not just the final answer.",
+      "Sequence A, empty stack: push(4), push(8), pop(), push(1), push(6), pop(), pop(). Require top after every step.",
+      "Answer A: top runs 0, 1, 0, 1, 2, 1, 0; values returned 8, 6, 1; final stack holds just 4 with top = 0.",
+      "Sequence B, circular queue of size 3 (front = 0, rear = -1, count = 0): enqueue(P), enqueue(Q), dequeue(), enqueue(R), enqueue(S), dequeue().",
+      "Answer B: rear runs 0, 1, then 2 for R, then (2 + 1) MOD 3 = 0 for S; dequeues return P then Q; final state front = 2, rear = 0, count = 2, queue front to rear R, S.",
+      "First pair with a fully correct pointer log wins; any wrong intermediate pointer disqualifies the row, exactly as it loses marks in an exam trace."
+    ], "stretch": "Pairs write a five-operation sequence whose final stack or queue holds exactly one item, then swap and verify."}
+  ],
+  "practice": [
+    {"q": "State two differences between an array and a record. [2]", "a": "An array holds elements of one data type while a record's fields may differ in type (1); array elements are accessed by numeric index while record fields are accessed by name, e.g. student.name (1)."},
+    {"q": "Describe how a stack uses a stack pointer to manage push and pop operations, and state when overflow and underflow occur. [4]", "a": "The stack pointer holds the index of the top item (1); push increments the pointer then stores the value at that index (1); pop returns the value at the pointer then decrements it (1); overflow is pushing to a full stack, underflow is popping an empty one (1)."},
+    {"q": "An empty stack receives push(4), push(8), push(1), pop(), pop(), push(6), pop(). State the three values returned and the final contents of the stack. [3]", "a": "Returned in order: 1, 8, 6 (2 marks for all three, 1 for two correct). Final stack holds just 4 (1)."},
+    {"q": "Explain why a circular queue makes better use of an array than a linear queue. [3]", "a": "In a linear queue dequeued cells at the front are never reused, so it fills up despite free space (1); a circular queue wraps the rear pointer back to index 0 using MOD (1); freed cells are reused, so the queue is only full when count equals the array size (1)."},
+    {"q": "A circular queue uses an array of size 6 and rear is currently 5. Show the calculation that finds where the next item is stored. [2]", "a": "rear = (5 + 1) MOD 6 (1) = 0, so the item is stored at index 0 (1)."},
+    {"q": "Explain why a stack is the appropriate structure for managing subroutine calls. [3]", "a": "Each call pushes its return address and local state (1); the most recently called subroutine always finishes first (1); LIFO popping therefore returns control to the correct caller in reverse order, which also supports recursion (1)."},
+    {"q": "A programmer stores a fixed screen resolution as (1920, 1080). State the structure being used and one reason it suits this data. [2]", "a": "A tuple (1); it is immutable, so the paired values cannot be accidentally changed, and the order (width, height) is preserved (1)."},
+    {"q": "A 2D array of 4-byte integers has 6 columns and starts at base address 5000. Calculate the address of element [3][4], assuming row-major order. Show your working. [2]", "a": "Offset = (3 x 6 + 4) x 4 = 22 x 4 = 88 (1); address = 5000 + 88 = 5088 (1)."}
+  ],
+  "misconceptions": [
+    "Students often think pop returns the first value pushed; a stack is LIFO, so pop always returns the most recent push.",
+    "Students often think peek removes the top item; it only reads it, and the stack pointer never moves.",
+    "Students often think a circular queue shifts items along the array; only the front and rear pointers move, wrapping with MOD.",
+    "Students often treat lists and arrays as identical; an array is fixed-size and single-type, a list is resizable, mutable and may mix types.",
+    "Students often think a popped or dequeued value is erased from memory; it stays in the array but is unreachable because the pointer defines the structure."
+  ],
+  "exam_link": [
+    "Command words seen here: state and describe for definitions and ends (1-2 marks), show or trace for stack and queue tables (2-4 marks), explain and compare for linear versus circular queues (2-4 marks).",
+    "Trace questions expect the state after every operation, including pointer values; one wrong pointer cascades through the rest of the answer.",
+    "The MOD wrap-around calculation for a circular queue is a favourite short-answer mark: always show (rear + 1) MOD size.",
+    "Example stem: 'A stack stores the pages a user has visited. Show the contents of the stack and the stack pointer after the following sequence of operations.' [3]"
+  ],
+  "task": "Trace this sequence on an empty array-based stack of size 4, recording top and the array after every step: push(3), push(9), pop(), push(5), push(1), push(7), push(2). State each value returned and name the error the final operation causes. Then trace a circular queue of size 4 (front = 0, rear = -1, count = 0): enqueue(A), enqueue(B), dequeue(), enqueue(C), enqueue(D), enqueue(E), recording front, rear and count each step. (Stack: top runs 0, 1, 0, 1, 2, 3; pop returns 9; the final push(2) is overflow. Queue: dequeue returns A; E wraps to index 0 via (3 + 1) MOD 4 = 0, leaving front = 1, rear = 0, count = 4: exactly full.)",
+  "challenge": "A music app needs three stores: the tracks just played, so back-skip always returns the most recent track first; a buffer of the next tracks to stream, which must play in the order added and runs for hours in fixed memory; and each track's title, artist and duration under one name. Choose the best structure for each store, justify each choice using LIFO, FIFO or named fields, and explain precisely what goes wrong if the buffer is implemented as a linear (non-circular) array queue.",
   "exit_ticket": [
-    { "q": "State the ends used for enqueue and dequeue in a queue.", "a": "Enqueue at the rear, dequeue at the front." },
-    { "q": "Give one difference between a static and a dynamic data structure.", "a": "A static structure has a fixed size set at declaration, while a dynamic structure grows and shrinks at run time (allocated from the heap)." },
-    { "q": "Why is a stack the right structure for a browser Back button?", "a": "It is LIFO, so the most recently visited page is popped first, returning pages in the correct reverse order." }
+    {"q": "A stack holds 5 then 9, with 9 on top. State the results of peek(), then pop(), then pop().", "a": "peek returns 9 without removing it; the first pop returns 9; the second pop returns 5, leaving the stack empty."},
+    {"q": "Why does a circular queue use rear = (rear + 1) MOD size?", "a": "So the rear pointer wraps back to index 0 after the last cell, reusing cells freed by earlier dequeues."},
+    {"q": "Give one difference between a tuple and a list.", "a": "A tuple is immutable and cannot change after creation; a list is mutable and resizable."}
   ]
 }

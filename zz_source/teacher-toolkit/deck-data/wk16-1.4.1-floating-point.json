@@ -1,0 +1,122 @@
+{
+  "subtopic": "1.4.1 Data Types (part 2 — floating point)",
+  "spec": "OCR H446 — Component 01",
+  "week": "Week 16 (11 Jan)",
+  "objectives": [
+    "I can explain the difference between fixed point and floating point representation and the trade-offs between them.",
+    "I can convert a floating point number (two's complement mantissa and exponent) to denary, including negative mantissas and negative exponents.",
+    "I can convert a denary number into normalised floating point form, and normalise an unnormalised number without changing its value.",
+    "I can add and subtract floating point numbers by aligning exponents, and explain the precision versus range trade-off."
+  ],
+  "retrieval": [
+    {"q": "Part 1: show -18 in 8-bit two's complement.", "a": "+18 = 00010010; invert to 11101101, add 1 to give 11101110. Check: -128+64+32+8+4+2 = -18."},
+    {"q": "Part 1: the 8-bit two's complement value 11110100 is stored. What is it in denary?", "a": "-128 + 64 + 32 + 16 + 4 = -12 (or invert and add 1 to get 00001100 = 12, so -12)."},
+    {"q": "Part 1: convert the binary 10011100 to hexadecimal.", "a": "Split into nibbles from the right: 1001 1100 = 9C."},
+    {"q": "Part 1: convert the hex value A3 to denary.", "a": "10 x 16 + 3 = 163."},
+    {"q": "Part 1: in two's complement subtraction, how do you form -B, and what happens to any final carry out of the MSB?", "a": "Invert all the bits of B then add 1; the final carry out of the MSB is discarded."}
+  ],
+  "keywords": [
+    {"term": "Fixed point", "def": "Binary with the point locked in one agreed position; simple and fast but limited range and precision."},
+    {"term": "Floating point", "def": "Binary stored as a mantissa and an exponent, so the point can move: value = mantissa x 2^exponent."},
+    {"term": "Mantissa", "def": "The significant-figures part of a float, stored in two's complement; its length sets the precision."},
+    {"term": "Exponent", "def": "The two's complement power of two that positions the binary point; its length sets the range."},
+    {"term": "Binary point", "def": "The boundary between whole and fractional place values; fractional weights are 0.5, 0.25, 0.125..."},
+    {"term": "Normalisation", "def": "Adjusting a float so the mantissa starts 01 (positive) or 10 (negative), maximising precision."},
+    {"term": "Precision", "def": "How exactly a value can be represented; grows with more mantissa bits."},
+    {"term": "Range", "def": "The spread between the largest and smallest representable magnitudes; grows with more exponent bits."}
+  ],
+  "content": [
+    {"heading": "Fixed point binary", "points": ["The binary point sits in one fixed, agreed position; the bits either side keep normal weights.", "Fractional place values halve: 0.5, 0.25, 0.125, 0.0625.", "Example: 0110.1100 = 4 + 2 + 0.5 + 0.25 = 6.75.", "Fast and simple, but the range and the precision are both fixed by where the point sits."]},
+    {"heading": "Why floating point", "points": ["Same idea as standard form: 342 = 3.42 x 10^2, but in base 2.", "Value = mantissa x 2^exponent; the exponent slides the binary point.", "The same bits can represent very large and very small magnitudes.", "This lesson's format: 8-bit mantissa plus 4-bit exponent, both two's complement."], "note": "Exam questions state the format each time - always read off how many bits the mantissa and exponent get."},
+    {"heading": "The OCR-style layout", "points": ["The mantissa's binary point sits immediately after its sign bit: 01011000 means 0.1011000.", "The mantissa is two's complement: MSB weight -1, then 0.5, 0.25, 0.125...", "The exponent is a plain two's complement integer: 0011 = 3, 1110 = -2.", "A positive exponent moves the point right; a negative exponent moves it left."]},
+    {"heading": "Reading a positive float", "points": ["Step 1: place the point after the sign bit and evaluate the mantissa with fractional weights.", "Step 2: read the exponent as a two's complement integer.", "Step 3: multiply, i.e. move the point that many places.", "Example: mantissa 01100000, exponent 0010: 0.11 = 0.75, then 0.75 x 4 = 3."]},
+    {"heading": "Negative mantissas and negative exponents", "points": ["Mantissa MSB = 1 means negative: 1.0100000 = -1 + 0.25 = -0.75 (or invert-and-add-1 to find its size).", "Example: mantissa 10100000, exponent 0100 gives -0.75 x 16 = -12.", "A negative exponent shrinks the value: exponent 1110 = -2 means divide by 4.", "Example: mantissa 01100000, exponent 1110 gives 0.75 x 0.25 = 0.1875."]},
+    {"heading": "Normalisation: what and why", "points": ["Normalised positive mantissas start 01...; normalised negative mantissas start 10...", "The first two bits always differ, so no leading bits are wasted repeating the sign.", "This gives maximum precision from the available mantissa bits and one unique form per value.", "Quick check: 00110000 and 11100000 are NOT normalised; 01100000 and 10100000 are."], "note": "Never say normalisation changes the number - it only changes the representation."},
+    {"heading": "How to normalise", "points": ["Shift the mantissa left one place at a time until it starts 01 or 10.", "Every left shift of the mantissa must decrease the exponent by 1 to keep the value equal.", "Example: mantissa 00011000, exponent 0100: shift left twice to 01100000, exponent drops to 0010.", "Check both forms: 0.0011 x 16 = 3 and 0.11 x 4 = 3 - unchanged."]},
+    {"heading": "Denary to normalised floating point", "points": ["Step 1: convert the magnitude to fixed point binary, e.g. 11.25 = 1011.01.", "Step 2: slide the point to just before the first 1, counting the moves: 0.101101 x 2^4.", "Step 3: write the mantissa padded to length, and the exponent in two's complement: 01011010 and 0100.", "For negatives, build the positive version first, then two's complement the whole mantissa."]},
+    {"heading": "Floating point addition and subtraction", "points": ["Step 1: align - the number with the smaller exponent has its mantissa shifted right until exponents match.", "Each right shift of a mantissa adds 1 to its exponent, so the value is preserved.", "Step 2: add or subtract the aligned mantissas as ordinary two's complement binary.", "Step 3: renormalise the result and adjust the exponent if needed.", "Subtraction is addition of the two's complement of the aligned second mantissa."]},
+    {"heading": "Precision versus range", "points": ["Total bits are fixed, so mantissa and exponent compete for them.", "More mantissa bits: more significant figures, so greater precision.", "More exponent bits: bigger and smaller magnitudes reachable, so greater range.", "Same number of patterns either way: 2^n patterns are just spread differently.", "Some values are never exact: denary 0.1 is a recurring binary fraction, causing rounding errors."]}
+  ],
+  "worked_examples": [
+    {"title": "Floating point to denary: one positive, one negative (8-bit mantissa, 4-bit exponent)", "steps": [
+      "Number 1: mantissa 01011000, exponent 0011.",
+      "Mantissa reads 0.1011000 = 0.5 + 0.125 + 0.0625 = 0.6875; exponent 0011 = +3.",
+      "Move the point 3 right: 0.6875 x 8 = 5.5. Answer: 5.5.",
+      "Number 2: mantissa 10100000, exponent 0100.",
+      "The mantissa MSB is 1, so it is negative: 1.0100000 = -1 + 0.25 = -0.75.",
+      "Check by invert-and-add-1: 1.0100000 inverts to 0.1011111, add 1 gives 0.1100000 = 0.75, so -0.75. Consistent.",
+      "Exponent 0100 = +4, so the value is -0.75 x 16 = -12. Answer: -12."
+    ]},
+    {"title": "Denary to normalised floating point: 11.25 and -6.5", "steps": [
+      "11.25 in fixed point: 11 = 1011 and 0.25 = .01, so 1011.01.",
+      "Normalise: move the point 4 places left to sit before the first 1: 0.101101 x 2^4.",
+      "Pad the mantissa to 8 bits and write the exponent in 4-bit two's complement: mantissa 01011010, exponent 0100.",
+      "Check: 0.1011010 = 0.5 + 0.125 + 0.0625 + 0.015625 = 0.703125, and 0.703125 x 16 = 11.25. Correct.",
+      "-6.5: first build +6.5 = 110.1 = 0.1101 x 2^3, so the positive mantissa is 0.1101000.",
+      "Two's complement the mantissa: invert 01101000 to 10010111, add 1 to give 10011000; exponent stays 0011.",
+      "Check: 1.0011000 = -1 + 0.1875 = -0.8125, and -0.8125 x 8 = -6.5; it starts 10, so it is normalised. Correct."
+    ]},
+    {"title": "Floating point addition and subtraction: 5 + 2.5, then 5 - 2.5", "steps": [
+      "A = mantissa 01010000, exponent 0011 (0.625 x 8 = 5); B = mantissa 01010000, exponent 0010 (0.625 x 4 = 2.5).",
+      "Align: B has the smaller exponent, so shift B's mantissa right 1 place: 0.0101000 with exponent 0011 (0.3125 x 8 = 2.5, value preserved).",
+      "Add mantissas: 0.1010000 + 0.0101000 = 0.1111000, exponent 0011.",
+      "Check: 0.1111000 = 0.9375, and 0.9375 x 8 = 7.5 = 5 + 2.5; it starts 01, already normalised. Correct.",
+      "Subtraction 5 - 2.5: two's complement the aligned B mantissa: 00101000 inverts to 11010111, add 1 gives 11011000.",
+      "Add: 01010000 + 11011000 = (1)00101000; discard the carry, leaving 0.0101000, exponent 0011 (= 0.3125 x 8 = 2.5).",
+      "Renormalise: shift the mantissa left 1 to 0.1010000 and decrease the exponent to 0010; check 0.625 x 4 = 2.5. Correct."
+    ]}
+  ],
+  "activities": [
+    {"title": "The Floating-Point Washing Line", "minutes": 15, "instructions": [
+      "Four students hold a mantissa 0.1100 with a peg or ruler as the moveable binary point after the first bit; a fifth student holds the exponent card 0010.",
+      "Board rule: value = mantissa x 2^exponent - the exponent tells the point-holder how many places to walk right (positive) or left (negative).",
+      "Run these in turn, class computing mantissa value first, then the walk: (a) mantissa 0.1100, exponent 0010 = 0.75 x 4 = 3; (b) mantissa 0.1010, exponent 0100 = 0.625 x 16 = 10; (c) mantissa 1.0110, exponent 0010 - negate to 0.1010 = 0.625, so -0.625 x 4 = -2.5.",
+      "Normalisation round: set the line to mantissa 0.0011, exponent 0100 (value 0.1875 x 16 = 3). Challenge: same value, stop wasting mantissa bits. Students shuffle the mantissa left two places to 0.1100 and must decide the exponent becomes 0010; check 0.75 x 4 = 3.",
+      "Debrief: positive normalised mantissas start 0.1, negative start 1.0; mantissa length gives precision, exponent length gives range."
+    ], "stretch": "Point at the freed-up bits on the right of the normalised mantissa: what are they now available for? (Two extra bits of precision.)"},
+    {"title": "Normalise or Bust (mini-whiteboard drill)", "minutes": 10, "instructions": [
+      "Rule on the board: shift the mantissa left, subtract 1 from the exponent per shift; stop at 01... or 10...; prove the value is unchanged.",
+      "Drill 1: mantissa 00110000, exponent 0011 - shift left 1 to 01100000, exponent 0010. Check: 0.375 x 8 = 3 and 0.75 x 4 = 3.",
+      "Drill 2: mantissa 00001100, exponent 0101 - shift left 3 to 01100000, exponent 0010. Check: 0.09375 x 32 = 3 and 0.75 x 4 = 3.",
+      "Drill 3 (negative): mantissa 11101000, exponent 0100 (value -0.1875 x 16 = -3) - shift left 2 to 10100000, exponent 0010. Check: 1.0100000 = -0.75 and -0.75 x 4 = -3.",
+      "Drill 4 (trap): mantissa 01010000, exponent 1101 - already normalised; a negative exponent does not need fixing. Do nothing.",
+      "After each reveal a student states the check sentence: same value, different representation, maximum precision."
+    ], "stretch": "Why can drill 3 not be normalised by the positive rule 01...? Because negative normalised mantissas must start 10 - the first two bits always differ from each other."},
+    {"title": "Always-Sometimes-Never: floating point claims", "minutes": 10, "instructions": [
+      "Pairs judge each claim Always, Sometimes or Never on mini-whiteboards, and must defend with a rule or a counterexample.",
+      "Claims: normalising a number changes its value; a normalised positive mantissa starts 01; adding exponent bits increases precision; shifting the mantissa left means the exponent must decrease; denary 0.1 can be stored exactly in binary floating point.",
+      "Answers: Never (only the representation changes); Always (that is the definition); Never (exponent bits buy range - mantissa bits buy precision); Always (each left shift halves the multiplier needed, so exponent drops by 1); Never (0.1 is a recurring binary fraction 0.000110011..., so it is rounded).",
+      "For every Never, pairs write the corrected version as an Always statement."
+    ], "stretch": "Judge this one: floating point can represent more numbers than fixed point in the same bits. (Never - n bits give exactly 2^n patterns either way; floating point spreads them over a wider range, more densely near zero.)"}
+  ],
+  "practice": [
+    {"q": "State the purpose of the mantissa and the exponent in a floating point number. [2]", "a": "The mantissa holds the significant figures of the number, determining its precision (1); the exponent holds the power of two that positions the binary point, determining its range (1)."},
+    {"q": "A floating point number has an 8-bit two's complement mantissa 01101000 and a 4-bit two's complement exponent 0011. Calculate its denary value. Show your working. [3]", "a": "Mantissa 0.1101000 = 0.5 + 0.25 + 0.0625 = 0.8125 (1); exponent 0011 = 3, so multiply by 2^3 = 8 (1); 0.8125 x 8 = 6.5 (1)."},
+    {"q": "Calculate the denary value of the floating point number with mantissa 10110000 and exponent 0011. Show your working. [3]", "a": "The mantissa is negative (MSB 1): 1.0110000 = -1 + 0.375 = -0.625 (1); exponent 0011 = 3 so multiply by 8 (1); -0.625 x 8 = -5 (1)."},
+    {"q": "Convert 4.75 into normalised floating point with an 8-bit mantissa and 4-bit exponent, both two's complement. [3]", "a": "4.75 = 100.11 in fixed point (1); normalise: 0.10011 x 2^3 (1); mantissa 01001100, exponent 0011. Check: 0.59375 x 8 = 4.75 (1)."},
+    {"q": "Convert -0.375 into normalised floating point with an 8-bit mantissa and 4-bit exponent. [3]", "a": "+0.375 = 0.011 = 0.11 x 2^-1, so the positive mantissa is 0.1100000 with exponent -1 (1); two's complement the mantissa: 01100000 inverts to 10011111, add 1 gives 10100000 (1); exponent -1 = 1111. Check: 1.0100000 = -0.75 and -0.75 x 0.5 = -0.375; starts 10 so normalised (1)."},
+    {"q": "Normalise the floating point number with mantissa 00001010 and exponent 0110, and show the value is unchanged. [3]", "a": "Shift the mantissa left 3 places to 01010000 and subtract 3 from the exponent: 0110 - 0011 = 0011 (1 for shift, 1 for exponent). Check: 0.0001010 = 0.078125 and 0.078125 x 64 = 5; 0.1010000 = 0.625 and 0.625 x 8 = 5 - unchanged (1)."},
+    {"q": "Add the floating point numbers A (mantissa 01100000, exponent 0010) and B (mantissa 01000000, exponent 0011). Give the result as a normalised floating point number. [4]", "a": "A = 0.75 x 4 = 3 and B = 0.5 x 8 = 4 (1). Align A to exponent 0011 by shifting its mantissa right 1: 0.0110000 (1). Add mantissas: 0.0110000 + 0.1000000 = 0.1110000, exponent 0011 (1). Result is already normalised (starts 01): 0.875 x 8 = 7 = 3 + 4 (1)."},
+    {"q": "A designer must fit floating point numbers into 12 bits and is deciding between an 8-bit mantissa with a 4-bit exponent, or a 4-bit mantissa with an 8-bit exponent. Explain the effect of each choice. [2]", "a": "The 8-bit mantissa gives more significant figures, so greater precision, but the small exponent limits the range (1). The 8-bit exponent gives a far larger range of magnitudes, but only 4 mantissa bits means values are stored much less precisely (1)."}
+  ],
+  "misconceptions": [
+    "Students often think normalisation changes the number; it only changes the representation - always prove the value is identical before and after.",
+    "Students often try to normalise negatives to start 0.1; a normalised negative mantissa starts 1.0 - the rule is that the first two bits differ.",
+    "Students often claim more exponent bits give more precision; exponent bits buy range, mantissa bits buy precision.",
+    "Students often align exponents by shifting the wrong mantissa; shift the mantissa of the SMALLER exponent right, increasing that exponent until they match.",
+    "Students often treat the mantissa as a sign bit plus unsigned fraction; in OCR questions the whole mantissa is one two's complement value, so read the MSB with a negative weight."
+  ],
+  "exam_link": [
+    "Command words: calculate, convert and show that, typically 2-4 marks each, with working required; normalisation questions run 2-3 marks.",
+    "Addition and subtraction questions reach 4-6 marks: method marks for aligning exponents, adding mantissas and renormalising, even if one bit slips.",
+    "The precision versus range trade-off is a reliable 2-mark explain question, often dressed up as a design decision.",
+    "Example stem: 'A floating point number is stored with an 8-bit two's complement mantissa and a 4-bit two's complement exponent: 01011000 0100. Calculate its denary value. You must show your working.' [3] (0.6875 x 16 = 11.)"
+  ],
+  "task": "Using an 8-bit mantissa and 4-bit exponent, both two's complement: (1) convert mantissa 01011000, exponent 0100 to denary (0.6875 x 16 = 11); (2) convert 13.5 to normalised floating point (1101.1 = 0.11011 x 2^4, so mantissa 01101100, exponent 0100 - check 0.84375 x 16 = 13.5); (3) convert -4.5 (build +4.5 = 0.1001 x 2^3, negate the mantissa to 10111000, exponent 0011 - check -0.5625 x 8 = -4.5).",
+  "challenge": "Add 5 (mantissa 01010000, exponent 0011) and 3 (mantissa 01100000, exponent 0010). Align 3 to exponent 0011 (mantissa 0.0110000), then add: 0.1010000 + 0.0110000 = 1.0000000 - the sum has overflowed into the sign bit and reads as negative. Repair it: shift the true sum right one place and add 1 to the exponent, giving mantissa 01000000, exponent 0100 = 0.5 x 16 = 8. Explain why renormalising after addition is essential.",
+  "exit_ticket": [
+    {"q": "What patterns do normalised positive and negative mantissas start with, and why normalise at all?", "a": "Positive: 01...; negative: 10... Normalising removes wasted leading bits, giving maximum precision and one unique representation per value."},
+    {"q": "While normalising you shift a mantissa two places left. What must happen to the exponent, and why?", "a": "It decreases by 2 - each left shift doubles the mantissa, so the multiplier must halve to keep the value unchanged."},
+    {"q": "In a fixed 12-bit float, what do you gain and lose by moving a bit from the exponent to the mantissa?", "a": "Gain precision (an extra significant bit) but lose range, because the exponent can no longer reach as large or as small powers of two."}
+  ]
+}

@@ -1,51 +1,119 @@
 {
   "subtopic": "2.1.5 Thinking Concurrently",
   "spec": "OCR H446 — Component 02",
+  "week": "Week 24 (15 Mar)",
   "objectives": [
-    "Identify tasks that can run concurrently because they have no data dependency.",
-    "Explain the benefits and trade-offs of concurrency, including race conditions and deadlock.",
-    "Apply concurrent thinking to an unseen scenario, weighing one benefit against one trade-off."
+    "I can explain what it means for parts of a problem to be carried out concurrently.",
+    "I can identify which tasks in a scenario can run at the same time by checking for data dependencies.",
+    "I can weigh the benefits of concurrency (speed, responsiveness, hardware use) against its trade-offs (shared data, coordination, testing).",
+    "I can distinguish true parallel processing on multiple cores from concurrency by time-slicing on one core."
   ],
   "retrieval": [
-    {"q": "When can two tasks safely run concurrently?", "a": "When they are independent — they share no data, so neither depends on the other's result."},
-    {"q": "What is a race condition?", "a": "When the result depends on the unpredictable timing of concurrent tasks that share data."},
-    {"q": "What is deadlock?", "a": "When tasks each wait for a resource the other holds, so none can proceed."},
-    {"q": "On a single core, what does 'concurrent' really mean?", "a": "Time-slicing — the processor rapidly switches between tasks rather than running them truly simultaneously."},
-    {"q": "Interleaving (2.1.3): how does a data dependency limit concurrency?", "a": "A step needing an earlier step's output must run after it, so dependent steps cannot be parallelised."}
+    {"q": "From 2.1.1: what is the difference between representational abstraction and abstraction by generalisation?", "a": "Representational abstraction removes unnecessary detail from one specific thing (e.g. the Tube map); generalisation groups many things by shared characteristics (e.g. an Animal superclass)."},
+    {"q": "From 2.1.2: what is caching, and what is its main risk?", "a": "Storing frequently used or expensive-to-fetch data in faster storage for reuse; the risk is stale data if the source changes and the copy is not refreshed."},
+    {"q": "From 2.1.3: what does it mean to decompose a problem, and why do it?", "a": "Break it into smaller sub-problems, each simple enough to specify exactly; parts can then be built, tested and reused independently."},
+    {"q": "From 2.1.4: rewrite 'if the user is old enough' as a condition suitable for a flowchart decision.", "a": "An exact, testable Boolean such as if age >= 18; vague phrases cannot be evaluated."},
+    {"q": "From 1.4.3 part 2: state the Sum and Carry expressions of a half adder.", "a": "Sum = A ⊻ B and Carry = A ∧ B; it adds two bits and has no carry-in."}
   ],
   "keywords": [
-    {"term": "Thinking concurrently", "def": "Spotting parts of a problem that can run at the same time (in parallel or interleaved)."},
-    {"term": "Concurrency", "def": "Running multiple tasks in overlapping time, by true parallelism or time-slicing."},
-    {"term": "Parallel processing", "def": "Multiple tasks running literally simultaneously on multiple cores."},
-    {"term": "Time-slicing", "def": "A single core rapidly switching between tasks so they appear to run together."},
-    {"term": "Data dependency", "def": "When one task needs another's output, forcing them to run sequentially."},
-    {"term": "Race condition", "def": "When the outcome depends on the unpredictable timing of concurrent tasks sharing data."},
-    {"term": "Deadlock", "def": "When tasks each hold a resource the other needs and neither releases it, so both wait forever."},
-    {"term": "Synchronisation", "def": "Coordinating concurrent tasks and recombining their results safely."}
+    {"term": "Thinking concurrently", "def": "Identifying the parts of a problem that can be carried out at the same time rather than one after another."},
+    {"term": "Concurrency", "def": "Multiple tasks making progress in overlapping time, by true parallelism or by interleaving."},
+    {"term": "Parallel processing", "def": "Tasks running literally simultaneously, each on its own processor core."},
+    {"term": "Time-slicing", "def": "One core switching rapidly between tasks so they appear simultaneous without truly being so."},
+    {"term": "Data dependency", "def": "When one task needs another task's output, forcing those tasks to run in sequence."},
+    {"term": "Race condition", "def": "When the result of concurrent tasks sharing data depends on the unpredictable order they run in."},
+    {"term": "Deadlock", "def": "When tasks each hold a resource another needs and all wait forever, so none can proceed."},
+    {"term": "Synchronisation", "def": "Coordinating concurrent tasks: controlling access to shared data and recombining results at the end."}
   ],
   "content": [
-    {"heading": "What concurrency is", "points": ["Running parts of a problem at the same time, in parallel or interleaved.", "True parallelism needs multiple cores; a single core time-slices.", "Only independent tasks (no shared data) are safe to run together."]},
-    {"heading": "Benefits", "points": ["Faster completion and better throughput on multi-core hardware.", "More responsive programs — the UI stays free while a task runs.", "Example: a file download runs while the rest of the program keeps responding."]},
-    {"heading": "Trade-offs", "points": ["Harder to design, program and debug.", "Risk of race conditions and deadlock when tasks share resources.", "Results often need synchronising and recombining."]},
-    {"heading": "Not always faster", "points": ["On a single core there is no true parallelism, only time-slicing.", "Creating and managing threads adds overhead.", "Some problems are inherently sequential due to data dependencies."]},
-    {"heading": "Exam technique", "points": ["Check for data dependencies before claiming tasks can run together.", "When asked to discuss, pair a benefit with a trade-off.", "Apply to the scenario's actual tasks, not generic statements."]}
+    {"heading": "What thinking concurrently means", "points": ["Most plans are written as one step after another, but many steps do not need to wait.", "Thinking concurrently means spotting the parts of a problem that can happen at the same time.", "Tasks progress in overlapping time instead of strictly in sequence.", "It is a design skill: you decide what could overlap before writing any code."]},
+    {"heading": "Concurrent versus parallel", "points": ["Parallel processing: tasks run literally at the same instant on separate cores.", "On a single core, concurrency is time-slicing: the core switches rapidly between tasks.", "Time-slicing gives the appearance of simultaneity but no extra computing power.", "Concurrent describes the design (overlapping tasks); parallel describes one way of executing it."], "note": "Exam nuance: concurrent execution on one core is not faster for CPU-heavy work, because nothing truly overlaps."},
+    {"heading": "The dependency test", "points": ["Two tasks can run concurrently only if they are independent.", "The test question: does one task consume the other task's output?", "If yes, there is a data dependency and the tasks must stay in sequence.", "If no shared data and no consumed output, the tasks are safe to overlap."], "note": "Always run the dependency test before claiming tasks can run together: examiners reward the justification."},
+    {"heading": "Everyday concurrency", "points": ["Cooking: rice boils while vegetables are chopped, but plating must wait for both.", "Building a house: plumbing and wiring proceed together, but both need the walls first.", "A supermarket opens more checkouts: independent customers are served in parallel.", "In each case some steps overlap and some are forced into order by dependencies."]},
+    {"heading": "Concurrency in software", "points": ["A phone app downloads a file while its interface keeps responding to taps.", "A web server handles thousands of visitors' requests at once.", "A game updates enemy behaviour while playing music and reading player input.", "A photo upload can generate thumbnails, scan content and save the original simultaneously."]},
+    {"heading": "Benefit: speed and hardware use", "points": ["Independent tasks spread across cores finish sooner than the same tasks queued on one.", "Modern CPUs have many cores; a purely sequential program leaves most of them idle.", "While one task waits for slow input or output, another can use the processor.", "Total time shrinks towards the longest chain of dependent steps, not the sum of all steps."]},
+    {"heading": "Benefit: responsiveness", "points": ["A long task run sequentially freezes everything behind it, including the user interface.", "Run concurrently, the slow work continues in the background while the interface stays live.", "Users see progress bars and can cancel, instead of a frozen window.", "Responsiveness matters even on a single core: waiting-heavy tasks interleave well."]},
+    {"heading": "Trade-off: shared data and race conditions", "points": ["Trouble starts when concurrent tasks read and write the same data.", "Two tasks may both read a value, change it, and write back, losing one update.", "Example: two travellers book the last seat because both checked before either saved.", "The result depends on unpredictable timing: a race condition.", "Preventing it means making tasks take turns with the shared data, which reintroduces waiting."]},
+    {"heading": "Trade-offs: coordination, testing and deadlock", "points": ["Someone must split the work, share out tasks and recombine results: coordination overhead.", "Starting and switching between tasks costs time; tiny tasks can cost more than they save.", "Timing-dependent bugs may appear one run in a thousand, making testing and debugging much harder.", "Tasks waiting on resources each other hold can deadlock: everyone waits forever.", "Some problems are inherently sequential: a running total needs each previous sum, so concurrency cannot help."]},
+    {"heading": "Answering concurrency questions", "points": ["Name the scenario's actual tasks; never answer with generic statements.", "Justify each concurrent pair with independence, each sequential pair with its data dependency.", "For discuss questions, pair every benefit with a trade-off and give a scenario-specific example.", "State the hardware caveat: multiple cores give true parallelism, one core only time-slices."]}
   ],
-  "worked_example": {
-    "title": "Handling a photo upload with concurrent thinking",
-    "steps": [
+  "worked_examples": [
+    {"title": "Applying concurrent thinking to a photo upload", "steps": [
       "List the tasks: (a) generate three thumbnail sizes, (b) scan the image for prohibited content, (c) save the original to storage.",
-      "Check dependencies: all three work from the same uploaded image and do not need each other's output, so they are largely independent.",
-      "Decide concurrency: (a), (b) and (c) can run at the same time.",
-      "Note a sequencing point: the photo should not be published until the content scan result is checked, even if the work runs in parallel.",
-      "Benefit: running them together makes the upload feel faster and keeps the app responsive across cores.",
-      "Trade-off: concurrency is harder to debug and risks race conditions if tasks touch shared storage; on limited hardware it may not be truly faster."
-    ]
-  },
-  "task": "An online store builds a sales report by (i) totalling each region's sales and (ii) combining the regional totals into a grand total. Explain which part can run concurrently and which must run afterwards, referring to data dependency, then give one benefit of doing the regional work concurrently.",
-  "challenge": "A shared online ticket-booking system risks selling the same seat twice under concurrency. Explain how this race condition arises, and describe one way to prevent it, noting the trade-off your fix introduces.",
+      "Run the dependency test: all three work from the same uploaded image and none consumes another's output, so they are independent.",
+      "Decision: (a), (b) and (c) can run concurrently.",
+      "Note the sequencing point that remains: publishing must wait for the scan result, so publish stays sequential after (b).",
+      "Benefit: the upload completes sooner and the app stays responsive, using several cores at once.",
+      "Trade-off: if the tasks write status updates to one shared record, updates can race; coordination code is needed, and a timing bug would be hard to reproduce."
+    ]},
+    {"title": "Dependency analysis of a sales report", "steps": [
+      "The job: total each of five regions' sales, then combine the five totals into a grand total.",
+      "Dependency test on the regional totals: each region's total uses only that region's data, so the five totals are mutually independent.",
+      "Decision: the five regional totals can be computed concurrently, one per core.",
+      "Dependency test on the grand total: it consumes all five regional outputs, a data dependency.",
+      "Decision: the grand total must run after every regional task has finished: a synchronisation point.",
+      "Overall time falls from five regional jobs in a row to roughly the slowest single region plus the quick final sum."
+    ]},
+    {"title": "How a race condition sells one seat twice", "steps": [
+      "A booking system stores seatsLeft = 1. Two customers, X and Y, click Buy at nearly the same moment.",
+      "Task X reads seatsLeft and sees 1: the seat looks available.",
+      "Before X saves anything, task Y also reads seatsLeft and also sees 1.",
+      "X writes seatsLeft = 0 and issues a ticket; Y, working from its earlier read, also writes 0 and issues a ticket.",
+      "Two tickets exist for one seat. Run again with slightly different timing and Y might see 0 and be refused: the outcome depends on timing, which is what makes it a race condition.",
+      "Fix: force the check-and-book step to happen one customer at a time (taking turns on the shared data); the trade-off is that other customers wait, reintroducing a queue."
+    ]}
+  ],
+  "activities": [
+    {"title": "Kitchen Brigade (concurrency role-play)", "minutes": 20, "instructions": [
+      "Groups of 6: a recipe card for a two-course order (chop vegetables, simmer soup 5 'minutes', fry chicken 4 'minutes' in the pan, boil rice 3 'minutes', plate soup, plate main, garnish both), where one minute is 20 real seconds; roles: Head Chef (coordinates, may not cook), cooks, Inspector (records timings); exactly one frying-pan card per kitchen.",
+      "Round 1, single core: one cook does every task in sequence while others watch; the Inspector times the full order.",
+      "Round 2, parallel: all cooks work at once with the Head Chef assigning tasks. Independent tasks (chop, boil rice, fry) overlap; the Inspector records the new time and the dependencies that still forced waiting (soup must simmer before plating; garnish last).",
+      "Round 3, the shared pan: add a second order that also needs frying. If one cook grabs the pan mid-fry, the first dish is ruined: the result depends on who grabbed it when. Name it: a race condition on a shared resource.",
+      "Debrief against the spec: benefits (faster, better use of many cooks, responsiveness) versus trade-offs (coordination, race conditions, waiting for the pan, plating inherently sequential)."
+    ], "stretch": "The Inspector computes the theoretical minimum time (the longest chain of dependent tasks) and the group explains why adding a seventh cook would barely help."},
+    {"title": "Parallel or Sequential? Dependency Detective", "minutes": 15, "instructions": [
+      "Pairs sort task-pair cards into Can run concurrently or Must stay sequential, writing the data dependency for every sequential verdict.",
+      "Web page load: (download image A / download image B), (fetch the HTML / render the HTML), (download CSS / download JS).",
+      "Results day: (print certificates / stuff envelopes with those certificates), (calculate Maths grades / calculate CS grades), (calculate grades / publish grades online).",
+      "Game frame: (update enemy AI / play background music), (move sprites / detect collisions), (render this frame / compute next frame's physics — the trick card).",
+      "Answers: concurrent pairs are image A/B, CSS/JS, Maths/CS grades, AI/music, and render/next-physics (different frames, so no dependency); sequential pairs are fetch before render, print before stuff, calculate before publish, move before collision detection (collisions need the new positions)."
+    ], "stretch": "For each concurrent pair, state what must happen at the end (results synchronised: the page renders only when all assets arrive) and whether it would actually be faster on a single core."},
+    {"title": "The Concurrency Continuum", "minutes": 12, "instructions": [
+      "Tape a line across the room labelled Definitely make it concurrent at one end and Keep it sequential at the other.",
+      "Read each system; students place themselves and justify with a benefit or trade-off when interviewed: (a) a web server handling thousands of requests; (b) a running total of 1000 numbers where each step needs the previous sum; (c) a phone app downloading a file while keeping the UI responsive; (d) two threads updating one shared bank balance; (e) rendering different regions of one movie frame on a 16-core machine; (f) a single-core microcontroller doing two CPU-heavy calculations.",
+      "Expected clustering: (a), (c), (e) concurrent (throughput, responsiveness, true parallelism); (b) sequential (each step depends on the previous output); (d) sequential-leaning (race-condition risk on shared data); (f) sequential (one core time-slices with overhead, no speed-up).",
+      "Complication round: for (d) add 'protected so only one thread touches the balance at a time' and for (f) add 'one task mostly waits on a slow sensor'; discuss who moves and why.",
+      "Exit line: every student states one benefit and one trade-off before sitting down."
+    ], "stretch": "Students at the extremes argue the opposite end for 30 seconds, steelmanning the trade-off table."}
+  ],
+  "practice": [
+    {"q": "Describe what it means to think concurrently when designing a solution. [2]", "a": "Identifying the parts of a problem that can be carried out at the same time (1) rather than strictly one after another, e.g. running independent tasks in parallel or interleaved (1)."},
+    {"q": "A video editor must (i) render clip A, (ii) render clip B, and (iii) join the two rendered clips. State which tasks can run concurrently and which cannot, justifying each answer. [3]", "a": "(i) and (ii) can run concurrently because they are independent: neither needs the other's output (1). (iii) cannot run with them because it consumes both rendered clips: a data dependency (1), so joining must wait until both renders have finished (1)."},
+    {"q": "Give two benefits of a program carrying out tasks concurrently. [2]", "a": "Any two of: it finishes sooner / higher throughput by using multiple cores (1); the program stays responsive, e.g. the interface works during a long task (1); better use of processor time while one task waits on slow input/output (1)."},
+    {"q": "Explain what a race condition is, using two tasks that both add money to the same account balance as your example. [3]", "a": "Both tasks read the same starting balance (1); each adds its amount and writes back, so the second write overwrites the first and one deposit is lost (1). The final balance depends on the unpredictable timing/order of the two tasks, which is what makes it a race condition (1)."},
+    {"q": "Explain the difference between parallel processing and concurrency achieved on a single-core processor. [2]", "a": "Parallel processing runs tasks literally simultaneously on separate cores (1); a single core time-slices, switching rapidly between tasks so they only appear simultaneous and no extra work is done per second (1)."},
+    {"q": "Give two reasons why a concurrent program is harder to develop and test than a sequential one. [2]", "a": "Any two of: access to shared data must be coordinated to avoid race conditions or deadlock (1); timing-dependent bugs may only appear on rare runs, so they are hard to reproduce and debug (1); results from separate tasks must be synchronised and recombined correctly (1)."},
+    {"q": "A student claims that making a program concurrent always makes it faster. Evaluate this claim. [3]", "a": "False in general. On a single core, concurrency is only time-slicing, and switching between tasks adds overhead (1). Tasks with data dependencies, such as a running total, are inherently sequential, so they gain nothing (1). Concurrency speeds up independent tasks on multi-core hardware, so the benefit depends on the problem and the hardware (1)."},
+    {"q": "A weather app must fetch the radar image, download the 5-day forecast and load a local news feed, then draw the forecast graph. Identify the concurrent tasks and the sequential step, with reasons. [3]", "a": "The three fetches are independent: none needs another's output, so they can run concurrently (1), making the screen load faster and keeping the app responsive (1). Drawing the graph consumes the downloaded forecast data, a data dependency, so it must run after that download completes (1)."}
+  ],
+  "misconceptions": [
+    "Students often think concurrent always means faster; on one core it is only time-slicing, task-switching adds overhead, and dependent steps cannot overlap at all.",
+    "Students often treat concurrent and parallel as synonyms; concurrency is overlapping progress, while parallel means literally simultaneous execution on separate cores.",
+    "Students often claim any two tasks can run together; only independent tasks can, and the test is whether one consumes the other's output.",
+    "Students often confuse a race condition with deadlock; a race gives a wrong or unpredictable result from timing, while deadlock means tasks wait on each other forever and nothing proceeds.",
+    "Students often forget the recombining step; concurrent tasks usually need synchronising at the end, like a web page that renders only when all assets have arrived."
+  ],
+  "exam_link": [
+    "KA8 is sat this week: a cumulative assessment covering 2.1.1 to 2.1.5, so today's Do Now sweep of abstraction, thinking ahead, procedural and logical thinking is direct revision.",
+    "Command words seen here: identify tasks that can run concurrently (2-3 marks, justification via dependencies required), explain a benefit or drawback (2-4 marks), discuss/evaluate concurrency for a scenario (up to 9 marks).",
+    "Discuss questions are marked on both sides: pair each benefit (speed, responsiveness, hardware use) with a trade-off (race conditions, coordination overhead, harder testing), applied to the scenario's actual tasks.",
+    "Example stem: 'An online store processes orders by checking stock, taking payment and emailing a receipt, for many customers at once. Discuss the benefits and drawbacks of the store handling customers' orders concurrently.' [9]"
+  ],
+  "task": "An online store builds its daily sales report by (i) totalling each of four regions' sales and (ii) combining the regional totals into a grand total. State which parts can run concurrently and which must wait, justifying both with the dependency test; then give one benefit of the concurrent design and one trade-off the developers accept. (The four regional totals are independent, so they can run concurrently, one per core; the grand total consumes all four outputs, so it must wait for every region: a synchronisation point. Benefit: the report finishes in roughly the time of the slowest region. Trade-off: coordination code to split, track and recombine the work, and harder testing.)",
+  "challenge": "A ticket-booking site risks selling the last seat twice when two customers book concurrently. Explain step by step how this race condition arises (both read seatsLeft = 1 before either writes 0), describe one way to prevent it (make check-and-book a take-turns step on the shared seat data), and evaluate the cost of your fix (customers queue for the shared step, reducing the speed benefit; the coordination code also makes the system harder to test).",
   "exit_ticket": [
-    {"q": "Which is safe to run concurrently and why: (A) rendering then exporting that same clip, or (B) generating audio for scene 1 and scene 2?", "a": "B — scene 1 and scene 2 audio share no data so they are independent; A has a dependency (export needs the rendered clip)."},
-    {"q": "Two threads update a shared bank balance without coordination and the final figure depends on timing. Name the problem.", "a": "A race condition."},
-    {"q": "Give one reason concurrency is not always faster.", "a": "On a single core it is only time-slicing, not true parallelism; thread overhead and inherently sequential steps also limit any gain."}
+    {"q": "Which pair is safe to run concurrently, and why: (A) rendering a clip then exporting that same clip, or (B) generating audio for scene 1 and for scene 2?", "a": "B: the two scenes share no data, so the tasks are independent; A has a data dependency because exporting consumes the rendered clip."},
+    {"q": "Two tasks update a shared total without taking turns and the final figure depends on which finished last. Name the problem.", "a": "A race condition."},
+    {"q": "Give one benefit and one trade-off of concurrency for a phone app downloading a large file.", "a": "Benefit: the interface stays responsive during the download. Trade-off: coordination is needed (e.g. shared progress data must be handled carefully), making the app harder to write and test."}
   ]
 }
