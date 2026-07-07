@@ -1,50 +1,119 @@
 {
   "subtopic": "1.2.2 Applications Generation",
   "spec": "OCR H446 — Component 01",
+  "week": "Week 07 (12 Oct)",
   "objectives": [
-    "Distinguish application, utility and open/closed source software and select appropriate examples.",
-    "Compare assemblers, compilers and interpreters and describe the four stages of compilation in order.",
-    "Explain the roles of libraries, linkers and loaders, including static versus dynamic linking."
+    "I can distinguish applications, systems software and utilities, and compare open and closed source software.",
+    "I can compare assemblers, compilers and interpreters and choose the right translator for a scenario.",
+    "I can describe the four stages of compilation, in order, with what each produces.",
+    "I can explain the roles of libraries, linkers and loaders, including static versus dynamic linking."
   ],
   "retrieval": [
-    {"q": "What is a virtual machine that runs intermediate code, and give an example?", "a": "A process VM that runs platform-independent intermediate code, e.g. the JVM running Java bytecode (interleaving 1.2.1)."},
-    {"q": "What does a loader do, and which OS component prepares the OS at boot?", "a": "A loader copies the executable into RAM to run; the BIOS bootstraps the OS at start-up (interleaving 1.2.1)."},
-    {"q": "Give one example each of application software and utility software.", "a": "Application: word processor or browser; utility: defragmenter, backup or antivirus."},
-    {"q": "What does a compiler produce that an interpreter does not?", "a": "A standalone executable (machine code) translated all at once before running."},
-    {"q": "In which stage of compilation are syntax errors reported?", "a": "Syntax analysis (parsing), when tokens are checked against the grammar."}
+    {"q": "From 1.2.1: describe the role of the BIOS at start-up.", "a": "The first program to run, held in ROM; it performs the POST, then bootstraps (loads) the OS into RAM."},
+    {"q": "From 1.2.1: what is the difference between paging and segmentation?", "a": "Paging uses fixed-size physical blocks; segmentation uses variable-size logical blocks matching the program's structure."},
+    {"q": "From 1.2.1: why is a device driver specific to one operating system?", "a": "It translates that OS's commands into instructions for the device, so a different OS needs a different driver."},
+    {"q": "From 1.2.1: what does a virtual machine such as the JVM execute, and what is the benefit?", "a": "Intermediate code (bytecode); the same code runs on any platform with the VM installed, giving portability."},
+    {"q": "From 2.1.2: give one benefit and one trade-off of caching.", "a": "Benefit: faster reuse of expensive or frequent results with less traffic. Trade-off: extra storage and data going stale, needing invalidation."}
   ],
   "keywords": [
-    {"term": "Application software", "def": "Software that lets a user perform a real-world task, e.g. word processor, browser or game."},
-    {"term": "Utility software", "def": "System software that maintains or optimises the computer itself, e.g. defrag, backup, antivirus."},
-    {"term": "Open source", "def": "Software whose source code is available and may be modified, usually free with community support."},
-    {"term": "Assembler", "def": "A translator that converts assembly language into machine code, roughly one-to-one."},
-    {"term": "Compiler", "def": "A translator that converts high-level source into machine code all at once, producing a standalone executable."},
+    {"term": "Application software", "def": "Software that lets a user perform a real-world task, such as a word processor, browser or game."},
+    {"term": "Utility software", "def": "Systems software that maintains or optimises the computer, such as defragmentation, backup, antivirus or compression."},
+    {"term": "Open source", "def": "Software whose source code is available to view and modify, usually free with community support."},
+    {"term": "Closed source", "def": "Proprietary software whose source code is hidden, usually under a paid licence with vendor support."},
+    {"term": "Assembler", "def": "A translator converting assembly language into machine code, roughly one mnemonic to one instruction."},
+    {"term": "Compiler", "def": "A translator converting high-level source into machine code all at once, producing a standalone executable."},
     {"term": "Interpreter", "def": "A translator that converts and executes high-level source one line at a time at run time."},
-    {"term": "Linker", "def": "Software that combines a compiled program with libraries and modules into one executable, resolving references."},
-    {"term": "Loader", "def": "OS software that copies an executable from storage into RAM and prepares it to run."}
+    {"term": "Linker", "def": "Software that combines compiled code with libraries and modules into one executable, resolving references."},
+    {"term": "Loader", "def": "Operating system software that copies an executable from storage into RAM ready to run."}
   ],
   "content": [
-    {"heading": "Software classifications", "points": ["Application software lets the user do a real-world task (word processor, browser, game).", "Utility software maintains or optimises the computer itself (defrag, backup, antivirus, compression, firewall).", "A common trap: antivirus is a utility, not an application.", "Open source code is available and modifiable (usually free, community support); closed/proprietary code is hidden and usually paid with vendor support."]},
-    {"heading": "Translators compared", "points": ["An assembler translates assembly mnemonics into machine code, roughly one-to-one.", "A compiler translates the whole program at once before running and produces a standalone executable that runs fast without the source.", "An interpreter translates and executes one line at a time, needs the source plus the interpreter present, and stops at the first error.", "Compilers suit distributing finished software; interpreters suit developing, debugging and scripting."]},
-    {"heading": "Stages of compilation (in order)", "points": ["Lexical analysis: source becomes tokens, whitespace and comments are removed, and a symbol table is built.", "Syntax analysis (parsing): tokens are checked against the grammar, a parse tree is built and syntax errors are reported here.", "Code generation: object/machine code is produced from the parse tree and symbol table.", "Code optimisation: the code is refined to run faster or use less memory while giving the same result."]},
-    {"heading": "Libraries, linkers and loaders", "points": ["A library is a collection of pre-written, pre-compiled, tested subroutines that saves time and improves reliability.", "A linker combines the compiled program with libraries and modules into one executable, resolving references.", "Static linking copies library code into the executable (larger, self-contained); dynamic linking keeps it separate (.dll) and links at run time (smaller, shared, updatable).", "A loader copies the finished executable from storage into RAM and prepares it to run."]}
+    {"heading": "Applications versus systems software", "points": ["Application software lets the user perform a real-world task.", "Examples: word processor, browser, spreadsheet, game.", "Systems software runs and maintains the computer itself.", "Systems software includes the operating system, utilities, drivers and translators."]},
+    {"heading": "Utility software", "points": ["Utilities maintain or optimise the computer rather than serve a user task.", "Examples: defragmentation, backup, compression, antivirus, firewall.", "Each does one maintenance job well.", "The classic trap: antivirus is a utility, not an application."]},
+    {"heading": "Open source versus closed source", "points": ["Open source: source code available to view and modify; usually free.", "Open source support comes from the community; anyone can audit the code.", "Closed (proprietary): source hidden, usually a paid licence.", "Closed source offers official vendor support and accountability.", "Open source is usually free, but free of charge is not the definition."]},
+    {"heading": "Translators and the assembler", "points": ["A translator converts program code into a form the machine can execute.", "The three types: assembler, compiler, interpreter.", "An assembler translates assembly language into machine code.", "Roughly one mnemonic becomes one machine code instruction."]},
+    {"heading": "Compilers and interpreters", "points": ["A compiler translates the whole program at once, before it runs.", "It produces a standalone executable that runs fast without the source.", "All errors are reported together after translation completes.", "An interpreter translates and executes one line at a time at run time.", "It produces no executable, needs the source present, and stops at the first error."]},
+    {"heading": "Choosing a translator", "points": ["Distributing finished software: compile, so customers get no source and need no translator.", "The executable is platform-specific: one build per processor and OS.", "Developing and debugging: interpret, as changes run instantly and errors localise.", "Interpreted code is portable to any machine with the interpreter.", "Middle ground: compile to intermediate code run by a virtual machine (last week's JVM)."]},
+    {"heading": "Compilation stage 1: lexical analysis", "points": ["The source code is read in as a stream of characters.", "Whitespace and comments are removed.", "The code is broken into tokens: keywords, identifiers, operators, values.", "A symbol table is created recording identifiers and their details."], "note": "OCR names exactly four stages: lexical analysis, syntax analysis, code generation, code optimisation."},
+    {"heading": "Compilation stage 2: syntax analysis", "points": ["Tokens are checked against the grammar rules of the language.", "A parse tree (abstract syntax tree) is built from the tokens.", "Code that breaks the rules generates syntax errors, reported at this stage.", "A missing bracket is caught here, not in lexical analysis."]},
+    {"heading": "Compilation stages 3 and 4: code generation and optimisation", "points": ["Code generation turns the parse tree into object code (machine code).", "The symbol table supplies variable addresses during generation.", "Code optimisation refines the code to run faster or use less memory.", "Optimised code must still produce exactly the same result.", "Optimisation can make compilation itself take longer."]},
+    {"heading": "Libraries, linkers and loaders", "points": ["A library is a collection of pre-written, pre-compiled, tested subroutines.", "Libraries save development time and improve reliability through reuse.", "The linker combines compiled code with libraries into one executable, resolving references.", "Static linking copies library code in: bigger file, fully self-contained.", "Dynamic linking references a separate file (a .dll) at run time: smaller, shared, updatable.", "The loader then copies the executable into RAM ready to run."]}
   ],
-  "worked_example": {
-    "title": "Tracing source code through the four stages of compilation",
-    "steps": [
-      "Start with high-level source such as: total = price * qty",
-      "Lexical analysis splits it into tokens (total, =, price, *, qty), strips whitespace/comments and records identifiers in the symbol table.",
-      "Syntax analysis checks the tokens against the language grammar and builds a parse tree; if the grammar is broken (e.g. a missing operand) a syntax error is reported here.",
-      "Code generation walks the parse tree and symbol table to produce object/machine code (e.g. LOAD price, MULT qty, STORE total).",
-      "Code optimisation refines that machine code to run faster or use less memory (e.g. removing redundant loads) while keeping the same result.",
-      "The output is machine code ready to be linked and loaded."
-    ]
-  },
-  "task": "Complete a comparison table of compiler versus interpreter covering when translation happens, whether an executable is produced, program speed, whether the source is needed to run, and error reporting.",
-  "challenge": "A developer must ship a finished game to customers who must not see or change the source code and should need no extra software to run it. Justify whether a compiler or interpreter is appropriate, then explain how a library and a linker contribute to producing the final executable.",
+  "worked_examples": [
+    {"title": "Tracing total = price * qty through the four stages of compilation", "steps": [
+      "Start with the high-level source line: total = price * qty.",
+      "Lexical analysis strips whitespace and comments, produces the tokens total, =, price, *, qty, and records the identifiers total, price and qty in the symbol table.",
+      "Syntax analysis checks the token sequence against the grammar (identifier = identifier * identifier is valid) and builds a parse tree with = at the root; a missing operand such as total = price * would be reported here as a syntax error.",
+      "Code generation walks the parse tree using the symbol table to produce object code, e.g. LDA price, then multiply by qty, then STA total.",
+      "Code optimisation refines the object code, for example removing a redundant load if price is already in the accumulator, keeping the output identical.",
+      "The object code is now ready for the linker and, later, the loader."
+    ]},
+    {"title": "Choosing a translator: shipping a game versus writing it", "steps": [
+      "Scenario: a studio is developing a game, then selling it to customers who must not see the source and should install nothing extra.",
+      "During development, an interpreter helps: each change runs immediately with no full translation, and execution stops at the first error, pinpointing the faulty line.",
+      "For release, the studio compiles: translation happens once, entirely before distribution.",
+      "The customers receive only the executable machine code: no source is revealed and no translator is needed on their machines.",
+      "The compiled game also runs faster, since no translation happens at run time.",
+      "Trade-off to state: the executable is platform-specific, so the studio must compile separate versions for Windows and Mac."
+    ]},
+    {"title": "Static versus dynamic linking of a maths library", "steps": [
+      "A compiled program calls sqrt, which lives in a pre-compiled maths library, so the object code contains an unresolved reference to sqrt.",
+      "The linker's job is to resolve that reference by connecting the program to the library code.",
+      "Static linking: the linker copies the sqrt routine's code into the executable itself. The file is larger but completely self-contained.",
+      "Dynamic linking: the linker instead records the address or name of the library file (a .dll); the routine stays separate and is connected at run time.",
+      "Dynamic advantages: the executable is smaller, many programs share one library copy, and a library update fixes all of them without recompiling.",
+      "Dynamic risk: if the .dll is missing or a buggy update is installed, every dependent program breaks; a statically linked program is immune. Finally the loader copies the executable into RAM to run."
+    ]}
+  ],
+  "activities": [
+    {"title": "Compilation assembly line", "minutes": 12, "instructions": [
+      "Deal ten cards to ten volunteers: source code arrives; comments and whitespace removed; code converted into tokens; symbol table created; tokens checked against grammar rules; parse tree built; syntax errors reported; object code produced; code refined to run faster or use less memory; same output, better performance.",
+      "Volunteers arrange themselves in one line at the front; the seated class are inspectors who may shout STOP THE LINE and state a fault, factory-style.",
+      "Once the line settles, walk it: each student reads their card and names the stage they belong to; then insert four students holding stage-name signs: LEXICAL ANALYSIS, SYNTAX ANALYSIS, CODE GENERATION, OPTIMISATION.",
+      "Sabotage round: secretly swap two students during a close-your-eyes moment; inspectors must find and fix the swap.",
+      "Exit question to the line: which stage reports a missing bracket, and why can lexical analysis not catch it? (Syntax analysis; lexical analysis only tokenises and has no grammar to check against.)"
+    ], "stretch": "Add two rogue cards, 'program is executed' and 'variables are given values', which belong nowhere in compilation and must be ejected with reasons."},
+    {"title": "Spot and fix: compiler versus interpreter horror story", "minutes": 10, "instructions": [
+      "Project this paragraph: 'A compiler translates a high-level program one line at a time while it runs, producing a standalone executable. An interpreter translates the whole program in one go before it runs, so interpreted programs run faster afterwards. A compiled .exe needs the source code present to run, which is why companies distribute their source with the executable. Interpreters report every error in one list at the end, whereas compilers stop at the first error. An assembler translates high-level code into assembly language.'",
+      "Pairs find the errors (tell them there are 7) and number them on whiteboards.",
+      "Answers: compilers translate all at once before running; the compiler is what produces the executable; interpreters translate line by line at run time; compiled programs run faster; a compiled .exe does not need the source (which is why source stays secret); the error behaviours are swapped (compilers list all at the end, interpreters stop at the first); an assembler translates assembly language into machine code.",
+      "Pairs rewrite the paragraph correctly in exactly four sentences; the class votes for the tightest correct version."
+    ], "stretch": "Add the portability comparison the paragraph never mentions, in one accurate sentence."},
+    {"title": "Build me an executable", "minutes": 10, "instructions": [
+      "Cast six volunteers: one holds 'your compiled code' with gaps written as ??? sqrt and ??? print; two hold 'library routine (pre-compiled, tested)' cards; one is LINKER, one is LOADER; a chair is labelled RAM and a corner labelled storage.",
+      "The three code-holders stand scattered in storage. LINKER gathers them, writes the routine-holders' names over the ??? gaps and links their arms into one executable. Ask: static or dynamic? (Static: code copied in, bigger but self-contained.)",
+      "Re-run as dynamic linking: LINKER writes only addresses on sticky notes; the libraries stay in storage until run time and a second program volunteer points at the same shared libraries.",
+      "LOADER escorts the executable from storage to the RAM chair to run.",
+      "The class closes by stating, in one sentence each, what library, linker and loader mean."
+    ], "stretch": "The dynamic library gets a buggy update: what happens to every program that links it, and why can that not happen with static linking?"}
+  ],
+  "practice": [
+    {"q": "State the four stages of compilation in the correct order. [4]", "a": "Lexical analysis (1), syntax analysis (1), code generation (1), code optimisation (1)."},
+    {"q": "Describe what happens during lexical analysis. [3]", "a": "Whitespace and comments are removed (1); the source code is converted into tokens such as keywords, identifiers and operators (1); a symbol table is created holding details of the identifiers (1)."},
+    {"q": "A program contains a missing closing bracket. Explain why this error is reported during syntax analysis and not during lexical analysis. [2]", "a": "Lexical analysis only converts characters into tokens and has no grammar rules to check (1); syntax analysis compares the token sequence against the language's grammar, so the invalid structure is detected there (1)."},
+    {"q": "A developer writes a program in a high-level language, then sells it to thousands of customers. Explain why an interpreter is useful during development but a compiler is used for distribution. [4]", "a": "An interpreter runs changed code immediately without full translation (1) and stops at the first error, helping locate bugs (1). A compiler produces a standalone executable, so customers need no translator and never see the source (1), and the compiled program runs faster with no run-time translation (1)."},
+    {"q": "Describe the difference between static and dynamic linking. [3]", "a": "Static linking copies the library code into the executable (1), making it larger but self-contained (1); dynamic linking keeps the library separate (e.g. a .dll) and connects it at run time, so it is smaller, shared, and can be updated without recompiling (1)."},
+    {"q": "State the purpose of a loader. [1]", "a": "It copies the executable program from storage into RAM and prepares it to run (1)."},
+    {"q": "A company is deciding whether to release its new program as open source. Give one benefit and one drawback to the company of doing so. [2]", "a": "Benefit: the community can inspect, improve and support the code, aiding security and development (1). Drawback: competitors can see and reuse the code, and licence sales revenue is lost (1)."},
+    {"q": "Describe the role of an assembler. [2]", "a": "It translates assembly language mnemonics into machine code (1), with roughly one mnemonic converting to one machine code instruction (1)."}
+  ],
+  "misconceptions": [
+    "Students often say compiled programs run faster because the compiler is faster; the speed gain is at run time, because translation already happened and no translator is present.",
+    "Students often add a semantic analysis stage; OCR names exactly four stages: lexical analysis, syntax analysis, code generation and code optimisation.",
+    "Students often think open source means free of charge; the definition is that the source code is available and modifiable, and it is only usually free.",
+    "Students often classify antivirus as application software; it maintains the computer, so it is a utility.",
+    "Students often swap linker and loader; the linker combines compiled code with libraries into an executable, the loader copies that executable into RAM to run."
+  ],
+  "exam_link": [
+    "Command words: state for definitions and the stage order (1-4 marks); describe for the stages, linkers and loaders (2-3 marks); explain and compare for compiler versus interpreter choices (2-4 marks); discuss for open versus closed source (up to 9 marks).",
+    "Compiler versus interpreter answers must say when translation happens and whether an executable is produced; vague 'faster or slower' claims score nothing without that anchor.",
+    "Open versus closed source appears as a scenario discussion question: marks need both sides applied to the stakeholder before a justified conclusion.",
+    "Example stem: 'A programmer has written a program in a high-level language. Describe how the program is converted into machine code by a compiler.' [4]"
+  ],
+  "task": "Complete a comparison table of compiler versus interpreter with rows: when translation happens, whether an executable is produced, run-time speed, whether the source is needed to run, error reporting, and one ideal use case. Then annotate each row with the exam phrase you would quote for the mark.",
+  "challenge": "A developer must ship a finished game to customers who must not see or change the source code and should need no extra software to run it. Justify choosing a compiler over an interpreter, explain how a library and the linker contribute to building the final executable, decide between static and dynamic linking for this product with a justified reason, and state what the loader does when a customer starts the game.",
   "exit_ticket": [
-    {"q": "List the four stages of compilation in the correct order.", "a": "Lexical analysis, syntax analysis (parsing), code generation, code optimisation."},
-    {"q": "State one difference between static and dynamic linking.", "a": "Static linking copies library code into the executable (larger, self-contained); dynamic linking keeps it separate and links at run time (smaller, shared, updatable)."},
-    {"q": "Why does distributing software as a compiled executable protect the source code?", "a": "Only machine code is shipped, not the source, so customers cannot read or modify it and need no compiler/interpreter to run it."}
+    {"q": "List the four stages of compilation in the correct order.", "a": "Lexical analysis, syntax analysis, code generation, code optimisation."},
+    {"q": "State one difference between static and dynamic linking.", "a": "Static linking copies library code into the executable (larger, self-contained); dynamic linking keeps it in a separate file linked at run time (smaller, shared, updatable)."},
+    {"q": "Why does distributing software as a compiled executable protect the source code?", "a": "Only machine code is shipped, so customers cannot read or modify the source and need no compiler or interpreter to run it."}
   ]
 }

@@ -40,8 +40,11 @@ def main():
     rag_rows = []
     files = sorted(glob.glob(os.path.join(DATA, "*.json")), key=code_key)
     for f in files:
+        m = re.match(r"(\d+\.\d+\.\d+)", os.path.basename(f))
+        if not m:
+            continue    # weekly part-2 decks (wkNN-*) belong to an existing subtopic
         d = json.load(open(f, encoding="utf-8"))
-        code = re.match(r"(\d+\.\d+\.\d+)", os.path.basename(f)).group(1)
+        code = m.group(1)
         # section header
         ws.append([code, d.get("subtopic", code).split(" ", 1)[-1], "", "", ""])
         r = ws.max_row

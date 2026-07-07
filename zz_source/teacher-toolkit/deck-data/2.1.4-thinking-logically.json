@@ -1,51 +1,274 @@
 {
   "subtopic": "2.1.4 Thinking Logically",
   "spec": "OCR H446 — Component 02",
+  "week": "Week 13 (07 Dec)",
   "objectives": [
-    "Identify decision points where the flow of control branches on a condition.",
-    "Write exact Boolean conditions, including the correct comparison operator and logical operators.",
-    "Apply logical thinking to an unseen scenario, stating the outcome of both branches of each decision."
+    "Identify the points in a problem or program where a decision has to be taken.",
+    "Determine the exact Boolean conditions, using comparison and logical operators, that affect each decision's outcome.",
+    "Explain how decisions determine the flow of control through selection and iteration, stating both branches.",
+    "Verify the logical flow of a routine using a trace table and correct common logic errors."
   ],
   "retrieval": [
-    {"q": "What is a decision point?", "a": "A place where the flow of control branches depending on whether a condition is true or false."},
-    {"q": "What is flow of control?", "a": "The order in which a program's statements execute, shaped by its decision points."},
-    {"q": "How many branches does a single IF/ELSE decision have?", "a": "Two — one for the condition being true and one for it being false."},
-    {"q": "Write the condition for 'lock the account after 3 failed attempts'.", "a": "IF attempts >= 3."},
-    {"q": "Interleaving (2.1.3): how does a decision point relate to a sub-procedure's order?", "a": "Decision points steer which steps run, while sequencing fixes order by data dependency; both control execution flow."}
+    {"q": "1.3.3: Name the four layers of the TCP/IP stack from top to bottom.", "a": "Application, Transport, Internet (Network), Link."},
+    {"q": "1.3.3: What service does DNS provide?", "a": "It resolves human-readable domain names into IP addresses, using a hierarchy of name servers."},
+    {"q": "1.3.3: In packet switching, how does data travel across a network?", "a": "Data is split into packets, each routed independently across the network and reassembled in order at the destination."},
+    {"q": "2.1.3: What is decomposition?", "a": "Breaking a large problem into smaller, more manageable sub-problems, each solved by a sub-procedure."},
+    {"q": "2.1.3: Why can some steps in a solution not be reordered?", "a": "A data dependency: a step needs the output of an earlier step, e.g. you cannot pour water before boiling it."}
   ],
   "keywords": [
-    {"term": "Thinking logically", "def": "Identifying decision points where flow of control branches on a condition."},
-    {"term": "Decision point", "def": "A place where flow branches on a condition, e.g. an IF, CASE or loop test."},
-    {"term": "Boolean condition", "def": "An expression that evaluates to true or false, e.g. score >= 1000."},
-    {"term": "Flow of control", "def": "The order in which statements execute, altered by decision points."},
-    {"term": "Branch", "def": "One of the paths taken from a decision point; each decision has a true and a false branch."},
-    {"term": "Comparison operator", "def": "A symbol such as <, <=, >, >=, = used to build a condition."},
-    {"term": "Logical operator", "def": "AND, OR or NOT, used to combine conditions, e.g. ticketValid AND feePaid."},
-    {"term": "Nested condition", "def": "A decision inside another, used when one test must take priority over another."}
+    {"term": "Thinking logically", "def": "Identifying the decision points in a solution and how they determine the flow of control."},
+    {"term": "Decision point", "def": "A place where execution can branch on a condition: an if, a switch/case or a loop test."},
+    {"term": "Boolean condition", "def": "An expression that evaluates to true or false, e.g. seatsRequested <= seatsAvailable."},
+    {"term": "Comparison operator", "def": "==, !=, <, >, <= or >=, used to compare two values inside a condition."},
+    {"term": "Logical operator", "def": "AND, OR and NOT, used to combine or invert Boolean conditions."},
+    {"term": "Selection", "def": "Choosing between branches using if/elseif/else or switch/case; exactly one branch runs."},
+    {"term": "Iteration", "def": "Repeating statements while or until a condition holds; the loop test is a decision point."},
+    {"term": "Flow of control", "def": "The order in which a program's statements execute, shaped by its decision points."},
+    {"term": "Trace table", "def": "A table recording variable values, condition results and output line by line to verify logic."}
   ],
   "content": [
-    {"heading": "Decision points and flow of control", "points": ["A decision point branches the flow of control on a condition.", "Flow of control is the order statements execute.", "IF, CASE and loop tests are all decision points."]},
-    {"heading": "Writing exact Boolean conditions", "points": ["'Under 16' is age < 16, not <= 16.", "'Over £50' is total > 50, so exactly £50 fails; use >= 50 to include it.", "Choosing the right operator is where marks are won or lost."]},
-    {"heading": "Both branches matter", "points": ["Every decision has a true branch and a false branch.", "Booking: seatsRequested <= seatsAvailable confirms; the false branch rejects the booking.", "Always state what happens on both outcomes."]},
-    {"heading": "Combining and nesting conditions", "points": ["Use logical operators: barrier opens IF ticketValid AND feePaid.", "Nest conditions when one test must override another.", "Order nested tests so the priority condition is checked first."]},
-    {"heading": "Exam technique", "points": ["Give the exact Boolean, not vague wording like 'if it's fast'.", "State the outcome of both branches.", "Apply conditions to the scenario's actual variables."]}
+    {
+      "heading": "What does thinking logically mean?",
+      "points": [
+        "Thinking logically means spotting where a solution must take a decision and branch.",
+        "Everyday example: take an umbrella IF it is raining, ELSE leave it at home.",
+        "Programs decide using data: an ATM dispenses cash only if amount <= balance.",
+        "Every decision has outcomes for true AND false — a logical thinker states both."
+      ],
+      "note": "OCR 2.1.4: identify decision points, determine their conditions, and determine how they affect program flow."
+    },
+    {
+      "heading": "Identifying decision points in a problem",
+      "points": [
+        "Scan a scenario for signal words: if, unless, when, otherwise, until, depending on.",
+        "Each decision point must reduce to a question answerable true or false.",
+        "ATM withdrawal has three: PIN correct? amount within balance and limit? cash available?",
+        "Loop tests are decision points too — deciding whether to repeat is still deciding."
+      ],
+      "note": "Missed decision points cause unhandled cases: what should happen when the answer is no?"
+    },
+    {
+      "heading": "Writing exact Boolean conditions",
+      "points": [
+        "A condition compares values with ==, !=, <, >, <= or >=.",
+        "Vague English fails: 'if enough seats' must become seatsRequested <= seatsAvailable.",
+        "Combine conditions with AND (both true), OR (at least one true), NOT (inverts).",
+        "Under 16 is age < 16; at least 50 is total >= 50 — choose boundaries deliberately."
+      ],
+      "code": [
+        "if age >= 18 AND balance > 0 then",
+        "   print(\"Access granted\")",
+        "endif",
+        "if age < 16 OR isStudent == true then",
+        "   price = price * 0.5",
+        "endif"
+      ]
+    },
+    {
+      "heading": "Selection: if, elseif, else and switch",
+      "points": [
+        "if/elseif/else tests conditions top to bottom; the first true branch runs.",
+        "else is the catch-all when every condition is false; it is optional.",
+        "switch/case selects one branch from many values of a single variable.",
+        "Nest an if inside another when one test only makes sense after the first."
+      ],
+      "code": [
+        "if score >= 70 then",
+        "   print(\"Distinction\")",
+        "elseif score >= 55 then",
+        "   print(\"Merit\")",
+        "else",
+        "   print(\"Pass\")",
+        "endif",
+        "switch day:",
+        "   case \"Sat\":",
+        "      print(\"Weekend\")",
+        "   case \"Sun\":",
+        "      print(\"Weekend\")",
+        "   default:",
+        "      print(\"Weekday\")",
+        "endswitch"
+      ]
+    },
+    {
+      "heading": "How decisions shape the flow of control",
+      "points": [
+        "Flow of control is the route execution takes through the statements.",
+        "At a decision, exactly one branch executes; the others are skipped entirely.",
+        "After the chosen branch, flow rejoins at endif and continues in sequence.",
+        "Different input data drives different paths — same code, different journeys."
+      ],
+      "note": "With score = 60 the elseif branch prints Merit; the Distinction and Pass lines never execute."
+    },
+    {
+      "heading": "Iteration: decisions that repeat",
+      "points": [
+        "A while loop tests its condition BEFORE the body: it may run zero times.",
+        "A do...until loop tests AFTER the body: it always runs at least once.",
+        "A for loop hides its decision: continue while the counter is in range.",
+        "Every pass through a loop re-takes the same decision with updated values."
+      ],
+      "code": [
+        "while attempts < 3",
+        "   password = input(\"Enter password\")",
+        "   attempts = attempts + 1",
+        "endwhile",
+        "do",
+        "   guess = input(\"Guess the number\")",
+        "until guess == target",
+        "for i = 1 to 5",
+        "   print(i)",
+        "next i"
+      ]
+    },
+    {
+      "heading": "Flowcharts: decisions as diamonds",
+      "points": [
+        "A diamond holds one testable Boolean condition, never a vague phrase.",
+        "Every diamond has exactly two labelled exits: Yes/True and No/False.",
+        "A loop appears as an arrow flowing back to an earlier diamond.",
+        "Each diamond maps to an if or a loop test in pseudocode."
+      ],
+      "note": "Audit checks: is the condition testable? are both exits labelled? does every loop path eventually exit?"
+    },
+    {
+      "heading": "Order and boundaries: where logic goes wrong",
+      "points": [
+        "In an elseif chain the first true condition wins, so order the tests carefully.",
+        "Testing score >= 50 before score >= 70 makes the Distinction branch unreachable.",
+        "Wrong operator, wrong result: AND where OR is needed rejects valid cases.",
+        "Boundary errors: total > 50 wrongly excludes an order of exactly 50."
+      ],
+      "code": [
+        "if score >= 50 then",
+        "   print(\"Pass\")",
+        "elseif score >= 70 then",
+        "   print(\"Distinction\")",
+        "endif"
+      ],
+      "note": "Bug: a score of 70 satisfies score >= 50 first, so Distinction can never print. Test highest thresholds first."
+    },
+    {
+      "heading": "Trace tables verify the logical flow",
+      "points": [
+        "One column per variable, per condition tested, and one for output.",
+        "Add a row every time a value changes or a condition is evaluated.",
+        "Tracing proves which branch runs and whether loops terminate correctly.",
+        "Always trace boundary inputs: the exact limit, zero, and empty input."
+      ],
+      "code": [
+        "n = 5",
+        "while n > 1",
+        "   n = n - 2",
+        "endwhile",
+        "print(n)"
+      ],
+      "note": "Trace: n=5, 5>1 true, n=3; 3>1 true, n=1; 1>1 false, loop exits; output is 1."
+    }
   ],
-  "worked_example": {
-    "title": "Choosing a streaming quality with logical thinking",
-    "steps": [
-      "Identify the overriding decision: connection speed takes priority over subscription.",
-      "First condition: IF connectionSpeed < 5 (Mbps) THEN stream SD, regardless of subscription.",
-      "False branch of that test (connection adequate): move to the subscription decision.",
-      "Second condition: IF subscription = \"premium\" THEN stream 4K, ELSE stream HD.",
-      "State both branches of each: SD vs continue; 4K vs HD.",
-      "Note the conditions are nested and ordered so the speed test is checked first."
-    ]
-  },
-  "task": "A car-park barrier should open only if the ticket is valid AND the fee has been paid. Write the exact Boolean condition using a logical operator, and state precisely what happens on both the true and false branches.",
-  "challenge": "A game awards a bonus life at 1000 points and a 'game over' at 0 lives. Design the decision points for both, writing exact Boolean conditions and stating the outcome of every branch, and explain why the order they are tested in matters.",
+  "worked_examples": [
+    {
+      "title": "Tracing an elseif chain for three inputs",
+      "steps": [
+        "Code: if score >= 70 then grade = \"A\" elseif score >= 60 then grade = \"B\" elseif score >= 50 then grade = \"C\" else grade = \"U\" endif, then print(grade).",
+        "Input score = 62: test 62 >= 70 is false, so move to the next condition.",
+        "Test 62 >= 60 is true: grade becomes \"B\"; remaining tests are skipped; output B.",
+        "Input score = 70 (boundary): 70 >= 70 is true, so grade = \"A\" and output is A — >= includes the boundary.",
+        "Input score = 50 (boundary): 50 >= 70 false, 50 >= 60 false, 50 >= 50 true, so output is C.",
+        "Trace table columns: score, score >= 70, score >= 60, score >= 50, grade, output — one row per condition evaluated.",
+        "Key idea: exactly one branch executes per run; the first true condition captures the flow."
+      ]
+    },
+    {
+      "title": "Theme park ride: from scenario to verified pseudocode",
+      "steps": [
+        "Rules: riders must be at least 120 cm tall; riders under 8 years old may only ride if accompanied by an adult.",
+        "Decision point 1: height check. Exact condition: height >= 120. False outcome: refuse with \"Too short to ride\".",
+        "Decision point 2 (only reached if tall enough): age >= 8 OR accompanied == true. False outcome: \"Must be accompanied by an adult\".",
+        "Pseudocode: if height >= 120 then, nested: if age >= 8 OR accompanied == true then print(\"Ride\") else print(\"Must be accompanied by an adult\") endif, else print(\"Too short to ride\") endif.",
+        "Verify height = 130, age = 7, accompanied = false: 130 >= 120 true; 7 >= 8 false OR false is false; output is \"Must be accompanied by an adult\".",
+        "Verify height = 119, age = 30: 119 >= 120 false, so the outer else runs; output is \"Too short to ride\" — the age test never executes.",
+        "Verify boundary height = 120, age = 8: 120 >= 120 true; 8 >= 8 true; output is \"Ride\"."
+      ]
+    },
+    {
+      "title": "Find and fix the logic errors in a delivery routine",
+      "steps": [
+        "Intended rule: delivery is free only when the total is at least 50 pounds AND the customer is a member.",
+        "Buggy code: if total > 50 OR member == true then deliveryCost = 0 else deliveryCost = 4.99 endif.",
+        "Test total = 60, member = false: 60 > 50 true, OR makes the whole condition true, delivery is free — wrong, non-members should pay. The OR should be AND.",
+        "Test total = 50, member = true with AND but still > 50: 50 > 50 is false, so the customer pays 4.99 — wrong, exactly 50 should qualify. The > should be >=.",
+        "Fixed code: if total >= 50 AND member == true then deliveryCost = 0 else deliveryCost = 4.99 endif.",
+        "Re-verify all cases: (60, false) gives 4.99 correct; (50, true) gives 0 correct; (49.99, true) gives 4.99 correct; (50, false) gives 4.99 correct.",
+        "Lesson: check the logical operator against the rule wording AND test the exact boundary value."
+      ]
+    }
+  ],
+  "activities": [
+    {
+      "title": "Story to Flowchart: the leisure centre",
+      "minutes": 25,
+      "instructions": [
+        "In pairs, read the narrative: members swipe a card; a valid card admits them, an expired card means renewing at the desk first; non-members pay on the door unless the pool is at capacity, in which case they wait; everyone showers before swimming; Sam swims until 40 lengths are done or the closing whistle sounds.",
+        "Highlight every point where the story branches or repeats, and underline the condition driving each.",
+        "Rewrite each condition as an exact Boolean with both outcomes stated: if cardValid, if poolCount < capacity, while lengths < 40 AND whistle == false.",
+        "Draw the flowchart: a diamond for every decision with both exits labelled Yes/No, and the swimming loop as a backwards arrow.",
+        "Swap with another pair and audit: is every diamond a testable condition? Does every diamond have exactly two labelled exits? Does the loop's condition actually terminate?"
+      ],
+      "stretch": "Add a new rule of your own (under-16s must be accompanied) with minimal redrawing, and state which existing paths your new diamond affects."
+    },
+    {
+      "title": "Always, Sometimes, Never: conditions and branches",
+      "minutes": 15,
+      "instructions": [
+        "In pairs, classify each statement as Always, Sometimes or Never, supporting every verdict with a pseudocode example or counter-example.",
+        "Statements: a decision point has exactly two outcomes; if x >= 10 and if NOT (x < 10) choose the same branch; the else branch is optional; a while loop's body executes at least once; swapping two if statements never changes the output; every loop contains a decision point; 'if the user is old enough' is valid in a flowchart diamond.",
+        "Merge into fours and settle disagreements by tracing concrete values through the disputed code.",
+        "Class debrief on the two most contested: while may run zero times (contrast do...until), and swapping overlapping elseif tests changes output (trace x = 15 through x > 10 versus x > 5)."
+      ],
+      "stretch": "Write one statement of your own whose answer flips between Sometimes and Always depending on the construct assumed, and defend both readings."
+    },
+    {
+      "title": "Odd One Out: spot the decision",
+      "minutes": 10,
+      "instructions": [
+        "In threes, find the odd one out in each set, justifying with the terms decision point, condition and flow of control.",
+        "Set A: check password matches; add item to basket; check age >= 18; check stock > 0.",
+        "Set B: while queue not empty; if balance < price; x = x + 1; until guess == target.",
+        "Set C: if it's sunny; if temperature > 25; if raining == true; if humidity >= 80.",
+        "Inversion round: rewrite each odd one so it fits the set, e.g. turn 'add item to basket' into if stock > 0 then add item, and make 'if it's sunny' testable as if sunshineHours > 6."
+      ],
+      "stretch": "For set B, classify each decision as selection or iteration and explain how each alters flow of control differently: branch once versus repeat."
+    }
+  ],
+  "practice": [
+    {"q": "State what is meant by a decision point in a program. (1 mark)", "a": "A point where the flow of execution can branch in different directions depending on whether a condition is true or false, e.g. an if statement or a loop test. (1)"},
+    {"q": "A shop gives a 10 per cent discount when a customer spends over 30 pounds. Write the exact Boolean condition for this decision and state the outcome of both branches. (3 marks)", "a": "Condition: total > 30 (1). True branch: the 10 per cent discount is applied, e.g. total = total * 0.9 (1). False branch: no discount is applied and the customer pays the full total (1). Note: 'over 30' means exactly 30 pounds does not qualify, so > not >=."},
+    {"q": "Explain how decision points determine the flow of control through a program. (3 marks)", "a": "Flow of control is the order in which statements execute (1). At each decision point a condition is evaluated and exactly one branch runs while the others are skipped, so different data takes different routes (1). Loop tests are also decision points, deciding whether statements repeat or the loop exits (1)."},
+    {"q": "State the output of this code: count = 0, num = 7, while num > 1, num = num DIV 2, count = count + 1, endwhile, print(count). (2 marks)", "a": "Output is 2 (2). Trace: num=7, 7>1 true, num = 7 DIV 2 = 3, count=1; 3>1 true, num = 3 DIV 2 = 1, count=2; 1>1 false so the loop exits and 2 is printed. (1 mark for a correct trace with a wrong final value.)"},
+    {"q": "A programmer writes if total > 50 then print(\"Free delivery\") but the rule is that orders of 50 pounds or more qualify. Identify the error and write the corrected condition. (2 marks)", "a": "Error: > excludes the boundary, so an order of exactly 50 does not get free delivery (1). Correction: if total >= 50 then (1)."},
+    {"q": "A cash machine allows a withdrawal only if the PIN is correct and the amount is no more than the balance. Identify two decision points and write the exact condition tested at each. (4 marks)", "a": "Decision point 1: check the PIN (1), condition: enteredPIN == storedPIN (1). Decision point 2: check the amount (1), condition: amount <= balance (1). Accept a combined check such as pinCorrect == true AND amount <= balance for the second pair of marks."},
+    {"q": "Describe the difference in flow of control between a while loop and a do...until loop. (2 marks)", "a": "A while loop tests its condition before the body, so the body may execute zero times if the condition is false initially (1). A do...until loop tests after the body, so the body always executes at least once (1)."},
+    {"q": "A routine tests if score >= 50 then print(\"Pass\") elseif score >= 70 then print(\"Distinction\") endif. Explain why the Distinction branch can never execute and how to fix it. (3 marks)", "a": "Conditions are tested top to bottom and the first true one runs (1). Any score of 70 or more also satisfies score >= 50, so the first branch always captures it and the elseif is unreachable (1). Fix: test the higher threshold first, i.e. if score >= 70 then Distinction elseif score >= 50 then Pass (1)."}
+  ],
+  "misconceptions": [
+    "Students often think every if needs an else, but else is optional — with no else and a false condition, flow simply continues after endif.",
+    "Students often think a while loop always runs at least once, but it tests before the body and may run zero times; only do...until guarantees one execution.",
+    "Students often think 'over 50' and 'at least 50' are the same condition, but > 50 excludes exactly 50 while >= 50 includes it — boundary operators change behaviour.",
+    "Students often think reordering elseif branches is harmless, but the first true condition wins, so wrong ordering creates unreachable branches and wrong outputs.",
+    "Students often write AND when the rule needs OR (or vice versa): 'under 16 or a student gets a discount' with AND wrongly excludes most valid customers."
+  ],
+  "exam_link": [
+    "Command words: identify (name the decision points), state (give the exact condition), describe/explain (how the decisions affect the flow, both branches), write (pseudocode or a corrected condition).",
+    "Typical tariffs: 1-2 marks for stating a condition, 3-4 marks for identifying decision points and conditions in a scenario, 2-3 marks for a trace or a find-and-fix.",
+    "Example stem: 'A vending machine dispenses an item only if it is in stock and enough money has been inserted. Identify the decision points involved and state the condition tested at each. (4 marks)'",
+    "Examiners reward exact Booleans applied to the scenario's own variables with both outcomes stated — vague phrases like 'if there is enough money' lose the mark."
+  ],
+  "task": "A car park charges 3 pounds for stays up to 2 hours, 6 pounds for stays up to 5 hours, and 10 pounds otherwise; disabled badge holders always pay half. Identify every decision point, write each exact Boolean condition, then write the full routine in the OCR Exam Reference Language and verify it with a trace table for stays of 2, 5 and 6 hours with and without a badge.",
+  "challenge": "The leisure centre loop exits when 40 lengths are done or the whistle sounds, written as while lengths < 40 AND whistle == false. Use De Morgan's laws to write the equivalent exit condition for a do...until version, prove the two are logically equivalent with a truth table over both variables, and explain which version could behave differently when lengths starts at 40.",
   "exit_ticket": [
-    {"q": "A cinema discounts customers under 16. Write the exact condition.", "a": "IF age < 16."},
-    {"q": "A booking confirms when seatsRequested <= seatsAvailable. What happens on the FALSE branch?", "a": "The booking is rejected and the user is told there are too few seats."},
-    {"q": "A student writes IF total > 50 for free delivery. Does a £50 order qualify, and how would you fix it to include £50?", "a": "No — 50 is not greater than 50; use IF total >= 50."}
+    {"q": "A cinema discounts customers under 16. Write the exact condition.", "a": "if age < 16 — the < operator, since exactly 16 pays full price."},
+    {"q": "In if x > 5 then print(\"A\") else print(\"B\") endif with x = 5, what is the output and why?", "a": "B — 5 > 5 is false, so the else branch runs; exactly one branch executes."},
+    {"q": "Name the three kinds of decision point a program can contain.", "a": "if (selection), switch/case (multi-way selection) and loop tests such as while or until (iteration)."}
   ]
 }

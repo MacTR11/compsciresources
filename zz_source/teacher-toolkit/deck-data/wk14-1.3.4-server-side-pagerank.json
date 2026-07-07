@@ -1,0 +1,178 @@
+{
+  "subtopic": "1.3.4 Web Technologies (part 2)",
+  "spec": "OCR H446 — Component 01",
+  "week": "Week 14 (14 Dec)",
+  "objectives": [
+    "I can describe the full request-response cycle when a server-side script queries a database, and justify why validation is repeated server-side.",
+    "I can explain how a search engine crawls the web and builds an index that maps keywords to pages.",
+    "I can explain and calculate PageRank, including the damping factor and the iterative process that runs until values converge.",
+    "I can evaluate the use of lossy and lossless compression when delivering web content, linking back to 1.3.1."
+  ],
+  "retrieval": [
+    {"q": "Part 1: an intern writes <img href=\"cat.jpg\"> and <a src=\"page2.html\">. Correct both tags.", "a": "Swap the attributes: <img src=\"cat.jpg\"> because images use src, and <a href=\"page2.html\"> because anchors use href."},
+    {"q": "Part 1: in CSS, what do the selectors p, .warning and #header each target?", "a": "p targets every <p> tag; .warning targets all elements with class=\"warning\"; #header targets the single element with id=\"header\"."},
+    {"q": "Part 1: a JavaScript function checks a form's email field contains an @ before submission. Is this client-side or server-side, and give one advantage.", "a": "Client-side — it runs in the browser. Advantage: instant feedback with no round trip to the server, which also reduces server load."},
+    {"q": "1.3.3: when the browser submits that form to www.shop.co.uk, what does DNS do first, and which application-layer protocol usually carries the request securely?", "a": "DNS translates the domain name into an IP address so the request can be routed; the request is carried by HTTPS (HTTP encrypted with TLS)."},
+    {"q": "2.1.4: name the three basic programming constructs, and state which one is needed to repeat a calculation until a condition is met.", "a": "Sequence, selection and iteration; repeating until a condition is met needs iteration (a condition-controlled loop)."}
+  ],
+  "keywords": [
+    {"term": "Server-side processing", "def": "Code executed on the web server (e.g. login checks, database queries); secure and hidden but adds server load and a round trip."},
+    {"term": "Client-side processing", "def": "Code executed in the user's browser (e.g. JavaScript validation); fast and reduces server load but can be viewed and bypassed."},
+    {"term": "Web crawler (spider)", "def": "A program that automatically follows hyperlinks from page to page, reading each page so the search engine can index it."},
+    {"term": "Search index", "def": "A data structure mapping each keyword to the pages it appears on (like a book index), so queries are answered without scanning the live web."},
+    {"term": "PageRank", "def": "An algorithm that ranks pages by importance: rank depends on the number AND rank of the pages linking in."},
+    {"term": "Damping factor", "def": "A value d (about 0.85) modelling the probability a random surfer follows a link rather than jumping to a random page."},
+    {"term": "Convergence", "def": "The point where repeated recalculation leaves PageRank values essentially unchanged, so iteration can stop."},
+    {"term": "Lossy compression", "def": "Permanently removes data to shrink files (JPEG, MP3, streamed video); the original cannot be recovered."},
+    {"term": "Lossless compression", "def": "Reduces file size with the original exactly recoverable (PNG, ZIP, text, code)."}
+  ],
+  "content": [
+    {"heading": "Server-side processing: the full round trip", "points": [
+      "Browser sends an HTTP/HTTPS request; a server-side script (e.g. PHP, Python) runs on the web server.",
+      "The script can query a database, apply business logic, then build the HTML response sent back.",
+      "Examples: checking a login against stored password hashes, searching a product database, authorising a payment.",
+      "The code and data never leave the server, so users cannot read, modify or bypass the logic."
+    ], "note": "Anything touching a database or money is server-side by necessity, not just by preference."},
+    {"heading": "Why validation is repeated server-side", "points": [
+      "Client-side JavaScript validation gives instant feedback and filters out obvious mistakes cheaply.",
+      "But users can view page source, disable JavaScript, or craft requests directly with tools.",
+      "So every check that matters is repeated server-side, where it cannot be bypassed.",
+      "Exam-grade answer: do both — client-side for user experience and server load, server-side for security."
+    ]},
+    {"heading": "Client-side vs server-side: the trade-offs", "points": [
+      "Load: client-side work uses the user's device; server-side work adds load on the shared server.",
+      "Security: server-side code is hidden and trusted; client-side code is visible and untrusted.",
+      "Data transmitted: client-side avoids round trips; server-side sends requests and responses over the network.",
+      "Connection: client-side keeps working with a flaky connection; server-side needs the round trip to complete.",
+      "Code visibility: competitors or attackers can read client-side source; server-side logic stays private."
+    ]},
+    {"heading": "How search engines work: crawling", "points": [
+      "A crawler (spider) starts from known pages and automatically follows every hyperlink it finds.",
+      "Each visited page is downloaded and parsed: text, keywords, metadata and its outgoing links.",
+      "Newly discovered links join the queue, so the crawl spreads across the web over time.",
+      "Pages with no incoming links are never discovered, so they never appear in results."
+    ]},
+    {"heading": "The search engine index", "points": [
+      "The engine builds an index: each word maps to the list of pages containing it (an inverted index).",
+      "Metadata is stored too: titles, headings, where on the page the word appears, freshness.",
+      "A query is answered by looking words up in the index — never by searching the live web.",
+      "This is why results return in milliseconds: the expensive work happened at indexing time."
+    ], "note": "Analogy: a book index — you check the back, you do not reread every page."},
+    {"heading": "PageRank: importance from links", "points": [
+      "Indexing finds pages that match; PageRank decides which matching pages are most important.",
+      "Each link to a page is a vote; a page's rank depends on the number AND rank of pages linking to it.",
+      "A vote from an important (high-rank) page is worth more than one from an obscure page.",
+      "A page divides its rank equally across its outgoing links, so votes from link-heavy pages are diluted."
+    ]},
+    {"heading": "The damping factor d", "points": [
+      "d (about 0.85) is the probability a random surfer keeps clicking links; 1-d is the chance they jump to a random page.",
+      "Every page therefore gets a small guaranteed base rank of (1-d)/N, where N is the number of pages.",
+      "Without damping, rank drains into closed loops and dead ends, and values fail to settle.",
+      "Damping guarantees the iterative calculation converges to sensible, stable values."
+    ]},
+    {"heading": "The iterative calculation", "points": [
+      "All N pages start with equal rank 1/N.",
+      "Each round applies PR(P) = (1-d)/N + d * sum of PR(Q)/L(Q) over every page Q linking to P.",
+      "L(Q) is the number of outgoing links on Q — its rank is shared between them.",
+      "Rounds repeat, always using the latest values, until ranks converge (stop changing significantly)."
+    ], "code": [
+      "for iteration = 1 to maxIterations",
+      "   for each page P",
+      "      newPR[P] = (1 - d) / N + d * sumOverInlinks(PR[Q] / L[Q])",
+      "   next page",
+      "   PR = newPR",
+      "next iteration"
+    ]},
+    {"heading": "Compression in web delivery (link back to 1.3.1)", "points": [
+      "Photos, music and streamed video use lossy compression (JPEG, MP3): huge size cuts, imperceptible quality loss.",
+      "Smaller files mean less bandwidth, faster load times and less mobile data used.",
+      "Text, HTML, CSS, JavaScript and downloads like ZIPs use lossless: the exact original is recoverable.",
+      "Source code must never be lossy-compressed: losing one character corrupts the program.",
+      "Icons and diagrams often use PNG (lossless) where sharp edges must survive exactly."
+    ], "note": "Rule of thumb: human senses tolerate loss; parsers and compilers do not."}
+  ],
+  "worked_examples": [
+    {"title": "PageRank by hand: three pages, two iterations (d = 0.85)", "steps": [
+      "Setup: pages A, B, C. A links to B and C; B links to C; C links to A. So L(A) = 2, L(B) = 1, L(C) = 1.",
+      "Constants: d = 0.85, N = 3, so the base term (1-d)/N = 0.15/3 = 0.05. Initialise every rank to 1/3 = 0.3333.",
+      "Iteration 1, PR(A): only C links to A, so PR(A) = 0.05 + 0.85 x (PR(C)/1) = 0.05 + 0.85 x 0.3333 = 0.05 + 0.2833 = 0.3333.",
+      "Iteration 1, PR(B): only A links to B, and A has 2 outlinks, so PR(B) = 0.05 + 0.85 x (PR(A)/2) = 0.05 + 0.85 x 0.1667 = 0.05 + 0.1417 = 0.1917.",
+      "Iteration 1, PR(C): A and B link to C, so PR(C) = 0.05 + 0.85 x (PR(A)/2 + PR(B)/1) = 0.05 + 0.85 x (0.1667 + 0.3333) = 0.05 + 0.85 x 0.5 = 0.475.",
+      "Iteration 2, PR(A) = 0.05 + 0.85 x 0.475 = 0.4538. PR(B) = 0.05 + 0.85 x (0.3333/2) = 0.05 + 0.1417 = 0.1917.",
+      "Iteration 2, PR(C) = 0.05 + 0.85 x (0.3333/2 + 0.1917) = 0.05 + 0.85 x 0.3583 = 0.3546.",
+      "After iteration 2 the ranking is A (0.4538), then C (0.3546), then B (0.1917); the ranks sum to about 1.",
+      "Why does A win? A receives the whole rank of C, and C itself collects links from both other pages — a single vote from an important page beats scraps from elsewhere.",
+      "Repeating iterations lets rank keep flowing round the loop until the values stabilise (converge); we then stop."
+    ]},
+    {"title": "A search query end to end: 'best budget router'", "steps": [
+      "Long before the query, crawlers followed links across the web, parsing each page's text, metadata and outgoing links.",
+      "The engine built its inverted index: 'budget' maps to one list of pages, 'router' to another, with positions and metadata.",
+      "PageRank was computed offline over the link graph, iterating until ranks converged, giving every page an importance score.",
+      "The user types the query; the browser sends it over HTTPS to the search engine's servers (server-side processing).",
+      "The engine intersects the index lists to find pages containing the query words — no live web search happens.",
+      "Matching pages are ordered by combining relevance signals with PageRank importance, and the results page is built and returned.",
+      "Total time is milliseconds because lookup and ranking use precomputed structures; only the final ordering happens per query."
+    ]},
+    {"title": "Lossy vs lossless delivery of a 20-photo gallery page", "steps": [
+      "A gallery page contains 20 photographs. Saved losslessly as PNG each photo is about 4 MB, so images total 20 x 4 = 80 MB.",
+      "Re-encoded as lossy JPEG at roughly 10:1, each photo is about 0.4 MB, so images total 20 x 0.4 = 8 MB.",
+      "On an 8 Mbit/s connection (about 1 MB per second), the lossless page needs about 80 s for images; the lossy page about 8 s.",
+      "A visitor on mobile data spends 80 MB of allowance versus 8 MB — a tenfold saving for barely visible quality loss.",
+      "The page's HTML, CSS and JavaScript (a few hundred kB) stay losslessly compressed: one lost character breaks the code.",
+      "Conclusion: lossy for sensory media where quality loss is tolerable; lossless wherever the exact original must be recovered."
+    ]}
+  ],
+  "activities": [
+    {"title": "Human PageRank", "minutes": 15, "instructions": [
+      "Three students are web pages A, B, C holding signs; lay string arrows on the floor: A links to B and C; B links to C; C links to A.",
+      "Deal every page 12 counters (equal starting rank, 36 in the whole web).",
+      "Each round, every page simultaneously splits its entire pile equally between its outgoing links and passes it along the string.",
+      "Round 1: A sends 6 to B and 6 to C; B sends 12 to C; C sends 12 to A. Record on the board: A=12, B=6, C=18.",
+      "Round 2: A sends 6 and 6; B sends 6 to C; C sends 18 to A. Record: A=18, B=6, C=12 (total always 36).",
+      "Debrief: a link is a vote, votes from rich pages are worth more, a page divides rank across its outlinks; introduce the words iterative and converge, and note the real algorithm adds the damping factor our floor model omits."
+    ], "stretch": "Add page D that links to C but has no incoming links — predict D's fate over iterations (its pile drains away; in the real algorithm the (1-d)/N base term keeps it small but non-zero)."},
+    {"title": "Crawl, Index, Answer", "minutes": 15, "instructions": [
+      "Stick five A4 web pages around the room, e.g. P1 Binary Basics (keywords binary, bits; links to P2, P3), P2 Hex for Humans (hex, binary; to P4), P3 Logic Gates (AND, binary; to P4), P4 Networks 101 (packet, router; to P5), P5 Router Buying Guide (router; no links).",
+      "One student is the crawler: starting at P1 they physically follow links, shouting each page's keywords; they may only travel along links.",
+      "Two indexers at the board build the inverted index as the crawler shouts: keyword then the list of pages.",
+      "The class becomes users: search 'binary' — indexers answer instantly from the board (P1, P2, P3). Then time a fresh student answering 'router' by physically re-walking the web.",
+      "Debrief: queries hit the index, never the live web; unlinked pages never get crawled so never appear in results."
+    ], "stretch": "Which of P4 and P5 should rank first for 'router'? Defend using incoming links (P5 is linked from P4, whose link comes from P3 — PageRank reasoning)."},
+    {"title": "Client-side vs server-side continuum", "minutes": 12, "instructions": [
+      "Tape a line across the room labelled Client-side at one end and Server-side at the other; middle means needs both.",
+      "For each task, think 30 seconds, pair 30 seconds, then stand: (a) highlighting a menu button on hover; (b) checking a typed password against the stored hash; (c) warning that the email field is empty before submitting; (d) searching the product database for trainers; (e) validating a card payment; (f) form validation on a banking site.",
+      "Interview outliers each round: what happens to the server if this moves to the client — and what happens to security?",
+      "Board the trade-off summary: speed and reduced server load versus security and access to the database. Expected: (a) client, (b) server, (c) client but re-checked server-side, (d) server, (e) server, (f) both."
+    ], "stretch": "Debate the one-liner: if server-side is more secure, why not do everything server-side? (Latency, server load, bandwidth, responsiveness while offline.)"}
+  ],
+  "practice": [
+    {"q": "Describe how a search engine gathers and stores information about web pages before any user searches. [4]", "a": "A crawler/spider starts from known pages and automatically follows hyperlinks to discover pages (1); each page is downloaded and parsed for keywords/metadata (1); the engine builds an index mapping each keyword to the pages containing it (1); queries are later answered from this index rather than by searching the live web, making lookup fast (1)."},
+    {"q": "Explain why a search engine answers queries from an index rather than searching the web at query time. [2]", "a": "The web is far too large to scan per query — an index lookup of keyword to page list takes milliseconds (1); the expensive work (crawling and parsing) is done once in advance and reused for every query (1)."},
+    {"q": "State the two factors that determine a page's PageRank score. [2]", "a": "The number of pages linking to it (1) and the PageRank of those linking pages — links from important pages are worth more (1)."},
+    {"q": "Page X receives one link, from page P which has PageRank 0.5 and 2 outgoing links. Page Y receives two links, from pages Q and R, each with PageRank 0.1 and 1 outgoing link. Using PR = (1-d)/N + d x sum(PR/L) with d = 0.85 and N = 4, calculate one update for X and Y and state which ranks higher. [4]", "a": "Base term (1-d)/N = 0.15/4 = 0.0375 (1). PR(X) = 0.0375 + 0.85 x (0.5/2) = 0.0375 + 0.2125 = 0.25 (1). PR(Y) = 0.0375 + 0.85 x (0.1/1 + 0.1/1) = 0.0375 + 0.17 = 0.2075 (1). X ranks higher: one link from an important page outweighs two links from unimportant pages (1)."},
+    {"q": "Explain the purpose of the damping factor in the PageRank algorithm. [3]", "a": "It models a random surfer: d (about 0.85) is the probability they follow a link, 1-d the probability they jump to a random page (1); it gives every page a small base rank of (1-d)/N so rank does not drain into loops or dead ends (1); this ensures the iterative calculation converges to stable, realistic values (1)."},
+    {"q": "Describe the iterative nature of the PageRank calculation. [3]", "a": "All pages start with equal rank, e.g. 1/N (1); every page's rank is recalculated from the latest ranks of the pages linking to it, each divided by that page's number of outgoing links (1); the recalculation repeats until the values converge, i.e. stop changing significantly (1)."},
+    {"q": "A banking website validates login details using JavaScript in the browser. Explain why the bank must also validate the details on the server. [3]", "a": "Client-side code can be viewed, modified or disabled by the user, or bypassed entirely by sending requests directly (1); so browser checks cannot be trusted for security (1); the server-side check is hidden from the user, has access to the stored password hashes/database, and cannot be bypassed (1)."},
+    {"q": "A news website delivers its photographs using lossy compression but its HTML, CSS and JavaScript using lossless compression. Discuss why. [4]", "a": "Lossy compression permanently removes data, giving much smaller photo files (1), so pages load faster and use less bandwidth/mobile data, with quality loss barely visible to humans (1); code and markup must be reproduced exactly — losing even one character breaks the syntax or logic (1); lossless compression still shrinks the files but guarantees the exact original is recovered (1)."}
+  ],
+  "misconceptions": [
+    "Students often think PageRank counts links only, but the rank of the linking pages matters too — one link from an important page can beat many links from obscure pages.",
+    "Students often think a page passes its whole rank to every page it links to, but its rank is divided between its outgoing links (PR(Q)/L(Q)).",
+    "Students often think PageRank is computed once, but it is iterative: ranks are recalculated repeatedly from the latest values until they converge.",
+    "Students often think the search engine searches the live web when you press enter, but queries are answered from the precomputed index; crawling happened earlier.",
+    "Students often think client-side validation makes a site secure, but it only improves user experience — every security-relevant check must be repeated server-side because browser code can be viewed and bypassed."
+  ],
+  "exam_link": [
+    "Command words seen here: describe (crawling/indexing, typically 3-4 marks), explain (damping factor, server-side validation, 2-3 marks), calculate (PageRank updates, show the base term and each substitution), discuss (client vs server or lossy vs lossless, 4-9 marks).",
+    "PageRank calculation questions award marks for the (1-d)/N base term, dividing each inlinking page's rank by its outlink count, and a correct final comparison — show every substitution.",
+    "Typical stem: 'A company's website validates orders in the browser using JavaScript. Discuss the advantages and disadvantages of moving this processing to the server.' Answer along the axes of speed, server load, data transmitted and security.",
+    "For 6+ mark discussion questions, a balanced answer with a justified conclusion reaches the top band; one-sided answers cap in the middle band."
+  ],
+  "task": "Draw the link graph for pages A, B, C where A links to B and C, B links to C, and C links to A. With d = 0.85 and N = 3, perform iteration 1 of the PageRank calculation yourself from equal starting ranks of 0.3333, showing the base term and every substitution, then check your three values against the worked example (0.3333, 0.1917, 0.475). Finally, write two sentences predicting which page will dominate as iterations continue and why.",
+  "challenge": "Now delete the link from C to A, so C has no outgoing links (a dead end). Explain, using the random surfer model, what would happen to the total rank in the system without the damping term, and how the (1-d)/N base term keeps every page's rank above zero. Then explain why adding one link from C to itself would be a poor fix.",
+  "exit_ticket": [
+    {"q": "In one sentence each: what does the crawler do, and what does the index store?", "a": "The crawler follows hyperlinks from page to page reading each one; the index maps each keyword to the list of pages it appears on, plus metadata."},
+    {"q": "In PR(P) = (1-d)/N + d x sum(PR(Q)/L(Q)), what does L(Q) represent and why divide by it?", "a": "L(Q) is the number of outgoing links on page Q; dividing shares Q's rank equally between everything it links to, so link-heavy pages give a diluted vote."},
+    {"q": "Give one web asset that should be lossy-compressed and one that must be lossless, with a reason for each.", "a": "Lossy: a photograph (JPEG) — big savings in bandwidth and load time with barely visible quality loss. Lossless: JavaScript/HTML source — a single lost character corrupts the code, so the exact original must be recoverable."}
+  ]
+}

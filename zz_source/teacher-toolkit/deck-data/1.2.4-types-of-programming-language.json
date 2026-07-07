@@ -1,50 +1,120 @@
 {
   "subtopic": "1.2.4 Types of Programming Language",
   "spec": "OCR H446 — Component 01",
+  "week": "Week 09 (09 Nov)",
   "objectives": [
-    "Explain what a programming paradigm is and describe the procedural and low-level (assembly) approaches.",
-    "Apply the four addressing modes (immediate, direct, indirect, indexed) to determine the value loaded.",
-    "Define the key object-oriented concepts and apply inheritance and polymorphism to a scenario."
+    "Explain the need for programming paradigms and characterise procedural and object-oriented programming.",
+    "Write and trace short Little Man Computer programs using the standard instruction set.",
+    "Determine the value used by an instruction under immediate, direct, indirect and indexed addressing.",
+    "Define and apply class, object, method, attribute, inheritance, encapsulation and polymorphism."
   ],
   "retrieval": [
-    {"q": "What is the difference between a compiler and an interpreter?", "a": "A compiler translates all at once into a standalone executable; an interpreter translates and executes line by line at run time (interleaving 1.2.2)."},
-    {"q": "Which methodology suits a project with unclear, changing requirements?", "a": "Agile, because it works in iterative increments with continuous client feedback (interleaving 1.2.3)."},
-    {"q": "What is a programming paradigm?", "a": "A style or approach to writing programs, chosen to make a problem easier to write, maintain or reuse."},
-    {"q": "What does the LMC instruction BRZ xx do?", "a": "It branches to address xx only if the Accumulator equals zero."},
-    {"q": "In immediate addressing, what does the operand hold?", "a": "The actual value to be used."}
+    {"q": "Which stage of compilation builds the parse tree and reports a missing bracket?", "a": "Syntax analysis: tokens are checked against the grammar rules and syntax errors are reported (1.2.2)."},
+    {"q": "How do a compiler and an interpreter differ in reporting errors?", "a": "A compiler reports all errors in a list at the end of translation; an interpreter stops at the first error it reaches (1.2.2)."},
+    {"q": "Name the three categories of test data and what the program should do with each.", "a": "Normal, accepted; boundary, the exact range edges, accepted; erroneous, out of range, rejected gracefully (1.2.3)."},
+    {"q": "What is the defining feature of the Agile methodology?", "a": "Iterative increments with continuous client feedback so changing requirements are absorbed (1.2.3)."},
+    {"q": "What fixes the order of two steps when you decompose a problem?", "a": "A data dependency: a step that consumes the output of an earlier step must run after it (2.1.3)."}
   ],
   "keywords": [
-    {"term": "Programming paradigm", "def": "A style or approach to writing programs, picked to suit a problem."},
-    {"term": "Procedural", "def": "A paradigm using sequence, selection and iteration organised into procedures/subroutines, specifying how."},
-    {"term": "Assembly language", "def": "A low-level language using mnemonics, roughly one mnemonic per machine instruction, processor-specific."},
-    {"term": "Immediate addressing", "def": "The operand is the actual value to be used."},
-    {"term": "Direct addressing", "def": "The operand is the address that holds the value."},
-    {"term": "Indirect addressing", "def": "The operand is the address of a location that holds the address of the value (a pointer)."},
-    {"term": "Inheritance", "def": "A subclass acquiring the attributes and methods of a superclass, which it can extend or override."},
-    {"term": "Polymorphism", "def": "The same method name behaving differently depending on the object, typically via overriding."}
+    {"term": "Paradigm", "def": "A style or approach to writing programs; chosen to make a problem easier to solve and maintain."},
+    {"term": "Assembly language", "def": "A low-level, processor-specific language using mnemonics, roughly one per machine instruction."},
+    {"term": "Immediate addressing", "def": "The operand itself is the value to be used, with no memory lookup."},
+    {"term": "Indirect addressing", "def": "The operand is the address of a location that holds the address of the value."},
+    {"term": "Class", "def": "A template or blueprint defining the attributes and methods of a type of object."},
+    {"term": "Object", "def": "A specific instance of a class, created by instantiation, with its own attribute values."},
+    {"term": "Encapsulation", "def": "Bundling data with its methods and making attributes private, accessible only through public methods."},
+    {"term": "Inheritance", "def": "A subclass acquiring the attributes and methods of a superclass, then adding or overriding them."},
+    {"term": "Polymorphism", "def": "The same method name behaving differently depending on the object it is called on."}
   ],
   "content": [
-    {"heading": "Paradigms and procedural code", "points": ["A programming paradigm is a style or approach to writing a program; no one language suits every task.", "Pick the paradigm that makes a problem easier to write, maintain or reuse.", "Procedural code uses sequence, selection and iteration organised into procedures/subroutines and specifies how (Python, C, Pascal).", "It contrasts with object-oriented code, which models the problem as interacting objects."]},
-    {"heading": "Assembly and the LMC", "points": ["Assembly is low-level, using mnemonics such as ADD and STA, roughly one mnemonic per machine instruction and processor-specific.", "It is used where speed, small size or direct hardware control matter, e.g. drivers and embedded systems.", "The Little Man Computer is a simple model CPU and instruction set for learning assembly and the FDE cycle.", "Key LMC instructions: INP, OUT, STA, LDA, ADD, SUB, BRA (jump), BRZ (branch if zero), BRP (branch if >= 0), DAT, HLT."]},
-    {"heading": "Addressing modes", "points": ["Immediate: the operand is the actual value.", "Direct: the operand is the address holding the value.", "Indirect: the operand is the address of a location holding the address of the value (used for pointers).", "Indexed: the effective address is a base address plus the contents of an index register (used for arrays)."]},
-    {"heading": "Object-oriented concepts", "points": ["A class is a template defining attributes and methods; an object is a specific instance created by instantiation.", "An attribute is a variable (data/state) and a method is a subroutine (behaviour) of a class.", "Encapsulation bundles data with its methods and hides the data (private attributes accessed via methods).", "Inheritance lets a subclass acquire a superclass's members (DRY reuse); polymorphism lets the same method name behave differently per object."]}
+    {"heading": "Why paradigms exist", "points": ["A paradigm is a style or approach to writing programs.", "No single style suits every task, so languages are built around different paradigms.", "Procedural code states how to solve a problem step by step.", "Object-oriented code models the problem as interacting objects.", "Low-level languages trade readability for direct control of the hardware."]},
+    {"heading": "Procedural programming", "points": ["Built from sequence, selection and iteration, organised into procedures and functions.", "The program is an ordered set of instructions operating on data.", "Suits problems that decompose naturally into a series of steps.", "Examples include Python, C and Pascal used in a procedural style."]},
+    {"heading": "Assembly language", "points": ["A low-level language using mnemonics such as ADD and STA.", "Each mnemonic corresponds to roughly one machine code instruction.", "It is processor-specific: code written for one architecture will not run on another.", "Chosen for speed, small size or direct hardware control: device drivers and embedded systems.", "An assembler translates it to machine code one to one."]},
+    {"heading": "The LMC instruction set", "points": ["INP reads input into the accumulator; OUT outputs the accumulator.", "LDA loads a mailbox into the accumulator; STA stores the accumulator into a mailbox.", "ADD and SUB add or subtract a mailbox value to or from the accumulator.", "BRA always branches; BRZ branches if the accumulator is zero; BRP if zero or positive.", "DAT reserves a mailbox for data; HLT stops the program."], "note": "BRZ and BRP test the accumulator, never a mailbox."},
+    {"heading": "Writing an LMC program", "points": ["Plan the data flow first: what enters the accumulator and when it must be saved.", "The accumulator is overwritten by INP and LDA, so store values you need later with STA.", "Labels name mailboxes so instructions can refer to data and branch targets.", "This program inputs two numbers and outputs their sum."], "code": ["INP", "STA FIRST", "INP", "ADD FIRST", "OUT", "HLT", "FIRST DAT"]},
+    {"heading": "Tracing LMC with branches", "points": ["Trace instruction by instruction, recording the accumulator and any changed mailbox.", "At each branch, evaluate the condition on the current accumulator before moving the program counter.", "BRP is taken when the accumulator is zero or positive, so zero still loops.", "This countdown outputs its input, then each value down to zero."], "code": ["      INP", "LOOP  OUT", "      SUB ONE", "      BRP LOOP", "      HLT", "ONE   DAT 1"]},
+    {"heading": "Addressing modes: immediate and direct", "points": ["The addressing mode determines how the operand is interpreted.", "Immediate: the operand is the value itself, no memory access needed.", "Direct: the operand is the address of the mailbox holding the value, one lookup.", "Standard LMC instructions such as ADD 6 use direct addressing."]},
+    {"heading": "Addressing modes: indirect and indexed", "points": ["Indirect: the operand is the address of a location holding the address of the value, two lookups.", "Indirect addressing implements pointers.", "Indexed: effective address equals the operand plus the index register contents.", "Incrementing the index register steps through an array one element at a time."], "note": "Show the working in answers: immediate no lookup, direct one, indirect two, indexed base plus index."},
+    {"heading": "OOP: classes, objects, attributes, methods", "points": ["A class is a template or blueprint; an object is an instance created from it by instantiation.", "An attribute is a variable of the class, holding the object's state.", "A method is a subroutine of the class, defining its behaviour.", "The constructor, new, sets up an object's attributes when it is created."], "code": ["class Vehicle", "   private speed", "   public procedure new(givenSpeed)", "      speed = givenSpeed", "   endprocedure", "   public function getSpeed()", "      return speed", "   endfunction", "endclass", "myCar = new Vehicle(30)"]},
+    {"heading": "Encapsulation, inheritance and polymorphism", "points": ["Encapsulation makes attributes private, accessed only through public methods, protecting the object's data.", "Inheritance: a subclass acquires the superclass's attributes and methods, then adds or overrides.", "Inheritance removes duplicated code shared by related classes.", "Polymorphism: the same method call behaves differently per object, usually via overriding.", "Class diagrams: name, attributes, methods; minus means private, plus public; the arrow points child to parent."], "code": ["class ElectricCar inherits Vehicle", "   private charge", "   public procedure accelerate()", "      charge = charge - 1", "      super.accelerate()", "   endprocedure", "endclass"]}
   ],
-  "worked_example": {
-    "title": "Addressing-mode calculation for LDA 6",
-    "steps": [
-      "Given: address 6 holds the value 9, address 9 holds the value 4, and the index register holds 2.",
-      "Immediate: the operand IS the value, so the Accumulator is loaded with 6.",
-      "Direct: load the value held at address 6, which is 9.",
-      "Indirect: address 6 holds 9, so follow the pointer to address 9, whose value is 4.",
-      "Indexed: effective address = base 6 + index 2 = address 8, and the value is taken from address 8.",
-      "Key point: state which effective address each mode uses before reading its contents."
-    ]
-  },
-  "task": "Given address 4 holds 7, address 7 holds 1 and the index register holds 3, state the value loaded by LDA 4 for immediate, direct and indirect modes, and give the effective address for indexed mode.",
-  "challenge": "A program models Car, Bus and Motorbike, which share speed and a move() method but display themselves differently. Explain how a Vehicle superclass, inheritance and overriding a display() method (polymorphism) would be used, and give one maintenance benefit of this design.",
+  "worked_examples": [
+    {"title": "Tracing an LMC sum program with inputs 5 and 7", "steps": [
+      "Program: INP, STA FIRST, INP, ADD FIRST, OUT, HLT, FIRST DAT.",
+      "INP: the accumulator becomes 5, the first input.",
+      "STA FIRST: mailbox FIRST now holds 5; the accumulator still holds 5.",
+      "INP: the accumulator is overwritten with 7, the second input.",
+      "ADD FIRST: the accumulator becomes 7 + 5 = 12.",
+      "OUT: 12 is output.",
+      "HLT: the program stops; final state FIRST = 5, accumulator = 12, output 12."
+    ]},
+    {"title": "Tracing the countdown loop with input 3", "steps": [
+      "Program: INP, then LOOP OUT, SUB ONE, BRP LOOP, HLT, with ONE DAT 1.",
+      "INP: accumulator = 3. OUT prints 3. SUB ONE: accumulator = 2. BRP: 2 is positive, branch to LOOP.",
+      "OUT prints 2. SUB ONE: accumulator = 1. BRP: 1 is positive, branch to LOOP.",
+      "OUT prints 1. SUB ONE: accumulator = 0. BRP: 0 counts as positive, branch to LOOP.",
+      "OUT prints 0. SUB ONE: accumulator = -1. BRP: negative, so the branch is not taken.",
+      "HLT stops the program; the outputs were 3, 2, 1, 0.",
+      "Key point: 0 is printed because BRP branches while the accumulator is zero or positive."
+    ]},
+    {"title": "One instruction, four addressing modes", "steps": [
+      "Setup: instruction LDA 6; address 6 holds 9; address 9 holds 4; address 8 holds 15; index register holds 2.",
+      "Immediate: the operand is the value, so the accumulator is loaded with 6.",
+      "Direct: one lookup at address 6, so the value loaded is 9.",
+      "Indirect: address 6 holds 9, so go to address 9; the value loaded is 4.",
+      "Indexed: effective address = 6 + 2 = 8; address 8 holds 15, so the value loaded is 15.",
+      "Check: no lookup, one lookup, two lookups, base plus index — four different values from one operand."
+    ]}
+  ],
+  "activities": [
+    {"title": "The human LMC", "minutes": 15, "instructions": [
+      "Lay instruction cards at desks as mailboxes 0 to 5: INP; LOOP OUT; SUB ONE; BRP LOOP; HLT; ONE DAT 1.",
+      "Cast one student as the Little Man, one as the accumulator holding a whiteboard, one as the program counter; the class are verifiers logging every output and accumulator value.",
+      "Give input 3; the Little Man performs each fetch-decode-execute cycle aloud, with the program counter incrementing after each fetch.",
+      "At BRP the Little Man must ask the accumulator whether it is zero or positive before changing the program counter; the class predicts the answer first.",
+      "Run to HLT, then ask why 0 was output but -1 was not."
+    ], "stretch": "Ask what single change would stop the countdown at 1 instead of 0, and have the class trace their proposed fix to prove it."},
+    {"title": "Addressing modes four corners", "minutes": 10, "instructions": [
+      "Label the corners IMMEDIATE, DIRECT, INDIRECT, INDEXED and project the memory table: address 20 holds 35, address 35 holds 99, address 23 holds 7, index register 3.",
+      "Say: the instruction is LDA 20 and I want the value 20 in the accumulator; students move to the mode that delivers it. Repeat for wanting 35, then 99, then 7.",
+      "Minority corners argue their case before each reveal; the majority must state the rule, not just the answer.",
+      "Application round: which corner for traversing an array, and which for following a pointer?"
+    ], "stretch": "Invent a memory state where direct and indirect load the same value, and explain what address 20 must then contain: an address that stores itself."},
+    {"title": "Whiteboard quick-draw: class diagram from spec", "minutes": 10, "instructions": [
+      "Read this spec aloud twice, without showing it: a Vehicle class has a private attribute speed and public methods accelerate() and getSpeed(); ElectricCar inherits from Vehicle, adds a private attribute charge, and overrides accelerate().",
+      "Students draw the full class diagram from the spoken spec only, then show boards for peer marking.",
+      "Everyone checks two details specifically: the inheritance arrow points from child to parent, and minus and plus mark private and public correctly.",
+      "Redraw from memory in 90 seconds and compare with the first attempt."
+    ], "stretch": "Add a Bicycle subclass that makes accelerate() polymorphic across three classes, and annotate why encapsulation forces getSpeed() to exist at all."}
+  ],
+  "practice": [
+    {"q": "Write an LMC program that inputs two numbers and outputs the first minus the second. (4)", "a": "INP, STA FIRST, INP, STA SECOND, LDA FIRST, SUB SECOND, OUT, HLT, FIRST DAT, SECOND DAT. Marks: both inputs stored (1); values reloaded in the correct order (1); SUB SECOND applied to FIRST in the accumulator (1); OUT then HLT with DAT declarations (1)."},
+    {"q": "An instruction has opcode ADD and operand 20. Memory address 20 holds 35, address 35 holds 99, address 23 holds 7 and the index register holds 3. State the value added under immediate, direct, indirect and indexed addressing. (4)", "a": "Immediate: 20, the operand itself (1). Direct: 35, the value at address 20 (1). Indirect: 99, since address 20 holds 35 and address 35 holds 99 (1). Indexed: 7, since the effective address is 20 + 3 = 23 and address 23 holds 7 (1)."},
+    {"q": "State what the LMC instructions STA and BRZ do. (2)", "a": "STA stores the contents of the accumulator into the given mailbox (1); BRZ branches to the given label if the accumulator holds zero (1)."},
+    {"q": "Explain why a device driver might be written in assembly language rather than a high-level language. (3)", "a": "Assembly gives direct control of specific hardware registers and instructions (1); it produces small, fast code with no translator overhead deciding instruction choice (1); a driver targets one known processor, so losing portability does not matter (1)."},
+    {"q": "Describe the difference between a class and an object. (2)", "a": "A class is a template or blueprint defining attributes and methods (1); an object is a specific instance of the class created by instantiation, with its own attribute values (1)."},
+    {"q": "Explain how encapsulation protects the data in an object. (3)", "a": "Attributes are declared private (1) so other code cannot read or change them directly (1); access happens only through public methods, which can validate changes and keep the object in a consistent state (1)."},
+    {"q": "A Shape class has subclasses Circle and Square, each with its own area() method. Explain how this is an example of polymorphism. (2)", "a": "Both subclasses override the same method name, area() (1); the same call behaves differently depending on whether the object is a Circle or a Square (1)."},
+    {"q": "The LMC program INP, STA X, INP, ADD X, ADD X, OUT, HLT (X DAT) runs with inputs 4 then 10. State the output and justify it with a trace. (3)", "a": "Output 18 (1). Trace: accumulator 4, X = 4, accumulator overwritten with 10 (1); ADD X gives 14, ADD X gives 18, which OUT prints (1)."}
+  ],
+  "misconceptions": [
+    "Students often think immediate and direct addressing are the same, but immediate uses the operand as the value while direct looks it up in memory.",
+    "Students often think BRZ or BRP tests a mailbox, but both test only the current accumulator value.",
+    "Students often forget INP and LDA overwrite the accumulator, so unsaved values are lost without an STA.",
+    "Students often think encapsulation and inheritance are interchangeable, but encapsulation hides data while inheritance shares members between classes.",
+    "Students often draw the inheritance arrow from parent to child, but class diagrams point the arrow from the subclass to the superclass."
+  ],
+  "exam_link": [
+    "Command words: state for instruction meanings, 1 to 2 marks; write for LMC programs, 3 to 5 marks; explain for paradigms and OOP concepts, 2 to 4 marks.",
+    "Addressing mode questions give a memory table and one operand and expect the value under each mode with working, usually 4 marks.",
+    "OOP questions often supply a class diagram or short pseudocode and ask you to identify or apply inheritance, encapsulation or polymorphism.",
+    "Example stem: Write a Little Man Computer program that takes in two numbers and outputs the total. (4)"
+  ],
+  "task": "Write an LMC program that inputs a number and outputs double the number, then produce a full instruction-by-instruction trace table for input 6, showing the accumulator after every instruction.",
+  "challenge": "Write an LMC program that inputs two numbers and outputs the larger one, using SUB and BRP to compare them; trace it with inputs 3, 8 and then 8, 3 to prove both paths work, then explain which addressing mode a version storing ten inputs in consecutive mailboxes would need.",
   "exit_ticket": [
-    {"q": "Define class, object and method.", "a": "Class: a template defining attributes and methods; object: a specific instance of a class; method: a subroutine of a class defining its behaviour."},
-    {"q": "For LDA 6 where address 6 holds 9 and address 9 holds 4, what is loaded in direct and in indirect mode?", "a": "Direct loads 9 (the value at address 6); indirect loads 4 (address 6 points to address 9, whose value is 4)."},
-    {"q": "What is encapsulation and one benefit it provides?", "a": "Bundling data with its methods and hiding the data via private attributes; it protects data from invalid changes and eases maintenance."}
+    {"q": "The accumulator holds 7 and mailbox N holds 2. What does the accumulator hold after SUB N, and is BRP then taken?", "a": "5; yes, BRP is taken because 5 is positive."},
+    {"q": "Under indirect addressing, operand 12 points to address 12 which holds 30, and address 30 holds 8. What value is used?", "a": "8: address 12 gives 30, and the value at address 30 is 8, two lookups."},
+    {"q": "Name the OOP feature: a subclass provides its own version of a method it acquired from its superclass.", "a": "Overriding, which enables polymorphism; the acquisition itself is inheritance."}
   ]
 }

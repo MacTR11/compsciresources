@@ -1,50 +1,120 @@
 {
   "subtopic": "1.2.3 Software Development",
   "spec": "OCR H446 — Component 01",
+  "week": "Week 08 (02 Nov)",
   "objectives": [
-    "Compare the Waterfall, Agile, Extreme Programming, Spiral and RAD methodologies and their trade-offs.",
-    "Describe the stages of the software development lifecycle from analysis to evaluation.",
-    "Select and justify a suitable methodology for a given scenario using its clues."
+    "Describe the stages of the software development lifecycle and the outputs of each stage.",
+    "Compare the merits and drawbacks of Waterfall, Agile, Extreme Programming, Spiral and RAD.",
+    "Select and justify a methodology for a given scenario using explicit scenario clues.",
+    "Write and follow algorithms, and design test data using normal, boundary and erroneous values."
   ],
   "retrieval": [
-    {"q": "List the four stages of compilation in order.", "a": "Lexical analysis, syntax analysis, code generation, code optimisation (interleaving 1.2.2)."},
-    {"q": "What is the difference between application and utility software?", "a": "Application software performs a real-world user task; utility software maintains or optimises the computer itself (interleaving 1.2.2)."},
-    {"q": "Which methodology is linear and completes one stage before the next?", "a": "Waterfall."},
-    {"q": "What is the defining feature of Agile?", "a": "Iterative increments with continuous client feedback so changing requirements can be absorbed."},
-    {"q": "During which lifecycle stage are requirements gathered and feasibility assessed?", "a": "Analysis."}
+    {"q": "List the four stages of compilation in order.", "a": "Lexical analysis, syntax analysis, code generation, code optimisation (1.2.2)."},
+    {"q": "Give two differences between a compiler and an interpreter.", "a": "Compiler translates the whole program before running and produces an executable; interpreter translates line by line at run time and stops at the first error (1.2.2)."},
+    {"q": "What does an assembler translate, and into what?", "a": "Assembly language mnemonics into machine code, roughly one to one (1.2.2)."},
+    {"q": "Name two schedulers an operating system might use and one difference between them.", "a": "Examples: round robin gives each process a fixed time slice pre-emptively; first come first served runs each job to completion, non pre-emptively (1.2.1)."},
+    {"q": "What happens when an interrupt with higher priority than the current process is received?", "a": "At the end of the current fetch-decode-execute cycle the processor pushes its registers onto the stack, loads and runs the interrupt service routine, then pops the registers and resumes (1.2.1)."}
   ],
   "keywords": [
     {"term": "Waterfall", "def": "A linear, sequential methodology completing one stage fully before the next; suits fixed, clear requirements."},
-    {"term": "Agile", "def": "An iterative methodology delivering increments with continuous client feedback; suits changing requirements."},
-    {"term": "Extreme programming", "def": "An Agile variant adding pair programming, constant test-driven development and a customer in the team."},
-    {"term": "Spiral", "def": "An iterative methodology with central risk analysis each loop; suits large, expensive, high-risk projects."},
-    {"term": "RAD", "def": "Rapid application development using prototyping refined by user feedback; suits fast delivery or vague requirements."},
+    {"term": "Agile", "def": "An iterative methodology delivering working increments with continuous client feedback; suits changing requirements."},
+    {"term": "Extreme programming", "def": "An Agile variant adding pair programming, constant test-driven development and a customer embedded in the team."},
+    {"term": "Spiral", "def": "An iterative methodology with risk analysis at the centre of each loop; suits large, expensive, high-risk projects."},
+    {"term": "RAD", "def": "Rapid application development: prototypes refined by user feedback; suits fast delivery or vague requirements."},
     {"term": "Analysis", "def": "The lifecycle stage that investigates the problem, gathers requirements and assesses feasibility."},
-    {"term": "Boundary data", "def": "Test values at the edges of the acceptable range."},
-    {"term": "Evaluation", "def": "Judging the finished system against the original requirements: effective, usable, robust, maintainable."}
+    {"term": "Normal data", "def": "Typical in-range test values that the program should accept and process correctly."},
+    {"term": "Boundary data", "def": "Test values at the exact edges of the acceptable range, which should still be accepted."},
+    {"term": "Erroneous data", "def": "Invalid test values outside the acceptable range, which the program should reject gracefully."}
   ],
   "content": [
-    {"heading": "Methodologies overview", "points": ["Waterfall is linear and sequential, one stage at a time, best when requirements are fixed and clear.", "Agile delivers iterative increments with continuous client feedback, best when requirements may change.", "Extreme programming adds pair programming, constant test-driven development and a customer in the team for high code quality.", "Spiral centres on risk analysis each loop (large, high-risk projects); RAD centres on rapid prototyping (fast or vague projects)."]},
-    {"heading": "Trade-offs", "points": ["Waterfall is simple and well documented but inflexible, with the client only seeing the product at the end.", "Agile is flexible but produces less documentation and makes cost and time hard to predict.", "XP gives very high quality but is staff-intensive; Spiral manages risk but is expensive and complex.", "RAD is fast but needs skilled developers and committed users and can be less robust."]},
-    {"heading": "Lifecycle stages", "points": ["Analysis: investigate the problem, gather requirements and assess feasibility.", "Design: plan data structures, algorithms, the interface and the inputs/outputs and data formats.", "Development/implementation: write the code in modules.", "Testing then evaluation: test against requirements with normal, boundary and erroneous data (alpha/beta), then evaluate against the original requirements."]},
-    {"heading": "Testing and choosing a methodology", "points": ["Normal/valid data are typical in-range values that should be accepted.", "Boundary data are values at the edges of the acceptable range.", "Erroneous/invalid data are out-of-range values that should be rejected.", "Methodology questions are AO2/AO3: justify against scenario clues such as budget, deadline, clarity of requirements and risk rather than just describing."]}
+    {"heading": "The software development lifecycle", "points": ["Every methodology organises the same stages: analysis, design, development, testing, evaluation.", "Analysis investigates the problem, gathers requirements from stakeholders and assesses feasibility.", "Design plans data structures, algorithms, the user interface and input, output and file formats.", "Development writes the code in modules; testing and evaluation judge it against the requirements."], "note": "Learn the stages in order with one named output each: examiners reward stage-specific detail."},
+    {"heading": "Waterfall", "points": ["Linear and sequential: each stage is fully completed and signed off before the next begins.", "Merits: simple to manage, clear milestones, thorough documentation at every stage.", "Drawbacks: inflexible; changing requirements means going back up the waterfall, which is costly.", "The client only sees the finished product at the end, so misunderstandings surface late.", "Best when requirements are fixed, clear and unlikely to change, such as contractual work."]},
+    {"heading": "Agile", "points": ["Develops the product in short iterations, each delivering a working increment.", "Continuous client feedback shapes the next iteration, so changing requirements are absorbed cheaply.", "Merits: flexible, early usable software, close client involvement.", "Drawbacks: lighter documentation; final cost and timescale are hard to predict at the start.", "Best when requirements are unclear or expected to change."]},
+    {"heading": "Extreme programming (XP)", "points": ["An Agile methodology pushed to extremes for code quality.", "Pair programming: two developers share one machine, one typing while the other reviews.", "Tests are written before code (test-driven development) and run constantly.", "A customer representative sits within the team to answer questions immediately.", "Merit: very high quality code; drawback: staff-intensive and demands a committed on-site customer."]},
+    {"heading": "Spiral", "points": ["Iterative loops, each passing through objectives, risk analysis, development and planning quadrants.", "Risk analysis at the start of every loop identifies and mitigates the biggest hazards first.", "Merit: costly problems are caught early on large, high-risk projects.", "Drawbacks: expensive, complex to manage, and needs skilled risk assessors.", "Best for large, expensive projects where failure would be catastrophic."]},
+    {"heading": "RAD", "points": ["Rapid application development builds a partial prototype quickly from initial requirements.", "Users trial each prototype and their feedback drives the next refinement until it becomes the product.", "Merits: very fast delivery; works even when users cannot state requirements up front.", "Drawbacks: needs skilled developers and committed users; the result can be less robust and efficient.", "Best when the deadline is tight or requirements are vague."]},
+    {"heading": "Choosing a methodology for a scenario", "points": ["Read the scenario for clues: clarity of requirements, budget, deadline, risk, team size.", "Fixed, documented, contractual requirements point to Waterfall.", "Vague or volatile requirements point to Agile or RAD; tight deadlines strengthen RAD.", "Large budget with a high cost of failure points to Spiral.", "Marks come from linking each clue to a feature of the chosen methodology, not from description."], "note": "AO3 questions expect a justified choice plus an acknowledged trade-off of that choice."},
+    {"heading": "Writing and following algorithms", "points": ["An algorithm is a precise, ordered, finite set of steps that solves a problem.", "Writing one means stating unambiguous steps in sequence with clear inputs and outputs.", "Following one means tracing it exactly as written, recording every variable change in a trace table.", "Trace tables expose logic errors before any code is written."], "code": ["total = 0", "for i = 1 to 4", "   num = input(\"Enter a number\")", "   total = total + num", "next i", "print(total / 4)"]},
+    {"heading": "Test data: normal, boundary, erroneous", "points": ["Normal (valid) data: typical in-range values the program should accept.", "Boundary data: values at the exact edges of the range, still valid and accepted.", "Erroneous (invalid) data: out-of-range or wrong-type values the program should reject gracefully.", "A good test plan states the data, its type, the expected result and the actual result."], "note": "Boundary means the edge value itself, for example 0 and 50 for a 0 to 50 range, not just outside it."},
+    {"heading": "Testing across the lifecycle and evaluation", "points": ["Iterative methodologies test throughout development, not only in a final testing stage.", "Alpha testing is done in-house by the developers; beta testing by a limited group of real users.", "Beta feedback catches problems developers missed because real users behave unexpectedly.", "Evaluation judges the finished system against the original requirements: effective, usable, robust, maintainable."]}
   ],
-  "worked_example": {
-    "title": "Choosing a methodology for a high-risk banking system",
-    "steps": [
+  "worked_examples": [
+    {"title": "Choosing a methodology for a high-risk banking system", "steps": [
       "Read the scenario clues: large budget, high cost of failure, security-critical and long-lived.",
-      "Note that requirements are fairly known but the risk of expensive errors is the dominant concern.",
-      "Rule out Waterfall (no risk handling mid-project) and RAD (speed over robustness).",
+      "Note that requirements are fairly well known but the risk of expensive errors dominates.",
+      "Rule out Waterfall: no explicit risk handling once the project is mid-flow.",
+      "Rule out RAD: it prioritises speed over the robustness a bank demands.",
       "Select Spiral because each loop performs explicit risk analysis before continuing.",
-      "Justify: catching costly problems early on a high-cost project reduces the chance of expensive failure later.",
-      "Acknowledge the trade-off: Spiral is itself expensive and complex to manage, which the large budget can absorb."
-    ]
-  },
-  "task": "Create a one-page revision table listing the five methodologies, one scenario each suits, and one strength and one weakness of each.",
-  "challenge": "A startup is building a brand-new mobile app: requirements are unclear and expected to change, the budget is modest and the team is small but skilled. Recommend a methodology and justify it with at least three explicit links to these scenario clues, explaining why Waterfall would be unsuitable.",
+      "Justify: catching costly problems early on a high-cost project reduces the chance of expensive failure.",
+      "Acknowledge the trade-off: Spiral is itself expensive and complex, which the large budget can absorb."
+    ]},
+    {"title": "Designing a test plan for a quiz mark field accepting 0 to 50 inclusive", "steps": [
+      "State the rule precisely: accept whole numbers where mark is at least 0 and at most 50.",
+      "Normal data: 25, a typical in-range value; expected result accept.",
+      "Boundary data: 0 and 50, the exact edges of the range; both expected to be accepted.",
+      "Erroneous data: -1 and 51, one below and one above the range; both expected to be rejected.",
+      "Erroneous data of the wrong type: the text ten; expected to be rejected with an error message.",
+      "Check each value against the rule: 0 and 50 satisfy it, -1 and 51 do not, so the expectations are correct."
+    ]},
+    {"title": "Following an algorithm with a trace table", "steps": [
+      "Algorithm: total = 0, then loop i from 1 to 4 inputting num and adding it to total, then output total / 4.",
+      "Inputs supplied in order: 4, 8, 6, 2.",
+      "i = 1: num = 4, total = 0 + 4 = 4.",
+      "i = 2: num = 8, total = 4 + 8 = 12.",
+      "i = 3: num = 6, total = 12 + 6 = 18.",
+      "i = 4: num = 2, total = 18 + 2 = 20.",
+      "Loop ends; output total / 4 = 20 / 4 = 5, the mean of the four inputs."
+    ]}
+  ],
+  "activities": [
+    {"title": "Methodology expert jigsaw", "minutes": 20, "instructions": [
+      "Home groups of five number off: 1 Waterfall, 2 Agile, 3 XP, 4 Spiral, 5 RAD; experts regroup by number.",
+      "Expert groups agree the key idea, one strength, one weakness and the tell-tale scenario clue that says pick me.",
+      "Back in home groups each expert teaches for 60 seconds while listeners keep pens down.",
+      "Teacher reads three scenarios: a bank payroll system with legally fixed requirements; a startup that keeps changing its mind and needs something next month; crewed-flight software with a huge budget where failure is catastrophic.",
+      "Home groups hold up the methodology and the clue word that justified it, then everyone writes the strength and weakness of a methodology they did not teach."
+    ], "stretch": "Experts also state what their methodology costs you: Waterfall hides the product until the end, Agile has unpredictable cost, XP is staff-intensive, Spiral is expensive, RAD sacrifices robustness."},
+    {"title": "Waterfall to Agile decision continuum", "minutes": 10, "instructions": [
+      "Mark a line across the room: one wall is pure Waterfall, the other pure Agile.",
+      "Read scenarios one at a time: an air-traffic-control replacement with full documentation demanded up front; a social app for a market that shifts monthly; a client who will know what they want when they see it; a fixed-price contract with penalty clauses; a studio prototyping game ideas.",
+      "Students take a position and must name the scenario clue that put them there when interviewed.",
+      "Middle-standers must describe the hybrid they would actually run; then three students move to the opposite half and steelman that position."
+    ], "stretch": "Ask where Spiral lives on this line and why that is a trick question: it is iterative like Agile but heavyweight like Waterfall, and risk analysis is an axis the line does not show."},
+    {"title": "Doomed by design", "minutes": 10, "instructions": [
+      "Each student picks a project scenario and secretly assigns it the most catastrophically wrong methodology, such as Waterfall for a startup that pivots weekly or RAD for a pacemaker.",
+      "Pairs swap disasters; the partner narrates specifically how the project dies, naming the stage, the missing artefact and the raging stakeholder, using correct terminology.",
+      "The funniest technically accurate disaster is performed for the class in 30 seconds.",
+      "The class then prescribes the correct methodology and names the scenario clue that dictates it."
+    ], "stretch": "Ruin a project twice: show how even the right methodology fails when a precondition such as committed users, skilled developers or an available customer is missing."}
+  ],
+  "practice": [
+    {"q": "Describe the Waterfall methodology. (2)", "a": "A linear, sequential methodology (1) in which each stage is fully completed and signed off before the next begins (1)."},
+    {"q": "Explain why Agile is more suitable than Waterfall for a project whose requirements are likely to change. (3)", "a": "Agile works in short iterations delivering working increments (1); continuous client feedback means changed requirements are built into the next cycle (1); Waterfall fixes requirements at the start and changing them means repeating earlier stages at high cost (1)."},
+    {"q": "State two features of extreme programming that go beyond standard Agile development. (2)", "a": "Pair programming with two developers sharing one machine (1); test-driven development where tests are written before the code, or a customer representative embedded in the team (1)."},
+    {"q": "A national space agency is developing crewed-flight control software with a very large budget; failure would be catastrophic. Justify a suitable methodology. (4)", "a": "Spiral (1); each loop begins with explicit risk analysis so the most dangerous problems are found and mitigated early (1); on a high-cost, safety-critical project early risk discovery prevents catastrophic late failure (1); Spiral is complex and expensive but the very large budget can absorb this trade-off (1)."},
+    {"q": "A program accepts ages from 18 to 65 inclusive. Give one item of normal, one of boundary and one of erroneous test data, with the expected outcome of each. (3)", "a": "Normal: 40, accepted (1); boundary: 18 or 65, accepted (1); erroneous: 17, 66 or text such as abc, rejected with an error message (1)."},
+    {"q": "State the five stages of the software development lifecycle in order and name one output of the design stage. (3)", "a": "Analysis, design, development, testing, evaluation in that order (2); design outputs include data structures, algorithms, interface designs or input and output formats (1)."},
+    {"q": "Describe the difference between alpha testing and beta testing. (2)", "a": "Alpha testing is carried out in-house by the developers or their team (1); beta testing releases the software to a limited group of real end users who report problems (1)."},
+    {"q": "Explain one drawback of RAD for a system that must be highly robust. (2)", "a": "RAD builds the product from rapidly refined prototypes (1), so the final system can be less robust and efficient than one engineered from a full design, which is unacceptable where robustness is critical (1)."}
+  ],
+  "misconceptions": [
+    "Students often think boundary data means values just outside the range, but boundary values are the exact edges and should be accepted.",
+    "Students often think Agile means no planning or documentation, but it plans every iteration and documents more lightly, not never.",
+    "Students often think testing is a single stage after coding, but iterative methodologies test continuously throughout development.",
+    "Students often describe a methodology instead of justifying it, but scenario questions only reward choices linked to explicit scenario clues.",
+    "Students often think Spiral is just Agile with extra steps, but its defining feature is risk analysis at the start of every loop."
+  ],
+  "exam_link": [
+    "Command words: state and describe for 2 to 3 mark definitions; explain, compare and justify for applied questions.",
+    "Methodology choice questions run to 4 to 9 marks; the 9 mark extended response is levelled on AO3 justification quality.",
+    "Test data questions typically give a validation rule and ask for the three categories with expected outcomes, 3 to 6 marks.",
+    "Example stem: A small company is developing software for a client who is unsure of their requirements. Discuss which methodology the company should use. (9)"
+  ],
+  "task": "Create a one-page revision table for the five methodologies: key idea, one merit, one drawback, the tell-tale scenario clue, and one scenario each suits.",
+  "challenge": "A startup is building a brand-new mobile app: requirements are unclear and expected to change, the budget is modest and the team is small but skilled. Recommend a methodology with at least three explicit links to these clues, explain why Waterfall is unsuitable, and design a five-row test plan for the app's age field accepting 13 to 120 inclusive.",
   "exit_ticket": [
-    {"q": "Name the three categories of test data with a one-line description of each.", "a": "Normal/valid (typical in-range, accepted), boundary (at the edges of the range), erroneous/invalid (out of range, rejected)."},
-    {"q": "Give one advantage and one disadvantage of Waterfall.", "a": "Advantage: simple and well documented; disadvantage: inflexible and the client only sees the product at the end."},
-    {"q": "Why is Agile often better than Waterfall when requirements are unclear or likely to change?", "a": "It works in iterative increments with continuous client feedback, so new or changed requirements are built into the next iteration rather than fixed at the start."}
+    {"q": "Name the three categories of test data and give an example of each for a range of 1 to 100 inclusive.", "a": "Normal, for example 50; boundary, for example 1 or 100; erroneous, for example 0, 101 or text such as abc."},
+    {"q": "Give one merit and one drawback of Waterfall.", "a": "Merit: simple, well documented with clear milestones; drawback: inflexible and the client only sees the product at the end."},
+    {"q": "Which methodology puts risk analysis at the centre of every loop, and what kind of project suits it?", "a": "Spiral; large, expensive, high-risk projects where failure would be very costly."}
   ]
 }

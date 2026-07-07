@@ -1,51 +1,119 @@
 {
   "subtopic": "2.1.2 Thinking Ahead",
   "spec": "OCR H446 — Component 02",
+  "week": "Week 06 (05 Oct)",
   "objectives": [
-    "Identify the inputs and outputs of a routine, distinguishing them from internal processes.",
-    "Explain preconditions, caching and reusable components, including the benefits and trade-offs of caching.",
-    "Apply thinking ahead to plan an unseen routine before coding it."
+    "I can identify the inputs and outputs of a routine, distinguishing them from internal processes.",
+    "I can state preconditions for a routine and explain the consequences of not meeting them.",
+    "I can explain caching and prefetching, pairing each benefit with its trade-off.",
+    "I can justify the use of reusable program components in a given scenario."
   ],
   "retrieval": [
-    {"q": "What is a precondition?", "a": "A condition that must be true before a routine can run correctly, e.g. a list sorted before binary search."},
-    {"q": "Give the main benefit and main trade-off of caching.", "a": "Benefit: faster reuse with less recompute/traffic. Trade-off: extra storage and data can become stale."},
-    {"q": "Name two benefits of a reusable component.", "a": "Faster development and fewer bugs because it is pre-tested; also consistency and easier maintenance."},
-    {"q": "Why is 'validate the data' an input/output trap?", "a": "It is a process that transforms data, not data flowing in or a result flowing out."},
-    {"q": "Interleaving (2.1.1): how does abstraction differ from thinking ahead?", "a": "Abstraction removes irrelevant detail to simplify a model; thinking ahead plans inputs, outputs, preconditions and reuse before coding."}
+    {"q": "From 2.1.1: define abstraction.", "a": "Removing or hiding unnecessary detail so only information relevant to the problem remains."},
+    {"q": "From 2.1.1: what is the difference between representational abstraction and generalisation?", "a": "Representational abstraction removes detail from one specific thing; generalisation groups many things by shared characteristics."},
+    {"q": "From 1.2.1: describe round robin scheduling in one sentence.", "a": "Each process gets a fixed time slice (quantum) of CPU time in turn, pre-emptively, so all are treated fairly."},
+    {"q": "From 1.2.1: state the difference between paging and segmentation.", "a": "Paging uses fixed-size physical blocks; segmentation uses variable-size logical blocks matching the program's structure."},
+    {"q": "From 1.2.1: why does the OS push register contents onto a stack when servicing an interrupt?", "a": "To save the interrupted program's state so it can be popped back and resumed; LIFO order supports nested interrupts."}
   ],
   "keywords": [
-    {"term": "Input", "def": "Data passed into a routine, e.g. quantity and delivery address for an order."},
-    {"term": "Output", "def": "A result produced by a routine, e.g. dispensed cash and an updated balance."},
-    {"term": "Process", "def": "A step that transforms data inside a routine; not an input or output."},
-    {"term": "Precondition", "def": "A condition that must be true before a routine runs correctly."},
-    {"term": "Caching", "def": "Storing an expensive or frequently used result in fast storage for quick reuse."},
-    {"term": "Stale data", "def": "Cached data that is out of date because the source has changed since it was stored."},
+    {"term": "Input", "def": "Data supplied to a routine, such as the number of seats requested by a customer."},
+    {"term": "Output", "def": "A result produced by a routine, such as a booking confirmation reference."},
+    {"term": "Process", "def": "A step that transforms data inside a routine; it is neither an input nor an output."},
+    {"term": "Precondition", "def": "A condition that must be true before a routine can run correctly."},
+    {"term": "Caching", "def": "Storing expensive or frequently used results in fast storage so they can be reused quickly."},
+    {"term": "Prefetching", "def": "Fetching data or instructions into fast storage before they are requested, anticipating they will be needed."},
+    {"term": "Stale data", "def": "Cached data that is out of date because the original source has changed."},
     {"term": "Cache invalidation", "def": "Refreshing or discarding cached data so stale values are not served."},
-    {"term": "Reusable component", "def": "A self-contained, generalised, pre-tested module that can be dropped into many programs."}
+    {"term": "Reusable component", "def": "A self-contained, generalised, pre-tested module that can be used in many programs."}
   ],
   "content": [
-    {"heading": "Inputs and outputs", "points": ["Inputs are data in; outputs are results out.", "Internal processes (e.g. validating, applying a discount) are neither.", "Listing real inputs/outputs first shapes the rest of the design."]},
-    {"heading": "Preconditions", "points": ["A condition that must hold before a routine runs correctly.", "Example: a list must be sorted before binary search will work.", "If unchecked, the routine may give wrong results or fail."]},
-    {"heading": "Caching", "points": ["Store expensive/frequent results in fast storage for reuse.", "Benefit: faster responses and less recomputation or network traffic.", "Trade-off: extra storage and data can go stale, so it needs invalidation."]},
-    {"heading": "Reusable components", "points": ["Self-contained, generalised modules used across many programs.", "Benefits: faster development, fewer bugs (pre-tested), consistency.", "Also easier maintenance — fix once and every user benefits."]},
-    {"heading": "Exam technique", "points": ["Name actual inputs/outputs, the precondition, what to cache and what to reuse.", "When asked to discuss caching, give both a benefit and a trade-off.", "Apply to the scenario — generic definitions score poorly."]}
+    {"heading": "What thinking ahead means", "points": ["Planning a solution before writing any code.", "Identify the inputs, outputs and preconditions of each routine.", "Decide what is worth caching and which existing components to reuse.", "Planning reduces wasted work and catches design problems early."]},
+    {"heading": "Inputs and outputs", "points": ["Inputs are data flowing into a routine.", "Outputs are results flowing out of it.", "Example: a ticket-price routine takes age and time; it returns a price.", "Listing real inputs and outputs first shapes the whole design."]},
+    {"heading": "The process trap", "points": ["Actions like validating, sorting and calculating are processes, not inputs or outputs.", "The card number is the input; validating it is a process.", "Test each item: is it data going in, or a result coming out?", "Examiners regularly penalise processes listed as inputs or outputs."], "note": "If it is a verb, it is almost certainly a process."},
+    {"heading": "Preconditions", "points": ["A condition that must be true before a routine runs correctly.", "A list must be sorted before a binary search will work.", "A divisor must be non-zero before dividing.", "A user must be logged in before their account page loads.", "State a precondition as something checkable before the routine starts."]},
+    {"heading": "Handling preconditions in practice", "points": ["Option 1: check the condition inside the routine and fail safely.", "Option 2: state the precondition in documentation, so the caller must guarantee it.", "Documented preconditions keep routines shorter and faster.", "Checked preconditions make routines safer to reuse anywhere."], "code": ["function divide(a, b)", "  if b == 0 then", "    return \"error: divisor is zero\"", "  endif", "  return a / b", "endfunction"]},
+    {"heading": "Caching", "points": ["Store expensive or frequently used results in faster storage for reuse.", "Avoids recomputing values or repeating slow network and database requests.", "Examples: browser caching images, CPU cache, DNS lookups, a seat map.", "Benefit: faster responses and less load on the source."]},
+    {"heading": "Caching trade-offs", "points": ["Caches consume extra memory or storage.", "Cached data goes stale when the source changes.", "Stale data must be invalidated: refreshed or discarded.", "Deciding what to cache, and when to refresh it, is difficult.", "Rapidly changing data, like live scores, is a poor caching candidate."], "note": "Exam rule: always pair a caching benefit with its trade-off."},
+    {"heading": "Prefetching", "points": ["Fetching data or instructions before they are actually requested.", "The system anticipates what will be needed next and loads it early.", "Example: a browser fetching a linked page while you read the current one.", "Benefit: no waiting when the request arrives.", "Trade-off: a wrong guess wastes memory, bandwidth and time."]},
+    {"heading": "Reusable components", "points": ["Self-contained, generalised modules usable across many programs.", "Examples: payment processing, login and authentication, date validation.", "Benefits: faster development and fewer bugs, because they are already tested.", "They also give consistency and easier maintenance: fix once, everyone benefits."]},
+    {"heading": "Trade-offs of reuse and exam application", "points": ["A ready-made component may not fit the exact requirements.", "Integrating and learning someone else's code takes effort.", "An update to a shared component can break every program using it.", "In exams, apply everything to the scenario: name its actual inputs, outputs, precondition, cache target and reusable modules."]}
   ],
-  "worked_example": {
-    "title": "Planning a 'display personalised news feed' routine before coding",
-    "steps": [
-      "Inputs: the user ID, their follow/friend list and post timestamps.",
-      "Output: an ordered list of posts rendered to the feed.",
-      "Precondition: the user must be logged in and their profile loaded before a personalised feed can be built.",
-      "Caching: cache recently fetched posts so reopening the app is fast and server requests drop.",
-      "Trade-off of that cache: it can go stale, so it must be refreshed/invalidated periodically.",
-      "Reusable component: reuse an existing date/time-formatting or image-loading module instead of rewriting it, saving time and bugs."
-    ]
-  },
-  "task": "A flight-booking website is being planned. For its 'calculate total price' routine, identify two inputs and one output, state one precondition, and decide one value worth caching — giving one benefit and one trade-off of caching it in this scenario.",
-  "challenge": "A company is building three apps that all need date validation. Justify writing it as one reusable component rather than three copies, then explain one situation where a shared component could be a disadvantage.",
+  "worked_examples": [
+    {"title": "Planning an online cinema booking system before coding", "steps": [
+      "Inputs: film choice, date and time, number of seats, seat selection, payment details.",
+      "Outputs: seat allocation, booking confirmation and reference, updated seat map. Note that validating card details is a process, not an input or output.",
+      "Precondition: the requested seats must still be available before the booking is confirmed, checkable as seatsRequested <= seatsAvailable.",
+      "Caching: cache the seat map and showtimes so repeated page loads do not re-query the database every time.",
+      "Invalidation: when any booking is made, the cached seat map must be refreshed or it will show sold seats as free (stale data).",
+      "Reusable components: an existing payment module and date-validation routine, already tested elsewhere, speed development and reduce bugs."
+    ]},
+    {"title": "Why a sorted list is a precondition for binary search", "steps": [
+      "Binary search assumes the list is sorted: it compares the middle item and discards half the list each time.",
+      "Take the unsorted list [12, 3, 41, 7, 20] and search for 7 (indices 0 to 4).",
+      "First pass: low = 0, high = 4, mid = 2, item = 41. Since 7 < 41, search the left half: high becomes 1.",
+      "Second pass: low = 0, high = 1, mid = 0, item = 12. Since 7 < 12, high becomes -1.",
+      "Now low > high, so the search reports not found, yet 7 is in the list at index 3.",
+      "The routine ran without crashing but gave a wrong answer: this is why the precondition (list is sorted) must be guaranteed or checked before the routine runs."
+    ]},
+    {"title": "A caching decision for a live sports website", "steps": [
+      "The site serves live match scores, club history pages, and the site logo and layout files.",
+      "Live scores: a poor caching candidate. They change constantly, so cached copies go stale within seconds and would show wrong scores.",
+      "Club history pages: a good candidate. They are requested often, rarely change, and are expensive to build from the database.",
+      "Logo and layout: an excellent candidate. Identical for every visitor and request.",
+      "Policy written as benefit plus trade-off: cache history pages for 24 hours to cut database load (benefit), accepting a day-old page at worst and refreshing on edit (managed trade-off).",
+      "Conclusion: caching is selective. Decide per item using how often it changes versus how often and how expensively it is fetched."
+    ]}
+  ],
+  "activities": [
+    {"title": "The Library Runner: a human cache", "minutes": 20, "instructions": [
+      "Set up a library table at the far end of the room with 8 fact cards (capital cities) and a CPU desk at the front with a cache tray that holds only 3 cards; one student is the runner.",
+      "Round 1, no cache: call requests one at a time from a list where some facts repeat (France, Japan, France, Brazil, France, Japan, Egypt, France); the runner jogs to the library each time. Time 8 requests.",
+      "Round 2, with cache: same list, but the runner may keep up to 3 cards in the tray, checking it first (a hit is instant) and choosing a card to evict when full. Time 8 requests and compare.",
+      "Round 3, stale data: secretly swap the France card in the library for one reading 'capital: Marseille (updated!)'; serve a France request from cache and let the class spot the out-of-date answer. Name it stale data and discuss invalidation.",
+      "Debrief into notes: caching stores expensive or frequent results in faster storage; benefits are speed and less traffic; trade-offs are limited capacity (eviction) and staleness."
+    ], "stretch": "Give the runner a written eviction policy (least recently used versus evict newest) and re-run; can students craft a request list where the other policy wins?"},
+    {"title": "Spec it before you build it", "minutes": 15, "instructions": [
+      "Give each pair a scenario: cinema seat-booking system, vending machine, penalty-shootout game or school attendance app, plus a grid with four boxes: Inputs, Outputs, Preconditions, What we would cache.",
+      "Think (3 minutes, silent): each student fills the grid alone.",
+      "Pair (5 minutes): merge grids using two audit rules: is each input really data going in, or a process? Is each precondition checkable before the routine runs?",
+      "Share: pairs read one item per box while the class plays process police, challenging anything like 'validate the card number' listed as an input (the card number is the input).",
+      "Model answer for cinema: inputs film, time, seats, payment; outputs confirmation, e-ticket, updated seat map; preconditions screening exists and seats requested <= seats available; cache the seat map of popular screenings."
+    ], "stretch": "Pairs name one reusable component their system should import rather than write (payment, login, date picker) with two benefits: pre-tested so fewer bugs, and faster development."},
+    {"title": "Thinking-ahead element sort", "minutes": 15, "instructions": [
+      "Give trios header cards (Input, Output, Precondition, Caching decision, Reusable component) and about 18 item cards from one food-delivery app scenario: customer's postcode, estimated delivery time shown to user, the restaurant list for a postcode searched five times tonight, driver must be logged in before accepting jobs, payment-processing module, basket must not be empty before checkout, order confirmation email, map and geocoding library, 'validate the postcode' (trap), tonight's surge-pricing multiplier (trap), basket contents, receipt PDF.",
+      "Trios sort all cards; every Caching decision card needs a scribbled benefit and risk, and every Precondition must be rewritten as a checkable condition such as basketSize > 0.",
+      "Compare with a neighbouring trio and resolve differences before the whole-class check.",
+      "Key answers: 'validate the postcode' fits no header because it is a process; the surge multiplier is a poor caching candidate (changes rapidly, goes stale fast), unlike the popular restaurant list; payment, login and maps are reusable components."
+    ], "stretch": "Trios add an invalidation rule for each cached item, e.g. refresh the restaurant list when a restaurant changes status, or expire after 10 minutes."}
+  ],
+  "practice": [
+    {"q": "A vending machine program dispenses drinks. Identify two inputs to and two outputs from the program. [4]", "a": "Inputs: the money inserted and the drink selection (1 each). Outputs: the drink dispensed and the change given (a display message is also acceptable) (1 each)."},
+    {"q": "State one precondition of a binary search function and explain what may happen if it is not met. [3]", "a": "The list must be sorted before the search runs (1). If not, half the list may be discarded while it still contains the target (1), so the function can report not found even though the value is present (1)."},
+    {"q": "A news website stores a copy of its homepage in a cache. Explain one benefit and one drawback of doing this. [4]", "a": "Benefit: the page is served from fast storage without rebuilding it (1), giving quicker responses and less server and database load (1). Drawback: when a story is edited the cached copy becomes stale (1), so out-of-date news is shown unless the cache is invalidated (1)."},
+    {"q": "Describe what is meant by prefetching. [2]", "a": "Data or instructions are fetched into faster storage before they are requested (1), anticipating that they will be needed next so there is no wait when the request arrives (1)."},
+    {"q": "A developer uses a pre-written, pre-tested payment module rather than writing their own. Give two benefits of using this reusable component. [2]", "a": "Any two: development is faster because the code already exists; fewer bugs because it is already tested; consistency across programs; easier maintenance since a fix benefits every program using it (1 each)."},
+    {"q": "A student lists 'validate the password' as an input to a login routine. Explain why this is incorrect and state a correct input. [2]", "a": "Validating is a process that transforms or checks data inside the routine, not data flowing in (1). A correct input is the password (or username) entered by the user (1)."},
+    {"q": "A weather app caches forecast data on the phone. Explain why this cache must be invalidated regularly. [2]", "a": "The forecast at the source changes frequently, so the cached copy becomes stale (1); without refreshing or discarding it, the app would keep displaying an out-of-date forecast (1)."},
+    {"q": "State two things a programmer should determine about a routine when thinking ahead, before writing it. [2]", "a": "Any two: its inputs, its outputs, its preconditions, what data is worth caching, which reusable components could be used instead of new code (1 each)."}
+  ],
+  "misconceptions": [
+    "Students often list processes (validate, sort, calculate) as inputs or outputs; inputs and outputs are data, and if the item is a verb it is a process.",
+    "Students often give only the benefit of caching; examiners expect the benefit paired with the trade-off of storage cost and stale data needing invalidation.",
+    "Students often think a precondition is a check performed during the routine; it is a condition that must already be true before the routine starts.",
+    "Students often confuse prefetching with caching; caching keeps results already fetched, while prefetching loads data early, before it has been requested.",
+    "Students often treat reuse as copy-and-paste; a reusable component is a self-contained, generalised, tested module, and pasted copies must each be fixed separately."
+  ],
+  "exam_link": [
+    "Command words: identify and state for inputs, outputs and preconditions (1-2 marks); explain and describe for caching and prefetching (2-4 marks); discuss for reuse decisions.",
+    "Questions are scenario-based: marks come from naming the scenario's actual inputs, outputs, precondition and cache target, not generic definitions.",
+    "Caching questions typically award 2 for the benefit and 2 for the trade-off; one-sided answers cap at half marks.",
+    "Example stem: 'An online store is being designed. Identify two inputs to the checkout routine and state one precondition that must be met before payment is taken.' [3]"
+  ],
+  "task": "A flight-booking website is being planned. For its 'calculate total price' routine: identify three inputs and one output, state one checkable precondition, choose one value worth caching with a paired benefit and trade-off plus its invalidation trigger, and name one reusable component the site should import rather than write, with a justification.",
+  "challenge": "A company builds three apps that all need date validation. Justify writing it once as a reusable component rather than three copies, explain one situation where the shared component becomes a disadvantage, then extend the argument to caching: describe one piece of data all three apps could share from one cache and the staleness risk that creates.",
   "exit_ticket": [
-    {"q": "In an online shop's 'place order' routine, classify: the customer's address, the confirmation email, validating the card number.", "a": "Address = input; confirmation email = output; validating the card number = process (neither)."},
-    {"q": "Why must a login routine run before the account page is shown, and what could go wrong if it didn't?", "a": "Authentication is a precondition; without it an unauthenticated user could see private data or the page could error on missing data."},
-    {"q": "State one benefit and one trade-off of caching currency rates on a booking site.", "a": "Benefit: rates load fast from local storage, reducing traffic. Trade-off: rates can go stale and quote out-of-date prices unless invalidated."}
+    {"q": "In an online shop's 'place order' routine, classify these: the customer's address, the confirmation email, validating the card number.", "a": "Address is an input; confirmation email is an output; validating the card number is a process, neither input nor output."},
+    {"q": "State one benefit and one trade-off of caching currency exchange rates on a booking site.", "a": "Benefit: rates load instantly from local storage, reducing traffic. Trade-off: rates go stale and quote wrong prices unless the cache is invalidated regularly."},
+    {"q": "What is the difference between caching and prefetching?", "a": "Caching stores results that have already been fetched or computed for reuse; prefetching loads data before it is requested, anticipating it will be needed."}
   ]
 }

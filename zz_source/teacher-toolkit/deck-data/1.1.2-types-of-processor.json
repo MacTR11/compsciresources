@@ -1,12 +1,218 @@
 {
   "subtopic": "1.1.2 Types of Processor",
   "spec": "OCR H446 — Component 01",
-  "objectives": ["Explain the differences between CISC and RISC processors and where each is used", "Describe GPUs and their uses, including general-purpose (non-graphics) applications", "Apply knowledge of multicore and parallel processing to justify a processor choice for a given workload"],
-  "retrieval": [{"q": "From 1.1.1, what is the key feature of the Von Neumann architecture?", "a": "A single shared memory and bus for both data and instructions."}, {"q": "From 1.1.1, which architecture can fetch an instruction at the same time as reading/writing data, and why?", "a": "Harvard, because it has separate memories and buses for instructions and data."}, {"q": "From 1.1.1, why does adding more cores not always improve performance?", "a": "Only if the task can be parallelised and the software supports it; sequential or dependent tasks gain little."}, {"q": "From 1.1.1, what does the width of the address bus determine?", "a": "The maximum number of addressable memory locations, calculated as 2^n."}, {"q": "From 1.1.1, what is pipelining and what does it improve?", "a": "Overlapping the fetch, decode and execute stages of consecutive instructions, increasing instruction throughput."}],
-  "keywords": [{"term": "CISC", "def": "Complex Instruction Set Computer; many complex variable-length instructions with complexity in hardware; used in x86 desktops."}, {"term": "RISC", "def": "Reduced Instruction Set Computer; few simple fixed-length instructions aiming for one cycle each; used in ARM mobile/embedded."}, {"term": "GPU", "def": "Many-core processor that applies the same operation to large blocks of data in parallel (data parallelism)."}, {"term": "GPGPU", "def": "General-purpose computing on a GPU for non-graphics tasks such as machine learning, simulation and hashing."}, {"term": "Multicore processor", "def": "A chip containing two or more independent cores, each able to run its own fetch-decode-execute cycle."}, {"term": "Parallel processing", "def": "Carrying out multiple computations simultaneously by splitting a task across cores."}, {"term": "Data parallelism", "def": "Applying the same operation to many independent data items at the same time."}, {"term": "Data dependency", "def": "When one step needs the result of a previous step, forcing the work to run sequentially."}],
-  "content": [{"heading": "CISC vs RISC", "points": ["CISC has many complex, variable-length, multi-cycle instructions with complexity in hardware; RISC has few simple, fixed-length instructions aiming for one cycle each", "RISC is easier to pipeline (uniform, single-cycle instructions) and uses less power, making it ideal for battery devices", "Typical use: CISC in x86 desktops/laptops; RISC in ARM mobile phones and embedded systems"]}, {"heading": "Where the complexity lies", "points": ["CISC keeps complexity in hardware, so each task needs fewer instructions and less compiler effort", "RISC pushes complexity to the software/compiler, so programs need more instructions and more RAM", "Modern x86 chips internally translate CISC instructions into RISC-like micro-ops"]}, {"heading": "GPUs and GPGPU", "points": ["A GPU has thousands of small cores applying the same operation to large data sets in parallel (data parallelism)", "Graphics use: transforming and shading many pixels/vertices of a 3D scene simultaneously", "GPGPU (non-graphics) uses: machine-learning/neural-network training, scientific simulation, image/video processing, crypto hashing"]}, {"heading": "Multicore and parallel systems", "points": ["Multicore CPUs contain several independent cores that can process instructions at the same time", "Parallel processing splits a task across cores, but the software must be written to use them", "Tasks parallelise poorly with data dependency, coordination overhead or an inherently sequential algorithm (limited by the serial fraction)"]}],
-  "worked_example": {"title": "Choosing CPU vs GPU for a data-parallel workload", "steps": ["Identify the workload: the same calculation applied to millions of independent data points with little branching", "Recognise this as highly data-parallel, which suits many small cores working simultaneously", "Match to a GPU: thousands of cores maximise throughput across the data points in parallel", "Note the caveat: the software must be written to use the GPU, and very branchy/dependent code would suit a CPU", "Conclude with justification: the GPU is the better choice here because it processes far more data points at once"]},
-  "task": "Produce a comparison table for CISC vs RISC (instruction set, instruction length, cycles per instruction, where the complexity lies, power, typical use), then write one or two sentences on when a GPU beats a multicore CPU and why.",
-  "challenge": "A program sorts a list and then searches it, and the search cannot begin until the sort finishes. Explain, using the terms data dependency and serial fraction, why running this on a multicore CPU gives only limited speed-up.",
-  "exit_ticket": [{"q": "Give one reason RISC is preferred in mobile phones.", "a": "It uses lower power (simple fixed-length instructions), extending battery life; it is also easier to pipeline."}, {"q": "Why is a GPU faster than a CPU for rendering 3D graphics?", "a": "It has thousands of small cores that process many pixels/vertices in parallel rather than sequentially."}, {"q": "Why do some tasks gain little from extra cores?", "a": "Data dependency or an inherently sequential algorithm forces steps to run one after another, and coordination adds overhead (the serial fraction limits speed-up)."}]
+  "week": "Week 03 (14 Sep)",
+  "objectives": [
+    "I can give distinct differences between CISC and RISC processors and link each to a typical use",
+    "I can explain how a GPU achieves high performance and identify workloads suited to GPUs, including GPGPU uses",
+    "I can describe multicore and parallel systems and explain what limits the benefit of adding cores",
+    "I can justify a choice of processor type for a given scenario using hardware features"
+  ],
+  "retrieval": [
+    {"q": "Last week: list the four fetch-stage register transfers in order.", "a": "PC copied to MAR; instruction from memory via data bus into MDR; PC incremented; MDR copied to CIR."},
+    {"q": "Last week: which bus is unidirectional, and what does an n-bit width of it determine?", "a": "The address bus; n bits gives 2^n directly addressable memory locations."},
+    {"q": "Last week: state the difference between the MAR and the MDR.", "a": "MAR holds the address of the location to access; MDR holds the data or instruction itself."},
+    {"q": "Last week: why does a branch instruction reduce the benefit of pipelining?", "a": "It writes a new address into the PC, so prefetched instructions in the pipeline must be flushed."},
+    {"q": "Last week: in what order does the CPU check cache levels before RAM?", "a": "L1, then L2, then L3, then RAM; L1 is the smallest and fastest."}
+  ],
+  "keywords": [
+    {"term": "CISC", "def": "Complex Instruction Set Computer; a large set of complex, variable-length instructions taking multiple cycles."},
+    {"term": "RISC", "def": "Reduced Instruction Set Computer; a small set of simple, fixed-length instructions aiming for one cycle each."},
+    {"term": "Instruction set", "def": "The complete collection of machine-code operations a particular processor can execute."},
+    {"term": "GPU", "def": "Graphics Processing Unit; thousands of small cores applying the same operation to large data blocks in parallel."},
+    {"term": "GPGPU", "def": "General-purpose computing on a GPU; using it for non-graphics work such as machine learning."},
+    {"term": "Data parallelism", "def": "Applying the same operation independently to many data items at the same time."},
+    {"term": "Multicore processor", "def": "A single chip containing two or more independent cores, each running its own FDE cycle."},
+    {"term": "Parallel processing", "def": "Splitting a task so multiple computations are carried out simultaneously across cores or processors."},
+    {"term": "Serial fraction", "def": "The part of a task that must run in sequence and so cannot be shared across cores."}
+  ],
+  "content": [
+    {
+      "heading": "Instruction sets: two design philosophies",
+      "points": [
+        "An instruction set is the full list of machine-code operations a CPU understands",
+        "Designers face a trade-off: many powerful instructions, or few simple ones executed very fast",
+        "CISC and RISC are the two resulting philosophies, and both are on the spec",
+        "Last week's architecture (registers, FDE, pipeline) explains why each choice has consequences"
+      ]
+    },
+    {
+      "heading": "CISC: Complex Instruction Set Computers",
+      "points": [
+        "Large set of complex instructions; a single instruction can do several low-level jobs",
+        "Instructions are variable length and take multiple clock cycles",
+        "Complexity sits in the HARDWARE, so compilers do less work and machine code is compact",
+        "Needs more power and generates more heat; typical of x86 desktop and laptop processors"
+      ]
+    },
+    {
+      "heading": "RISC: Reduced Instruction Set Computers",
+      "points": [
+        "Small set of simple, fixed-length instructions, each aiming to complete in one clock cycle",
+        "Complexity moves to the SOFTWARE: the compiler builds complex behaviour from many simple instructions",
+        "Fewer transistors needed, so lower power consumption and less heat",
+        "Typical of ARM processors in phones, tablets and embedded devices"
+      ]
+    },
+    {
+      "heading": "Why RISC pipelines so well",
+      "points": [
+        "Pipelining works best when every stage takes the same, predictable time",
+        "Fixed-length, one-cycle RISC instructions slot cleanly into pipeline stages",
+        "Variable-length, multi-cycle CISC instructions stall stages and complicate the pipeline",
+        "Modern x86 chips even translate CISC instructions into RISC-like micro-operations internally"
+      ],
+      "note": "Exam answers need DISTINCT differences: set size, instruction length, cycles per instruction, where complexity lies."
+    },
+    {
+      "heading": "Choosing CISC or RISC for a scenario",
+      "points": [
+        "Battery-powered or embedded device: RISC, for low power, less heat and cheap simple hardware",
+        "Desktop running legacy software: CISC (x86), for compatibility and compact code",
+        "Give the hardware justification, not just the label: instruction length, cycles, power, pipelining",
+        "The real world is blurring: Apple Silicon laptops are RISC; many servers now use ARM"
+      ]
+    },
+    {
+      "heading": "GPUs: built for data parallelism",
+      "points": [
+        "A GPU contains thousands of small, simple cores; a CPU has a few powerful ones",
+        "GPU cores apply the SAME operation to large blocks of data simultaneously (data parallelism)",
+        "Perfect for graphics: the same transformation applied to millions of pixels or vertices per frame",
+        "Weak at branch-heavy, sequential, dependency-laden work — that still belongs on the CPU"
+      ],
+      "note": "Explain GPU speed with BOTH ideas: thousands of cores AND the same operation on many data items."
+    },
+    {
+      "heading": "GPGPU: general-purpose uses of GPUs",
+      "points": [
+        "GPGPU means using a GPU for non-graphics computation",
+        "Machine learning and neural-network training: the same weight calculations across huge data sets",
+        "Scientific modelling, e.g. weather simulation over a grid of cells",
+        "Image and video processing, and cryptocurrency hash calculations",
+        "Caveat: software must be specifically written to run on the GPU"
+      ]
+    },
+    {
+      "heading": "Multicore processors",
+      "points": [
+        "A multicore processor has two or more independent cores on one chip",
+        "Each core runs its own FDE cycle, so different instructions execute simultaneously",
+        "Cores typically have private L1 and L2 caches but share L3 cache and main memory",
+        "The operating system schedules threads and processes across the cores"
+      ]
+    },
+    {
+      "heading": "Parallel processing and its limits",
+      "points": [
+        "Parallel processing splits one task into parts computed simultaneously across cores",
+        "The serial fraction limits the benefit: steps depending on earlier results cannot be parallelised",
+        "Coordination overhead: splitting work and combining results costs time",
+        "Software must be written for multiple threads, or extra cores sit idle",
+        "If 20 percent of a task is inherently serial, the best possible speed-up is 5 times"
+      ]
+    }
+  ],
+  "worked_examples": [
+    {
+      "title": "Choosing between a multicore CPU and a GPU for a workload",
+      "steps": [
+        "Scenario: apply the same brightness calculation to every one of the 2 million pixels in a photo",
+        "Step 1, identify the workload type: the same operation repeated over huge data, no branching, each pixel independent — highly data-parallel",
+        "Step 2, match to hardware: a GPU's thousands of small cores process many pixels simultaneously; a CPU's few powerful cores suit sequential, branch-heavy work",
+        "Step 3, add the caveat: the software must be written to use the GPU; a branchy task like a chess engine would suit the CPU instead",
+        "Step 4, conclude: for this uniform, massively parallel task the GPU maximises throughput, so it is the better choice"
+      ]
+    },
+    {
+      "title": "Counting cycles: why RISC pipelines beat serial execution",
+      "steps": [
+        "A RISC processor runs 6 fixed-length instructions through a 3-stage pipeline (fetch, decode, execute)",
+        "Without pipelining: 6 instructions x 3 cycles = 18 cycles",
+        "With pipelining: the first instruction completes at cycle 3, then one completes every cycle: total = 6 + 3 - 1 = 8 cycles",
+        "Speed-up = 18 / 8 = 2.25 times for this run",
+        "Why CISC struggles: variable-length, multi-cycle instructions make the stages uneven, causing stalls that reduce this gain"
+      ]
+    },
+    {
+      "title": "The serial-fraction limit on multicore speed-up",
+      "steps": [
+        "A task takes 100 seconds on one core; 80 seconds of it is parallelisable, 20 seconds is inherently serial",
+        "With 4 cores, the parallel part takes 80 / 4 = 20 seconds; total = 20 + 20 = 40 seconds, i.e. 2.5 times faster",
+        "With 80 cores, the parallel part takes 80 / 80 = 1 second; total = 20 + 1 = 21 seconds",
+        "Even with unlimited cores the total can never drop below the 20-second serial part",
+        "So the maximum possible speed-up is 100 / 20 = 5 times — the serial fraction caps the benefit"
+      ]
+    }
+  ],
+  "activities": [
+    {
+      "title": "RISC or CISC? Decision Continuum",
+      "minutes": 10,
+      "instructions": [
+        "Mark an imaginary line across the room: one wall is definitely RISC, the other definitely CISC",
+        "Read a scenario; students stand along the line — no fence-sitting in the exact middle without a spoken reason",
+        "Scenarios: a fitness tracker running two weeks on a coin cell; a desktop workstation running legacy x86 software; a drone flight controller; a data-centre server prioritising performance per watt; the student's own laptop",
+        "Interview outliers and clusters: what feature of the scenario put you there?",
+        "After each scenario one student must give the hardware justification (instruction length, cycles per instruction, power, pipelining) before moving on",
+        "Expected: tracker RISC; legacy desktop CISC; drone RISC; server defensibly RISC (ARM); laptop genuinely mixed — reward students who ask which laptop"
+      ],
+      "stretch": "Modern x86 chips translate CISC instructions into RISC-like micro-ops internally — does the distinction still matter? Defend a position."
+    },
+    {
+      "title": "CPU or GPU? Corner Sort",
+      "minutes": 8,
+      "instructions": [
+        "Label two corners CPU and GPU, plus a third spot labelled It Depends",
+        "Read a workload; students walk to a corner within five seconds, then justify on request",
+        "Workloads: training a neural network; applying a filter to every pixel of a photo; running the OS scheduler; a chess engine searching deep branching game trees; mining cryptocurrency hashes; simulating weather across a grid; parsing source code",
+        "Expected: GPU for neural network, pixel filter, hashing, weather grid (same operation, huge data); CPU for scheduler, chess search, parsing (sequential, branchy, dependent)",
+        "Finish: every student writes the rule of thumb in one sentence on a whiteboard"
+      ],
+      "stretch": "If 20 percent of a task is inherently serial, what is the best possible speed-up however many cores you add? (5 times.)"
+    },
+    {
+      "title": "Analogy Autopsy: 1,000 Pupils vs 4 Professors",
+      "minutes": 8,
+      "instructions": [
+        "Display the analogy: a GPU is 1,000 primary-school pupils each doing one simple sum; a CPU is 4 professors solving hard problems one after another",
+        "Think (1 minute): individually list what the analogy gets right",
+        "Pair (2 minutes): find at least two places it breaks down",
+        "Share: harvest onto a two-column board, Holds Up versus Breaks Down",
+        "Key breakdowns to surface: GPU cores work in lockstep on the same instruction while pupils could each freelance a different sum; no coordination or memory-bandwidth cost is shown; the professors (CPU cores) also work in parallel with each other",
+        "Pairs propose a one-word patch to the analogy that fixes one flaw"
+      ],
+      "stretch": "Write a better original analogy for GPGPU or multicore and give it to a partner for autopsy."
+    }
+  ],
+  "practice": [
+    {"q": "Describe three differences between RISC and CISC processors. [3]", "a": "RISC has a small set of simple instructions whereas CISC has a large set of complex instructions (1); RISC instructions are fixed length and aim to complete in one clock cycle whereas CISC instructions are variable length and take multiple cycles (1); in RISC the complexity is handled by the compiler/software whereas in CISC it is built into the hardware (1). Also credit: RISC uses less power / pipelines more easily."},
+    {"q": "A smartwatch manufacturer must choose between a RISC and a CISC processor. Explain why RISC is likely to be more suitable. [3]", "a": "RISC processors use simpler circuitry with fewer transistors so they consume less power (1), extending battery life and producing less heat inside a small sealed case (1); the simple fixed-length instructions pipeline efficiently, giving sufficient performance for the watch's limited tasks (1)."},
+    {"q": "Explain how the design of a GPU makes it well suited to rendering 3D graphics. [3]", "a": "A GPU contains thousands of small cores (1) that apply the same operation to large blocks of data in parallel (1); rendering repeats the same calculation for millions of independent pixels/vertices, so many can be processed simultaneously (1)."},
+    {"q": "State what is meant by GPGPU and give two examples of non-graphics uses of a GPU. [3]", "a": "GPGPU is using a GPU for general-purpose, non-graphics computation (1); examples for the other two marks: training machine-learning/neural networks; scientific simulations such as weather modelling; large-scale image or video processing; cryptocurrency hash calculations."},
+    {"q": "Define the terms multicore processor and parallel processing. [2]", "a": "A multicore processor is a single chip containing two or more independent cores, each able to run its own fetch-decode-execute cycle (1); parallel processing is splitting a task so multiple computations are carried out simultaneously across cores or processors (1)."},
+    {"q": "A video-editing program renders a film in 100 seconds on one core; 80 seconds of the work can be shared perfectly across cores and 20 seconds cannot. Calculate the render time on 4 cores. [2]", "a": "Parallel part: 80 / 4 = 20 seconds (1); total = 20 serial + 20 parallel = 40 seconds (1)."},
+    {"q": "Explain two reasons why doubling the number of cores may not halve a program's run time. [4]", "a": "Part of the task may be inherently serial because each step depends on the previous result, so it cannot be split across cores (1), and this serial fraction sets a floor on the run time (1). The software must also be written to use multiple threads, otherwise extra cores sit idle (1), and dividing work then combining results adds coordination overhead (1)."},
+    {"q": "A research lab must apply the same statistical operation to billions of independent sensor readings. Discuss whether a multicore CPU or a GPU is more appropriate. [4]", "a": "The workload applies the same operation to a huge number of independent data items, so it is data-parallel (1); a GPU's thousands of cores can process many readings simultaneously, giving far higher throughput than a CPU's few cores (1); however the software must be written specifically for the GPU (1); as there is little branching or dependency, the GPU is the more appropriate choice, with the CPU handling sequential control work (1)."}
+  ],
+  "misconceptions": [
+    "Students often think RISC means weaker or slower, but simple one-cycle instructions plus easy pipelining can give equal or better performance per watt.",
+    "Students often think a GPU is just a faster CPU, but its thousands of cores apply the same operation in lockstep — it only wins on data-parallel work.",
+    "Students often think more cores always means proportionally faster, but the serial fraction, data dependencies and unthreaded software cap the speed-up.",
+    "Students often give one RISC/CISC difference reworded several times; examiners want distinct points — set size, instruction length, cycles, where complexity lies.",
+    "Students often think GPUs are only for graphics, but GPGPU covers machine learning, simulation and hashing."
+  ],
+  "exam_link": [
+    "Command words: Define/State (1-2 marks on terms), Describe (RISC vs CISC differences, 3 marks), Explain (why a processor suits a device, 3-4 marks), Discuss (processor choice for a scenario, up to 9-mark levels of response).",
+    "RISC vs CISC comparison questions penalise repeated points reworded — plan three genuinely distinct differences before writing.",
+    "Example stem: 'A company is developing a battery-powered drone. Discuss the suitability of RISC and CISC processors for this product.' — link every hardware feature to the scenario.",
+    "GPU questions expect the two-part mechanism (many cores AND same operation on much data) plus the software-support caveat for full marks."
+  ],
+  "task": "For each of these four devices, choose CISC, RISC, GPU-assisted or multicore-focused and justify with at least two hardware features linked to the device's needs: a hearing aid, a 3D-rendering workstation, a supermarket checkout, and a machine-learning research server.",
+  "challenge": "A task takes 200 seconds on one core; 150 seconds of it parallelises perfectly. Calculate the run times on 2, 5 and 50 cores (125 s, 80 s, 53 s) and the theoretical minimum (50 s), then write three sentences explaining what this tells a buyer comparing an 8-core CPU with a 64-core CPU.",
+  "exit_ticket": [
+    {"q": "Give two distinct differences between RISC and CISC.", "a": "Any two of: small simple set vs large complex set; fixed-length one-cycle vs variable-length multi-cycle instructions; complexity in compiler/software vs in hardware; lower vs higher power."},
+    {"q": "What TWO ideas must you combine to explain why a GPU is fast?", "a": "It has thousands of cores, and it applies the same operation to many data items in parallel."},
+    {"q": "Name two things that limit the benefit of adding more cores.", "a": "Any two of: the serial fraction/data dependencies, software not written for multiple threads, coordination overhead."}
+  ]
 }

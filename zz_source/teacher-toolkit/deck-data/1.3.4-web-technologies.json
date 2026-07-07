@@ -1,50 +1,284 @@
 {
-  "subtopic": "1.3.4 Web Technologies",
+  "subtopic": "1.3.4 Web Technologies (part 1)",
   "spec": "OCR H446 — Component 01",
+  "week": "Week 13 (07 Dec)",
   "objectives": [
-    "Explain the roles of HTML, CSS and JavaScript and how CSS selectors target tags, classes and ids.",
-    "Describe how search engines index pages and how the PageRank algorithm ranks them.",
-    "Compare client-side and server-side processing and justify where each should be used."
+    "I can describe how a browser requests a page from a web server and the roles of HTML, CSS and JavaScript.",
+    "I can write and interpret HTML using the tags and attributes OCR names, correctly nested.",
+    "I can style a page with CSS element, class and id selectors placed inline, internally or in an external stylesheet.",
+    "I can write simple JavaScript including form validation, and compare client-side with server-side processing."
   ],
   "retrieval": [
-    {"q": "What is the role of HTML, CSS and JavaScript in a web page?", "a": "HTML defines structure and content, CSS defines presentation/style, and JavaScript provides interactivity/behaviour."},
-    {"q": "In PageRank, what does a link from one page to another represent?", "a": "A 'vote' for the linked page's importance; votes from high-ranking pages are worth more."},
-    {"q": "Why must security-critical validation also run server-side?", "a": "Client-side checks can be viewed and bypassed by the user, so they are not secure on their own."},
-    {"q": "Interleaving (1.3.3): When a JavaScript form submits to a web server, which application-layer protocols typically carry the request?", "a": "HTTP, or HTTPS when the connection is encrypted."},
-    {"q": "Interleaving (1.3.1): Why is the client-side source of a web page not a safe place to store a secret key?", "a": "Client-side code can be viewed in the browser, so any embedded key could be read; secrets must stay server-side, and sensitive data should be hashed or encrypted."}
+    {"q": "1.3.3: Give two differences between a LAN and a WAN.", "a": "A LAN covers a small geographical area (one site) and is usually owned/maintained by one organisation; a WAN covers a large geographical area and uses third-party communication infrastructure (e.g. leased lines). The internet is the largest WAN."},
+    {"q": "1.3.3: Name the four layers of the TCP/IP stack in order, from the layer nearest the user downwards.", "a": "Application, Transport, Network (Internet), Link (Data link). Data passes down the stack on sending, each layer adding a header, and back up on receipt."},
+    {"q": "1.3.3: What does DNS do when you type www.ocr.org.uk into a browser?", "a": "The Domain Name System translates the human-readable domain name into the IP address of the server, querying resolver/root/TLD/authoritative servers as needed and caching the result."},
+    {"q": "1.3.3: State two differences between packet switching and circuit switching.", "a": "Packet switching splits data into packets that are routed independently and may take different routes, then reassembled; circuit switching sets up one dedicated path for the whole communication, reserving bandwidth even when idle. The internet uses packet switching."},
+    {"q": "1.3.3: In a client-server network, what is the role of the server, and what is the main structural difference in peer-to-peer?", "a": "The server provides resources/services to clients that request them, giving central control and backup; in peer-to-peer all devices have equal status and each can act as both client and server."}
   ],
   "keywords": [
-    {"term": "HTML", "def": "HyperText Markup Language: defines the structure and content of a web page."},
-    {"term": "CSS", "def": "Cascading Style Sheets: defines presentation and style such as colour, font and layout."},
-    {"term": "JavaScript", "def": "A language providing client-side interactivity and behaviour such as events, validation and dynamic updates."},
-    {"term": "CSS selector", "def": "Targets elements to style: a bare name selects by tag, '.' selects by class, '#' selects by id."},
-    {"term": "Web crawler", "def": "A spider that follows links and reads pages so the search engine can build its index."},
-    {"term": "Index", "def": "A mapping of keywords to the pages they appear on, allowing fast retrieval and ranking by relevance."},
-    {"term": "PageRank", "def": "An algorithm that ranks pages by importance based on the number and rank of incoming links."},
-    {"term": "Damping factor", "def": "A value (~0.85) modelling the probability a random surfer keeps following links, ensuring PageRank converges."}
+    {"term": "HTML", "def": "HyperText Markup Language: defines the structure and content of a web page using tags such as h1, p, img and a."},
+    {"term": "CSS", "def": "Cascading Style Sheets: defines presentation and style such as colour, font, borders and layout, kept separate from structure."},
+    {"term": "JavaScript", "def": "A scripting language giving client-side interactivity and behaviour: responding to events, validating forms and updating content dynamically."},
+    {"term": "Tag and attribute", "def": "A tag marks up content (e.g. img); an attribute inside the opening tag gives extra detail (e.g. src, alt, href, class, id)."},
+    {"term": "Selector", "def": "The part of a CSS rule that says which elements to style: a bare tag name, a .class or an #id."},
+    {"term": "Class", "def": "A reusable label attached with class=\"name\" in HTML and targeted with .name in CSS; many elements may share one class."},
+    {"term": "Identifier (id)", "def": "A unique label attached with id=\"name\" and targeted with #name in CSS; each id must appear only once per page."},
+    {"term": "Client-side processing", "def": "Code that runs in the user's browser: fast and reduces server load, but can be viewed and bypassed, so it is not secure."},
+    {"term": "Server-side processing", "def": "Code that runs on the web server: secure, hidden and able to use server databases, but slower and adds server load."}
   ],
   "content": [
-    {"heading": "HTML, CSS and JavaScript", "points": ["HTML defines the structure and content: headings, paragraphs, links and images.", "CSS defines presentation and style: colour, font and layout.", "CSS selectors target elements: a bare name by tag, '.class' by class and '#id' by id.", "JavaScript provides interactivity and behaviour, usually client-side: events, validation and dynamic updates."]},
-    {"heading": "Search engine indexing", "points": ["A web crawler/spider follows links and reads/visits pages across the web.", "The engine builds an index mapping keywords to the pages they appear on for fast retrieval.", "Results are then ranked by relevance to the search query.", "Indexing makes searching fast because pages are pre-processed rather than searched live."]},
-    {"heading": "PageRank algorithm", "points": ["PageRank ranks pages by importance derived from incoming links; each link is a 'vote'.", "Links from high-ranking pages are worth more, and a page divides its rank across its outgoing links.", "The damping factor (~0.85) models a random surfer who keeps following links rather than jumping randomly, preventing unrealistic or looping ranks.", "It is calculated iteratively, recalculating ranks using the latest values until they converge (stop changing significantly)."]},
-    {"heading": "Client-side vs server-side processing", "points": ["Client-side runs in the user's browser: fast and immediate, reduces server load, but is insecure as it can be viewed and bypassed.", "Server-side runs on the web server: secure and hidden, but slower (a round trip) and increases server load.", "Client-side example: JavaScript form validation for instant feedback; server-side example: database queries, login or payment checks.", "Security-critical checks must run server-side even if a client-side check also exists, because the client cannot be trusted."]}
+    {
+      "heading": "How the web works: request and response",
+      "points": [
+        "The browser (client) sends an HTTP or HTTPS request for a page to a web server.",
+        "The server responds with HTML; the browser renders it, fetching any linked CSS, JavaScript and images.",
+        "HTML defines structure and content; CSS defines presentation and style; JavaScript defines behaviour and interactivity.",
+        "Keeping the three separate makes sites maintainable: restyle a whole site without touching structure or behaviour."
+      ],
+      "note": "Search engines, indexing and PageRank use these same pages — that is next lesson (part 2)."
+    },
+    {
+      "heading": "HTML page structure and nesting",
+      "points": [
+        "A page nests inside html: the head holds information about the page, the body holds visible content.",
+        "title sits inside head and names the browser tab; it does not appear in the page itself.",
+        "Most tags come in opening/closing pairs and must nest correctly: always close the inner tag first."
+      ],
+      "code": [
+        "<html>",
+        "<head>",
+        "  <title>My First Page</title>",
+        "</head>",
+        "<body>",
+        "  <h1>Hello</h1>",
+        "  <p>Welcome to my site.</p>",
+        "</body>",
+        "</html>"
+      ]
+    },
+    {
+      "heading": "Content tags: headings, paragraphs, images, links, div",
+      "points": [
+        "h1 to h6 are headings from largest to smallest; p marks a paragraph of text.",
+        "img has no closing tag: src names the image file, alt gives text shown if it cannot load.",
+        "a makes a hyperlink: href gives the destination; the text between the tags is what users click.",
+        "div groups a block of elements so it can be styled or scripted as one unit."
+      ],
+      "code": [
+        "<h1>School Trips</h1>",
+        "<div id=\"gallery\">",
+        "  <p>See our <a href=\"photos.html\">photo gallery</a>.</p>",
+        "  <img src=\"paris.jpg\" alt=\"Students in Paris\">",
+        "</div>"
+      ]
+    },
+    {
+      "heading": "Lists, forms, script and link",
+      "points": [
+        "ol creates a numbered list and ul a bulleted list; every item inside is an li.",
+        "form collects user input; input creates a control, and its type attribute sets the kind (text, submit).",
+        "script embeds JavaScript or loads it from a file; link in the head attaches an external stylesheet."
+      ],
+      "code": [
+        "<ol>",
+        "  <li>Plan</li>",
+        "  <li>Code</li>",
+        "  <li>Test</li>",
+        "</ol>",
+        "<form>",
+        "  <input type=\"text\" id=\"name\">",
+        "  <input type=\"submit\" value=\"Send\">",
+        "</form>",
+        "<script src=\"check.js\"></script>"
+      ]
+    },
+    {
+      "heading": "CSS: purpose and three places to put it",
+      "points": [
+        "Inline: a style attribute on one tag — quick, but mixes style back into the structure.",
+        "Internal: rules inside a style tag in the head — applies to that one page only.",
+        "External: a separate .css file attached with link — one file styles every page (best practice).",
+        "Common properties: color, background-color, font-family, border, width, height, text-align."
+      ],
+      "code": [
+        "<p style=\"color: red;\">Inline style on one tag</p>",
+        "<style>",
+        "  p { font-family: Arial; }",
+        "</style>",
+        "<link rel=\"stylesheet\" href=\"styles.css\">"
+      ],
+      "note": "One edit to an external stylesheet restyles the whole site — the advantage examiners reward."
+    },
+    {
+      "heading": "CSS selectors: elements, classes and identifiers",
+      "points": [
+        "An element selector (h1) styles every matching tag on the page.",
+        "A class selector (.warning) styles every element carrying class=\"warning\" — reusable on many elements.",
+        "An id selector (#menu) styles the single element with id=\"menu\" — each id is unique per page.",
+        "In the HTML, the class= and id= attributes are what connect elements to the rules."
+      ],
+      "code": [
+        "h1 { color: navy; text-align: center; }",
+        ".warning { color: red; font-family: Arial; }",
+        "#menu { width: 200px; height: 400px; background-color: grey; border: 1px solid black; }"
+      ]
+    },
+    {
+      "heading": "JavaScript basics: variables, functions, events",
+      "points": [
+        "Variables (var or let) store values; functions package reusable code, much like pseudocode.",
+        "Events such as onclick run a function when the user acts on the page.",
+        "document.getElementById(\"x\") fetches an element; .value reads an input box; .innerHTML changes displayed content.",
+        "Styles can be changed too, e.g. element.style.color = \"red\"."
+      ],
+      "code": [
+        "<button onclick=\"update()\">Click me</button>",
+        "<p id=\"output\">Waiting...</p>",
+        "<script>",
+        "  function update() {",
+        "    var msg = \"Button clicked!\";",
+        "    document.getElementById(\"output\").innerHTML = msg;",
+        "  }",
+        "</script>"
+      ]
+    },
+    {
+      "heading": "JavaScript form validation",
+      "points": [
+        "Validation checks input is present and sensible before the form is submitted to the server.",
+        "Read the box with getElementById and .value, test it with if, and alert the user on failure.",
+        "Returning false stops the submission; returning true lets the form send."
+      ],
+      "code": [
+        "function checkEmail() {",
+        "  var email = document.getElementById(\"email\").value;",
+        "  if (email == \"\") {",
+        "    alert(\"Email is required\");",
+        "    return false;",
+        "  }",
+        "  return true;",
+        "}"
+      ],
+      "note": "Client-side validation improves user experience but can be viewed and bypassed — never rely on it alone."
+    },
+    {
+      "heading": "Client-side processing",
+      "points": [
+        "Runs in the user's browser: form validation, instant feedback, animation, updating content without reloading.",
+        "Advantages: fast and immediate (no round trip to the server); reduces server load and bandwidth.",
+        "Disadvantages: the code can be viewed, modified or disabled by the user, so it is insecure.",
+        "It also depends on the user's browser and device behaving as expected."
+      ]
+    },
+    {
+      "heading": "Server-side processing: when it must be used",
+      "points": [
+        "Runs on the web server (e.g. PHP with SQL): login checks, payments, searching a product database.",
+        "Must be used when logic or data has to stay secure, or when the data lives in a server database.",
+        "Client-side: fast, low server load, insecure. Server-side: secure, hidden, database access, but slower and loads the server.",
+        "Best practice: validate client-side for speed and repeat the checks server-side for security."
+      ]
+    }
   ],
-  "worked_example": {
-    "title": "Deciding client-side vs server-side for a checkout form",
-    "steps": [
-      "A checkout form checks the email address format and then verifies payment details.",
-      "The email format check is simple and not security-critical, so do it client-side for instant feedback.",
-      "Client-side validation also reduces server load because no round trip is needed for a simple check.",
-      "Payment verification is security-critical, so it must be server-side because client-side code can be viewed and bypassed.",
-      "The bank's records and logic must stay hidden on the server, so verification cannot be trusted to the browser.",
-      "Conclusion: server-side is more secure but slower and adds load — an acceptable trade-off for sensitive payment data."
-    ]
-  },
-  "task": "For each task, state whether it is best done client-side or server-side and give a one-line reason: (a) highlighting a menu item on hover, (b) checking a username and password against a database, (c) showing an instant 'passwords do not match' message, (d) calculating an order total that affects what the customer is charged.",
-  "challenge": "Explain why a PageRank calculation needs both a damping factor and iteration. Describe what would go wrong with ranking if either were removed, using the ideas of a random surfer and convergence.",
+  "worked_examples": [
+    {
+      "title": "Building a small page: which selector styles what?",
+      "steps": [
+        "The HTML: <html> <head> <title>Clubs</title> <link rel=\"stylesheet\" href=\"styles.css\"> </head> <body> <h1 id=\"pageTitle\">Code Club</h1> <p class=\"highlight\">Meets Tuesday lunchtime.</p> <p>Open to all years.</p> <p class=\"highlight\">Bring a laptop.</p> </body> </html>",
+        "The external stylesheet styles.css: h1 { color: navy; text-align: center; }  .highlight { background-color: yellow; }  #pageTitle { border: 2px solid black; }",
+        "Rule 1 is an element selector: it styles every h1 — here just one — navy and centred.",
+        "Rule 2 is a class selector: it highlights the first and third paragraphs, because both carry class=\"highlight\". A class is reusable on many elements.",
+        "Rule 3 is an id selector: it puts a border on the single element with id=\"pageTitle\" — the h1. An id must be unique on the page.",
+        "So the h1 receives two rules (element and id) and the middle paragraph receives none — it has no class or id and no p rule exists.",
+        "Because the stylesheet is external, adding the same link tag to another page restyles it identically with no extra CSS."
+      ]
+    },
+    {
+      "title": "Tracing a JavaScript validation function",
+      "steps": [
+        "The function: function checkForm() { var name = document.getElementById(\"name\").value; var age = Number(document.getElementById(\"age\").value); if (name == \"\") { alert(\"Please enter your name\"); return false; } if (age < 11 || age > 18) { alert(\"Age must be 11 to 18\"); return false; } return true; }",
+        "It reads the two input boxes by id, converts age to a number, then tests each rule in turn.",
+        "Trace 1 — name is empty, age is 14: the first if is true, so the alert Please enter your name appears and the function returns false. The age test is never reached; the form does not submit.",
+        "Trace 2 — name is Sam, age is 21: name is not empty, so the first if is skipped. In the second if, 21 < 11 is false but 21 > 18 is true, so with OR the condition is true: alert Age must be 11 to 18, return false.",
+        "Trace 3 — name is Ada, age is 16: both ifs are false (16 is within 11 to 18), so the function returns true and the form submits.",
+        "Key idea: return false blocks submission, and the || means either failing bound rejects the age."
+      ]
+    },
+    {
+      "title": "Client-side or server-side? A login flow",
+      "steps": [
+        "A login page asks for a username and password. Decide where each processing step belongs.",
+        "Checking the boxes are not empty before sending: client-side. It is not security-critical, gives instant feedback, and saves a pointless round trip, reducing server load.",
+        "Checking the password against the stored password hash: server-side, always. The stored hashes and comparison logic must stay hidden on the server.",
+        "Why it cannot be client-side: any code sent to the browser can be viewed, modified or bypassed, so a client-side check would expose the hash and could simply be skipped.",
+        "Recording the successful login in the accounts database: server-side, because the database lives on the server.",
+        "Conclusion: client-side for speed and user experience, server-side for anything secret, security-critical or database-driven — and security checks are repeated server-side even if the client also checks."
+      ]
+    }
+  ],
+  "activities": [
+    {
+      "title": "HTML, CSS or JavaScript? Card sort",
+      "minutes": 12,
+      "instructions": [
+        "In pairs, make three column headers: HTML (structure), CSS (presentation), JavaScript (behaviour).",
+        "Sort 15 slips: <h1>Results</h1>; color: red;; alert(\"Saved!\"); <img src=\"cat.jpg\">; #menu { width: 200px; }; a click event handler; <a href=\"page2.html\">Next</a>; choosing the page font; checking a field contains @ before submission; .warning { font-weight: bold; }; <p> tags; updating content without reloading; <div id=\"header\">; centring the layout; responding to a key press.",
+        "Add a fourth wildcard header, server-side, and decide whether any slip could belong there instead (the @ check should also be repeated server-side).",
+        "Reveal and resolve disputes, then discuss why we separate the three at all: restyling without touching structure or behaviour."
+      ],
+      "stretch": "Add two extra slips, script and link rel=\"stylesheet\", and place them: where do the three technologies actually live inside one HTML file?"
+    },
+    {
+      "title": "Broken homepage: spot and fix",
+      "minutes": 10,
+      "instructions": [
+        "Display the intern's homepage and announce there are exactly five errors; pairs list line numbers and fixes on mini-whiteboards.",
+        "The snippet: <html> <head><title>My Page</head></title> <style>.big { colour: red }</style> <body> <h1>Welcome<h1> <img href=\"cat.jpg\"> <a src=\"page2.html\">Next page</a> </body> </html>",
+        "Pairs hold up boards; tally the most-spotted and least-spotted errors, then a volunteer pair writes the corrected page on the board.",
+        "The five fixes: closing tags wrongly nested, should be </title></head>; the CSS property is color not colour; the second <h1> needs a slash, </h1>; img uses src not href; a uses href not src. Note that browsers often render broken HTML anyway, which is why these bugs ship."
+      ],
+      "stretch": "Add a class attribute so the heading actually uses the .big rule, then add an id to a tag with a matching # rule in the style block."
+    },
+    {
+      "title": "Client-side vs server-side continuum",
+      "minutes": 12,
+      "instructions": [
+        "Tape a line across the room: client-side at one end, server-side at the other; standing in the middle means needs both.",
+        "Think for 30 seconds, pair for 30, then stand on the line for each scenario: highlighting a menu button on hover; checking a typed password against the stored hash; warning that the email field is empty; searching the product database for trainers; validating a card payment; form validation on a banking site.",
+        "Interview outliers each round: what happens to the server if we move this to the client, and what happens to security?",
+        "Board the trade-off summary: speed, responsiveness and reduced server load versus security and access to the database. The banking form is the exam-grade answer: both — client-side for fast feedback, repeated server-side because browser code can be bypassed."
+      ],
+      "stretch": "Debate in one line: if server-side is more secure, why not do everything server-side? (Latency, server load, bandwidth, offline responsiveness.)"
+    }
+  ],
+  "practice": [
+    {"q": "State the purpose of each of HTML, CSS and JavaScript in a web page. [3]", "a": "HTML defines the structure and content of the page (1); CSS defines the presentation/style such as colours, fonts and layout (1); JavaScript adds interactivity/behaviour such as responding to events and validating forms (1)."},
+    {"q": "Write the HTML to display an image stored as logo.png, with the alternative text School logo. [2]", "a": "<img src=\"logo.png\" alt=\"School logo\"> — one mark for the img tag with correct src attribute, one for the alt attribute."},
+    {"q": "A stylesheet contains the rule .alert { color: red; }. Describe how a developer applies this rule to a paragraph, and explain one difference between a class and an id. [3]", "a": "Add the attribute to the tag: <p class=\"alert\"> (1). A class can be reused on many elements on the page (1), whereas an id must be unique — used on only one element — and is targeted with # rather than . (1)."},
+    {"q": "Write a CSS rule that gives the element with the identifier menu a width of 200 pixels and a grey background. [3]", "a": "#menu { width: 200px; background-color: grey; } — one mark for the #menu selector, one for width: 200px;, one for background-color: grey;."},
+    {"q": "Write a JavaScript function named checkEmail that displays an alert saying Please enter your email if the text box with the id email is empty. [4]", "a": "function checkEmail() { var email = document.getElementById(\"email\").value; if (email == \"\") { alert(\"Please enter your email\"); } } — marks for the function declaration, using document.getElementById(\"email\").value, the comparison with the empty string, and the alert inside the if."},
+    {"q": "Explain two advantages of validating a form using client-side JavaScript rather than on the server. [4]", "a": "The user gets an immediate response (1) because no round trip to the server is needed (1); and server load/bandwidth is reduced (1) because invalid submissions are stopped before they are ever sent (1)."},
+    {"q": "A website checks a user's password when they log in. Explain why this check must be carried out server-side. [3]", "a": "Client-side code can be viewed, modified or bypassed by the user (1), so a browser check cannot be trusted for security (1); the stored password data/hashes and the comparison logic must stay hidden on the server, which also holds the accounts database (1)."},
+    {"q": "Describe the difference between an internal and an external stylesheet, and give one advantage of using an external stylesheet. [3]", "a": "An internal stylesheet is written in a style tag in the head and applies to that page only (1); an external stylesheet is a separate .css file attached with a link tag (1). Advantage: one file can style every page of the site, so a single change updates the whole site consistently (1)."}
+  ],
+  "misconceptions": [
+    "Students often write colour in CSS because of UK spelling, but the property names are color and background-color — colour is simply ignored by the browser.",
+    "Students often treat class and id as interchangeable, but an id must be unique to one element per page (#name), while a class is designed to be reused on many elements (.name).",
+    "Students often think client-side validation makes a form secure, but browser code can be viewed, altered or bypassed, so every security-critical check must be repeated server-side.",
+    "Students often mix up the attributes: img uses src for the file, while a uses href for the destination — swapping them is a classic exam-code error.",
+    "Students often think JavaScript is a cut-down version of Java, but they are unrelated languages; JavaScript is the scripting language browsers run client-side."
+  ],
+  "exam_link": [
+    "Command words: state and write for tags, attributes and CSS rules (1 mark per correct piece of syntax); describe and explain for validation and processing; compare for client-side versus server-side.",
+    "Typical tariffs: 2-3 marks to write an HTML tag or CSS rule; 3-4 marks for short JavaScript; 4-6 marks to explain or compare client-side and server-side processing in context.",
+    "Example stem: A form on a shopping website is validated using JavaScript in the browser. Explain why the data entered must also be validated on the web server. [3]",
+    "Code answers are marked on exact syntax: src versus href, . versus # selectors, matching closing tags and correct nesting all carry marks — sloppy syntax loses them."
+  ],
+  "task": "Write, on paper, the complete HTML for a page titled Revision Hub containing: a main heading with the id title, two paragraphs sharing the class note, an image study.png with suitable alternative text, and a link to quiz.html with the text Start quiz. Then write an external stylesheet with three rules: an element selector centring all h1 text, a class selector giving .note a grey background, and an id selector giving #title a navy colour and a border. Annotate each rule with exactly which element(s) it styles and why.",
+  "challenge": "Extend your page with a form containing a text input with the id score and a submit button, then write a JavaScript function that rejects the submission with an alert if the score is empty or not between 0 and 100. Trace your function for the inputs 150 and 72, then write two sentences explaining why a quiz website could not trust this check alone and what it must do instead.",
   "exit_ticket": [
-    {"q": "What does it mean that PageRank is calculated iteratively, and when does it stop?", "a": "Each page's rank is recalculated repeatedly using the latest rank values of the pages linking to it, and it stops when the values stop changing significantly (converge)."},
-    {"q": "Give one advantage and one disadvantage of client-side over server-side processing.", "a": "Advantage: faster/immediate response and reduced server load. Disadvantage: insecure as it can be viewed/bypassed, and it depends on the user's browser/device."},
-    {"q": "What does a '#' CSS selector target, and what do '.' and a bare name target?", "a": "'#' targets an element by its id; '.' targets by class; a bare name targets by tag."}
+    {"q": "Which technology provides structure, which provides style, and which provides behaviour?", "a": "HTML provides structure and content, CSS provides style/presentation, JavaScript provides behaviour/interactivity."},
+    {"q": "In CSS, what is the difference between the selectors .menu and #menu?", "a": ".menu targets every element with class=\"menu\" (reusable on many elements); #menu targets the single element with id=\"menu\" (an id is unique per page)."},
+    {"q": "Give one reason a login check must run server-side even if the form is also checked in the browser.", "a": "Client-side code can be viewed and bypassed, so it is not secure; the stored password data and comparison must stay hidden on the server."}
   ]
 }

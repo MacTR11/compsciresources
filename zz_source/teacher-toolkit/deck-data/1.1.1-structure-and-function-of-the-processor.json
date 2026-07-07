@@ -1,12 +1,235 @@
 {
   "subtopic": "1.1.1 Structure and Function of the Processor",
   "spec": "OCR H446 — Component 01",
-  "objectives": ["Describe the function of the ALU, Control Unit, registers (PC, MAR, MDR, CIR, ACC) and the three system buses", "Explain the stages of the fetch-decode-execute cycle and how registers and buses interact during it", "Apply the factors affecting CPU performance (clock speed, cores, cache, pipelining) to compare processors for a given scenario", "Compare Von Neumann and Harvard architectures, including the modified/hybrid form used in contemporary CPUs"],
-  "retrieval": [{"q": "Which register always holds the address of the next instruction to be fetched?", "a": "The Program Counter (PC), which is incremented each cycle."}, {"q": "State the difference between the MAR and the MDR.", "a": "The MAR holds the address of a memory location to read/write; the MDR holds the data or instruction itself."}, {"q": "Is the address bus unidirectional or bidirectional, and in which direction does it carry signals?", "a": "Unidirectional, carrying memory addresses from the CPU to memory only."}, {"q": "Convert the denary number 25 to 8-bit binary (interleaves 1.2/1.4 number work).", "a": "00011001."}, {"q": "Name one example each of an input and an output device (interleaves 1.1.3).", "a": "Input: keyboard/mouse/microphone; Output: monitor/printer/speakers/actuator."}],
-  "keywords": [{"term": "ALU", "def": "Arithmetic Logic Unit; performs arithmetic, logic and shift operations, placing the result in the accumulator."}, {"term": "Control Unit (CU)", "def": "Decodes instructions, generates control signals and synchronises the CPU with the clock."}, {"term": "PC", "def": "Program Counter; holds the address of the next instruction to be fetched, incremented each cycle."}, {"term": "MAR", "def": "Memory Address Register; holds the address of the location to be read from or written to."}, {"term": "MDR", "def": "Memory Data Register; holds the data or instruction just fetched or about to be written."}, {"term": "CIR", "def": "Current Instruction Register; holds the current instruction while it is decoded and executed."}, {"term": "Cache", "def": "Small, very fast memory on or near the CPU holding frequently or recently used data and instructions."}, {"term": "Pipelining", "def": "Overlapping the fetch, decode and execute stages of consecutive instructions to increase throughput."}, {"term": "Von Neumann", "def": "Architecture with one shared memory and bus for both data and instructions; simple and flexible but prone to a bottleneck."}, {"term": "Harvard", "def": "Architecture with separate memories and buses for data and instructions, allowing simultaneous fetch and data access."}, {"term": "Modified Harvard", "def": "Hybrid used in contemporary CPUs: unified main memory but separate L1 instruction and data caches."}],
-  "content": [{"heading": "Registers and the ALU/CU", "points": ["The ALU carries out arithmetic (+ - x /), logic (AND, OR, NOT, compare) and shift operations, with results sent to the ACC", "The Control Unit decodes instructions, generates control signals and synchronises data flow with the clock", "Key registers: PC (next address), MAR (address), MDR (data), CIR (current instruction), ACC (immediate ALU result)"]}, {"heading": "The three system buses", "points": ["Address bus is unidirectional (CPU to memory); its width sets the maximum addressable locations as 2^n", "Data bus is bidirectional and carries data and instructions; its width affects throughput", "Control bus is bidirectional and carries control signals such as read/write, clock and interrupt"]}, {"heading": "Fetch-Decode-Execute cycle", "points": ["Fetch: PC copied to MAR, read signal on control bus, instruction returns via data bus to MDR, PC incremented, MDR copied to CIR", "Decode: the CU splits the CIR contents into opcode (operation) and operand (data/address)", "Execute: the operation is carried out, e.g. an ALU calculation (result to ACC), a load/store, or a jump that writes a new address into the PC"]}, {"heading": "Factors affecting performance", "points": ["Clock speed: more pulses per second means more FDE cycles per second, but is limited by heat and power", "Cores: independent units each running their own FDE, but only faster if the task parallelises and the software supports it", "Cache: L1 (fastest/smallest, on core) then L2 then L3 (largest/slowest, often shared), all checked before slower RAM; pipelining overlaps stages for higher throughput"]}, {"heading": "Von Neumann, Harvard and contemporary architecture", "points": ["Von Neumann uses one shared memory and bus for data and instructions; Harvard uses separate memories and buses", "Von Neumann can suffer a bottleneck (cannot fetch an instruction and access data at once) but is simpler and cheaper (general-purpose PCs); Harvard allows simultaneous access (embedded systems, microcontrollers, DSPs)", "Contemporary CPUs are a modified (hybrid) Harvard: a single unified main memory but separate L1 instruction and data caches close to the core"]}],
-  "worked_example": {"title": "Tracing the fetch stage of the FDE cycle", "steps": ["The address in the PC is copied into the MAR", "A read signal is placed on the control bus; the instruction is returned along the data bus into the MDR", "The PC is incremented (PC := PC + 1) so it points to the next instruction", "The contents of the MDR are copied into the CIR ready to be decoded", "The CU then splits the CIR into opcode and operand (decode) before the operation is executed"]},
-  "task": "Complete a labelled FDE cycle trace worksheet: for a short instruction (e.g. LOAD then ADD), write out the register transfers for fetch, decode and execute in order, naming every register and bus involved.",
-  "challenge": "A CPU has a 16-bit address bus. Calculate the maximum number of addressable locations (showing 2^n working), then explain how doubling the address bus width and adding L2 cache would each affect performance and cost.",
-  "exit_ticket": [{"q": "Name the two things in the fetch stage that students most often forget.", "a": "Incrementing the PC and copying the MDR into the CIR."}, {"q": "Why can a Harvard architecture be faster than Von Neumann?", "a": "Separate memories/buses let it fetch an instruction and access data simultaneously, avoiding the Von Neumann bottleneck."}, {"q": "Why can a jump (branch) instruction cause a problem in a pipelined CPU?", "a": "It writes a new address into the PC, so prefetched instructions in the pipeline must be flushed/discarded, wasting cycles."}]
+  "week": "Week 02 (07 Sep)",
+  "objectives": [
+    "I can describe the roles of the ALU, Control Unit and the registers PC, MAR, MDR, CIR and ACC",
+    "I can trace the fetch-decode-execute cycle, naming every register transfer and bus involved",
+    "I can explain how clock speed, cores, cache and pipelining affect CPU performance, with caveats",
+    "I can compare Von Neumann, Harvard and contemporary (modified Harvard) architectures with distinct differences"
+  ],
+  "retrieval": [
+    {"q": "Convert the denary number 13 into 8-bit binary.", "a": "00001101 (8 + 4 + 1 = 13)."},
+    {"q": "Convert the binary number 10110 into denary.", "a": "22 (16 + 4 + 2)."},
+    {"q": "From GCSE: what is the overall job of the CPU in a computer system?", "a": "It fetches, decodes and executes instructions, processing data and controlling the rest of the system."},
+    {"q": "From GCSE: state one difference between RAM and ROM.", "a": "RAM is volatile working memory that can be read and written; ROM is non-volatile and holds fixed startup instructions."},
+    {"q": "From GCSE: what is an algorithm?", "a": "A precise sequence of steps that solves a problem or completes a task."}
+  ],
+  "keywords": [
+    {"term": "ALU", "def": "Arithmetic Logic Unit; performs arithmetic, logic and shift operations, sending results to the accumulator."},
+    {"term": "Control Unit (CU)", "def": "Decodes instructions, generates control signals and synchronises the CPU using the clock."},
+    {"term": "Program Counter (PC)", "def": "Register holding the address of the next instruction to fetch; incremented every cycle."},
+    {"term": "MAR", "def": "Memory Address Register; holds the address of the memory location to be read from or written to."},
+    {"term": "MDR", "def": "Memory Data Register; holds the data or instruction just fetched from, or about to be written to, memory."},
+    {"term": "CIR", "def": "Current Instruction Register; holds the instruction currently being decoded and executed."},
+    {"term": "Cache", "def": "Small, very fast memory on or near the CPU holding frequently used data and instructions; not part of RAM."},
+    {"term": "Pipelining", "def": "Overlapping the fetch, decode and execute stages of consecutive instructions to raise throughput."},
+    {"term": "Von Neumann architecture", "def": "A single shared memory and bus for both data and instructions."}
+  ],
+  "content": [
+    {
+      "heading": "The big picture: what the processor does",
+      "points": [
+        "The CPU repeatedly fetches an instruction from memory, decodes it, then executes it",
+        "This loop is the fetch-decode-execute (FDE) cycle, running billions of times per second",
+        "Both instructions and data live in main memory as binary; the CPU cannot tell them apart by looking",
+        "Inside the CPU: the ALU, the Control Unit, and a set of registers"
+      ],
+      "note": "Everything this lesson builds on this one loop: fetch, decode, execute, repeat."
+    },
+    {
+      "heading": "The ALU and the Control Unit",
+      "points": [
+        "The ALU performs arithmetic (add, subtract, multiply, divide), logic (AND, OR, NOT, comparisons) and shifts",
+        "ALU results are placed in the accumulator (ACC)",
+        "The Control Unit decodes each instruction and generates control signals directing the other components",
+        "The CU manages the flow of data on the buses and synchronises everything with the clock"
+      ]
+    },
+    {
+      "heading": "The five special-purpose registers",
+      "points": [
+        "A register is a tiny, extremely fast storage location inside the CPU",
+        "PC: address of the NEXT instruction; incremented each cycle",
+        "MAR: the address being read from or written to; MDR: the data or instruction itself",
+        "CIR: the current instruction while it is decoded and executed",
+        "ACC: the immediate result of ALU calculations"
+      ],
+      "note": "MAR holds an ADDRESS, MDR holds DATA. Swapping these is the most common lost mark."
+    },
+    {
+      "heading": "The three system buses",
+      "points": [
+        "Address bus: carries addresses from CPU to memory; UNIDIRECTIONAL",
+        "Data bus: carries data and instructions between CPU and memory; bidirectional",
+        "Control bus: carries control signals such as read, write and clock; bidirectional",
+        "An address bus n bits wide can address 2^n memory locations"
+      ]
+    },
+    {
+      "heading": "FDE cycle: the fetch stage in full",
+      "points": [
+        "The contents of the PC are copied into the MAR",
+        "A read signal is sent on the control bus; the instruction returns along the data bus into the MDR",
+        "The PC is incremented so it points at the following instruction",
+        "The instruction is copied from the MDR into the CIR"
+      ],
+      "code": [
+        "MAR = PC",
+        "MDR = contents of memory at address in MAR",
+        "PC = PC + 1",
+        "CIR = MDR"
+      ],
+      "note": "Candidates routinely miss the PC increment and the MDR to CIR copy — include both."
+    },
+    {
+      "heading": "FDE cycle: decode and execute",
+      "points": [
+        "Decode: the CU splits the CIR contents into opcode (the operation) and operand (data or an address)",
+        "Execute an ALU operation: values are processed and the result goes to the ACC",
+        "Execute a load or store: data moves between memory and registers via MAR and MDR",
+        "Execute a jump or branch: a new address is written into the PC, changing what fetches next"
+      ]
+    },
+    {
+      "heading": "Performance factor 1: clock speed and cores",
+      "points": [
+        "The clock sends regular pulses; speed in Hz is pulses per second",
+        "Higher clock speed means more FDE cycles per second, but heat and power consumption set a limit",
+        "A core is an independent processing unit running its own FDE cycle",
+        "More cores only help if the task can be split up AND the software supports multiple cores"
+      ]
+    },
+    {
+      "heading": "Performance factor 2: cache",
+      "points": [
+        "Cache is small, very fast memory on or near the CPU holding frequently or recently used data",
+        "It is separate fast memory, NOT a section of RAM",
+        "Checked in order: L1 (smallest, fastest) then L2 then L3 (largest, slowest) then RAM",
+        "More cache means fewer slow trips to RAM, so the CPU waits less"
+      ]
+    },
+    {
+      "heading": "Performance factor 3: pipelining",
+      "points": [
+        "Pipelining overlaps the fetch, decode and execute stages of consecutive instructions",
+        "While instruction 1 executes, instruction 2 decodes and instruction 3 is fetched",
+        "Throughput rises, but no individual instruction completes any faster",
+        "Jumps and branches cause hazards: prefetched instructions become wrong and must be flushed"
+      ]
+    },
+    {
+      "heading": "Von Neumann, Harvard and contemporary CPUs",
+      "points": [
+        "Von Neumann: ONE shared memory and bus for data and instructions; simpler, cheaper, flexible; general-purpose PCs",
+        "Its weakness is the bottleneck: it cannot fetch an instruction and access data simultaneously",
+        "Harvard: SEPARATE memories and buses, allowing simultaneous instruction fetch and data access; costlier; embedded systems, microcontrollers, DSPs",
+        "Contemporary CPUs are modified (hybrid) Harvard: unified main memory but separate L1 instruction and data caches"
+      ],
+      "note": "This hybrid point IS spec bullet 1.1.1(e) — contemporary processor architecture."
+    }
+  ],
+  "worked_examples": [
+    {
+      "title": "Full register-transfer trace of fetching one instruction",
+      "steps": [
+        "Suppose PC holds address 0052 and location 0052 contains the instruction ADD 13",
+        "Step 1: PC copied to MAR, so MAR now holds 0052",
+        "Step 2: read signal sent on the control bus; ADD 13 travels along the data bus into the MDR",
+        "Step 3: PC incremented, so PC now holds 0053",
+        "Step 4: MDR copied to CIR, so CIR now holds ADD 13",
+        "Decode: the CU splits ADD 13 into opcode ADD and operand 13",
+        "Execute: the value at address 13 is fetched (via MAR and MDR again), the ALU adds it to the ACC, and the result stays in the ACC"
+      ]
+    },
+    {
+      "title": "Address bus width calculation",
+      "steps": [
+        "Question: a CPU has a 16-bit address bus. How many memory locations can it directly address?",
+        "Rule: an n-bit address bus addresses 2^n locations",
+        "Calculation: 2^16 = 65,536 locations",
+        "Extension: widening the bus to 17 bits DOUBLES this to 131,072, because each extra bit doubles the address space",
+        "Common error: answering 16 x 2 or 2 x 16 instead of 2 to the power 16"
+      ]
+    },
+    {
+      "title": "Pipelining throughput: 6 instructions, 3 stages",
+      "steps": [
+        "Without pipelining, each instruction needs 3 cycles (fetch, decode, execute) before the next starts: 6 x 3 = 18 cycles",
+        "With pipelining, a new instruction enters the pipeline every cycle once it is full",
+        "Cycle 1: I1 fetches. Cycle 2: I1 decodes, I2 fetches. Cycle 3: I1 executes, I2 decodes, I3 fetches",
+        "First instruction finishes at cycle 3; one more finishes every cycle after: cycles 3,4,5,6,7,8",
+        "Total = 8 cycles (formula: instructions + stages - 1 = 6 + 3 - 1)",
+        "Note: each instruction still takes 3 cycles of its own — latency is unchanged, throughput improves"
+      ]
+    }
+  ],
+  "activities": [
+    {
+      "title": "Living FDE Cycle (unplugged role-play)",
+      "minutes": 15,
+      "instructions": [
+        "Assign roles with labels: PC, MAR, MDR, CIR, CU, ALU, ACC, plus students at numbered desks as Memory holding instruction cards (LDA 12, ADD 13, STA 14, HLT)",
+        "Walk the fetch: PC shows their number to MAR; MAR calls the address down the one-way address bus; Memory hands the card to MDR via the data bus; PC increments; MDR passes the card to CIR",
+        "CU takes the card from CIR, splits it aloud into opcode and operand, and directs the execute: loads go via MDR to ACC; ADD sends both values to the ALU, who hands the result to ACC",
+        "Ban illegal moves: if data travels a route that does not exist (Memory talking straight to CIR, or Memory speaking back up the address bus), freeze and make the class spot it",
+        "Round 2: swap roles and include a branch instruction — the class must realise execute writes a new address into the PC"
+      ],
+      "stretch": "Ask the branching PC-holder: what happens to the two instructions a pipeline would already have prefetched? (Flushed — branch hazard.)"
+    },
+    {
+      "title": "Human Pipeline Laundry Line",
+      "minutes": 10,
+      "instructions": [
+        "Set up three desks labelled FETCH, DECODE, EXECUTE; teacher claps to mark each clock cycle",
+        "Round 1, no pipelining: one instruction card at a time passes through all three desks before the next starts; class counts claps for 6 cards (18)",
+        "Round 2, pipelining: three volunteers, one per desk; every clap each desk passes its card forward and FETCH takes a new one; count again (8)",
+        "Ask: did any single instruction get faster? No — latency unchanged, throughput improved",
+        "Round 3: make card 3 a branch; when it executes, the cards in FETCH and DECODE are thrown away (pipeline flush) and the class recounts"
+      ],
+      "stretch": "Instruction 4 needs the result of instruction 3, which has not executed yet — what are the CPU's options? (Stall, or predict/reorder.)"
+    },
+    {
+      "title": "Always-Sometimes-Never: CPU Performance",
+      "minutes": 10,
+      "instructions": [
+        "Display one statement at a time; pairs discuss for 30 seconds then show A, S or N on whiteboards simultaneously",
+        "Statements: doubling clock speed doubles program speed; a quad-core beats a dual-core; the address bus carries data to memory; a cache miss means fetching from RAM; increasing address bus width increases addressable memory; pipelining makes each instruction faster",
+        "Pick a pair from each camp to justify; every Sometimes must state when it is true and when false",
+        "Answers: Sometimes (bottlenecks, heat); Sometimes (only if parallelisable and software supports it); Never (addresses only, one-way); Sometimes (L2 or L3 may hit first); Always (2^n); Never (throughput rises, latency does not)",
+        "Close: pairs convert one Sometimes into an Always by adding the missing caveat"
+      ],
+      "stretch": "Write one Sometimes statement about cache levels that would split the class."
+    }
+  ],
+  "practice": [
+    {"q": "Describe the steps of the fetch phase of the fetch-decode-execute cycle, naming the registers and buses used. [4]", "a": "The contents of the PC are copied into the MAR (1); a read signal is sent along the control bus and the instruction is transferred from memory along the data bus into the MDR (1); the PC is incremented to point to the next instruction (1); the instruction is copied from the MDR into the CIR (1)."},
+    {"q": "State the purpose of the MAR and the MDR. [2]", "a": "The MAR holds the address of the memory location to be read from or written to (1); the MDR holds the data or instruction that has been fetched from, or is about to be written to, that location (1)."},
+    {"q": "Describe the role of the program counter, including what happens to it during a jump instruction. [3]", "a": "The PC holds the address of the next instruction to be fetched (1); it is incremented during each fetch so it points to the following instruction (1); executing a jump writes a new address into the PC so execution continues from a different location (1)."},
+    {"q": "A CPU has a 24-bit address bus. Calculate the number of memory locations it can directly address. [2]", "a": "2^24 (1) = 16,777,216 locations (1)."},
+    {"q": "Explain why increasing the number of cores does not always make a program run faster. [3]", "a": "The program or task may not be parallelisable, e.g. each step depends on the previous result (1); the software must be written to use multiple cores/threads, otherwise extra cores sit idle (1); coordinating and combining results between cores adds overhead, limiting the gain (1)."},
+    {"q": "Explain how cache improves the performance of the CPU. [3]", "a": "Cache is small, very fast memory on or near the CPU (1); it stores frequently or recently used data and instructions (1); these can be accessed far faster than fetching from RAM, so the CPU spends less time waiting (1)."},
+    {"q": "Describe how pipelining increases the throughput of a processor and explain why a branch instruction reduces this benefit. [4]", "a": "Pipelining overlaps the fetch, decode and execute stages of consecutive instructions (1), so one instruction can complete per clock cycle once the pipeline is full, raising throughput (1). A branch changes the PC to a new address (1), so the instructions already prefetched into the pipeline are wrong and must be flushed, wasting cycles (1)."},
+    {"q": "Compare Von Neumann and Harvard architectures, and state how contemporary processors combine the two. [6]", "a": "Von Neumann has a single shared memory and bus for data and instructions (1) so it cannot fetch an instruction and access data simultaneously, causing a bottleneck (1), but is simpler/cheaper and used in general-purpose PCs (1). Harvard has separate memories and buses for data and instructions (1) allowing simultaneous access, and is used in embedded systems and DSPs (1). Contemporary CPUs are modified Harvard: unified main memory but separate L1 instruction and data caches (1)."}
+  ],
+  "misconceptions": [
+    "Students often think the MAR holds data and the MDR holds addresses; it is the reverse — MAR is the ADDRESS register, MDR is the DATA register.",
+    "Students often think cache is a reserved section of RAM, but it is separate, much faster memory located on or near the CPU itself.",
+    "Students often think more cores always means proportionally faster, but the gain depends on the task being parallelisable and the software supporting it.",
+    "Students often think pipelining makes each instruction execute faster, but latency per instruction is unchanged; only throughput improves.",
+    "Students often think all three buses are two-way, but the address bus is unidirectional, carrying addresses from the CPU to memory only."
+  ],
+  "exam_link": [
+    "Command words: State (1 mark definitions of registers), Describe (fetch stage, 3-4 marks), Explain (performance factors, 2-3 marks each), Compare/Discuss (architectures or buying advice, up to 9-mark levels of response).",
+    "The FDE trace is a classic 4-6 marker: marks are lost by omitting the PC increment and the MDR to CIR copy.",
+    "9-mark example stem: 'A gamer is choosing between a 3.2 GHz quad-core CPU with 8 MB cache and a 4.0 GHz dual-core with 2 MB cache. Discuss which is more suitable.' — answers must weigh clock, cores, cache AND the software caveat.",
+    "Calculation questions use 2^n for addressable locations; always show the power, not just the final value."
+  ],
+  "task": "Write a full register-transfer trace for the two-instruction program LDA 20 then ADD 21, where address 20 holds 7 and address 21 holds 5. For each instruction give every fetch step (naming registers and buses), the decode split, and the execute action, finishing with the value left in the ACC (12).",
+  "challenge": "A CPU has a 20-bit address bus and a 3-stage pipeline. Calculate the addressable locations (2^20 = 1,048,576), then calculate how many cycles 10 instructions take unpipelined (30) versus pipelined (12), and explain why a branch at instruction 5 would add wasted cycles.",
+  "exit_ticket": [
+    {"q": "Name the two fetch-stage steps that candidates most often forget.", "a": "Incrementing the PC, and copying the instruction from the MDR into the CIR."},
+    {"q": "Which bus is unidirectional and what does it carry?", "a": "The address bus; it carries memory addresses from the CPU to memory only."},
+    {"q": "How do contemporary CPUs mix Von Neumann and Harvard designs?", "a": "They use one unified main memory (Von Neumann) but separate L1 instruction and data caches (Harvard) — modified Harvard."}
+  ]
 }

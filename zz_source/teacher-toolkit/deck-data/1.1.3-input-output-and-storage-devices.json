@@ -1,12 +1,225 @@
 {
   "subtopic": "1.1.3 Input, Output and Storage Devices",
   "spec": "OCR H446 — Component 01",
-  "objectives": ["Describe how magnetic, flash/solid-state and optical storage work and compare their pros and cons", "Explain the differences between RAM and ROM and how virtual memory and virtual/cloud storage work", "Apply device characteristics to justify suitable input, output and storage choices for a given scenario"],
-  "retrieval": [{"q": "How does a magnetic hard disk drive (HDD) store data?", "a": "By magnetising patterns/polarity on a spinning platter, read and written by a read/write head."}, {"q": "Which storage type uses a laser to detect pits and lands?", "a": "Optical storage (CD/DVD/Blu-ray)."}, {"q": "State two differences between RAM and ROM.", "a": "RAM is volatile and read/write holding running programs; ROM is non-volatile and normally read-only holding bootstrap/BIOS firmware."}, {"q": "From 1.1.1, what is cache memory and how does it differ from RAM?", "a": "Small very fast memory on/near the CPU holding frequently used data; it is separate from and faster than main RAM."}, {"q": "From 1.1.2, name one GPGPU use of a GPU.", "a": "Machine learning/neural network training (or simulation, image processing, crypto hashing)."}],
-  "keywords": [{"term": "Magnetic storage", "def": "Stores data as magnetised patterns on a spinning platter or tape; huge capacity and low cost per GB but slow and fragile."}, {"term": "Flash/SSD", "def": "EEPROM-based storage that traps electrons in cells with no moving parts; fast, silent, durable but costlier per GB with finite write cycles."}, {"term": "Optical storage", "def": "Uses a laser to detect pits and lands on a disc; cheap and portable but low capacity and slow."}, {"term": "Volatile", "def": "Loses its contents when power is removed, e.g. RAM."}, {"term": "ROM", "def": "Read Only Memory; non-volatile, normally read-only, typically holding the bootstrap loader/BIOS firmware."}, {"term": "Virtual memory", "def": "Use of secondary storage (a swap/paging file) as extra RAM when physical RAM is full, moving pages in and out."}, {"term": "Disk thrashing", "def": "Excessive paging where the system spends most of its time swapping pages rather than doing useful work, slowing it dramatically."}, {"term": "Cloud/virtual storage", "def": "Remote storage on networked servers, accessible anywhere, scalable and off-site, but needing internet with ongoing cost and security concerns."}],
-  "content": [{"heading": "Three storage technologies", "points": ["Magnetic (HDD, tape): magnetised patterns on a platter/tape; huge capacity, low cost per GB, but slow, fragile and noisy", "Flash/SSD (SSD, USB, SD): traps electrons in EEPROM cells with no moving parts; fast, silent, durable, portable, but costlier per GB with finite write cycles", "Optical (CD/DVD/Blu-ray): laser detects pits and lands; very cheap and portable with long shelf life, but low capacity and slow"]}, {"heading": "Access methods and secondary storage", "points": ["Secondary storage is non-volatile, retaining data without power", "Tape is serial access, ideal for cheap high-capacity archive/backup but poor for random access", "HDD and SSD offer direct/random access; flash uses wear levelling to spread writes across cells"]}, {"heading": "RAM vs ROM", "points": ["RAM is volatile (lost on power off), read and written, and holds running programs and data", "ROM is non-volatile, normally read-only, and holds the bootstrap/BIOS firmware", "Both are primary memory, distinct from slower secondary storage"]}, {"heading": "Virtual memory and cloud storage", "points": ["Virtual memory: when RAM is full the OS moves less-used pages to a swap/paging file on disk and back as needed, letting larger programs run", "Drawback: disk is far slower than RAM, so heavy paging causes disk thrashing", "Virtual/cloud storage: remote networked servers giving access anywhere, scalable capacity and off-site backup, but needing internet with ongoing cost and security concerns"]}],
-  "worked_example": {"title": "Justifying a device choice against a scenario", "steps": ["Read the requirements carefully: portable storage for large video files, frequently rewritten, fast transfer, durable", "Match each requirement to a characteristic rather than listing generic pros", "Choose flash/SSD (external SSD or USB flash drive) as the recommendation", "Justify: no moving parts gives durability and portability; high transfer speeds suit large video files; easily rewritable for frequent changes", "Compare against an alternative (e.g. an HDD is cheaper per GB but slower and fragile when carried), then state the conclusion linked to the scenario"]},
-  "task": "Give students three short scenarios (e.g. high-volume office printing, occasional home photo printing, long-term cheap archive). For each, recommend a device/storage type and justify it by linking specific characteristics to the stated requirements.",
-  "challenge": "Write a five-mark style answer recommending a printer for both a busy office and an occasional home photo user, using comparison language (whereas) so every characteristic is tied to a requirement and a justified judgement is reached.",
-  "exit_ticket": [{"q": "Why is flash/SSD storage more durable than a magnetic HDD?", "a": "It has no moving parts, so it is shock-resistant as well as faster, silent and lower power."}, {"q": "What does volatile mean, and which of RAM/ROM is volatile?", "a": "Volatile means contents are lost when power is removed; RAM is volatile, ROM is non-volatile."}, {"q": "Define disk thrashing.", "a": "When excessive paging means the system spends most of its time swapping pages in and out of disk rather than doing useful work."}]
+  "week": "Week 04 (21 Sep)",
+  "objectives": [
+    "I can justify a choice of input or output device for a given scenario, linking characteristics to requirements",
+    "I can describe how magnetic, flash and optical storage work and compare their suitability for different uses",
+    "I can explain the differences between RAM and ROM, including volatility and their contents",
+    "I can explain virtual storage, distinguishing virtual memory from virtual (cloud) storage"
+  ],
+  "retrieval": [
+    {"q": "From 1.1.2: state two differences between RISC and CISC processors.", "a": "Any two of: small simple set vs large complex set; fixed-length one-cycle vs variable-length multi-cycle instructions; complexity in software/compiler vs hardware; lower vs higher power."},
+    {"q": "From 1.1.2: why does a GPU outperform a CPU when applying one filter to every pixel of a photo?", "a": "Its thousands of cores apply the same operation to many independent data items in parallel."},
+    {"q": "From 1.1.2: what limits the speed-up gained by adding more cores?", "a": "The serial fraction/data dependencies, software not written for multiple threads, and coordination overhead."},
+    {"q": "From 1.1.1: state the roles of the MAR and the MDR during a fetch.", "a": "MAR holds the address of the location being accessed; MDR holds the instruction or data transferred."},
+    {"q": "From 1.1.1: what is cache and why does it improve performance?", "a": "Small, very fast memory on/near the CPU holding frequently used data, so fewer slow accesses to RAM are needed."}
+  ],
+  "keywords": [
+    {"term": "Volatile", "def": "Loses its contents when power is removed, like RAM."},
+    {"term": "Non-volatile", "def": "Retains contents without power, like ROM and all secondary storage."},
+    {"term": "RAM", "def": "Volatile read/write main memory holding currently running programs and their data."},
+    {"term": "ROM", "def": "Non-volatile, normally read-only memory holding the bootstrap loader and BIOS firmware."},
+    {"term": "Magnetic storage", "def": "Data stored as magnetised patterns on a spinning platter or tape, read by a read/write head."},
+    {"term": "Flash / SSD", "def": "Solid-state storage trapping electrons in EEPROM cells; no moving parts."},
+    {"term": "Optical storage", "def": "A laser reads pits and lands on a disc surface via reflected light."},
+    {"term": "Virtual memory", "def": "Use of secondary storage as extra RAM: less-used pages are swapped to a paging file."},
+    {"term": "Disk thrashing", "def": "Excessive paging where the system spends most of its time swapping pages rather than working."}
+  ],
+  "content": [
+    {
+      "heading": "Input and output devices",
+      "points": [
+        "Input devices send data INTO the system: keyboard, mouse, touchscreen, barcode scanner, microphone, sensors",
+        "Output devices act on the world: monitor, printer, speakers, and actuators (motors producing movement)",
+        "A sensor is input; an actuator is output — pair them in control systems",
+        "A touchscreen is both input and output"
+      ],
+      "note": "An actuator is an OUTPUT device — a frequently mis-sorted exam item."
+    },
+    {
+      "heading": "Choosing devices for a scenario",
+      "points": [
+        "There is no single right device: justify choices against the scenario's stated needs",
+        "Consider environment (dust, vibration, heat), user and accessibility, accuracy, speed, cost, durability",
+        "Printers: laser = fast, high volume, low cost per page (offices); inkjet = cheap to buy, good occasional colour (home); 3D = builds objects layer by layer",
+        "Full marks come from linking a characteristic to a requirement, not listing generic pros"
+      ]
+    },
+    {
+      "heading": "Primary vs secondary storage",
+      "points": [
+        "Primary storage (RAM, ROM, cache) is directly accessed by the CPU",
+        "Secondary storage is non-volatile: it retains data with the power off",
+        "It holds files and software long-term; contents load into RAM to be used",
+        "Three secondary technologies to know: magnetic, flash (solid state) and optical"
+      ]
+    },
+    {
+      "heading": "Magnetic storage: HDD and tape",
+      "points": [
+        "Data stored as magnetised patterns on a spinning platter, read/written by a moving head on an actuator arm",
+        "Huge capacity at a low cost per gigabyte",
+        "Moving parts make it slower, noisier and fragile if dropped",
+        "Magnetic tape is serial access: cheap at scale and long-lasting, ideal for archives and backups"
+      ]
+    },
+    {
+      "heading": "Flash and solid-state storage",
+      "points": [
+        "Stores data by trapping electrons in memory cells (EEPROM); no moving parts",
+        "Fast, silent, low power, shock-resistant and portable (SSD, USB stick, SD card)",
+        "Higher cost per gigabyte than magnetic",
+        "Cells survive a finite number of writes; wear levelling spreads writes to extend life"
+      ]
+    },
+    {
+      "heading": "Optical storage: CD, DVD, Blu-ray",
+      "points": [
+        "A laser reads pits and lands on the disc surface by the difference in reflected light",
+        "Very cheap per disc, light and easy to post or distribute",
+        "Low capacity (CD 700 MB, DVD 4.7 GB, Blu-ray 25 GB) and slow",
+        "Easily scratched, and many modern devices no longer have optical drives"
+      ]
+    },
+    {
+      "heading": "Picking storage: characteristics vs requirements",
+      "points": [
+        "Weigh capacity, speed, portability, durability, cost per gigabyte and access type",
+        "Frequent fast rewrites on the move: flash/SSD (durable, no moving parts)",
+        "Bulk capacity on a budget: HDD; long-term archive at scale: tape",
+        "Always compare: say why the chosen medium beats a named alternative for THIS scenario"
+      ],
+      "note": "Answers that list generic pros and cons without applying them to the scenario cap at AO1 marks."
+    },
+    {
+      "heading": "RAM and ROM",
+      "points": [
+        "RAM: volatile, read/write, holds the running programs and data the CPU is currently using",
+        "More RAM lets more programs run at once without resorting to virtual memory",
+        "ROM: non-volatile, normally read-only, holds the bootstrap loader and BIOS firmware",
+        "The bootstrap code in ROM starts the computer and loads the OS from secondary storage into RAM"
+      ]
+    },
+    {
+      "heading": "Virtual memory",
+      "points": [
+        "When RAM is full, the OS moves less-recently-used pages to a paging/swap file on secondary storage",
+        "This lets more or larger programs run than physical RAM alone would allow",
+        "Disk access is far slower than RAM, so heavy paging degrades performance",
+        "Excessive swapping is disk thrashing: the system spends its time paging, not working"
+      ],
+      "note": "Virtual memory does NOT add extra RAM — it borrows secondary storage to act as if it were RAM."
+    },
+    {
+      "heading": "Virtual (cloud) storage",
+      "points": [
+        "Files stored on remote servers and accessed over a network or the internet",
+        "Benefits: access from anywhere, easy scaling, sharing, off-site backup, no hardware to maintain",
+        "Drawbacks: needs an internet connection, ongoing subscription cost, data held by a third party (security/privacy)",
+        "Keep the two virtuals separate: virtual memory extends RAM; virtual storage replaces local disks"
+      ]
+    }
+  ],
+  "worked_examples": [
+    {
+      "title": "Recommending a storage device with full justification",
+      "steps": [
+        "Scenario: portable storage for large video files, carried between sites, frequently rewritten, needing fast transfer and durability",
+        "Step 1, list the requirements: portable, large capacity, fast transfer, frequently rewritten, durable",
+        "Step 2, recommend: an external SSD (flash storage)",
+        "Step 3, justify against each requirement: small and light so portable; fast transfer suits large video files; easily rewritable; no moving parts so it survives being carried",
+        "Step 4, compare and reject alternatives: an HDD is cheaper per GB but its moving parts are fragile in transit; optical discs are slow and far too small — so flash best fits the stated needs"
+      ]
+    },
+    {
+      "title": "Costing an archive: tape versus cloud for 60 TB over 8 years",
+      "steps": [
+        "A hospital must keep 60 TB of scans off-site for 8 years; catalogue prices: 12 TB tape cartridge 40 pounds, tape drive 1,500 pounds, cloud 8 pounds per TB per month",
+        "Tape: 60 / 12 = 5 cartridges; 5 x 40 = 200 pounds, plus the drive 1,500 pounds = 1,700 pounds total",
+        "Cloud: 60 TB x 8 pounds = 480 pounds per month; 480 x 12 = 5,760 pounds per year; x 8 years = 46,080 pounds",
+        "Tape also offers a long shelf life, and serial access is acceptable because archives are rarely read",
+        "Conclusion: tape wins on cost by a factor of about 27; cloud is only defensible if scans must be instantly retrievable from anywhere"
+      ]
+    },
+    {
+      "title": "Tracing virtual memory when RAM fills up",
+      "steps": [
+        "A laptop has 8 GB of RAM; the user opens programs needing 10 GB in total",
+        "Step 1: the OS identifies pages of RAM that have not been used recently",
+        "Step 2: those pages are written out to the paging (swap) file on the SSD or HDD, freeing physical RAM",
+        "Step 3: when a swapped-out page is needed again, it is read back into RAM, and another page may be evicted to make room",
+        "Step 4: because disk is far slower than RAM, each swap costs time; if the shortfall grows, constant swapping (thrashing) leaves the machine unresponsive",
+        "Fix: install more physical RAM, or run fewer programs at once"
+      ]
+    }
+  ],
+  "activities": [
+    {
+      "title": "Storage Shopping Task: Spend the Budget",
+      "minutes": 20,
+      "instructions": [
+        "Project the catalogue: 4 TB HDD 70 pounds; 1 TB SATA SSD 55 pounds; 2 TB NVMe SSD 120 pounds; 128 GB USB flash drive 12 pounds; 25 GB Blu-ray discs 1 pound each (drive 60 pounds); 12 TB LTO tape 40 pounds (drive 1,500 pounds); cloud 8 pounds per TB per month",
+        "Groups of three act as IT consultants: (a) video-editing freelancer, 200 pounds, fast scratch space plus archive; (b) hospital, 3,000 pounds, 60 TB off-site for 8 years; (c) school, 150 pounds, distributing a 4 GB pack to 30 staff with no optical drives; (d) wildlife charity, 100 pounds, camera-trap storage in a hot, vibration-prone hide",
+        "Groups pick devices within budget and write a two-sentence justification per choice linking a characteristic to a stated requirement",
+        "Groups pitch to another group acting as the sceptical client, who must ask one why-not-X-instead question",
+        "Debrief: praise pitches that compared alternatives (whereas...) over pitches that listed generic pros"
+      ],
+      "stretch": "Curveball mid-pitch: the hospital now needs any scan retrievable within one minute — defend or revise (tape's serial access now fails)."
+    },
+    {
+      "title": "Spot and Fix: The Terrible Memory Essay",
+      "minutes": 10,
+      "instructions": [
+        "Project the planted-error paragraph: RAM is non-volatile main memory that holds running programs. ROM is volatile and stores the user's documents. When RAM is full, virtual memory adds extra RAM chips so more programs can run. Pages are swapped between the hard drive and ROM, and because the disk is faster than RAM this speeds the computer up. If too much swapping occurs the system enjoys disk thrashing, which improves performance. Cache is a section of RAM that is slower than main memory.",
+        "Tell pairs there are 8 errors; they find and number every one",
+        "Pairs rewrite the worst two sentences correctly on whiteboards",
+        "Class check, one point per error found plus one per accurate fix",
+        "Answers: RAM is volatile; ROM is non-volatile; ROM holds firmware/bootstrap not documents; virtual memory uses secondary storage, it does not add RAM; pages swap between disk and RAM, not ROM; disk is slower than RAM so it slows things down; thrashing degrades performance; cache is separate fast memory on/near the CPU, faster than RAM"
+      ],
+      "stretch": "Pairs write their own 3-error paragraph on input/output devices for another pair to debug."
+    },
+    {
+      "title": "Magnetic / Flash / Optical Human Sort",
+      "minutes": 10,
+      "instructions": [
+        "Label three zones of the room MAGNETIC, FLASH and OPTICAL; give each student or pair one statement card",
+        "Cards: stores data as magnetised regions on a platter; laser reads pits and lands; traps electrons in memory cells; no moving parts; wear levelling extends its life; read/write head on an actuator arm; cheapest per disc to post; vulnerable to scratches; finite number of write cycles; high capacity at low cost per GB; serial access when on tape; silent and shock-resistant",
+        "Students read their card aloud and walk to a zone; each zone then audits itself and cross-examines doubtful members",
+        "Call the two deliberate wobbles: high capacity at low cost per GB (magnetic, but let flash argue) and no moving parts (flash, though optical discs themselves have none — the drive does)",
+        "Each zone composes one new true statement that could only belong to them"
+      ],
+      "stretch": "Zone representatives explain why their medium is non-volatile using its physical mechanism."
+    }
+  ],
+  "practice": [
+    {"q": "Describe how data is stored on and read from a hard disk drive. [3]", "a": "Data is stored as magnetised patterns/regions (1) on a spinning platter (1); a read/write head on a moving actuator arm detects or changes the magnetisation to read or write the data (1)."},
+    {"q": "Describe how an optical disc such as a DVD stores and reads data. [2]", "a": "Data is stored as pits and lands on the disc surface (1); a laser shines on the surface and the difference in reflected light is read as binary data (1)."},
+    {"q": "A courier company gives each driver a handheld device used in vans all day. Explain two reasons why flash storage is more suitable than a hard disk for these devices. [4]", "a": "Flash has no moving parts (1) so it withstands the constant vibration and knocks of van use, where an HDD's head and platter could be damaged (1); flash also has low power consumption (1), extending the battery life of a handheld device used all day (1). (Also credit: faster access, smaller and lighter.)"},
+    {"q": "State two differences between RAM and ROM. [2]", "a": "RAM is volatile whereas ROM is non-volatile (1); RAM is read/write and holds running programs and data, whereas ROM is normally read-only and holds the bootstrap/BIOS firmware (1)."},
+    {"q": "Explain how virtual memory allows a computer with 4 GB of RAM to run programs needing more than 4 GB. [4]", "a": "The OS uses part of secondary storage as a paging/swap file (1); less-recently-used pages are moved out of RAM to this file, freeing physical RAM (1); when a swapped-out page is needed it is loaded back into RAM, possibly evicting another (1); this lets total program memory exceed physical RAM, though disk is much slower so heavy paging reduces performance (1)."},
+    {"q": "State what is meant by disk thrashing. [2]", "a": "Excessive paging when RAM is far too full (1), so the system spends most of its time swapping pages between disk and RAM instead of doing useful work, and performance collapses (1)."},
+    {"q": "A photography business is deciding between cloud storage and an external hard drive for backing up images. Discuss the advantages and disadvantages of the cloud option. [6]", "a": "Advantages: files are stored off-site, so they survive local theft, fire or hardware failure (1); accessible from anywhere with internet, aiding work on location (1); capacity scales without buying hardware (1). Disadvantages: an internet connection is required, and uploads of large image files may be slow (1); ongoing subscription costs can exceed the one-off cost of a drive over time (1); data is held by a third party, raising security/privacy concerns (1)."},
+    {"q": "A supermarket self-checkout needs one input and one output device besides the touchscreen. State a suitable device of each type and justify each choice. [4]", "a": "Input: a barcode scanner (1) because it identifies products quickly and accurately with no typing by the customer (1). Output: a receipt printer (1) because customers need a physical proof of purchase to take away (1). (Credit other sensible pairs, e.g. scales as input, speaker for prompts as output, with matching justification.)"}
+  ],
+  "misconceptions": [
+    "Students often think virtual memory adds extra RAM, but it uses secondary storage to stand in for RAM, and it is far slower.",
+    "Students often confuse virtual memory with virtual (cloud) storage; one extends RAM using a paging file, the other stores files on remote servers.",
+    "Students often think an actuator is an input device, but it is an output: it acts on the world, while sensors provide the input.",
+    "Students often say SSDs are always better, but HDDs still win on cost per gigabyte and tape wins for large archives.",
+    "Students often write generic device pros and cons; marks come from linking each characteristic to the scenario's stated requirement."
+  ],
+  "exam_link": [
+    "Command words: State (name a device, 1 mark), Describe (how a medium stores data, 2-3 marks), Explain (why a device suits a scenario, 3-4 marks), Discuss (storage choice for a business, 6-9 mark levels of response).",
+    "Scenario questions cap at AO1 unless every characteristic is applied to a stated requirement — use whereas-style comparisons with a rejected alternative.",
+    "Example stem: 'A wildlife charity records video in a remote hide. Discuss the suitability of magnetic, optical and flash storage for this use.'",
+    "Be precise on mechanisms: magnetised patterns; pits and lands read by laser; electrons trapped in cells with no moving parts."
+  ],
+  "task": "An architecture firm needs: fast working storage for huge CAD files, a way to send finished plans to clients without reliable internet, and a 10-year archive of every project. Recommend a storage technology for each need and justify each choice by linking two characteristics to the requirement and rejecting one named alternative.",
+  "challenge": "Using the lesson catalogue prices, cost a 10-year archive of 24 TB three ways: tape (2 cartridges 80 pounds + 1,500 pound drive = 1,580 pounds), HDDs (6 x 4 TB = 420 pounds, but plan replacement at year 5, total 840 pounds), and cloud (24 x 8 x 12 x 10 = 23,040 pounds). Then argue which wins if the requirement changes to instant retrieval from any office.",
+  "exit_ticket": [
+    {"q": "Give the physical mechanism for each: magnetic, optical, flash.", "a": "Magnetic: magnetised patterns on a platter/tape read by a head; optical: laser reads pits and lands; flash: electrons trapped in memory cells, no moving parts."},
+    {"q": "What is the difference between virtual memory and virtual storage?", "a": "Virtual memory uses secondary storage as extra RAM via a paging file; virtual (cloud) storage keeps files on remote servers accessed over a network."},
+    {"q": "Why is RAM described as volatile and ROM as non-volatile?", "a": "RAM loses its contents when power is removed; ROM keeps its contents (bootstrap/BIOS firmware) without power."}
+  ]
 }

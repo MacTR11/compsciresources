@@ -1,0 +1,118 @@
+{
+  "subtopic": "1.2.1 Operating Systems (part 2)",
+  "spec": "OCR H446 — Component 01",
+  "week": "Week 06 (05 Oct)",
+  "objectives": [
+    "I can describe the role of the BIOS and the sequence of events when a computer boots.",
+    "I can explain what device drivers are and why they are hardware- and OS-specific.",
+    "I can explain how virtual machines execute intermediate code and give uses of virtual machines.",
+    "I can select and justify a suitable type of operating system (distributed, embedded, multi-tasking, multi-user, real-time) for a scenario."
+  ],
+  "retrieval": [
+    {"q": "From last lesson: state the purpose of an operating system.", "a": "Software that manages the hardware and provides a platform for applications to run, hiding complexity through abstraction."},
+    {"q": "From last lesson: what is the difference between paging and segmentation?", "a": "Paging splits memory into fixed-size physical blocks; segmentation splits it into variable-size logical blocks matching program structure."},
+    {"q": "From last lesson: why are register contents pushed onto the stack when an interrupt is serviced?", "a": "To save the interrupted program's state so it can be popped back and resumed; LIFO order supports nested interrupts."},
+    {"q": "From last lesson: describe round robin scheduling in one sentence.", "a": "Each process receives a fixed time slice (quantum) in turn, pre-emptively, so all processes get regular CPU time."},
+    {"q": "From last lesson: give one advantage and one disadvantage of shortest job first.", "a": "It minimises average waiting time, but long jobs can starve and burst times must be estimated in advance."}
+  ],
+  "keywords": [
+    {"term": "BIOS", "def": "Basic Input Output System: firmware held in ROM that runs first at start-up and loads the OS."},
+    {"term": "POST", "def": "Power-On Self-Test: the BIOS check that essential hardware is present and working."},
+    {"term": "Bootstrap loader", "def": "The small program that copies the operating system from storage into RAM at start-up."},
+    {"term": "Firmware", "def": "Low-level software stored on ROM or flash inside a hardware device."},
+    {"term": "Device driver", "def": "Software that lets the operating system communicate with and control a specific hardware device."},
+    {"term": "Virtual machine", "def": "A software implementation of a computer, providing an environment in which programs or whole systems run."},
+    {"term": "Intermediate code", "def": "Partially translated code, such as Java bytecode, executed by a virtual machine on any platform."},
+    {"term": "Embedded OS", "def": "An operating system built into a single-purpose device, with limited resources, usually held in ROM."},
+    {"term": "Real-time OS", "def": "An operating system that guarantees a response to inputs within a fixed time limit."}
+  ],
+  "content": [
+    {"heading": "The boot problem", "points": ["RAM is volatile, so it is empty when the computer powers on.", "The CPU can only execute instructions that are in memory.", "Something non-volatile must hold the very first instructions.", "The answer is firmware: the BIOS, stored in ROM."]},
+    {"heading": "The BIOS and POST", "points": ["BIOS stands for Basic Input Output System.", "It is the first program to run when the computer is switched on.", "It runs the POST: checking RAM, keyboard and essential hardware respond.", "It initialises hardware and locates a storage device holding an OS."], "note": "The BIOS loads the OS; it is not the OS itself."},
+    {"heading": "The boot sequence in order", "points": ["Power on: the CPU starts executing BIOS code from ROM.", "The BIOS runs the POST and initialises the hardware.", "It checks boot devices in its configured order for an operating system.", "The bootstrap loader copies the OS kernel from storage into RAM.", "Control passes to the OS, which starts services and the user interface."]},
+    {"heading": "Device drivers", "points": ["Software that lets the OS communicate with and control a hardware device.", "Translates generic OS commands into instructions the specific device understands.", "Needed because the OS cannot ship with knowledge of every device.", "Examples: printer drivers, graphics card drivers, network adapter drivers."]},
+    {"heading": "Drivers are specific and updatable", "points": ["A driver is written for one device (or family) and one operating system.", "The same printer needs different drivers for Windows and Linux.", "An OS upgrade can break old drivers, needing replacements.", "Driver updates fix bugs, improve performance and patch security holes."]},
+    {"heading": "Virtual machines", "points": ["A virtual machine is a software implementation of a computer.", "A system VM runs a complete guest OS on top of a host machine.", "The guest behaves as real hardware but is just software.", "Several VMs can share one physical server's resources."]},
+    {"heading": "Interpreting intermediate code", "points": ["Some languages compile source into intermediate code, not machine code.", "Example: Java source compiles to bytecode.", "A process virtual machine (the JVM) interprets or executes that bytecode.", "Any platform with the VM installed runs the identical bytecode.", "This gives write once, run anywhere portability."], "note": "Trade-off: executing intermediate code is slower than running native machine code."},
+    {"heading": "Uses and drawbacks of virtual machines", "points": ["Testing software on many operating systems without buying machines.", "Sandboxing: running untrusted or malicious software safely in isolation.", "Running legacy software whose original hardware or OS is obsolete.", "Consolidating several servers onto one physical machine to cut costs.", "Drawbacks: slower than native execution and demanding on RAM and CPU."]},
+    {"heading": "OS types: distributed and embedded", "points": ["A distributed OS runs one system across multiple networked computers.", "Users see a single machine; the OS spreads processing across many.", "Example: large-scale search or cloud platforms across server farms.", "An embedded OS is built into one device for one purpose.", "It has limited resources, is highly efficient and typically held in ROM."]},
+    {"heading": "OS types: multi-tasking, multi-user, real-time", "points": ["Multi-tasking: one user runs many programs at once via time slicing.", "Multi-user: many users share one computer's resources, needing scheduling and permissions.", "Real-time: guarantees a response within a fixed deadline, whatever the load.", "Real-time examples: aircraft control, anti-lock brakes, pacemakers, power stations.", "Exam skill: name the type and justify it from the scenario's needs."], "note": "Real-time does not mean fast; it means a guaranteed response within a time limit."}
+  ],
+  "worked_examples": [
+    {"title": "Tracing the boot sequence from power button to desktop", "steps": [
+      "The power button is pressed; RAM is empty because it is volatile.",
+      "The CPU begins executing the BIOS directly from ROM, the only non-volatile memory holding instructions.",
+      "The BIOS runs the POST: it checks that RAM, the keyboard and other essential hardware are present and respond.",
+      "The BIOS works through its configured boot order until it finds a device containing an operating system, such as the SSD.",
+      "The bootstrap loader copies the OS kernel from the SSD into RAM.",
+      "Control transfers to the OS, which initialises drivers and services, then displays the login screen and desktop.",
+      "Exam check: the BIOS bootstraps the OS and then hands over; it does not manage applications itself."
+    ]},
+    {"title": "One Java program, two platforms: how intermediate code runs", "steps": [
+      "A developer writes a Java program and compiles it once.",
+      "The compiler produces bytecode, an intermediate code, rather than machine code for any specific processor.",
+      "On a Windows laptop, the installed JVM reads the bytecode and executes it, converting it for that processor.",
+      "On a Linux server, a different JVM executes the identical bytecode file with no recompilation.",
+      "Benefit: portability, write once, run anywhere, because only the VM is platform-specific.",
+      "Cost: the extra layer of interpretation makes execution slower than a natively compiled program, and each machine must have the JVM installed."
+    ]},
+    {"title": "Choosing an OS type for three scenarios", "steps": [
+      "Scenario 1: a hospital pacemaker. It must respond to heart signals within a guaranteed deadline, so real-time is essential; it is also built into one device, so embedded features apply. The discriminator to quote is the guaranteed response time.",
+      "Scenario 2: a university mainframe with 400 students logged in. Many people share one machine's processor and storage, so multi-user: the OS schedules each user's jobs and enforces permissions between accounts.",
+      "Scenario 3: a search engine running across thousands of networked servers. Distributed: the OS presents one system while spreading storage and processing across machines for scale and redundancy.",
+      "Method: pull the requirement from the scenario (deadline, shared access, scale), name the OS type, then justify with its defining feature, never just an example."
+    ]}
+  ],
+  "activities": [
+    {"title": "Which OS Am I? Four corners", "minutes": 8, "instructions": [
+      "Label corners DISTRIBUTED, EMBEDDED, MULTI-USER, REAL-TIME; the centre of the room is MULTI-TASKING DESKTOP.",
+      "Read out systems; students move within five seconds: pacemaker, washing machine, a university mainframe with 400 logged-in students, a search engine across thousands of servers, a Windows laptop, a car's anti-lock braking system, a smart TV, a cloud server farm renting compute to companies.",
+      "Interview split votes: several systems legitimately claim two corners (a pacemaker is embedded and real-time); each corner must state the defining feature it is claiming.",
+      "Answers: pacemaker and ABS real-time (embedded also credited, the discriminator is the deadline guarantee); washing machine and smart TV embedded; mainframe multi-user; search engine and server farm distributed; laptop multi-tasking.",
+      "Finish on whiteboards: a one-sentence definition of the corner each student visited most."
+    ], "stretch": "Name one real system that defensibly belongs to three corners at once and argue it, e.g. an aircraft's avionics network."},
+    {"title": "Always-Sometimes-Never: BIOS, drivers and VMs", "minutes": 10, "instructions": [
+      "Reveal statements one at a time; pairs commit Always, Sometimes or Never on whiteboards, then defend on request.",
+      "Statements: a device driver works with any operating system; the BIOS is the first program to run when the computer starts; an embedded OS is stored in ROM; a real-time OS is faster than a desktop OS; a program compiled to intermediate code runs without any other software installed.",
+      "For every Sometimes the pair states the condition; for every Never, the corrected version.",
+      "Answers: Never (drivers are OS- and hardware-specific); Always (then POST, then the bootstrap loads the OS); Sometimes/usually (typical but not definitional, reward the nuance); Never as stated (it guarantees a response within a deadline, which is not the same as faster); Never (it needs the virtual machine, e.g. the JVM, installed)."
+    ], "stretch": "Convert the real-time statement into an Always statement that would earn full definition marks."},
+    {"title": "The OS concept web with compulsory bridges", "minutes": 12, "instructions": [
+      "Pairs place OS centrally on A3 and connect terms from the word bank with labelled arrows; every arrow must carry a verb phrase, because unlabelled lines score nothing.",
+      "Word bank: OS, BIOS, POST, ROM, bootstrap loader, RAM, device driver, virtual machine, intermediate code, JVM, embedded, real-time, interrupt, scheduler, virtual memory.",
+      "Compulsory bridges: connect BIOS to RAM via a labelled path, and virtual machine to intermediate code.",
+      "Gallery walk: pairs tour two other maps and add one sticky-note challenge (prove this link) to each, then return and defend or fix their own challenged links.",
+      "Quality checks: BIOS runs POST then loads OS into RAM (not BIOS is the OS); driver lets OS control a specific device; VM executes intermediate code."
+    ], "stretch": "Integrate three part 1 terms (paging, ISR, quantum) into the web with legal labelled links."}
+  ],
+  "practice": [
+    {"q": "Describe the role of the BIOS when a computer is switched on. [3]", "a": "It is the first program to run, held in ROM (1); it performs the POST to check essential hardware is present and working (1); it then locates and loads (bootstraps) the operating system into RAM (1)."},
+    {"q": "Explain why the BIOS is stored in ROM rather than in RAM. [2]", "a": "RAM is volatile, so its contents are lost when the power is off (1); ROM is non-volatile, so the BIOS instructions are still there for the CPU to execute at power-on (1)."},
+    {"q": "State what is meant by a device driver and explain why a printer may need a new driver after an operating system upgrade. [3]", "a": "Software that allows the OS to communicate with and control a specific hardware device (1). Drivers are written for a specific OS (1), so the upgraded OS may issue commands the old driver cannot translate, requiring a compatible replacement (1)."},
+    {"q": "Describe what is meant by a virtual machine. [2]", "a": "A software implementation of a computer (1) providing an environment in which programs or a complete guest operating system can run as if on real hardware (1)."},
+    {"q": "A program is compiled to intermediate code that runs on a virtual machine. Explain one advantage and one disadvantage of this approach. [4]", "a": "Advantage: the same intermediate code runs on any platform with the VM installed (1), so the program is written and compiled once for all devices (1). Disadvantage: the VM must translate the code at run time (1), so execution is slower than native machine code and the VM itself must be installed (1)."},
+    {"q": "A car's anti-lock braking system requires an operating system. State the most appropriate type of operating system and justify your choice. [3]", "a": "Real-time operating system (1); braking inputs must be processed within a guaranteed time limit (1) because a late response could cause a crash, so predictability matters more than average speed (1). (Embedded is also creditable alongside real-time.)"},
+    {"q": "Explain the difference between a multi-tasking and a multi-user operating system. [2]", "a": "Multi-tasking lets one user run several programs apparently simultaneously by time slicing the CPU (1); multi-user lets several people use one computer's resources at once, with scheduling and permissions keeping their work separate (1)."},
+    {"q": "Give two uses of a system virtual machine. [2]", "a": "Any two: testing software on different operating systems without extra hardware; sandboxing suspicious software safely; running legacy software whose platform is obsolete; consolidating several servers onto one physical machine (1 each)."}
+  ],
+  "misconceptions": [
+    "Students often think the BIOS is the operating system; it is firmware that only checks the hardware and loads the OS, then hands over control.",
+    "Students often think a driver is universal; drivers are specific to both the device and the operating system, which is why an OS upgrade can break a printer.",
+    "Students often think real-time means very fast; it means a response is guaranteed within a set deadline, even under load.",
+    "Students often think intermediate code runs as fast as native code; the virtual machine layer makes it slower, the price paid for portability.",
+    "Students often say an embedded OS must be in ROM; it usually is, but the defining feature is being built into a single-purpose device with limited resources."
+  ],
+  "exam_link": [
+    "Command words: state and describe for BIOS, drivers and VM definitions (1-3 marks); explain for advantages and disadvantages of intermediate code (2-4 marks); justify for OS-type scenario questions (2-3 marks).",
+    "OS-type questions almost always give a scenario: marks come from naming the type and justifying with its defining feature, not from examples alone.",
+    "The boot sequence is a 3-4 mark describe question; the ordering ROM, POST, bootstrap, RAM must be correct.",
+    "Example stem: 'A games console runs software written for an older console using a virtual machine. Describe what a virtual machine is and explain why the games may run more slowly.' [4]"
+  ],
+  "task": "Write the full story of a laptop from power button to running a Java program: the boot sequence step by step (ROM, BIOS, POST, bootstrap loader, RAM), the driver the OS loads to drive the screen, and how the JVM executes the program's bytecode. Every sentence must use at least one keyword correctly.",
+  "challenge": "A hospital is choosing between one powerful physical server per department and a single machine running six virtual machines. Evaluate the virtualisation option: cover cost, isolation and sandboxing, testing, performance overhead, and the risk of one hardware failure. Finish with a justified recommendation, including which single department system (the patient monitoring alarms) must NOT be virtualised and why a real-time guarantee is incompatible with sharing hardware.",
+  "exit_ticket": [
+    {"q": "What does the BIOS do at start-up, and why is it not the operating system?", "a": "It runs first from ROM, performs the POST and bootstraps the OS into RAM; it only loads the OS rather than managing applications itself."},
+    {"q": "Why does the same printer need different drivers for Windows and Linux?", "a": "A driver translates one OS's commands into instructions for the device, so it is specific to both the OS and the hardware."},
+    {"q": "Give one benefit and one drawback of running Java bytecode on the JVM rather than compiling to native machine code.", "a": "Benefit: the same bytecode runs on any platform with a JVM (portability). Drawback: execution is slower than native code and the JVM must be installed."}
+  ]
+}

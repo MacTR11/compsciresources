@@ -91,6 +91,7 @@
 
 ### Week 06 (05 Oct) 1.2.1 BIOS, drivers, VMs (review)
 
+- [1 Lesson 1.2.1 part 2.pptx](1%20Year%2012%20Weekly/Week%2006%20%2805%20Oct%29%201.2.1%20BIOS%2C%20drivers%2C%20VMs%20%28review%29/1%20Lesson%201.2.1%20part%202.pptx)
 - [1 Lesson 2.1.2.pptx](1%20Year%2012%20Weekly/Week%2006%20%2805%20Oct%29%201.2.1%20BIOS%2C%20drivers%2C%20VMs%20%28review%29/1%20Lesson%202.1.2.pptx)
 - [2 Class Quiz 1.2.1 - Answers.docx](1%20Year%2012%20Weekly/Week%2006%20%2805%20Oct%29%201.2.1%20BIOS%2C%20drivers%2C%20VMs%20%28review%29/2%20Class%20Quiz%201.2.1%20-%20Answers.docx)
 - [2 Class Quiz 1.2.1.docx](1%20Year%2012%20Weekly/Week%2006%20%2805%20Oct%29%201.2.1%20BIOS%2C%20drivers%2C%20VMs%20%28review%29/2%20Class%20Quiz%201.2.1.docx)
@@ -179,6 +180,7 @@
 
 ### Week 14 (14 Dec) 1.3.4 PageRank - EOY quiz
 
+- [1 Lesson 1.3.4 part 2.pptx](1%20Year%2012%20Weekly/Week%2014%20%2814%20Dec%29%201.3.4%20PageRank%20-%20EOY%20quiz/1%20Lesson%201.3.4%20part%202.pptx)
 - [2 Class Quiz 1.3.4 - Answers.docx](1%20Year%2012%20Weekly/Week%2014%20%2814%20Dec%29%201.3.4%20PageRank%20-%20EOY%20quiz/2%20Class%20Quiz%201.3.4%20-%20Answers.docx)
 - [2 Class Quiz 1.3.4.docx](1%20Year%2012%20Weekly/Week%2014%20%2814%20Dec%29%201.3.4%20PageRank%20-%20EOY%20quiz/2%20Class%20Quiz%201.3.4.docx)
 - [2 Class Quiz 2.1.4 - Answers.docx](1%20Year%2012%20Weekly/Week%2014%20%2814%20Dec%29%201.3.4%20PageRank%20-%20EOY%20quiz/2%20Class%20Quiz%202.1.4%20-%20Answers.docx)

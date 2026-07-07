@@ -1,51 +1,230 @@
 {
   "subtopic": "1.3.3 Networks",
   "spec": "OCR H446 — Component 01",
+  "week": "Week 12 (30 Nov)",
   "objectives": [
-    "Compare LANs and WANs, client-server and peer-to-peer networks, and star and mesh topologies.",
-    "Explain packet vs circuit switching, the role of DNS, and the four layers of the TCP/IP stack.",
-    "Describe the function of network hardware and security measures including switches, routers, firewalls and proxies."
+    "I can compare LANs and WANs, and client-server and peer-to-peer models, with examples and trade-offs.",
+    "I can explain the purpose of protocols and standards and describe the role of each TCP/IP layer, including encapsulation.",
+    "I can describe how DNS resolves a domain name to an IP address, including the hierarchy and caching.",
+    "I can compare packet and circuit switching and state the function of key network hardware."
   ],
   "retrieval": [
-    {"q": "Which device connects two different networks and routes using IP addresses?", "a": "A router."},
-    {"q": "What is the role of DNS?", "a": "It translates domain names into IP addresses."},
-    {"q": "Which protocol is used to send email, and which two retrieve it?", "a": "SMTP sends email; POP3 and IMAP retrieve it."},
-    {"q": "Interleaving (1.3.1): When you request a secure web page, how is the data protected in transit and what does HTTPS use?", "a": "It is encrypted; HTTPS uses asymmetric encryption to exchange a symmetric session key, then symmetric encryption for the bulk data."},
-    {"q": "Interleaving (1.4.1): Why are IP addresses written in a form people rarely type directly?", "a": "IPv4 is a 32-bit number and IPv6 128-bit; DNS lets users type memorable domain names that are translated to these numeric addresses."}
+    {"q": "Write an SQL statement to display the Surname of every student in the Student table whose YearGroup is 13.", "a": "SELECT Surname FROM Student WHERE YearGroup = 13"},
+    {"q": "What is the difference between a primary key and a foreign key?", "a": "A primary key uniquely identifies each record in its own table; a foreign key is an attribute in one table that is the primary key of another table, used to link the tables."},
+    {"q": "Which dependency is removed when moving a table from 2NF to 3NF?", "a": "A transitive dependency — a non-key attribute must not depend on another non-key attribute."},
+    {"q": "A Loan table contains StudentID 999 but no such student exists in the Student table. Which database rule has been broken?", "a": "Referential integrity — every foreign key value must reference an existing primary key in the related table (999 is an orphaned record)."},
+    {"q": "An UPDATE statement is run without a WHERE clause. What happens, and how do you fix it?", "a": "Every record in the table is updated, not just the intended one; add a WHERE clause to restrict the change to the correct record(s)."}
   ],
   "keywords": [
-    {"term": "LAN", "def": "Local Area Network: covers a small area on a single site where one organisation owns the hardware."},
-    {"term": "WAN", "def": "Wide Area Network: spans a large geographic area using third-party infrastructure; the internet is the largest WAN."},
-    {"term": "Packet switching", "def": "Data is split into packets routed independently across the network and reassembled at the destination."},
-    {"term": "Protocol", "def": "A set of rules that governs how devices communicate."},
-    {"term": "DNS", "def": "Domain Name System: translates domain names into IP addresses, using a hierarchical, cached structure."},
-    {"term": "MAC address", "def": "A unique 48-bit hardware address held by a NIC, used at the link layer."},
-    {"term": "Switch", "def": "Connects devices within a LAN and forwards frames using MAC addresses."},
-    {"term": "Router", "def": "Connects different networks and forwards packets using IP addresses."}
+    {"term": "LAN", "def": "Local Area Network: covers a small geographical area on a single site, with hardware owned by one organisation."},
+    {"term": "WAN", "def": "Wide Area Network: spans a large geographical area using third-party infrastructure; the internet is the largest WAN."},
+    {"term": "Protocol", "def": "A set of rules governing how devices communicate, covering format, order, timing and error handling."},
+    {"term": "TCP/IP stack", "def": "A four-layer model (application, transport, internet, link) where each layer has a defined role and adds or removes its own header."},
+    {"term": "Encapsulation", "def": "The process of each layer wrapping the data from the layer above with its own header (and a trailer at the link layer) as data passes down the stack."},
+    {"term": "DNS", "def": "Domain Name System: a hierarchical, cached system of servers that translates domain names into IP addresses."},
+    {"term": "Packet switching", "def": "Data is split into packets that are routed independently across the network and reassembled in order at the destination."},
+    {"term": "Router", "def": "A device that connects different networks together and forwards packets between them using IP addresses."},
+    {"term": "Peer-to-peer", "def": "A network model where all devices have equal status, each acting as both client and server, with no central server."}
   ],
   "content": [
-    {"heading": "Network types and models", "points": ["A LAN covers a small single site with organisation-owned hardware and high speed; a WAN spans cities or countries using third-party infrastructure.", "Client-server: a server provides services to clients, giving central security and backup but a single point of failure; it scales well but costs more.", "Peer-to-peer: all peers are equal (client and server), decentralised with no single point of failure, but harder to manage and secure.", "The internet is the largest WAN."]},
-    {"heading": "Internet structure and topologies", "points": ["The backbone provides high-capacity routes; ISPs provide access; each device has an IP address (IPv4 32-bit, IPv6 128-bit).", "DNS translates domain names to IP addresses and is hierarchical and cached.", "Star topology: devices connect to a central switch/hub; a single cable fault is isolated, but the central node is a single point of failure.", "Mesh topology: multiple paths between nodes makes it resilient and fault-tolerant with no single point of failure, but wired mesh is expensive."]},
-    {"heading": "Packet vs circuit switching", "points": ["Packet switching splits data into packets routed independently and reassembled at the destination; it is efficient and resilient and is used by the internet.", "Circuit switching reserves one dedicated path for the whole communication (e.g. traditional phone).", "Circuit switching guarantees bandwidth but wastes idle capacity.", "Packet switching is more resilient: if a route or node fails, packets are re-routed around it so the communication still gets through."]},
-    {"heading": "TCP/IP stack and protocols", "points": ["Data passes down the layers when sending and up when receiving; each layer adds or removes a header.", "Application (HTTP, HTTPS, FTP, SMTP, POP3, IMAP, DNS) provides services to user apps; Transport (TCP, UDP) splits data into packets and manages ports and end-to-end delivery.", "Network/Internet (IP) adds source/destination IP addresses and routes packets; Link/Data link (Ethernet, Wi-Fi) handles the physical connection and adds the MAC address.", "HTTP serves web pages, HTTPS is encrypted HTTP (TLS/SSL), FTP transfers files; SMTP sends mail, POP3 downloads and removes it, IMAP keeps it on the server and syncs."]},
-    {"heading": "Hardware and security", "points": ["NIC connects a device and holds its MAC address; a switch connects devices within a LAN (MAC); a router connects different networks (IP); a WAP gives wireless access to a wired network.", "A firewall controls traffic by rules/packet filtering.", "A proxy is an intermediary that can hide the user's IP, cache pages and filter or log traffic.", "Encryption protects data while it is in transit."]}
+    {
+      "heading": "LANs and WANs",
+      "points": [
+        "A LAN covers a small geographical area — one site or building, e.g. a school network.",
+        "The organisation owns and maintains the LAN's hardware and cabling, giving high speed and local control.",
+        "A WAN spans a large geographical area — between cities or countries — e.g. a bank's branch network.",
+        "A WAN uses third-party communication infrastructure such as leased lines, fibre and satellite links.",
+        "The internet is the largest WAN: a global network of interconnected networks."
+      ]
+    },
+    {
+      "heading": "Why protocols and standards matter",
+      "points": [
+        "A protocol is a set of rules governing communication: format, order, timing and error handling.",
+        "A standard is an agreed specification that manufacturers implement in their products.",
+        "Shared protocols and standards let devices from different manufacturers communicate and interoperate.",
+        "Without them, a Dell laptop could not exchange data with a Cisco router or an Apple phone.",
+        "Standards also allow hardware and software to be developed independently yet still work together."
+      ],
+      "note": "Exam phrasing: protocols and standards ensure compatibility and interoperability between devices from different manufacturers."
+    },
+    {
+      "heading": "Common protocols",
+      "points": [
+        "HTTP transfers web pages between server and browser; HTTPS is HTTP encrypted with TLS/SSL.",
+        "FTP transfers files between computers, e.g. uploading website files to a web server.",
+        "SMTP sends email from client to mail server and between mail servers.",
+        "POP3 retrieves email by downloading it and removing it from the server; IMAP keeps mail on the server and syncs across devices.",
+        "TCP provides reliable, ordered delivery; IP routes packets between networks; UDP is a faster, connectionless alternative to TCP with no delivery guarantee."
+      ],
+      "note": "Discriminator: SMTP sends mail; POP3 and IMAP retrieve it. IMAP vs POP3 hinges on whether mail stays on the server."
+    },
+    {
+      "heading": "The TCP/IP stack: four layers",
+      "points": [
+        "Application layer: provides network services to user applications; protocols include HTTP, HTTPS, FTP, SMTP, POP3, IMAP, DNS.",
+        "Transport layer: splits data into packets, adds port numbers and sequence numbers, manages end-to-end delivery and reassembly; TCP and UDP.",
+        "Internet (network) layer: adds source and destination IP addresses and routes packets across networks; IP.",
+        "Link layer: handles the physical connection to the medium and addresses the next hop using MAC addresses; Ethernet, Wi-Fi.",
+        "Layering means one layer can be changed independently, provided its interface to adjacent layers stays the same."
+      ]
+    },
+    {
+      "heading": "Encapsulation down and up the stack",
+      "points": [
+        "Sending: data passes down the stack, and each layer wraps the data from above with its own header.",
+        "Transport adds ports and sequence numbers; internet adds source and destination IP addresses.",
+        "The link layer adds a MAC-address header and also a trailer containing an error check, forming a frame.",
+        "Receiving: data passes up the stack and each layer strips off its own header (de-encapsulation).",
+        "The destination IP address stays constant end-to-end, but the MAC address changes at every hop."
+      ],
+      "note": "Only the link layer adds a trailer; every layer adds a header."
+    },
+    {
+      "heading": "DNS: purpose and hierarchy",
+      "points": [
+        "Humans use memorable domain names; routers need numeric IP addresses — DNS translates names into IPs.",
+        "DNS is a hierarchy of servers: root servers, then top-level domain servers (.uk, .com), then authoritative name servers for the domain.",
+        "The client asks a resolver; on a cache miss the resolver queries the hierarchy level by level.",
+        "Results are cached by resolvers and browsers, so repeat lookups are far faster and load on DNS servers is reduced.",
+        "Without DNS you could still reach a site by typing its raw IP address."
+      ]
+    },
+    {
+      "heading": "Packet switching vs circuit switching",
+      "points": [
+        "Packet switching splits data into packets that are routed independently and may take different routes.",
+        "A packet header holds source and destination address, sequence number and a checksum; the payload holds the data.",
+        "Packets can arrive out of order and are reassembled by sequence number; the checksum detects errors so corrupt or lost packets are resent.",
+        "Circuit switching reserves one dedicated path for the whole communication, e.g. a traditional phone call.",
+        "Circuit switching guarantees bandwidth but wastes idle capacity; packet switching is efficient and resilient, routing around failures."
+      ]
+    },
+    {
+      "heading": "Network hardware",
+      "points": [
+        "A NIC connects a device to the network and holds its unique 48-bit MAC address.",
+        "A hub broadcasts incoming data to every connected device; a switch learns MAC addresses and forwards frames only to the intended device, cutting traffic and improving security.",
+        "A router connects different networks and forwards packets between them using IP addresses.",
+        "A wireless access point lets wireless devices join a wired network.",
+        "A gateway translates between networks that use different protocols, converting data as it passes through."
+      ],
+      "note": "Never swap them: switch = within a LAN using MAC; router = between networks using IP."
+    },
+    {
+      "heading": "Client-server vs peer-to-peer",
+      "points": [
+        "Client-server: powerful servers provide services to clients that request them, e.g. a school network or online banking.",
+        "Advantages: central security, backup and user management; scales well. Disadvantages: server is a single point of failure and costs more.",
+        "Peer-to-peer: all devices are equal, each acting as client and server, e.g. home file sharing or some video distribution.",
+        "Advantages: cheap, easy to set up, no single point of failure. Disadvantages: harder to manage, back up and secure.",
+        "Choose by scenario: scale and security favour client-server; low cost and decentralisation favour peer-to-peer."
+      ]
+    }
   ],
-  "worked_example": {
-    "title": "Requesting a secure web page across the internet",
-    "steps": [
-      "The user types a domain name into the browser and requests a secure page.",
-      "DNS translates the domain name into the server's IP address, querying DNS servers with results possibly cached.",
-      "The browser sends a request to that IP address using HTTPS so the data is encrypted in transit.",
-      "At the transport layer the data is split into packets, each given a header with sequence number and ports.",
-      "The network layer adds source/destination IP addresses and packets are routed independently across the network.",
-      "Hardware such as routers (and switches/NICs) forward the packets between networks using IP, and they are reassembled in order at the destination."
-    ]
-  },
-  "task": "Match each description to its TCP/IP layer: (A) adds the MAC address and handles the physical connection; (B) adds source and destination IP addresses and routes packets; (C) splits data into packets and manages ports and end-to-end delivery; (D) provides services for user applications such as HTTP and SMTP.",
-  "challenge": "A company is choosing between a star and a mesh topology for a building where reliability is critical but budget is limited. Recommend a topology, justify it using single point of failure, fault tolerance and cost, and explain one trade-off of your choice.",
+  "worked_examples": [
+    {
+      "title": "Tracing a web page request through the TCP/IP stack",
+      "steps": [
+        "Application layer (client): the browser creates an HTTP GET request for the page.",
+        "Transport layer: the request is split into packets; each gets a header with source and destination port numbers and a sequence number (TCP).",
+        "Internet layer: each packet gains a header with the source and destination IP addresses so routers can route it.",
+        "Link layer: each packet is framed with the MAC address of the next hop plus a trailer for error checking, then transmitted.",
+        "At each router the link-layer frame is stripped and rebuilt with the next hop's MAC address; the IP addresses never change.",
+        "At the web server the data passes up the stack: link removes the frame, internet removes the IP header, transport reassembles the packets in sequence order, and the application layer hands the complete HTTP request to the web server software.",
+        "The server's response repeats the whole process in reverse direction."
+      ]
+    },
+    {
+      "title": "DNS resolution of www.example.co.uk",
+      "steps": [
+        "The user types www.example.co.uk; the browser first checks its own cache, then asks the local DNS resolver.",
+        "Cache miss: the resolver queries a root server, which replies with the address of the .uk top-level domain server.",
+        "The resolver queries the .uk TLD server, which replies with the address of the authoritative name server for example.co.uk.",
+        "The resolver queries that authoritative server, which returns the IP address, e.g. 93.184.216.34.",
+        "The resolver caches the result and returns the IP to the browser.",
+        "The browser now contacts 93.184.216.34 directly over HTTP or HTTPS; a second lookup of the same name is answered instantly from cache."
+      ]
+    },
+    {
+      "title": "Following a message through a packet-switched network",
+      "steps": [
+        "The message MEET ME AT NOON is split into 4 packets, one word each; each header carries source address, destination address, sequence number (e.g. 2 of 4) and a checksum.",
+        "Each packet is sent independently; routers read only the destination address and forward each packet along whichever route is currently best.",
+        "A congested router delays packet 2, so the receiver gets packets in the order 1, 3, 4, then 2.",
+        "The receiver holds the packets and reassembles them by sequence number, so the message still reads correctly.",
+        "If packet 3 never arrives, the gap in sequence numbers is detected and a resend request is sent — TCP-style reliable delivery.",
+        "Contrast with circuit switching: one reserved end-to-end path would guarantee order and bandwidth, but the links sit idle between words and a broken link kills the whole call."
+      ]
+    }
+  ],
+  "activities": [
+    {
+      "title": "Packet Post: packet-switching role play",
+      "minutes": 20,
+      "instructions": [
+        "Cast one sender and one receiver in opposite corners, with 4-5 router students between them arranged so there are at least two routes.",
+        "The sender splits the message MEET ME AT NOON across 4 envelopes, one word each, writing destination address, source address and sequence number (e.g. 2 of 4) on each — the header.",
+        "The sender passes envelopes one at a time to any adjacent router; each router reads only the destination and forwards to whichever neighbour is free — packets may take different routes.",
+        "Secretly instruct one router to sit on packet 2 for 20 seconds (congestion); packets arrive out of order and the receiver must reassemble by sequence number before reading the message aloud.",
+        "Round 2: confiscate a packet entirely (packet loss); the receiver spots the gap in sequence numbers and sends a resend slip back — retransmission.",
+        "Debrief, then contrast circuit switching: 4 students hold hands forming one reserved path that nobody else may use until the call ends."
+      ],
+      "stretch": "Add a second sender-receiver pair transmitting simultaneously through the same routers — packet switching interleaves both conversations on shared links; circuit switching cannot."
+    },
+    {
+      "title": "The TCP/IP Post Office jigsaw",
+      "minutes": 20,
+      "instructions": [
+        "Expert phase: four stations, one per TCP/IP layer; each station decides what its layer is in a postal system and which protocols live there.",
+        "Jigsaw phase: re-form into groups of four (one expert per layer) and build the full post-office analogy on sugar paper, tracing one letter down the stack at the sender and up at the receiver.",
+        "Posters must show what is added at each layer going down and removed going up: conventions for writing the letter (application), numbered envelopes and re-send requests (transport), building addresses and route choice (internet), the van between adjacent sorting offices (link).",
+        "Critique phase: each group finds and presents at least two places where the analogy breaks down.",
+        "Gallery walk and vote for the most accurate poster; draw out that the IP address stays constant end-to-end while the MAC address changes at every hop."
+      ],
+      "stretch": "Groups annotate where a firewall and a proxy server would sit in the postal analogy."
+    },
+    {
+      "title": "DNS Detectives",
+      "minutes": 12,
+      "instructions": [
+        "Cast a browser student, a resolver student holding a blank cache whiteboard, a directory student across the room holding the master list (schoolsite.co.uk = 93.184.216.34), and a web server student wearing the IP number.",
+        "The browser asks the resolver for schoolsite.co.uk; the cache is empty so the resolver walks across the room to query the directory — narrate that in reality this walk is a hierarchy: root, then .uk TLD, then the domain's authoritative server.",
+        "The resolver writes the answer into its cache and returns the IP; the browser contacts the web server directly. Time the lookup dramatically with a stopwatch.",
+        "A second browser student requests the same site; the resolver answers instantly from cache — compare the times.",
+        "Debrief: why have DNS at all, why cache, and what breaks if the DNS server is down?"
+      ],
+      "stretch": "Poison the cache (the resolver secretly writes the wrong IP) and discuss why the browser trusts it and what that implies for security."
+    }
+  ],
+  "practice": [
+    {"q": "State two differences between a LAN and a WAN. (2 marks)", "a": "A LAN covers a small geographical area / single site while a WAN covers a large area such as between cities (1). A LAN's hardware is owned by the organisation while a WAN uses third-party communication infrastructure (1)."},
+    {"q": "Explain why protocols and standards are needed on a network. (2 marks)", "a": "Protocols provide an agreed set of rules governing how data is formatted and transmitted (1), so that devices and software from different manufacturers can communicate / are compatible and interoperable (1)."},
+    {"q": "Describe the role of each of the four layers of the TCP/IP stack when data is sent. (4 marks)", "a": "Application: provides network services to applications and prepares data using protocols such as HTTP or SMTP (1). Transport: splits the data into packets, adds port and sequence numbers and manages end-to-end delivery (1). Internet/network: adds source and destination IP addresses and routes the packets (1). Link: handles the physical connection and adds MAC addresses for the next hop (1)."},
+    {"q": "A user types a website address into a browser. Describe how DNS is used to load the page. (4 marks)", "a": "The browser/resolver checks its cache for the domain name (1); on a miss the resolver queries the DNS hierarchy — root server, then TLD server, then the authoritative name server for the domain (1); the authoritative server returns the IP address, which is cached for future lookups (1); the browser then sends the page request directly to that IP address (1)."},
+    {"q": "Identify three items found in the header of a packet. (3 marks)", "a": "Any three of: source address (1), destination address (1), sequence/packet number (1), checksum / error-checking data (1). Max 3."},
+    {"q": "Compare packet switching and circuit switching. (4 marks)", "a": "Circuit switching reserves one dedicated path for the whole communication whereas packet switching sends packets independently, possibly by different routes (1). Packets can arrive out of order and are reassembled using sequence numbers (1). Packet switching uses the network more efficiently as no capacity sits idle/reserved (1). Packet switching is more resilient as packets can be routed around failed nodes, while circuit switching guarantees bandwidth but the call fails if the path breaks (1)."},
+    {"q": "A small office is deciding between a switch and a hub to connect its computers. Explain one advantage of choosing the switch. (2 marks)", "a": "A hub broadcasts all data to every connected device, whereas a switch learns MAC addresses and forwards data only to the intended device (1), reducing unnecessary traffic/collisions and improving performance and security (1)."},
+    {"q": "A start-up with six employees wants to share files cheaply without buying a server. Discuss whether a peer-to-peer network is appropriate. (6 marks)", "a": "For: P2P needs no dedicated server so it is cheap and simple to set up (1); no single point of failure — if one peer is off, others still share (1); adequate for a small number of users (1). Against: no central security or user management — each machine must be secured individually (1); backup is harder as files are scattered across peers (1); scales poorly, so growth would justify moving to client-server for central management and backup (1). Award a justified conclusion within the 6."}
+  ],
+  "misconceptions": [
+    "Students often think the switch and router do the same job, but a switch connects devices within one LAN using MAC addresses while a router connects different networks using IP addresses.",
+    "Students often think DNS stores or hosts websites, but it only translates domain names into IP addresses — the website itself lives on a web server.",
+    "Students often think packets always arrive in order, but they are routed independently and may arrive out of order; sequence numbers in the header allow reassembly.",
+    "Students often think every layer adds both a header and a trailer, but only the link layer adds a trailer (for error checking); all layers add a header.",
+    "Students often think SMTP retrieves email, but SMTP only sends it; POP3 and IMAP retrieve it, differing in whether mail stays on the server."
+  ],
+  "exam_link": [
+    "Command words: state/identify for hardware and header contents (1-2 marks), describe/explain for the TCP/IP layers and DNS (3-4 marks), compare for packet vs circuit switching, discuss/evaluate for client-server vs peer-to-peer scenarios (6+ marks).",
+    "The four TCP/IP layers is a classic 4-marker: one mark per layer, and you must name the layer and its job (what it adds).",
+    "Example stem: A company is expanding from one office to three sites across the country. Describe the changes needed to its network and explain the roles of the hardware and protocols involved.",
+    "Scenario 6-9 markers (client-server vs P2P, packet vs circuit) are levelled: give both sides, apply to the scenario, and finish with a justified conclusion."
+  ],
+  "task": "Trace an email from a sender clicking Send to the recipient reading it on their phone: name the protocol used at each stage (SMTP to the server, SMTP server-to-server, IMAP retrieval), then show what happens to the message at each TCP/IP layer on the sending device, including what each layer adds during encapsulation.",
+  "challenge": "A video-calling app is being designed. Argue whether it should run over TCP or UDP at the transport layer, using reliability, retransmission delay and the effect of a few lost packets on live video; then explain why the same company's file-download feature makes the opposite choice.",
   "exit_ticket": [
-    {"q": "Explain the difference between a switch and a router.", "a": "A switch connects devices within a single LAN and forwards frames using MAC addresses; a router connects different networks (e.g. a LAN to the internet) and forwards packets using IP addresses."},
-    {"q": "Give one reason packet switching is more resilient than circuit switching.", "a": "Packets are routed independently along different routes, so if one route or node fails packets can be re-routed around it and the communication still gets through."},
-    {"q": "Describe what a proxy server does and give one benefit.", "a": "It acts as an intermediary forwarding requests and responses between client and server; a benefit is hiding the user's IP, caching pages to speed up access, or filtering/logging traffic."}
+    {"q": "Explain the difference between a switch and a router.", "a": "A switch connects devices within a single LAN and forwards frames using MAC addresses; a router connects different networks and forwards packets using IP addresses."},
+    {"q": "Put these in the order a sending device uses them and state what each adds: internet layer, application layer, link layer, transport layer.", "a": "Application (prepares data with a protocol such as HTTP), transport (splits into packets, adds ports and sequence numbers), internet (adds source and destination IP addresses), link (adds MAC addresses and an error-check trailer)."},
+    {"q": "Give one reason DNS responses are cached.", "a": "So repeat lookups are answered much faster without querying the hierarchy again, reducing load on DNS servers."}
   ]
 }

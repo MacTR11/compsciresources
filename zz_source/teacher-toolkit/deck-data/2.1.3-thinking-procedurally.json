@@ -1,50 +1,120 @@
 {
   "subtopic": "2.1.3 Thinking Procedurally",
   "spec": "OCR H446 — Component 02",
+  "week": "Week 08 (02 Nov)",
   "objectives": [
-    "Decompose a problem into named sub-procedures, each performing one task.",
-    "Determine the fixed order of steps by identifying data dependencies between them.",
-    "Apply procedural thinking to sequence an unseen scenario and justify why the order is fixed."
+    "Identify the components of a problem and decompose it into smaller sub-problems.",
+    "Identify the components of a solution as named sub-procedures, each doing one clear job.",
+    "Determine and justify the order of steps needed to solve a problem using data dependencies.",
+    "Explain the benefits of a modular, procedural solution for building, testing and maintenance."
   ],
   "retrieval": [
-    {"q": "What is decomposition?", "a": "Breaking one large problem into smaller sub-problems that can each be solved separately."},
-    {"q": "What is a sub-procedure?", "a": "A self-contained, named block of code performing one task that can be called from several places."},
-    {"q": "Why must some steps run in a fixed order?", "a": "Because a later step uses the output of an earlier step — a data dependency."},
-    {"q": "Give two advantages of dividing a program into sub-procedures.", "a": "Easier to write/test/debug in isolation, reusable, shareable among a team, easier to maintain."},
-    {"q": "Interleaving (2.1.1): how does decomposition differ from abstraction?", "a": "Decomposition breaks a problem into sub-problems; abstraction removes irrelevant detail."}
+    {"q": "Define abstraction.", "a": "Removing or hiding unnecessary detail so only information relevant to the problem remains (2.1.1)."},
+    {"q": "What is the difference between representational abstraction and generalisation?", "a": "Representational abstraction removes detail from one specific thing; generalisation groups many things by shared characteristics (2.1.1)."},
+    {"q": "State two things a developer should determine before coding, as part of thinking ahead.", "a": "The inputs and outputs of the solution, plus any preconditions that must hold before a routine runs (2.1.2)."},
+    {"q": "What is caching and what is its main risk?", "a": "Storing frequently used or expensive results in faster storage for reuse; the cached copy can become stale when the source changes (2.1.2)."},
+    {"q": "What does a linker do after compilation?", "a": "It combines the compiled object code with library routines and other modules, resolving references into one executable (1.2.2)."}
   ],
   "keywords": [
-    {"term": "Thinking procedurally", "def": "Breaking a problem into an ordered sequence of steps and sub-procedures."},
-    {"term": "Decomposition", "def": "Breaking one large problem into smaller, more manageable sub-problems."},
-    {"term": "Sub-procedure", "def": "A self-contained, named, callable block of code that performs one task."},
-    {"term": "Sequence", "def": "The order in which steps execute, fixed where dependencies exist."},
-    {"term": "Data dependency", "def": "When a step needs the output of an earlier step, forcing a fixed order."},
-    {"term": "Reuse", "def": "Calling one sub-procedure from many places instead of duplicating its code."},
-    {"term": "Maintainability", "def": "How easily code can be fixed or changed; improved by single-place sub-procedures."}
+    {"term": "Thinking procedurally", "def": "Breaking a problem into an ordered sequence of steps and sub-procedures, then arranging them correctly."},
+    {"term": "Decomposition", "def": "Splitting a large problem into smaller, more manageable sub-problems."},
+    {"term": "Component", "def": "One identifiable part of a problem or solution, such as input, processing or output."},
+    {"term": "Sub-procedure", "def": "A named block of code, also called a subroutine, that performs one part of the task."},
+    {"term": "Sequence", "def": "The order in which steps or procedures are carried out."},
+    {"term": "Dependency", "def": "When one step needs the output of an earlier step, forcing their relative order."},
+    {"term": "Modularity", "def": "Building a solution from separate, self-contained parts that can be developed and tested independently."},
+    {"term": "Parameter", "def": "A value passed into a sub-procedure to make it general and reusable."},
+    {"term": "Interface", "def": "The agreed inputs and outputs through which one module communicates with another."}
   ],
   "content": [
-    {"heading": "Decomposition", "points": ["Split a big problem into smaller sub-problems, e.g. a shopping site into accounts, catalogue, basket, checkout.", "Each sub-problem can be assigned to a different developer.", "Smaller pieces are easier to understand, test and debug."]},
-    {"heading": "Sub-procedures", "points": ["A self-contained, named block of code performing one task, e.g. calculateVAT.", "Can be called from several places rather than copied.", "Defined once, so a fix or change applies everywhere it is used."]},
-    {"heading": "Ordering and dependencies", "points": ["Some steps must run in a fixed order because one depends on another's output.", "Payroll: deduct tax must follow calculate gross pay, which it consumes.", "Independent steps can be reordered; dependent ones cannot."]},
-    {"heading": "Why it helps teams and maintenance", "points": ["Reuse: call the same routine in many places instead of duplicating code.", "Consistency: one definition avoids inconsistent copies.", "Maintenance: fix once and all callers benefit."]},
-    {"heading": "Exam technique", "points": ["Name the scenario's actual sub-procedures, not generic ones.", "State the fixed order and identify at least one dependency.", "Explain the dependency in terms of one step using another's output."]}
+    {"heading": "What thinking procedurally means", "points": ["Thinking procedurally breaks a problem into an ordered sequence of steps and sub-procedures.", "It answers two questions: what are the parts, and in what order must they run?", "It is the skill behind every algorithm and every structured program.", "Contrast with abstraction: abstraction removes detail; procedural thinking breaks the problem into ordered sub-steps."]},
+    {"heading": "Identifying the components of a problem", "points": ["Read the problem statement and list its distinct concerns: inputs, processes, outputs, stored data.", "Each concern that can be described separately is a candidate component.", "A school report system splits into collecting marks, calculating grades, formatting reports, distributing them.", "Components should have minimal overlap: one job should live in exactly one component."]},
+    {"heading": "Decomposition", "points": ["Decomposition splits a large problem into smaller, more manageable sub-problems.", "Each sub-problem is simpler to specify, solve and test than the whole.", "Decompose repeatedly until each sub-problem is small enough to solve directly.", "The full solution is the sub-solutions combined in the right order."], "note": "Keep decomposition distinct from abstraction in written answers: split into parts, not remove detail."},
+    {"heading": "Identifying the components of a solution", "points": ["Each sub-problem maps to a sub-procedure: a named block of code doing one clear job.", "Good names describe the job, for example checkSeatAvailability or takePayment.", "State what each sub-procedure takes in and gives out: its interface.", "The main program then reads as a sequence of calls to these sub-procedures."]},
+    {"heading": "Determining the order of steps", "points": ["Some steps consume the output of earlier steps, so their order is fixed.", "A dependency exists when step B needs data produced by step A.", "Steps with no dependency between them are order-independent and could even run concurrently.", "Justify any stated order by naming the dependency, not by habit or preference."], "note": "Exam answers earn AO2 marks by naming which output each later step depends on."},
+    {"heading": "Worked ordering: an online order", "points": ["Take basket contents, check stock, take payment, decrement stock, generate confirmation, email receipt.", "Payment must follow the stock check: charging for unavailable goods is a concrete failure.", "Stock is only decremented after payment succeeds, so a failed payment leaves stock untouched.", "Confirmation and receipt both depend on payment but are plausibly swappable with each other."]},
+    {"heading": "Identifying sub-procedures for a scenario", "points": ["Walk the scenario chronologically and name a sub-procedure for each distinct job.", "A cinema booking needs selectShowing, checkSeatAvailability, chooseSeats, takePayment, confirmBooking.", "Each depends on the previous one's output: you cannot choose seats before knowing which are free.", "Reused jobs such as takePayment should be one sub-procedure called from several places."]},
+    {"heading": "Parameters make sub-procedures reusable", "points": ["A parameter is a value passed in so one sub-procedure serves many cases.", "brew(strength, milk) makes every tea order use the same procedure with different arguments.", "Without parameters you would duplicate near-identical code for each case.", "This links procedural thinking to reusable components from thinking ahead."], "code": ["procedure brew(strength, milk)", "   wait(strength * 30)", "   if milk == true then", "      addMilk()", "   endif", "endprocedure", "brew(2, true)"]},
+    {"heading": "Benefits of a modular solution", "points": ["Modules can be shared between a team and developed in parallel.", "Each module is tested in isolation, so errors are found and located faster.", "Maintenance changes are confined to one module instead of rippling through the program.", "Well-defined modules can be reused in other programs, saving development time."]},
+    {"heading": "From decomposition to program structure", "points": ["The decomposition becomes the program design: one sub-procedure per sub-problem.", "The main program calls them in dependency order.", "Modules that must exchange data need an agreed interface before both are built.", "Dependency, not preference, dictates the build and call order."], "code": ["procedure makeTea()", "   fetchItems()", "   boilWater()", "   brew(2, true)", "   addExtras()", "endprocedure"]}
   ],
-  "worked_example": {
-    "title": "Sequencing a school 'end-of-term reports' program",
-    "steps": [
-      "Decompose into named sub-procedures: readPupilData, calculateGrades, generateComments, assembleReport, printReport.",
-      "Order: readPupilData first, then calculateGrades, then generateComments, then assembleReport, then printReport.",
-      "Dependency 1: calculateGrades needs the marks produced by readPupilData, so reading must come first.",
-      "Dependency 2: assembleReport needs the grades produced by calculateGrades, so it must come after.",
-      "Note flexibility: generateComments and some formatting could be reordered, but the grade-dependent steps cannot.",
-      "Conclusion: the order is fixed wherever a step consumes an earlier step's output."
-    ]
-  },
-  "task": "A developer is building a vending-machine program. Decompose it into at least three named sub-procedures, put them in a sensible order, and explain one pair of steps whose order is fixed because one depends on the other's output.",
-  "challenge": "An ATM 'withdraw cash' task could in theory verify the PIN and read the requested amount at the same time. Identify which steps MUST stay sequential and which could be independent, justifying each with its data dependency (or lack of one).",
+  "worked_examples": [
+    {"title": "Decomposing an online cinema booking system", "steps": [
+      "State the whole problem: let a customer book and pay for cinema seats online.",
+      "Identify component 1: selectFilmAndShowtime, choosing film, date and time.",
+      "Identify component 2: checkSeatAvailability, which depends on step 1's output, the chosen showing.",
+      "Identify component 3: chooseSeats, which depends on step 2, since only free seats may be offered.",
+      "Identify component 4: takePayment, which depends on step 3 to know the number of seats and price.",
+      "Identify component 5: confirmBookingAndUpdateSeatMap, which depends on step 4: only confirm once paid.",
+      "Conclude: the data dependencies fix the order, and takePayment is reusable elsewhere on the site."
+    ]},
+    {"title": "Justifying the order of steps in a login process", "steps": [
+      "List the steps: display login form, user enters details, look up username, compare password hash, create session, show dashboard.",
+      "Look up username must follow entry of details: it consumes the typed username.",
+      "Compare password hash must follow the lookup: it needs the stored hash that the lookup retrieves.",
+      "Create session must follow a successful comparison: an unverified user must not get a session.",
+      "Show dashboard must follow session creation: the page is only for authenticated users.",
+      "Conclude: every adjacent pair is a must-follow dependency, so this sequence cannot be reordered."
+    ]},
+    {"title": "Turning a decomposition into parameterised procedures", "steps": [
+      "Decompose making tea into fetchItems, boilWater, brew and addExtras.",
+      "Note the dependencies: brew needs both the fetched mug and the boiled water; addExtras needs a brewed cup.",
+      "Note the independence: fetchItems and boilWater share no data, so their relative order is free.",
+      "Generalise brew with parameters strength and milk so one procedure serves every order.",
+      "Write the main program as ordered calls: fetchItems, boilWater, brew(2, true), addExtras.",
+      "Check each call against its dependencies: everything each procedure consumes is produced by an earlier call."
+    ]}
+  ],
+  "activities": [
+    {"title": "Tea-Bot 3000", "minutes": 25, "instructions": [
+      "Brief the class: write instructions so a robot that has never seen tea makes a cup; it executes literally, in order, and halts with an error on anything ambiguous or impossible.",
+      "Pairs write their instruction list in six minutes.",
+      "Run submissions at the front with malicious literalness: put the teabag in the mug before any mug is fetched fails; boil an empty kettle boils dry; add milk empties the whole carton.",
+      "After two or three crashes, name the fixes the class is discovering: decompose into sub-procedures such as fetchItems, boilWater, brew and addExtras, each with precise ordered steps and noted dependencies.",
+      "Pairs revise into named sub-procedures with an explicit calling order; run the best attempt to a successful cup."
+    ], "stretch": "Add parameters: rewrite brew to take strength and milk so one sub-procedure serves every order, a reusable generalised component."},
+    {"title": "Human sequencer: order matters", "minutes": 15, "instructions": [
+      "Give each group shuffled step cards for two interleaved processes: a login flow and an online order flow.",
+      "Groups first separate the two processes, then physically line up holding the cards in a defensible order.",
+      "Teacher swaps two students, for example take payment before check stock; the group must state the concrete failure caused, or accept the swap if genuinely order-independent.",
+      "Groups label each adjacent pair as must-follow, citing the data dependency, or could-swap."
+    ], "stretch": "Ask where a precondition belongs in each line, such as stock at least the quantity ordered, and have that student stand side-on as a gate before the step they guard."},
+    {"title": "Decomposition jigsaw: build the game", "minutes": 25, "instructions": [
+      "Give the brief for a top-down maze game: player moves, collects keys, avoids a patrolling guard, opens the exit.",
+      "Each home-group member takes one expert card: player input and movement, guard patrol logic, key and door interactions, score and display.",
+      "Expert groups decompose their subsystem into four to six ordered steps, noting the data they need from and provide to other subsystems.",
+      "Experts return and teach their decomposition; the group assembles a master diagram of all four subsystems and the data flows between them.",
+      "Groups answer the integration question: which subsystems could be built and tested independently, and which pairs must agree an interface first?"
+    ], "stretch": "Mark which subsystem steps could run concurrently each frame and which cannot: guard patrol and player input are independent, but both must finish before collision checks."}
+  ],
+  "practice": [
+    {"q": "Define decomposition. (1)", "a": "Breaking a problem down into smaller sub-problems, each of which is easier to solve (1)."},
+    {"q": "State two components of the problem of calculating and printing a class's exam grades. (2)", "a": "Any two of: inputting or reading the marks (1); calculating each grade from the mark (1); outputting or printing the results (1)."},
+    {"q": "A vending machine program must be written. Identify four sub-procedures the solution could use. (4)", "a": "One mark each for four sensible named jobs, for example: readSelection (1); acceptAndCheckPayment (1); dispenseItem (1); giveChange or updateStockLevel (1)."},
+    {"q": "Explain why the steps take payment and check stock in an online shop must run in a particular order. (2)", "a": "Check stock must come first because payment depends on knowing the item is available (1); charging a customer for unavailable goods would then require a refund, a concrete failure (1)."},
+    {"q": "Describe the difference between decomposition and abstraction. (2)", "a": "Decomposition breaks a problem into smaller sub-problems to be solved separately (1); abstraction removes or hides unnecessary detail so only what is relevant remains (1)."},
+    {"q": "Explain two benefits to a development team of splitting a program into sub-procedures. (4)", "a": "Sub-procedures can be shared out so developers work in parallel, cutting development time (2); each can be tested or maintained in isolation so errors are located quickly and fixes do not ripple through the program (2)."},
+    {"q": "Explain how a parameter makes a sub-procedure reusable. (2)", "a": "A parameter passes a value in when the sub-procedure is called (1), so the same code handles many different cases instead of duplicating near-identical routines (1)."},
+    {"q": "A program will manage a school library kiosk offering borrow, return and reserve. Identify the sub-procedures needed and state, with a reason, which must run before any of the others. (4)", "a": "Sub-procedures: authenticate the member, borrow, return, reserve, update the loans database (2, any four sensible); authenticate must run first (1) because every other action depends on knowing which valid member is acting (1)."}
+  ],
+  "misconceptions": [
+    "Students often think decomposition and abstraction are the same skill, but decomposition splits a problem into parts while abstraction removes detail.",
+    "Students often think any order of steps will do, but steps that consume earlier outputs have a fixed, justifiable position.",
+    "Students often define decomposition when asked to apply it, but scenario questions want the scenario's actual named sub-procedures in order.",
+    "Students often think more sub-procedures always means better design, but each should be one clear job; fragmenting a single job adds complexity.",
+    "Students often think sub-procedures are only about neatness, but the marked benefits are parallel teamwork, isolated testing, easier maintenance and reuse."
+  ],
+  "exam_link": [
+    "Command words: identify and state for naming components, 1 to 4 marks; explain and justify for ordering and benefits, 2 to 4 marks.",
+    "Application beats definition: questions give an unseen scenario and expect its actual sub-procedures, not textbook definitions.",
+    "Ordering marks come from naming the dependency: state which earlier output each step needs.",
+    "Example stem: A company is developing a self-service checkout. Identify the sub-procedures the program will need and justify the order in which two of them must execute. (6)"
+  ],
+  "task": "Decompose a school attendance app into five to seven named sub-procedures; draw them as a diagram with arrows showing data dependencies, and mark each adjacent pair must-follow or could-swap.",
+  "challenge": "For your attendance app, write OCR-style pseudocode headers for each sub-procedure with parameters, then identify one sub-procedure reusable in a different school system and one pair of sub-procedures that could run concurrently, justifying both.",
   "exit_ticket": [
-    {"q": "Why must 'check balance is sufficient' come before 'dispense the cash' in an ATM?", "a": "Dispensing depends on the output of the balance check; you cannot safely dispense until funds are confirmed."},
-    {"q": "A quiz game calls one shuffleQuestions sub-procedure each round. Why is that better than copying the code?", "a": "It is defined once and reused, so any fix is made in one place and all rounds behave consistently."},
-    {"q": "State two advantages of sub-procedures over one long block of code.", "a": "Easier to test/debug in isolation and reusable from many places; also easier to share among a team and to maintain."}
+    {"q": "What is thinking procedurally?", "a": "Breaking a problem into an ordered sequence of steps and sub-procedures, then arranging them in the correct order."},
+    {"q": "What fixes the order of two steps in a solution?", "a": "A data dependency: the later step needs the output of the earlier one."},
+    {"q": "Give two benefits of solving a problem with sub-procedures.", "a": "Any two of: team members build modules in parallel; modules are tested in isolation; maintenance is localised; modules can be reused."}
   ]
 }

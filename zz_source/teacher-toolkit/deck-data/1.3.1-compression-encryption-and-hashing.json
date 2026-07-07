@@ -1,51 +1,120 @@
 {
   "subtopic": "1.3.1 Compression, Encryption and Hashing",
   "spec": "OCR H446 — Component 01",
+  "week": "Week 10 (16 Nov)",
   "objectives": [
-    "Compare lossy and lossless compression and explain how run length encoding (RLE) and dictionary compression reduce file size.",
-    "Distinguish symmetric and asymmetric encryption and explain how asymmetric encryption solves the key-distribution problem.",
-    "Explain what hashing is, its key properties and why hashing (not encryption) is used to store passwords."
+    "Explain why files are compressed and compare lossy with lossless compression for given scenarios.",
+    "Encode and decode data using run length encoding and dictionary coding, and evaluate the saving.",
+    "Compare symmetric and asymmetric encryption, including keys, speed and the key distribution problem.",
+    "Describe the properties of hashing and justify its use for passwords and fast lookup."
   ],
   "retrieval": [
-    {"q": "State two reasons why files are compressed.", "a": "Less storage space used and less bandwidth needed, giving faster transfer."},
-    {"q": "Which type of compression permanently removes data so the original cannot be exactly recovered?", "a": "Lossy compression."},
-    {"q": "Give one suitable use of lossless compression and one of lossy compression.", "a": "Lossless: text, program code, ZIP or PNG. Lossy: JPEG images, MP3 audio or video."},
-    {"q": "Interleaving (1.2): Why is open-source software often distributed in a ZIP archive?", "a": "ZIP uses lossless compression so the original files are recovered exactly while reducing download size."},
-    {"q": "Interleaving (1.1.3): Why does a higher audio sample rate produce larger files, making compression useful?", "a": "More samples per second means more stored data per second, so the file is larger and benefits from compression for storage or streaming."}
+    {"q": "An LMC program runs LDA NUM, ADD NUM, OUT, HLT with NUM DAT 6. What is output?", "a": "12: LDA loads 6 into the accumulator, ADD NUM adds 6 giving 12, OUT prints it (1.2.4)."},
+    {"q": "What is the difference between immediate and direct addressing?", "a": "Immediate uses the operand itself as the value; direct treats the operand as the address of the value, one lookup (1.2.4)."},
+    {"q": "Under indirect addressing, what does the operand hold?", "a": "The address of a location that holds the address of the value, so two lookups; it implements pointers (1.2.4)."},
+    {"q": "Define encapsulation.", "a": "Bundling data with its methods and making attributes private so they are accessed only through public methods (1.2.4)."},
+    {"q": "What is the difference between a class and an object?", "a": "A class is the template or blueprint; an object is an instance of it created by instantiation (1.2.4)."}
   ],
   "keywords": [
-    {"term": "Lossless compression", "def": "Reduces file size with no permanent loss of data; the original is exactly recoverable."},
-    {"term": "Lossy compression", "def": "Reduces file size by permanently removing data; the original cannot be exactly recovered."},
-    {"term": "Run Length Encoding (RLE)", "def": "Lossless method that replaces runs of repeated values with a single value plus a count."},
-    {"term": "Dictionary compression", "def": "Lossless method that stores recurring patterns once in a dictionary/index and replaces each with a short reference; the dictionary must be sent with the file."},
-    {"term": "Symmetric encryption", "def": "The same single key is used to both encrypt and decrypt the data."},
-    {"term": "Asymmetric encryption", "def": "Uses a public and private key pair; data encrypted with the public key can only be decrypted with the matching private key."},
-    {"term": "Hashing", "def": "A one-way function that turns an input into a fixed-length hash/digest that is not reversible."},
-    {"term": "Collision", "def": "When two different inputs produce the same hash value; a good hash function makes these rare."}
+    {"term": "Lossless compression", "def": "Reduces file size with no permanent data loss; the exact original can be recovered."},
+    {"term": "Lossy compression", "def": "Permanently removes data to shrink files much further; the original cannot be recovered."},
+    {"term": "Run length encoding", "def": "Lossless technique replacing runs of repeated values with one value and a count."},
+    {"term": "Dictionary coding", "def": "Lossless technique storing repeated patterns once in a dictionary and replacing each with a short reference."},
+    {"term": "Symmetric encryption", "def": "The same shared key both encrypts and decrypts; fast but the key must be exchanged securely."},
+    {"term": "Asymmetric encryption", "def": "A public and private key pair; data encrypted with one key is decrypted only by the other."},
+    {"term": "Digital signature", "def": "A hash of a message encrypted with the sender's private key, proving origin and integrity."},
+    {"term": "Hashing", "def": "A one-way function turning an input into a fixed-length digest that cannot be reversed."},
+    {"term": "Collision", "def": "Two different inputs producing the same hash value; good hash functions make this rare."}
   ],
   "content": [
-    {"heading": "Compression: lossy vs lossless", "points": ["Compression reduces file size to save storage and bandwidth and speed up transfer.", "Lossless removes no data permanently and the original is exactly recoverable (text, code, ZIP, PNG).", "Lossy permanently discards data and the original cannot be recovered, but gives a much smaller file (JPEG, MP3, video).", "Exam reminder: lossy is not reversible — reduced quality is not the same as recoverable."]},
-    {"heading": "RLE and dictionary compression", "points": ["RLE is lossless and replaces runs of repeated values with one value plus a count.", "RLE works best on long runs (e.g. simple images) and can enlarge files when there are few repeats.", "Dictionary compression stores recurring patterns once in a dictionary and replaces them with short references (e.g. LZW).", "The dictionary must be supplied with the file so it can be decompressed."]},
-    {"heading": "Encryption: symmetric vs asymmetric", "points": ["Encryption scrambles plaintext into ciphertext using an algorithm and a key to protect confidentiality if intercepted.", "Symmetric uses one shared key for both operations and is fast, but has the key-distribution problem.", "Asymmetric uses a public/private key pair; the public key is shared openly, solving key distribution.", "Data encrypted with a public key can only be decrypted by the matching private key; HTTPS uses asymmetric to swap a symmetric session key, then symmetric for bulk data."]},
-    {"heading": "Digital signatures and hashing", "points": ["A digital signature is created by signing with the sender's private key and verified with their public key, proving origin and integrity.", "Hashing produces a fixed-length digest and is one-way, deterministic, fast and collision-resistant.", "Passwords are stored as hashes, not plaintext; at login the entered password is hashed and compared.", "Hashing is not encryption: hashing is one-way, whereas encryption is reversible with a key."]}
+    {"heading": "Why compress data", "points": ["Compression reduces the number of bits needed to represent a file.", "Smaller files need less storage space.", "They transfer faster and use less bandwidth, so downloads and streaming work on slower connections.", "The trade-off is processing time to compress and decompress."]},
+    {"heading": "Lossless compression", "points": ["No data is permanently removed: decompression rebuilds the exact original file.", "Works by re-encoding redundancy, such as repeated values or patterns.", "Essential for text, program code, spreadsheets and archives, where any change corrupts the file.", "Examples: ZIP archives and PNG images; RLE and dictionary coding are lossless techniques."]},
+    {"heading": "Lossy compression", "points": ["Permanently removes data the human eye or ear barely notices.", "Achieves much bigger savings than lossless, at the cost of some quality.", "The original can never be recovered from the compressed file.", "Examples: JPEG images, MP3 audio and streamed video.", "Choose by scenario: photos for a web page tolerate loss; source code never does."]},
+    {"heading": "Run length encoding", "points": ["RLE replaces each run of identical values with the value and a count.", "AAAABBB becomes 4A 3B: two pairs instead of seven characters.", "It is lossless: expanding the counts rebuilds the data exactly.", "Best on data with long runs, such as simple graphics with blocks of identical pixels."]},
+    {"heading": "When RLE fails", "points": ["With few or short runs there is nothing to shorten.", "ABABAB becomes 1A 1B 1A 1B 1A 1B: six characters have become twelve.", "Alternating or highly varied data can double in size under RLE.", "Always state in answers that RLE only helps when long runs exist."], "note": "RLE does not always make a file smaller: a favourite examiner follow-up."},
+    {"heading": "Dictionary coding", "points": ["Recurring patterns or words are stored once in a dictionary.", "Each occurrence in the data is replaced by a short reference to its dictionary entry.", "The dictionary must be stored or sent with the compressed file.", "Lossless: substituting entries back for references rebuilds the original exactly.", "Suits text, where the same words repeat; LZW and ZIP use dictionary methods."]},
+    {"heading": "Symmetric encryption", "points": ["Encryption scrambles plaintext into ciphertext using an algorithm and a key.", "Symmetric encryption uses the same key to encrypt and decrypt.", "It is fast, so it suits bulk data.", "Weakness: both parties need the key, and sending it risks interception, the key distribution problem."]},
+    {"heading": "Asymmetric encryption", "points": ["Each user has a key pair: a public key shared openly and a private key kept secret.", "A message encrypted with the recipient's public key can only be decrypted with their private key.", "Anyone may encrypt to you, but only you can decrypt: distribution is solved.", "It is slower than symmetric encryption, so it is used sparingly."]},
+    {"heading": "Digital signatures and hybrid systems", "points": ["To sign, the sender hashes the message and encrypts the hash with their private key.", "The receiver decrypts the hash with the sender's public key, rehashes the message and compares.", "A match proves who sent it and that it was not altered.", "HTTPS uses asymmetric encryption to exchange a symmetric session key, then symmetric for the bulk data."]},
+    {"heading": "Hashing and its uses", "points": ["A hash function turns an input into a fixed-length digest.", "It is one-way: the input cannot be recovered from the hash.", "It is deterministic, fast, and good functions make collisions rare.", "Passwords are stored as hashes; at login the entered password is hashed and the hashes compared.", "Hash tables use the hash of a key as an address, giving near constant time lookup."], "note": "Hashing is not encryption: there is no key and no way back."}
   ],
-  "worked_example": {
-    "title": "Encoding and decoding with Run Length Encoding",
-    "steps": [
-      "Encode the pixel run W W W W W B B W W W W W W using value+count pairs.",
-      "Group consecutive identical values: five W, then two B, then six W.",
-      "Write each group as value+count: 5W 2B 6W (13 values stored as 3 pairs).",
-      "Now decode 5A 3B 1C 4A back to the original sequence.",
-      "Expand each value+count pair: AAAAA, BBB, C, AAAA.",
-      "Concatenate to give AAAAABBBCAAAA (13 characters).",
-      "Note: if the data had few repeats, the value+count pairs could be longer than the original, so RLE would enlarge it."
-    ]
-  },
-  "task": "Given the bitmap row B B B B W W B B B W W W W W, encode it with RLE and state the number of value+count pairs produced. Then decode 4G 1R 3G and explain in one sentence why this row compresses well.",
-  "challenge": "A developer claims RLE will always shrink a file. Construct a short example sequence where RLE produces a larger output than the original, and explain why, then state what kind of data RLE is genuinely suited to.",
+  "worked_examples": [
+    {"title": "Run length encoding AAAABBBCCDAA", "steps": [
+      "Scan for runs: AAAA is 4 As, BBB is 3 Bs, CC is 2 Cs, D is 1 D, AA is 2 As.",
+      "Check the counts cover the original: 4 + 3 + 2 + 1 + 2 = 12 characters, matching the input length.",
+      "Encode each run as count then value: 4A 3B 2C 1D 2A.",
+      "Compressed size: 5 pairs of two characters each = 10 characters, against 12 originally.",
+      "Saving: 2 characters, one sixth of the file; modest because two runs had length 1 and 2.",
+      "Contrast: ABABAB would encode as 1A 1B 1A 1B 1A 1B, growing from 6 to 12 characters."
+    ]},
+    {"title": "Dictionary coding the cat and the dog and the rat", "steps": [
+      "Original text: the cat and the dog and the rat, which is 24 letters plus 7 spaces = 31 characters.",
+      "Build the dictionary of distinct words: 1 = the, 2 = cat, 3 = and, 4 = dog, 5 = rat.",
+      "Replace each word with its reference: the token stream is 1 2 3 1 4 3 1 5.",
+      "Check by decoding: the, cat, and, the, dog, and, the, rat matches the original exactly.",
+      "Assuming one character per token, the stream is 8 characters, but the 5-entry dictionary must also be stored.",
+      "Conclusion: overhead makes savings small on tiny files, but references pay off as repeated words multiply."
+    ]},
+    {"title": "Asymmetric encryption and a digital signature between Alia and Ben", "steps": [
+      "Alia wants to send Ben a confidential contract that Ben can trust came from her.",
+      "Confidentiality: Alia encrypts the contract with Ben's public key, which anyone may hold.",
+      "Only Ben's private key can decrypt it, so interceptors see only ciphertext.",
+      "Signature: Alia hashes the contract and encrypts that hash with her own private key, attaching the result.",
+      "Ben decrypts the signature with Alia's public key, rehashes the received contract and compares the two hashes.",
+      "Matching hashes prove the message came from Alia's private key and was not altered in transit."
+    ]}
+  ],
+  "activities": [
+    {"title": "Human run length encoding", "minutes": 10, "instructions": [
+      "Line up 17 students as a row of pixels: 6 holding A, then 3 holding B, then 8 holding C.",
+      "Ask how to describe the row to someone next door in the fewest characters; steer suggestions to RLE.",
+      "One student walks the line calling the encoding while a scribe writes it: A6 B3 C8, 17 characters described in 6.",
+      "Rearrange the same students into A B C A B C repeating and encode again.",
+      "Debrief: when does RLE shrink data and when does it inflate it?"
+    ], "stretch": "Encode the alternating row with dictionary coding instead, storing the pattern ABC once and referencing it, and compare which technique wins on each row."},
+    {"title": "Padlocks and Caesar wheels: symmetric vs asymmetric", "minutes": 15, "instructions": [
+      "Symmetric round: Alia and Ben share the key shift plus 3; Alia encrypts REVISE to UHYLVH on a whiteboard and passes it through interceptor students, and Ben shifts back to decrypt.",
+      "Ask the interceptors what they saw, then the killer question: how could Alia and Ben have agreed the key without the interceptors hearing? Name the key distribution problem.",
+      "Asymmetric round: Ben hands out open padlocked boxes labelled his public key but keeps the only key in his pocket; Alia locks her message in a box and sends it through the same interceptors.",
+      "Debrief: same key both ways is symmetric, fast but with the distribution problem; public key locks and private key unlocks is asymmetric, slower but distribution is solved.",
+      "Finish by explaining HTTPS: asymmetric encryption shares a symmetric session key, then symmetric handles the bulk data for speed."
+    ], "stretch": "Ask how Ben could prove a message really came from him: sign with his private key so anyone can verify with his public key, a digital signature."},
+    {"title": "One-way street: human hash function", "minutes": 10, "instructions": [
+      "Define a toy hash on the board: hash(word) = number of letters MOD 5.",
+      "Students hash their own first name on mini-whiteboards and hold up the digit.",
+      "Ask: I am thinking of a word whose hash is 1; what was my word? Impossible: hashing is one-way.",
+      "Find two students with the same hash but different names and name it a collision.",
+      "Debrief which properties of a good hash the toy has, deterministic, fixed output, fast, and which it lacks, far too many collisions; link to password storage and hash tables."
+    ], "stretch": "Ask why systems hash passwords rather than encrypting them: there is no key to steal and even an administrator with the database cannot reverse the hashes."}
+  ],
+  "practice": [
+    {"q": "A pixel row reads WWWWWBBWWWWWW. Show the result of run length encoding it and state the saving. (3)", "a": "Runs are 5 W, 2 B, 6 W (1); encoded as 5W 2B 6W (1); 6 characters instead of 13, saving 7 characters (1)."},
+    {"q": "Explain why run length encoding could increase the size of some files. (2)", "a": "RLE stores a count and value for every run (1); if runs are mostly length one, each single character becomes a two-character pair, up to doubling the file (1)."},
+    {"q": "A photographer emails proof images to clients, and a developer backs up source code. Justify a suitable compression type for each. (4)", "a": "Photos: lossy (1), because large savings speed the email and small quality losses are invisible to clients (1). Source code: lossless (1), because every character must be recovered exactly or the program will not run (1)."},
+    {"q": "Describe how dictionary coding compresses a text file. (3)", "a": "Repeated words or patterns are stored once in a dictionary (1); each occurrence is replaced by a short reference to its entry (1); the dictionary is stored with the file so decompression can substitute entries back exactly (1)."},
+    {"q": "Compare symmetric and asymmetric encryption. (4)", "a": "Symmetric uses one shared key for encryption and decryption; asymmetric uses a public and private key pair (1). Symmetric is faster and suits bulk data (1) but the shared key must be exchanged securely, the key distribution problem (1); asymmetric solves distribution because the public key is shared openly, though it is slower (1)."},
+    {"q": "Ben receives a message with a digital signature. Explain how he verifies who sent it and that it is unchanged. (3)", "a": "He decrypts the signature with the sender's public key to recover the original hash (1); he hashes the received message himself (1); matching hashes prove the sender's private key signed it and the content was not altered (1)."},
+    {"q": "Explain why an online store should hash rather than encrypt its customers' passwords. (3)", "a": "Hashing is one-way, so the password cannot be recovered even if the database is stolen (1); encryption is reversible, so a stolen key would expose every password (1); logins still work by hashing the entered password and comparing hashes (1)."},
+    {"q": "State two properties of a good hash function. (2)", "a": "Any two of: one-way, so the input cannot be recovered (1); deterministic, with the same input always giving the same hash (1); quick to compute, or a low chance of collisions (1)."}
+  ],
+  "misconceptions": [
+    "Students often think hashed data can be decrypted with the right key, but hashing is one-way and has no key at all.",
+    "Students often think lossy just means lower quality, but the defining point is that removed data can never be recovered.",
+    "Students often think RLE always shrinks files, but data without long runs can grow, even double.",
+    "Students often think the private key is shared between both parties, but only the public key is distributed; the private key never leaves its owner.",
+    "Students often think lossless means no compression happened, but it re-encodes redundancy while keeping the original exactly recoverable."
+  ],
+  "exam_link": [
+    "Command words: state and describe for definitions and techniques, 2 to 3 marks; explain, compare and justify for scenarios, 3 to 4 marks.",
+    "Compression questions often supply raw data to encode with RLE, or a scenario asking you to choose and justify lossy or lossless.",
+    "Encryption questions reward precise key language: who holds which key, and which key performs each operation.",
+    "Example stem: A company sends confidential designs to a partner over the internet. Explain how asymmetric encryption keeps the designs secure. (4)"
+  ],
+  "task": "Produce a one-page comparison chart of RLE, dictionary coding, symmetric encryption, asymmetric encryption and hashing: what each does, whether it is reversible, one strength, one weakness and one real use.",
+  "challenge": "A hospital must transmit patient scan images quickly to consultants and store staff passwords safely. Recommend and justify a compression choice for the scans, discussing the danger of lossy artefacts in diagnosis, then design the full login storage scheme naming where hashing is used and why encryption alone would be worse.",
   "exit_ticket": [
-    {"q": "Why is hashing rather than encryption used to store passwords?", "a": "Hashing is one-way so the original password cannot be retrieved even if the database is stolen; the system only ever compares hashes, whereas encryption is reversible with a key."},
-    {"q": "State two properties of a good hash function.", "a": "Any two of: one-way/not reversible, deterministic, few collisions, fast to compute, fixed-length output."},
-    {"q": "How does asymmetric encryption let two strangers exchange data securely?", "a": "The public key can be shared openly so no secret key is exchanged in advance, and only the matching private key (kept secret) can decrypt, so an intercepted public key or ciphertext is useless."}
+    {"q": "Encode BBBBBBWWB with run length encoding.", "a": "6B 2W 1B: runs of 6, 2 and 1 covering all 9 characters."},
+    {"q": "Which key does Alia use so only Ben can read her message, and which key opens it?", "a": "She encrypts with Ben's public key; only Ben's private key can decrypt it."},
+    {"q": "Give two reasons hashing suits password storage.", "a": "It is one-way, so stored hashes cannot be turned back into passwords; login comparison still works by hashing the attempt and comparing digests."}
   ]
 }

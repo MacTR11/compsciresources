@@ -1,51 +1,224 @@
 {
   "subtopic": "2.1.1 Thinking Abstractly",
   "spec": "OCR H446 — Component 02",
+  "week": "Week 04 (21 Sep)",
   "objectives": [
-    "Define abstraction as removing or hiding detail irrelevant to a problem, leaving only what is needed to solve it.",
-    "Distinguish representational abstraction from generalisation/categorisation, and abstraction from decomposition.",
-    "Apply abstraction to an unseen scenario by justifying which real-world details are kept and which are discarded."
+    "I can explain the nature and need for abstraction: removing detail irrelevant to the problem",
+    "I can distinguish representational abstraction from generalisation, with a valid example of each",
+    "I can compare an abstraction with reality and justify which details are kept or discarded for a purpose",
+    "I can devise an abstract model for a given real-world scenario"
   ],
   "retrieval": [
-    {"q": "What does abstraction remove or hide from a problem?", "a": "Unnecessary detail that is irrelevant to solving the problem, leaving only the relevant information."},
-    {"q": "Name the two types of abstraction in 2.1.1.", "a": "Representational abstraction and generalisation/categorisation."},
-    {"q": "How does abstraction differ from decomposition?", "a": "Abstraction removes/hides unnecessary detail; decomposition breaks a problem into smaller sub-problems."},
-    {"q": "Interleaving (2.1.3): what is decomposition?", "a": "Breaking a problem into smaller sub-problems, each able to be solved as a self-contained sub-procedure."},
-    {"q": "Interleaving (2.1.2): why might a satnav cache a computed route?", "a": "To reuse an expensive result quickly without recomputing it, speeding up response and reducing load."}
+    {"q": "From 1.1.1: describe the first two steps of the fetch stage, naming the registers.", "a": "The contents of the PC are copied into the MAR; the instruction is fetched from that address via the data bus into the MDR."},
+    {"q": "From 1.1.1: state the key difference between Von Neumann and Harvard architecture.", "a": "Von Neumann has one shared memory and bus for data and instructions; Harvard has separate memories and buses for each."},
+    {"q": "From 1.1.1: a CPU has a 16-bit address bus. How many locations can it address?", "a": "2^16 = 65,536 locations."},
+    {"q": "From 1.1.2: which RISC feature makes pipelining easier, and why?", "a": "Fixed-length, simple instructions taking one cycle each, so every pipeline stage takes a predictable, equal time."},
+    {"q": "From 1.1.2: what is GPGPU?", "a": "Using a GPU for general-purpose, non-graphics computation such as machine learning or scientific simulation."}
   ],
   "keywords": [
-    {"term": "Abstraction", "def": "Removing or hiding detail not relevant to the problem so only useful information remains."},
-    {"term": "Representational abstraction", "def": "Simplifying one specific thing into a model of just the relevant detail, e.g. a road network as a graph."},
-    {"term": "Generalisation / categorisation", "def": "Grouping many things by their shared characteristics into one reusable model, e.g. an Account class."},
-    {"term": "Model", "def": "A simplified representation of reality keeping only the detail needed for the problem."},
-    {"term": "Decomposition", "def": "Breaking a problem into smaller sub-problems; distinct from abstraction, which removes detail."},
-    {"term": "Node", "def": "A point in a graph abstraction representing a place or object, e.g. a junction in a road network."},
-    {"term": "Weighted edge", "def": "A connection in a graph carrying a value such as distance or time between two nodes."},
-    {"term": "Relevant detail", "def": "Information that affects the problem's solution and so must be kept in the model."}
+    {"term": "Abstraction", "def": "Removing or hiding detail irrelevant to the problem so only relevant information remains, giving a simpler model."},
+    {"term": "Representational abstraction", "def": "Simplifying one specific thing into a model of that problem, e.g. a road network as a graph."},
+    {"term": "Generalisation", "def": "Grouping many things by shared characteristics into one reusable model, e.g. one Account type for all accounts."},
+    {"term": "Model", "def": "A simplified representation of a real-world thing or system, built for a purpose."},
+    {"term": "Abstract model", "def": "A model keeping only the data and behaviour needed to solve the stated problem."},
+    {"term": "Node", "def": "A point in a graph abstraction, such as a junction, station or place."},
+    {"term": "Weighted edge", "def": "A connection between nodes carrying a cost such as distance or time."},
+    {"term": "Decomposition", "def": "Breaking a problem into smaller sub-problems; a different skill from abstraction."}
   ],
   "content": [
-    {"heading": "What abstraction is", "points": ["Abstraction removes or hides detail that is not relevant to the problem.", "It leaves a simpler model that is faster to build, run and maintain.", "The skill in the exam is justifying why discarded detail is irrelevant to this specific problem."]},
-    {"heading": "Representational abstraction", "points": ["Simplifies one specific thing into a model, e.g. a road network becomes a graph of nodes and weighted edges.", "The London Underground map keeps line order and interchanges but discards true geography.", "Discarded detail (scenery, surface) does not affect the task of choosing a route."]},
-    {"heading": "Generalisation / categorisation", "points": ["Groups many things by their shared characteristics into one reusable model.", "Example: one Account class capturing what savings and current accounts have in common.", "Makes programs easier to extend — a new case reuses the existing general model."]},
-    {"heading": "Abstraction vs decomposition (common trap)", "points": ["Abstraction removes/hides unnecessary detail to simplify.", "Decomposition breaks a problem into smaller sub-problems.", "They are different skills — never blur them in an answer."]},
-    {"heading": "Exam technique", "points": ["Name the specific detail you keep AND the detail you discard.", "Justify why each discarded detail is irrelevant to this problem.", "Generic definitions score poorly; the marks are for applied reasoning."]}
+    {
+      "heading": "What abstraction is",
+      "points": [
+        "Abstraction removes or hides unnecessary detail so only information relevant to the problem remains",
+        "The result is a simpler model that is easier to understand, build and reason about",
+        "You met it constantly in 1.1: a register diagram ignores transistors; block diagrams hide wiring",
+        "The skill being examined: deciding WHAT to remove, and justifying why it is safe"
+      ]
+    },
+    {
+      "heading": "Why we need abstraction",
+      "points": [
+        "Real systems have overwhelming detail; keeping all of it makes solutions impossibly complex",
+        "Removing irrelevant detail makes systems simpler, faster to build and easier to maintain",
+        "Programmers work at the right layer: a variable is an abstraction of a memory address",
+        "Users benefit too: an interface hides the implementation underneath"
+      ]
+    },
+    {
+      "heading": "Type 1: representational abstraction",
+      "points": [
+        "Simplifies ONE specific thing into a model of that problem",
+        "Example: a road network becomes a graph of nodes (junctions) and weighted edges (distances or times)",
+        "Example: the London Underground map, a game minimap, a flight simulator's simplified physics",
+        "Test question: am I stripping detail from one particular thing?"
+      ]
+    },
+    {
+      "heading": "Type 2: generalisation (categorisation)",
+      "points": [
+        "Groups MANY things by their shared characteristics into one reusable model",
+        "Example: savings and current accounts handled by one Account type",
+        "Example: a Vehicle record covering cars, vans and bikes in a rental system",
+        "Test question: am I finding what many things have in common?"
+      ],
+      "note": "Exams expect BOTH types distinguished, each with a valid example."
+    },
+    {
+      "heading": "Abstraction versus reality",
+      "points": [
+        "An abstraction always contains less detail than the real thing it models",
+        "The Tube map discards true geography and scale but keeps lines, station order and interchanges",
+        "It is not wrong: it perfectly serves the purpose of planning which line to take",
+        "Two correct abstractions of the same thing can look completely different if their purposes differ"
+      ]
+    },
+    {
+      "heading": "Keep or discard? It depends on the purpose",
+      "points": [
+        "There is no universal list of irrelevant detail; relevance is relative to the stated problem",
+        "For a journey planner, live bus GPS is irrelevant; for a where-is-my-bus app it is essential",
+        "A good answer names specific data to keep, specific detail to discard, and justifies each discard",
+        "Removing a NECESSARY detail breaks the model: a canteen map without the turnings fails its user"
+      ],
+      "note": "The justification of each discarded detail usually carries the mark, not the list itself."
+    },
+    {
+      "heading": "Devising an abstract model: a method",
+      "points": [
+        "State the problem precisely: what questions must the model answer?",
+        "List candidate details of the real thing, then sort into keep and discard against that problem",
+        "Choose a representation for what is kept: variables, records, a graph of nodes and edges",
+        "Check: can the model still answer every question the problem asks? If yes, stop adding detail"
+      ]
+    },
+    {
+      "heading": "Worked pattern: real world to graph",
+      "points": [
+        "Many problems reduce to places and connections: roads, flight routes, social networks, network cables",
+        "Keep: the points (nodes) and which pairs connect (edges) with a cost (weights)",
+        "Discard: scenery, road names, curve shapes — none change the shortest route",
+        "This one abstraction lets one algorithm (shortest path) solve every such problem"
+      ]
+    },
+    {
+      "heading": "Abstraction is NOT decomposition",
+      "points": [
+        "Abstraction removes or hides detail to simplify a model",
+        "Decomposition breaks a problem into smaller sub-problems",
+        "They are different skills, examined separately, and often confused",
+        "One sentence check: removing detail = abstraction; splitting into parts = decomposition"
+      ]
+    },
+    {
+      "heading": "The payoff: benefits to name in answers",
+      "points": [
+        "Simpler model: quicker to design, build and test",
+        "Easier to maintain: less code and fewer places for bugs to hide",
+        "Generalised models are easy to extend: new cases reuse the existing model instead of new code",
+        "Always tie an abstraction answer back to one of these benefits"
+      ]
+    }
   ],
-  "worked_example": {
-    "title": "Abstracting a 'car' for a top-down racing game",
-    "steps": [
-      "Identify the problem: model a car well enough to race it from a top-down view.",
-      "Keep: position/coordinates on the track — needed to draw and move the car.",
-      "Keep: speed/velocity and heading/direction — needed to simulate movement and handling.",
-      "Discard: the engine's chemistry, exact paint colour and VIN.",
-      "Justify the discard: none of these affect how the car behaves or is driven in the race, so they add complexity without value.",
-      "State the type: this is representational abstraction — one specific thing simplified into a workable model."
-    ]
-  },
-  "task": "A hospital wants software to manage patient appointments. Using abstraction, design a model of a 'patient'. Name three pieces of data the model should KEEP, two real-world details it should DISCARD, and justify why each discarded detail is irrelevant to the appointments problem.",
-  "challenge": "A weather simulation models continuous air as a discrete 3-D grid of cells. Explain why this is an act of abstraction, what detail it discards, and one consequence (good or bad) of choosing a coarser grid.",
+  "worked_examples": [
+    {
+      "title": "Abstracting a patient for a hospital appointments system",
+      "steps": [
+        "Problem: schedule appointments and contact patients about them",
+        "Keep: patient ID and name, date of birth, contact number, GP or clinic, appointment type and duration — each is needed to schedule or to contact the patient",
+        "Discard: eye colour, favourite food, home decor",
+        "Justify each discard: none of these affect scheduling or contacting the patient, so including them adds complexity without value",
+        "Conclusion: keeping only relevant detail makes the system simpler, quicker to build and easier to maintain while still solving the appointments problem"
+      ]
+    },
+    {
+      "title": "Devising a model: sat-nav road network as a weighted graph",
+      "steps": [
+        "Problem: find the fastest route between two locations",
+        "Keep: junctions and places as nodes; roads between them as edges; average travel time on each road as the edge weight",
+        "Discard: road surface colour, buildings, scenery, the exact curve of each road — they do not change which route is fastest",
+        "Represent: a graph where the fastest route is the path with the lowest total weight",
+        "Check the purpose: to show turn-by-turn directions we must also keep junction names — necessary detail depends on the exact problem",
+        "Classify: this is representational abstraction (one specific network simplified), though the graph idea itself generalises to any network"
+      ]
+    },
+    {
+      "title": "Classifying examples: representational or generalisation?",
+      "steps": [
+        "Apply the test question: one thing simplified, or many things grouped by shared features?",
+        "The Tube map: one specific network with detail stripped — representational",
+        "An Animal superclass for Dog, Cat and Horse: many things grouped by shared characteristics — generalisation",
+        "A weather model ignoring individual raindrops: one system simplified — representational",
+        "Treating all customers as name, ID and balance: many people reduced to shared fields — generalisation",
+        "Takeaway: write the test question in your answer; it shows the examiner your reasoning"
+      ]
+    }
+  ],
+  "activities": [
+    {
+      "title": "Map to the Canteen",
+      "minutes": 20,
+      "instructions": [
+        "Without discussion, each student draws directions from this classroom to the canteen for a brand-new Year 7; five minutes, no style rules given",
+        "Pairs swap and mentally walk the route, listing what details are on the map and what real-world details were left out (wall colours, door widths, exact distances, rooms passed)",
+        "Class harvest in two columns, kept versus discarded, then the key question: why was each discarded detail safe to remove? Because it does not change whether the Year 7 arrives",
+        "Introduce the definition only after the experience: abstraction = removing or hiding unnecessary detail so only relevant information remains; show a floor plan or satellite photo — the map is not wrong, it serves a different purpose",
+        "Twist round: redraw for a different purpose, a wheelchair user or a fire-evacuation plan; what must be added back (lifts, ramps, all exits) and what can now go?"
+      ],
+      "stretch": "Name the map's interface (the instructions followed) versus its hidden implementation (the actual building), and connect this to a variable being an abstraction of a memory address."
+    },
+    {
+      "title": "Representational or Generalisation? Card Sort",
+      "minutes": 15,
+      "instructions": [
+        "Pairs sort ten example cards under two headers: representational abstraction (remove detail from one specific thing) and generalisation (group many things by shared characteristics)",
+        "Cards: the Tube map; an Animal superclass for Dog, Cat, Horse; a road network as a graph of nodes and weighted edges; a Vehicle record for cars, vans and bikes; a weather model ignoring raindrops; savings and current accounts under one Account type; a game minimap; a Shape class with area() overridden by Circle and Square; a flight simulator's simplified physics; all customers as name, ID, balance",
+        "Pairs must write the test question they used to decide (one thing simplified, or many things grouped?)",
+        "Class check: representational = Tube map, road graph, weather model, minimap, simulator; generalisation = Animal, Vehicle, Account, Shape, customers",
+        "Pairs generate one new example of each type from a video game they know"
+      ],
+      "stretch": "Identify a card that is arguably both (the road-network graph simplifies one map AND generalises places-plus-connections to any network) and defend the dual reading."
+    },
+    {
+      "title": "Always, Sometimes, Never: Abstraction Claims",
+      "minutes": 15,
+      "instructions": [
+        "Give pairs seven statement slips: (a) an abstraction contains less detail than the real thing; (b) removing more detail makes an abstraction better; (c) abstraction and decomposition are the same skill; (d) two correct abstractions of the same thing can look completely different; (e) a model that leaves out relevant detail is a poor abstraction for that problem; (f) abstraction is only used in programming; (g) the Tube map is wrong because distances are not to scale",
+        "Pairs classify each as Always, Sometimes or Never with a one-line justification and an example",
+        "Pairs merge into fours; disagreements must be settled by constructing a counter-example",
+        "Debrief targeting (b) and (c), the two most commonly botched in exams",
+        "Answers: (a) Always; (b) Sometimes — remove a necessary detail and the model stops working; (c) Never — abstraction removes detail, decomposition splits into sub-problems; (d) Always possible — different purposes; (e) Always; (f) Never — maps, timetables, models everywhere; (g) Never — it is fit for its purpose, scale is the discarded detail"
+      ],
+      "stretch": "Fours draft one new Sometimes statement whose truth hinges on the problem's purpose, and challenge another four."
+    }
+  ],
+  "practice": [
+    {"q": "Define the term abstraction. [2]", "a": "Removing or hiding unnecessary detail (1) so that only information relevant to the problem remains, giving a simpler model (1)."},
+    {"q": "Explain one reason why abstraction is needed when developing software. [2]", "a": "Real-world systems contain overwhelming amounts of detail (1); removing what is irrelevant makes the program simpler, faster to develop and easier to test and maintain (1)."},
+    {"q": "Describe the difference between representational abstraction and generalisation, giving an example of each. [4]", "a": "Representational abstraction simplifies one specific thing into a model of that problem (1), e.g. a road network stored as a graph of nodes and weighted edges, or the Tube map (1); generalisation groups many things by shared characteristics into one reusable model (1), e.g. savings and current accounts treated as a single Account type (1)."},
+    {"q": "A developer is creating a route-finding app. Describe how the real road network could be represented as an abstract model. [3]", "a": "Junctions and places become nodes (1); roads between them become edges weighted with distance or travel time (1); irrelevant detail such as scenery, buildings and the exact shapes of roads is discarded because it does not affect the choice of route (1)."},
+    {"q": "A program models a library member for a book-loans system. State two pieces of data the model should keep and two details of the real person it should discard, justifying the discards. [4]", "a": "Keep: member ID/name and contact details, plus current loans/due dates (1 for two sensible items); these are needed to record and chase loans (1). Discard: e.g. hair colour and favourite author (1); neither affects recording or returning loans, so they add complexity without value (1)."},
+    {"q": "The London Underground map does not show true distances or geography. Explain why it is still a good abstraction. [3]", "a": "Its purpose is to help passengers plan which lines to take and where to change (1); it keeps the relevant detail — lines, station order and interchanges (1) — and discards geography and scale, which do not affect that decision, making it clearer to use (1)."},
+    {"q": "A student says that abstraction means breaking a problem down into smaller sub-problems. Explain why the student is wrong. [2]", "a": "Breaking a problem into sub-problems is decomposition, a different computational thinking skill (1); abstraction is removing or hiding detail irrelevant to the problem to produce a simpler model (1)."},
+    {"q": "A bank replaces separate savings-account and current-account code with a single generalised Account model. Explain two benefits of this generalisation. [4]", "a": "Shared behaviour (deposit, withdraw, check balance) is written once instead of twice, reducing code size and the chance of inconsistent bugs (1) and making maintenance easier since fixes apply everywhere (1); the system is easier to extend, because a new account type can reuse the existing model rather than needing new code from scratch (1), cutting development time and testing effort (1)."}
+  ],
+  "misconceptions": [
+    "Students often think abstraction and decomposition are the same, but abstraction removes detail while decomposition splits a problem into sub-problems.",
+    "Students often think removing more detail always improves a model, but removing a necessary detail stops the model solving its problem.",
+    "Students often think the Tube map is a wrong or bad map, but a model is judged against its purpose, and scale is the deliberately discarded detail.",
+    "Students often define abstraction instead of applying it; exam marks come from naming scenario-specific details kept and discarded, with justification.",
+    "Students often think abstraction only happens in code, but maps, timetables and physics models are everyday abstractions."
+  ],
+  "exam_link": [
+    "Command words: Define/State (2 marks), Describe (a model for a scenario, 3-4 marks), Explain (why abstraction helps here, 2-4 marks), Discuss (use of abstraction across a whole system, up to 9-mark levels of response).",
+    "Application beats recitation: examiners give scenario marks for named details kept and discarded WITH justification, not for a memorised definition alone.",
+    "Example stem: 'A developer is writing a fitness-tracking app. Describe how abstraction will have been used in the design of the app.' — answer with specific kept/discarded data.",
+    "The abstraction/decomposition mix-up is an established trap; one sentence distinguishing them can secure a mark."
+  ],
+  "task": "Devise an abstract model for a school parents-evening booking system. List at least four pieces of data to keep and four real-world details to discard, justify every discard against the booking problem, and state whether your teacher and parent records are representational abstraction or generalisation, and why.",
+  "challenge": "Take your parents-evening model and change the problem to fire-safety roll call during an evacuation of the event. Write down which discarded details must now return, which kept details become irrelevant, and one sentence explaining what this shows about abstraction being relative to purpose.",
   "exit_ticket": [
-    {"q": "A studio models a road network as nodes and weighted edges. Which type of abstraction is this, and what do the edge weights represent?", "a": "Representational abstraction; the edge weights represent the cost of travelling between junctions, e.g. distance or time."},
-    {"q": "Why is using one Shape type for circles and squares an example of generalisation?", "a": "It groups different things by their shared characteristics into a single reusable model, so new shapes can reuse it."},
-    {"q": "A student says abstraction means breaking a problem into sub-problems. Correct them.", "a": "That is decomposition; abstraction removes or hides irrelevant detail to simplify the model."}
+    {"q": "In one sentence, what is abstraction?", "a": "Removing or hiding detail irrelevant to the problem so only relevant information remains, giving a simpler model."},
+    {"q": "Give the test question that separates representational abstraction from generalisation.", "a": "Am I stripping detail from one specific thing (representational) or grouping many things by shared characteristics (generalisation)?"},
+    {"q": "How is abstraction different from decomposition?", "a": "Abstraction removes or hides detail; decomposition breaks a problem into smaller sub-problems."}
   ]
 }

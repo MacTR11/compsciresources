@@ -1,51 +1,258 @@
 {
   "subtopic": "1.3.2 Databases",
   "spec": "OCR H446 — Component 01",
+  "week": "Week 11 (23 Nov)",
   "objectives": [
-    "Compare flat file and relational databases and identify primary, foreign, composite and secondary keys.",
-    "Apply normalisation to 1NF, 2NF and 3NF and explain the dependency removed at each stage.",
-    "Write SQL queries and explain transactions, ACID properties and record locking."
+    "I can define entity, attribute and record, and compare flat file and relational databases.",
+    "I can identify primary, foreign, composite and secondary keys and draw ER diagrams, resolving many-to-many relationships.",
+    "I can normalise a table to 3NF, naming the dependency removed at each stage.",
+    "I can write and interpret SQL, and explain referential integrity, transactions, ACID and record locking."
   ],
   "retrieval": [
-    {"q": "What is a foreign key?", "a": "The primary key of another table, used to link the two tables together."},
-    {"q": "How is a many-to-many (M:N) relationship resolved in a relational database?", "a": "By adding a linking/junction table, which has a composite key."},
-    {"q": "What does referential integrity guarantee?", "a": "Every foreign key references a valid existing primary key (or is null), so there are no orphaned records."},
-    {"q": "Interleaving (1.3.1): How could a website protect the passwords stored in its user database?", "a": "By hashing each password and storing only the hash, since hashing is one-way and a stolen database does not reveal the plaintext."},
-    {"q": "Interleaving (1.2.4): Name the data type best suited to a primary key like StudentID and why.", "a": "An integer, because it is compact, sorts/indexes efficiently and uniquely identifies each record."}
+    {"q": "Apply run length encoding to the string AAAABBBCC.", "a": "4A3B2C (or A4B3C2) — each run of repeated characters is replaced by a count and the value."},
+    {"q": "When does RLE make a file larger instead of smaller?", "a": "When there are few or no runs of repeated values, e.g. ABCABC becomes 1A1B1C1A1B1C, doubling the size."},
+    {"q": "State the key difference between symmetric and asymmetric encryption.", "a": "Symmetric uses the same shared key to encrypt and decrypt; asymmetric uses a public key to encrypt and a different, mathematically related private key to decrypt."},
+    {"q": "What problem of symmetric encryption does asymmetric encryption solve?", "a": "The key distribution problem — with asymmetric encryption the public key can be shared openly, so no secret key ever has to be transmitted."},
+    {"q": "Why should a website store hashes of passwords rather than encrypted passwords?", "a": "Hashing is one-way, so the original password cannot be recovered even if the database is stolen; encryption is reversible with a key that could also be stolen."}
   ],
   "keywords": [
-    {"term": "Entity", "def": "A thing data is stored about, represented as a table."},
+    {"term": "Entity", "def": "A category of thing about which data is stored, implemented as a table."},
     {"term": "Primary key", "def": "An attribute, or set of attributes, that uniquely identifies each record in a table."},
-    {"term": "Foreign key", "def": "The primary key of another table, used to create a link between tables."},
+    {"term": "Foreign key", "def": "An attribute in one table that is the primary key of another table, linking the two."},
     {"term": "Composite key", "def": "A primary key made up of two or more attributes combined."},
-    {"term": "Normalisation", "def": "Organising data into tables to reduce redundancy and remove anomalies."},
-    {"term": "Referential integrity", "def": "The rule that every foreign key must reference a valid existing primary key, or be null."},
-    {"term": "Transaction", "def": "A single logical operation in which all steps either succeed together or all fail."},
-    {"term": "Record locking", "def": "Locking a record during a transaction so others cannot edit it, preventing the lost update problem."}
+    {"term": "Secondary key", "def": "A non-primary attribute indexed to allow fast searching, e.g. Surname."},
+    {"term": "Normalisation", "def": "Organising data into tables to reduce redundancy and remove insertion, update and deletion anomalies."},
+    {"term": "Referential integrity", "def": "The rule that every foreign key value must reference an existing primary key, or be null."},
+    {"term": "Transaction", "def": "A single logical operation whose steps must all succeed or all fail together."},
+    {"term": "Record locking", "def": "Locking a record during a transaction so no other user can edit it, preventing lost updates."}
   ],
   "content": [
-    {"heading": "Flat file vs relational databases", "points": ["A flat file uses a single table with high redundancy and is prone to anomalies and inconsistency.", "A relational database uses multiple linked tables, reducing redundancy and keeping data consistent.", "Relational databases scale well and support complex queries across linked tables.", "Terminology: entity = table, attribute/field = column, record/row/tuple = one instance."]},
-    {"heading": "Keys and relationships", "points": ["Primary key uniquely identifies a record; foreign key is the primary key of another table used to link tables.", "Composite key combines two or more attributes; secondary key is a non-primary attribute used to search/index quickly.", "ER relationships are 1:1, 1:M or M:N; a many-to-many is resolved with a linking/junction table holding a composite key.", "Always name which table a foreign key links to when answering."]},
-    {"heading": "Normalisation to 3NF", "points": ["1NF: no repeating groups, all values atomic, and the table has a primary key.", "2NF: in 1NF and no partial dependencies — every non-key attribute depends on the whole key.", "3NF: in 2NF and no transitive dependencies — no non-key attribute depends on another non-key attribute.", "Mantra: 'the key, the whole key, and nothing but the key'; name the dependency removed at each stage and why."]},
-    {"heading": "SQL keywords", "points": ["SELECT chooses columns; FROM names the table(s); WHERE filters rows (AND/OR, LIKE 'A%').", "JOIN ... ON combines columns from related tables on a matching key.", "ORDER BY sorts results (ASC/DESC); standard order is SELECT ... FROM ... WHERE ... ORDER BY.", "INSERT INTO ... VALUES adds records, UPDATE ... SET changes them, DELETE FROM removes them, CREATE TABLE defines one."]},
-    {"heading": "Transactions, ACID and locking", "points": ["A transaction is one logical operation where all steps succeed or all fail (roll back).", "ACID: Atomicity (all-or-nothing), Consistency (valid state to valid state), Isolation (no interference), Durability (committed changes are permanent).", "Record locking stops concurrent edits and prevents the lost update problem, but risks deadlock.", "'Redundancy' has two meanings: data redundancy is bad (removed by normalisation); hardware/backup redundancy (RAID, failover) is good for reliability."]}
+    {
+      "heading": "Entities, attributes and records",
+      "points": [
+        "A database is an organised, persistent store of data.",
+        "Entity: a category of thing data is stored about, e.g. Student — implemented as a table (relation).",
+        "Attribute (field): one property of an entity — a column, e.g. Surname.",
+        "Record (row, tuple): all the data about one instance of an entity.",
+        "Each table stores data about exactly one entity; keys link the tables together."
+      ]
+    },
+    {
+      "heading": "Flat file vs relational databases",
+      "points": [
+        "A flat file holds everything in a single table, so the same facts are repeated many times.",
+        "Redundancy causes anomalies: update (change a fact in many places), insertion and deletion anomalies.",
+        "A relational database splits data across multiple linked tables, storing each fact once.",
+        "Relational databases give consistency, less storage waste, scalability and complex queries across tables.",
+        "Flat files remain simpler to set up and adequate for small, single-entity data sets."
+      ]
+    },
+    {
+      "heading": "Keys: primary, foreign, composite, secondary",
+      "points": [
+        "Primary key: attribute(s) uniquely identifying each record, e.g. StudentID.",
+        "Foreign key: the primary key of another table, placed in a table to create the link.",
+        "Composite key: a primary key of two or more attributes when no single attribute is unique.",
+        "Secondary key: a non-primary attribute indexed for fast searching, e.g. Surname in a school system.",
+        "In exams, always name which table a foreign key links to."
+      ],
+      "note": "A foreign key is defined by what it is elsewhere: the primary key of another table."
+    },
+    {
+      "heading": "Entity relationship modelling",
+      "points": [
+        "ER diagrams show entities as boxes and relationships as lines with crow's-foot or 1/M notation.",
+        "Degrees of relationship: one-to-one (1:1), one-to-many (1:M), many-to-many (M:N).",
+        "Example: one Customer places many Orders (1:M); a Student takes many Courses and vice versa (M:N).",
+        "M:N cannot be implemented directly — resolve it with a linking (junction) table.",
+        "The link table holds two foreign keys, usually forming a composite primary key, giving two 1:M relationships."
+      ]
+    },
+    {
+      "heading": "Normalisation to 3NF",
+      "points": [
+        "Purpose: reduce redundancy and remove insertion, update and deletion anomalies while keeping data consistent.",
+        "1NF: atomic values, no repeating groups of attributes, and a primary key exists.",
+        "2NF: in 1NF and no partial dependencies — every non-key attribute depends on the whole composite key.",
+        "3NF: in 2NF and no transitive dependencies — no non-key attribute depends on another non-key attribute.",
+        "Mantra: every non-key attribute depends on the key, the whole key, and nothing but the key."
+      ],
+      "note": "Name the dependency removed at each stage: repeating group (1NF), partial (2NF), transitive (3NF)."
+    },
+    {
+      "heading": "SQL: retrieving data",
+      "points": [
+        "SELECT chooses columns, FROM names the table, WHERE filters rows with conditions using AND, OR, comparison operators.",
+        "ORDER BY sorts the results ascending (ASC) or descending (DESC).",
+        "LIKE with the % wildcard matches patterns: 'M%' starts with M, '%son' ends with son.",
+        "JOIN ... ON combines columns from two tables where the foreign key matches the primary key.",
+        "Clause order is fixed: SELECT, FROM, WHERE, ORDER BY. Text values need quotes."
+      ],
+      "code": [
+        "SELECT Surname, TutorGroup",
+        "FROM Student",
+        "WHERE YearGroup = 13 AND Surname LIKE 'M%'",
+        "ORDER BY Surname ASC;",
+        "",
+        "SELECT Student.Surname, Class.ClassName",
+        "FROM Student",
+        "JOIN Class ON Student.ClassID = Class.ClassID;"
+      ]
+    },
+    {
+      "heading": "SQL: changing data",
+      "points": [
+        "INSERT INTO ... VALUES adds a new record; list fields then matching values in order.",
+        "UPDATE ... SET ... WHERE changes values in the records matching the condition.",
+        "DELETE FROM ... WHERE removes the records matching the condition.",
+        "Omitting WHERE on UPDATE or DELETE changes or removes every record in the table.",
+        "CREATE TABLE defines a new table with field names, data types and the primary key."
+      ],
+      "code": [
+        "INSERT INTO Student (StudentID, Surname, Forename, YearGroup)",
+        "VALUES (1024, 'Patel', 'Aisha', 12);",
+        "",
+        "UPDATE Student SET YearGroup = 13 WHERE StudentID = 1024;",
+        "",
+        "DELETE FROM Student WHERE StudentID = 1024;"
+      ],
+      "note": "UPDATE Student SET YearGroup = 13; with no WHERE would move the entire school up a year."
+    },
+    {
+      "heading": "Referential integrity",
+      "points": [
+        "Referential integrity: every foreign key value must reference an existing primary key in the linked table, or be null.",
+        "It prevents orphaned records, e.g. a Loan for a MemberID that does not exist.",
+        "The DBMS enforces it: you cannot insert a foreign key value with no matching primary key.",
+        "You cannot delete a record while foreign keys elsewhere still reference it, e.g. a customer with outstanding orders.",
+        "Foreign keys are therefore the mechanism that keeps relationships between tables consistent."
+      ]
+    },
+    {
+      "heading": "Transactions, ACID and record locking",
+      "points": [
+        "A transaction is one logical operation, e.g. a money transfer; all steps commit or all roll back.",
+        "Atomicity: all-or-nothing. Consistency: rules and constraints hold before and after. Isolation: concurrent transactions cannot interfere. Durability: committed changes survive failure.",
+        "Record locking prevents the lost update problem when two users edit the same record concurrently.",
+        "Locking risks deadlock: two transactions each wait for a record the other has locked; the DBMS aborts one.",
+        "Redundancy here means duplicate hardware or copies of data (backups, mirrored servers) for reliability — unlike bad data redundancy."
+      ]
+    },
+    {
+      "heading": "Capturing, selecting, managing and exchanging data",
+      "points": [
+        "Capture methods: paper forms with OMR (multiple-choice sheets), OCR (scanned text), barcodes and QR codes, sensors, online forms.",
+        "Choose the method for the context: OMR for lottery slips and registers; barcodes for stock at tills.",
+        "Selecting and managing: captured data is validated, then SQL queries select the required subset from the database.",
+        "Exchange formats: CSV, JSON and XML move structured data between systems; EDI exchanges business documents computer-to-computer.",
+        "Well-chosen capture and exchange methods reduce manual entry, cost and transcription errors."
+      ]
+    }
   ],
-  "worked_example": {
-    "title": "Joining two tables with SQL",
-    "steps": [
-      "Tables: Member(MemberID, Name, Email) and Loan(LoanID, MemberID, BookTitle, DueDate).",
-      "Identify the foreign key: MemberID in Loan links to the primary key MemberID in Member.",
-      "Goal: list each member's Name with the BookTitle of every book they have on loan.",
-      "Choose the columns: SELECT Member.Name, Loan.BookTitle.",
-      "Name the first table and join the second on the matching key: FROM Member JOIN Loan ON Member.MemberID = Loan.MemberID;",
-      "Referential integrity means a Loan cannot store a MemberID that does not exist in Member, so no loan is orphaned."
-    ]
-  },
-  "task": "For Student(StudentID, Surname, Form, TutorName), write an SQL query that returns the StudentID and Surname of every student in form '12A', sorted by Surname in ascending order.",
-  "challenge": "A table Order(OrderID, CustomerID, CustomerName, CustomerEmail, ProductID, ProductName) is only in 1NF. Identify one partial and one transitive dependency, then describe the set of tables you would create to reach 3NF and name the keys involved.",
+  "worked_examples": [
+    {
+      "title": "Normalising school enrolments to 3NF",
+      "steps": [
+        "Unnormalised data: Student 101 Ada Lovelace, tutor group 12A, takes CS01 Computer Science with Mr Khan in room T5 and MA02 Maths with Mrs Cole in room T9. Student 102 Alan Turing, 12B, takes CS01 Computer Science with Mr Khan in T5.",
+        "1NF — remove the repeating group of courses so every value is atomic: Enrolment(StudentID, Name, TutorGroup, CourseID, CourseName, Teacher, Room) with composite primary key (StudentID, CourseID). Three rows: 101/CS01, 101/MA02, 102/CS01.",
+        "Spot the redundancy: Ada's name and 12A appear twice; Computer Science, Mr Khan and T5 appear twice — an update anomaly waiting to happen.",
+        "2NF — remove partial dependencies. Name and TutorGroup depend only on StudentID; CourseName, Teacher and Room depend only on CourseID. Each depends on part of the composite key, not the whole key.",
+        "2NF tables: Student(StudentID, Name, TutorGroup), Course(CourseID, CourseName, Teacher, Room), Enrolment(StudentID, CourseID) with composite key of two foreign keys.",
+        "3NF — remove the transitive dependency. In Course, Room depends on Teacher (a non-key attribute), not directly on CourseID: Mr Khan always teaches in T5.",
+        "3NF tables: Student(StudentID, Name, TutorGroup), Course(CourseID, CourseName, TeacherID), Teacher(TeacherID, TeacherName, Room), Enrolment(StudentID, CourseID).",
+        "Check: every non-key attribute now depends on the key, the whole key, and nothing but the key; each fact is stored exactly once."
+      ]
+    },
+    {
+      "title": "Tracing a SQL JOIN on two tables",
+      "steps": [
+        "Tables with data — Member(MemberID, Name): (1, Asha), (2, Ben), (3, Cara). Loan(LoanID, MemberID, BookTitle): (10, 1, Dune), (11, 3, Emma), (12, 1, Holes).",
+        "MemberID in Loan is the foreign key linking to the primary key MemberID in Member.",
+        "Query: SELECT Member.Name, Loan.BookTitle FROM Member JOIN Loan ON Member.MemberID = Loan.MemberID ORDER BY Member.Name ASC;",
+        "Match each Loan row to the Member row with the same MemberID: loan 10 matches member 1 (Asha), loan 11 matches member 3 (Cara), loan 12 matches member 1 (Asha).",
+        "Apply ORDER BY Name ascending. Exact result, 3 rows: (Asha, Dune), (Asha, Holes), (Cara, Emma).",
+        "Ben (MemberID 2) appears in no result row: he has no loans, and a JOIN only returns rows where the keys match on both sides.",
+        "Referential integrity guarantees every Loan.MemberID exists in Member, so no loan is ever orphaned."
+      ]
+    },
+    {
+      "title": "ACID and the lost update: transferring 30 pounds",
+      "steps": [
+        "Accounts: A holds 50 pounds, B holds 20 pounds. Consistency rule: the total must always be 70 pounds.",
+        "Transaction: TRANSFER 30 from A to B = two steps: debit A (A becomes 20), credit B (B becomes 50).",
+        "Power failure after the debit but before the credit leaves A = 20, B = 20 — total 60, so 10 pounds has vanished and consistency is broken.",
+        "Atomicity fixes this: the whole transaction rolls back to A = 50, B = 20; either both steps commit or neither does.",
+        "Durability: once the successful transfer commits (A = 20, B = 50), it is stored permanently and survives any later crash.",
+        "Lost update without locking: two clerks both read A as 50. Clerk 1 withdraws 10 and writes 40; clerk 2 withdraws 20 and writes 30. Correct balance is 50 - 10 - 20 = 20, but the database shows 30 — clerk 1's update was lost.",
+        "Record locking (Isolation): clerk 2 must wait until clerk 1 commits, then reads 40 and writes 20 — the correct result."
+      ]
+    }
+  ],
+  "activities": [
+    {
+      "title": "Normalisation card sort: from chaos to 3NF",
+      "minutes": 20,
+      "instructions": [
+        "In groups of 3-4, copy each field value of this record onto separate cards: Student 101 Ada Lovelace, 12A, takes CS01 Computer Science with Mr Khan in T5 and MA02 Maths with Mrs Cole in T9; Student 102 Alan Turing, 12B, takes CS01 with Mr Khan in T5.",
+        "To 1NF: lay the cards out as one flat table, one row per student-per-course, and agree a primary key. Which data appears more than once?",
+        "To 2NF: split into separate physical tables so no attribute depends on only part of the composite key. Does Name depend on CourseID? Does CourseName depend on StudentID?",
+        "To 3NF: hunt the transitive dependency — does Room depend on the course, or on the teacher? Split again.",
+        "Walk to another table and peer-check: every table has a primary key, and the key, the whole key, and nothing but the key."
+      ],
+      "stretch": "Add a card saying Student 101 also takes CS01 in a second lesson slot. Does the current primary key still work? What must join the key?"
+    },
+    {
+      "title": "SQL A and E: spot and fix",
+      "minutes": 12,
+      "instructions": [
+        "Schema on the board: Student(StudentID, Name, Age, TutorGroup). Work in pairs with mini-whiteboards.",
+        "Diagnose and correct each injured query as it is revealed: (a) SELECT Name, FROM Student WHERE Age > 16 (b) SELECT * FROM Student WHERE Name = Amir (c) SELECT Name FROM Student ORDER BY Age WHERE Age > 16 (d) DELETE Student WHERE StudentID = 12 (e) SELECT Name FROM Student WHERE Name LIKE '%S' when names beginning with S are wanted (f) UPDATE Student SET Age = 17 StudentID = 3 when only student 3 should change.",
+        "Hold up corrections on a count of three; one pair explains what the broken version would actually do if run.",
+        "Fixes to reach: (a) remove stray comma; (b) quotes around 'Amir'; (c) WHERE before ORDER BY; (d) DELETE FROM; (e) LIKE 'S%'; (f) add the WHERE keyword — without it every student becomes 17."
+      ],
+      "stretch": "Write one deliberately broken JOIN ... ON query for another pair to fix."
+    },
+    {
+      "title": "The 70 pound bank job: ACID role play",
+      "minutes": 15,
+      "instructions": [
+        "Two students are accounts: A holds 50 pounds and B holds 20 pounds in counters; total 70 pounds is the consistency rule on the board.",
+        "A teller performs TRANSFER 30 from A to B in two steps; the teacher shouts POWER CUT after the debit. Where is the money? The class decides what the database must do (rollback — atomicity).",
+        "Re-run successfully and record the committed balances on the board ledger; wipe all whiteboards to crash the room — the ledger survives (durability).",
+        "Lost update round: two tellers both read A as 50; teller 1 withdraws 10 and writes 40, teller 2 withdraws 20 and writes 30. What should A hold? What does it hold?",
+        "Re-run with record locking: teller 2 waits, arms crossed, until teller 1 commits. Debrief all four ACID letters, with isolation shown by the lock."
+      ],
+      "stretch": "Stage a deadlock: teller 1 locks account A and waits for B while teller 2 locks B and waits for A. How should the DBMS escape?"
+    }
+  ],
+  "practice": [
+    {"q": "State what is meant by a foreign key. (1)", "a": "An attribute in one table that is the primary key of another table, used to link the two tables."},
+    {"q": "Describe how a many-to-many relationship between Student and Course is implemented in a relational database. (3)", "a": "A linking (junction) table such as Enrolment is created (1); it contains the foreign keys StudentID and CourseID, together forming a composite primary key (1); this converts the many-to-many relationship into two one-to-many relationships (1)."},
+    {"q": "A table Order(OrderID, CustomerID, CustomerName, CustomerEmail) is in 2NF. Explain why it is not in 3NF and how to fix it. (3)", "a": "CustomerName and CustomerEmail depend on CustomerID, a non-key attribute, not on the primary key OrderID — a transitive dependency (1), so the table is not in 3NF. Fix: move them into Customer(CustomerID, CustomerName, CustomerEmail) (1), leaving Order(OrderID, CustomerID) with CustomerID as a foreign key (1)."},
+    {"q": "The table Member(MemberID, Forename, Surname, Town, Email) is used by a library. Write an SQL statement to display the Forename and Email of all members who live in Oxford, sorted by Forename in ascending order. (4)", "a": "SELECT Forename, Email FROM Member WHERE Town = 'Oxford' ORDER BY Forename ASC; — one mark each for SELECT with correct fields, FROM Member, WHERE Town = 'Oxford' with quotes, ORDER BY Forename ASC."},
+    {"q": "Write an SQL statement to add member 501, Leo Cole, from Bath, email leo@mail.com, to the Member table. (3)", "a": "INSERT INTO Member (MemberID, Forename, Surname, Town, Email) VALUES (501, 'Leo', 'Cole', 'Bath', 'leo@mail.com'); — marks for INSERT INTO Member with field list, VALUES keyword, and correct values in matching order with quotes around text."},
+    {"q": "Explain why the statement UPDATE Member SET Town = 'York'; is dangerous and correct it so only member 501 is changed. (2)", "a": "Without a WHERE clause the UPDATE changes the Town of every record in the table (1). Correct version: UPDATE Member SET Town = 'York' WHERE MemberID = 501; (1)."},
+    {"q": "A bank transfers money between two accounts as a single transaction. Explain how atomicity and durability protect this transaction. (4)", "a": "Atomicity: the debit and credit are all-or-nothing (1); if any step fails the whole transaction is rolled back, so money is never taken without being deposited (1). Durability: once committed, the change is permanently stored (1) and survives a power or system failure, e.g. written to non-volatile storage (1)."},
+    {"q": "Two employees open the same stock record at the same time. Describe the problem that could occur and how record locking prevents it. (3)", "a": "Both read the same starting value and each writes back an update, so the second write overwrites the first — the lost update problem (1). Record locking locks the record while the first transaction runs, so the second user must wait until it commits (1); the second update then starts from the committed value, so no update is lost (1)."}
+  ],
+  "misconceptions": [
+    "Students often think a primary key must be a single attribute, but a composite key of two or more attributes is common, e.g. in a linking table.",
+    "Students often say a foreign key just links tables; the definition is that it is the primary key of another table — always name which one.",
+    "Students often think normalisation means splitting into as many tables as possible, but each split must remove a named dependency: repeating group, partial or transitive.",
+    "Students often believe a fully normalised database contains no repeated values anywhere, but foreign key values must repeat to create the links; only redundant duplication is removed.",
+    "Students often treat all redundancy as bad: data redundancy causes anomalies, but hardware and backup redundancy is deliberately added for reliability."
+  ],
+  "exam_link": [
+    "Command words: State a definition (1 mark), Describe a process such as resolving M:N (2-3 marks), Explain with reasons for normalisation or ACID (3-4 marks).",
+    "SQL writing questions are typically 3-4 marks with one mark per correct clause; keep the order SELECT, FROM, WHERE, ORDER BY and quote text values.",
+    "Normalisation questions often give a 1NF table and ask you to produce 3NF tables, naming primary and foreign keys and the dependencies removed.",
+    "Example stem: A vet stores appointments in the single table Appointment(ApptID, PetID, PetName, OwnerName, Date). Explain why this design causes update anomalies and redesign it in 3NF. (6)"
+  ],
+  "task": "For the tables Student(StudentID, Surname, Form) and Club(ClubID, ClubName) linked by Membership(StudentID, ClubID), draw the ER diagram, state why Membership exists and name its key, then write an SQL query using JOIN to list the Surname of every student in the club named 'Robotics'.",
+  "challenge": "A table Delivery(DeliveryID, DriverID, DriverName, VanReg, ParcelID, ParcelWeight, Postcode) is in 1NF with composite key (DeliveryID, ParcelID). Identify one partial and one transitive dependency, produce the full set of 3NF tables with primary and foreign keys, and state which anomaly each split prevents.",
   "exit_ticket": [
-    {"q": "What must be removed to take a table from 2NF to 3NF?", "a": "Transitive dependencies, where a non-key attribute depends on another non-key attribute; move that attribute into a separate table so every non-key attribute depends only on the primary key."},
-    {"q": "State one benefit and one risk of record locking.", "a": "Benefit: prevents the lost update problem and keeps data consistent. Risk: can cause deadlock, or block and slow other users."},
-    {"q": "What does the Isolation property of a transaction mean?", "a": "Concurrent transactions execute as if isolated, so uncommitted intermediate states are not visible to other transactions, preventing interference and inconsistent reads."}
+    {"q": "What must be removed to take a table from 2NF to 3NF?", "a": "Transitive dependencies — a non-key attribute depending on another non-key attribute is moved to its own table, so every non-key attribute depends only on the primary key."},
+    {"q": "Write the WHERE and ORDER BY clauses to find products whose Name starts with A, cheapest first, given Product(Name, Price).", "a": "WHERE Name LIKE 'A%' ORDER BY Price ASC — the % wildcard matches any characters after A and ASC sorts lowest price first."},
+    {"q": "State one benefit and one risk of record locking.", "a": "Benefit: it prevents the lost update problem, keeping concurrent transactions isolated. Risk: deadlock, where two transactions each wait forever for the record the other has locked."}
   ]
 }
