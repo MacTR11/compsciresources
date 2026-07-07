@@ -1,0 +1,182 @@
+{
+  "subtopic": "1.4.2 Data Structures (part 2 — trees, graphs, hash tables)",
+  "spec": "OCR H446 — Component 01",
+  "week": "Week 20 (08 Feb)",
+  "objectives": [
+    "I can define a tree and a binary search tree, and build a BST from a given insertion order.",
+    "I can add nodes to and remove nodes from a BST so the ordering property still holds.",
+    "I can state the order in which depth-first (post-order) and breadth-first traversals visit nodes.",
+    "I can represent a graph as an adjacency matrix or adjacency list, and explain how a hash table achieves O(1) lookup and handles collisions."
+  ],
+  "retrieval": [
+    {"q": "From week 19: when inserting node N between nodes A and B in a linked list, which pointer is written first?", "a": "N's next pointer is set to B first, then A's next is set to N; the reverse order loses the route to the rest of the list."},
+    {"q": "From week 19: a circular queue of size 6 has rear = 5. What does rear become after the next enqueue, and why?", "a": "rear = (5 + 1) MOD 6 = 0; the MOD wrap reuses cells freed by earlier dequeues."},
+    {"q": "From week 18: an empty stack receives push(2), push(6), pop(), push(9), pop(), pop(). List the values returned in order.", "a": "6, 9, 2 (LIFO: each pop returns the most recent unpopped push)."},
+    {"q": "From week 19: deleting the node holding 15 from the list 12 -> 15 -> 22 needs one pointer change. State it.", "a": "12's next pointer is set to the node holding 22; the 15 node becomes unreachable garbage."},
+    {"q": "From week 18: give one structural difference between a record and an array.", "a": "A record has named fields that may hold different types; an array has indexed elements all of one type."}
+  ],
+  "keywords": [
+    {"term": "Tree", "def": "A connected, hierarchical structure with no cycles: one root, then parents, children and leaves."},
+    {"term": "Leaf", "def": "A node with no children."},
+    {"term": "Binary search tree (BST)", "def": "A binary tree where every node's left subtree holds smaller values and its right subtree larger values."},
+    {"term": "Depth-first (post-order) traversal", "def": "Visit the left subtree, then the right subtree, then the node itself; the root comes last."},
+    {"term": "Breadth-first traversal", "def": "Visit nodes level by level from the root, left to right, using a queue of discovered nodes."},
+    {"term": "Graph", "def": "A set of vertices connected by edges; may be directed, undirected or weighted, and may contain cycles."},
+    {"term": "Adjacency matrix", "def": "A 2D array where cell [i][j] records whether (or at what weight) an edge joins vertex i to vertex j."},
+    {"term": "Adjacency list", "def": "A list, for each vertex, of its neighbours; stores only edges that exist, suiting sparse graphs."},
+    {"term": "Collision", "def": "Two different keys hashing to the same index; resolved by chaining or by rehashing to another slot."}
+  ],
+  "content": [
+    {"heading": "Trees: hierarchy without cycles", "points": [
+      "A tree is connected and acyclic: exactly one route exists between any two nodes.",
+      "Vocabulary: the root at the top, edges (branches) down to children, each child has one parent.",
+      "A leaf has no children; a node plus all its descendants forms a subtree.",
+      "Uses: file systems, organisation charts, HTML page structure, game move trees."
+    ]},
+    {"heading": "Binary trees and the BST ordering rule", "points": [
+      "A binary tree allows each node at most two children: left and right.",
+      "A binary search tree adds an ordering rule: left subtree < node < right subtree.",
+      "The rule applies to whole subtrees, not just immediate children: every left descendant is smaller.",
+      "A BST is not just any binary tree: without the ordering property, fast searching is impossible.",
+      "Searching halves the remaining tree at each step: O(log n) comparisons when balanced."
+    ]},
+    {"heading": "Building a BST: insertion order decides shape", "points": [
+      "To add a value, compare from the root: smaller goes left, larger goes right, repeat until an empty spot.",
+      "New values always join the tree as leaves; existing nodes never move.",
+      "The same values inserted in a different order produce a differently shaped tree.",
+      "Sorted input builds a one-sided chain: effectively a linked list, so search degrades to O(n)."
+    ], "note": "Exam habit: always process the insertion list strictly left to right, drawing after every value."},
+    {"heading": "Removing nodes from a BST", "points": [
+      "Removing a leaf is trivial: the parent's pointer to it becomes null.",
+      "Removing a node with one child: the parent bypasses it, pointing at the child (like a linked list delete).",
+      "Removing a node with two children: replace its value with its in-order successor, the smallest value in its right subtree.",
+      "That successor has no left child, so deleting it from its old position is one of the easy cases.",
+      "After any removal the ordering rule must still hold everywhere: check by reading the tree left to right."
+    ]},
+    {"heading": "Depth-first (post-order) traversal", "points": [
+      "Rule: visit the left subtree, then the right subtree, then the node itself.",
+      "It plunges deep before going wide; a node is only visited once both its subtrees are finished.",
+      "The root is therefore always visited last.",
+      "Uses: safely deleting a whole tree (children before parents) and producing postfix expressions.",
+      "Under the hood it uses a stack: the recursion from 2.2.1 stacks each unfinished node."
+    ], "note": "Here you must give the visiting ORDER; writing the full recursive algorithm belongs to 2.3.1 later this year."},
+    {"heading": "Breadth-first traversal", "points": [
+      "Rule: visit nodes level by level from the root, left to right within each level.",
+      "It uses a queue: visit a node, enqueue its children, dequeue the next node to visit.",
+      "The root is visited first: the opposite end of the order from post-order.",
+      "Uses: finding the shallowest occurrence of something, and level-by-level processing.",
+      "Notice last fortnight's structures returning: depth-first rides a stack, breadth-first rides a queue."
+    ]},
+    {"heading": "Graphs: vertices and edges", "points": [
+      "A graph is a set of vertices (nodes) joined by edges; cycles are allowed and there is no root.",
+      "Undirected edges work both ways; directed edges (arrows) are one-way, like Twitter follows.",
+      "Weighted edges carry a cost: distance, time or price on each connection.",
+      "Uses: road maps, computer networks, social networks, the web's link structure.",
+      "A tree is really a special graph: connected, undirected and containing no cycles."
+    ]},
+    {"heading": "Adjacency matrix vs adjacency list", "points": [
+      "Matrix: a V x V grid; cell [i][j] holds 1 (or the weight) if an edge joins i to j, else 0.",
+      "Undirected graphs give a symmetric matrix; edge lookup is a single cell read, O(1).",
+      "But the matrix always costs V squared cells, mostly zeros in a sparse graph.",
+      "List: each vertex stores just its neighbours (with weights if needed); memory grows with edges, not vertices squared.",
+      "Choose matrix for dense graphs or constant edge tests; list for large, sparse graphs like road maps."
+    ]},
+    {"heading": "Hash tables: from key to index in one step", "points": [
+      "A hash function turns a key into an array index, for example index = key MOD tableSize.",
+      "The record is stored at that computed index: no searching happens at all.",
+      "Lookup recomputes the hash: the same key always gives the same index, so retrieval is direct, O(1).",
+      "Uses: username and password lookup, caches, compiler symbol tables, Python dictionaries.",
+      "Contrast: a hash table finds one key instantly but holds no ordering; a BST keeps order but costs O(log n)."
+    ]},
+    {"heading": "Collisions and how to handle them", "points": [
+      "A collision is two different keys hashing to the same index: inevitable, not a fault.",
+      "Chaining: each index holds a linked list; colliding items join the chain, searched linearly.",
+      "Rehashing (e.g. linear probing): apply a rule such as step to the next free cell, wrapping at the end.",
+      "Searching retraces exactly the same probes; reaching an empty cell proves the key is absent.",
+      "As the table fills (load factor rises), chains and probe runs grow, and lookup drifts away from O(1)."
+    ]}
+  ],
+  "worked_examples": [
+    {"title": "Building a BST from 50, 30, 70, 20, 40, 60, 80 — then removing 30", "steps": [
+      "50 enters the empty tree as the root.",
+      "30 < 50, so 30 becomes the left child of 50. 70 > 50, so 70 becomes the right child.",
+      "20: less than 50 (go left), less than 30: left child of 30. 40: less than 50, greater than 30: right child of 30.",
+      "60: greater than 50 (go right), less than 70: left child of 70. 80: greater than 50, greater than 70: right child of 70.",
+      "Shape: root 50; 30 has children 20 and 40; 70 has children 60 and 80. Perfectly balanced, three levels.",
+      "Comprehension check: 65 would walk 50 (right), 70 (left), 60 (right): new right child of 60.",
+      "Remove 30, a node with two children: replace its value with its in-order successor, 40, the smallest value in its right subtree.",
+      "The old 40 node was a leaf, so it is simply detached. The left subtree now reads 20, 40 and the ordering rule still holds everywhere."
+    ]},
+    {"title": "Traversing the original 50/30/70 tree both ways", "steps": [
+      "Depth-first (post-order) rule: left subtree, right subtree, then the node itself.",
+      "Left subtree of 50 (rooted at 30): its left leaf 20, its right leaf 40, then 30: giving 20, 40, 30.",
+      "Right subtree of 50 (rooted at 70): 60, then 80, then 70: giving 60, 80, 70.",
+      "The root comes last. Full post-order: 20, 40, 30, 60, 80, 70, 50.",
+      "Breadth-first uses a queue: visit 50, then level two left to right (30, 70), then level three (20, 40, 60, 80).",
+      "Full breadth-first: 50, 30, 70, 20, 40, 60, 80. It matches the insertion order here only because this tree happens to be balanced: that is a coincidence, not a rule.",
+      "Contrast for later: in-order (left, node, right) would give 20, 30, 40, 50, 60, 70, 80: ascending, straight from the BST property."
+    ]},
+    {"title": "One graph, two representations: undirected edges A-B, A-C, B-C, C-D", "steps": [
+      "The graph has 4 vertices and 4 edges; D connects only to C.",
+      "Adjacency matrix (rows and columns A, B, C, D): row A: 0 1 1 0; row B: 1 0 1 0; row C: 1 1 0 1; row D: 0 0 1 0.",
+      "The matrix is symmetric because the graph is undirected, and it costs 4 x 4 = 16 cells however few edges exist.",
+      "Adjacency list: A: B, C. B: A, C. C: A, B, D. D: C. That is 8 entries, each edge recorded twice.",
+      "Edge test, is B joined to D? Matrix: read cell [B][D] instantly (0, no). List: scan B's neighbours A, C and conclude no.",
+      "Adding weights: each matrix cell holds the weight instead of 1; each list entry becomes a (neighbour, weight) pair.",
+      "Verdict: this small dense graph suits either; scale to a national road map (millions of vertices, few edges each) and the matrix's V squared zeros make the list the only sane choice."
+    ]}
+  ],
+  "activities": [
+    {"title": "Grow-Your-Own BST", "minutes": 15, "instructions": [
+      "Seven students draw cards 50, 30, 70, 20, 40, 60, 80 and insert themselves in that order, the class chanting the rule each time: smaller goes left, larger goes right, walking from the root to an empty spot. Arms become branches.",
+      "Comprehension check: where would 65 go? Walk it: 50 right, 70 left, 60 right: new right child of 60.",
+      "Traversal walks: a volunteer walks depth-first (post-order: left, right, root) while the class records the sequence, then a second volunteer walks breadth-first level by level.",
+      "Expected: post-order 20, 40, 30, 60, 80, 70, 50 (root last); breadth-first 50, 30, 70, 20, 40, 60, 80 (root first).",
+      "Rebuild the tree from sorted input 20, 30, 40, 50, 60, 70, 80: a right-leaning chain appears, and the class counts search steps for 80 (7 versus 3 in the balanced tree).",
+      "Debrief: insertion order decides shape; balanced gives O(log n) search, a degenerate chain gives O(n)."
+    ], "stretch": "Remove the 30 student: the class must nominate the replacement (in-order successor 40) and justify why the ordering rule survives."},
+    {"title": "Coat-Hook Hash Table", "minutes": 12, "instructions": [
+      "Seven chairs labelled 0 to 6 form the table; the hash function is index = key MOD 7, computed aloud by the class before each key-holder sits.",
+      "Insert 6 (sits at 6), then 15 (15 MOD 7 = 1). Insert 22: 22 MOD 7 = 1, chair taken: a collision. Agree linear probing (step right to the next empty chair, wrapping): 22 sits at 2. Insert 8: hashes to 1, probes past 1 and 2, sits at 3.",
+      "Search demo: find key 8. Hash to 1, compare chairs 1 (15), 2 (22), 3 (8): found in 3 comparisons.",
+      "Unsuccessful search: is 29 in the table? 29 MOD 7 = 1; probe chairs 1, 2, 3 (all wrong), chair 4 is empty: 29 is definitively absent.",
+      "Debrief: hashing gives near O(1) lookup; collisions are expected and handled; as chairs fill, probe chains grow and speed decays."
+    ], "stretch": "Re-run resolving collisions by chaining (colliders queue behind chair 1) and compare the two searches for key 8."},
+    {"title": "Which Structure Am I? Corners (full edition)", "minutes": 10, "instructions": [
+      "Corner signs: STACK, QUEUE, TREE/BST, HASH TABLE; the centre floor means something else, say what. Read a scenario; students walk; a delegate per corner justifies before the reveal.",
+      "Scenarios: (a) undo in a text editor; (b) print jobs for a shared printer; (c) 100,000 usernames needing near-instant login lookup; (d) a company organisation chart; (e) the browser back button; (f) keypresses buffered while the CPU is busy; (g) customer records listed alphabetically on demand; (h) a chessboard's 8 x 8 grid; (i) cities and the roads between them.",
+      "Answers: (a) stack; (b) queue; (c) hash table, O(1) lookup by key; (d) tree, one root, no cycles; (e) stack; (f) queue; (g) BST, ordered retrieval at O(log n); (h) centre: 2D array; (i) centre: graph, many-to-many with cycles, so not a tree.",
+      "After each reveal, ask the losing corners why their structure is worse here, not just why the winner is good."
+    ], "stretch": "For scenario (i), ask whether an adjacency matrix or list suits a sparse national road map and why (list: memory grows with edges, not vertices squared)."}
+  ],
+  "practice": [
+    {"q": "The values 40, 20, 60, 10, 30, 50, 70 are inserted in that order into an empty binary search tree. Describe the resulting tree. [3]", "a": "40 is the root (1); 20 is its left child with children 10 and 30 (1); 60 is its right child with children 50 and 70, giving a balanced three-level tree (1)."},
+    {"q": "State the order a depth-first (post-order) traversal visits the nodes of that tree. [2]", "a": "10, 30, 20, 50, 70, 60, 40 (2 marks; 1 mark if the root 40 is correctly last but one subtree order slips)."},
+    {"q": "State the order a breadth-first traversal visits the same tree, and name the data structure the traversal relies on. [2]", "a": "40, 20, 60, 10, 30, 50, 70 (1); it uses a queue of discovered nodes (1)."},
+    {"q": "Explain why inserting already-sorted data into a binary search tree harms search performance. [3]", "a": "Each new value is larger than the last, so every insertion goes right (1); the tree degenerates into a one-sided chain, effectively a linked list (1); searching then takes O(n) comparisons instead of O(log n) (1)."},
+    {"q": "A social network has millions of users, each with relatively few friends. Justify representing it as an adjacency list rather than an adjacency matrix. [3]", "a": "The graph is sparse (1); a matrix needs V squared cells, almost all zeros, which is wasteful at millions of vertices (1); a list stores only the edges that exist, so memory grows with friendships, not users squared (1)."},
+    {"q": "Describe how a hash table stores and retrieves a customer record using the account number as the key, and explain why lookup is fast. [4]", "a": "A hash function is applied to the account number to compute an index (1); the record is stored at that index in the table (1); retrieval applies the same function to the same key, giving the same index (1); the record is accessed directly with no searching, so lookup is approximately O(1) (1)."},
+    {"q": "Keys 25, 13 and 34 are inserted into a hash table of size 7 using index = key MOD 7. State each index, identify the collision, and explain how chaining resolves it. [4]", "a": "25 MOD 7 = 4 (1); 13 MOD 7 = 6 (1); 34 MOD 7 = 6, colliding with 13 (1); with chaining, index 6 holds a linked list and 34 is appended behind 13, so both remain retrievable (1)."},
+    {"q": "A node with two children is removed from a binary search tree. Explain how the tree is restructured so the ordering property still holds. [3]", "a": "The node's value is replaced by its in-order successor, the smallest value in its right subtree (or largest in its left) (1); that value is greater than everything in the left subtree and no larger than anything remaining in the right (1); the successor node is then deleted from its old position, which is a leaf or one-child case (1)."}
+  ],
+  "misconceptions": [
+    "Students often think any binary tree is a binary search tree; a BST needs the ordering property, left subtree < node < right subtree, applied to whole subtrees.",
+    "Students often swap the traversal machinery: depth-first relies on a stack (or recursion), breadth-first on a queue, not the other way round.",
+    "Students often think insertion order into a BST does not matter; it fixes the shape, and sorted input collapses search from O(log n) to O(n).",
+    "Students often treat a collision as the hash function being broken or data being lost; collisions are expected and handled by chaining or rehashing.",
+    "Students often assume a hash table keeps data sorted; it does not, which is exactly why an ordered listing needs a BST instead."
+  ],
+  "exam_link": [
+    "Command words seen here: draw or show for building a BST from an insertion order (2-4 marks), state for traversal orders (2 marks), justify or compare for matrix versus list (2-6 marks), describe for hash storage and lookup (3-4 marks).",
+    "At 1.4.2 the traversal question asks for the visiting order only; writing the recursive traversal algorithm is examined under 2.3.1.",
+    "Adjacency matrix versus adjacency list is a classic justify question: always quote the graph's density and the V squared memory cost.",
+    "Example stem: 'The following values are added to a binary search tree in the order given. Draw the tree, then state the order in which a post-order traversal visits the nodes.' [4]"
+  ],
+  "task": "Insert 45, 25, 65, 15, 35, 55, 75, 30 in that order into an empty BST and draw it. Write out the depth-first (post-order) and breadth-first traversal orders, then remove 25 and redraw the tree. (Shape: root 45; 25 has children 15 and 35, and 35 has left child 30; 65 has children 55 and 75. Post-order: 15, 30, 35, 25, 55, 75, 65, 45. Breadth-first: 45, 25, 65, 15, 35, 55, 75, 30. Removing 25: replace it with its in-order successor 30, which detaches from 35 as a leaf.)",
+  "challenge": "A postcode lookup service must (a) return the address for a full postcode in near-constant time and (b) list all stored postcodes in alphabetical order on demand. Explain why no single structure from this topic does both jobs well, propose a combination of a hash table and a BST, and describe the cost of keeping both structures consistent every time a postcode is added or removed.",
+  "exit_ticket": [
+    {"q": "In one sentence, what turns a binary tree into a binary search tree?", "a": "Every node's left subtree holds only smaller values and its right subtree only larger values."},
+    {"q": "Which traversal visits the root last, and which structure does breadth-first traversal rely on?", "a": "Depth-first (post-order) visits the root last; breadth-first relies on a queue."},
+    {"q": "Two keys hash to index 3. State the term for this and one way to resolve it.", "a": "A collision; resolve by chaining (a linked list at that index) or by rehashing/probing to another free slot."}
+  ]
+}

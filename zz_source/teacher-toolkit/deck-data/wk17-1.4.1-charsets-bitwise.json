@@ -1,0 +1,125 @@
+{
+  "subtopic": "1.4.1 Data Types (part 3 — character sets and bitwise)",
+  "spec": "OCR H446 — Component 01",
+  "week": "Week 17 (18 Jan)",
+  "objectives": [
+    "I can describe ASCII and Unicode, their sizes, their relationship, and why Unicode was introduced.",
+    "I can perform arithmetic on character codes, including digit conversion and changing case.",
+    "I can apply bitwise AND, OR and XOR with masks to set, clear, toggle and test individual bits.",
+    "I can perform logical and arithmetic shifts and state their effect as multiplication or division by powers of two."
+  ],
+  "retrieval": [
+    {"q": "Part 1: show -45 in 8-bit two's complement.", "a": "+45 = 00101101; invert to 11010010, add 1 to give 11010011. Check: -128+64+16+2+1 = -45."},
+    {"q": "Part 1: the two's complement byte 10111000 is stored. What denary value is it?", "a": "-128 + 32 + 16 + 8 = -72 (or invert and add 1: 01001000 = 72, so -72)."},
+    {"q": "Part 2: normalise the float with mantissa 00101000 and exponent 0100.", "a": "Shift the mantissa left 1 to 01010000 and decrease the exponent to 0011. Check: 0.3125 x 16 = 5 and 0.625 x 8 = 5."},
+    {"q": "Part 2: why are floating point numbers stored normalised?", "a": "No leading bits are wasted repeating the sign, so precision is maximised and every value has one unique representation."},
+    {"q": "Part 1: convert the hex value E5 to denary.", "a": "14 x 16 + 5 = 229."}
+  ],
+  "keywords": [
+    {"term": "Character set", "def": "The mapping between the characters a computer can represent and their unique binary codes."},
+    {"term": "ASCII", "def": "A 7-bit character set giving 128 codes for English letters, digits, punctuation and control characters."},
+    {"term": "Unicode", "def": "A character set giving a unique code point to every character in every language, plus symbols and emoji."},
+    {"term": "Code point", "def": "The unique number Unicode assigns to a character; UTF-8 encodes code points in 1 to 4 bytes."},
+    {"term": "Bitwise operation", "def": "An operation (AND, OR, XOR) applied to each pair of corresponding bits in two patterns."},
+    {"term": "Mask", "def": "A bit pattern combined with data using AND, OR or XOR to test, clear, set or toggle chosen bits."},
+    {"term": "Logical shift", "def": "Moves every bit left or right, filling with 0s; bits shifted off the end are lost."},
+    {"term": "Arithmetic shift", "def": "A shift for signed numbers: a right shift copies the sign bit in from the left."}
+  ],
+  "content": [
+    {"heading": "Character sets", "points": ["Computers store only numbers, so each character is stored as an agreed binary code.", "A character set is that agreement: character to code, code to character.", "Without a shared set, text saved on one machine would decode as nonsense on another.", "The number of bits per code fixes how many different characters can exist."]},
+    {"heading": "ASCII", "points": ["ASCII uses 7 bits, giving 2^7 = 128 characters.", "Covers English letters, digits, punctuation and control codes such as newline.", "Landmark codes: '0' = 48, 'A' = 65, 'a' = 97.", "Extended ASCII uses 8 bits for 256 characters - still nowhere near enough for all languages."]},
+    {"heading": "Character code arithmetic", "points": ["Letters and digits sit in consecutive runs, so codes can be calculated: 'G' = 65 + 6 = 71.", "Digit character to its value: subtract 48, so '7' (55) becomes 7.", "Codes order strings: comparing codes gives alphabetical sorting, with all capitals before lowercase.", "'a' - 'A' = 97 - 65 = 32, so upper and lower case differ by exactly one bit."], "note": "That difference of 32 is bit 5 - which is why case conversion is a mask operation."},
+    {"heading": "Unicode", "points": ["128 or 256 codes cannot hold Greek, Arabic, Chinese, maths symbols and emoji together.", "Unicode assigns a unique code point to every character in every language: over a million possible.", "UTF-8 stores code points in 1 to 4 bytes; common ASCII characters still take just 1 byte.", "The first 128 code points ARE ASCII, so Unicode is backward-compatible and ASCII is a subset.", "Trade-off: some characters need more storage than 8-bit ASCII text."]},
+    {"heading": "Bitwise AND, OR, XOR", "points": ["Each output bit depends only on the same-position bits of the two operands.", "AND gives 1 only if both bits are 1; OR gives 1 if either is 1; XOR gives 1 only if they differ.", "Example: 11001010 AND 10011100 = 10001000; OR = 11011110; XOR = 01010110.", "These are bitwise data operations - not the logic-gate circuits of 1.4.3, though the truth tables match."]},
+    {"heading": "Masks: test and set", "points": ["A mask has 1s in the positions you care about and 0s elsewhere.", "TEST a bit: AND with the mask; a non-zero result means the bit was 1.", "Example: 10100101 AND 00000100 = 00000100, so bit 2 is set.", "SET a bit: OR with the mask forces it to 1 and leaves everything else alone.", "Example: 10100101 OR 00010000 = 10110101."]},
+    {"heading": "Masks: clear and toggle", "points": ["CLEAR a bit: AND with the INVERSE mask (0 in the target position, 1s elsewhere).", "Example: clear bit 7 of 10110101 with AND 01111111 = 00110101.", "TOGGLE a bit: XOR with the mask flips it; XOR again flips it back.", "Example: 00110101 XOR 00000011 = 00110110 (bits 0 and 1 flipped).", "Summary: AND clears or tests, OR sets, XOR toggles."]},
+    {"heading": "Logical shifts", "points": ["Logical left shift by n: bits move left, 0s fill from the right - multiplies by 2^n.", "Example: 00010110 (22) shifted left 2 = 01011000 (88).", "Logical right shift by n: 0s fill from the left - divides an UNSIGNED number by 2^n, remainder lost.", "Example: 00011001 (25) shifted right 2 = 00000110 (6), i.e. 25 DIV 4.", "Bits shifted off either end are lost; a 1 lost off the top is overflow."]},
+    {"heading": "Arithmetic shifts", "points": ["A logical right shift wrecks negatives: 11110100 (-12) becomes 01111010 (+122).", "Arithmetic right shift copies the SIGN BIT in from the left: 11110100 becomes 11111010 (-6).", "So arithmetic right shift by n divides a signed number by 2^n.", "Left shifts are the same logically and arithmetically, but can overflow: 01100000 (96) shifted left reads -64 signed."], "note": "Exam answers must give direction AND arithmetic effect: 'right shift by 2, dividing the value by 4'."},
+    {"heading": "Combining masks and shifts", "points": ["Extract the high nibble: AND 11110000 keeps it, then shift right 4 moves it into place.", "Example: 10110110 AND 11110000 = 10110000; shift right 4 = 00001011 = 11 (hex B).", "Fast multiply: x times 10 = (x shifted left 3) + (x shifted left 1), e.g. 13 gives 104 + 26 = 130.", "Case conversion is a mask: OR 00100000 lowercases, AND 11011111 uppercases, XOR 00100000 toggles."]}
+  ],
+  "worked_examples": [
+    {"title": "Changing case with masks: 'q' to 'Q' and back", "steps": [
+      "'q' is the 17th letter, so its code is 97 + 16 = 113 = 01110001.",
+      "Uppercase means clearing bit 5 (value 32): AND with the mask 11011111.",
+      "01110001 AND 11011111: every bit survives except bit 5, which is forced to 0.",
+      "Result: 01010001 = 64 + 16 + 1 = 81, and 65 + 16 = 81 is 'Q'. Correct.",
+      "Toggle back with XOR 00100000: 01010001 XOR 00100000 = 01110001 = 113 = 'q'.",
+      "XOR with the same mask twice always returns the original: each masked bit flips, then flips back.",
+      "One sentence to keep: AND clears the case bit, OR would set it, XOR flips it."
+    ]},
+    {"title": "Driving a status byte with masks", "steps": [
+      "A device status byte holds 01001010 (bit 7 = alarm, bit 3 = power saving, bit 6 = online, bit 0 = ready).",
+      "Set bit 0 (ready): 01001010 OR 00000001 = 01001011.",
+      "Clear bit 3 (leave power saving): 01001011 AND 11110111 = 01000011 - only bit 3 changed.",
+      "Check: 01001011 = 75 and 01000011 = 67; the difference is exactly 8, bit 3's value. Correct.",
+      "Test bit 6 (online?): 01000011 AND 01000000 = 01000000, non-zero, so the device is online.",
+      "Toggle bit 1: 01000011 XOR 00000010 = 01000001.",
+      "Each operation touched exactly the target bits: that is why real device drivers work this way."
+    ]},
+    {"title": "Shifts as arithmetic, bit by bit", "steps": [
+      "Unsigned: 00010110 = 22. Logical left shift by 2: bits move left, 0s fill the right: 01011000.",
+      "Check: 01011000 = 64 + 16 + 8 = 88 = 22 x 4. A left shift by n multiplies by 2^n.",
+      "Signed: 11110100 = -128 + 64 + 32 + 16 + 4 = -12.",
+      "Arithmetic right shift by 1 copies the sign bit in: 11111010 = -128 + 64 + 32 + 16 + 8 + 2 = -6. Correct: -12 / 2.",
+      "Arithmetic right shift again: 11111101 = -128 + 64 + 32 + 16 + 8 + 4 + 1 = -3. Correct: -12 / 4.",
+      "Contrast: a LOGICAL right shift of 11110100 gives 01111010 = +122 - the sign was destroyed.",
+      "Rule: logical shifts for unsigned patterns; arithmetic right shifts to halve signed numbers safely."
+    ]}
+  ],
+  "activities": [
+    {"title": "Shift Shuffle", "minutes": 12, "instructions": [
+      "Eight students hold a bit pattern; a bit bucket chair sits at the right end. Start with 00001100; the class reads its denary value (12).",
+      "Logical left shift by 1: everyone side-steps left, the leftmost bit falls off, a new 0 student joins on the right. Re-read: 00011000 = 24, doubled. Repeat: 00110000 = 48.",
+      "Reset to 00011001 (25). Logical right shift by 2: two side-steps right, the two rightmost cards land in the bit bucket, 0s join on the left. Result 00000110 = 6, exactly 25 DIV 4 - the remainder bits are in the bucket, lost.",
+      "Reset to 11110000 and declare it signed (-16). First do a logical right shift by 1 and read the wreckage: 01111000 = +120. Rewind, then do it arithmetically: the MSB student stays AND sends a copy in from the left: 11111000 = -8 = -16 / 2.",
+      "Debrief: left shift multiplies by 2^n, right shift divides by 2^n, shifted-out bits are lost, arithmetic right preserves the sign bit."
+    ], "stretch": "Compute 12 x 5 using only shifts and one addition: (12 shifted left 2) + 12 = 48 + 12 = 60."},
+    {"title": "Odd One Out: character codes", "minutes": 10, "instructions": [
+      "Show each set; pairs think alone (20 seconds), agree (30 seconds), write the odd one out plus reason, hold up boards.",
+      "Set A: 'A', 65, 0x41, 97 - odd one is 97, which is 'a'; the others are all 'A' (trap: case changes the code by 32).",
+      "Set B: 01000001, 'A', 65, 0x65 - odd one is 0x65, which is denary 101, ASCII 'e' (trap: 0x65 is not 65).",
+      "Set C: 'Z', 90, 01011010, 0x5B - odd one is 0x5B = 91; 'Z' = 65 + 25 = 90 = 01011010.",
+      "Set D: '9', 57, 00111001, 9 - odd one is the integer 9; the character '9' is code 48 + 9 = 57.",
+      "Debrief the big idea: a character IS a number underneath, and hex, binary, denary are just three ways to write it."
+    ], "stretch": "Pairs build one new set mixing a character, its code in two bases, and one near-miss, then swap and solve."},
+    {"title": "The Bit Mask Bureau", "minutes": 12, "instructions": [
+      "Every student is issued the same status byte on mini-whiteboards: 10100101 (165). For each job they must write the MASK, the OPERATION and the RESULT.",
+      "Job 1 - test bit 2: AND 00000100 gives 00000100, non-zero, so bit 2 is set.",
+      "Job 2 - set bit 4: OR 00010000 gives 10110101.",
+      "Job 3 - starting from 10110101, clear bit 7: AND 01111111 gives 00110101.",
+      "Job 4 - starting from 00110101, toggle bits 0 and 1: XOR 00000011 gives 00110110.",
+      "Job 5 (transfer): which single mask and operation converts ANY lowercase letter to uppercase? AND 11011111 - it clears the case bit, 32.",
+      "Reveal after each job; a wrong answer costs the student one spoken sentence naming which operation sets, clears, toggles or tests."
+    ], "stretch": "Design one mask-and-operation pair that swaps the case of every letter in a string of letters, and explain why XOR 00100000 is the only candidate."}
+  ],
+  "practice": [
+    {"q": "The ASCII code for 'A' is 65. State the codes for 'M' and 'm', and describe the relationship between the codes of a capital letter and its lowercase form. [3]", "a": "'M' is the 13th letter: 65 + 12 = 77 (1). 'm' = 77 + 32 = 109 (1). Lowercase codes are exactly 32 more than uppercase - the same pattern with bit 5 set (1)."},
+    {"q": "Explain why Unicode was introduced and how it maintains compatibility with ASCII. [3]", "a": "ASCII's 128 (or 256 extended) codes cannot represent all the world's languages, symbols and emoji (1); Unicode gives every character a unique code point, over a million available (1); its first 128 code points are identical to ASCII, so ASCII text is valid Unicode (1)."},
+    {"q": "For the bytes 10011010 and 01110110, give the result of a bitwise AND, OR and XOR. [3]", "a": "AND = 00010010 (1); OR = 11111110 (1); XOR = 11101100 (1)."},
+    {"q": "State a mask and operation that clears the lower nibble of any byte, and show the result on 10110111. [2]", "a": "AND with 11110000 (1); 10110111 AND 11110000 = 10110000 (1)."},
+    {"q": "The unsigned byte 00011010 is shifted logically left by two places. Give the result and state the arithmetic effect. [2]", "a": "01101000 (1); the value is multiplied by 2^2 = 4, from 26 to 104 (1)."},
+    {"q": "The signed byte 10010000 (-112) is shifted right by two places. Give the result of an arithmetic shift and of a logical shift, and state which is correct for a signed value. [3]", "a": "Arithmetic: the sign bit is copied in twice, giving 11100100 = -28, which is -112 / 4 (1). Logical: 0s fill from the left, giving 00100100 = +36 (1). The arithmetic shift is correct because it preserves the sign bit (1)."},
+    {"q": "A program reads the character '7'. Explain how its ASCII code is converted to the integer 7, and why this works for every digit. [2]", "a": "Subtract 48, the code for '0': '7' = 55 and 55 - 48 = 7 (1). The digit characters 0-9 occupy consecutive codes 48-57, so code minus 48 always gives the digit's value (1)."},
+    {"q": "Using one mask and one shift, show how to extract the high nibble of 11010011 as a value. [3]", "a": "AND with 11110000 keeps the high nibble: 11010000 (1); logical right shift by 4 moves it down: 00001101 (1); result is 13, hex D (1)."}
+  ],
+  "misconceptions": [
+    "Students often say ASCII is 8-bit; standard ASCII is 7-bit with 128 characters - extended ASCII is the 8-bit, 256-character version.",
+    "Students often think Unicode replaced ASCII incompatibly; ASCII is a subset - the first 128 Unicode code points are identical, so old text still decodes.",
+    "Students often confuse OR with XOR; OR forces bits to 1 and never turns a 1 off, while XOR flips the masked bits, so only XOR can toggle.",
+    "Students often use a logical right shift on negative numbers; it fills with 0 and destroys the sign - the arithmetic shift copies the sign bit in.",
+    "Students often expect shifted-out bits to wrap around; they are simply lost, which is why right shifts discard the remainder and left shifts can overflow."
+  ],
+  "exam_link": [
+    "ASCII versus Unicode is a bankable 2-4 mark describe/explain question: sizes, purpose, and the subset relationship all score.",
+    "Mask questions award the mark for the MASK AND the OPERATION together - a correct mask with the wrong operation scores nothing.",
+    "Shift questions demand direction and arithmetic effect: 'left shift by 2' alone drops the multiplication-by-4 mark.",
+    "Example stem: 'An 8-bit register holds the signed value 10010110. Show the register after an arithmetic right shift of one place and state the effect on the stored value.' [2] (11001011; the value -106 is halved to -53.)"
+  ],
+  "task": "A control byte holds 01100110. Working from the ORIGINAL byte each time, give the mask, operation and result to: (1) set bit 7 (OR 10000000 = 11100110); (2) test bit 2 (AND 00000100 = 00000100, non-zero so set); (3) toggle bit 0 (XOR 00000001 = 01100111); (4) clear bit 5 (AND 11011111 = 01000110). Finish by writing the one-line summary: OR sets, AND clears or tests, XOR toggles.",
+  "challenge": "Write an OCR Exam Reference Language function toUpper(ch) that returns the uppercase of a letter using code arithmetic: code = ASC(ch); if code is between 97 and 122 then subtract 32; return CHR(code). Trace it for 'h' (104 to 72, giving 'H') and for 'H' (unchanged). Then explain why subtracting 32 and AND 11011111 are the same operation for letters, and multiply 13 by 10 using only shifts and one addition ((13 shifted left 3) + (13 shifted left 1) = 104 + 26 = 130).",
+  "exit_ticket": [
+    {"q": "How many bits and characters does standard ASCII use, and what is its relationship to Unicode?", "a": "7 bits, 128 characters; Unicode's first 128 code points are identical to ASCII, so ASCII is a subset of Unicode."},
+    {"q": "Give the mask and operation that set bit 4 of a byte without touching any other bit.", "a": "OR with 00010000."},
+    {"q": "Why must an arithmetic rather than logical right shift be used to halve a negative two's complement number?", "a": "The arithmetic shift copies the sign bit in from the left, keeping the number negative; a logical shift fills with 0 and turns it into a large positive value."}
+  ]
+}
